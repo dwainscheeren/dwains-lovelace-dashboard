@@ -1,6 +1,7 @@
 <div class="row" style="display: grid; grid-template-columns: 70% 30%;">
   <div class="column">
-  Welcome to the Dwains Lovelace Theme documentation! Besides the documentation, you can also get support and ask questions on the [HA Forum](https://www.replacethis.nl). I spend a lot of free time into this project. If you appreciate what I have made you can [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx). If you like you can subcribe on my [Home Assistant YouTube channel](https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A)
+  <h3>Welcome to the Dwains Lovelace Theme documentation!</h3>
+  <p>Besides the documentation, you can also get support and ask questions on the <a href="">HA Forum</a>. I spend a lot of free time into this project. If you appreciate what I have made you can <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank">Buy me a coffee/beer</a>. If you like you can subcribe on my <a href="https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A" target="_blank">Home Assistant YouTube channel</a>.</p>
   </div>
   <div class="column" style="text-align: right;">
    <img src="images/preview1.jpg">
