@@ -47,7 +47,7 @@ Unzip the file you just downloaded.
 
 Copy the content of this folder to the root of your Home Assistant installation.
 
-*NOTE: You need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder
+*NOTE: You need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder*
 
 ### Step 3 - Modify some files
 
@@ -57,19 +57,19 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
 ### Step 4 - OPTIONAL: Use Home Assistant packages
 
-*NOTE: This step is not required but highly recomended
+*NOTE: This step is not required but highly recomended*
 
  I personally use Home Assistant packages. With packages you have a way to include different components, or different configuration parts using any of the `!include` directives. [Read more about it here](https://www.home-assistant.io/docs/configuration/packages/).
 
 I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this open `configuration.yaml` and uncomment the line `user_package_sample: !include user-package-sample/configuration.yaml`. 
 
-*NOTE: Read the content of the `user-package-sample/configuration.yaml` file to get a understanding how it works.
+*NOTE: Read the content of the `user-package-sample/configuration.yaml` file to get a understanding how it works.*
 
 Next copy everything from your `configuration.yaml` **EXCEPT THE TEXT BETWEEN `Start of dwains-theme necesary code` AND `End of dwains-theme necesary code`** to the file `the-folder-you-just-renamed/configuration.yaml`. Remove the existing code in this file!
 
 ### Step 4 - Restart Home Assistant
 
-*NOTE: Your Home Assistant installation can have some errors now. This will be fixed after configuring Dwains Theme.
+*NOTE: Your Home Assistant installation can have some errors now. This will be fixed after configuring Dwains Theme.*
 
 That's it! Dwains Theme should now be installed. To start using it continue reading.
 

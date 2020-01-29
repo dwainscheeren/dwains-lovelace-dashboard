@@ -9,7 +9,7 @@ Each section is explained below.
 
 **If you edit something inside `dwains-theme.yaml`, you always need to restart Home Assistant for any changes to be visible.**
 
-*NOTE: You can always look in the dwains-theme-sample.yaml file for some inspiration.
+*NOTE: You can always look in the dwains-theme-sample.yaml file for some inspiration.*
 
 ___
 
@@ -17,6 +17,7 @@ ___
 The global section. My theme uses this to build the pages.
 
 #### Global information
+
 | Name | Type | Required | Example | Description |
 |---------------------|--------|----------|----------------------------------|---------------------------------------------------------------------------------------------|
 | weather | string | No | weather.dark_sky | Weather (I use [Dark Sky Weather](https://www.home-assistant.io/integrations/weather.darksky/)) |
@@ -49,6 +50,7 @@ ___
 House information, for  entities you want on the house_information page.
 
 #### House information, information
+
 | Name | Type | Default | Example | Description |
 |--------|--------|-------------|---------------------------------|-----------------------------------|
 | entity | string | Required | binary_sensor.frontdoor_contact | entity_id |
@@ -69,6 +71,7 @@ ___
 Scenes sections all scenes you want to be visible on the scenes page. You can [create scenes in the GUI](https://www.home-assistant.io/docs/scene/editor/).
 
 #### Scenes information
+
 | Name | Type | Default | Example | Description |
 |------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
 | entity | string | Required | scene.watching_tv | Scene entity_id |
@@ -90,6 +93,7 @@ ___
 Cameras sections, all cameras you want to be visible on the cameras page.
 
 #### Cameras information
+
 | Name | Type | Default | Example | Description |
 |------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
 | entity | string | Required | camera.driveway_camera | Camera entity_id |
@@ -106,6 +110,7 @@ ___
 Persons sections, all persons you want to be visible on the homepage. [How to create persons](https://www.home-assistant.io/integrations/person/).
 
 #### Persons information
+
 | Name | Type | Default | Example | Description |
 |------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
 | entity | string | Required | scene.watching_tv | Scene entity_id |
@@ -126,6 +131,7 @@ ___
 Rooms sections, all rooms of your house. This is where my theme is all about :D
 
 #### Rooms information
+
 | Name | Type | Default | Example | Description |
 |--------------|--------------------------|--------------------|-------------------------------------|-----------------------------------------------------------------------------------|
 | name | string | Required | Hallway | Room name |
@@ -165,6 +171,7 @@ ___
 With the more extend section you can add own views/pages to my theme. You can access these from the More page (hamburger icon in menu)
 
 #### More extend information
+
 | Name | Type | Default | Example | Description |
 |------------|--------|--------------------|-------------------------------------------------------|------------------------------------------------|
 | name | string | Required | Statistics | Name of the page |
