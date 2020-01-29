@@ -9,3 +9,11 @@ $section-headings-color: #101010 !default;
 
 @import "{{ site.theme }}";
 
+//Anchors
+.anchor-hash {
+    opacity: 0.2;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
