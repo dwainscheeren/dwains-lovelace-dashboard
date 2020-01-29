@@ -4,6 +4,6 @@ title: Dwains Lovelace Theme
 google_analytics: UA-105338324-4
 buttons:
   zip_url: https://github.com/dwainscheeren/lovelace-dwains-theme/releases
-  zip_title: Latest release
+  zip_title: Download latest release
   zip_hide: false
   tar_hide: true

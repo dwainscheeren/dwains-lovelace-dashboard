@@ -61,7 +61,7 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
  I personally use Home Assistant packages. With packages you have a way to include different components, or different configuration parts using any of the `!include` directives. [Read more about it here](https://www.home-assistant.io/docs/configuration/packages/).
 
-I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this open `configuration.yaml` and uncomment the line `user_package_sample: !include user-package-sample/configuration.yaml`. 
+I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this open `configuration.yaml` and uncomment the line `user_package_sample: !include user-package-sample/configuration.yaml`. And change the name of `user_package_sample` here to your own name.
 
 *NOTE: Read the content of the `user-package-sample/configuration.yaml` file to get a understanding how it works.*
 
