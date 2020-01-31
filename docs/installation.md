@@ -67,6 +67,10 @@ I included a sample folder for this in my theme it's called `user-package-sample
 
 Next copy everything from your `configuration.yaml` **EXCEPT THE TEXT BETWEEN `Start of dwains-theme necesary code` AND `End of dwains-theme necesary code`** to the file `the-folder-you-just-renamed/configuration.yaml`. Remove the existing code in this file!
 
+### Step 5 - Configure Dwains Theme
+
+To configure/build the theme you need to edit the file `dwains-theme.yaml`. When you open this file you see some examples commented-out. If you want to know how you need to configure this file, go to the [Configure Dwains Theme](configuration.md) page.
+
 ### Step 4 - Restart Home Assistant
 
 *NOTE: Your Home Assistant installation can have some errors now. This will be fixed after configuring Dwains Theme.*
@@ -74,6 +78,6 @@ Next copy everything from your `configuration.yaml` **EXCEPT THE TEXT BETWEEN `S
 That's it! Dwains Theme should now be installed. To start using it continue reading.
 
 ## What's next?
-Now that you have installed all the required plugins and the Dwains Theme core files we need to edit the Dwains Theme configuration to start using it.
+Now that you have installed all the required plugins and the Dwains Theme core files you can edit the Dwains theme configuration file.
 
 [Configure Dwains Theme](configuration.md)

@@ -167,10 +167,10 @@ rooms:
 ```    
 ___
 
-## More extend (optional)
-With the more extend section you can add own views/pages to my theme. You can access these from the More page (hamburger icon in menu)
+## More addons (optional)
+With the more addons section you can add own views/pages to my theme. whic you can access these from the More page (hamburger icon in menu).
 
-#### More extend information
+#### More addons information
 
 | Name | Type | Default | Example | Description |
 |------------|--------|--------------------|-------------------------------------------------------|------------------------------------------------|
@@ -178,12 +178,12 @@ With the more extend section you can add own views/pages to my theme. You can ac
 | icon | string | mdi:square-outline | 'far:chart-area' | Icon to display |
 | path | string | Required | 'user-package-sample/views/main/more/statistics.yaml' | Path to the file view |
 
-#### More extend example
+#### More addons example
 ```YAML
-more:
+more_addons:
   - name: Statistics
     icon: 'far:chart-area'
-    path: 'user-package-sample/views/main/more/statistics.yaml'
+    path: 'user-package-sample/views/main/more/addons/statistics.yaml'
 ```    
 
 The content of this `statistics.yaml` file then can be:
