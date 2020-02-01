@@ -27,7 +27,9 @@ Hello, I am Dwain. I'm using Home Assistant for over 1 year now. At the end of t
 You can use the thread on the Home Assistant community to ask any questions you have. 
 
 Or join me on Slack!
+
 [English Speaking Slack](https://join.slack.com/t/homeassistanten/shared_invite/enQtNzg1NzQyOTI4ODE2LWVhMmY3ZjMxMThhOTk1OWEwY2E4NDE0YmViZWI3NjUyNzIyMzIwNTkwMzlmMDA5N2I0MTQ4MDhiYTkwYWFlZDU)
+
 [Dutch Speaking Slack](https://join.slack.com/t/homeassistantnlbe/shared_invite/enQtNzc4MzAwMTEyNDIwLTgwZGVmNmNhZjZkNmVkMjM1NTM3N2UwODIzZTFjMzY1ZmUyMGJiZDU5ZTEyZWEyYzMzYzQzYWJmNGE3MWVjN2I)
 
 I manage this Slack channels together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains) it has a lot of same features as Dwains Theme. 
