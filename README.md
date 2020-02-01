@@ -14,6 +14,7 @@
 Hello, I am Dwain. I'm using Home Assistant for over 1 year now. At the end of the summer 2019 I thought why does nobody has made a theme which builds automatic by a configuration file. I have a own web development company so I thought why not make a own theme and release it to the public. The result: Dwains Lovelace Theme.
 
 **Upcoming updates**
+
 * Override default icons in theme
 * Switch between languages (English, Dutch, German)
 * Easy function to add own languages
@@ -31,9 +32,11 @@ Or join me on Slack!
 I manage this Slack channels together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains) it has a lot of same features as Dwains Theme. 
 
 **YouTube Channel**
+
 If you like you can subscribe on my [Home Assistant YouTube channel](https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A) I will soon start posting some more videos there.
 
 **Like what you see?**
+
 If you appreciate what I have made you can [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx).Or post a reply in this thread with how happy you are. :crazy_face:
 
 Greetings,
