@@ -23,6 +23,7 @@ Hello, I am Dwain. I'm using Home Assistant for over 1 year now. At the end of t
 [Open an issue on GitHub](https://github.com/dwainscheeren/lovelace-dwains-theme/issues/new) with the title  `FR`  or  `Feature Request`
 
 **Support**
+
 You can use the thread on the Home Assistant community to ask any questions you have. 
 
 Or join me on Slack!
