@@ -2,12 +2,13 @@
 
 <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
-<a href="https://dwainscheeren.github.io/lovelace-dwains-theme/" target="_blank"><img src="https://github.com/dwainscheeren/lovelace-dwains-theme/blob/master/docs/images/forum/dwains-theme_01.jpg?raw=true " alt="" style="height: auto !important;width: auto !important;" ></a><a href="https://youtu.be/Wdh0q8K3JSk" target="_blank"><img src="https://github.com/dwainscheeren/lovelace-dwains-theme/blob/master/docs/images/forum/dwains-theme_02.jpg?raw=true " alt="" style="height: auto !important;width: auto !important;" ></a>
-<img src="https://github.com/dwainscheeren/lovelace-dwains-theme/blob/master/docs/images/forum/dwains-theme_04.jpg?raw=true">
-<img src="https://github.com/dwainscheeren/lovelace-dwains-theme/blob/master/docs/images/forum/dwains-theme_05.jpg?raw=true">
-<img src="https://github.com/dwainscheeren/lovelace-dwains-theme/blob/master/docs/images/forum/dwains-theme_06.jpg?raw=true">
-<img src="https://github.com/dwainscheeren/lovelace-dwains-theme/blob/master/docs/images/forum/dwains-theme_07.jpg?raw=true">
-<img src="https://github.com/dwainscheeren/lovelace-dwains-theme/blob/master/docs/images/forum/dwains-theme_08.jpg?raw=true">
+![dwains-theme_01](https://user-images.githubusercontent.com/3868853/73613069-43326600-45f2-11ea-99a5-8f058530d72e.jpg)
+![dwains-theme_02](https://user-images.githubusercontent.com/3868853/73613071-4594c000-45f2-11ea-852e-7a2eae5c1dec.jpg)
+![dwains-theme_04](https://user-images.githubusercontent.com/3868853/73613073-462d5680-45f2-11ea-9164-e69a0e3dc7d9.jpg)
+![dwains-theme_05](https://user-images.githubusercontent.com/3868853/73613074-462d5680-45f2-11ea-97c6-3bd1cc757307.jpg)
+![dwains-theme_06](https://user-images.githubusercontent.com/3868853/73613075-462d5680-45f2-11ea-8079-b53a5b290aa9.jpg)
+![dwains-theme_07](https://user-images.githubusercontent.com/3868853/73613076-462d5680-45f2-11ea-9bc8-14d840417ef8.jpg)
+![dwains-theme_08](https://user-images.githubusercontent.com/3868853/73613077-462d5680-45f2-11ea-9697-a403eb1c3f2c.jpg)
 
 # Dwains Lovelace Theme
 
