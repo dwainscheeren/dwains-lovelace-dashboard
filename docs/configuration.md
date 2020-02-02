@@ -1,133 +1,50 @@
 # Configuration
 
-Dwains Theme settings are loaded from the file `dwains-theme.yaml` in the root of your Home Assistant folder.
+Dwains Theme configuration is loaded from the files inside the folder `dwains-theme/configs/`.
 
-This config file can have the following sections: `global`, `house_information`, `scenes`, `cameras`, `persons`, `rooms`, `more`.
-Only `global` and `rooms` are required!
+This folder can have the following files: `global.yaml`, `house_information.yaml`, `scenes.yaml`, `cameras.yaml`, `persons.yaml`, `rooms.yaml`, `more_addons.yaml`.
+Only the files `global.yaml` and `rooms.yaml` are required!
 
-Each section is explained below.
+Each file content is explained below.
 
-**If you edit something inside `dwains-theme.yaml`, you always need to restart Home Assistant for any changes to be visible.**
+**If you edit something inside a file of the `dwains-theme/configs/` folder, you always need to restart Home Assistant for any changes to be visible.**
 
-*NOTE: You can always look in the dwains-theme-sample.yaml file for some inspiration.*
+*HINT: You can always look in the `dwains-theme/configs-samples` folder files for some inspiration.*
+
+*HINT: For the icons I mostly use Font Awesome, [read here how to choose and use icons](link.md).*
+
+*HINT: Some entries can have a single entity or a group [read here how to make a group](https://www.home-assistant.io/integrations/group/). (You can use `user-package-sample/groups.yaml`).*
 
 ___
 
-## Global (required)
-The global section. My theme uses this to build the pages.
+## Global `global.yaml` (required)
+The global section. Dwains theme uses this to build the pages.
 
 #### Global information
 
 | Name | Type | Required | Example | Description |
 |---------------------|--------|----------|----------------------------------|---------------------------------------------------------------------------------------------|
+| language | string | No | en | Language of my theme. It only supports English for now! Dutch and German coming soon.. |
 | weather | string | No | weather.dark_sky | Weather (I use [Dark Sky Weather](https://www.home-assistant.io/integrations/weather.darksky/)) |
 | outside_temperature | string | No | sensor.dark_sky_temperature | Outside temperature (I use [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |
 | outside_humidity | string | No | sensor.dark_sky_humidity | Outside humidity (I use [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |
 | alarm | string | No | alarm_control_panel.alarm_system | Alarm entity. [Read more here](https://www.home-assistant.io/integrations/manual/) |
-| climate | string | No | climate.living_room | Global climate temperature |
-| language | string | No | en | Language of my theme. It only supports English for now! Dutch and German coming soon.. |
-| calendar | list | No | - calendar.old_paper | List of calendar entities |
+| inside_temperature | string | No | climate.living_room | Inside temperature sensor |
+
 
 #### Global example
 ```YAML
 global:
+    language: en
     weather: weather.dark_sky
     outside_temperature: sensor.dark_sky_temperature
     outside_humidity: sensor.dark_sky_humidity
     alarm: alarm_control_panel.alarm_system
-    climate: climate.living_room
-    language: en
-    
-    calendar:
-      - calendar.old_paper
-      - calendar.residual_waste
-```  
-
-___
-
-
-## House information
-House information, for  entities you want on the house_information page.
-
-#### House information, information
-
-| Name | Type | Default | Example | Description |
-|--------|--------|-------------|---------------------------------|-----------------------------------|
-| entity | string | Required | binary_sensor.frontdoor_contact | entity_id |
-| type | string | Entity type | door | Type of entity `door`, `doorbell` |
-
-#### House information example
-```YAML
-house_information:
-  - entity: binary_sensor.frontdoor_contact
-    type: door
-  - entity: binary_sensor.doorbell_button
-    type: doorbell
-```  
-
-___
-
-## Scenes (optional)
-Scenes sections all scenes you want to be visible on the scenes page. You can [create scenes in the GUI](https://www.home-assistant.io/docs/scene/editor/).
-
-#### Scenes information
-
-| Name | Type | Default | Example | Description |
-|------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
-| entity | string | Required | scene.watching_tv | Scene entity_id |
-| icon | string | play-circle-outline | fal:couch | Icon to display |
-| icon_color | string | var(--dwains-theme-header-text) | '#ffffff' | Icon color |
-| background | string | optional | 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)' | Background color, you can use css styling here |
-
-#### Scenes example
-```YAML
-scenes:
-  - entity: scene.watching_tv
-    icon: fal:couch
-    icon_color: '#ffffff'
-    background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%'
+    inside_temperature: climate.living_room
 ```  
 ___
 
-## Cameras (optional)
-Cameras sections, all cameras you want to be visible on the cameras page.
-
-#### Cameras information
-
-| Name | Type | Default | Example | Description |
-|------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
-| entity | string | Required | camera.driveway_camera | Camera entity_id |
-
-#### Cameras example
-```YAML
-cameras:
-  - entity: camera.driveway_camera
-``` 
-
-___
-
-## Persons (optional)
-Persons sections, all persons you want to be visible on the homepage. [How to create persons](https://www.home-assistant.io/integrations/person/).
-
-#### Persons information
-
-| Name | Type | Default | Example | Description |
-|------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
-| entity | string | Required | scene.watching_tv | Scene entity_id |
-| icon | string | play-circle-outline | fal:couch | Icon to display |
-| icon_color | string | var(--dwains-theme-header-text) | '#ffffff' | Icon color |
-| background | string | optional | 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)' | Background color, you can use css styling here |
-
-#### Persons example
-```YAML
-persons: 
-  - name: Dwain
-    track: person.dwain
-    picture: 'foldername/images/persons/dwain.jpg'
-```    
-___
-
-## Rooms (required)
+## Rooms (required) `rooms.yaml`
 Rooms sections, all rooms of your house. This is where my theme is all about :D
 
 #### Rooms information
@@ -167,22 +84,128 @@ rooms:
 ```    
 ___
 
-## More addons (optional)
-With the more addons section you can add own views/pages to my theme. whic you can access these from the More page (hamburger icon in menu).
+## House information `house_information.yaml`
+House information a page which shows your favorite entities, a house calendar and what is going on in your house regarding motion, doors and windows.
+
+#### House information section
+
+| Name | Type | Default | Example | Description |
+|------------|--------|--------------|-------------------------------------------------------|------------------------------------------------|
+| favorites | object | Not required | See house information favorites | A object with favorite entities |
+| calendar | object | Not required | See house information calendar | Icon to display |
+
+#### House information example
+```YAML
+house_information:
+  favorites:
+    - entity: binary_sensor.doorbell_button
+      icon_on: fas:bell-school
+      icon_off: fal:bell-school
+    - entity: binary_sensor.hallway_door_contact
+      icon_on: fal:door-open
+      icon_off: fal:door-closed
+
+  calendar:
+    - calendar.trash
+    - calendar.birthdays
+```  
+
+#### House information -> Favorites
+
+| Name | Type | Default | Example | Description |
+|----------|--------|---------------------|---------------------------------|--------------------------|
+| entity | string | Required | binary_sensor.frontdoor_contact | entity_id |
+| icon_on | string | Default entity icon | fas:bell-school | Icon when entity is on |
+| icon_off | string | Default entity icon | far:bell-school | Icon when entitiy is off |
+
+#### House information -> Calendar
+
+Just a list of calendar entities
+
+```YAML
+  calendar:
+    - calendar.trash
+    - calendar.birthdays
+```  
+
+
+___
+
+## Scenes (optional) `scenes.yaml`
+Scenes sections all scenes you want to be visible on the scenes page. You can [create scenes in the GUI](https://www.home-assistant.io/docs/scene/editor/).
+
+#### Scenes information
+
+| Name | Type | Default | Example | Description |
+|------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
+| entity | string | Required | scene.watching_tv | Scene entity_id |
+| icon | string | far:play-circle | fas:couch | Icon to display |
+| icon_color | string | var(--dwains-theme-header-text) | '#ffffff' | Icon color |
+| background | string | optional | 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)' | Background color, you can use css styling here |
+
+#### Scenes example
+```YAML
+scenes:
+  - entity: scene.watching_tv
+    icon: fas:couch
+    icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+```  
+___
+
+## Cameras (optional) `cameras.yaml`
+Cameras sections, all cameras you want to be visible on the cameras page.
+
+#### Cameras information
+
+| Name | Type | Default | Example | Description |
+|------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
+| entity | string | Required | camera.driveway_camera | Camera entity_id |
+
+#### Cameras example
+```YAML
+cameras:
+  - entity: camera.driveway_camera
+``` 
+
+___
+
+## Persons (optional) `persons.yaml`
+Persons sections, all persons you want to be visible on the homepage. [How to create persons](https://www.home-assistant.io/integrations/person/).
+
+#### Persons information
+
+| Name | Type | Default | Example | Description |
+|--------------|--------|-------------------------|-------------------------------------------------------|------------------------------------------------|
+| name | string | Required | Dwain | Name of person |
+| track | string | Required | person.dwain | Person entity |
+| picture_path | string | A auto generated avatar | 'foldername/images/persons/dwain.jpg' | Path to person picture |
+
+#### Persons example
+```YAML
+persons: 
+  - name: Dwain
+    track: person.dwain
+    picture_path: 'foldername/images/persons/dwain.jpg'
+```    
+___
+
+## More addons (optional) `more_addons.yaml`
+With the more addons section you can add own views/pages to my theme. You can access these from the More page (hamburger icon in menu).
 
 #### More addons information
 
 | Name | Type | Default | Example | Description |
 |------------|--------|--------------------|-------------------------------------------------------|------------------------------------------------|
 | name | string | Required | Statistics | Name of the page |
-| icon | string | mdi:square-outline | 'far:chart-area' | Icon to display |
+| icon | string | fas:puzzle-piece | fas:beer | Icon to display |
 | path | string | Required | 'user-package-sample/views/main/more/statistics.yaml' | Path to the file view |
 
 #### More addons example
 ```YAML
 more_addons:
   - name: Statistics
-    icon: 'far:chart-area'
+    icon: far:chart-area
     path: 'user-package-sample/views/main/more/addons/statistics.yaml'
 ```    
 
