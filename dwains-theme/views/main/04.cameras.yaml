@@ -1,7 +1,7 @@
 # dwains_theme
 
 - path: cameras
-  icon: 'fas:cctv'
+  icon: 'mdi:cctv'
   title: Cameras
   badges: []
   cards:

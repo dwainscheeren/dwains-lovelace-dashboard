@@ -1,4 +1,4 @@
-rooms:
+#rooms:
   # - name: Hallway
   #   icon: fas:key
   #   light: light.hallway

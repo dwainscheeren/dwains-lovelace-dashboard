@@ -1,4 +1,4 @@
-more_addons:
+#more_addons:
   # - name: Statistics
   #   icon: far:chart-area
   #   path: 'user-package-sample/views/addons/statistics.yaml'

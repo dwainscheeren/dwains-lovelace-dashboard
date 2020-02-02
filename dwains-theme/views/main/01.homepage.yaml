@@ -135,6 +135,7 @@
               ]]]
             {% endif %}
           {% endif %}
+          {% if _d_t_config.persons %}
           {% for person in _d_t_config.persons %}
           - type: custom:button-card
             template: header_person
@@ -149,6 +150,7 @@
               action: navigate
               navigation_path: {{ person["name"]|lower|replace(" ", "_")  }}
           {% endfor %}
+          {% endif %}
     #END HOMEPAGE HEADER
     
     - type: vertical-stack
@@ -261,4 +263,10 @@
                       }
                     ]]]   
                   {% endif %}
+              {% else %}
+              - type: markdown
+                content: No rooms defined
               {% endfor %}
+              - type: custom:button-card
+                color_type: blank-card
+                aspect_ratio: 1/1

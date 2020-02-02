@@ -1,7 +1,7 @@
 # dwains_theme
 
 #Loop thought all the persons in the person section
-
+{% if _d_t_config.persons %}
 {% for person in _d_t_config.persons %}
 - title: {{ person["name"] }}
   path: {{ person["name"]|lower|replace(" ", "_")  }}
@@ -49,3 +49,4 @@
     - !include ../../../../{{ person["extend"]}}
     {% endif %}
 {% endfor %}
+{% endif %}
