@@ -60,7 +60,12 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
 *NOTE: This step is not required but highly recommended*
 
- I personally use Home Assistant packages. With packages you have a way to include different components, or different configuration parts using any of the `!include` directives. [Read more about it here](https://www.home-assistant.io/docs/configuration/packages/).
+ I personally use Home Assistant packages. With packages you have a way to include different components, or different configuration parts using any of the `!include` directives. [Read more about it here](https://www.home-assistant.io/docs/configuration/packages/). Its not compatible with 1 global packages folder as explained on the HA website explained. So if you already use: 
+ ```
+ homeassistant:
+  packages: !include_dir_named packages
+ ```
+ It doesnt work!
 
 I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this open `configuration.yaml` and uncomment the line `user_package: !include user-package-sample/configuration.yaml`. And change the name of `user-package-sample/` here to your own name.
 
