@@ -14,20 +14,19 @@ After you made sure you got HACS up and running you can continue to install Dwai
 In the left side menu click on Community and then on the Tab PLUGINS. Search for each plugin in the table below and install it.
 
 *NOTE: You don't have to add each plugin JS url to your lovelace configuration/resources list. You just need to click Install for now on each plugin.
-
-| Name                             | HACS   | Type   | Required | Latest tested  version | Description                                                                                                                                                                                             |
-|----------------------------------|--------|--------|----------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Weather card                     | Plugin | Module | Yes      | v1.4.1                 | Weather Card with animated icons for Home Assistant Lovelace                                                                                                                                            |
-| Card-mod                         | Plugin | Module | Yes      | 12                     | Add CSS styles to (almost) any lovelace card                                                                                                                                                            |
-| Button Card                      | Plugin | Module | Yes      | 3.1.1                  | Lovelace button-card for home assistant                                                                                                                                                                 |
-| Light Entity Card                | Plugin | js     | Yes      | 3.1.0                  | Control any light or switch entity                                                                                                                                                                      |
-| Mini Graph Card                  | Plugin | Module | Yes      | v0.8.2                 | Minimalistic graph card for Home Assistant Lovelace UI                                                                                                                                                  |
-| auto-entities                    | Plugin | Module | Yes      | 14                     | Automatically populate the entities-list of lovelace cards                                                                                                                                              |
-| layout-card                      | Plugin | Module | Yes      | 9                      | Get more control over the placement of lovelace cards.                                                                                                                                                  |
-| Custom Header                    | Plugin | Module | Yes      | 1.2.1                  | Lovelace Custom Header                                                                                                                                                                                  |
-| more-info-card                   | Plugin | Module | Yes      | 15                     | Display the more-info dialog of any entity as a lovelace card                                                                                                                                           |
-| Lovelace Xiaomi  Vacuum Map Card | Plugin | Module | Yes      | v1.1.9                 | This card enables you to specify a target or start a zoned cleanup using  live or static map, just like in Mi Home app. Additionally you can define a  list of zones and choose the ones to be cleaned. |
-| Atomic Calendar | Plugin | Module | Yes      | v0.8.9                 | Custom calendar card for Home Assistant with Lovelace |
+| Name | Type | Required | Latest tested  version | Description |
+|----------------------------------|--------|----------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Weather card | Module | Yes | v1.4.1 | Weather Card with animated icons for Home Assistant Lovelace |
+| Card-mod | Module | Yes | 12 | Add CSS styles to (almost) any lovelace card |
+| Button Card | Module | Yes | 3.1.1 | Lovelace button-card for home assistant |
+| Light Entity Card | js | Yes | 3.1.0 | Control any light or switch entity |
+| Mini Graph Card | Module | Yes | v0.8.2 | Minimalistic graph card for Home Assistant Lovelace UI |
+| auto-entities | Module | Yes | 14 | Automatically populate the entities-list of lovelace cards |
+| layout-card | Module | Yes | 9 | Get more control over the placement of lovelace cards. |
+| Custom Header | Module | Yes | 1.2.1 | Lovelace Custom Header |
+| more-info-card | Module | Yes | 15 | Display the more-info dialog of any entity as a lovelace card |
+| Lovelace Xiaomi  Vacuum Map Card | Module | Yes | v1.1.9 | This card enables you to specify a target or start a zoned cleanup using  live or static map, just like in Mi Home app. Additionally you can define a  list of zones and choose the ones to be cleaned. |
+| Atomic Calendar | Module | Yes | v0.8.9 | Custom calendar card for Home Assistant with Lovelace |
 
 ### Install HACS components
 
