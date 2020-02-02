@@ -14,6 +14,7 @@ After you made sure you got HACS up and running you can continue to install Dwai
 In the left side menu click on Community and then on the Tab PLUGINS. Search for each plugin in the table below and install it.
 
 *NOTE: You don't have to add each plugin JS url to your lovelace configuration/resources list. You just need to click Install for now on each plugin.
+
 | Name | Type | Required | Latest tested  version | Description |
 |----------------------------------|--------|----------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Weather card | Module | Yes | v1.4.1 | Weather Card with animated icons for Home Assistant Lovelace |
