@@ -74,7 +74,7 @@ To configure/build the theme you need to edit the files in the folder `dwains-th
 
 ### Step 6 - Restart Home Assistant
 
-*NOTE: Your Home Assistant frontend can have some error. In this case you forgot a HACS plugin or you made a mistake in the `dwains-theme-configuration.yaml` file.*
+*NOTE: Your Home Assistant frontend can have some error. In this case you forgot a HACS plugin or you made a mistake in any of the config files.*
 
 That's it! Dwains Theme should now be installed.
 
