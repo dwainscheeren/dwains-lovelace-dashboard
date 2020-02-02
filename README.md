@@ -2,8 +2,8 @@
 
 <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
-![dwains-theme_01](https://user-images.githubusercontent.com/3868853/73613069-43326600-45f2-11ea-99a5-8f058530d72e.jpg)
-![dwains-theme_02](https://user-images.githubusercontent.com/3868853/73613071-4594c000-45f2-11ea-852e-7a2eae5c1dec.jpg)
+[![dwains-theme_01](https://user-images.githubusercontent.com/3868853/73613069-43326600-45f2-11ea-99a5-8f058530d72e.jpg)](https://dwainscheeren.github.io/lovelace-dwains-theme/)
+[![dwains-theme_02](https://user-images.githubusercontent.com/3868853/73613071-4594c000-45f2-11ea-852e-7a2eae5c1dec.jpg)](https://youtu.be/Wdh0q8K3JSk)
 ![dwains-theme_04](https://user-images.githubusercontent.com/3868853/73613073-462d5680-45f2-11ea-9164-e69a0e3dc7d9.jpg)
 ![dwains-theme_05](https://user-images.githubusercontent.com/3868853/73613074-462d5680-45f2-11ea-97c6-3bd1cc757307.jpg)
 ![dwains-theme_06](https://user-images.githubusercontent.com/3868853/73613075-462d5680-45f2-11ea-8079-b53a5b290aa9.jpg)
