@@ -50,7 +50,7 @@ Rooms sections, all rooms of your house. This is where my theme is all about :D
 #### Rooms information
 
 | Name | Type | Default | Example | Description |
-|--------------|--------------------------|--------------------|-------------------------------------|-----------------------------------------------------------------------------------|
+|--------------|--------------------------|--------------------|------------------------------|-----------------------------------------------------------------------------------|
 | name | string | Required | Hallway | Room name |
 | icon | string | mdi:square-outline | fas:key | Room icon |
 | light | string (entity or group) | Not required | light.hallway | Single light entity or group entity with all lights |
@@ -61,7 +61,7 @@ Rooms sections, all rooms of your house. This is where my theme is all about :D
 | door | string (entity or group) | Not required | binary_sensor.hallway_door | Door contact(s). Can be binary_sensor or a group of binary_sensors |
 | window | string (entity or group) | Not required | group.hallway_windows | Window sensor(s). Can be binary_sensor or a group of binary_sensors |
 | cover | string (entity or group) | Not required | group.hallway_covers | Cover(s) (blinds, rolling_shutters etc). Can be single cover or a group of covers |
-| vacuum | string (entity) | Not required | vacuum.roborock | Vacuum entity |
+| vacuum | object | Not required | See room vacuum below | Vacuum |
 | plant | string (entity or group) | Not required | plant.hallway_plant | Plant(s). Can be single plant or a group of plants |
 | media_player | string (entity or group) | Not required | media_player.hallway_tv | Media player(s). Can be single media_player or a group of media_players |
 
@@ -78,10 +78,26 @@ rooms:
     door: binary_sensor.hallway_door_contact
     window: binary_sensor.hallway_window_contact
     cover: group.hallway_covers
-    vacuum: vacuum.roborock
+    vacuum: 
+      entity: vacuum.rockrobo
+      camera: camera.rockrobo_map
     plant: plant.hallway_plant
     media_player: media_player.awesome_hallway_tv
 ```    
+
+#### Room -> Vacuum
+
+| Name | Type | Default | Example | Description |
+|----------|--------|---------------------|---------------------|---------------------------------------------------------|
+| entity | string | Required | vacuum.rockrobo | entity_id |
+| camera | string | Not required | camera.rockrobo_map | If you have rooted your roborock paste the camera here. |
+
+Example for vacuum inside a room:
+```
+    vacuum: 
+      entity: vacuum.rockrobo
+      camera: camera.rockrobo_map
+````
 ___
 
 ## House information `house_information.yaml`
