@@ -41,7 +41,7 @@ We also need to download some components from the HACS store. In the top tabs in
 ## Installing Dwains theme
 
 ### Step 1 - Download Dwains Theme latest release
-Download the [latest relesae from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases).
+Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases).
 
 ### Step 2 - Extract & move the download
 Unzip the file you just downloaded. 
@@ -58,7 +58,7 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
 ### Step 4 - OPTIONAL: Use Home Assistant packages
 
-*NOTE: This step is not required but highly recomended*
+*NOTE: This step is not required but highly recommended*
 
  I personally use Home Assistant packages. With packages you have a way to include different components, or different configuration parts using any of the `!include` directives. [Read more about it here](https://www.home-assistant.io/docs/configuration/packages/).
 
@@ -66,7 +66,7 @@ I included a sample folder for this in my theme it's called `user-package-sample
 
 *NOTE: Read the content of the `user-package-sample/configuration.yaml` file to get a understanding how it works.*
 
-Next copy and cut everything from your own (original) `configuration.yaml` **EXCEPT THE TEXT BETWEEN `Start of dwains-theme necesary code` AND `End of dwains-theme necesary code`** to the file `the-folder-you-just-renamed/configuration.yaml`. The existing code in this file is a example.
+Next copy and cut everything from your own (original) `configuration.yaml` **EXCEPT THE TEXT BETWEEN `Start of dwains-theme necessary code` AND `End of dwains-theme necessary code`** to the file `the-folder-you-just-renamed/configuration.yaml`. The existing code in this file is a example.
 
 ### Step 5 - Configure Dwains Theme
 
