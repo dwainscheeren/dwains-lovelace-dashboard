@@ -1,0 +1,264 @@
+# dwains_theme
+
+- title: Homepage 
+  icon: 'mdi:home'
+  path: home
+  cards:       
+    #START HOMEPAGE HEADER
+    - type: custom:mod-card
+      style: |
+        ha-card {
+          padding: 8px 16px 0px 16px;
+          background-color: var(--dwains-theme-header-background);
+          --ha-card-background: transparant;
+          margin-top: -4px;
+          border-radius: 0;
+        } 
+      card:
+        type: custom:button-card
+        template: header_greeting
+        {% if _d_t_config.global["alarm"] %}
+        entity: {{ _d_t_config.global["alarm"] }}
+        show_label: true
+        show_icon: true
+        tap_action:
+          !include 
+            - ../popups/alarm.yaml
+            - entity: {{ _d_t_config.global["alarm"] }}
+        {% endif %}
+    # some homeheader info                
+    - type: custom:mod-card
+      style: |
+        ha-card {
+          padding: 0px;
+          background-color: var(--dwains-theme-header-background);
+          --ha-card-background: transparant;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 20px;
+          border-bottom-left-radius: 20px;
+        } 
+      card:      
+        type: custom:layout-card
+        min_columns: 2
+        max_columns: 2
+        layout: horizontal
+        justify_content: start
+        cards:      
+          - type: custom:button-card
+            template: header_house_information
+            name: >
+              [[[
+                var onLights = 0;
+                var lights = 0;
+
+                {% for room in _d_t_config.rooms %}
+                  //Do some things for the lights
+                  {% if room["light"] %}
+                    {% if room["light"].split('.')[0] == 'light' %}
+                    //This room has only 1 light
+                      lights++;
+                      if(states['{{ room["light"] }}'].state == 'on') {
+                        onLights++;
+                      }
+                    {% else %}
+                    //This room has group of lights
+                      states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
+                        lights++;
+                        if(states[entity].state == 'on'){
+                          onLights++;
+                        }
+                      });  
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+                return ((onLights >= 1) ? ((onLights == 1) ? '1 light on' : onLights + ' lights on') : 'All lights off')
+              ]]]
+            label: >
+              [[[
+                var openDoors = 0;
+                var openWindows = 0;
+
+                {% for room in _d_t_config.rooms %}                        
+                  //Do some things for the doors
+                  {% if room["door"] %}
+                    {% if room["door"].split('.')[0] == 'binary_sensor' %}
+                    //This room has only 1 door
+                      if(states['{{ room["door"] }}'].state == 'on') {
+                        openDoors++;
+                      }
+                    {% else %}
+                    //This room has group of doors
+                      states['{{ room["door"] }}'].attributes['entity_id'].forEach(function(entity){
+                        if(states[entity].state == 'on'){
+                          openDoors++;
+                        }
+                      });  
+                    {% endif %}
+                  {% endif %}
+                  var doorsInfo = ((openDoors >= 1) ? ((openDoors == 1) ? '1 door open' : openDoors + ' doors open') : 'All doors closed')
+
+                  //Do some things for the windows
+                  {% if room["window"] %}
+                    {% if room["window"].split('.')[0] == 'binary_sensor' %}
+                    //This room has only 1 window
+                      if(states['{{ room["window"] }}'].state == 'on') {
+                        openWindows++;
+                      }
+                    {% else %}
+                    //This room has group of windows
+                      states['{{ room["window"] }}'].attributes['entity_id'].forEach(function(entity){
+                        if(states[entity].state == 'on'){
+                          openWindows++;
+                        }
+                      });  
+                    {% endif %}
+                  {% endif %}
+                  var windowsInfo = ((openWindows >= 1) ? ((openWindows == 1) ? '1 window open' : openWindows + ' windows open') : 'All windows closed')
+
+                {% endfor %}
+                return doorsInfo + '<br>' + windowsInfo;
+              ]]]
+          {% if _d_t_config.global["weather"] %}
+          - type: custom:button-card
+            template: header_weather
+            entity: {{ _d_t_config.global["weather"] }}
+            tap_action:
+              !include 
+                - ../popups/weather.yaml
+                - entity: {{ _d_t_config.global["weather"] }}
+            #lets see if we can add a inside temperature
+            {% if _d_t_config.global["inside_temperature"] %}
+            label: >
+              [[[ 
+                return states['{{ _d_t_config.global["inside_temperature"] }}'].attributes.current_temperature + '° inside'; 
+              ]]]
+            {% endif %}
+          {% endif %}
+          {% for person in _d_t_config.persons %}
+          - type: custom:button-card
+            template: header_person
+            entity: {{ person["track"] }}
+            {% if person["picture_path"] %}
+            entity_picture: '/local/{{ person["picture_path"] }}'
+            {% else %}
+            entity_picture: 'https://avatars.dicebear.com/v2/initials/{{ person["name"] }}.svg'
+            {% endif %}
+            name: {{ person["name"] }}
+            tap_action: 
+              action: navigate
+              navigation_path: {{ person["name"]|lower|replace(" ", "_")  }}
+          {% endfor %}
+    #END HOMEPAGE HEADER
+    
+    - type: vertical-stack
+      cards:
+        #heading  
+        - !include
+          - ../partials/heading.yaml
+          - title: Rooms
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 0px 8px 20px 8px;
+            }
+          card:
+            type: custom:layout-card
+            min_columns: 2
+            max_columns: 2
+            layout: horizontal
+            justify_content: start
+            cards:
+              {% for room in _d_t_config.rooms %}
+              - type: custom:button-card
+                template: homepage_room
+                {% if room["light"] %}
+                entity: {{ room["light"] }}
+                {% endif %}
+                name: {{ room["name"] }}
+                {% if room["temperature"] is defined %}
+                label: >
+                  [[[ 
+                    var icon = '';
+                    {% if room["climate"] %}
+                      if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating'){
+                        icon = '<ha-icon style="height: 15px;" icon="mdi:radiator"></ha-icon>'
+                      }
+                    {% endif %}
+                    return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°' + icon;
+                  ]]]
+                {% else %}
+                label: '&nbsp;'
+                {% endif %}
+                icon: '{{ room["icon"]|default('mdi:square-outline') }}'
+                tap_action: 
+                  action: navigate
+                  navigation_path: {{ room["name"]|lower|replace(" ", "_")  }}
+                custom_fields:
+                  additional_info: >
+                    [[[
+                      var additional_info = '';
+                      {% if room["window"] %}
+                        {% if room["window"].split('.')[0] == 'binary_sensor' %}
+                          if(states['{{ room["window"] }}'].state == 'on'){
+                            additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="mdi:window-open-variant"></ha-icon><br>';
+                          }
+                        {% else %}
+                          const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
+                          for (let i = 0; i < entitiesFromGroup.length; i++) {
+                            if(states[entitiesFromGroup[i]].state == 'on') {
+                              additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="mdi:window-open-variant"></ha-icon><br>';
+                              break;
+                            }
+                          }  
+                        {% endif %}
+                      {% endif %}
+                      {% if room["motion"] %}
+                        {% if room["motion"].split('.')[0] == 'binary_sensor' %}
+                          if(states['{{ room["motion"] }}'].state == 'on'){
+                            additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="mdi:motion-sensor"></ha-icon><br>';
+                          }
+                        {% else %}
+                          const entitiesFromGroup = states['{{ room["motion"] }}'].attributes['entity_id'];
+                          for (let i = 0; i < entitiesFromGroup.length; i++) {
+                            if(states[entitiesFromGroup[i]].state == 'on') {
+                              additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="mdi:motion-sensor"></ha-icon><br>';
+                              break;
+                            }
+                          }  
+                        {% endif %}
+                      {% endif %}
+                      {% if room["door"] %}
+                        {% if room["door"].split('.')[0] == 'binary_sensor' %}
+                          if(states['{{ room["door"] }}'].state == 'on'){
+                            additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="fas:door-open"></ha-icon><br>';
+                          }
+                        {% else %}
+                          const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
+                          for (let i = 0; i < entitiesFromGroup.length; i++) {
+                            if(states[entitiesFromGroup[i]].state == 'on') {
+                              additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="fas:door-open"></ha-icon><br>';
+                              break;
+                            }
+                          }  
+                        {% endif %}
+                      {% endif %}
+                      return additional_info;
+                    ]]]
+                  {% if room["light"] %}
+                  lights: > 
+                    [[[
+                      if (entity.state == 'on'){
+                        return `<ha-icon
+                          style="height: 20px; color: var(--dwains-theme-accent)"
+                          icon="fas:lightbulb">
+                          </ha-icon>`
+                      } else {
+                        return `<ha-icon
+                          style="height: 20px;"
+                          icon="far:lightbulb">
+                          </ha-icon>`
+                      }
+                    ]]]   
+                  {% endif %}
+              {% endfor %}

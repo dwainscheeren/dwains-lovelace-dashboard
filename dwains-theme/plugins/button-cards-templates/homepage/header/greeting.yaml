@@ -1,0 +1,77 @@
+header_greeting:
+  icon: 'mdi:lock-open-variant-outline'
+  show_label: false
+  show_icon: false
+  label: >
+    [[[
+      if (entity.state == 'armed_away'){
+        return `Alarm system activated (Armed Away).`
+      } else if (entity.state == 'armed_home'){
+        return `Alarm system activated (Armed Home).`
+      } else {
+        return `Alarm system de-activated.`
+      }
+    ]]]
+  name: >
+    [[[
+      var today = new Date()
+      var curHr = today.getHours()
+
+      if (curHr < 12) {
+        return 'Good Morning';
+      } else if (curHr < 18) {
+        return 'Good Afternoon';
+      } else {
+        return 'Good Evening';
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"n i""l i"'
+      - grid-template-columns: 80% 20%
+      - grid-template-rows: min-content min-content
+    card:
+      - box-shadow: none
+      - padding: 0%
+    icon:
+      - width: 45%
+      - color: '#3f4653'
+    img_cell:
+      - width: 60px
+      - height: 60px
+      - background-color: var(--dwains-theme-alarm-background)
+      - border-radius: 100%
+      - justify-self: end
+    label:
+      - color: white
+      - justify-self: start
+      - font-size: 14px
+      - align-self: flex-start
+    name:
+      - color: white
+      - justify-self: start
+      - font-size: 22px
+      - font-weight: bold
+      - align-self: end
+  state:
+    - value: pending
+      icon: 'mdi:home-lock'
+      styles:
+        img_cell:
+          - background-color: '#ffb94f'
+        icon:
+          - color: '#fcfcff'
+    - value: armed_away
+      icon: 'mdi:home-lock'
+      styles: 
+        img_cell:
+          - background-color: '#ff5454'
+        icon:
+          - color: '#fcfcff'
+    - value: armed_home
+      icon: 'mdi:home-lock'
+      styles: 
+        img_cell:
+          - background-color: '#ff5454'
+        icon:
+          - color: '#fcfcff'

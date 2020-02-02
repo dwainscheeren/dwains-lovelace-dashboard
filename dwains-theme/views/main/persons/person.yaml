@@ -1,0 +1,51 @@
+# dwains_theme
+
+#Loop thought all the persons in the person section
+
+{% for person in _d_t_config.persons %}
+- title: {{ person["name"] }}
+  path: {{ person["name"]|lower|replace(" ", "_")  }}
+  cards:   
+    #Header
+    - !include
+      - ../../partials/header.yaml
+      - title: {{ person["name"] }}
+        subtitle: Home
+        navigation_path: home  
+    #Start for person content page
+    - type: custom:mod-card
+      style: |
+        ha-card {
+          padding: 8px; 
+        }
+      card:
+        type: custom:button-card
+        template: persons_person
+        entity: {{ person["track"] }}
+        {% if person["picture_path"] %}
+        entity_picture: '/local/{{ person["picture_path"] }}'
+        {% else %}
+        entity_picture: 'https://avatars.dicebear.com/v2/initials/{{ person["name"] }}.svg'
+        {% endif %}
+        name: {{ person["name"] }}
+        custom_fields:
+          graph:
+            card:
+              type: history-graph
+              entities:
+                - entity: {{ person["track"] }}
+              style: |
+                ha-card {
+                  box-shadow: none;
+                  background-color: var(--dwains-theme-primary);
+                }
+                .content {
+                  padding: 10px 0 0 0;
+                }
+    - type: map
+      entities:
+        - {{ person["track"] }}
+    {% if person["extend"] %}
+    - !include ../../../../{{ person["extend"]}}
+    {% endif %}
+{% endfor %}

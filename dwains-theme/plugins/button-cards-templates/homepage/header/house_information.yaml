@@ -1,0 +1,34 @@
+header_house_information:
+  layout: icon_name_state2nd
+  show_state: false
+  show_label: true
+  icon: 'mdi:home'
+  tap_action: 
+    action: navigate
+    navigation_path: more_house_information
+  styles:
+    grid:
+      - grid-template-areas: '"i n""i l"'
+      - grid-template-columns: 35% 1fr
+      - grid-template-rows: 1fr min-content
+    card:
+      - box-shadow: none
+      - padding: 0%
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 45px
+      - height: 45px
+      - background: var(--dwains-theme-accent)
+      - color: white
+      - border-radius: 100%
+    label:
+      - color: white
+      - justify-self: start
+      - font-size: 12px
+      - text-align: left
+    name:
+      - color: white
+      - justify-self: start
+      - font-size: 14px

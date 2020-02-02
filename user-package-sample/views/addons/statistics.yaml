@@ -1,0 +1,19 @@
+# An example file on a custom page (addon)
+
+- type: custom:mod-card
+  style: |
+    ha-card {
+      padding: 8px;
+    }
+  card:
+    type: custom:layout-card
+    min_columns: 1
+    max_columns: 1
+    layout: horizontal
+    justify_content: start
+    cards:
+      - type: custom:mini-graph-card
+        hour24: true
+        action: none
+        entities:
+          - sensor.dsmr_day_consumption_electricity_merged

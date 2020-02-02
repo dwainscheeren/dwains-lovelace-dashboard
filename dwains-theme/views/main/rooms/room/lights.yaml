@@ -1,0 +1,52 @@
+# dwains_theme
+
+#Page for lights for a room
+
+{% for room in _d_t_config.rooms %}
+{% if room["light"] %}
+- title: {{ room["name"] }}
+  path: {{ room["name"]|lower|replace(" ", "_") }}_lights
+  cards:   
+    #Header
+    - !include
+      - ../../../partials/header.yaml
+      - title: Lights
+        subtitle: {{ room["name"] }}
+        navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+    #Start for room lights content page
+    {% if room["light"].split('.')[0] == 'light' %}
+    # this room has only 1 light
+    {% else %}
+    # this room has group of lights
+    - type: entities
+      style: |
+        ha-card {
+          box-shadow: none;
+          background: transparent;
+        }
+      entities:
+        - type: custom:auto-entities
+          filter:
+            include:
+              - domain: light
+                group: {{ room["light"] }}
+                options:
+                  type: custom:button-card
+                  template: room_light
+                  tap_action:
+                    !include 
+                      - ../../../popups/light.yaml
+                      - entity: this.entity_id
+            exclude:
+              - state: unavailable
+          sort:
+            method: name
+            ignore_case: true
+          card:
+            type: custom:layout-card
+            min_columns: 2
+            max_columns: 2
+            layout: horizontal
+    {% endif %}
+{% endif %}
+{% endfor %}

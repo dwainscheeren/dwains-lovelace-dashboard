@@ -1,0 +1,31 @@
+# dwains_theme
+
+# Light popup card content
+haptic: heavy
+action: call-service
+service: browser_mod.popup
+service_data:
+  title: '[[[ return entity.attributes.friendly_name ]]]'
+  card:
+    type: vertical-stack
+    cards:
+      - type: entities
+        style: |
+          ha-card {
+            box-shadow: none;
+          }
+        entities:
+          - {{ entity }}
+      - type: custom:light-entity-card
+        style: |
+          ha-card {
+            box-shadow: none;
+          }
+        entity: {{ entity }}
+        brightness: true
+        persist_features: true
+        show_slider_percent: true
+        smooth_color_wheel: true
+        header: false
+  deviceID:
+    - this

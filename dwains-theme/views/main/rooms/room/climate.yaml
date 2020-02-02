@@ -1,0 +1,176 @@
+# dwains_theme
+
+#Page climate for a room
+
+{% for room in _d_t_config.rooms %}
+{% if room["climate"] or room["temperature"] %}
+- title: {{ room["name"] }}
+  path: {{ room["name"]|lower|replace(" ", "_") }}_climate
+  cards:   
+    #Header
+    - !include
+      - ../../../partials/header.yaml
+      - title: Climate
+        subtitle: {{ room["name"] }}
+        navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+    #Start for room climate content page
+    {% if room["climate"] %}
+    - type: custom:mod-card
+      style: |
+        ha-card {
+          padding: 8px 16px 8px 16px;
+        }
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: room_climate
+            entity: {{ room["climate"] }}
+            icon: 'far:clock'
+            name: Program
+            tap_action: 
+              action: call-service
+              service: climate.set_hvac_mode
+              service_data:
+                entity_id: {{ room["climate"] }}
+                hvac_mode: 'auto'
+            state:
+              - value: 'auto'
+                styles:
+                  img_cell:
+                    - background: var(--dwains-theme-accent)
+                    - border: '1px solid var(--dwains-theme-accent)'
+                  icon:
+                    - color: '#ffffff'
+                  name: 
+                    - color: var(--dwains-theme-names)
+          - type: custom:button-card
+            template: room_climate
+            entity: {{ room["climate"] }}
+            icon: 'fas:power-off'
+            name: 'Off'
+            tap_action: 
+              action: call-service
+              service: climate.set_hvac_mode
+              service_data:
+                entity_id: {{ room["climate"] }}
+                hvac_mode: 'off'
+            state:
+              - value: 'off'
+                styles:
+                  img_cell:
+                    - background: var(--dwains-theme-accent)
+                    - border: '1px solid var(--dwains-theme-accent)'
+                  icon:
+                    - color: '#ffffff'
+                  name: 
+                    - color: var(--dwains-theme-names)
+          - type: custom:button-card
+            template: room_climate
+            entity: {{ room["climate"] }}
+            icon: 'fas:fire-alt'
+            name: Heat
+            tap_action: 
+              action: call-service
+              service: climate.set_hvac_mode
+              service_data:
+                entity_id: {{ room["climate"] }}
+                hvac_mode: 'heat'
+            state:
+              - value: 'heat'
+                styles:
+                  img_cell:
+                    - background: var(--dwains-theme-accent)
+                    - border: '1px solid var(--dwains-theme-accent)'
+                  icon:
+                    - color: '#ffffff'
+                  name: 
+                    - color: var(--dwains-theme-names)
+    - type: thermostat
+      entity: {{ room["climate"] }}
+      name: ''
+      style: |
+        ha-card {
+          background: transparent; 
+          box-shadow: none;
+        }
+        #controls {
+          padding: 0px !important;
+        }
+        round-slider {
+          padding-bottom: 0% !important;
+        }
+        #info {
+          display: none;
+        } 
+    {% elif room["temperature"] %}
+    - type: markdown
+      style: |
+        ha-card {
+          box-shadow: none;
+          background: none;
+          font-size: 50px;
+          text-align: center;
+        }
+      content: >
+        {% raw %}{{ states('{% endraw %}{{ room["temperature"] }}{% raw %}') }}{% endraw %} °C
+    {% endif %}
+    - type: entities
+      style: |
+        ha-card {
+          box-shadow: none;
+          background: transparent;
+        }
+      entities:
+        - type: custom:hui-horizontal-stack-card
+          cards:
+            #This room
+            - type: custom:hui-horizontal-stack-card
+              cards:
+                - type: custom:mini-graph-card
+                  name: This room
+                  hour24: true 
+                  action: none
+                  font_size: 65
+                  entities:
+                    {% if room["temperature"] %}
+                    - entity: {{ room["temperature"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: Temperature
+                    {% endif %}
+                    {% if room["humidity"] %}
+                    - entity: {{ room["humidity"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: Humidity
+                    {% endif %}
+                  graph: line
+                  show:
+                    icon: false
+            #Outside
+            - type: custom:hui-horizontal-stack-card
+              cards:
+                - type: custom:mini-graph-card
+                  name: Outside
+                  hour24: true 
+                  action: none
+                  font_size: 65
+                  entities:
+                    {% if _d_t_config.global["outside_temperature"] %}
+                    - entity: {{ _d_t_config.global["outside_temperature"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: Temperature
+                    {% endif %}
+                    {% if _d_t_config.global["outside_humidity"] %}
+                    - entity: {{ _d_t_config.global["outside_humidity"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: Humidity
+                    {% endif %}
+                  graph: line
+                  show:
+                    icon: false        
+{% endif %}
+{% endfor %}

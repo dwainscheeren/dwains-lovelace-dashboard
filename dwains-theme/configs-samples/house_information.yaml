@@ -1,0 +1,12 @@
+house_information:
+  # favorites:
+  #   - entity: binary_sensor.doorbell_button
+  #     icon_on: fas:bell
+  #     icon_off: fas:bell
+  #   - entity: binary_sensor.hallway_door_contact
+  #     icon_on: fas:door-open
+  #     icon_off: fas:door-closed
+
+  # calendar:
+  #   - calendar.trash
+  #   - calendar.birthdays

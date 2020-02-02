@@ -1,0 +1,6 @@
+# Imap Sensor example
+  # - platform: imap
+  #   server: imap-mail.outlook.com
+  #   username: !secret email_1_username
+  #   password: !secret email_1_password
+  #   port: 993

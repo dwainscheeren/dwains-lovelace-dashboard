@@ -1,0 +1,64 @@
+header_weather:
+  layout: icon_name_state2nd
+  show_state: true
+  show_label: true
+  name: '[[[ return `${entity.attributes.temperature} ° outside` ]]]' 
+  state:
+    - value: clear-night
+      icon: mdi:weather-night
+    - value: cloudy
+      icon: mdi:weather-cloudy
+    - value: overcast
+      icon: mdi:weather-cloudy-arrow-right
+    - value: fog
+      icon: mdi:weather-fog
+    - value: hail
+      icon: mdi:weather-hail
+    - value: lightning
+      icon: mdi:weather-lightning
+    - value: lightning-rainy
+      icon: mdi:weather-lightning-rainy
+    - value: partlycloudy
+      icon: mdi:weather-partly-cloudy
+    - value: pouring
+      icon: mdi:weather-pouring
+    - value: rainy
+      icon: mdi:weather-rainy
+    - value: snowy
+      icon: mdi:weather-snowy
+    - value: snowy-rainy
+      icon: mdi:weather-snowy-rainy
+    - value: sunny
+      icon: mdi:weather-sunny
+    - value: windy
+      icon: mdi:weather-windy
+    - value: windy-variant
+      icon: mdi:weather-windy-variant
+  tap_action: 
+    action: more-info
+  styles:
+    grid:
+      - grid-template-areas: '"i s""i n""i l"'
+      - grid-template-columns: 35% 1fr
+    card:
+      - box-shadow: none
+      - padding: 0%
+    icon:
+      - color: '#feb00b'
+      - width: 100%
+    img_cell:
+      - width: 45px
+      - height: 45px
+      - color: white
+    state:
+      - color: white
+      - justify-self: start
+      - font-size: 14px
+    name:
+      - color: white
+      - justify-self: start
+      - font-size: 12px
+    label:
+      - justify-self: start
+      - font-size: 12px
+      - color: white

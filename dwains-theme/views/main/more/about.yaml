@@ -1,0 +1,66 @@
+- title: About
+  path: more_about
+  cards:
+    - type: vertical-stack
+      cards:
+        #Header
+        - !include
+          - ../../partials/header.yaml
+          - title: About
+            subtitle: More
+            navigation_path: more
+        #Start for about page
+        #heading  
+        - !include
+          - ../../partials/heading.yaml
+          - title: Dwains Theme
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 0px 16px 20px 16px;
+            }
+          card:
+            type: vertical-stack
+            cards:
+              - type: entities
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    background: var(--dwains-theme-primary);
+                  }
+                entities: 
+                  - entity: input_select.theme_selector
+              - type: custom:button-card
+                template: more_list-item
+                name: Theme docs
+                tap_action: 
+                  action: url
+                  url_path: 'https://dwainscheeren.github.io/lovelace-dwains-theme/'
+              - type: custom:button-card
+                template: more_list-item
+                name: Github
+                tap_action: 
+                  action: url
+                  url_path: 'https://github.com/dwainscheeren/lovelace-dwains-theme'
+              - type: custom:button-card
+                template: more_list-item
+                name: Support and Donate
+                tap_action: 
+                  action: url
+                  url_path: 'https://www.buymeacoffee.com/FAkYvrx'
+                
+        #Credits
+        - type: markdown
+          style: |
+            ha-card {
+              box-shadow: none;
+              background: none;
+              text-align: center;
+            }
+            span {
+              opacity: 0.5;
+            }
+          content: |
+            <strong>DWAINS THEME</strong>
+            <span>By Dwain Scheeren</span>
+            <span>Version 1.0.0</span>

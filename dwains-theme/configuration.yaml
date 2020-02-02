@@ -1,0 +1,58 @@
+#Set lovelace to YAML mode to make frontend completly from yaml files instead from gui editor
+lovelace:
+  mode: yaml
+
+frontend:
+  extra_html_url:
+    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-solid.html
+    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-regular.html
+    #- /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html #If have Font Awesome Light uncomment this line
+
+#Load browser_mod (https://github.com/thomasloven/hass-browser_mod)
+browser_mod:
+
+#Dwains theme definitions (this is for doing all the jinja2 inside YAML files) 
+#You need to have a folder called dwains-theme/configs with all the configuration files inside
+dwains_theme:
+  translations:
+    !include_dir_merge_named translations/
+  configuration:
+    !include_dir_merge_named configs/
+
+#Input select
+input_select:
+  #Theme selector
+  theme_selector:
+    name: Theme Selector 
+    options:
+      - Auto Mode
+      - Dark Mode
+      - Light Mode
+
+#Theme automations
+automation:
+  #Theme Selector
+  - alias: 'themes'
+    initial_state: 'true'
+    trigger:
+      - platform: state
+        entity_id: input_select.theme_selector
+      - platform: homeassistant
+        event: start
+      - platform: state
+        entity_id: sun.sun
+    action:
+      - service: frontend.set_theme
+        data_template:
+          name: >
+            {% if (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
+              dwains-theme-light
+            {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
+              dwains-theme-dark
+            {% elif is_state('input_select.theme_selector', 'Dark Mode') %}
+              dwains-theme-dark
+            {% elif is_state('input_select.theme_selector', 'Light Mode') %}
+              dwains-theme-light
+            {% else %}
+              dwains-theme-light
+            {% endif %}

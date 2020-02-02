@@ -1,0 +1,41 @@
+# dwains_theme
+
+- title: Scenes
+  path: scenes
+  icon: 'far:play-circle'
+  cards:
+    #Header
+    - !include
+      - ../partials/header.yaml
+      - title: Scenes
+    #Start for scenes page
+    #Scenes
+    - type: custom:mod-card
+      style: |
+        ha-card {
+          padding: 8px;
+        }
+      card:
+        type: custom:layout-card
+        min_columns: 2
+        max_columns: 2
+        layout: horizontal
+        justify_content: start
+        cards:
+          {% for scene in _d_t_config.scenes %}
+            - type: custom:button-card
+              template: scene
+              entity: {{ scene["entity"] }}   
+              icon: '{{ scene["icon"]|default('far:play-circle') }}'
+              tap_action: 
+                action: call-service
+                service: scene.turn_on
+                service_data:
+                  entity_id: {{ scene["entity"] }}
+              styles:
+                img_cell:
+                  - background: '{{ scene["background"] }}'
+          {% else %}
+          - type: markdown
+            content: No scenes defined
+          {% endfor %}
