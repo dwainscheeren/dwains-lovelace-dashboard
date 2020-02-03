@@ -10,6 +10,10 @@
 #   customize: !include customize.yaml
 
 
+# # Configure a default setup of Home Assistant (frontend, api, etc)
+# default_config:
+
+
 # Your hacs token for using HACS
 # hacs:
 #   token: paste-token-here
@@ -42,7 +46,7 @@
 
 # sensor: !include_dir_merge_list configuration/sensor/
 # binary_sensor: !include_dir_merge_list configuration/binary_sensor/
-# group: !include_dir_merge_named configuration/groups/ 
+# group: !include_dir_merge_named configuration/groups/  #You really need groups to use my theme :D
 # automation: !include_dir_merge_list configuration/automations/
 # script: !include_dir_merge_named configuration/scripts/
 # switch: !include_dir_merge_list configuration/switch/

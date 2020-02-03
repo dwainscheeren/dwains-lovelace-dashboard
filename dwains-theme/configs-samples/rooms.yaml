@@ -13,3 +13,7 @@
   #     camera: camera.rockrobo_map
   #   plant: plant.hallway_plant
   #   media_player: media_player.awesome_hallway_tv
+  # - name: Garage
+  #   icon: fas:garage
+  #   light: group.garage_lights
+  #   door: group.garage_doors

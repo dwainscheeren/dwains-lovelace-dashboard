@@ -43,6 +43,7 @@ header_weather:
     card:
       - box-shadow: none
       - padding: 0%
+      - height: 55px
     icon:
       - color: '#feb00b'
       - width: 100%

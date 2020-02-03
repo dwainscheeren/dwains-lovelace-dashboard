@@ -1,12 +1,12 @@
 #Copy from here
-#Start of dwains-theme necesary code#
+#Start of dwains-theme necessary code#
 frontend:
   themes: !include_dir_merge_named themes/
 homeassistant:
   packages:
     dwains_theme: !include dwains-theme/configuration.yaml
     #user_package: !include user-package-sample/configuration.yaml
-#End of dwains-theme necesary code#
+#End of dwains-theme necessary code#
 #Copy till here
 
 
@@ -14,7 +14,7 @@ homeassistant:
 ######################################################################
 # Below this line is some example code
 # This is a way the rest of your configuration.yaml can look like
-# You can also use packages, read more here 
+# You can also use a user_package (packages), read more here 
 # https://dwainscheeren.github.io/lovelace-dwains-theme/installation.html#step-4---optional-use-home-assistant-packages
 
 # # Configure a default setup of Home Assistant (frontend, api, etc)
@@ -25,7 +25,8 @@ homeassistant:
 #   base_url: https://yourname.duckdns.org
 
 # Some files for automations, groups, scripts and scenes in your root folder
+# If you dont use user_package you can do it like this
 # automation: !include automations.yaml
-# group: !include groups.yaml
+# group: !include groups.yaml #You really need groups to use my theme :D
 # script: !include scripts.yaml
 # scene: !include scenes.yaml
