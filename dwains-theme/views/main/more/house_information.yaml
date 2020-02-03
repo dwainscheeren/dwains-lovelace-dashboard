@@ -2,7 +2,6 @@
 
 - title: House information
   path: more_house_information
-  icon: 'mdi:information-variant'
   cards:
     - type: vertical-stack
       cards:

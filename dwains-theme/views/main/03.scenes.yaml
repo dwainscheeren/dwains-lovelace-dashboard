@@ -2,7 +2,7 @@
 
 - title: Scenes
   path: scenes
-  icon: 'far:play-circle'
+  icon: 'mdi:play-circle-outline'
   cards:
     #Header
     - !include

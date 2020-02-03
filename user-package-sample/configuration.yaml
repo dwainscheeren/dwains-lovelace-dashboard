@@ -41,7 +41,17 @@
 # I recommend using subfolders it's better organized this way
 
 # sensor: !include_dir_merge_list configuration/sensor/
+# binary_sensor: !include_dir_merge_list configuration/binary_sensor/
 # group: !include_dir_merge_named configuration/groups/ 
 # automation: !include_dir_merge_list configuration/automations/
 # script: !include_dir_merge_named configuration/scripts/
+# switch: !include_dir_merge_list configuration/switch/
 
+#Some more examples
+# light: !include_dir_merge_list configuration/light/
+# fan: !include_dir_merge_list configuration/fan/
+# cover: !include_dir_merge_list configuration/cover/
+# camera: !include_dir_merge_list configuration/camera/
+# input_boolean: !include_dir_merge_named configuration/input_boolean/
+# input_select: !include_dir_merge_named configuration/input_select/
+# scene: !include configuration/scenes.yaml

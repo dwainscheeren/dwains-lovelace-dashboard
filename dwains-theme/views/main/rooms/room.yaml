@@ -179,6 +179,10 @@
             entity: {{ room["light"] }}
             template: rooms_child
             icon: 'far:lightbulb'
+            styles:
+              img_cell:
+                - padding-left: 5px
+                - width: 40px
             state:
               - value: 'on'
                 icon: 'fas:lightbulb'
@@ -229,6 +233,10 @@
             entity: {{ room["climate"] if room["climate"] else room["temperature"] }}
             template: rooms_child
             icon: 'fas:thermometer-three-quarters'
+            styles:
+              img_cell:
+                - padding-left: 8px
+                - width: 37px
             name: Temperature
             tap_action: 
               action: navigate

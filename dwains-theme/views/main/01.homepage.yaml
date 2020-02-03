@@ -45,6 +45,7 @@
         layout: horizontal
         justify_content: start
         cards:      
+          {% if _d_t_config.rooms %}
           - type: custom:button-card
             template: header_house_information
             name: >
@@ -72,53 +73,70 @@
                     {% endif %}
                   {% endif %}
                 {% endfor %}
-                return ((onLights >= 1) ? ((onLights == 1) ? '1 light on' : onLights + ' lights on') : 'All lights off')
+                if(lights == 0){
+                  return 'House information';
+                } else {
+                  return ((onLights >= 1) ? ((onLights == 1) ? '1 light on' : onLights + ' lights on') : 'All lights off')
+                }
               ]]]
             label: >
               [[[
+                var doorsInfo = '';
+                var windowsInfo = '';
                 var openDoors = 0;
+                var doors = 0;
                 var openWindows = 0;
+                var windows = 0;
 
                 {% for room in _d_t_config.rooms %}                        
                   //Do some things for the doors
                   {% if room["door"] %}
                     {% if room["door"].split('.')[0] == 'binary_sensor' %}
                     //This room has only 1 door
+                      doors++;
                       if(states['{{ room["door"] }}'].state == 'on') {
                         openDoors++;
                       }
                     {% else %}
                     //This room has group of doors
                       states['{{ room["door"] }}'].attributes['entity_id'].forEach(function(entity){
+                        doors++;
                         if(states[entity].state == 'on'){
                           openDoors++;
                         }
                       });  
                     {% endif %}
                   {% endif %}
-                  var doorsInfo = ((openDoors >= 1) ? ((openDoors == 1) ? '1 door open' : openDoors + ' doors open') : 'All doors closed')
+                  if(doors > 0){
+                    doorsInfo = ((openDoors >= 1) ? ((openDoors == 1) ? '1 door open' : openDoors + ' doors open') : 'All doors closed')
+                  }
 
                   //Do some things for the windows
                   {% if room["window"] %}
                     {% if room["window"].split('.')[0] == 'binary_sensor' %}
                     //This room has only 1 window
+                      windows++;
                       if(states['{{ room["window"] }}'].state == 'on') {
                         openWindows++;
                       }
                     {% else %}
                     //This room has group of windows
                       states['{{ room["window"] }}'].attributes['entity_id'].forEach(function(entity){
+                        windows++;
                         if(states[entity].state == 'on'){
                           openWindows++;
                         }
                       });  
                     {% endif %}
                   {% endif %}
-                  var windowsInfo = ((openWindows >= 1) ? ((openWindows == 1) ? '1 window open' : openWindows + ' windows open') : 'All windows closed')
-
+                  if(windows > 0){
+                    windowsInfo = ((openWindows >= 1) ? ((openWindows == 1) ? '1 window open' : openWindows + ' windows open') : 'All windows closed')
+                  }
                 {% endfor %}
-                return doorsInfo + '<br>' + windowsInfo;
+
+                return (doorsInfo ? doorsInfo + '<br>' : '') + windowsInfo;
               ]]]
+          {% endif %}
           {% if _d_t_config.global["weather"] %}
           - type: custom:button-card
             template: header_weather
@@ -131,8 +149,16 @@
             {% if _d_t_config.global["inside_temperature"] %}
             label: >
               [[[ 
-                return states['{{ _d_t_config.global["inside_temperature"] }}'].attributes.current_temperature + '° inside'; 
+                {% if _d_t_config.global["inside_temperature"].split('.')[0] == 'sensor' %}
+                  return (Math.round(states['{{ _d_t_config.global["inside_temperature"] }}'].state * 10) / 10) + '° inside';
+                {% elif _d_t_config.global["inside_temperature"].split('.')[0] == 'climate' %}
+                  return states['{{ _d_t_config.global["inside_temperature"] }}'].attributes.current_temperature + '° inside'; 
+                {% else %}
+                  return 'NaN';
+                {% endif %}
               ]]]
+            {% else %}
+            label: '&nbsp;'
             {% endif %}
           {% endif %}
           {% if _d_t_config.persons %}

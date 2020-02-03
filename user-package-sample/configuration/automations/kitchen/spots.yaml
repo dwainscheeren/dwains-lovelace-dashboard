@@ -1,0 +1,21 @@
+
+# WHEN KEUKENLAMP TURNS ON, TURN KEUKENSPOTS ON 1H BEFORE SUNSET AND TILL SUNRISE
+- id: '1533504863293'
+  alias: Keukenspotjes aan
+  initial_state: 'true'
+  trigger:
+  - entity_id: light.keuken
+    platform: state
+    to: 'on'
+  condition:
+    condition: or
+    conditions:
+      - after: sunset
+        condition: sun
+        after_offset: "-01:00:00"
+      - before: sunrise
+        condition: sun
+  action:
+  - data:
+      entity_id: light.keuken_spotjes
+    service: light.turn_on
