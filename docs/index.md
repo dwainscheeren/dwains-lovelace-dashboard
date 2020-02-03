@@ -18,8 +18,11 @@
 * [Configuration](configuration.md)
 * [Dwains Theme addons](addons.md) (Extend theme with own views/cards)
 * [Update theme](update.md)
-* [FAQ](FAQ.md)
 * [Changelog](https://github.com/dwainscheeren/lovelace-dwains-theme/releases)
+
+### How to guides
+* [How to choose and use an icon](how-tos/how-to-choose-icon.md)
+
 
 ### Support
 * [Bugs](https://github.com/dwainscheeren/lovelace-dwains-theme/issues)

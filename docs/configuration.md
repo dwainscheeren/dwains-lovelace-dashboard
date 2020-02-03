@@ -11,7 +11,7 @@ Each file content is explained below.
 
 *HINT: You can always look in the `dwains-theme/configs-samples` folder files for some inspiration.*
 
-*HINT: For the icons I mostly use Font Awesome, [read here how to choose and use icons](link.md).*
+*HINT: For the icons I mostly use Font Awesome, [How to choose and use an icon](how-tos/how-to-choose-icon.md).*
 
 *HINT: Some entries can have a single entity or a group [read here how to make a group](https://www.home-assistant.io/integrations/group/). (You can use `user-package-sample/groups.yaml`).*
 
