@@ -195,7 +195,7 @@ Persons sections, all persons you want to be visible on the homepage. [How to cr
 |--------------|--------|-------------------------|-------------------------------------------------------|------------------------------------------------|
 | name | string | Required | Dwain | Name of person |
 | track | string | Required | person.dwain | Person entity |
-| picture_path | string | A auto generated avatar | 'foldername/images/persons/dwain.jpg' | Path to person picture |
+| picture_path | string | A auto generated avatar | 'images/persons/dwain.jpg' | Path to person picture (Place this in your `www/images` folder) |
 
 #### Persons example
 ```YAML
