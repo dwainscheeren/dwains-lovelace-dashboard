@@ -12,4 +12,4 @@ Unzip the file you just downloaded.
 
 Copy the content of this folder to the root of your Home Assistant installation.
 
-*NOTE: You need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder*. If you made any modifications on the `ui-lovelace.yaml` file check out the difference between your current one and the downloaded one.
+**NOTE: You may need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder. If you made any modifications on the `ui-lovelace.yaml` file check out the difference between your current one and the downloaded one.**
