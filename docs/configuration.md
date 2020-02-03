@@ -13,7 +13,7 @@ Each file content is explained below.
 
 *HINT: For the icons I mostly use Font Awesome, [How to choose and use an icon](how-tos/how-to-choose-icon.md).*
 
-*HINT: Some entries can have a single entity or a group [read here how to make a group](https://www.home-assistant.io/integrations/group/). (You can use `user-package-sample/groups.yaml`).*
+*HINT: Some entries can have a single entity or a group [read here how to make a group](https://www.home-assistant.io/integrations/group/). (You can use `user-package-sample/groups/..`for example).*
 
 ___
 
