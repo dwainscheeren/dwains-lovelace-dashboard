@@ -14,18 +14,14 @@
 
 Hello, I am Dwain. I'm using Home Assistant for over 1 year now. At the end of the summer 2019 I thought why does nobody has made a theme which builds automatic by a configuration file. I have a own web development company so I thought why not make a own theme and release it to the public. The result: Dwains Lovelace Theme.
 
-**Upcoming updates**
+**Have a feature request?**
 
-* Override default icons in theme
-* Switch between languages (English, Dutch, German)
-* Easy function to add own languages
-* Desktop and tablet support (use full screen space)!
-* Your feature request here? 
 [Open an issue on GitHub](https://github.com/dwainscheeren/lovelace-dwains-theme/issues/new) with the title  `FR`  or  `Feature Request`
+
 
 **Support**
 
-You can use the thread on the Home Assistant community to ask any questions you have. 
+You can use the [thread on the Home Assistant community](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) to ask any questions you have. 
 
 Or join me on Slack!
 
