@@ -134,7 +134,7 @@
                   }
                 {% endfor %}
 
-                return (doorsInfo ? doorsInfo + '<br>' : '') + windowsInfo;
+                return (doorsInfo ? doorsInfo + '<br>' : '') + (windowsInfo ? windowsInfo : '&nbsp;') + (doorsInfo ? '' : '<br>&nbsp;');
               ]]]
           {% endif %}
           {% if _d_t_config.global["weather"] %}
