@@ -15,27 +15,29 @@ In the left side menu click on Community and then on the Tab PLUGINS. Search for
 
 *NOTE: You don't have to add each plugin JS url to your lovelace configuration/resources list. You just need to click Install for now on each plugin.
 
-| Name | Type | Required | Latest tested  version | Description |
-|----------------------------------|--------|----------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Weather card | Module | Yes | v1.4.1 | Weather Card with animated icons for Home Assistant Lovelace |
-| Card-mod | Module | Yes | 12 | Add CSS styles to (almost) any lovelace card |
-| Button Card | Module | Yes | 3.1.1 | Lovelace button-card for home assistant |
-| Light Entity Card | js | Yes | 3.1.0 | Control any light or switch entity |
-| Mini Graph Card | Module | Yes | v0.8.2 | Minimalistic graph card for Home Assistant Lovelace UI |
-| auto-entities | Module | Yes | 14 | Automatically populate the entities-list of lovelace cards |
-| layout-card | Module | Yes | 9 | Get more control over the placement of lovelace cards. |
-| Custom Header | Module | Yes | 1.2.1 | Lovelace Custom Header |
-| more-info-card | Module | Yes | 15 | Display the more-info dialog of any entity as a lovelace card |
-| Lovelace Xiaomi  Vacuum Map Card | Module | Yes | v1.1.9 | This card enables you to specify a target or start a zoned cleanup using  live or static map, just like in Mi Home app. Additionally you can define a  list of zones and choose the ones to be cleaned. |
-| Atomic Calendar | Module | Yes | v0.8.9 | Custom calendar card for Home Assistant with Lovelace |
+| Name | Type | Required | Description |
+|----------------------------------|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Weather card | Module | Yes | Weather Card with animated icons for Home Assistant Lovelace |
+| Card-mod | Module | Yes | Add CSS styles to (almost) any lovelace card |
+| Button Card | Module | Yes | Lovelace button-card for home assistant |
+| Light Entity Card | js | Yes | Control any light or switch entity |
+| Mini Graph Card | Module | Yes | Minimalistic graph card for Home Assistant Lovelace UI |
+| auto-entities | Module | Yes | Automatically populate the entities-list of lovelace cards |
+| layout-card | Module | Yes | Get more control over the placement of lovelace cards. |
+| Custom Header | Module | Yes | Lovelace Custom Header |
+| more-info-card | Module | Yes | Display the more-info dialog of any entity as a lovelace card |
+| Lovelace Xiaomi  Vacuum Map Card | Module | Yes | This card enables you to specify a target or start a zoned cleanup using  live or static map, just like in Mi Home app. Additionally you can define a  list of zones and choose the ones to be cleaned. |
+| Atomic Calendar | Module | Yes | Custom calendar card for Home Assistant with Lovelace |
 
 ### Install HACS components
 
 We also need to download some components from the HACS store. In the top tabs inside HACS click on the tab INTEGRATIONS and install the components from the table below.
 
-| Name                             | HACS   | Required | Latest tested  version | Description                                                                                                                                                                                             |
-|----------------------------------|--------|--------|----------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Browser mod                     | Integration | Yes      | 16                 | A Home Assistant integration to turn your browser into a controllable entity - and also an audio player |
+| Name | HACS | Required | Description |
+|-------------|-------------|----------|---------------------------------------------------------------------------------------------------------|
+| Browser mod | Integration | Yes | A Home Assistant integration to turn your browser into a controllable entity - and also an audio player |
+
+After installing both HACS plugins & HACS components you can continue to install Dwains Theme below.
 
 
 ## Installing Dwains theme
@@ -54,7 +56,7 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
 1. Find and rename the `dwains-theme/configs-samples` folder to `dwains-theme/configs`.
 2. Open `configuration-sample.yaml` in your root HA folder and select the text between `Copy from here` till `Copy till here` and paste this at the top of your existing `configuration.yaml` file.
-3. Now that you have your `configuration.yaml` file open make sure you don't have the following lines (with sublines) below the step 2 pasted code. `lovelace:`, `frontend:` and `browser_mod:`. Please remove these lines.
+3. Now that you have your `configuration.yaml` file open make sure you don't have the following lines (with sublines) below the step 2 pasted code. `homeassistant:`, `lovelace:`, `frontend:` and `browser_mod:`. Please remove these lines. 
 
 ### Step 4 - OPTIONAL: Use Home Assistant packages
 
