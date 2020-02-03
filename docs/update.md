@@ -1,3 +1,5 @@
+[< Go back to Home](index.md)
+
 # Updating Dwains Theme 
 
 If there is a update of Dwains Theme here is how to install it.

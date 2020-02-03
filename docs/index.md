@@ -16,7 +16,6 @@
 
 ### Information
 * [Configuration](configuration.md)
-* [Dwains Theme addons](addons.md) (Extend theme with own views/cards)
 * [Update theme](update.md)
 * [Changelog](https://github.com/dwainscheeren/lovelace-dwains-theme/releases)
 

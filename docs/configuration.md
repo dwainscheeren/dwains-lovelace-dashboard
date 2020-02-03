@@ -1,3 +1,5 @@
+[< Go back to Home](index.md)
+
 # Configuration
 
 Dwains Theme configuration is loaded from the files inside the folder `dwains-theme/configs/`.

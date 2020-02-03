@@ -1,3 +1,5 @@
+[< Go back to Home](index.md)
+
 # Installation
 
 Before we are getting started on anything, make you sure you make a backup of you current Home Assistant setup.

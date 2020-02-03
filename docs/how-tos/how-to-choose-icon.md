@@ -1,3 +1,5 @@
+[< Go back to Home](index.md)
+
 # How to choose and use an icon
 
 Dwains Theme has support for Font Awesome and Material Design icons. For Font Awesome only the free icons are included. 
