@@ -50,20 +50,20 @@ Rooms sections, all rooms of your house. This is where my theme is all about :D
 #### Rooms information
 
 | Name | Type | Default | Example | Description |
-|--------------|--------------------------|--------------------|------------------------------|-----------------------------------------------------------------------------------|
+|--------------|---------------------------|--------------------|--------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | name | string | Required | Hallway | Room name |
 | icon | string | mdi:square-outline | fas:key | Room icon |
-| light | string (entity or group) | Not required | light.hallway | Single light entity or group entity with all lights |
-| temperature | string (entity) | Not required | sensor.hallway_temperature | Temperature sensor entity |
-| climate | string (entity) | Not required | climate.hallway_climate | Climate entity |
-| humidity | string (entity) | Not required | sensor.halway_humidity | Humidity sensor entity |
-| motion | string (entity or group) | Not required | binary_sensor.hallway_motion | Motion sensor(s). Can be binary_sensor or a group of binary_sensors |
-| door | string (entity or group) | Not required | binary_sensor.hallway_door | Door contact(s). Can be binary_sensor or a group of binary_sensors |
-| window | string (entity or group) | Not required | group.hallway_windows | Window sensor(s). Can be binary_sensor or a group of binary_sensors |
-| cover | string (entity or group) | Not required | group.hallway_covers | Cover(s) (blinds, rolling_shutters etc). Can be single cover or a group of covers |
+| light | string  (entity or group) | Not required | light.hallway or group.hallway_lights | Single light entity or group entity (with only light entities inside) |
+| temperature | string  (entity) | Not required | sensor.hallway_temperature | Temperature sensor entity |
+| climate | string  (entity) | Not required | climate.hallway_climate | Climate entity |
+| humidity | string  (entity) | Not required | sensor.halway_humidity | Humidity sensor entity |
+| motion | string  (entity or group) | Not required | binary_sensor.hallway_motion or group.hallway_motion_sensors | Motion sensor(s). Can be binary_sensor or a group of binary_sensors |
+| door | string  (entity or group) | Not required | binary_sensor.hallway_door or group.hallway_doors | Door contact(s). Can be binary_sensor or a group of binary_sensors |
+| window | string  (entity or group) | Not required | binary_sensor.hallway_window or group.hallway_windows | Window sensor(s). Can be binary_sensor or a group of binary_sensors |
+| cover | string  (entity or group) | Not required | group.hallway_covers or group.hallway_covers | Cover(s) (blinds, rolling_shutters etc). Can be single cover or a group of covers |
 | vacuum | object | Not required | See room vacuum below | Vacuum |
-| plant | string (entity or group) | Not required | plant.hallway_plant | Plant(s). Can be single plant or a group of plants |
-| media_player | string (entity or group) | Not required | media_player.hallway_tv | Media player(s). Can be single media_player or a group of media_players |
+| plant | string  (entity or group) | Not required | plant.hallway_plant or group.hallway_plants | Plant(s). Can be single plant or a group of plants |
+| media_player | string  (entity or group) | Not required | media_player.hallway_tv or group.hallway_tvs | Media player(s). Can be single media_player or a group of media_players |
 
 #### Rooms example
 ```YAML
@@ -83,6 +83,10 @@ rooms:
       camera: camera.rockrobo_map
     plant: plant.hallway_plant
     media_player: media_player.awesome_hallway_tv
+  - name: Garage
+    icon: fas:garage
+    light: group.garage_lights
+    door: group.garage_doors
 ```    
 
 #### Room -> Vacuum
