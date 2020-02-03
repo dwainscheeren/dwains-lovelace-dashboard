@@ -60,7 +60,7 @@ Rooms sections, all rooms of your house. This is where my theme is all about :D
 | motion | string <br>(entity or group) | Not required | binary_sensor.hallway_motion<br> or <br>group.hallway_motion_sensors | Motion sensor(s). Can be binary_sensor or a group of binary_sensors |
 | door | string <br>(entity or group) | Not required | binary_sensor.hallway_door<br> or <br>group.hallway_doors | Door contact(s). Can be binary_sensor or a group of binary_sensors |
 | window | string <br>(entity or group) | Not required | binary_sensor.hallway_window<br> or <br>group.hallway_windows | Window sensor(s). Can be binary_sensor or a group of binary_sensors |
-| cover | string <br>(entity or group) | Not required | group.hallway_covers<br> or <br>group.hallway_covers | Cover(s) (blinds, rolling_shutters etc). Can be single cover or a group of covers |
+| cover | string <br>(entity or group) | Not required | cover.hallway<br> or <br>group.hallway_covers | Cover(s) (blinds, rolling_shutters etc). Can be single cover or a group of covers |
 | vacuum | object | Not required | See room vacuum below | Vacuum |
 | plant | string <br>(entity or group) | Not required | plant.hallway_plant<br> or <br>group.hallway_plants | Plant(s). Can be single plant or a group of plants |
 | media_player | string <br>(entity or group) | Not required | media_player.hallway_tv<br> or <br>group.hallway_tvs | Media player(s). Can be single media_player or a group of media_players |
