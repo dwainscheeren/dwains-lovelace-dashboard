@@ -27,6 +27,6 @@
 ### Support
 * [Bugs](https://github.com/dwainscheeren/lovelace-dwains-theme/issues)
 * [Feature Requests](https://github.com/dwainscheeren/lovelace-dwains-theme/issues/new)
-* [HA Forum](https://www.replacethis.nl)
+* [HA Forum](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593?u=dwains)
 * [Slack (dutch)](https://join.slack.com/t/homeassistantnlbe/shared_invite/enQtNzc4MzAwMTEyNDIwLTgwZGVmNmNhZjZkNmVkMjM1NTM3N2UwODIzZTFjMzY1ZmUyMGJiZDU5ZTEyZWEyYzMzYzQzYWJmNGE3MWVjN2I)
 * [Slack (english)](https://join.slack.com/t/homeassistanten/shared_invite/enQtNzg1NzQyOTI4ODE2LWVhMmY3ZjMxMThhOTk1OWEwY2E4NDE0YmViZWI3NjUyNzIyMzIwNTkwMzlmMDA5N2I0MTQ4MDhiYTkwYWFlZDU)

@@ -95,7 +95,7 @@ To configure/build the theme you need to edit the files in the folder `dwains-th
 
 That's it! Dwains Theme should now be installed.
 
-*Let me know on the [HA forum](replacethis.md) if you like my theme :D*
+*Let me know on the [HA forum](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593?u=dwains) if you like my theme :D*
 
 ## What's next?
 Now that you have installed all the required plugins and the Dwains Theme core files you can edit the Dwains theme configuration files.
