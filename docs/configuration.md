@@ -4,18 +4,19 @@
 
 Dwains Theme configuration is loaded from the files inside the folder `dwains-theme/configs/`.
 
+**If you edit something inside a file of the `dwains-theme/configs/` folder, you always need to restart Home Assistant for any changes to be visible.**
+
 This folder can have the following files: `global.yaml`, `house_information.yaml`, `scenes.yaml`, `cameras.yaml`, `persons.yaml`, `rooms.yaml`, `more_addons.yaml`, `icons.yaml`.
+
 Only the files `global.yaml` and `rooms.yaml` are required!
 
 Each file content is explained below.
-
-**If you edit something inside a file of the `dwains-theme/configs/` folder, you always need to restart Home Assistant for any changes to be visible.**
 
 *HINT: You can always look in the `dwains-theme/configs-samples` folder files for some inspiration.*
 
 *HINT: For the icons I mostly use Font Awesome, [How to choose and use an icon](how-tos/how-to-choose-icon.md).*
 
-*HINT: Some entries can have a single entity or a group [read here how to make a group](https://www.home-assistant.io/integrations/group/). (You can use `user-package-sample/groups/..`for example).*
+*HINT: Some entries can have a single entity or a group [read here how to make a group](https://www.home-assistant.io/integrations/group/).*
 
 ___
 
@@ -292,8 +293,6 @@ With this file you can override the default icons that are loaded in Dwains Them
 | more_all_data | string | fas:clinic-medical | House all data icon on more page |
 | more_about | string | fas:info-circle | About theme icon on more page |
 | more_list_chevron | string | mdi:chevron-right | Right chevron icon on more page |
-|  | string |  |  |
-|  | string |  |  |
 
 #### Icons example
 ```YAML
