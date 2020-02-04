@@ -2,6 +2,8 @@
 
 <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"></a>
+
 [![dwains-theme_01](https://user-images.githubusercontent.com/3868853/73613069-43326600-45f2-11ea-99a5-8f058530d72e.jpg)](https://dwainscheeren.github.io/lovelace-dwains-theme/)
 [![dwains-theme_02](https://user-images.githubusercontent.com/3868853/73613071-4594c000-45f2-11ea-852e-7a2eae5c1dec.jpg)](https://youtu.be/Wdh0q8K3JSk)
 ![dwains-theme_04](https://user-images.githubusercontent.com/3868853/73613073-462d5680-45f2-11ea-9164-e69a0e3dc7d9.jpg)
@@ -37,13 +39,9 @@ If you like you can subscribe on my [Home Assistant YouTube channel](https://ww
 
 **Like what you see?**
 
-If you appreciate what I have made you can [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx).Or post a reply in this thread with how happy you are. :crazy_face:
+If you appreciate what I have made you can [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx) or [donate to my PayPal account](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=urldonate).
+You can also post a reply in [this HA thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) with how happy you are. :crazy_face:
 
 Greetings,
 
 Dwain
-
-
-
-
-
