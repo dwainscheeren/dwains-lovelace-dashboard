@@ -15,12 +15,17 @@
 * [Preparations](getting-started/preparations.md)
 * [Installation](getting-started/installation.md)
 
-### [Configuration](test.md)
-
+### [Configuration](configuration/index.md)
+* [global.yaml](configuration/global.md)
+* [rooms.yaml](configuration/rooms.md)
+* [house_information.yaml](configuration/house_information.md)
+* [scenes.yaml](configuration/scenes.md)
+* [cameras.yaml](configuration/cameras.md)
+* [persons.yaml](configuration/persons.yaml)
+* [icons.yaml](configuration/icons.yaml)
 
 ### Information
-* [Configuration](configuration.md)
-* [Update theme](update.md)
+* [Update theme](information/update.md)
 * [Changelog](https://github.com/dwainscheeren/lovelace-dwains-theme/releases)
 
 ### How to guides
