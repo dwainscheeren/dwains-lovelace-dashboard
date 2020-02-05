@@ -1,7 +1,0 @@
-global:
-  language: en
-  # weather: weather.dark_sky
-  # outside_temperature: sensor.dark_sky_temperature
-  # outside_humidity: sensor.dark_sky_humidity
-  # alarm: alarm_control_panel.alarm_system
-  # inside_temperature: climate.living_room
