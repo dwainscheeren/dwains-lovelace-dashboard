@@ -8,6 +8,7 @@
 * [cameras.yaml](cameras.md)
 * [persons.yaml](persons.md)
 * [icons.yaml](icons.md)
+
 ---
 
 # Cameras `cameras.yaml`
