@@ -15,6 +15,9 @@
 * [Preparations](getting-started/preparations.md)
 * [Installation](getting-started/installation.md)
 
+### [Configuration](test.md)
+
+
 ### Information
 * [Configuration](configuration.md)
 * [Update theme](update.md)

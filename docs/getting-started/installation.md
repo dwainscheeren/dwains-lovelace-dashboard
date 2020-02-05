@@ -76,7 +76,7 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
 ### Step 5 - Configure Dwains Theme
 
-To configure/build the theme you need to edit the files in the folder `dwains-theme/configs/`. When you open these file you see some examples commented-out. If you want to know how you need to configure these files, go to the [Configure Dwains Theme](../configuration.md) page.
+To configure/build the theme you need to edit the files in the folder `dwains-theme/configs/`. When you open these file you see some examples commented-out. If you want to know how you need to configure these files, go to the [Configure Dwains Theme](../information/configuration.md) page.
 
 ### Step 6 - Restart Home Assistant
 
