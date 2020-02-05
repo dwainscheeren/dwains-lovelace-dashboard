@@ -1,3 +1,3 @@
-# Coming Soon! (5-2-2020)
+# Coming Soon! (6-2-2020)
 
-Please wait. I will release it official soon (wednesday 5-2-2020) around 18:00 (UTC +1)
+Please wait. I will release it official soon (thursday 6-2-202), mornings. Needed to fix some small bugs before launch!
