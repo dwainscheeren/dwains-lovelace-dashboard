@@ -1,4 +1,4 @@
-[< Go back to Home](index.md)
+[< Go back to Home](../index.md)
 
 # Configuration
 
@@ -14,7 +14,7 @@ Each file content is explained below.
 
 *HINT: You can always look in the `dwains-theme/configs-samples` folder files for some inspiration.*
 
-*HINT: For the icons I mostly use Font Awesome, [How to choose and use an icon](how-tos/how-to-choose-icon.md).*
+*HINT: For the icons I mostly use Font Awesome, [How to choose and use an icon](../how-tos/how-to-choose-icon.md).*
 
 *HINT: Some entries can have a single entity or a group [read here how to make a group](https://www.home-assistant.io/integrations/group/).*
 
@@ -291,7 +291,7 @@ With this file you can override the default icons that are loaded in Dwains Them
 | alarm_armed_home | string | mdi:home-lock | Alarm armed home mode |
 | more_house_information | string | fas:home | House information icon on more page |
 | more_all_data | string | fas:clinic-medical | House all data icon on more page |
-| more_about | string | fas:info-circle | About theme icon on more page |
+| more_settings | string | fas:cogs | Theme settings icon on more page |
 | more_list_chevron | string | mdi:chevron-right | Right chevron icon on more page |
 
 #### Icons example

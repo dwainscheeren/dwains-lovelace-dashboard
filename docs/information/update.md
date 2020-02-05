@@ -1,4 +1,4 @@
-[< Go back to Home](index.md)
+[< Go back to Home](../index.md)
 
 # Updating Dwains Theme 
 

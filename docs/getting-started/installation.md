@@ -1,8 +1,8 @@
-[< Go back to Home](index.md)
+[< Go back to Home](../index.md)
 
 # Installation
 
-Before we are getting started on anything, make you sure you make a backup of you current Home Assistant setup.
+Follow all the steps on this page. Start with the HACS part.
 
 ## Installing required HACS Plugins & Components
 This theme depends on some plugins and components from other developers. These plugins can be installed thought HACS.
@@ -57,43 +57,30 @@ Copy the content of this folder to the root of your Home Assistant installation.
 ### Step 3 - Set the configuration files
 
 1. Find and rename the `dwains-theme/configs-samples` folder to `dwains-theme/configs`.
-2. Open `configuration-sample.yaml` in your root HA folder and select the text between `Copy from here` till `Copy till here` and paste this at the top of your existing `configuration.yaml` file.
-3. Now that you have your `configuration.yaml` file open make sure you don't have the following lines (with sublines) below the step 2 pasted code. `homeassistant:`, `lovelace:`, `frontend:` and `browser_mod:`. Please remove these lines. 
+2. Open your `configuration.yaml` file and make sure you don't have the following lines (with sublines) below the step 2 pasted code. `homeassistant:`, `lovelace:`, `frontend:` and `browser_mod:`. Please remove these lines. 
+3. Open `configuration-sample.yaml` in your root HA folder and select the text between `Copy from here` till `Copy till here` and paste this at the top of your existing `configuration.yaml` file.
 
-### Step 4 - OPTIONAL: Use Home Assistant packages
+### Step 4 - Your existing configuration
 
-*NOTE: This step is not required but highly recommended*
+ I personally use Home Assistant packages folder. With packages you have a way to include different components, or different configuration parts  [Read more about it here](https://www.home-assistant.io/docs/configuration/packages/).
 
- I personally use Home Assistant packages. With packages you have a way to include different components, or different configuration parts using any of the `!include` directives. [Read more about it here](https://www.home-assistant.io/docs/configuration/packages/).
+>**I don't want to use HA packages, I will use and keep my `configuration.yaml` file**
+>
+>Okay then you are already set. You can checkout `configuration-sample.yaml` for some inspiration on how a this file can look in combination with Dwains Theme.
 
-I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this open `configuration.yaml` and uncomment the line `user_package: !include user-package-sample/configuration.yaml`. And change the name of `user-package-sample/` here to your own name.
-
-*NOTE: Read the content of the `user-package-sample/configuration.yaml` file to get a understanding how it works.*
-
-Next copy and cut everything from your own (original) `configuration.yaml` **EXCEPT THE TEXT BETWEEN `Start of dwains-theme necessary code` AND `End of dwains-theme necessary code`** to the file `the-folder-you-just-renamed/configuration.yaml`. The existing code in this file is a example.
-
-This is not compatible with 1 global packages folder as explained on the HA website! So if you already use: 
- ```
- homeassistant:
-  packages: !include_dir_named packages
- ```
- It doesnt work! 
- 
- It only works with:
- ```
- homeassistant:
-  packages:
-    dwains_theme: !include dwains-theme/configuration.yaml
-    user_package: !include user-package-sample/configuration.yaml
- ```
+>**I'm using already HA packages folder or want to know how to use it:**
+>
+>I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this adjust the content of it and copy it to the `packages/` folder.
+>
+>*NOTE: Read the content of the `user-package-sample` folder to get a understanding how it works.*
 
 ### Step 5 - Configure Dwains Theme
 
-To configure/build the theme you need to edit the files in the folder `dwains-theme/configs/`. When you open these file you see some examples commented-out. If you want to know how you need to configure these files, go to the [Configure Dwains Theme](configuration.md) page.
+To configure/build the theme you need to edit the files in the folder `dwains-theme/configs/`. When you open these file you see some examples commented-out. If you want to know how you need to configure these files, go to the [Configure Dwains Theme](../configuration.md) page.
 
 ### Step 6 - Restart Home Assistant
 
-*NOTE: Your Home Assistant frontend can have some error. In this case you forgot a HACS plugin or you made a mistake in any of the config files.*
+*NOTE: Your Home Assistant frontend can have some error. In this case you forgot a HACS plugin or you made a mistake in any of the config files. Always clear your browser cache when you receive errors.*
 
 That's it! Dwains Theme should now be installed.
 
@@ -102,6 +89,6 @@ That's it! Dwains Theme should now be installed.
 ## What's next?
 Now that you have installed all the required plugins and the Dwains Theme core files you can edit the Dwains theme configuration files.
 
-[Configure Dwains Theme](configuration.md)
+[Configure Dwains Theme](../configuration.md)
 
 *WARNING: Please don't change any of the files inside the folder `dwains-theme`, because future updates of this theme may not work. If you want to extend or add own views/pages to this theme use [addons](addons.md)*
