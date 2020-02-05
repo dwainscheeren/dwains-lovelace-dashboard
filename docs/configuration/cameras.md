@@ -6,12 +6,11 @@
 * [house_information.yaml](house_information.md)
 * [scenes.yaml](scenes.md)
 * [cameras.yaml](cameras.md)
-* [persons.yaml](persons.yaml)
-* [icons.yaml](icons.yaml)
-
+* [persons.yaml](persons.md)
+* [icons.yaml](icons.md)
 ---
 
-## Cameras `cameras.yaml`
+# Cameras `cameras.yaml`
 
 **This file is optional**
 

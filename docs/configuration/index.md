@@ -1,3 +1,5 @@
+[< Go back to Home](../index.md)
+
 # Configuration
 
 Dwains Theme configuration is loaded from the files inside the folder `dwains-theme/configs/`.
@@ -20,5 +22,5 @@ Only the files `global.yaml` and `rooms.yaml` are required!
 * [house_information.yaml](house_information.md)
 * [scenes.yaml](scenes.md)
 * [cameras.yaml](cameras.md)
-* [persons.yaml](persons.yaml)
-* [icons.yaml](icons.yaml)
+* [persons.yaml](persons.md)
+* [icons.yaml](icons.md)
