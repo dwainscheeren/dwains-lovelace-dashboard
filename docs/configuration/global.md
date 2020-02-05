@@ -2,13 +2,13 @@
 [< Go back to Home](../index.md)
 
 ### Configuration
-* [global.yaml](configuration/global.md)
-* [rooms.yaml](configuration/rooms.md)
-* [house_information.yaml](configuration/house_information.md)
-* [scenes.yaml](configuration/scenes.md)
-* [cameras.yaml](configuration/cameras.md)
-* [persons.yaml](configuration/persons.yaml)
-* [icons.yaml](configuration/icons.yaml)
+* [global.yaml](global.md)
+* [rooms.yaml](rooms.md)
+* [house_information.yaml](house_information.md)
+* [scenes.yaml](scenes.md)
+* [cameras.yaml](cameras.md)
+* [persons.yaml](persons.yaml)
+* [icons.yaml](icons.yaml)
 
 ---
 
