@@ -21,8 +21,13 @@
 * [house_information.yaml](configuration/house_information.md)
 * [scenes.yaml](configuration/scenes.md)
 * [cameras.yaml](configuration/cameras.md)
-* [persons.yaml](configuration/persons.yaml)
-* [icons.yaml](configuration/icons.yaml)
+* [persons.yaml](configuration/persons.md)
+* [icons.yaml](configuration/icons.md)
+
+### [Addons](addons/index.md)
+* [Room addons](addons/room.md)
+* [Morepage addons](addons/morepage.md)
+* [Dynamicpage addons](addons/dynamicpage.md)
 
 ### Information
 * [Update theme](information/update.md)

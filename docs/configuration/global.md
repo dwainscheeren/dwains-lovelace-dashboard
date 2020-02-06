@@ -22,7 +22,7 @@ The global section. Dwains theme uses this to build the pages.
 
 | Name | Type | Required | Example | Description |
 |---------------------|--------|----------|----------------------------------|---------------------------------------------------------------------------------------------|
-| language | string | No | en | Language of my theme. It only supports English for now! Dutch and German coming soon.. |
+| language | string | Yes! | en | Language of my theme. It only supports English (en) and Dutch (nl) for now! Other languages coming soon.. |
 | weather | string | No | weather.dark_sky | Weather (I use [Dark Sky Weather](https://www.home-assistant.io/integrations/weather.darksky/)) |
 | outside_temperature | string | No | sensor.dark_sky_temperature | Outside temperature (I use [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |
 | outside_humidity | string | No | sensor.dark_sky_humidity | Outside humidity (I use [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |

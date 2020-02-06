@@ -70,7 +70,7 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
 >**I'm using already HA packages folder or want to know how to use it:**
 >
->I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this adjust the content of it and copy it to the `packages/` folder.
+>I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this adjust the content of it and copy this folder to the `packages/` folder.
 >
 >*NOTE: Read the content of the `user-package-sample` folder to get a understanding how it works.*
 
