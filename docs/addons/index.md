@@ -8,5 +8,5 @@ There are a few type off addons possible right now.
 
 ## Addons
 * [Room addons](room.md)
-* [Morepage addons](morepage.md)
-* [Dynamicpage addons](dynamicpage.md)
+* [More page addons](more_page.md)
+* [Dynamic page addons](dynamic_page.md)

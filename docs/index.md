@@ -26,8 +26,8 @@
 
 ### [Addons](addons/index.md)
 * [Room addons](addons/room.md)
-* [Morepage addons](addons/morepage.md)
-* [Dynamicpage addons](addons/dynamicpage.md)
+* [More page addons](addons/more_page.md)
+* [Dynamic page addons](addons/dynamic_page.md)
 
 ### Information
 * [Update theme](information/update.md)

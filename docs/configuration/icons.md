@@ -1,6 +1,6 @@
 [< Go back to Home](../index.md)
 
-### Configuration
+### [Configuration](index.md)
 * [global.yaml](global.md)
 * [rooms.yaml](rooms.md)
 * [house_information.yaml](house_information.md)
@@ -49,10 +49,10 @@ With this file you can override the default icons that are loaded in Dwains Them
 | alarm_pending | string | mdi:home-lock | Alarm pending icon |
 | alarm_armed_away | string | mdi:home-lock | Alarm armed away mode |
 | alarm_armed_home | string | mdi:home-lock | Alarm armed home mode |
-| more_house_information | string | fas:home | House information icon on more page |
-| more_all_data | string | fas:clinic-medical | House all data icon on more page |
-| more_settings | string | fas:cogs | Theme settings icon on more page |
-| more_list_chevron | string | mdi:chevron-right | Right chevron icon on more page |
+| more_page_house_information | string | fas:home | House information icon on more page |
+| more_page_all_data | string | fas:clinic-medical | House all data icon on more page |
+| more_page_settings | string | fas:cogs | Theme settings icon on more page |
+| more_page_list_chevron | string | mdi:chevron-right | Right chevron icon on more page |
 
 ## Icons example
 ```YAML

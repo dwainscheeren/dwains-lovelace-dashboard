@@ -1,6 +1,6 @@
 [< Go back to Home](../index.md)
 
-### Configuration
+### [Configuration](index.md)
 * [global.yaml](global.md)
 * [rooms.yaml](rooms.md)
 * [house_information.yaml](house_information.md)
