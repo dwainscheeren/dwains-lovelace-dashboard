@@ -17,4 +17,22 @@
 
 **This file is optional**
 
-This is a config file for the more page. .
+This is a config file for the more page. You can access the more page from the hamburger icon in the main menu.
+
+This page support addons, they are called *more page addons.* [Read more here](../addons/more_page.md).
+
+## More page information
+
+| Name                | Type   | Required | Example                       | Description                                                                                             |
+|---------------------|--------|----------|-------------------------------|---------------------------------------------------------------------------------------------------------|
+| addons              | object | No       |                               | This page support addons, they are called *more page addons.* [Read more here](../addons/more_page.md). |
+
+
+## More page example
+```YAML
+more_page:
+  addons:
+    - name: Statistics
+      icon: fas:chart-area
+      path: 'dwains-theme/addons/more_page/statistics/page.yaml'
+```    
