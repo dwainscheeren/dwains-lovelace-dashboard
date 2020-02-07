@@ -91,4 +91,4 @@ Now that you have installed all the required plugins and the Dwains Theme core f
 
 [Configure Dwains Theme](../configuration/index.md)
 
-**WARNING: Please don't change any of the files inside the folder `dwains-theme`, because future updates of this theme may not work. If you want to extend or add own views/pages to this theme use [addons](addons/index.md)**
+**WARNING: Please don't change any of the files inside the folder `dwains-theme`, because future updates of this theme may not work. If you want to extend or add own views/pages to this theme use [addons](../addons/index.md)**

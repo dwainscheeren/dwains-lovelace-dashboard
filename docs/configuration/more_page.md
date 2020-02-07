@@ -26,13 +26,3 @@ This page support addons, they are called *more page addons.* [Read more here](.
 | Name                | Type   | Required | Example                       | Description                                                                                             |
 |---------------------|--------|----------|-------------------------------|---------------------------------------------------------------------------------------------------------|
 | addons              | object | No       |                               | This page support addons, they are called *more page addons.* [Read more here](../addons/more_page.md). |
-
-
-## More page example
-```YAML
-more_page:
-  addons:
-    - name: Statistics
-      icon: fas:chart-area
-      path: 'dwains-theme/addons/more_page/statistics/page.yaml'
-```    

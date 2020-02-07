@@ -24,16 +24,3 @@ This is a config file for the dynamic page. The dynamic page is the fourth icon 
 | Name                | Type   | Required | Example                       | Description                                                                                             |
 |---------------------|--------|----------|-------------------------------|---------------------------------------------------------------------------------------------------------|
 | addon              | object | No       |                               | This page support addons, they are called *dynamic page addons.* [Read more here](../addons/dynamic_page.md). **You can only have 1 addon at the same time because it's directly loaded inside the dynamic page view!** |
-
-
-## Dynamic page example
-```YAML
-dynamic_page:
-  addon:
-    - name: Hello dynamic page
-      icon: fas:chart-area
-      path: 'dwains-theme/addons/dynamic_page/hello-dynamic-page/page.yaml'
-        data:
-          some_data: 'This is some data parsed.'
-          some_other_data: 'and some other data.'
-```    
