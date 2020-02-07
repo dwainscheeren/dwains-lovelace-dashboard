@@ -6,7 +6,7 @@ Dwains Theme configuration is loaded from the files inside the folder `dwains-th
 
 **If you edit something inside a file of the `dwains-theme/configs/` folder, you always need to restart Home Assistant for any changes to be visible.**
 
-This folder can have the following files: `global.yaml`, `house_information.yaml`, `scenes.yaml`, `cameras.yaml`, `persons.yaml`, `rooms.yaml`, `morepage_addons.yaml`, `dynamicpage.yaml` and `icons.yaml`.
+This folder can have the following files: `global.yaml`, `house_information.yaml`, `scenes.yaml`, `cameras.yaml`, `persons.yaml`, `rooms.yaml`, `icons.yaml`, `more_page.yaml` and `dynamic_page.yaml`.
 
 Only the files `global.yaml` and `rooms.yaml` are required!
 
@@ -24,3 +24,5 @@ Only the files `global.yaml` and `rooms.yaml` are required!
 * [cameras.yaml](cameras.md)
 * [persons.yaml](persons.md)
 * [icons.yaml](icons.md)
+* [more_page.yaml](more_page.md)
+* [dynamic_page.yaml](dynamic_page.md)

@@ -1,6 +1,6 @@
 [< Go back to Home](../index.md)
 
-### Configuration
+### [Configuration](index.md)
 * [global.yaml](global.md)
 * [rooms.yaml](rooms.md)
 * [house_information.yaml](house_information.md)
@@ -8,6 +8,8 @@
 * [cameras.yaml](cameras.md)
 * [persons.yaml](persons.md)
 * [icons.yaml](icons.md)
+* [more_page.yaml](more_page.md)
+* [dynamic_page.yaml](dynamic_page.md)
 
 ---
 
