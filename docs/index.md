@@ -23,6 +23,8 @@
 * [cameras.yaml](configuration/cameras.md)
 * [persons.yaml](configuration/persons.md)
 * [icons.yaml](configuration/icons.md)
+* [more_page.yaml](configuration/more_page.md)
+* [dynamic_page.yaml](configuration/dynamic_page.md)
 
 ### [Addons](addons/index.md)
 * [Room addons](addons/room.md)
