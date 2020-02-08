@@ -10,8 +10,6 @@
 
 # More page addons
 
-**This file is optional**
-
 With more page addons you can still add own pages to Dwains Theme. Let's say you want a page with some statistics or just an extra page with some cards. Then more page addons is the way to go.
 
 ## More page addons information

@@ -48,3 +48,11 @@
 ### Donate
 * [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url)
 * [Buy me a coffee](https://www.buymeacoffee.com/FAkYvrx)
+
+#### Donation list
+
+Many thanks to the people who donated. I love transparency so I will place all donations on this page.
+
+> @Warwick Jaensch — For great work on Dwains Theme!
+
+> @Joeri94 — Very nice and easy to install theme and good work for the Dutch HA community

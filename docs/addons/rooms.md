@@ -10,8 +10,6 @@
 
 # Rooms addons
 
-**This file is optional**
-
 With rooms addons you can add own functionality to rooms. You can add a own button on a room page which links to a custom page. It can also parse some data to that view. 
 
 ## Rooms page addons information

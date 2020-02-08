@@ -10,8 +10,6 @@
 
 # Dynamic page addons
 
-**This file is optional**
-
 By default the dynamic page shows the cameras. But not everyone has cameras in his HA setup. Or if you just want to show something else on the cameras page. You can use a dynamic page addon. **You can only have 1 addon at the same time because it's directly loaded inside the dynamic page view!**
 
 ## Dynamic page addons information

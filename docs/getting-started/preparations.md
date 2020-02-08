@@ -17,6 +17,10 @@ living_room_lights:
 ```
 You then can use `group.living_room_lights` in my theme config.
 
+## Short explanation
+
+My theme has the slogan "An auto generating Home Assistant Lovelace UI". It's not (yet) fully auto generating (so not a 1 click install and done). You still need to define your house in so called 'Dwains Theme Config files'. Working with these files is not that hard and is fully explained in the docs here. I'm still working hard on this theme, so if you have any tips for it please discuss it in the [HA forum thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593?u=dwains).
+
 ## What's next?
 So lets start with the installation of Dwains Theme.
 

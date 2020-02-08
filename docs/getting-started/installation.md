@@ -2,7 +2,7 @@
 
 # Installation
 
-Follow all the steps on this page. Start with the HACS part.
+Follow all the steps on this page! Start with the HACS part.
 
 ## Installing required HACS Plugins & Components
 This theme depends on some plugins and components from other developers. These plugins can be installed thought HACS.
@@ -33,13 +33,13 @@ In the left side menu click on Community and then on the Tab PLUGINS. Search for
 
 ### Install HACS components
 
-We also need to download some components from the HACS store. In the top tabs inside HACS click on the tab INTEGRATIONS and install the components from the table below.
+We also need to download 1 component from the HACS store. In the top tabs inside HACS click on the tab INTEGRATIONS and install the component from the table below.
 
 | Name | HACS | Required | Description |
 |-------------|-------------|----------|---------------------------------------------------------------------------------------------------------|
 | Browser mod | Integration | Yes | A Home Assistant integration to turn your browser into a controllable entity - and also an audio player |
 
-After installing both HACS plugins & HACS components you can continue to install Dwains Theme below.
+After installing both HACS plugins and the 1 HACS component and you make sure you don't forgot any, you can continue to install Dwains Theme below.
 
 
 ## Installing Dwains theme
@@ -57,7 +57,7 @@ Copy the content of this folder to the root of your Home Assistant installation.
 ### Step 3 - Set the configuration files
 
 1. Find and rename the `dwains-theme/configs-samples` folder to `dwains-theme/configs`.
-2. Open your `configuration.yaml` file and make sure you don't have the following lines (with sublines) below the step 2 pasted code. `homeassistant:`, `lovelace:`, `frontend:` and `browser_mod:`. Please remove these lines. 
+2. Open your `configuration.yaml` file and make sure you don't have the following lines (with sublines). `homeassistant:`, `lovelace:`, `frontend:` and `browser_mod:`. Please remove these lines. From your existing `configuration.yaml`. This is very important.
 3. Open `configuration-sample.yaml` in your root HA folder and select the text between `Copy from here` till `Copy till here` and paste this at the top of your existing `configuration.yaml` file.
 
 ### Step 4 - Your existing configuration
