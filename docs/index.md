@@ -60,7 +60,7 @@ If you donate please write a short message with your HA username :D
 
 > @Klumpke — Hard work should be rewarded. Great theme that I use every day!
 
-> @Mase iirc — I didn‘t know that you can make such a good looking setup in HA. Thanks for such an advanced, yet simple to install theme.
+> @Mase — I didn‘t know that you can make such a good looking setup in HA. Thanks for such an advanced, yet simple to install theme.
 
 > @Warwick Jaensch — For great work on Dwains Theme!
 
