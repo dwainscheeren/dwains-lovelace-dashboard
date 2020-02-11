@@ -50,9 +50,11 @@ After installing both HACS plugins and the 1 HACS component and you make sure yo
 Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases).
 
 ### Step 2 - Extract & move the download
-Unzip the file you just downloaded. 
 
-Copy the content of this folder to the root of your Home Assistant installation.
+1. Unzip the file you just downloaded and copy the content of it. 
+2. Go to the root of your Home Assistant installation.
+3. Rename your existing file `ui-lovelace.yaml` to `ui-lovelace.back.yaml` 
+2. Copy the content of the downloaded folder to the root of your Home Assistant installation.
 
 *NOTE: You need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder*
 
