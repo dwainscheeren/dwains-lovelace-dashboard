@@ -1,0 +1,83 @@
+# dwains_theme
+
+#more_page page
+- path: more_page
+  icon: {{ _d_t_icons.menu_more_page|default('mdi:menu') }}
+  title: {{ _d_t_trans.more_page.title }}
+  badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        #Header
+        - !include
+          - ../partials/header.yaml
+          - title: {{ _d_t_trans.more_page.title }}
+        #Start for more_page page
+        #Main dwains theme more_page buttons
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 8px 8px 10px 8px;
+            }
+          card:
+            type: custom:layout-card
+            min_columns: 3
+            max_columns: 3
+            layout: horizontal
+            justify_content: start
+            cards:
+              - type: custom:button-card
+                template: more_page_main
+                icon: '{{ _d_t_icons.more_page_house_info|default('mdi:home') }}'
+                name: {{ _d_t_trans.more_page.house_info }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: more_page_house_information
+              - type: custom:button-card
+                template: more_page_main
+                icon: '{{ _d_t_icons.more_page_house_data|default('fas:clinic-medical') }}'
+                name: {{ _d_t_trans.more_page.house_data.title }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: more_page_house_data
+              - type: custom:button-card
+                template: more_page_main
+                icon: '{{ _d_t_icons.more_page_settings|default('fas:cogs') }}'
+                name: {{ _d_t_trans.more_page.settings.title }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: more_page_settings
+        {% if _d_t_config.more_page and _d_t_config.more_page["addons"] %}
+        #heading Addons
+        - !include
+          - ../partials/heading.yaml
+          - title: {{ _d_t_trans.more_page.more_page_addons }}
+        #Addons start
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 0px 8px 10px 8px;
+            }
+          card:
+            type: custom:layout-card
+            min_columns: 3
+            max_columns: 3
+            layout: horizontal
+            justify_content: start
+            cards:
+              {% for more_page in _d_t_config.more_page["addons"] %}
+              - type: custom:button-card
+                template: more_page_main
+                icon: {{ more_page["icon"]|default('fas:puzzle-piece') }}
+                name: {{ more_page["name"] }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: more_page_addon_{{ more_page["name"]|lower|replace(" ", "_") }}
+              {% endfor %}
+              - type: custom:button-card
+                color_type: blank-card
+                aspect_ratio: 1/1
+              - type: custom:button-card
+                color_type: blank-card
+                aspect_ratio: 1/1
+        {% endif %}

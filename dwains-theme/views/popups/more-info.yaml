@@ -1,0 +1,19 @@
+# dwains_theme
+
+#More info popup (for simple popups)
+haptic: heavy
+action: call-service
+service: browser_mod.popup
+service_data:
+  title: '[[[ return entity.attributes.friendly_name ]]]'
+  card:
+    type: vertical-stack
+    cards:
+      - type: custom:more-info-card
+        style: |
+          .card-header {
+            display: none;
+          }
+        entity: {{ entity }}
+  deviceID:
+    - this

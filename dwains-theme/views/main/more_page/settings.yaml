@@ -1,0 +1,74 @@
+# dwains_theme
+
+- title: {{ _d_t_trans.more_page.settings.title }}
+  path: more_page_settings
+  cards:
+    - type: vertical-stack
+      cards:
+        #Header
+        - !include
+          - ../../partials/header.yaml
+          - title: {{ _d_t_trans.more_page.settings.title }}
+            subtitle: {{ _d_t_trans.more_page.title }}
+            navigation_path: more_page
+        #Start for settings page
+        #heading  
+        - !include
+          - ../../partials/heading.yaml
+          - title: Dwains Theme
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 0px 16px 20px 16px;
+            }
+          card:
+            type: vertical-stack
+            cards:
+              - type: entities
+                style: |
+                  ha-card {
+                    box-shadow: none;
+                    background: var(--dwains-theme-primary);
+                  }
+                entities: 
+                  - entity: input_select.theme_selector
+              - type: custom:button-card
+                template: more_page_list-item
+                name: {{ _d_t_trans.more_page.settings.theme_docs }}
+                tap_action: 
+                  action: url
+                  url_path: 'https://dwainscheeren.github.io/lovelace-dwains-theme/'
+              - type: custom:button-card
+                template: more_page_list-item
+                name: Github
+                tap_action: 
+                  action: url
+                  url_path: 'https://github.com/dwainscheeren/lovelace-dwains-theme'
+              - type: custom:button-card
+                template: more_page_list-item
+                name: {{ _d_t_trans.more_page.settings.support_paypal }}
+                tap_action: 
+                  action: url
+                  url_path: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url'
+              - type: custom:button-card
+                template: more_page_list-item
+                name: {{ _d_t_trans.more_page.settings.buy_coffee }}
+                tap_action: 
+                  action: url
+                  url_path: 'https://www.buymeacoffee.com/FAkYvrx'
+                
+        #Credits
+        - type: markdown
+          style: |
+            ha-card {
+              box-shadow: none;
+              background: none;
+              text-align: center;
+            }
+            span {
+              opacity: 0.5;
+            }
+          content: |
+            <strong>DWAINS THEME</strong>
+            <span>{{ _d_t_trans.more_page.settings.by }} Dwain Scheeren</span>
+            <span>{{ _d_t_trans.more_page.settings.version }} 1.1.0</span>

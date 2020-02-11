@@ -1,0 +1,49 @@
+# dwains_theme
+
+#Page for devices for a room
+
+{% for room in _d_t_config.rooms %}
+{% if room["device"] %}
+- title: {{ room["name"] }} {{ _d_t_trans.device.title_plural }}
+  path: {{ room["name"]|lower|replace(" ", "_") }}_devices
+  cards:   
+    #Header
+    - !include
+      - ../../../partials/header.yaml
+      - title: {{ _d_t_trans.device.title_plural }}
+        subtitle: {{ room["name"] }}
+        navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+    #Start for room devices content page
+    {% if room["device"].split('.')[0] == 'device' %}
+    # this room has only 1 device
+    {% else %}
+    # this room has group of devices
+    - type: entities
+      style: |
+        ha-card {
+          box-shadow: none;
+          background: transparent;
+        }
+      entities:
+        - type: custom:auto-entities
+          filter:
+            include:
+              - group: {{ room["device"] }}
+                options:
+                  type: custom:button-card
+                  template: room_device
+                  tap_action:
+                    !include 
+                      - ../../../popups/more-info.yaml
+                      - entity: this.entity_id
+          sort:
+            method: name
+            ignore_case: true
+          card:
+            type: custom:layout-card
+            min_columns: 2
+            max_columns: 2
+            layout: horizontal
+    {% endif %}
+{% endif %}
+{% endfor %}

@@ -1,0 +1,148 @@
+da:
+  greetings:
+    good_morning: 'Godmorgen'
+    good_afternoon: 'God eftermidag'
+    good_evening: 'Godaften'
+
+  alarm:
+    armed_away: 'Alarm system aktiveret (Alarm ude).'
+    armed_home: 'Alarm system aktiveret (Alarm hjemme).'
+    disarmed: 'Alarm system de-aktiveret.'
+
+  history:
+    sec_ago: 'sek ago'
+    min_ago: 'min ago'
+    h_ago: 't ago'
+    d_ago: 'd ago'
+    m_ago: 'm ago'
+    y_ago: 'å ago'
+
+  house_information:
+    title: 'Hus Information'
+    favorites: 'Favoritter'
+    house_calendar: 'Hus Kalender'
+    activity: 'Kalender (Døre, Vinduer, Bevægelse)'
+
+  motion:
+    title: 'Bevægelse'
+    title_plural: 'Bevægelser'
+    motion_on: 'Opdaget'
+
+  light:
+    title: 'Lys'
+    title_plural: 'Lys'
+    light_on: 'Lys tændt'
+    lights_on: 'Lys tændt'
+    light_off: 'Lys slukket'
+    lights_off: 'Lys slukket'
+    all_lights_on: 'Alle lys tændt'
+    all_lights_off: 'Alle lys slukket'
+    on_text: 'Tændt'
+    off_text: 'Slukket'
+
+  door:
+    title: 'Dør'
+    title_plural: 'Døre'
+    door_open: 'Døre åbne'
+    doors_open: 'Døre åbne'
+    all_doors_open: 'Alle døre åbne'
+    all_doors_closed: 'Alle døre lukket'
+    open: 'åben'
+    closed: 'lukket'
+
+  window:
+    title: 'Vindue'
+    title_plural: 'Vinduer'
+    window_open: 'vindue åben'
+    windows_open: 'vindue lukket'
+    all_windows_open: 'Alle vinduer åben'
+    all_windows_closed: 'Alle vinduer lukket'
+    open: 'åben'
+    closed: 'lukket'
+  
+  climate:
+    title: 'Temperatur'
+    title_plural: 'Temperature'
+    inside: 'indenfor'
+    outside: 'udenfor'
+    idle: 'Stand-by'
+    heating: 'Varme til'
+    off_text: 'slukket'
+    program: 'Program'
+    heat: 'Varme'
+    this_room: 'Dette rum'
+    temperature: 'Temperatur'
+    humidity: 'Fugtighed'
+  
+  cover:
+    title: 'Gardin'
+    title_plural: 'Gardiner'
+    cover_open: 'Åben'
+    cover_closed: 'Lukket'
+  
+  device:
+    title: 'Enhed'
+    title_plural: 'Enheder'
+    device_on: 'Enhed tændt'
+    devices_on: 'Enheder tændt'
+    on_text: 'Tændt'
+    off_text: 'Slukket'
+    device_off: 'Enhed slukket'
+    devices_off: 'Enheder slukket'
+    all_devices_on: 'Alle enheder tændt'
+    all_devices_off: 'Alle enheder slukket'
+  
+  media_player:
+    title: 'Medie afspiller'
+    title_plural: 'Medie afspillere'
+    media_player_on: 'medie afspiller tændt'
+    media_players_on: 'medie afspillere tændt'
+    media_player_off: 'medie afspiller slukket'
+    media_players_off: 'medie afspillere slukket'
+    all_media_players_on: 'Alle medie afspillere tændt'
+    all_media_players_off: 'Alle medie afspillere slukket'
+    on_text: 'Tændt'
+    off_text: 'Slukket'
+  
+  vacuum:
+    title: 'Støvsuger'
+    title_plural: 'Støvsugere'
+  
+  plant:
+    title: 'Plante'
+    title_plural: 'Planter'
+  
+  home:
+    title: 'Forside'
+  
+  rooms:
+    title: 'Rum'
+
+  all_lights:
+    title: 'Alle lys'
+  
+  scenes:
+    title: 'Scener'
+    not_defined: 'Ingen scener defineret'
+  
+  cameras:
+    title: 'Kameraer'
+    not_defined: 'Ingen kameraer defineret'
+  
+  more_page:
+    title: 'Mere'
+    house_info: 'Hus infomartion'
+    house_data: 
+      title: 'Hus data'
+      all_sensors: 'Alle sensorer'
+      all_batteries: 'Alle batterier'
+      config: 'Konfiguration'
+      developer_tools: 'Developer tools'
+    settings:
+      title: 'Tema indstillingere'
+      theme_docs: 'Theme docs'
+      support_paypal: 'Support/Donere via PayPal'
+      buy_coffee: 'Buy me a coffee'
+      by: 'Lavet af'
+      version: 'Version'
+    more_page_addons: 'More addons'

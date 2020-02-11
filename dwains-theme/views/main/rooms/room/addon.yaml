@@ -1,0 +1,31 @@
+# dwains_theme
+
+#Room addon view
+
+{% for room in _d_t_config.rooms %}
+{% if room["addons"] %}
+{% for addon in room["addons"] %}
+- title: {{ addon["name"] }}
+  path: {{ room["name"]|lower|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace(" ", "_") }}
+  badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        #Header
+        - !include
+          - ../../../partials/header.yaml
+          - title: {{ addon["name"] }}
+            subtitle: {{ room["name"] }}
+            navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+        #Start for a custom more page
+        - type: vertical-stack
+          cards:
+            !include 
+              - ../../../../../{{ addon["path"] }}
+              - name: {{ addon["name"] }}
+                {% if addon["data"] %}
+                data: '{{ addon["data"]|tojson }}'
+                {% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}

@@ -1,0 +1,148 @@
+de:
+  greetings:
+    good_morning: 'Guten Morgen'
+    good_afternoon: 'Guten Nachmittag'
+    good_evening: 'Guten Abend'
+  
+  alarm:
+    armed_away: 'Alarmsystem aktiviert (Aktiv unterwegs).'
+    armed_home: 'Alarmsystem aktiviert (Aktiv zuhause).'
+    disarmed: 'Alarm system de-aktiviert.'
+
+  history:
+    sec_ago: 'sec ago'
+    min_ago: 'min ago'
+    h_ago: 'h ago'
+    d_ago: 'd ago'
+    m_ago: 'm ago'
+    y_ago: 'y ago'
+
+  house_information:
+    title: 'Haus Information'
+    favorites: 'Favoriten'
+    house_calendar: 'Haus Kalender'
+    activity: 'Aktivität (Türen, Fenster, Bewegungen)'
+
+  motion:
+    title: 'Bewegung'
+    title_plural: 'Bewegungen'
+    motion_on: 'erkannt'
+
+  light:
+    title: 'Licht'
+    title_plural: 'Lichter'
+    light_on: 'Licht an'
+    lights_on: 'Lichter an'
+    light_off: 'Licht aus'
+    lights_off: 'Lichter aus'
+    all_lights_on: 'Alle Lichter an'
+    all_lights_off: 'Alle Lichter aus'
+    on_text: 'an'
+    off_text: 'aus'
+
+  door:
+    title: 'Tür'
+    title_plural: 'Türen'
+    door_open: 'Tür offen'
+    doors_open: 'Türen offen'
+    all_doors_open: 'Alle Türen offen'
+    all_doors_closed: 'Alle Türen geschlossen'
+    open: 'offen'
+    closed: 'geschlossen'
+
+  window:
+    title: 'Fenster'
+    title_plural: 'Fenster'
+    window_open: 'Fenster offen'
+    windows_open: 'Fenster offen'
+    all_windows_open: 'Alle Fenster offen'
+    all_windows_closed: 'Alle Fenster geschlossen'
+    open: 'offen'
+    closed: 'geschlossen'
+
+  climate:
+    title: 'Temperatur'
+    title_plural: 'Temperaturen'
+    inside: 'innen'
+    outside: 'aussen'
+    idle: 'Leerlauf'
+    heating: 'heizen zu'
+    off_text: 'Aus'
+    program: 'Programm'
+    heat: 'Heizen'
+    this_room: 'Diesen Raum'
+    temperature: 'Temperatur'
+    humidity: 'Feuchtigkeit'
+
+  cover:
+    title: 'Abdeckung'
+    title_plural: 'Abdeckungen'
+    cover_open: 'offen'
+    cover_closed: 'geschlossen'
+
+  device:
+    title: 'Gerät'
+    title_plural: 'Geräte'
+    device_on: 'Gerät an'
+    devices_on: 'Geräte an'
+    device_off: 'Gerät aus'
+    devices_off: 'Geräte aus' 
+    all_devices_on: 'Alle Geräte an'
+    all_devices_off: 'Alle Geräte aus'       
+    on_text: 'an'
+    off_text: 'aus'
+
+  media_player:
+    title: 'Medienspieler'
+    title_plural: 'Medienspieler'
+    media_player_on: 'Medienspieler an'
+    media_players_on: 'Medienspieler an'
+    media_player_off: 'Medienspieler aus'
+    media_players_off: 'Medienspieler aus'
+    all_media_players_on: 'Alle Medienspieler an'
+    all_media_players_off: 'Alle Medienspieler aus'       
+    on_text: 'an'
+    off_text: 'aus'
+
+  vacuum:
+    title: 'Sauger'
+    title_plural: 'Sauger'
+
+  plant:
+    title: 'Pflanze'
+    title_plural: 'Pflanzen'
+
+  home:
+    title: 'Homepage'
+
+  rooms:
+    title: 'Räume'
+
+  all_lights:
+    title: 'Alle Lichter'
+
+  scenes:
+    title: 'Szenen'
+    not_defined: 'Keine Szenen definiert'
+
+  cameras:
+    title: 'Kameras'
+    not_defined: 'Keine Kameras definiert'
+
+  more_page:
+    title: 'Mehr'
+    house_info: 'Haus info'
+    house_data: 
+      title: 'Haus Daten'
+      all_sensors: 'Alle Sensoren'
+      all_batteries: 'Alle Batterien'
+      config: 'Config'
+      developer_tools: 'Developer tools'
+    settings:
+      title: 'Theme Einstellung'
+      theme_docs: 'Theme Dokumentation'
+      support_paypal: 'Unterstützen/spenden mit PayPal'
+      buy_coffee: 'Kauf mir einen Kaffee'
+      by: 'durch'
+      version: 'Version'
+    more_page_addons: 'Mehr Erweiterungen'

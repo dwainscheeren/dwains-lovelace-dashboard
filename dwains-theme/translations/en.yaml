@@ -1,0 +1,148 @@
+en:
+  greetings:
+    good_morning: 'Good Morning'
+    good_afternoon: 'Good Afternoon'
+    good_evening: 'Good Evening'
+  
+  alarm:
+    armed_away: 'Alarm system activated (Armed Away).'
+    armed_home: 'Alarm system activated (Armed Home).'
+    disarmed: 'Alarm system de-activated.'
+
+  history:
+    sec_ago: 'sec ago'
+    min_ago: 'min ago'
+    h_ago: 'h ago'
+    d_ago: 'd ago'
+    m_ago: 'm ago'
+    y_ago: 'y ago'
+
+  house_information:
+    title: 'House Information'
+    favorites: 'Favorites'
+    house_calendar: 'House Calendar'
+    activity: 'Activity (Doors, windows, motion)'
+
+  motion:
+    title: 'Motion'
+    title_plural: 'Motions'
+    motion_on: 'Detected'
+
+  light:
+    title: 'Light'
+    title_plural: 'Lights'
+    light_on: 'light on'
+    lights_on: 'lights on'
+    light_off: 'light off'
+    lights_off: 'lights off'
+    all_lights_on: 'All lights on'
+    all_lights_off: 'All lights off'
+    on_text: 'On'
+    off_text: 'Off'
+
+  door:
+    title: 'Door'
+    title_plural: 'Doors'
+    door_open: 'door open'
+    doors_open: 'doors open'
+    all_doors_open: 'All doors open'
+    all_doors_closed: 'All doors closed'
+    open: 'Open'
+    closed: 'Closed'
+
+  window:
+    title: 'Window'
+    title_plural: 'Windows'
+    window_open: 'window open'
+    windows_open: 'windows open'
+    all_windows_open: 'All windows open'
+    all_windows_closed: 'All windows closed'
+    open: 'Open'
+    closed: 'Closed'
+
+  climate:
+    title: 'Temperature'
+    title_plural: 'Temperates'
+    inside: 'inside'
+    outside: 'outside'
+    idle: 'Stand-by'
+    heating: 'Heating to'
+    off_text: 'Off'
+    program: 'Program'
+    heat: 'Heat'
+    this_room: 'This room'
+    temperature: 'Temperature'
+    humidity: 'Humidity'
+
+  cover:
+    title: 'Cover'
+    title_plural: 'Covers'
+    cover_open: 'Open'
+    cover_closed: 'Closed'
+
+  device:
+    title: 'Device'
+    title_plural: 'Devices'
+    device_on: 'device on'
+    devices_on: 'devices on'
+    on_text: 'On'
+    off_text: 'Off'
+    device_off: 'Device off'
+    devices_off: 'Devices off'
+    all_devices_on: 'All devices on'
+    all_devices_off: 'All devices off'
+
+  media_player:
+    title: 'Media player'
+    title_plural: 'Media players'
+    media_player_on: 'media player on'
+    media_players_on: 'media players on'
+    media_player_off: 'Media player off'
+    media_players_off: 'Media players off'
+    all_media_players_on: 'All media players on'
+    all_media_players_off: 'All media players off'
+    on_text: 'On'
+    off_text: 'Off'
+
+  vacuum:
+    title: 'Vacuum'
+    title_plural: 'Vacuums'
+
+  plant:
+    title: 'Plant'
+    title_plural: 'Plants'
+
+  home:
+    title: 'Homepage'
+
+  rooms:
+    title: 'Rooms'
+
+  all_lights:
+    title: 'All lights'
+
+  scenes:
+    title: 'Scenes'
+    not_defined: 'No scenes defined'
+
+  cameras:
+    title: 'Cameras'
+    not_defined: 'No cameras defined'
+
+  more_page:
+    title: 'More'
+    house_info: 'House info'
+    house_data: 
+      title: 'House data'
+      all_sensors: 'All sensors'
+      all_batteries: 'All batteries'
+      config: 'Config'
+      developer_tools: 'Developer tools'
+    settings:
+      title: 'Theme settings'
+      theme_docs: 'Theme docs'
+      support_paypal: 'Support/Donate with PayPal'
+      buy_coffee: 'Buy me a coffee'
+      by: 'By'
+      version: 'Version'
+    more_page_addons: 'More addons'

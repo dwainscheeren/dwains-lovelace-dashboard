@@ -1,0 +1,148 @@
+fr:
+  greetings:
+    good_morning: 'Bon matin'
+    good_afternoon: 'Bonne après-midi'
+    good_evening: 'Bonsoir'
+  
+  alarm:
+    armed_away: "Système d'alarme activé (Armé à l'extérieur)."
+    armed_home: "Système d'alarme activé (Armé à la maison)."
+    disarmed: "Système d'alarme désactivé"
+
+  history:
+    sec_ago: 'sec depuis'
+    min_ago: 'min depuis'
+    h_ago: 'h depuis'
+    d_ago: 'j depuis'
+    m_ago: 'm depuis'
+    y_ago: 'a depuis'
+
+  house_information:
+    title: 'Information maison'
+    favorites: 'Favoris'
+    house_calendar: 'Calendrier maison'
+    activity: 'Activité (Portes, fenêtres, mouvement)'
+
+  motion:
+    title: 'Mouvement'
+    title_plural: 'Mouvements'
+    motion_on: 'Détecté'
+
+  light:
+    title: 'Lumière'
+    title_plural: 'Lumières'
+    light_on: 'lumière allumée'
+    lights_on: 'lumières allumées'
+    light_off: 'lumière éteinte'
+    lights_off: 'lumières éteintes'
+    all_lights_on: 'Toutes lumières allumées'
+    all_lights_off: 'Toutes lumières éteintes'
+    on_text: 'Allumée'
+    off_text: 'Éteinte'
+
+  door:
+    title: 'Porte'
+    title_plural: 'Portes'
+    door_open: 'porte ouverte'
+    doors_open: 'portes ouvertes'
+    all_doors_open: 'Toutes portes ouvertes'
+    all_doors_closed: 'Toutes portes fermées'
+    open: 'Ouverte'
+    closed: 'Fermée'
+
+  window:
+    title: 'Fenêtre'
+    title_plural: 'Fenêtres'
+    window_open: 'fenêtre ouverte'
+    windows_open: 'fenêtres ouvertes'
+    all_windows_open: 'Toutes fenêtres ouvertes'
+    all_windows_closed: 'Toutes fenêtres fermées'
+    open: 'Ouverte'
+    closed: 'Fermée'
+
+  climate:
+    title: 'Température'
+    title_plural: 'Températures'
+    inside: 'intérieur'
+    outside: 'extérieur'
+    idle: 'En attente'
+    heating: 'chauffage'
+    off_text: 'fermée'
+    program: 'Programme'
+    heat: 'Chaleur'
+    this_room: 'Cette pièce'
+    temperature: 'Température'
+    humidity: 'Humidité'
+
+  cover:
+    title: 'Volet'
+    title_plural: 'Volets'
+    cover_open: 'Ouvert'
+    cover_closed: 'Fermé'
+
+  device:
+    title: 'Périphérique'
+    title_plural: 'Périphériques'
+    device_on: 'périphérique ouvert'
+    devices_on: 'périphériques ouverts'
+    on_text: 'Ouvert'
+    off_text: 'Fermé'
+    device_off: 'Périphérique fermé'
+    devices_off: 'Périphériques fermés'
+    all_devices_on: 'Tous périphériques ouverts'
+    all_devices_off: 'Tous périphériques fermés'
+
+  media_player:
+    title: 'Lecteur multimédia'
+    title_plural: 'Lecteurs multimédias'
+    media_player_on: 'Lecteur multimédia ouvert'
+    media_players_on: 'Lecteurs multimédias ouverts'
+    media_player_off: 'Lecteur multimédia fermé'
+    media_players_off: 'Lecteurs multimédias fermés'
+    all_media_players_on: 'Tous lecteurs multimédias ouverts'
+    all_media_players_off: 'Tous lecteurs multimédias fermés'
+    on_text: 'Ouvert'
+    off_text: 'Fermé'
+
+  vacuum:
+    title: 'Aspirateur'
+    title_plural: 'Aspirateurs'
+
+  plant:
+    title: 'Plante'
+    title_plural: 'Plantes'
+
+  home:
+    title: 'Accueil'
+
+  rooms:
+    title: 'Pièces'
+
+  all_lights:
+    title: 'Toutes lumières'
+
+  scenes:
+    title: 'Scènes'
+    not_defined: 'Aucune scène définie'
+
+  cameras:
+    title: 'Caméras'
+    not_defined: 'Aucune caméra définie'
+    
+  more_page:
+    title: 'Plus'
+    house_info: 'Info maison'
+    house_data: 
+      title: 'Donnée maison'
+      all_sensors: 'Tous capteurs'
+      all_batteries: 'Toutes batteries'
+      config: 'Config'
+      developer_tools: 'Outils développeur'
+    settings:
+      title: 'Paramètres thème'
+      theme_docs: 'Docs thème'
+      support_paypal: 'Support/Faire un don avec PayPal'
+      buy_coffee: 'Achetez-moi un café'
+      by: 'Par'
+      version: 'Version'
+    more_page_addons: "Plus d'extensions"

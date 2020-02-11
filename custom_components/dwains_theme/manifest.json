@@ -1,0 +1,8 @@
+{
+  "domain": "dwains_theme",
+  "name": "Dwains Theme Component",
+  "documentation": "",
+  "dependencies": ["lovelace"],
+  "codeowners": [],
+  "requirements": ["jinja2"]
+}

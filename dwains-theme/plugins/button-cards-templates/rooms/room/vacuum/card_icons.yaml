@@ -1,0 +1,16 @@
+room_vacuum_card_icons:
+  show_icon: false
+  show_name: false
+  show_label: true
+  styles:
+    card:
+      - box-shadow: none
+      - background: transparent
+    state:
+      - color: white
+      - font-weight: bold
+      - font-size: 15px
+    label:
+      - color: white
+      - font-weight: bold
+      - font-size: 15px

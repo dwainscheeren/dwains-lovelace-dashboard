@@ -1,0 +1,52 @@
+# dwains_theme
+
+- path: dynamic_page
+  {% if _d_t_config.dynamic_page and _d_t_config.dynamic_page.addon %}
+  icon: {{ _d_t_config.dynamic_page.addon.title|default(_d_t_icons.menu_cameras)|default('mdi:cctv') }}
+  title: {{ _d_t_config.dynamic_page.addon.name|default(_d_t_trans.cameras.title) }}
+  {% else %}
+  icon: {{ _d_t_icons.menu_cameras|default('mdi:cctv') }}
+  title: {{ _d_t_trans.cameras.title }}
+  {% endif %}
+  badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        #Header
+        - !include
+          - ../partials/header.yaml
+          {% if _d_t_config.dynamic_page and _d_t_config.dynamic_page.addon %}
+          - title: {{ _d_t_config.dynamic_page.addon.name|default(_d_t_trans.cameras.title) }}
+          {% else %}
+          - title: {{ _d_t_trans.cameras.title }}
+          {% endif %}
+        #Start for dynamic page
+        {% if _d_t_config.dynamic_page and _d_t_config.dynamic_page.addon %}
+        #Dynamic addon
+        - type: vertical-stack
+          cards:
+            !include 
+              - ../../../{{ _d_t_config.dynamic_page.addon.path }}
+              - name: {{ _d_t_config.dynamic_page.addon.name }}
+                {% if _d_t_config.dynamic_page.addon.data %}
+                data: '{{ _d_t_config.dynamic_page.addon.data|tojson }}'
+                {% endif %}
+        {% else %}
+        #Cameras
+        - type: custom:mod-card
+          style: |
+            ha-card {
+              padding: 8px;
+            }
+          card:
+            type: vertical-stack
+            cards:
+              {% for camera in _d_t_config.cameras %}
+              - camera_view: live
+                entity: {{ camera["entity"] }}
+                type: picture-entity
+              {% else %}
+              - type: markdown
+                content: {{ _d_t_trans.cameras.not_defined }}
+              {% endfor %}
+        {% endif %}

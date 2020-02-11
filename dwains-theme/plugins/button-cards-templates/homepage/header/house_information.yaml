@@ -1,0 +1,125 @@
+# dwains_theme
+
+header_house_information:
+  layout: icon_name_state2nd
+  show_state: false
+  show_label: true
+  icon: '{{ _d_t_icons.more_house_information|default('mdi:home') }}'
+  tap_action: 
+    action: navigate
+    navigation_path: more_page_house_information
+  name: >
+    [[[
+      var onLights = 0;
+      var lights = 0;
+
+      {% for room in _d_t_config.rooms %}
+        //Do some things for the lights
+        {% if room["light"] %}
+          {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
+          //This room has only 1 light
+            lights++;
+            if(states['{{ room["light"] }}'].state == 'on') {
+              onLights++;
+            }
+          {% else %}
+          //This room has group of lights
+            states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
+              lights++;
+              if(states[entity].state == 'on'){
+                onLights++;
+              }
+            });  
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      if(lights == 0){
+        return '{{ _d_t_trans.house_information.title }}';
+      } else {
+        return ((onLights >= 1) ? ((onLights == 1) ? '1 {{ _d_t_trans.light.light_on }}' : onLights + ' {{ _d_t_trans.light.lights_on }}') : '{{ _d_t_trans.light.all_lights_off }}')
+      }
+    ]]]
+  label: >
+    [[[
+      var doorsInfo = '';
+      var windowsInfo = '';
+      var openDoors = 0;
+      var doors = 0;
+      var openWindows = 0;
+      var windows = 0;
+
+      {% for room in _d_t_config.rooms %}                        
+        //Do some things for the doors
+        {% if room["door"] %}
+          {% if room["door"].split('.')[0] == 'binary_sensor' %}
+          //This room has only 1 door
+            doors++;
+            if(states['{{ room["door"] }}'].state == 'on') {
+              openDoors++;
+            }
+          {% else %}
+          //This room has group of doors
+            states['{{ room["door"] }}'].attributes['entity_id'].forEach(function(entity){
+              doors++;
+              if(states[entity].state == 'on'){
+                openDoors++;
+              }
+            });  
+          {% endif %}
+        {% endif %}
+        if(doors > 0){
+          doorsInfo = ((openDoors >= 1) ? ((openDoors == 1) ? '1 {{ _d_t_trans.door.door_open }}' : openDoors + ' {{ _d_t_trans.door.doors_open }}') : '{{ _d_t_trans.door.all_doors_closed }}')
+        }
+
+        //Do some things for the windows
+        {% if room["window"] %}
+          {% if room["window"].split('.')[0] == 'binary_sensor' %}
+          //This room has only 1 window
+            windows++;
+            if(states['{{ room["window"] }}'].state == 'on') {
+              openWindows++;
+            }
+          {% else %}
+          //This room has group of windows
+            states['{{ room["window"] }}'].attributes['entity_id'].forEach(function(entity){
+              windows++;
+              if(states[entity].state == 'on'){
+                openWindows++;
+              }
+            });  
+          {% endif %}
+        {% endif %}
+        if(windows > 0){
+          windowsInfo = ((openWindows >= 1) ? ((openWindows == 1) ? '1 {{ _d_t_trans.window.window_open }}' : openWindows + ' {{ _d_t_trans.window.windows_open }}') : '{{ _d_t_trans.window.all_windows_closed }}')
+        }
+      {% endfor %}
+
+      return (doorsInfo ? doorsInfo + '<br>' : '') + (windowsInfo ? windowsInfo : '&nbsp;') + (doorsInfo ? '' : '<br>&nbsp;');
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i n""i l"'
+      - grid-template-columns: 35% 1fr
+      - grid-template-rows: 1fr min-content
+    card:
+      - box-shadow: none
+      - padding: 0%
+      - height: 55px
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 45px
+      - height: 45px
+      - background: var(--dwains-theme-accent)
+      - color: white
+      - border-radius: 100%
+    label:
+      - color: white
+      - justify-self: start
+      - font-size: 12px
+      - text-align: left
+    name:
+      - color: white
+      - justify-self: start
+      - font-size: 14px

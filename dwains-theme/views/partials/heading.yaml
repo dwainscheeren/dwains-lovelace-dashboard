@@ -1,0 +1,16 @@
+# dwains_theme
+
+# Heading partial
+type: markdown
+style: |
+  ha-card {
+    box-shadow: none;
+    background: none;
+    color: var(--dwains-theme-grey);
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .markdown {
+    padding: 0px 16px 0px 16px;
+  }
+content: "{{ title }}"

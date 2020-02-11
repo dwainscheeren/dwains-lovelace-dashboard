@@ -1,0 +1,19 @@
+shadow: false
+compact_mode: true
+hide_unused: true
+hide_config: true
+hide_raw: true
+show_tabs: 'home, lights, scenes, dynamic_page, more_page'
+hidden_tab_redirect: false
+exceptions:
+  - conditions:
+      user_agent: Mobile
+    config:
+      footer_mode: true
+      disable_sidebar: true
+      chevrons: false
+      indicator_top: true
+      all_tabs_css: "width: calc(20vw - 3.6px) !important; padding: 0px !important;"
+      header_css: 'padding-bottom: 20px !important; padding-left: 0px !important; padding-right: 0px !important;'
+      view_css: 'padding-top: 96px !important;'
+      options_hide: true 
