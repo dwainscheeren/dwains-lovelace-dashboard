@@ -52,6 +52,9 @@
 #### Donation list
 
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
+If you donate please write a short message with your HA username :D
+
+> @the_cyberspace  — Nice theme, i love it! And enjoy your krat juup :)
 
 > @Klumpke — Hard work should be rewarded. Great theme that I use every day!
 
