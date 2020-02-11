@@ -31,7 +31,7 @@ Or join me on Slack!
 
 [Dutch Speaking Slack](https://join.slack.com/t/homeassistantnlbe/shared_invite/enQtNzc4MzAwMTEyNDIwLTgwZGVmNmNhZjZkNmVkMjM1NTM3N2UwODIzZTFjMzY1ZmUyMGJiZDU5ZTEyZWEyYzMzYzQzYWJmNGE3MWVjN2I)
 
-I manage this Slack channels together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains) it has a lot of same features as Dwains Theme. 
+I manage these channels together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains) it has a lot of same features as Dwains Theme. 
 
 **YouTube Channel**
 
