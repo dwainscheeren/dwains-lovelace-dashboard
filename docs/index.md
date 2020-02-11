@@ -51,7 +51,11 @@
 
 #### Donation list
 
-Many thanks to the people who donated. I love transparency so I will place all donations on this page.
+Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
+
+> @Klumpke — Hard work should be rewarded. Great theme that I use every day!
+
+> @Mase iirc — I didn‘t know that you can make such a good looking setup in HA. Thanks for such an advanced, yet simple to install theme.
 
 > @Warwick Jaensch — For great work on Dwains Theme!
 

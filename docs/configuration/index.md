@@ -8,7 +8,7 @@ Dwains Theme configuration is loaded from the files inside the folder `dwains-th
 
 This folder can have the following files: `global.yaml`, `house_information.yaml`, `scenes.yaml`, `cameras.yaml`, `persons.yaml`, `rooms.yaml`, `icons.yaml`, `more_page.yaml` and `dynamic_page.yaml`.
 
-Only the files `global.yaml` and `rooms.yaml` are required!
+Only the files `global.yaml`, `rooms.yaml` and `icons.yaml` are required!
 
 *HINT: You can always look in the `dwains-theme/configs-samples` folder files for some inspiration.*
 

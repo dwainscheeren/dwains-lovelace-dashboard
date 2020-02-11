@@ -33,4 +33,7 @@ more_page:
     - name: Statistics
       icon: fas:chart-area
       path: 'dwains-theme/addons/more_page/statistics/page.yaml'
+      data:
+          some_data: 'This is some data parsed.'
+          some_other_data: 'and some other data.'
 ```    

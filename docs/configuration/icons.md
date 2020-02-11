@@ -15,7 +15,7 @@
 
 # Icons `icons.yaml`
 
-**This file is optional**
+**This file is required but can be empty!**
 
 With this file you can override the default icons that are loaded in Dwains Theme.
 
@@ -27,8 +27,8 @@ With this file you can override the default icons that are loaded in Dwains Them
 | menu_home | string | mdi:home | Home page icon |
 | menu_lights | string | mdi:lightbulb-group | Lights page icon |
 | menu_scenes | string | mdi:play-circle-outline | Scenes page icon |
-| menu_cameras | string | mdi:cctv | Cameras page icon |
-| menu_more | string | mdi:menu | More page icon |
+| menu_cameras | string | mdi:cctv | Cameras page icon (default for dynamics page) |
+| menu_more_page | string | mdi:menu | More page icon |
 | light_on | string | fas:lightbulb | Light on icon |
 | light_off | string | far:lightbulb | Light off icon |
 | climate | string | fas:thermometer-three-quarters | Climate icon |
