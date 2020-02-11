@@ -15,7 +15,11 @@ With more page addons you can still add own pages to Dwains Theme. Let's say you
 ### Dynamic page addons
 By default the dynamic page shows the cameras. But not everyone has cameras in his HA setup. Or if you just want to show something else on the cameras page. You can use a dynamic page addon.
 
+### Persons addons
+With persons addons you can add own cards to a person page. Like for example a map, traveling time to work or home. It can also parse some data to that view. 
+
 ## Addons
 * [Rooms addons](rooms.md)
 * [More page addons](more_page.md)
 * [Dynamic page addons](dynamic_page.md)
+* [Persons addons](persons.md)

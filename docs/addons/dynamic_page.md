@@ -2,9 +2,10 @@
 [< Go back to Home](../index.md)
 
 ### [Addons](index.md)
-* [Rooms addons](room.md)
+* [Rooms addons](rooms.md)
 * [More page addons](more_page.md)
 * [Dynamic page addons](dynamic_page.md)
+* [Persons addons](persons.md)
 
 ---
 
@@ -18,7 +19,7 @@ By default the dynamic page shows the cameras. But not everyone has cameras in h
 |------|--------|------------------|----------------------------------------------------|-----------------------------------|
 | name | string | Required         | Statistics                                         | The name of the addon             |
 | icon | string | fas:puzzle-piece | fas:chart-area                                     | The icon of the addon             |
-| path | string | Required         | dwains-theme/addons/more_page/statistics/page.yaml | The path to the page of the addon |
+| path | string | Required         | `dwains-theme/addons/more_page/statistics/page.yaml` | The path to the page of the addon |
 | data | object | Not required     | See example below | Data you wanna parse to the addon |
 
 ## Dynamic page addons example

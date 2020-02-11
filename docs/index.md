@@ -30,6 +30,7 @@
 * [Rooms addons](addons/rooms.md)
 * [More page addons](addons/more_page.md)
 * [Dynamic page addons](addons/dynamic_page.md)
+* [Persons addons](addons/persons.md)
 
 ### Information
 * [Update theme](information/update.md)

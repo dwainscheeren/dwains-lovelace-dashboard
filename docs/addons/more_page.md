@@ -5,6 +5,7 @@
 * [Rooms addons](rooms.md)
 * [More page addons](more_page.md)
 * [Dynamic page addons](dynamic_page.md)
+* [Persons addons](persons.md)
 
 ---
 
@@ -18,7 +19,7 @@ With more page addons you can still add own pages to Dwains Theme. Let's say you
 |------|--------|------------------|----------------------------------------------------|-----------------------------------|
 | name | string | Required         | Statistics                                         | The name of the addon             |
 | icon | string | fas:puzzle-piece | fas:chart-area                                     | The icon of the addon             |
-| path | string | Required         | dwains-theme/addons/more_page/statistics/page.yaml | The path to the page of the addon |
+| path | string | Required         | `dwains-theme/addons/more_page/statistics/page.yaml` | The path to the page of the addon |
 | data | object | Not required     | See example below | Data you wanna parse to the addon |
 
 ## More page addons example
