@@ -6,7 +6,7 @@ resources:
   - type: css
     url: 'https://fonts.googleapis.com/css?family=Open+Sans&display=swap'
   - type: css
-    url: /local/dwains-theme/style.css?v=1.1.0
+    url: /local/dwains-theme/style.css?v=1.1.1
 
   #Plugins resources (dwains theme)
   - type: module
