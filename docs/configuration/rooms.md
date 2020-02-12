@@ -36,6 +36,7 @@ Rooms sections, all rooms of your house. This is where my theme is all about :D
 | vacuum       | object                       | Not required       | See room vacuum below                                                | Vacuum                                                                            |
 | plant        | string <br>(entity or group) | Not required       | plant.hallway_plant<br> or <br>group.hallway_plants                  | Plant(s). Can be single plant or a group of plants                                |
 | media_player | string <br>(entity or group) | Not required       | media_player.hallway_tv<br> or <br>group.hallway_tvs                 | Media player(s). Can be single media_player or a group of media_players           |
+| device | string <br>(entity or group) | Not required       | binary_sensor.dishwasher<br> or <br>group.kitchen_devices                 | Device(s). Can be single device (sensor, switch, binary_sensor etc) or a group of devices           |
 | addons       | object                       | Not required       |                                                                      | Rooms support addons, they are called *rooms addons.* [Read more here](../addons/rooms.md)                                                                       |
 
 ## Rooms example

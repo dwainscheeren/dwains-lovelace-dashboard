@@ -18,6 +18,14 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
 ---
 
+## Update 1.1.2 
+
+* Added italian language
+* Fixed bug with multiple addons in persons
+* 
+
+---
+
 ## Update from 1.0.* to 1.1.0
 
 1. Backup the folder `dwains-theme/configs`
