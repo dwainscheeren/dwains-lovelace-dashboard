@@ -1,7 +1,7 @@
 <div class="row" style="display: grid; grid-template-columns: 60% 40%;">
   <div class="column">
   <h2>Welcome to the Dwains Lovelace Theme documentation!</h2>
-  <p>Besides the documentation, you can also get support and ask questions on the <a href="replacethis.md">HA Forum</a>. I spend a lot of free time into this project. If you appreciate what I have made you can <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank">Buy me a coffee/beer</a> or <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url" target="_blank">donate to my PayPal account</a>. If you like you can subscribe on my <a href="https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A" target="_blank">Home Assistant YouTube channel</a>.</p>
+  <p>Besides the documentation, you can also get support and ask questions on the <a href="https://community.home-assistant.io/t/dwains-theme-released-an-auto-generating-lovelace-ui-theme/168593?u=dwains">HA Forum</a>. I spend a lot of free time into this project. If you appreciate what I have made you can <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank">Buy me a coffee/beer</a> or <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url" target="_blank">donate to my PayPal account</a>. If you like you can subscribe on my <a href="https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A" target="_blank">Home Assistant YouTube channel</a>.</p>
   <p>
   NOTE: This theme is currently focused on mobile view. A future update (coming soon) will also fully support desktop and tablet view.
   </p>
