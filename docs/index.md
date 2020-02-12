@@ -55,6 +55,10 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @nexro — Thanks for your good work and fast response @ Slack! 
+
+> @giosem — Thanks Dwain! Great theme! I really love it.
+
 > @konradwalsh — Thanks for an excellent theme and making HA come to life
 
 > @the_cyberspace  — Nice theme, i love it! And enjoy your krat juup :)
