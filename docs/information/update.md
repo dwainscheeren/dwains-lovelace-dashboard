@@ -21,15 +21,20 @@ If there is a update of Dwains Theme here is how to install it.
 
 # Changelog
 
-## Update 1.1.2 
+## Update 1.1.2
 
 * Docs updates.
 * Config examples updates.
+* Added some padding below persons and end of the header on homepage.
+* Fixed a bug with single cover state on room page.
 * Added Italian language.
+* German language translation updated.
 * Fixed bug when put multiple addons in persons.
 * Fixed motion icon (off state) FA icon free.
 * Added sidebar back on mobile on the house data page. If you go on the more page to house data you can use the sidebar (swipe from left) on mobile to access HA sidebar.
 * Added toggle doubleclick on favorites on house information page.
+* Fixed a bug with outside temperature/humidity on climate page, it also now uses weather before outside_temperature and outside_humidity so in future these 2 can be removed.
+* Added functionallity to add input_boolean on scene page, so you can active some scripts/automations on a scene click and toggle it.
 * Added debug information when an entity does not exists for:
   * On wrong global:alarm entity
   * On wrong global:weather entity
@@ -46,6 +51,7 @@ If there is a update of Dwains Theme here is how to install it.
   * On wrong room:media_player entity
   * On wrong room:vacuum entity
   * On wrong room:plant entity
+  * On wrong scene entity
 
 ---
 

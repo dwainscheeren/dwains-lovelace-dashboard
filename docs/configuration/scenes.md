@@ -28,6 +28,8 @@ Scenes sections all scenes you want to be visible on the scenes page. You can [c
 | icon_color | string | var(--dwains-theme-header-text) | '#ffffff' | Icon color |
 | background | string | optional | 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)' | Background color, you can use css styling here |
 
+*NOTE: The entity_id can also be an `input_boolean` so you can hang some automations on it, and set it off when you want*
+
 ## Scenes example
 ```YAML
 scenes:
