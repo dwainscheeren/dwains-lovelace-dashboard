@@ -41,7 +41,7 @@ With this file you can override the default icons that are loaded in Dwains Them
 | door_open | string | mdi:door-open | Door open icon |
 | door_closed | string | mdi:door-closed | Door closed icon |
 | motion_on | string | mdi:motion-sensor | Motion on icon |
-| motion_off | string | far:walking | Motion off icon |
+| motion_off | string | fas:walking | Motion off icon |
 | cover | string | mdi:window-shutter | Cover icon |
 | device | string | mdi:power-plug | Device icon |
 | media_player | string | fas:play | Media player icon |

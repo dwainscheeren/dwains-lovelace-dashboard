@@ -20,9 +20,28 @@ Copy the content of this folder to the root of your Home Assistant installation.
 
 ## Update 1.1.2 
 
-* Added italian language
-* Fixed bug with multiple addons in persons
-* 
+* Docs updates.
+* Config examples updates.
+* Added Italian language.
+* Fixed bug when put multiple addons in persons.
+* Fixed motion icon (off state) FA icon free.
+* Added sidebar back on mobile on the house data page. If you go on the more page to house data you can use the sidebar (swipe from left) on mobile to access HA sidebar.
+* Added toggle doubleclick on favorites on house information page.
+* Added debug information when an entity does not exists for:
+  * On wrong global:weather entity
+  * On wrong global:inside_temperature entity
+  * On wrong persons:track entity
+  * On wrong room:light entity
+  * On wrong room:climate entity
+  * On wrong room:temperature entity
+  * On wrong room:door entity
+  * On wrong room:window entity
+  * On wrong room:motion entity
+  * On wrong room:device entity
+  * On wrong room:cover entity
+  * On wrong room:media_player entity
+  * On wrong room:vacuum entity
+  * On wrong room:plant entity
 
 ---
 
