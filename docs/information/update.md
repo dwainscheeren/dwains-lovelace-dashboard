@@ -35,6 +35,7 @@ If there is a update of Dwains Theme here is how to install it.
 * Added toggle doubleclick on favorites on house information page.
 * Fixed a bug with outside temperature/humidity on climate page, it also now uses weather before outside_temperature and outside_humidity so in future these 2 can be removed.
 * Added functionallity to add input_boolean on scene page, so you can active some scripts/automations on a scene click and toggle it.
+* Added `show_name: 'false'` option to room object in `rooms.yaml` to hide the name on homepage.
 * Added debug information when an entity does not exists for:
   * On wrong global:alarm entity
   * On wrong global:weather entity
