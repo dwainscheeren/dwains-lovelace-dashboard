@@ -5,18 +5,21 @@
 If there is a update of Dwains Theme here is how to install it.
 
 ### Step 1 - Download Dwains Theme latest release
-Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases).
+1. Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases).
 
-**Each release has information on how to install it as an update!**
+**Each release has information on that page with how to install it as an update!**
 
 ### Step 2 - Extract & move the download
-Unzip the file you just downloaded. 
 
-Copy the content of this folder to the root of your Home Assistant installation.
+1. Unzip the file you just downloaded. 
 
-**NOTE: You may need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder. If you made any modifications on the `ui-lovelace.yaml` file check out the difference between your current one and the downloaded one.**
+2. Copy the content of this folder to the root of your Home Assistant installation.
+
+**WARNING: You may need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder. If you made any modifications on the `ui-lovelace.yaml` file, like added own resources, check out the difference between your current one and the downloaded one!!**
 
 ---
+
+# Changelog
 
 ## Update 1.1.2 
 
@@ -28,6 +31,7 @@ Copy the content of this folder to the root of your Home Assistant installation.
 * Added sidebar back on mobile on the house data page. If you go on the more page to house data you can use the sidebar (swipe from left) on mobile to access HA sidebar.
 * Added toggle doubleclick on favorites on house information page.
 * Added debug information when an entity does not exists for:
+  * On wrong global:alarm entity
   * On wrong global:weather entity
   * On wrong global:inside_temperature entity
   * On wrong persons:track entity

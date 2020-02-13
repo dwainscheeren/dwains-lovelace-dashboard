@@ -38,6 +38,7 @@
 
 ### How to guides
 * [How to choose and use an icon](how-tos/how-to-choose-icon.md)
+* [How to update theme](information/update.md)
 
 ### Support
 * [Bugs](https://github.com/dwainscheeren/lovelace-dwains-theme/issues)
@@ -55,7 +56,9 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
-> Simon — I am very satisfied with the theme.
+> @Evad — Very nice theme. Excellent documentation.
+
+> @Simon — I am very satisfied with the theme.
 
 > @nexro — Thanks for your good work and fast response @ Slack! 
 
