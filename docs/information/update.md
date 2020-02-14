@@ -23,6 +23,7 @@ If there is a update of Dwains Theme here is how to install it.
 
 ## Update 1.1.2
 
+* Added latest version sensor so you get notification on new available update on Dwains Theme.
 * Docs updates.
 * Config examples updates.
 * Fixed bug on climate page that not everything is in vertical stack.
