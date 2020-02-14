@@ -61,7 +61,7 @@ Download the [latest release from the release page](https://github.com/dwainsche
 ### Step 3 - Set the configuration files
 
 1. Find and rename the `dwains-theme/configs-samples` folder to `dwains-theme/configs`.
-2. Open your `configuration.yaml` file and make sure you don't have the following lines (with sublines). `homeassistant:`, `lovelace:`, `frontend:`. Please remove these lines. From your existing `configuration.yaml`. This is very important.
+2. Open your `configuration.yaml` file and make sure you don't have the following lines (with sublines). `homeassistant:`, `lovelace:`, `frontend:` and `lovelace_gen:`. Please remove these lines. From your existing `configuration.yaml`. This is very important.
 3. Open `configuration-sample.yaml` in your root HA folder and select the text between `Copy from here` till `Copy till here` and paste this at the top of your existing `configuration.yaml` file.
 
 ### Step 4 - Your existing configuration

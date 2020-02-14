@@ -1,4 +1,4 @@
-[< Go back to Home](index.md)
+[< Go back to Home](../index.md)
 
 # How to choose and use an icon
 

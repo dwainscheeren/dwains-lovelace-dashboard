@@ -25,6 +25,7 @@ If there is a update of Dwains Theme here is how to install it.
 
 * Docs updates.
 * Config examples updates.
+* Fixed bug on climate page that not everything is in vertical stack.
 * Added some padding below persons and end of the header on homepage.
 * Fixed a bug with single cover state on room page.
 * Added Italian language.
@@ -53,10 +54,19 @@ If there is a update of Dwains Theme here is how to install it.
   * On wrong room:vacuum entity
   * On wrong room:plant entity
   * On wrong scene entity
+* Fixed typo transparant -> transparent some places.
+* Fixed bug that single device not showing up on room page.
+
 
 ---
 
-## Update from 1.0.* to 1.1.0
+## Update from 1.1.0 to 1.1.1
+
+Follow the normal update manual (top of this page)
+
+---
+
+## Update from 1.0.* to 1.1.*
 
 1. Backup the folder `dwains-theme/configs`
 2. Then remove the following folders from your HA setup. `custom_components/dwains_theme`, `dwains-theme`, `themes`, `www/dwains-theme`.
