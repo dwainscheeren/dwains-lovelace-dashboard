@@ -9,7 +9,7 @@ frontend:
   extra_html_url:
     - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-solid.html
     - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-regular.html
-    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html #If have Font Awesome Light uncomment this line
+    # - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html #If have Font Awesome Light uncomment this line
 
 #Load browser_mod (https://github.com/thomasloven/hass-browser_mod)
 browser_mod:
