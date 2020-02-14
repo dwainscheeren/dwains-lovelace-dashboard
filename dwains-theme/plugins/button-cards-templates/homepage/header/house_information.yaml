@@ -19,17 +19,19 @@ header_house_information:
           {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
           //This room has only 1 light
             lights++;
-            if(states['{{ room["light"] }}'].state == 'on') {
+            if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
               onLights++;
             }
           {% else %}
           //This room has group of lights
-            states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
-              lights++;
-              if(states[entity].state == 'on'){
-                onLights++;
-              }
-            });  
+            if(states['{{ room["light"] }}']){
+              states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
+                lights++;
+                if(states[entity] && states[entity].state == 'on'){
+                  onLights++;
+                }
+              });  
+            }
           {% endif %}
         {% endif %}
       {% endfor %}
@@ -54,17 +56,19 @@ header_house_information:
           {% if room["door"].split('.')[0] == 'binary_sensor' %}
           //This room has only 1 door
             doors++;
-            if(states['{{ room["door"] }}'].state == 'on') {
+            if(states['{{ room["door"] }}'] && states['{{ room["door"] }}'].state == 'on') {
               openDoors++;
             }
           {% else %}
           //This room has group of doors
-            states['{{ room["door"] }}'].attributes['entity_id'].forEach(function(entity){
-              doors++;
-              if(states[entity].state == 'on'){
-                openDoors++;
-              }
-            });  
+            if(states['{{ room["door"] }}']){
+              states['{{ room["door"] }}'].attributes['entity_id'].forEach(function(entity){
+                doors++;
+                if(states[entity] && states[entity].state == 'on'){
+                  openDoors++;
+                }
+              });  
+            }
           {% endif %}
         {% endif %}
         if(doors > 0){
@@ -76,14 +80,14 @@ header_house_information:
           {% if room["window"].split('.')[0] == 'binary_sensor' %}
           //This room has only 1 window
             windows++;
-            if(states['{{ room["window"] }}'].state == 'on') {
+            if(states['{{ room["window"] }}'] && states['{{ room["window"] }}'].state == 'on') {
               openWindows++;
             }
           {% else %}
           //This room has group of windows
             states['{{ room["window"] }}'].attributes['entity_id'].forEach(function(entity){
               windows++;
-              if(states[entity].state == 'on'){
+              if(states[entity].state && states[entity].state == 'on'){
                 openWindows++;
               }
             });  

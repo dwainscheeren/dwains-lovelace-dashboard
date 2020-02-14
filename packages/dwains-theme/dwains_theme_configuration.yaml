@@ -9,7 +9,7 @@ frontend:
   extra_html_url:
     - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-solid.html
     - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-regular.html
-    # - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html #If have Font Awesome Light uncomment this line
+    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html #If have Font Awesome Light uncomment this line
 
 #Load browser_mod (https://github.com/thomasloven/hass-browser_mod)
 browser_mod:
@@ -17,12 +17,22 @@ browser_mod:
 #Dwains theme definitions (this is for doing all the jinja2 inside YAML files) 
 #You need to have a folder called dwains-theme/configs with all the configuration files inside
 dwains_theme:
+  information:
+    version: '1.1.2'
   translations:
     !include_dir_merge_named ../../dwains-theme/translations/
   configuration:
     !include_dir_merge_named ../../dwains-theme/configs/
   icons:
     !include ../../dwains-theme/configs/icons.yaml
+
+#Sensor for latest version
+sensor:
+  - platform: scrape
+    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.1.2
+    name: Dwains Theme Version
+    select: ".current-version h1"
+    value_template: '{{ value.split(":")[1] }}'
 
 #Input select
 input_select:

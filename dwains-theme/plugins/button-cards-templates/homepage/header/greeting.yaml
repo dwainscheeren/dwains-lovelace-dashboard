@@ -6,12 +6,17 @@ header_greeting:
   show_icon: false
   label: >
     [[[
-      if (entity.state == 'armed_away'){
-        return "{{ _d_t_trans.alarm.armed_away }}";
-      } else if (entity.state == 'armed_home'){
-        return "{{ _d_t_trans.alarm.armed_home }}";
+      if(entity){
+        if (entity.state == 'armed_away'){
+          return "{{ _d_t_trans.alarm.armed_away }}";
+        } else if (entity.state == 'armed_home'){
+          return "{{ _d_t_trans.alarm.armed_home }}";
+        } else {
+          return "{{ _d_t_trans.alarm.disarmed }}";
+        }
       } else {
-        return "{{ _d_t_trans.alarm.disarmed }}";
+        console.log('Dwains Theme Error: Invalid global.yaml:alarm entity!');
+        return 'Alarm Entity Error!';
       }
     ]]]
   name: >

@@ -27,14 +27,40 @@
               template: scene
               entity: {{ scene["entity"] }}   
               icon: '{{ scene["icon"]|default('far:play-circle') }}'
+              {% if scene["entity"].split('.')[0] == 'scene' %}
+              # its a scene entity
               tap_action: 
                 action: call-service
                 service: scene.turn_on
                 service_data:
                   entity_id: {{ scene["entity"] }}
               styles:
+                {% if scene["background"] %}
                 img_cell:
                   - background: '{{ scene["background"] }}'
+                {% endif %}
+                {% if scene["icon_color"] %}
+                icon:
+                  - color: '{{ scene["icon_color"] }}'
+                {% endif %}
+              {% else %}
+              # its something else then a scene entity
+              show_state: true
+              tap_action:
+                action: toggle
+                haptic: light 
+              styles:
+                {% if scene["background"] %}
+                img_cell:
+                  - background: '{{ scene["background"] }}'
+                {% endif %}
+                {% if scene["icon_color"] %}
+                icon:
+                  - color: '{{ scene["icon_color"] }}'
+                {% endif %}
+                grid:
+                  - grid-template-areas: '"i n""i s"'
+              {% endif %}
           {% else %}
           - type: markdown
             content: {{ _d_t_trans.scenes.not_defined }}

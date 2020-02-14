@@ -1,3 +1,5 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/scenes.html
+
 #scenes:
   # - entity: scene.watching_tv
   #   icon: fas:couch

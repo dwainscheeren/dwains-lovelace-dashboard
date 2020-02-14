@@ -1,7 +1,7 @@
 # dwains_theme
 
 more_page_list-item:
-  show_label: true
+  show_label: false
   icon: '{{ _d_t_icons.more_page_list_chevron|default('mdi:chevron-right') }}'
   styles:
     grid:
@@ -27,4 +27,10 @@ more_page_list-item:
       - justify-self: start
       - font-size: 16px
       - align-self: center
+      - margin-left: 20px
+    state:
+      - justify-self: start
+      - align-self: left
+      - font-size: 13px
+      - color: var(--dwains-theme-grey)
       - margin-left: 20px

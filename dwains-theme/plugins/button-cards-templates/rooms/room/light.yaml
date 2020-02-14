@@ -8,20 +8,24 @@ room_light:
   color: 'auto'
   label: >
     [[[ 
-      if (typeof(entity) === 'undefined') return; 
-      if(entity.state == 'on') {
-        if ('brightness' in entity.attributes) { 
-          if (entity.attributes && (entity.attributes.brightness <= 255)) { 
-            var bri = Math.round(entity.attributes.brightness / 2.55); 
-            return '{{ _d_t_trans.light.on_text }}, ' + (bri ? bri : '0') + '%'; 
+      if (typeof(entity) === 'undefined') {
+        console.log('Dwains Theme Error: Invalid light entity rooms.yaml!');
+        return 'Entity Error!';
+      } else {
+        if(entity.state == 'on') {
+          if ('brightness' in entity.attributes) { 
+            if (entity.attributes && (entity.attributes.brightness <= 255)) { 
+              var bri = Math.round(entity.attributes.brightness / 2.55); 
+              return '{{ _d_t_trans.light.on_text }}, ' + (bri ? bri : '0') + '%'; 
+            } else {
+              return '{{ _d_t_trans.light.on_text }}';
+            }
           } else {
             return '{{ _d_t_trans.light.on_text }}';
           }
         } else {
-          return '{{ _d_t_trans.light.on_text }}';
+          return '{{ _d_t_trans.light.off_text }}';
         }
-      } else {
-        return '{{ _d_t_trans.light.off_text }}';
       }
     ]]]
   state:

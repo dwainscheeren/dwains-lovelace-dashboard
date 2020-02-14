@@ -1,7 +1,17 @@
+ # https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/global.html
+ 
+ # I prefer darksky for weather:
+ # use the weather component and not (only) the darksky sensor! Read here: https://www.home-assistant.io/integrations/weather.darksky/
+ # Some people only have the DarkSky sensor and not the weather setup or visa versa.
+ # Please check this!!!!!!
+ # If you want darksky USE THIS: https://www.home-assistant.io/integrations/weather.darksky/
+ # AND USE THIS: https://www.home-assistant.io/integrations/darksky/
+ # So make sure you got both installed! It's not the same!
+
 global:
   language: en
   # weather: weather.dark_sky
   # outside_temperature: sensor.dark_sky_temperature
   # outside_humidity: sensor.dark_sky_humidity
-  # alarm: alarm_control_panel.alarm_system
-  # inside_temperature: climate.living_room
+  # alarm: alarm_control_panel.alarm_system #Alarm panel entity
+  # inside_temperature: climate.living_room #Can be climate. or sensor. entity

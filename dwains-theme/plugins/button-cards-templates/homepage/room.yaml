@@ -28,7 +28,7 @@ homepage_room:
       
     custom_fields:
       additional_info:
-        - background-color: transparant;
+        - background-color: transparent;
         - position: absolute
         - right: 0px
         - top: 30px
@@ -37,7 +37,7 @@ homepage_room:
         - text-align: right
         - color: var(--dwains-theme-grey)
       lights:
-        - background-color: transparant;
+        - background-color: transparent;
         - position: absolute
         - right: 0px
         - top: 0px

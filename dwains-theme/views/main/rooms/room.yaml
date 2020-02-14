@@ -35,7 +35,7 @@
             template: rooms_subheader
             entity: {{ room["motion"] }}
             name: {{ _d_t_trans.motion.title }}
-            icon: '{{ _d_t_icons.motion_off|default('far:walking') }}'
+            icon: '{{ _d_t_icons.motion_off|default('fas:walking') }}'
             state:
               - value: 'on'
                 icon: '{{ _d_t_icons.motion_on|default('mdi:motion-sensor') }}'
@@ -73,10 +73,15 @@
                       return Math.round(elapsed/msPerYear ) + ' {{ _d_t_trans.history.y_ago }}';   
                   }
                 }
-                if(entity.state == 'on'){
-                  return '{{ _d_t_trans.motion.motion_on }}';
+                if(entity){
+                  if(entity.state == 'on'){
+                    return '{{ _d_t_trans.motion.motion_on }}';
+                  } else {
+                    return timeDifference(new Date(), new Date(entity.last_changed));
+                  }
                 } else {
-                  return timeDifference(new Date(), new Date(entity.last_changed));
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.motion entity!');
+                  return 'Entity error!'
                 }
               ]]]
           {% endif %}
@@ -97,10 +102,15 @@
             name: {{ _d_t_trans.door.title }}
             label: >
               [[[ 
-                if(entity.state == 'off'){
-                  return '{{ _d_t_trans.door.closed }}';
+                if(entity){
+                  if(entity.state == 'off'){
+                    return '{{ _d_t_trans.door.closed }}';
+                  } else {
+                    return '{{ _d_t_trans.door.open }}';
+                  }
                 } else {
-                  return '{{ _d_t_trans.door.open }}';
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.door entity!');
+                  return 'Entity error!'
                 }
               ]]] 
             {% else %}
@@ -108,14 +118,19 @@
             name: {{ _d_t_trans.door.title_plural }}
             label: >
               [[[
-                const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
-                var openDoors = 0;
-                entitiesFromGroup.forEach(function(entity){
-                  if(states[entity].state == 'on'){
-                    openDoors++;
-                  }
-                });  
-                return ((openDoors >= 1) ? ((openDoors == 1) ? '1 {{ _d_t_trans.door.door_open }}' : openDoors + ' {{ _d_t_trans.door.doors_open }}') : '{{ _d_t_trans.door.closed }}');
+                if(entity){
+                  const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
+                  var openDoors = 0;
+                  entitiesFromGroup.forEach(function(entity){
+                    if(states[entity] && states[entity].state == 'on'){
+                      openDoors++;
+                    }
+                  });  
+                  return ((openDoors >= 1) ? ((openDoors == 1) ? '1 {{ _d_t_trans.door.door_open }}' : openDoors + ' {{ _d_t_trans.door.doors_open }}') : '{{ _d_t_trans.door.closed }}');
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.door entity!');
+                  return 'Entity error!'
+                }
               ]]]
             {% endif %}
           {% endif %}
@@ -136,10 +151,15 @@
             name: {{ _d_t_trans.window.title }}
             label: >
               [[[ 
-                if(entity.state == 'off'){
-                  return '{{ _d_t_trans.window.closed }}';
+                if(entity){
+                  if(entity.state == 'off'){
+                    return '{{ _d_t_trans.window.closed }}';
+                  } else {
+                    return '{{ _d_t_trans.window.open }}';
+                  }
                 } else {
-                  return '{{ _d_t_trans.window.open }}';
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.window entity!');
+                  return 'Entity error!'
                 }
               ]]] 
             {% else %}
@@ -147,14 +167,19 @@
             name: {{ _d_t_trans.window.title_plural }}
             label: >
               [[[
-                const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
-                var openWindows = 0;
-                entitiesFromGroup.forEach(function(entity){
-                  if(states[entity].state == 'on'){
-                    openWindows++;
-                  }
-                });  
-                return ((openWindows >= 1) ? ((openWindows == 1) ? '1 {{ _d_t_trans.window.window_open }}' : openWindows + ' {{ _d_t_trans.window.windows_open }}') : '{{ _d_t_trans.window.closed }}');
+                if(entity){
+                  const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
+                  var openWindows = 0;
+                  entitiesFromGroup.forEach(function(entity){
+                    if(states[entity].state == 'on'){
+                      openWindows++;
+                    }
+                  });  
+                  return ((openWindows >= 1) ? ((openWindows == 1) ? '1 {{ _d_t_trans.window.window_open }}' : openWindows + ' {{ _d_t_trans.window.windows_open }}') : '{{ _d_t_trans.window.closed }}');
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.window entity!');
+                  return 'Entity error!'
+                }
               ]]]
             {% endif %}
           {% endif %}
@@ -171,11 +196,16 @@
     - type: custom:mod-card
       style: |
         ha-card {
-          padding: 16px 16px 20px 16px;
+          padding: 8px 16px 20px 16px;
         }
       card:
         type: vertical-stack
         cards:
+          #Blank card for empty vertical stack error
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+
           #Card for lights (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
           {% if room["light"] %}
           - type: custom:button-card
@@ -201,10 +231,15 @@
                 - entity: {{ room["light"] }}
             label: >
               [[[ 
-                if(entity.state == 'off'){
-                  return '{{ _d_t_trans.light.off_text }}';
+                if(entity){
+                  if(entity.state == 'off'){
+                    return '{{ _d_t_trans.light.off_text }}';
+                  } else {
+                    return '{{ _d_t_trans.light.on_text }}, ' + Math.round(((states['{{ room["light"] }}'].attributes.brightness/255)*100)) + '%';
+                  }
                 } else {
-                  return '{{ _d_t_trans.light.on_text }}, ' + Math.round(((states['{{ room["light"] }}'].attributes.brightness/255)*100)) + '%';
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.light entity!');
+                  return 'Entity error!';
                 }
               ]]] 
             {% elif room["light"].split('.')[0] == 'switch' %}
@@ -215,10 +250,15 @@
               haptic: light 
             label: >
               [[[ 
-                if(entity.state == 'off'){
-                  return '{{ _d_t_trans.light.off_text }}';
+                if(entity){
+                  if(entity.state == 'off'){
+                    return '{{ _d_t_trans.light.off_text }}';
+                  } else {
+                    return '{{ _d_t_trans.light.on_text }}';
+                  }
                 } else {
-                  return '{{ _d_t_trans.light.on_text }}';
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.light entity!');
+                  return 'Entity error!';
                 }
               ]]] 
             {% else %}
@@ -232,14 +272,19 @@
               haptic: light 
             label: >
               [[[
-                const entitiesFromGroup = states['{{ room["light"] }}'].attributes['entity_id'];
-                var onLights = 0;
-                entitiesFromGroup.forEach(function(entity){
-                  if(states[entity].state == 'on'){
-                    onLights++;
-                  }
-                });  
-                return entitiesFromGroup.length + ' {{ _d_t_trans.light.title_plural }}' + ((onLights >= 1) ? '<br>' + ((onLights == 1) ? '1 {{ _d_t_trans.light.light_on }}' : onLights + ' {{ _d_t_trans.light.lights_on }}') : '');
+                if(entity){
+                  const entitiesFromGroup = states['{{ room["light"] }}'].attributes['entity_id'];
+                  var onLights = 0;
+                  entitiesFromGroup.forEach(function(entity){
+                    if(states[entity] && states[entity].state == 'on'){
+                      onLights++;
+                    }
+                  });  
+                  return entitiesFromGroup.length + ' {{ _d_t_trans.light.title_plural }}' + ((onLights >= 1) ? '<br>' + ((onLights == 1) ? '1 {{ _d_t_trans.light.light_on }}' : onLights + ' {{ _d_t_trans.light.lights_on }}') : '');
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.light entity!');
+                  return 'Entity error!';
+                }
               ]]]
             {% endif %}
           {% endif %}
@@ -261,17 +306,32 @@
             {% if room["climate"] %}
             label: >
               [[[ 
-                if (entity.attributes.hvac_action  == 'idle')
-                  return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.idle }}';
-                else if(entity.attributes.hvac_action == 'heating')
-                  return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
-                else if(entity.attributes.hvac_action == 'off')
-                  return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.off_text }}';
+                if(entity){
+                  if (entity.attributes.hvac_action  == 'idle'){
+                    return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.idle }}';
+                  } else if(entity.attributes.hvac_action == 'heating'){
+                    return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                  } else if(entity.attributes.hvac_action == 'off'){
+                    return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.off_text }}';
+                  } else if(entity.attributes.hvac_action == 'heat'){
+                    return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                  } else {
+                    return entity.attributes.current_temperature + '°<br>' + entity.state;
+                  }
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.climate entity!');
+                  return 'Entity error!';
+                }
               ]]] 
             {% else %}
             label: >
               [[[
-                return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°'
+                if(entity){
+                  return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°'
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.temperature entity!');
+                  return 'Entity error!';
+                }
               ]]] 
             {% endif %}
           {% endif %}
@@ -289,26 +349,38 @@
             name: {{ _d_t_trans.cover.title }}
             label: >
               [[[ 
-                if(entity.state == 'closed'){
-                  return '{{ _d_t_trans.cover.cover_closed }}';
+                if(entity){
+                  if(entity.state == 'open'){
+                    return '{{ _d_t_trans.cover.cover_open }} ' + states['{{ room["cover"] }}'].attributes.current_position + '%';
+                  } else if(entity.state == 'closed') {
+                    return '{{ _d_t_trans.cover.cover_closed }}';
+                  } else {
+                    return entity.state;
+                  }
                 } else {
-                  return '{{ _d_t_trans.cover.cover_open }} ' + states['{{ room["cover"] }}'].attributes.current_position + '%';
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.cover entity!');
+                  return 'Entity error!';
                 }
               ]]] 
             {% else %}
             name: {{ _d_t_trans.cover.title_plural }}
             label: >
               [[[ 
-                const entitiesFromGroup = states['{{ room["cover"] }}'].attributes['entity_id'];
-                var openCovers = 0;
-                var stateText = '';
-                entitiesFromGroup.forEach(function(entity){
-                  if(states[entity].state == 'open'){
-                    openCovers++;
-                    stateText += '<br>1 {{ _d_t_trans.cover.cover_open }} ' + states[entity].attributes.current_position + '%';
-                  }
-                });  
-                return entitiesFromGroup.length + ' {{ _d_t_trans.cover.title_plural }}' + ((openCovers >= 1) ? stateText : '');
+                if(entity){
+                  const entitiesFromGroup = states['{{ room["cover"] }}'].attributes['entity_id'];
+                  var openCovers = 0;
+                  var stateText = '';
+                  entitiesFromGroup.forEach(function(entity){
+                    if(states[entity] && states[entity].state == 'open'){
+                      openCovers++;
+                      stateText += '<br>1 {{ _d_t_trans.cover.cover_open }} ' + states[entity].attributes.current_position + '%';
+                    }
+                  });  
+                  return entitiesFromGroup.length + ' {{ _d_t_trans.cover.title_plural }}' + ((openCovers >= 1) ? stateText : '');
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.cover entity!');
+                  return 'Entity error!';
+                }
               ]]]      
             {% endif %}
           {% endif %}
@@ -319,15 +391,27 @@
             entity: {{ room["device"] }}
             template: rooms_child
             icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
-            {% if room["device"].split('.')[0] == 'light' %}
+            {% if room["device"].split('.')[0] != 'group' %}
             # this room has only 1 device
             name: {{ _d_t_trans.device.title }}
+            tap_action:
+              action: toggle
+              haptic: light 
             label: >
               [[[ 
-                if(entity.state == 'off'){
-                  return '{{ _d_t_trans.device.off_text }}';
+                if(entity){
+                  var name = entity.attributes.friendly_name === undefined
+                        ? entity.entity_id.split(".")[1].replace(/_/g, " ")
+                        : entity.attributes.friendly_name;
+
+                  if(entity.state == 'off'){
+                    return name + '<br>{{ _d_t_trans.device.off_text }}';
+                  } else {
+                    return name + '<br>{{ _d_t_trans.device.on_text }}';
+                  }
                 } else {
-                  return '{{ _d_t_trans.device.on_text }}';
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.device entity!');
+                  return 'Entity error!';
                 }
               ]]] 
             {% else %}
@@ -335,14 +419,19 @@
             name: {{ _d_t_trans.device.title_plural }}
             label: >
               [[[
-                const entitiesFromGroup = states['{{ room["device"] }}'].attributes['entity_id'];
-                var onDevices = 0;
-                entitiesFromGroup.forEach(function(entity){
-                  if(states[entity].state == 'on'){
-                    onDevices++;
-                  }
-                });  
-                return entitiesFromGroup.length + ' {{ _d_t_trans.device.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.device.device_on }}' : onDevices + ' {{ _d_t_trans.device.devices_on }}') : '');
+                if(entity){
+                  const entitiesFromGroup = states['{{ room["device"] }}'].attributes['entity_id'];
+                  var onDevices = 0;
+                  entitiesFromGroup.forEach(function(entity){
+                    if(states[entity] && states[entity].state == 'on'){
+                      onDevices++;
+                    }
+                  });  
+                  return entitiesFromGroup.length + ' {{ _d_t_trans.device.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.device.device_on }}' : onDevices + ' {{ _d_t_trans.device.devices_on }}') : '');
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.device entity!');
+                  return 'Entity error!';
+                }
               ]]]
             tap_action: 
               action: navigate
@@ -365,21 +454,31 @@
                 - entity: {{ room["media_player"] }}
             label: >
               [[[ 
-                return entity.state;
+                if(entity){
+                  return entity.state;
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.media_player entity!');
+                  return 'Entity error!';
+                }
               ]]] 
             {% else %}
             # this room has group of media players
             name: {{ _d_t_trans.media_player.title_plural }}
             label: >
               [[[
-                const entitiesFromGroup = states['{{ room["media_player"] }}'].attributes['entity_id'];
-                var onDevices = 0;
-                entitiesFromGroup.forEach(function(entity){
-                  if(states[entity].state == 'on'){
-                    onDevices++;
-                  }
-                });  
-                return entitiesFromGroup.length + ' {{ _d_t_trans.media_player.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.media_player.media_player_on }}' : onDevices + ' {{ _d_t_trans.media_player.media_players_on }}') : '');
+                if(entity){
+                  const entitiesFromGroup = states['{{ room["media_player"] }}'].attributes['entity_id'];
+                  var onDevices = 0;
+                  entitiesFromGroup.forEach(function(entity){
+                    if(states[entity] && states[entity].state == 'on'){
+                      onDevices++;
+                    }
+                  });  
+                  return entitiesFromGroup.length + ' {{ _d_t_trans.media_player.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.media_player.media_player_on }}' : onDevices + ' {{ _d_t_trans.media_player.media_players_on }}') : '');
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.media_player entity!');
+                  return 'Entity error!';
+                }
               ]]]
             tap_action: 
               action: navigate
@@ -399,7 +498,12 @@
               navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_vacuum
             label: >
               [[[ 
-                return entity.state;
+                if(entity){
+                  return entity.state;
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.vacuum entity!');
+                  return 'Entity error!';
+                }
               ]]]
           {% endif %}
 
@@ -418,21 +522,31 @@
                 - entity: {{ room["plant"] }}
             label: >
               [[[ 
-                return entity.state;
+                if(entity){
+                  return entity.state;
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.plant entity!');
+                  return 'Entity error!';
+                }
               ]]] 
             {% else %}
             # this room has group of plants
             name: {{ _d_t_trans.plant.title_plural }}
             label: >
               [[[
-                const entitiesFromGroup = states['{{ room["plant"] }}'].attributes['entity_id'];
-                var problemPlants = 0;
-                entitiesFromGroup.forEach(function(entity){
-                  if(states[entity].state == 'problem'){
-                    problemPlants++;
-                  }
-                });  
-                return entitiesFromGroup.length + ' media players' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 media player on' : problemPlants + ' media players on') : '');
+                if(entity){
+                  const entitiesFromGroup = states['{{ room["plant"] }}'].attributes['entity_id'];
+                  var problemPlants = 0;
+                  entitiesFromGroup.forEach(function(entity){
+                    if(states[entity] && states[entity].state == 'problem'){
+                      problemPlants++;
+                    }
+                  });  
+                  return entitiesFromGroup.length + ' media players' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 media player on' : problemPlants + ' media players on') : '');
+                } else {
+                  console.log('Invalid rooms.yaml:{{ room["name"] }}.plant entity!');
+                  return 'Entity error!';
+                }
               ]]]
             tap_action: 
               action: navigate

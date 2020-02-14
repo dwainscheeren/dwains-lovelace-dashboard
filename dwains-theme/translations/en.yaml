@@ -1,3 +1,5 @@
+# Translation by Dwains
+
 en:
   greetings:
     good_morning: 'Good Morning'
@@ -145,4 +147,5 @@ en:
       buy_coffee: 'Buy me a coffee'
       by: 'By'
       version: 'Version'
+      update_available: 'Update available of Dwains Theme!'
     more_page_addons: 'More addons'

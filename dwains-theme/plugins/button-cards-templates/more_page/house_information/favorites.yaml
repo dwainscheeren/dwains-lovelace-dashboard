@@ -5,6 +5,9 @@ more_page_house_information_favorites:
   show_icon: true
   tap_action: 
     action: more-info 
+  double_tap_action:
+    action: toggle
+    haptic: light 
   styles:
     grid:
       - grid-template-areas: '"i n" "i s" "i l"'

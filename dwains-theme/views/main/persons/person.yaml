@@ -46,16 +46,16 @@
                     }
                     
         {% if person["addons"] %}
+        {% for addon in person["addons"] %}
         - type: vertical-stack
           cards:
-            {% for addon in person["addons"] %}
             !include 
               - ../../../../{{ addon["path"] }}
               - name: {{ addon["name"] }}
                 {% if addon["data"] %}
                 data: '{{ addon["data"]|tojson }}'
                 {% endif %}
-            {% endfor %}
-            {% endif %}
+        {% endfor %}
+        {% endif %}
 {% endfor %}
 {% endif %}

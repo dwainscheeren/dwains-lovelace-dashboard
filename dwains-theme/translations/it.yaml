@@ -1,0 +1,133 @@
+#Translation by: giosemmo (slack en)
+
+it:
+  greetings:
+    good_morning: 'Buongiorno'
+    good_afternoon: 'Buon pomeriggio'
+    good_evening: 'Buonasera'
+  
+  alarm:
+    armed_away: 'Sistema allarme attivato (Attivato Fuori).'
+    armed_home: 'Sistema allarme attivato (Attivato Casa).'
+    disarmed: 'Sistema allarme disattivato.'
+  history:
+    sec_ago: 'sec fa'
+    min_ago: 'min fa'
+    h_ago: 'o fa'
+    d_ago: 'g fa'
+    m_ago: 'm fa'
+    y_ago: 'a fa'
+  house_information:
+    title: 'Informazioni Casa'
+    favorites: 'Favoriti'
+    house_calendar: 'Calendario Casa'
+    activity: 'Attività (porte, finestre, movimento)'
+  motion:
+    title: 'Movimento'
+    title_plural: 'Movimenti'
+    motion_on: 'Rilevato'
+  light:
+    title: 'Luce'
+    title_plural: 'Luci'
+    light_on: 'luce accesa'
+    lights_on: 'luci accese'
+    light_off: 'luce spenta'
+    lights_off: 'luci spente'
+    all_lights_on: 'Tutte le luci accese'
+    all_lights_off: 'Tutte le luci spente'
+    on_text: 'Accesa'
+    off_text: 'Spenta'
+  door:
+    title: 'Porta'
+    title_plural: 'Porte'
+    door_open: 'porta aperta'
+    doors_open: 'porte aperte'
+    all_doors_open: 'Tutte le porte aperte'
+    all_doors_closed: 'Tutte le porte chiuse'
+    open: 'Aperta'
+    closed: 'Chiusa'
+  window:
+    title: 'Finestra'
+    title_plural: 'Finestre'
+    window_open: 'finestra aperta'
+    windows_open: 'finestre aperte'
+    all_windows_open: 'Tutte le finestre aperte'
+    all_windows_closed: 'Tutte le finestre chiuse'
+    open: 'Aperta'
+    closed: 'Chiusa'
+  climate:
+    title: 'Temperatura'
+    title_plural: 'Temperature'
+    inside: 'interno'
+    outside: 'esterno'
+    idle: 'Stand-by'
+    heating: 'Riscaldamento'
+    off_text: 'Spento'
+    program: 'Programma'
+    heat: 'Calore'
+    this_room: 'Questa stanza'
+    temperature: 'Temperatura'
+    humidity: 'Umidità'
+  cover:
+    title: 'Persiana'
+    title_plural: 'Persiane'
+    cover_open: 'Aperta'
+    cover_closed: 'Chiusa'
+  device:
+    title: 'Dispositivo'
+    title_plural: 'Dispositivi'
+    device_on: 'Dispositivo acceso'
+    devices_on: 'Dispositivi accesi'
+    on_text: 'Acceso'
+    off_text: 'Spento'
+    device_off: 'Dispositivo spento'
+    devices_off: 'Dispositivi spenti'
+    all_devices_on: 'Tutti i dispositivi accesi'
+    all_devices_off: 'Tutti i dispositivi spenti'
+  media_player:
+    title: 'Media player'
+    title_plural: 'Media players'
+    media_player_on: 'media player acceso'
+    media_players_on: 'media players accesi'
+    media_player_off: 'Media player spento'
+    media_players_off: 'Media players spenti'
+    all_media_players_on: 'Tutti i media players accesi'
+    all_media_players_off: 'Tutti i media players spenti'
+    on_text: 'Acceso'
+    off_text: 'Spento'
+  vacuum:
+    title: 'Aspirapolvere'
+    title_plural: 'Aspirapolvere'
+  plant:
+    title: 'Pianta'
+    title_plural: 'Piante'
+  home:
+    title: 'Homepage'
+  rooms:
+    title: 'Stanze'
+  all_lights:
+    title: 'Tutte le luci'
+  scenes:
+    title: 'Scene'
+    not_defined: 'Nessuna scena definita'
+  cameras:
+    title: 'Telecamere'
+    not_defined: 'Nessuna telecamera definita'
+  more_page:
+    title: 'Più'
+    house_info: 'Informazioni Casa'
+    house_data: 
+      title: 'Dati Casa'
+      all_sensors: 'Tutti i sensori'
+      all_batteries: 'Tutte le batterie'
+      config: 'Configurazione'
+      developer_tools: 'Strumenti per sviluppatori'
+    settings:
+      title: 'Impostazioni tema'
+      theme_docs: 'Documentazione tema'
+      support_paypal: 'Supporto/Donazione con PayPal'
+      buy_coffee: 'Offrimi un caffè'
+      by: 'By'
+      version: 'Versione'
+      update_available: 'Update available of Dwains Theme!'
+    more_page_addons: "More addons"

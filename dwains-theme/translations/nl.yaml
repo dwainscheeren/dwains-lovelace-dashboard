@@ -1,3 +1,5 @@
+# Translation by Dwains
+
 nl:
   greetings:
     good_morning: 'Goedemorgen'
@@ -146,4 +148,5 @@ nl:
       buy_coffee: 'Buy me a coffee'
       by: 'Door'
       version: 'Versie'
+      update_available: 'Update available of Dwains Theme!'
     more_page_addons: 'Meer addons'

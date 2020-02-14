@@ -1,3 +1,5 @@
+#Translation by: Andreas (slack en)
+
 da:
   greetings:
     good_morning: 'Godmorgen'
@@ -145,4 +147,5 @@ da:
       buy_coffee: 'Buy me a coffee'
       by: 'Lavet af'
       version: 'Version'
+      update_available: 'Update available of Dwains Theme!'
     more_page_addons: 'More addons'

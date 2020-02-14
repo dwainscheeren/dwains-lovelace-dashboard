@@ -1,3 +1,5 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/house_information.html
+
 #house_information:
   # favorites:
   #   - entity: binary_sensor.doorbell_button

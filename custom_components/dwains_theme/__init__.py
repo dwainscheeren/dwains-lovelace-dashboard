@@ -25,6 +25,7 @@ jinja.filters['fromjson'] = fromjson
 dwains_theme_config = {}
 dwains_theme_translations = {}
 dwains_theme_icons = {}
+dwains_theme_information = {}
 
 def load_yaml(fname, args={}):
     try:
@@ -38,7 +39,8 @@ def load_yaml(fname, args={}):
                 **args, 
                 "_d_t_config": dwains_theme_config, 
                 "_d_t_trans": dwains_theme_translations,
-                "_d_t_icons": dwains_theme_icons
+                "_d_t_icons": dwains_theme_icons,
+                "_d_t_information": dwains_theme_information
                 }))
             stream.name = fname
             return loader.yaml.load(stream, Loader=loader.SafeLineLoader) or OrderedDict()
@@ -76,6 +78,9 @@ async def async_setup(hass, config):
     #Load translations
     language = dwains_theme_config["global"]["language"];
     dwains_theme_translations.update(config.get("dwains_theme")["translations"][language]);
+
+    #Load information
+    dwains_theme_information.update(config.get("dwains_theme")["information"]);
 
     #Load icons
     if ("icons" in config.get("dwains_theme")):

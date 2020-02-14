@@ -1,3 +1,5 @@
+#Translation by: Alex (Slack en)
+
 fr:
   greetings:
     good_morning: 'Bon matin'
@@ -145,4 +147,5 @@ fr:
       buy_coffee: 'Achetez-moi un café'
       by: 'Par'
       version: 'Version'
+      update_available: 'Update available of Dwains Theme!'
     more_page_addons: "Plus d'extensions"

@@ -1,27 +1,29 @@
+#Translation by: Frederic (slack en) & Marcel (slack en) & David (slack en)
+
 de:
   greetings:
     good_morning: 'Guten Morgen'
-    good_afternoon: 'Guten Nachmittag'
+    good_afternoon: 'Guten Tag'
     good_evening: 'Guten Abend'
   
   alarm:
-    armed_away: 'Alarmsystem aktiviert (Aktiv unterwegs).'
-    armed_home: 'Alarmsystem aktiviert (Aktiv zuhause).'
-    disarmed: 'Alarm system de-aktiviert.'
+    armed_away: 'Alarmanlage aktiviert (Vollschutz).'
+    armed_home: 'Alarmanlage aktiviert (Hüllschutz).'
+    disarmed: 'Alarmanlage deaktiviert.'
 
   history:
-    sec_ago: 'sec ago'
-    min_ago: 'min ago'
-    h_ago: 'h ago'
-    d_ago: 'd ago'
-    m_ago: 'm ago'
-    y_ago: 'y ago'
+    sec_ago: 'Sek. her'
+    min_ago: 'Min. her'
+    h_ago: 'Std. her'
+    d_ago: 'Tg. her'
+    m_ago: 'Mon. her'
+    y_ago: 'Jr. her'
 
   house_information:
-    title: 'Haus Information'
+    title: 'Hausinformationen'
     favorites: 'Favoriten'
-    house_calendar: 'Haus Kalender'
-    activity: 'Aktivität (Türen, Fenster, Bewegungen)'
+    house_calendar: 'Hauskalender'
+    activity: 'Aktivitäten (Türen, Fenster, Bewegungen)'
 
   motion:
     title: 'Bewegung'
@@ -43,41 +45,41 @@ de:
   door:
     title: 'Tür'
     title_plural: 'Türen'
-    door_open: 'Tür offen'
-    doors_open: 'Türen offen'
-    all_doors_open: 'Alle Türen offen'
-    all_doors_closed: 'Alle Türen geschlossen'
-    open: 'offen'
-    closed: 'geschlossen'
+    door_open: 'Tür auf'
+    doors_open: 'Türen auf'
+    all_doors_open: 'Alle Türen auf'
+    all_doors_closed: 'Alle Türen zu'
+    open: 'auf'
+    closed: 'zu'
 
   window:
     title: 'Fenster'
     title_plural: 'Fenster'
-    window_open: 'Fenster offen'
-    windows_open: 'Fenster offen'
-    all_windows_open: 'Alle Fenster offen'
-    all_windows_closed: 'Alle Fenster geschlossen'
-    open: 'offen'
-    closed: 'geschlossen'
+    window_open: 'Fenster auf'
+    windows_open: 'Fenster auf'
+    all_windows_open: 'Alle Fenster auf'
+    all_windows_closed: 'Alle Fenster zu'
+    open: 'auf'
+    closed: 'zu'
 
   climate:
     title: 'Temperatur'
     title_plural: 'Temperaturen'
-    inside: 'innen'
-    outside: 'aussen'
-    idle: 'Leerlauf'
-    heating: 'heizen zu'
-    off_text: 'Aus'
+    inside: 'Innen'
+    outside: 'Außen'
+    idle: 'inaktiv'
+    heating: 'heizen auf'
+    off_text: 'ausgeschaltet'
     program: 'Programm'
-    heat: 'Heizen'
-    this_room: 'Diesen Raum'
+    heat: 'heizen'
+    this_room: 'Dieser Raum'
     temperature: 'Temperatur'
-    humidity: 'Feuchtigkeit'
+    humidity: 'Luftfeuchtigkeit'
 
   cover:
-    title: 'Abdeckung'
-    title_plural: 'Abdeckungen'
-    cover_open: 'offen'
+    title: 'Beschattung'
+    title_plural: 'Beschattung'
+    cover_open: 'geöffnet'
     cover_closed: 'geschlossen'
 
   device:
@@ -85,35 +87,35 @@ de:
     title_plural: 'Geräte'
     device_on: 'Gerät an'
     devices_on: 'Geräte an'
-    device_off: 'Gerät aus'
-    devices_off: 'Geräte aus' 
-    all_devices_on: 'Alle Geräte an'
-    all_devices_off: 'Alle Geräte aus'       
     on_text: 'an'
     off_text: 'aus'
+    device_off: 'Gerät aus'
+    devices_off: 'Geräte aus'
+    all_devices_on: 'Alle Geräte an'
+    all_devices_off: 'Alle Geräte aus'
 
   media_player:
-    title: 'Medienspieler'
-    title_plural: 'Medienspieler'
-    media_player_on: 'Medienspieler an'
-    media_players_on: 'Medienspieler an'
-    media_player_off: 'Medienspieler aus'
-    media_players_off: 'Medienspieler aus'
-    all_media_players_on: 'Alle Medienspieler an'
-    all_media_players_off: 'Alle Medienspieler aus'       
+    title: 'Wiedergabegerät'
+    title_plural: 'Wiedergabegeräte'
+    media_player_on: 'Wiedergabegerät an'
+    media_players_on: 'Wiedergabegeräte an'
+    media_player_off: 'Wiedergabegerät aus'
+    media_players_off: 'Wiedergabegeräte aus'
+    all_media_players_on: 'Alle Wiedergabegeräte an'
+    all_media_players_off: 'Alle Wiedergabegeräte aus'
     on_text: 'an'
     off_text: 'aus'
 
   vacuum:
-    title: 'Sauger'
-    title_plural: 'Sauger'
+    title: 'Staubsauger'
+    title_plural: 'Staubsauger'
 
   plant:
     title: 'Pflanze'
     title_plural: 'Pflanzen'
 
   home:
-    title: 'Homepage'
+    title: 'Startseite'
 
   rooms:
     title: 'Räume'
@@ -123,26 +125,27 @@ de:
 
   scenes:
     title: 'Szenen'
-    not_defined: 'Keine Szenen definiert'
+    not_defined: 'Keine Szenen festgelegt'
 
   cameras:
     title: 'Kameras'
-    not_defined: 'Keine Kameras definiert'
+    not_defined: 'Keine Kameras festgelegt'
 
   more_page:
     title: 'Mehr'
-    house_info: 'Haus info'
+    house_info: 'Hausinformationen'
     house_data: 
-      title: 'Haus Daten'
+      title: 'Daten zum Haus'
       all_sensors: 'Alle Sensoren'
       all_batteries: 'Alle Batterien'
-      config: 'Config'
-      developer_tools: 'Developer tools'
+      config: 'Konfiguration'
+      developer_tools: 'Entwicklerwerkzeuge'
     settings:
-      title: 'Theme Einstellung'
-      theme_docs: 'Theme Dokumentation'
-      support_paypal: 'Unterstützen/spenden mit PayPal'
+      title: 'Einstellungen'
+      theme_docs: 'Dokumentation'
+      support_paypal: 'Unterstütze mich/Spende via PayPal'
       buy_coffee: 'Kauf mir einen Kaffee'
-      by: 'durch'
+      by: 'von'
       version: 'Version'
-    more_page_addons: 'Mehr Erweiterungen'
+      update_available: 'Update available of Dwains Theme!'
+    more_page_addons: 'Mehr Addons'

@@ -5,14 +5,14 @@
   title: {{ _d_t_trans.all_lights.title }}
   badges: []
   cards:
-    #Header
-    - !include
-      - ../partials/header.yaml
-      - title: {{ _d_t_trans.all_lights.title }}
-    #Start for all lights page
-    #All lights
     - type: vertical-stack
       cards:
+        #Header
+        - !include
+          - ../partials/header.yaml
+          - title: {{ _d_t_trans.all_lights.title }}
+        #Start for all lights page
+        #All lights
         {% for room in _d_t_config.rooms %}
         {% if room["light"] %}
         #Heading

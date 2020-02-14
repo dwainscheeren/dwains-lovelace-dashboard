@@ -4,7 +4,15 @@ header_weather:
   layout: icon_name_state2nd
   show_state: true
   show_label: true
-  name: '[[[ return `${entity.attributes.temperature} ° {{ _d_t_trans.climate.outside }}` ]]]' 
+  name: >
+    [[[ 
+      if(entity){
+        return entity.attributes.temperature + "° {{ _d_t_trans.climate.outside }}";
+      } else {
+        console.log('Dwains Theme Error: Invalid global.yaml:weather entity!');
+        return 'Weather Entity Error!';
+      }
+    ]]]
   entity: {{ _d_t_config.global["weather"] }}
   tap_action:
     !include 
@@ -14,13 +22,17 @@ header_weather:
   {% if _d_t_config.global["inside_temperature"] %}
   label: >
     [[[ 
-      {% if _d_t_config.global["inside_temperature"].split('.')[0] == 'sensor' %}
-        return (Math.round(states['{{ _d_t_config.global["inside_temperature"] }}'].state * 10) / 10) + '° {{ _d_t_trans.climate.inside }}';
-      {% elif _d_t_config.global["inside_temperature"].split('.')[0] == 'climate' %}
-        return states['{{ _d_t_config.global["inside_temperature"] }}'].attributes.current_temperature + '° {{ _d_t_trans.climate.inside }}'; 
-      {% else %}
-        return 'NaN';
-      {% endif %}
+      if(states['{{ _d_t_config.global["inside_temperature"] }}']){
+        {% if _d_t_config.global["inside_temperature"].split('.')[0] == 'sensor' %}
+          return (Math.round(states['{{ _d_t_config.global["inside_temperature"] }}'].state * 10) / 10) + '° {{ _d_t_trans.climate.inside }}';
+        {% elif _d_t_config.global["inside_temperature"].split('.')[0] == 'climate' %}
+          return states['{{ _d_t_config.global["inside_temperature"] }}'].attributes.current_temperature + '° {{ _d_t_trans.climate.inside }}'; 
+        {% else %}
+          return 'NaN';
+        {% endif %}
+      } else {
+        console.log('Dwains Theme Error: Invalid global.yaml:inside_temperature entity!');
+      }
     ]]]
   {% else %}
   label: '&nbsp;'

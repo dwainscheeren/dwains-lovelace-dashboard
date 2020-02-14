@@ -1,4 +1,11 @@
 scene:
+  show_label: true
+  label: >
+    [[[ 
+      if (typeof(entity) === 'undefined') {
+        console.log('Dwains Theme Error: Invalid scene entity scenes.yaml!');
+      }
+    ]]]
   styles:
     grid:
       - grid-template-areas: '"i n"'
@@ -18,8 +25,14 @@ scene:
       - height: 45px
       - color: white
       - border-radius: 100%
+      - background: var(--dwains-theme-header-background)
     name:
       - color: var(--dwains-theme-names)
       - justify-self: start
       - font-size: 15px
       - align-self: center
+    state:
+      - justify-self: start
+      - align-self: left
+      - font-size: 13px
+      - color: var(--dwains-theme-grey)
