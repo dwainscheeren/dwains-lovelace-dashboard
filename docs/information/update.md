@@ -21,6 +21,13 @@ If there is a update of Dwains Theme here is how to install it.
 
 # Changelog
 
+## Update 1.1.3
+
+* Fixed bug with background color of cover in dark mode.
+* Fixed bug that icon of dynamic page addon is not in the menu when you use it.
+* Fixed bug with multiple plants in a room translation.
+* Made the small headings of each room name on the all lights page clickable to open a popup or doubleclick to toggle it
+
 ## Update 1.1.2
 
 * Added latest version sensor so you get notification on new available update on Dwains Theme.
