@@ -57,7 +57,9 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
-> @mase (again :D) — Nice update (v1.1.5). Headers are now always loading and thx for fixing the group-cover bug in the theme. Also thanks for all the support you giving on slack and the ha forum. Keep it up, you´re awesome!
+> @Evad (2nd) — Very nice theme. Excellent documentation.
+
+> @mase (2nd) — Nice update (v1.1.5). Headers are now always loading and thx for fixing the group-cover bug in the theme. Also thanks for all the support you giving on slack and the ha forum. Keep it up, you´re awesome!
 
 > @maikelstraub — Thanks for your help on slack and an amazing, well documented theme!
 
