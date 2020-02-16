@@ -59,6 +59,8 @@ If you donate please write a short message with your HA username :D
 
 > @maikelstraub — Thanks for your help on slack and an amazing, well documented theme!
 
+> @jompa68 — Lovely theme and great support. Easy to setup.
+
 > @rkotulan — Nice designed theme.
 
 > @Evad — Very nice theme. Excellent documentation.
