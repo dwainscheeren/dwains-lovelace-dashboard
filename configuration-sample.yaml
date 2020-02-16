@@ -20,10 +20,7 @@ homeassistant:
 
 
 ######################################################################
-# Below this line is some example code 
-# If you dont use packages then your configuration.yaml can look like this
-# If you want to use packages read here more
-# https://dwainscheeren.github.io/lovelace-dwains-theme/getting-started/installation.html#step-4---your-existing-configuration
+# Below this line is some example code of how the rest of your configuration.yaml file can look like
 
 # # Configure a default setup of Home Assistant (frontend, api, etc)
 # default_config:
@@ -34,7 +31,6 @@ homeassistant:
 
 
 # Some files for automations, groups, scripts and scenes in your root folder
-# If you dont use user_package you can do it like this
 #
 # automation: !include_dir_merge_list configuration/automations/ #place every automation in this folder
 # group: !include groups.yaml #You really need groups to use my theme :D

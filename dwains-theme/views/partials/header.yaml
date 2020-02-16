@@ -5,7 +5,6 @@ type: markdown
 style: |
   ha-card {
     box-shadow: none;
-    background: none;
     padding: 10px 0px;
     color: #fff;
     background-color: var(--dwains-theme-header-background);

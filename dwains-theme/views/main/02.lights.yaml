@@ -19,6 +19,8 @@
         - !include
           - ../partials/heading.yaml
           - title: {{ room["name"] }}
+            type: button
+            entity: {{ room["light"] }}
         {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
         # this room has only 1 light (light or switch entity)
         - type: custom:mod-card

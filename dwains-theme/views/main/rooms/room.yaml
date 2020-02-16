@@ -542,7 +542,7 @@
                       problemPlants++;
                     }
                   });  
-                  return entitiesFromGroup.length + ' media players' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 media player on' : problemPlants + ' media players on') : '');
+                  return entitiesFromGroup.length + ' {{ _d_t_trans.plant.title_plural }}' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 {{ _d_t_trans.plant.plant_problem }}' : problemPlants + ' {{ _d_t_trans.plant.plants_problem }}') : '');
                 } else {
                   console.log('Invalid rooms.yaml:{{ room["name"] }}.plant entity!');
                   return 'Entity error!';

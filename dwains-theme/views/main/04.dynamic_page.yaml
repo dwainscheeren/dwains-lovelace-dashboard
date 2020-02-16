@@ -2,7 +2,7 @@
 
 - path: dynamic_page
   {% if _d_t_config.dynamic_page and _d_t_config.dynamic_page.addon %}
-  icon: {{ _d_t_config.dynamic_page.addon.title|default(_d_t_icons.menu_cameras)|default('mdi:cctv') }}
+  icon: {{ _d_t_config.dynamic_page.addon.icon|default(_d_t_icons.menu_cameras)|default('mdi:cctv') }}
   title: {{ _d_t_config.dynamic_page.addon.name|default(_d_t_trans.cameras.title) }}
   {% else %}
   icon: {{ _d_t_icons.menu_cameras|default('mdi:cctv') }}

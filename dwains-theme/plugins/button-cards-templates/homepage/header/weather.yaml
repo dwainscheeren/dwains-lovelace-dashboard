@@ -6,11 +6,21 @@ header_weather:
   show_label: true
   name: >
     [[[ 
-      if(entity){
-        return entity.attributes.temperature + "° {{ _d_t_trans.climate.outside }}";
+      if(states['{{ _d_t_config.global["outside_temperature"] }}']){
+        {% if _d_t_config.global["outside_temperature"].split('.')[0] == 'sensor' %}
+          return (Math.round(states['{{ _d_t_config.global["outside_temperature"] }}'].state * 10) / 10) + '° {{ _d_t_trans.climate.outside }}';
+        {% elif _d_t_config.global["outside_temperature"].split('.')[0] == 'climate' %}
+          return states['{{ _d_t_config.global["outside_temperature"] }}'].attributes.current_temperature + '° {{ _d_t_trans.climate.outside }}';
+        {% else %}
+          return 'NaN';
+        {% endif %}
       } else {
-        console.log('Dwains Theme Error: Invalid global.yaml:weather entity!');
-        return 'Weather Entity Error!';
+        if(entity){
+          return entity.attributes.temperature + "° {{ _d_t_trans.climate.outside }}";
+        } else {
+          console.log('Dwains Theme Error: Invalid global.yaml:weather entity!');
+          return 'Weather Entity Error!';
+        }
       }
     ]]]
   entity: {{ _d_t_config.global["weather"] }}
