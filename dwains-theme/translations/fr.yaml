@@ -2,14 +2,14 @@
 
 fr:
   greetings:
-    good_morning: 'Bon matin'
-    good_afternoon: 'Bonne après-midi'
+    good_morning: 'Bonjour'
+    good_afternoon: 'Bon après-midi'
     good_evening: 'Bonsoir'
   
   alarm:
-    armed_away: "Système d'alarme activé (Armé à l'extérieur)."
-    armed_home: "Système d'alarme activé (Armé à la maison)."
-    disarmed: "Système d'alarme désactivé"
+    armed_away: "Alarme activée (Armée à l'extérieur)."
+    armed_home: "Alarme activée (Armée à la maison)."
+    disarmed: "Alarme désactivée"
 
   history:
     sec_ago: 'sec depuis'
@@ -20,7 +20,7 @@ fr:
     y_ago: 'a depuis'
 
   house_information:
-    title: 'Information maison'
+    title: 'Infos maison'
     favorites: 'Favoris'
     house_calendar: 'Calendrier maison'
     activity: 'Activité (Portes, fenêtres, mouvement)'
@@ -85,26 +85,26 @@ fr:
   device:
     title: 'Périphérique'
     title_plural: 'Périphériques'
-    device_on: 'périphérique ouvert'
-    devices_on: 'périphériques ouverts'
-    on_text: 'Ouvert'
-    off_text: 'Fermé'
-    device_off: 'Périphérique fermé'
-    devices_off: 'Périphériques fermés'
-    all_devices_on: 'Tous périphériques ouverts'
-    all_devices_off: 'Tous périphériques fermés'
+    device_on: 'périphérique allumé'
+    devices_on: 'périphériques allumés'
+    on_text: 'Allumé'
+    off_text: 'Eteint'
+    device_off: 'Périphérique éteint'
+    devices_off: 'Périphériques éteints'
+    all_devices_on: 'Tous périphériques allumés'
+    all_devices_off: 'Tous périphériques éteints'
 
   media_player:
     title: 'Lecteur multimédia'
     title_plural: 'Lecteurs multimédias'
-    media_player_on: 'Lecteur multimédia ouvert'
-    media_players_on: 'Lecteurs multimédias ouverts'
-    media_player_off: 'Lecteur multimédia fermé'
-    media_players_off: 'Lecteurs multimédias fermés'
-    all_media_players_on: 'Tous lecteurs multimédias ouverts'
-    all_media_players_off: 'Tous lecteurs multimédias fermés'
-    on_text: 'Ouvert'
-    off_text: 'Fermé'
+    media_player_on: 'Lecteur multimédia allumé'
+    media_players_on: 'Lecteurs multimédias allumés'
+    media_player_off: 'Lecteur multimédia éteint'
+    media_players_off: 'Lecteurs multimédias éteints'
+    all_media_players_on: 'Tous lecteurs multimédias allumés'
+    all_media_players_off: 'Tous lecteurs multimédias éteints'
+    on_text: 'Allumé'
+    off_text: 'Eteint'
 
   vacuum:
     title: 'Aspirateur'
@@ -133,11 +133,11 @@ fr:
     
   more_page:
     title: 'Plus'
-    house_info: 'Info maison'
+    house_info: 'Infos maison'
     house_data: 
-      title: 'Donnée maison'
-      all_sensors: 'Tous capteurs'
-      all_batteries: 'Toutes batteries'
+      title: 'Données maison'
+      all_sensors: 'Capteurs'
+      all_batteries: 'Batteries'
       config: 'Config'
       developer_tools: 'Outils développeur'
     settings:
