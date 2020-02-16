@@ -30,6 +30,7 @@ If there is a update of Dwains Theme here is how to install it.
 * Fixed color of toggle switch when off state in dark mode.
 * Fixed background color bug on some popups in dark mode.
 * Merged PR by fmartinou for French translations.
+* Removed the `user-package-sample` folder. Got too much questions regarding how to work with it.
 
 ## Update 1.1.2
 

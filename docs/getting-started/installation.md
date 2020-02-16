@@ -52,9 +52,9 @@ Download the [latest release from the release page](https://github.com/dwainsche
 ### Step 2 - Extract & move the download
 
 1. Unzip the file you just downloaded and copy the content of it. 
-2. Go to the root of your Home Assistant installation.
-3. Rename your existing file `ui-lovelace.yaml` to `ui-lovelace.back.yaml` 
-2. Copy the content of the downloaded folder to the root of your Home Assistant installation.
+2. Go to the main folder of your Home Assistant installation. This is the folder where you config is. (Hint: its the folder where the file `ui-lovelace.yaml` and `configuration.yaml` is located).
+3. Rename your existing file `ui-lovelace.yaml` to `ui-lovelace.back.yaml` (so you have a backup of this file).
+2. Copy the content of the downloaded folder to the main folder of your Home Assistant installation.
 
 *NOTE: You need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder*
 
@@ -66,21 +66,17 @@ Download the [latest release from the release page](https://github.com/dwainsche
 
 ### Step 4 - Your existing configuration
 
- I personally use Home Assistant packages folder. With packages you have a way to include different components, or different configuration parts  [Read more about it here](https://www.home-assistant.io/docs/configuration/packages/).
+>**I have my full existing config in the `configuration.yaml` file**
+>
+>Okay then you are already set. If you had some code under the `homeassistant:` line and want this back, then place it back under the following line `# If you had any important strings before in homeassistant: place them back here below`.
 
->**I don't want to use HA packages, I will use and keep my `configuration.yaml` file**
+>**I'm using HA packages folder**
 >
->Okay then you are already set. You can checkout `configuration-sample.yaml` for some inspiration on how a this file can look in combination with Dwains Theme.
-
->**I'm using already HA packages folder or want to know how to use it:**
->
->I included a sample folder for this in my theme it's called `user-package-sample` you can rename this folder to your own name. After this adjust the content of it and copy this folder to the `packages/` folder.
->
->*NOTE: Read the content of the `user-package-sample` folder to get a understanding how it works.*
+> If you already are using HA packages, then you know how to work with it. Please make sure your `configuration.yaml` is correct and has then `packages: !include_dir_named packages/` under the `homeassistant:` line.
 
 ### Step 5 - Configure Dwains Theme
 
-To configure/build the theme you need to edit the files in the folder `dwains-theme/configs/`. When you open these file you see some examples commented-out. If you want to know how you need to configure these files, go to the [Configure Dwains Theme](../configuration/index.md) page.
+To configure/build the theme you need to edit the files in the folder `dwains-theme/configs/`. When you open these file you see some examples commented-out, only uncomment the lines you want to use! If you want to know how you need to configure these files, go to the [Configure Dwains Theme](../configuration/index.md) page.
 
 ### Step 6 - Restart Home Assistant
 
