@@ -43,6 +43,7 @@ dwains-theme-dark:
   paper-item-icon_-_color: 'var(--primary-text-color)'
   paper-item-selected_-_background-color: '#36373a'
   paper-tabs-selection-bar-color: 'var(--primary-text-color)'
+  secondary-background-color: 'var(--dwains-theme-primary)'
 
   mdc-theme-primary: 'var(--dwains-theme-grey)'
 
@@ -60,4 +61,8 @@ dwains-theme-dark:
   more-info-header-background: 'var(--dwains-theme-header-background)'
   more-info-header-color: 'var(--dwains-theme-header-text)'
 
-  
+  #Switches (toggles)
+  switch-checked-button-color: 'var(--dwains-theme-names)'                  # Knob On
+  switch-unchecked-button-color: '#616161'               # Knob Off
+  switch-checked-track-color: '#515357'                # Background On
+  switch-unchecked-track-color: '#131314'              # Background Off
