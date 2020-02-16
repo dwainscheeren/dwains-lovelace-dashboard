@@ -57,7 +57,9 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
-> @Evad (2nd) — Very nice theme. Excellent documentation.
+> @OnlyMe — Best theme what is available atm. Looks very sleek and solid. Easy to install for HA beginners.
+
+> @Evad (2nd) — Thanks for your theme and the many work you put into it.
 
 > @mase (2nd) — Nice update (v1.1.5). Headers are now always loading and thx for fixing the group-cover bug in the theme. Also thanks for all the support you giving on slack and the ha forum. Keep it up, you´re awesome!
 
