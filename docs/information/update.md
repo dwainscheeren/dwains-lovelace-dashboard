@@ -22,6 +22,9 @@ If there is a update of Dwains Theme here is how to install it.
 # Changelog
 
 ## Update 1.1.3
+* Forgot to update sensor of version so I updated it.
+
+## Update 1.1.3
 
 * Fixed bug with background color of cover in dark mode.
 * Fixed bug that icon of dynamic page addon is not in the menu when you use it.
