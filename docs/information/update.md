@@ -21,7 +21,7 @@ If there is a update of Dwains Theme here is how to install it.
 
 # Changelog
 
-## Update 1.1.3
+## Update 1.1.4
 * Forgot to update sensor of version so I updated it.
 
 ## Update 1.1.3
