@@ -56,6 +56,8 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @maikelstraub — Thanks for your help on slack and an amazing, well documented theme!
+
 > @rkotulan — Nice designed theme.
 
 > @Evad — Very nice theme. Excellent documentation.
