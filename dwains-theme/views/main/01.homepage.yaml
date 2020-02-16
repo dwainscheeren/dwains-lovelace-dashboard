@@ -100,33 +100,42 @@
                 show_name: false
                 {% endif %}
                 {% if room["climate"] or room["temperature"] %}
-                {% if room["climate"] %}
                 label: >
                   [[[ 
-                    if(states['{{ room["climate"] }}']){
-                      var icon = '';
+                    {% if room["temperature"] %}
+                      if(states['{{ room["temperature"] }}']){
+                        var icon = '';
 
-                      if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating'){
-                        icon = '<ha-icon style="height: 15px;" icon="{{ _d_t_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
+                        {% if room["climate"] %}
+                        if(states['{{ room["climate"] }}']){
+                          if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
+                            icon = '<ha-icon style="height: 15px;" icon="{{ _d_t_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
+                          }
+                        }
+                        {% endif %}
+
+                        return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°' + icon;
+                      } else {
+                        console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!');
+                        return 'Temperature error';
                       }
+                    {% elif room["climate"] %}
+                      if(states['{{ room["climate"] }}']){
+                        var icon = '';
 
-                      return (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + '°' + icon;
-                    } else {
-                      console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!');
-                      return 'Climate error';
-                    }
+                        if(states['{{ room["climate"] }}']){
+                          if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
+                            icon = '<ha-icon style="height: 15px;" icon="{{ _d_t_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
+                          }
+                        }
+
+                        return (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + '°' + icon;
+                      } else {
+                        console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!');
+                        return 'Climate error';
+                      }
+                    {% endif %}
                   ]]] 
-                {% else %}
-                label: >
-                  [[[
-                    if(states['{{ room["temperature"] }}']){
-                      return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°';
-                    } else {
-                      console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!');
-                      return 'Temperature error';
-                    }
-                  ]]] 
-                {% endif %}
                 {% else %}
                 label: '&nbsp;'
                 {% endif %}

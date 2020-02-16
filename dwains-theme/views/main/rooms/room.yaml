@@ -303,37 +303,42 @@
             tap_action: 
               action: navigate
               navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_climate
-            {% if room["climate"] %}
             label: >
               [[[ 
-                if(entity){
-                  if (entity.attributes.hvac_action  == 'idle'){
-                    return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.idle }}';
-                  } else if(entity.attributes.hvac_action == 'heating'){
-                    return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
-                  } else if(entity.attributes.hvac_action == 'off'){
-                    return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.off_text }}';
-                  } else if(entity.attributes.hvac_action == 'heat'){
-                    return entity.attributes.current_temperature + '° <br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                {% if room["temperature"] %}
+                  if(states['{{ room["temperature"] }}']){
+                    var temperature = (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°';
                   } else {
-                    return entity.attributes.current_temperature + '°<br>' + entity.state;
+                    console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!');
+                    return 'Temperature error';
                   }
-                } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.climate entity!');
-                  return 'Entity error!';
+                {% elif room["climate"] %}
+                  if(states['{{ room["climate"] }}']){
+                    var temperature = (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + '°';
+                  } else {
+                    console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!');
+                    return 'Climate error';
+                  }
+                {% endif %}
+
+                {% if room["climate"] %}
+                if(states['{{ room["climate"] }}']){
+                  if (entity.attributes.hvac_action  == 'idle'){
+                    return temperature + '<br>{{ _d_t_trans.climate.idle }}';
+                  } else if(entity.attributes.hvac_action == 'heating'){
+                    return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                  } else if(entity.attributes.hvac_action == 'off'){
+                    return temperature + '<br>{{ _d_t_trans.climate.off_text }}';
+                  } else if(entity.attributes.hvac_action == 'heat'){
+                    return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                  } else {
+                    return temperature + '<br>' + entity.state;
+                  }
                 }
+                {% endif %}
+
+                return temperature;
               ]]] 
-            {% else %}
-            label: >
-              [[[
-                if(entity){
-                  return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°'
-                } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.temperature entity!');
-                  return 'Entity error!';
-                }
-              ]]] 
-            {% endif %}
           {% endif %}
 
           #Card for covers (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
