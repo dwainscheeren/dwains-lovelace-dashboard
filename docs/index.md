@@ -56,6 +56,8 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @rkotulan — Nice designed theme.
+
 > @Evad — Very nice theme. Excellent documentation.
 
 > @Simon — I am very satisfied with the theme.

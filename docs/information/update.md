@@ -26,7 +26,10 @@ If there is a update of Dwains Theme here is how to install it.
 * Fixed bug with background color of cover in dark mode.
 * Fixed bug that icon of dynamic page addon is not in the menu when you use it.
 * Fixed bug with multiple plants in a room translation.
-* Made the small headings of each room name on the all lights page clickable to open a popup or doubleclick to toggle it
+* Made the small headings of each room name on the all lights page clickable to open a popup or doubleclick to toggle it.
+* Fixed color of toggle switch when off state in dark mode.
+* Fixed background color bug on some popups in dark mode.
+* Merged PR by fmartinou for French translations.
 
 ## Update 1.1.2
 
