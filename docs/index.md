@@ -57,6 +57,8 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @mase (again :D) — Nice update (v1.1.5). Headers are now always loading and thx for fixing the group-cover bug in the theme. Also thanks for all the support you giving on slack and the ha forum. Keep it up, you´re awesome!
+
 > @maikelstraub — Thanks for your help on slack and an amazing, well documented theme!
 
 > @jompa68 — Lovely theme and great support. Easy to setup.
@@ -77,7 +79,7 @@ If you donate please write a short message with your HA username :D
 
 > @Klumpke — Hard work should be rewarded. Great theme that I use every day!
 
-> @Mase — I didn‘t know that you can make such a good looking setup in HA. Thanks for such an advanced, yet simple to install theme.
+> @mase — I didn‘t know that you can make such a good looking setup in HA. Thanks for such an advanced, yet simple to install theme.
 
 > @Warwick Jaensch — For great work on Dwains Theme!
 
