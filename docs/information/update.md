@@ -21,6 +21,9 @@ If there is a update of Dwains Theme here is how to install it.
 
 # Changelog
 
+## Update 1.1.5
+* Whoopsie I forgot some code in the homepage weather button, so people who don't have an outside_temperature defined get a broken installation. Fixed this in 1.1.5.
+
 ## Update 1.1.4
 * Forgot to update sensor of version so I updated it.
 
