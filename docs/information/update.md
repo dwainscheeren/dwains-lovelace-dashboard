@@ -31,6 +31,7 @@ If there is a update of Dwains Theme here is how to install it.
 * Fixed background color bug on some popups in dark mode.
 * Merged PR by fmartinou for French translations.
 * Removed the `user-package-sample` folder. Got too much questions regarding how to work with it.
+* Fixed bug with climate and temperature. Temperature is now always leading so it will override the climate temperature. If you only set a climate and no temperature it will use the temperature from the climate.
 
 ## Update 1.1.2
 
