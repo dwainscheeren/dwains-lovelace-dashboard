@@ -34,7 +34,8 @@
 
 ### Information
 * [Update theme](information/update.md)
-* [Changelog](https://github.com/dwainscheeren/lovelace-dwains-theme/releases)
+* [Changelog](information/update.md)
+* [Releases](https://github.com/dwainscheeren/lovelace-dwains-theme/releases)
 
 ### How to guides
 * [How to choose and use an icon](how-tos/how-to-choose-icon.md)
