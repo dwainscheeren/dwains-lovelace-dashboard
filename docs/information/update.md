@@ -21,6 +21,12 @@ If there is a update of Dwains Theme here is how to install it.
 
 # Changelog
 
+## Update 1.2.0
+* Made some changes in the configs-examples files.
+* Fixed a bug in dwains_theme custom_component for icons.yaml file.
+* Fixed bug in scenes page with template not always loading.
+
+
 ## Update 1.1.5
 * Whoopsie I forgot some code in the homepage weather button, so people who don't have an outside_temperature defined get a broken installation. Fixed this in 1.1.5.
 

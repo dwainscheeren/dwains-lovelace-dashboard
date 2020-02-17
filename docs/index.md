@@ -57,6 +57,10 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @jaburges — Thanks for the help!
+
+> @sunnyhd4 — Funktioniert Klasse und HA sieht plötzlich gut aus. Danke Gruß Klaus.
+
 > @OnlyMe — Best theme what is available atm. Looks very sleek and solid. Easy to install for HA beginners.
 
 > @Evad (2nd) — Thanks for your theme and the many work you put into it.
