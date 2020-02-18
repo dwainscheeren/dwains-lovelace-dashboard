@@ -28,6 +28,11 @@ If there is a update of Dwains Theme here is how to install it.
 * Added function to toggle all lights of your house on the all lights page.
 * Added functionality for adding entites on a person for the persons page, so you can add for example a battery entity (phone battery) and travel time to work.
 * Added map for tracker on persons pages, can be disabled in `persons.yaml`.
+* Removed the big full width temperature and humidity graph on the climate page on a room if you only have a temperature set. Oterwise it will be showed. 
+* You can use a input_select now in the `scenes.yaml`.
+* Fixed no icon showing when 95-100% battery percentage on all batteries page.
+* Fixed some color bugs of dark theme.
+
 
 ## Update 1.1.5
 * Whoopsie I forgot some code in the homepage weather button, so people who don't have an outside_temperature defined get a broken installation. Fixed this in 1.1.5.

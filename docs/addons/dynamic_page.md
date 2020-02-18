@@ -32,7 +32,7 @@ dynamic_page:
     - name: Hello dynamic page
       icon: fas:chart-area
       path: 'dwains-theme/addons/dynamic_page/hello-dynamic-page/page.yaml'
-        data:
-          some_data: 'This is some data parsed.'
-          some_other_data: 'and some other data.'
+      data:
+        some_data: 'This is some data parsed.'
+        some_other_data: 'and some other data.'
 ```    
