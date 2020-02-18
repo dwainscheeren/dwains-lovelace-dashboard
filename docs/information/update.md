@@ -21,11 +21,13 @@ If there is a update of Dwains Theme here is how to install it.
 
 # Changelog
 
-## Update 1.2.0
+## Update 1.1.6
 * Made some changes in the configs-examples files.
 * Fixed a bug in dwains_theme custom_component for icons.yaml file.
 * Fixed bug in scenes page with template not always loading.
-
+* Added function to toggle all lights of your house on the all lights page.
+* Added functionality for adding entites on a person for the persons page, so you can add for example a battery entity (phone battery) and travel time to work.
+* Added map for tracker on persons pages, can be disabled in `persons.yaml`.
 
 ## Update 1.1.5
 * Whoopsie I forgot some code in the homepage weather button, so people who don't have an outside_temperature defined get a broken installation. Fixed this in 1.1.5.

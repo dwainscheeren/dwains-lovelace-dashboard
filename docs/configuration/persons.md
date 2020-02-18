@@ -26,6 +26,8 @@ Persons sections, all persons you want to be visible on the homepage. [How to cr
 | name | string | Required | Dwain | Name of person |
 | track | string | Required | person.dwain | Person entity |
 | picture_path | string | A auto generated avatar | 'images/persons/dwain.jpg' | Path to person picture (Place this in your `www/images/persons` folder) |
+| addons              | object | No       |                               | Persons support addons, they are called *persons addons.* [Read more here](../addons/persons.md). |
+
 
 ## Persons example
 ```YAML
