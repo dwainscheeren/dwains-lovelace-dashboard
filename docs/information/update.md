@@ -17,11 +17,19 @@ If there is a update of Dwains Theme here is how to install it.
 
 **WARNING: You may need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder. If you made any modifications on the `ui-lovelace.yaml` file, like added own resources, check out the difference between your current one and the downloaded one!!**
 
+Version numbering explained (MAJOR.MINOR.PATH):
+1. MAJOR version: when there are big and incompatible changes.
+2. MINOR version: when there is added functionality in a non-backwards compatible manner.
+3. PATCH version: backwards compatible bug fixes.
+
 ---
 
 # Changelog
 
-## Update 1.1.6
+## Update 1.2.0
+*Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! If you  have custom resources loaded move them to the new file: `dwains-theme/resources/custom_resources.yaml`. This file will never be overwriten with updates instead of the old way, so you can keep your own additional resources save.*
+
+* Added Swedish translation.
 * Made some changes in the configs-examples files.
 * Fixed a bug in dwains_theme custom_component for icons.yaml file.
 * Fixed bug in scenes page with template not always loading.
@@ -30,8 +38,9 @@ If there is a update of Dwains Theme here is how to install it.
 * Added map for tracker on persons pages, can be disabled in `persons.yaml`.
 * Removed the big full width temperature and humidity graph on the climate page on a room if you only have a temperature set. Oterwise it will be showed. 
 * You can use a input_select now in the `scenes.yaml`.
+* You can use a input_select now in the `house_information.yaml` (favorites).
 * Fixed no icon showing when 95-100% battery percentage on all batteries page.
-* Fixed some color bugs of dark theme.
+* Added support for `sensor.*`in doors, windows and motion (instead of only having `binary_sensor.*`), and it triggers on True or False now next to existing on/off.
 
 
 ## Update 1.1.5
