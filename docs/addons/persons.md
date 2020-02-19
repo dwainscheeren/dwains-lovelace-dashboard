@@ -27,8 +27,8 @@ With persons addons you can add own cards to a person page. Like for example a m
 This is for the `config/persons.yaml` file.
 
 ```YAML
-rooms:
-  - name: Hallway
+persons:
+  - name: Dwain
     ...your existing strings...
     addons:
       - name: Hello person
