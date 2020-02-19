@@ -15,6 +15,10 @@ With persons addons you can add own cards to a person page. Like for example a m
 
 ## Persons addons information
 
+I advise you to create a folder inside `dwains-theme/addons/persons/` with the name of the addon (for example statistics) inside that folder create a file called `page.yaml` and inside that file your lovelace card(s) and use that path as the path for the addon.
+
+A good example is to checkout the `hello-person` addon in `dwains-theme/addons/persons/hello-person/page.yaml` to re-use or inspire you. 
+
 | Name | Type   | Default          | Example                                                                                                               | Description                       |
 |------|--------|------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------|
 | name | string | Required         | Hello room                                                                                                            | The name of the addon             |

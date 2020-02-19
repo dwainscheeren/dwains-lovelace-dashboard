@@ -15,6 +15,10 @@ With more page addons you can still add own pages to Dwains Theme. Let's say you
 
 ## More page addons information
 
+I advise you to create a folder inside `dwains-theme/addons/more_page/` with the name of the addon (for example statistics) inside that folder create a file called `page.yaml` and inside that file your lovelace card(s) and use that path as the path for the addon.
+
+A good example is to checkout the `hello-more-page` addon in `dwains-theme/addons/more_page/hello-more-page/page.yaml` to re-use or inspire you. 
+
 | Name | Type   | Default          | Example                                            | Description                       |
 |------|--------|------------------|----------------------------------------------------|-----------------------------------|
 | name | string | Required         | Statistics                                         | The name of the addon             |
