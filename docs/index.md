@@ -57,6 +57,8 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @Correctomundo — Thanks for your great work on Dwains theme! Love it!
+
 > @Tdw — Great theme, better development.
 
 > @jaburges — Thanks for the help!
