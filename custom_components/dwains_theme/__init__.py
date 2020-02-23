@@ -13,6 +13,7 @@ import jinja2
 from homeassistant.util.yaml import loader
 from homeassistant.exceptions import HomeAssistantError
 
+DOMAIN = "dwains_theme"
 _LOGGER = logging.getLogger(__name__)
 
 def fromjson(value):
@@ -86,6 +87,20 @@ async def async_setup(hass, config):
     if ("icons" in config.get("dwains_theme")):
         icons_config = config.get("dwains_theme")["icons"]["icons"];
         dwains_theme_icons.update(icons_config);
+
+    async def handle_reload(call):
+        _LOGGER.debug("reload config")
+        config_new = OrderedDict()
+        for fname in loader._find_files("dwains-theme/configs/", "*.yaml"):
+            loaded_yaml = load_yaml(fname)
+            if isinstance(loaded_yaml, dict):
+                config_new.update(loaded_yaml)
+
+        dwains_theme_config.update(config_new)
+        _LOGGER.debug("reload lovelace")
+        await hass.data["lovelace"].async_load(True)
+
+    hass.services.async_register(DOMAIN, "reload", handle_reload)
 
     return True
 
