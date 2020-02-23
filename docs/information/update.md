@@ -15,19 +15,23 @@ If there is a update of Dwains Theme here is how to install it.
 
 2. Copy the content of this folder to the root of your Home Assistant installation.
 
-**WARNING: You may need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder. If you made any modifications on the `ui-lovelace.yaml` file, like added own resources, check out the difference between your current one and the downloaded one!!**
+**WARNING: You may need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder.**
+
+**Do you have any custom resources? Go to the folder `dwains-theme/resources/`, if you don't have the file `custom_resources.yaml` then rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in the file `custom_resources.yaml`!**
+
+### Version info
 
 Version numbering explained (MAJOR.MINOR.PATH):
 1. MAJOR version: when there are big and incompatible changes.
 2. MINOR version: when there is added functionality in a non-backwards compatible manner.
-3. PATCH version: backwards compatible bug fixes.
+3. PATCH version: small new functions and backwards compatible bug fixes.
 
 ---
 
 # Changelog
 
-## Update 1.2.0
-*Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! If you  have custom resources loaded move them to the new file: `dwains-theme/resources/custom_resources.yaml`. This file will never be overwriten with updates instead of the old way, so you can keep your own additional resources save.*
+## Update 1.2.0 (Coming soon)
+*Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! Do you have any custom resources? Go to the folder `dwains-theme/resources/` rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in that file! This file will never be overwriten with updates instead of the old way, so you can keep your own additional resources save.*
 
 * Added Swedish translation.
 * Made some changes in the configs-examples files.
@@ -40,8 +44,9 @@ Version numbering explained (MAJOR.MINOR.PATH):
 * You can use a input_select now in the `scenes.yaml`.
 * You can use a input_select now in the `house_information.yaml` (favorites).
 * Fixed no icon showing when 95-100% battery percentage on all batteries page.
-* Added support for `sensor.*`in doors, windows and motion (instead of only having `binary_sensor.*`), and it triggers on True or False now next to existing on/off.
-
+* Added support for `sensor.*`in doors, windows and motion (instead of only having `binary_sensor.*`) inside a room and it triggers on True or False now next to the existing on/off state.
+* Made the icon width little bit smaller of the favorites on house information page.
+* Changed typo of house_information icon on the more_page.
 
 ## Update 1.1.5
 * Whoopsie I forgot some code in the homepage weather button, so people who don't have an outside_temperature defined get a broken installation. Fixed this in 1.1.5.
