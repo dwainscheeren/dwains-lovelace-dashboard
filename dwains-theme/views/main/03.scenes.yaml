@@ -53,7 +53,6 @@
               tap_action:
                 haptic: light
                 action: call-service
-                haptic: light 
                 service: input_select.select_next
                 service_data:
                   entity_id: {{ scene["entity"] }}
@@ -77,7 +76,6 @@
               tap_action:
                 haptic: light
                 action: toggle
-                haptic: light 
               styles:
                 {% if scene["background"] %}
                 img_cell:

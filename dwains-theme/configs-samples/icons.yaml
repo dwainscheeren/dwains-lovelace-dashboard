@@ -14,6 +14,7 @@
 #   light_on: 'fas:question'
 #   light_off: 'fal:smile-wink'
 
+#   room_header_more_entities: 'fas:question'
 #   climate: 'fas:question'
 #   climate_heating: 'fas:question'
 #   climate_auto: 'fas:question'

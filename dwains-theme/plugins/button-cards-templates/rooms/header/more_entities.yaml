@@ -1,6 +1,8 @@
+# dwains_theme
+
 room_header_more_entities:
   size: 25px
-  icon: mdi:arrange-bring-forward
+  icon: {{ _d_t_icons.room_header_more_entities|default('mdi:arrange-bring-forward') }}
   styles:
     icon:
       - color: var(--dwains-theme-header-text)
