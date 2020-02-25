@@ -4,6 +4,7 @@
   template: lights_header_all_lights_toggle
   icon: {{ _d_t_icons.light_on|default('fas:lightbulb') }}
   tap_action:
+    haptic: light
     action: call-service
     service: homeassistant.turn_off
     service_data:
@@ -50,6 +51,7 @@
   template: lights_header_all_lights_toggle
   icon: {{ _d_t_icons.light_on|default('far:lightbulb') }}
   tap_action:
+    haptic: light
     action: call-service
     service: homeassistant.turn_on
     service_data:
