@@ -32,8 +32,9 @@
                         entity: this.entity_id
                         icon: >
                           [[[ 
-                            if (states[`this.entity_id`].state != 'unknown' && states[`this.entity_id`].state != 100) {
+                            if (states[`this.entity_id`].state != 'unknown' && states[`this.entity_id`].state <= 95) {
                               var battery = Math.round(states[`this.entity_id`].state / 10) * 10
+                              //console.log(battery);
                               return 'mdi:battery-' + battery;
                             } else {
                               return 'mdi:battery';

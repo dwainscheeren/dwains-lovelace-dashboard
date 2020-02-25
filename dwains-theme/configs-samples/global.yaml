@@ -10,8 +10,8 @@
 
 global:
   language: en
-  # weather: weather.dark_sky
-  # outside_temperature: sensor.dark_sky_temperature
-  # outside_humidity: sensor.dark_sky_humidity
+  # weather: weather.dark_sky # Use a weather entity!
+  # outside_temperature: sensor.dark_sky_temperature # Use a sensor here!
+  # outside_humidity: sensor.dark_sky_humidity # Use a sensor here!
   # alarm: alarm_control_panel.alarm_system #Alarm panel entity
   # inside_temperature: climate.living_room #Can be climate. or sensor. entity

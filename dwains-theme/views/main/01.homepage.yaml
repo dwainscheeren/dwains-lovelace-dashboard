@@ -149,14 +149,15 @@
                       var additional_info = '';
                       {% if room["window"] %}
                         if(states['{{ room["window"] }}']){
-                          {% if room["window"].split('.')[0] == 'binary_sensor' %}
-                            if(states['{{ room["window"] }}'].state == 'on'){
+                          {% if room["window"].split('.')[0] == 'binary_sensor' or room["window"].split('.')[0] == 'sensor' %}
+                            if(states['{{ room["window"] }}'].state == 'on' || states['{{ room["window"] }}'].state == 'True'){
                               additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}"></ha-icon><br>';
                             }
                           {% else %}
                             const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
                             for (let i = 0; i < entitiesFromGroup.length; i++) {
-                              if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on') {
+                              if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' || 
+                                  states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
                                 additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}"></ha-icon><br>';
                                 break;
                               }
@@ -169,14 +170,15 @@
                       {% endif %}
                       {% if room["motion"] %}
                         if(states['{{ room["motion"] }}']){
-                          {% if room["motion"].split('.')[0] == 'binary_sensor' %}
-                            if(states['{{ room["motion"] }}'].state == 'on'){
+                          {% if room["motion"].split('.')[0] == 'binary_sensor' or room["motion"].split('.')[0] == 'sensor' %}
+                            if(states['{{ room["motion"] }}'].state == 'on' || states['{{ room["motion"] }}'].state == 'True'){
                               additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.motion_on|default('mdi:motion-sensor') }}"></ha-icon><br>';
                             }
                           {% else %}
                             const entitiesFromGroup = states['{{ room["motion"] }}'].attributes['entity_id'];
                             for (let i = 0; i < entitiesFromGroup.length; i++) {
-                              if(states[entitiesFromGroup[i]].state == 'on') {
+                              if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                  states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
                                 additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.motion_on|default('mdi:motion-sensor') }}"></ha-icon><br>';
                                 break;
                               }
@@ -189,14 +191,15 @@
                       {% endif %}
                       {% if room["door"] %}
                         if(states['{{ room["door"] }}']){
-                          {% if room["door"].split('.')[0] == 'binary_sensor' %}
-                            if(states['{{ room["door"] }}'].state == 'on'){
+                          {% if room["door"].split('.')[0] == 'binary_sensor' or room["door"].split('.')[0] == 'sensor' %}
+                            if(states['{{ room["door"] }}'].state == 'on' || states['{{ room["door"] }}'].state == 'True'){
                               additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.door_open|default('fas:door-open') }}"></ha-icon><br>';
                             }
                           {% else %}
                             const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
                             for (let i = 0; i < entitiesFromGroup.length; i++) {
-                              if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on') {
+                              if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                  states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
                                 additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.door_open|default('fas:door-open') }}"></ha-icon><br>';
                                 break;
                               }

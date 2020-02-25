@@ -7,10 +7,13 @@
   cards:
     - type: vertical-stack
       cards:
-        #Header
+        #Header with all lights on/off button
         - !include
-          - ../partials/header.yaml
+          - ../partials/header_grid.yaml
           - title: {{ _d_t_trans.all_lights.title }}
+            type: include
+            path: views/partials/header_grid/lights.yaml
+              
         #Start for all lights page
         #All lights
         {% for room in _d_t_config.rooms %}

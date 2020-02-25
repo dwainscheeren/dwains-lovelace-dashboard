@@ -1,0 +1,158 @@
+# Translation by Charlie d'Gabriel
+
+es:
+  greetings:
+    good_morning: "Buenos Días"
+    good_afternoon: "Buenas Tardes"
+    good_evening: "Buena Noches"
+
+  alarm:
+    armed_away: "Sistema de alarma activado (Armado Ausente)."
+    armed_home: "Sistema de alarma activado (Inicio armado)."
+    disarmed: "Sistema de alarma desactivado."
+
+  history:
+    sec_ago: "hace seg"
+    min_ago: "hace min"
+    h_ago: "hace una hora"
+    d_ago: "hace un dia"
+    m_ago: "hace un minuto"
+    y_ago: "hace años"
+
+  house_information:
+    title: "Información de la Casa"
+    favorites: "Favoritos"
+    house_calendar: "Calendario de la Casa"
+    activity: "Actividad (puertas, ventanas, movimiento)"
+
+  motion:
+    title: "Movimiento"
+    title_plural: "Movimientos"
+    motion_on: "Detectado"
+
+  light:
+    title: "Luz"
+    title_plural: "Luces"
+    light_on: "luz encendida"
+    lights_on: "luces encendidas"
+    light_off: "luz apagada"
+    lights_off: "luces apagada"
+    all_lights_on: "Todas las luces encendidas"
+    all_lights_off: "Todas las luces apagadas"
+    on_text: "Encendida"
+    off_text: "Apagada"
+
+  door:
+    title: "Puerta"
+    title_plural: "Puertas"
+    door_open: "puerta abierta"
+    doors_open: "puertas abiertas"
+    all_doors_open: "Todas las puertas abiertas"
+    all_doors_closed: "Todas las puertas cerradas"
+    open: "Abierta"
+    closed: "Cerrada"
+
+  window:
+    title: "Ventana"
+    title_plural: "Ventansa"
+    window_open: "ventana abierta"
+    windows_open: "ventanas abiertas"
+    all_windows_open: "Todas las ventanas abiertas"
+    all_windows_closed: "Todas las ventanas cerradas"
+    open: "Abierta"
+    closed: "Cerrada"
+
+  climate:
+    title: "Temperatura"
+    title_plural: "Temperaturas"
+    inside: "adentro"
+    outside: "afuera"
+    idle: "Espera"
+    heating: "Calentar a"
+    off_text: "Apagado"
+    auto: "Programa"
+    heat: "Calor"
+    cool: 'Cool'
+    heat_cool: 'Heat/Cool'
+    dry: 'Dry'
+    fan_only: 'Fan only'
+    this_room: "Esta habitación"
+    temperature: "Temperatura"
+    humidity: "Humedad"
+
+  cover:
+    title: "Persiana"
+    title_plural: "Persianas"
+    cover_open: "Abierta"
+    cover_closed: "Cerrada"
+
+  device:
+    title: "Dispositivo"
+    title_plural: "Dispositivos"
+    device_on: "dispositivo encendido"
+    devices_on: "dispositivos encendidos"
+    on_text: "Encendido"
+    off_text: "Apagado"
+    device_off: "Dispositivo apagado"
+    devices_off: "Dispositivos Apagados"
+    all_devices_on: "Todos los dispositivos encendidos"
+    all_devices_off: "Todos los dispositivos apagados"
+
+  media_player:
+    title: "Reproductor multimedia"
+    title_plural: "Reproductors multimedia"
+    media_player_on: "reproductor multimedia encendido"
+    media_players_on: "reproductors multimedia encendidos"
+    media_player_off: "Reproductor multimedia apagado"
+    media_players_off: "Reproductors multimedia apagados"
+    all_media_players_on: "Todos los reproductores multimedia encendidos"
+    all_media_players_off: "Todos los reproductores multimedia apagados"
+    on_text: "Encendido"
+    off_text: "Apagado"
+
+  vacuum:
+    title: "Aspiradora"
+    title_plural: "Aspiradoras"
+
+  plant:
+    title: "Planta"
+    title_plural: "Plantas"
+    plant_problem: 'plant problem'
+    plants_problem: 'plants problem'
+
+  home:
+    title: "Página principal"
+
+  rooms:
+    title: "Habitacións"
+
+  all_lights:
+    title: "Todas las luces"
+
+  scenes:
+    title: "Escenas"
+    not_defined: "No hay escenas definidas"
+
+  cameras:
+    title: "Cámaras"
+    not_defined: "No hay cámaras definidas"
+
+  more_page:
+    title: "Más"
+    house_info: "Información de la casa"
+    house_data:
+      title: "Datos de la casa"
+      all_sensors: "Todos los sensores"
+      all_batteries: "Todas las baterías"
+      config: "Configuración"
+      developer_tools: "Herramientas de desarrollo"
+    settings:
+      title: "Configuración de temas"
+      reload_configuration: 'Reload theme configuration'
+      theme_docs: "Documentos de temas"
+      support_paypal: "Apoyo/Done con PayPal"
+      buy_coffee: "Cómprame un café"
+      by: "Por"
+      version: "Versión"
+      update_available: "¡Actualización disponible del tema Dwains!"
+    more_page_addons: "Más complementos"

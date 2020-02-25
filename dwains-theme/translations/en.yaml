@@ -70,11 +70,16 @@ en:
     idle: 'Stand-by'
     heating: 'Heating to'
     off_text: 'Off'
-    program: 'Program'
+    auto: 'Program'
     heat: 'Heat'
+    cool: 'Cool'
+    heat_cool: 'Heat/Cool'
+    dry: 'Dry'
+    fan_only: 'Fan only'
     this_room: 'This room'
     temperature: 'Temperature'
     humidity: 'Humidity'
+
 
   cover:
     title: 'Cover'
@@ -113,6 +118,8 @@ en:
   plant:
     title: 'Plant'
     title_plural: 'Plants'
+    plant_problem: 'plant problem'
+    plants_problem: 'plants problem'
 
   home:
     title: 'Homepage'
@@ -142,6 +149,7 @@ en:
       developer_tools: 'Developer tools'
     settings:
       title: 'Theme settings'
+      reload_configuration: 'Reload theme configuration'
       theme_docs: 'Theme docs'
       support_paypal: 'Support/Donate with PayPal'
       buy_coffee: 'Buy me a coffee'

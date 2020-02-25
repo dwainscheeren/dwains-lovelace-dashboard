@@ -7,12 +7,24 @@
 - title: {{ room["name"] }}
   path: {{ room["name"]|lower|replace(" ", "_") }}
   cards:   
+    {% if room["more_entities"] and room["more_entities"]["entities"] %}
+    #Header with grid
+    - !include
+      - ../../partials/header_grid.yaml
+      - title: {{ room["name"] }}
+        subtitle: {{ _d_t_trans.home.title }}
+        navigation_path: home  
+        type: button
+        button_template: room_header_more_entities
+        button_navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_more_entities
+    {% else %}
     #Header
     - !include
       - ../../partials/header.yaml
       - title: {{ room["name"] }}
         subtitle: {{ _d_t_trans.home.title }}
         navigation_path: home  
+    {% endif %}
     #Subheader with room information
     {% if room["motion"] or room["door"] or room["window"] %}
     - type: custom:mod-card
@@ -74,7 +86,7 @@
                   }
                 }
                 if(entity){
-                  if(entity.state == 'on'){
+                  if(entity.state == 'on' || entity.state == 'True'){
                     return '{{ _d_t_trans.motion.motion_on }}';
                   } else {
                     return timeDifference(new Date(), new Date(entity.last_changed));
@@ -103,7 +115,7 @@
             label: >
               [[[ 
                 if(entity){
-                  if(entity.state == 'off'){
+                  if(entity.state == 'off' || entity.state == 'False'){
                     return '{{ _d_t_trans.door.closed }}';
                   } else {
                     return '{{ _d_t_trans.door.open }}';
@@ -122,7 +134,7 @@
                   const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
                   var openDoors = 0;
                   entitiesFromGroup.forEach(function(entity){
-                    if(states[entity] && states[entity].state == 'on'){
+                    if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'True'){
                       openDoors++;
                     }
                   });  
@@ -146,13 +158,13 @@
               !include 
                 - ../../popups/more-info.yaml
                 - entity: {{ room["window"] }}
-            {% if room["window"].split('.')[0] == 'binary_sensor' %}
+            {% if room["window"].split('.')[0] == 'binary_sensor' or room["window"].split('.')[0] == 'sensor' %}
             # this room has only 1 window
             name: {{ _d_t_trans.window.title }}
             label: >
               [[[ 
                 if(entity){
-                  if(entity.state == 'off'){
+                  if(entity.state == 'off' || entity.state == 'False'){
                     return '{{ _d_t_trans.window.closed }}';
                   } else {
                     return '{{ _d_t_trans.window.open }}';
@@ -171,7 +183,7 @@
                   const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
                   var openWindows = 0;
                   entitiesFromGroup.forEach(function(entity){
-                    if(states[entity].state == 'on'){
+                    if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'True'){
                       openWindows++;
                     }
                   });  
@@ -562,6 +574,15 @@
           #Card for room addons
           {% if room["addons"] %}
           {% for addon in room["addons"] %}
+          {% if addon["button_path"] %}
+          - !include 
+              - ../../../../{{ addon["button_path"] }}
+              - name: {{ addon["name"] }}
+                icon: {{ addon["icon"] }}
+                {% if addon["data"] %}
+                data: '{{ addon["data"]|tojson }}'
+                {% endif %}
+          {% else %}
           - type: custom:button-card
             template: rooms_child
             icon: {{ addon["icon"]|default('fas:puzzle-piece') }}
@@ -569,6 +590,7 @@
             tap_action: 
               action: navigate
               navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace(" ", "_") }}
+          {% endif %}
           {% endfor %}
           {% endif %}
 {% endfor %}

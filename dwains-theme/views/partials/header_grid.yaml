@@ -1,0 +1,79 @@
+# dwains_theme
+
+# Header partial (with support for button)
+type: custom:mod-card
+style: |
+  ha-card {
+    box-shadow: none;
+    padding: 10px 0px;
+    color: #fff;
+    background-color: var(--dwains-theme-header-background);
+    margin-top: -4px;
+    border-radius: 0; 
+    font-weight: bold;
+    font-size: 14px;
+  }
+card:
+  type: custom:layout-card
+  layout: grid
+  gridrows: auto
+  gridcols: 90% 10%
+  cards:    
+    - type: markdown
+      gridrow: 1 / 1
+      gridcol: 1 / 2
+      style: | 
+        ha-card {
+          background: transparent;
+          box-shadow: none;
+          margin-top: -8px;
+        }
+        ha-markdown {
+          padding-top: 0px !important;
+          padding-bottom: 7px !important;
+          padding-left: 8px !important;
+        }
+        ha-card a {
+          color: var(--dwains-theme-header-text) !important;
+        }
+        ha-card p {
+          margin-bottom: 0px;
+        }
+        ha-card h1 {
+          color: var(--dwains-theme-header-text);
+          font-size: 1.5em;
+          {% if subtitle %}
+          margin: 0;
+          {% else %}
+          margin: 10px 0 0 0;
+          {% endif %}
+        }
+        ha-card h3 {
+          font-size: 13px;
+          font-weight: normal;
+          color: var(--dwains-theme-header-text);
+          {% if subtitle %}
+          margin: 14px 0 0 0;
+          {% else %}
+          margin: 0;
+          {% endif %}
+        }
+      content: |
+        {% if navigation_path %}[<ha-icon icon="{{ _d_t_icons.menu_back|default('fas:chevron-left') }}"></ha-icon>](/lovelace/{{ navigation_path }}){% endif %}
+        <h3>{{ subtitle }}</h3>
+        <h1>{{ title }}</h1>
+    - type: vertical-stack
+      gridrow: 1 / 1
+      gridcol: 2 / 2
+      cards:
+        {% if type and type == 'button' %}
+        - type: custom:button-card
+          template: {{ button_template }}
+          tap_action: 
+            action: navigate
+            navigation_path: {{ button_navigation_path }}
+        {% elif type and type == 'include' %}
+        !include
+          - ../../{{ path }}
+          - type: {{ type }}
+        {% endif %}

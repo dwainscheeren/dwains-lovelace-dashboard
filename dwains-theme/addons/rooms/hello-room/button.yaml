@@ -1,1 +1,16 @@
-# Not yet supported!
+# dwains_theme
+# Custom button for room addon: hello room
+
+type: custom:button-card
+entity: {{ (data | fromjson)['entity'] }}
+template: rooms_child
+name: {{ name }}
+icon: {{ icon|default('fas:puzzle-piece') }}
+label: >
+  [[[ 
+    if(entity){
+      return entity.state;
+    } else {
+      return 'Entity error!';
+    }
+  ]]]

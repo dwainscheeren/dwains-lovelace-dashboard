@@ -70,8 +70,12 @@ da:
     idle: 'Stand-by'
     heating: 'Varme til'
     off_text: 'slukket'
-    program: 'Program'
+    auto: 'Program'
     heat: 'Varme'
+    cool: 'Cool'
+    heat_cool: 'Heat/Cool'
+    dry: 'Dry'
+    fan_only: 'Fan only'
     this_room: 'Dette rum'
     temperature: 'Temperatur'
     humidity: 'Fugtighed'
@@ -113,6 +117,8 @@ da:
   plant:
     title: 'Plante'
     title_plural: 'Planter'
+    plant_problem: 'plant problem'
+    plants_problem: 'plants problem'
   
   home:
     title: 'Forside'
@@ -142,6 +148,7 @@ da:
       developer_tools: 'Developer tools'
     settings:
       title: 'Tema indstillingere'
+      reload_configuration: 'Reload theme configuration'
       theme_docs: 'Theme docs'
       support_paypal: 'Support/Donere via PayPal'
       buy_coffee: 'Buy me a coffee'

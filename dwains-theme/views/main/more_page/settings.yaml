@@ -62,6 +62,14 @@
                   }
                 entities: 
                   - entity: input_select.theme_selector
+                    icon: mdi:brush 
+              - type: custom:button-card
+                template: more_page_list-item
+                name: {{ _d_t_trans.more_page.settings.reload_configuration }}
+                icon: mdi:refresh 
+                tap_action: 
+                  action: call-service
+                  service: dwains_theme.reload
               - type: custom:button-card
                 template: more_page_list-item
                 name: {{ _d_t_trans.more_page.settings.theme_docs }}

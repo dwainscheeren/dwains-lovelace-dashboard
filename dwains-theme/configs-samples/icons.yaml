@@ -19,6 +19,10 @@
 #   climate_auto: 'fas:question'
 #   climate_off: 'fas:question'
 #   climate_heat: 'fas:question'
+#   climate_cool: 'fas:question'
+#   climate_heat_cool: 'fas:question'
+#   climate_dry: 'fas:question'
+#   climate_fan_only: 'fas:question'
 
 #   window_open: 'fas:question'
 #   window_closed: 'fas:question'

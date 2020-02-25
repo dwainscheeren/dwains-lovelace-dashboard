@@ -40,10 +40,19 @@
               - type: custom:button-card
                 entity: {{ favorite["entity"] }}
                 template: more_page_house_information_favorites
+                {% if favorite["entity"].split('.')[0] == 'input_select' %}
+                tap_action:
+                  action: call-service
+                  haptic: light 
+                  service: input_select.select_next
+                  service_data:
+                    entity_id: {{ favorite["entity"] }}
+                {% else %}
                 tap_action:
                   !include 
                     - ../../popups/more-info.yaml
                     - entity: {{ favorite["entity"] }}
+                {% endif %}
                 #there is a type defined so  lets change some styling and options
                 state:
                   {% if favorite['icon_off'] %}

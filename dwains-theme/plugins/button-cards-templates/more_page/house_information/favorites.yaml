@@ -11,7 +11,7 @@ more_page_house_information_favorites:
   styles:
     grid:
       - grid-template-areas: '"i n" "i s" "i l"'
-      - grid-template-columns: 30% 70%
+      - grid-template-columns: 25% 75%
       - grid-template-rows: min-content min-content
     card:
       - background-color: var(--dwains-theme-primary)

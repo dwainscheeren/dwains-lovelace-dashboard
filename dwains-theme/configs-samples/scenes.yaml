@@ -1,7 +1,7 @@
 # https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/scenes.html
 
-#scenes:
-  # - entity: scene.watching_tv
-  #   icon: fas:couch
-  #   icon_color: '#ffffff'
-  #   background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+# scenes:
+#   - entity: scene.watching_tv
+#     icon: fas:couch
+#     icon_color: '#ffffff'
+#     background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'

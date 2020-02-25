@@ -7,6 +7,8 @@ homeassistant:
   # customize: !include customize.yaml
 
   # Below is link to packages folder for Dwains Theme
+  # Check out user-package-sample in your downloaded folder for an example
+  # to create a own package folder
   packages: !include_dir_named packages/ # Comment this whole line if you want to disable Dwains Theme
 
   # If you had any important strings before in homeassistant: place them back here below

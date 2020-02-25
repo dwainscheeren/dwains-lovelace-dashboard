@@ -70,8 +70,12 @@ nl:
     idle: 'Stand-by'
     heating: 'Verwarmen naar'
     off_text: 'Uit'
-    program: 'Programma'
+    auto: 'Programma'
     heat: 'Verwarm'
+    cool: 'Cool'
+    heat_cool: 'Heat/Cool'
+    dry: 'Dry'
+    fan_only: 'Fan only'
     this_room: 'Deze kamer'
     temperature: 'Temperatuur'
     humidity: 'Vochtigheid'
@@ -113,7 +117,8 @@ nl:
   plant:
     title: 'Plant'
     title_plural: 'Planten'
-
+    plant_problem: 'plant problem'
+    plants_problem: 'plants problem'
 
   home:
     title: 'Homepage'
@@ -143,6 +148,7 @@ nl:
       developer_tools: 'Developer tools'
     settings:
       title: 'Thema instellingen'
+      reload_configuration: 'Reload theme configuration'
       theme_docs: 'Thema documentatie'
       support_paypal: 'Doneren met PayPal'
       buy_coffee: 'Buy me a coffee'

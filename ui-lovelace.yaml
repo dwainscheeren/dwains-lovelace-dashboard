@@ -1,47 +1,14 @@
-#This are all resources (plugins) used for dwains theme (mostly HACS)
-#If you like to install plugins manual the path can be different, so change it down here
-#Also if you want to extend dwains theme you can add own recourses in the list below
+# This are all resources (plugins) used for dwains theme (mostly HACS)
+#
+# If you like to install plugins manual the path can be different, ask me personal how to do this.
+# Do not change the file dwains-theme/resources/main.yaml!
+#
+# Also if you want to extend dwains theme and you need own recources added
+# Do you have any custom resources? Go to the folder dwains-theme/resources/, 
+# if you don't have the file custom_resources.yaml then rename the file custom_resources-sample.yaml 
+# to custom_resources.yaml and place your resources in the file custom_resources.yaml!
 resources: 
-  #Some dwains theme resources
-  - type: css
-    url: 'https://fonts.googleapis.com/css?family=Open+Sans&display=swap'
-  - type: css
-    url: /local/dwains-theme/style.css
-
-  #Plugins resources (dwains theme)
-  - type: module
-    url: /local/dwains-theme/plugins/cover-card.js?v=1
-  - type: module
-    url: /community_plugin/weather-card/weather-card.js
-  - type: module
-    url: /community_plugin/lovelace-card-mod/card-mod.js
-  - type: module
-    url: /community_plugin/button-card/button-card.js
-  - type: js
-    url: /community_plugin/light-entity-card/light-entity-card.js 
-  - type: module   
-    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js 
-  - type: module
-    url: /community_plugin/lovelace-auto-entities/auto-entities.js
-  - type: module
-    url: /community_plugin/lovelace-layout-card/layout-card.js
-  - type: module
-    url: /community_plugin/custom-header/custom-header.js
-  - type: module 
-    url: /community_plugin/lovelace-more-info-card/more-info-card.js
-  - type: module
-    url: /community_plugin/lovelace-state-switch/state-switch.js
-  
-  #Plugins resources which are not required if you dont have a rooted roborock or a house calendar
-  #you can comment these out
-  - type: module
-    url: /community_plugin/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js    
-  - type: module
-    url: /community_plugin/atomic_calendar/atomic_calendar.js
-
-  #Add here your own resources
-  #- type: module
-  #  url: /to_your_folder/filename.js
+  !include_dir_merge_list dwains-theme/resources/
 
 #########################################################################################
 # Start of the dwains theme ui-lovelace.yaml
@@ -49,16 +16,16 @@ resources:
 # Don't change anything below this line, only if you know what you are doing
 # Load everything in for dwains theme
      
-#Custom Header with some custom configuration (https://github.com/maykar/custom-header)
+# Custom Header with some custom configuration (https://github.com/maykar/custom-header)
 custom_header:
   !include dwains-theme/plugins/custom_header/configuration.yaml
       
-#Button Card Templates folder (https://github.com/custom-cards/button-card#Configuration-Templates)
-#These are the templates used to avoid too much duplicate code.      
+# Button Card Templates folder (https://github.com/custom-cards/button-card#Configuration-Templates)
+# These are the templates used to avoid too much duplicate code.      
 button_card_templates:
   !include_dir_merge_named dwains-theme/plugins/button-cards-templates        
  
-#Start of main lovelace theme 
+# Start of main lovelace theme 
 background: var(--background-image)
 views:
   !include_dir_merge_list dwains-theme/views/main/

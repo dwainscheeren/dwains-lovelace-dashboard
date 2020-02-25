@@ -70,8 +70,12 @@ de:
     idle: 'inaktiv'
     heating: 'heizen auf'
     off_text: 'ausgeschaltet'
-    program: 'Programm'
+    auto: 'Programm'
     heat: 'heizen'
+    cool: 'Cool'
+    heat_cool: 'Heat/Cool'
+    dry: 'Dry'
+    fan_only: 'Fan only'
     this_room: 'Dieser Raum'
     temperature: 'Temperatur'
     humidity: 'Luftfeuchtigkeit'
@@ -113,6 +117,8 @@ de:
   plant:
     title: 'Pflanze'
     title_plural: 'Pflanzen'
+    plant_problem: 'plant problem'
+    plants_problem: 'plants problem'
 
   home:
     title: 'Startseite'
@@ -142,6 +148,7 @@ de:
       developer_tools: 'Entwicklerwerkzeuge'
     settings:
       title: 'Einstellungen'
+      reload_configuration: 'Reload theme configuration'
       theme_docs: 'Dokumentation'
       support_paypal: 'Unterstütze mich/Spende via PayPal'
       buy_coffee: 'Kauf mir einen Kaffee'

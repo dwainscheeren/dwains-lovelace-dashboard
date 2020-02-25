@@ -42,7 +42,33 @@
                 {% if scene["icon_color"] %}
                 icon:
                   - color: '{{ scene["icon_color"] }}'
+                {% else %}
+                icon:
+                  - color: 'var(--dwains-theme-header-text)'
                 {% endif %}
+              {% elif scene["entity"].split('.')[0] == 'input_select' %}
+              # its a input_select entity
+              show_state: true
+              tap_action:
+                action: call-service
+                haptic: light 
+                service: input_select.select_next
+                service_data:
+                  entity_id: {{ scene["entity"] }}
+              styles:
+                {% if scene["background"] %}
+                img_cell:
+                  - background: '{{ scene["background"] }}'
+                {% endif %}
+                {% if scene["icon_color"] %}
+                icon:
+                  - color: '{{ scene["icon_color"] }}'
+                {% else %}
+                icon:
+                  - color: 'var(--dwains-theme-header-text)'
+                {% endif %}
+                grid:
+                  - grid-template-areas: '"i n""i s"'
               {% else %}
               # its something else then a scene entity
               show_state: true
@@ -57,6 +83,9 @@
                 {% if scene["icon_color"] %}
                 icon:
                   - color: '{{ scene["icon_color"] }}'
+                {% else %}
+                icon:
+                  - color: 'var(--dwains-theme-header-text)'
                 {% endif %}
                 grid:
                   - grid-template-areas: '"i n""i s"'
