@@ -19,9 +19,13 @@ If there is a update of Dwains Theme here is how to install it.
 
 **Do you have any custom resources? Go to the folder `dwains-theme/resources/`, if you don't have the file `custom_resources.yaml` then rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in the file `custom_resources.yaml`!**
 
-### Version info
+### Step 3 - Reboot Home Assistant
 
-Version numbering explained (MAJOR.MINOR.PATH):
+Reboot Home Assistant! After this check if you got the new version number in More page -> Theme settings (bottom of page).
+
+## Version info
+
+Version numbering explained (MAJOR.MINOR.PATCH):
 1. MAJOR version: when there are big and incompatible changes.
 2. MINOR version: when there is added functionality in a non-backwards compatible manner.
 3. PATCH version: small new functions and backwards compatible bug fixes.
@@ -31,15 +35,17 @@ Version numbering explained (MAJOR.MINOR.PATH):
 # Changelog
 
 ## Update 1.2.0 (Coming soon)
-*Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! Do you have any custom resources? Go to the folder `dwains-theme/resources/` rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in that file! This file will never be overwriten with updates instead of the old way, so you can keep your own additional resources save.*
+*Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! Do you have any custom resources? Go to the folder `dwains-theme/resources/` rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in that file! This file will never be overwriten with updates instead of the old way, so you can keep your own additional resources safe.*
 
+* **Added function to reload theme config, without restarting HA** Use the new button on the theme settings page or do a service call `dwains_theme.reload`
+* Added Spanish translation
 * Added Swedish translation.
+* Added function to toggle all lights of your house on the all lights page.
+* Added map for tracker on persons pages, can be disabled in `persons.yaml`.
+* Added functionality for adding entites on a person for the persons page, so you can add for example a battery entity (phone battery) and travel time to work.
 * Made some changes in the configs-examples files.
 * Fixed a bug in dwains_theme custom_component for icons.yaml file.
 * Fixed bug in scenes page with template not always loading.
-* Added function to toggle all lights of your house on the all lights page.
-* Added functionality for adding entites on a person for the persons page, so you can add for example a battery entity (phone battery) and travel time to work.
-* Added map for tracker on persons pages, can be disabled in `persons.yaml`.
 * Removed the big full width temperature and humidity graph on the climate page on a room if you only have a temperature set. Oterwise it will be showed. 
 * You can use a input_select now in the `scenes.yaml`.
 * You can use a input_select now in the `house_information.yaml` (favorites).
