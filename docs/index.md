@@ -57,6 +57,8 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @Smakkie — Worked hard, deserves coffee ;-)
+
 > @Klex1404 — Thanks for the great theme!
 
 > @Bjorn — As promised a donation :)
