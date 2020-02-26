@@ -36,6 +36,10 @@ With this file you can override the default icons that are loaded in Dwains Them
 | climate_auto | string | far:clock | Climate automode icon |
 | climate_off | string | fas:power-off | Climate off icon |
 | climate_heat | string | fas:fire-alt | Climate heat icon |
+| climate_cool | string | mdi:snowflake | Climate cool icon |
+| climate_heat_cool | string | far:clock | Climate heat/cool icon |
+| climate_dry | string | mdi:water-percent | Climate dry icon |
+| climate_fan_only | string | mdi:fan | Climate fan only icon |
 | window_open | string | mdi:window-open-variant | Window open icon |
 | window_closed | string | mdi:window-closed-variant | Window closed icon |
 | door_open | string | mdi:door-open | Door open icon |

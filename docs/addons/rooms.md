@@ -24,6 +24,7 @@ A good example is to checkout the `hello-room` addon in `dwains-theme/addons/roo
 | name | string | Required         | Hello room                                                                                                            | The name of the addon             |
 | icon | string | fas:puzzle-piece | fas:chart-area                                                                                                        | The icon of the addon             |
 | path | string | Required         | `dwains-theme/addons/rooms/hello-room/page.yaml`                                                              | The path to the page of the addon |
+| button_path | string | Optional  | `dwains-theme/addons/rooms/hello-room/button.yaml`                                                              | The path to the button of the addon |
 | data | object | Not required     | See example below | Data you wanna parse to the addon |
 
 ## Rooms addon example 
@@ -38,7 +39,9 @@ rooms:
       - name: Hello room
         icon: fas:puzzle-piece
         path: 'dwains-theme/addons/rooms/hello-room/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/hello-room/button.yaml'
         data:
           some_data: 'This is some data parsed.'
           some_other_data: 'and some other data.'
+          entity: vacuum.roborock
 ```    

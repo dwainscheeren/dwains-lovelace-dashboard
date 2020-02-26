@@ -24,7 +24,7 @@ The global section. Dwains theme uses this to build the pages.
 
 | Name | Type | Required | Example | Description |
 |---------------------|--------|----------|----------------------------------|---------------------------------------------------------------------------------------------|
-| language | string | Yes! | en | It supports English (en), Dutch (nl), German (de), French (fr), Danish (da) and Italian (it) for now! Other languages coming soon.. |
+| language | string | Yes! | English (en), Dutch (nl), German (de), French (fr), Danish (da), Italian (it), Spanish (es), Swedish (se) | Other languages coming soon.. |
 | weather | string | No | weather.dark_sky<br>**Make sure you got the weather component installed!** | Weather (Ex: [Dark Sky Weather Integration](https://www.home-assistant.io/integrations/weather.darksky/)) |
 | outside_temperature | string | No | sensor.dark_sky_temperature | Outside temperature (Ex: [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |
 | outside_humidity | string | No | sensor.dark_sky_humidity | Outside humidity (Ex: [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |

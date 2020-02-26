@@ -4,7 +4,7 @@
 
 Dwains Theme configuration is loaded from the files inside the folder `dwains-theme/configs/`.
 
-**If you edit something inside a file of the `dwains-theme/configs/` folder, you always need to restart Home Assistant for any changes to be visible.**
+**If you edit something inside a file of the `dwains-theme/configs/` folder, you always need to reload the theme configuration for any changes to be visible. Go to the more page and click on theme settings, there you can click Reload theme configuration. Or do a service call in the developer tools `dwains_theme.reload`**
 
 This folder can have the following files: `global.yaml`, `house_information.yaml`, `scenes.yaml`, `cameras.yaml`, `persons.yaml`, `rooms.yaml`, `icons.yaml`, `more_page.yaml` and `dynamic_page.yaml`.
 

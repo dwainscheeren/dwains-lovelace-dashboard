@@ -34,8 +34,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
-## Update 1.2.0 (Coming soon)
-*Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! Do you have any custom resources? Go to the folder `dwains-theme/resources/` rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in that file! This file will never be overwriten with updates instead of the old way, so you can keep your own additional resources safe.*
+## Update 1.2.0
+*Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! Do you have any custom resources? Go to the folder `dwains-theme/resources/` rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in that file! This file will never be overwritten with updates instead of the old way, so you can keep your own additional resources safe.*
 
 * **Added function to reload theme config, without restarting HA** Use the new button on the theme settings page or do a service call `dwains_theme.reload`
 * Added Spanish translation
@@ -43,6 +43,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added function to toggle all lights of your house on the all lights page.
 * Added map for tracker on persons pages, can be disabled in `persons.yaml`.
 * Added functionality for adding entites on a person for the persons page, so you can add for example a battery entity (phone battery) and travel time to work.
+* Rewrote the climate page, it also supports all hvac_modes now! 
+* Room addons can have custom buttons now! Read room addon doc page for more info!
 * Made some changes in the configs-examples files.
 * Fixed a bug in dwains_theme custom_component for icons.yaml file.
 * Fixed bug in scenes page with template not always loading.
@@ -53,6 +55,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added support for `sensor.*`in doors, windows and motion (instead of only having `binary_sensor.*`) inside a room and it triggers on True or False now next to the existing on/off state.
 * Made the icon width little bit smaller of the favorites on house information page.
 * Changed typo of house_information icon on the more_page.
+* Added haptic feedback on scenes button press.
+* Some other small fixes.
 
 ## Update 1.1.5
 * Whoopsie I forgot some code in the homepage weather button, so people who don't have an outside_temperature defined get a broken installation. Fixed this in 1.1.5.
