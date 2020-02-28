@@ -62,7 +62,7 @@ Download the [latest release from the release page](https://github.com/dwainsche
 
 1. Find and rename the `dwains-theme/configs-samples` folder to `dwains-theme/configs`.
 2. Open your `configuration.yaml` file and make sure you don't have the following lines (with sublines). `homeassistant:`, `lovelace:`, `frontend:` and `lovelace_gen:`. Please remove these lines. From your existing `configuration.yaml`. This is very important.
-3. Open `configuration-sample.yaml` from the downlaod and select the text between `Copy from here` till `Copy till here` and paste this at the top of your existing `configuration.yaml` file.
+3. Open `configuration-sample.yaml` from the download and select the text between `Copy from here` till `Copy till here` and paste this at the top of your existing `configuration.yaml` file.
 
 ### Step 4 - Your existing configuration
 
@@ -90,5 +90,11 @@ That's it! Dwains Theme should now be installed.
 Now that you have installed all the required plugins and the Dwains Theme core files you can edit the Dwains theme configuration files.
 
 [Configure Dwains Theme](../configuration/index.md)
+
+Also read here some handy how to's:
+* [How to choose and use an icon](../how-tos/how-to-choose-icon.md)
+* [How to update theme](../information/update.md)
+
+And checkout some [Tips & Tricks](../information/tips-and-tricks.md) of Dwains Theme.
 
 **WARNING: Please don't change any of the files inside the folder `dwains-theme`, because future updates of this theme may not work. If you want to extend or add own views/pages to this theme use [addons](../addons/index.md)**
