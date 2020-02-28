@@ -36,7 +36,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 ## Update 1.2.1 (coming soon)
 * Fixed bug in new reload config version that it doesn't find the config files on some HA setups.
-* Fixed bottom navbar on Android to be smaller in height then on iPhone.
+* Fixed bottom navbar on Android to be smaller in height then on iPhone. (@Rik)
 
 
 ## Update 1.2.0
