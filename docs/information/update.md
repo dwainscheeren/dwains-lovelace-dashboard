@@ -34,6 +34,11 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 1.2.1 (coming soon)
+* Fixed bug in new reload config version that it doesn't find the config files on some HA setups.
+* Fixed bottom navbar on Android to be smaller in height then on iPhone.
+
+
 ## Update 1.2.0
 *Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! Do you have any custom resources? Go to the folder `dwains-theme/resources/` rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in that file! This file will never be overwritten with updates instead of the old way, so you can keep your own additional resources safe.*
 
