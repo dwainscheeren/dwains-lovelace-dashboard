@@ -40,7 +40,9 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Fixed bottom navbar on Android to be smaller in height then on iPhone. (@Rik)
 * Fixed bug with using apostrophe in names. You can now use them.
 * Parsing the `navigation_path` and `room_name` now to the data of an room addon button. So you can use that to link to the addon page.
-* Changed the way the `more_entities` work inside `rooms.yaml`. Inside the `more_entities` object you now have the option to use: `popup_entities` and/or `page_entities`. The first one will be placed in the popup which can be accessed by pressing the button on the top right (in the header). The second one will be directly visible on the bottom of the room page itself.
+* Changed the way the `more_entities` work inside `rooms.yaml`. Inside the `more_entities` object you now have the option to use: `popup` and/or `page`. The first one will be placed in the popup which can be accessed by pressing the button on the top right (in the header). The second one will be directly visible on the bottom of the room page itself.
+* Changed input_select on scenes and house_information page, tapping it wil open a popup to select your input_select input and double tap will loop thought each item in your input_select.
+* Added haptic feedback on single press of house information favorite entity.
 
 ## Update 1.2.0
 *Note: The way resources are loaded has been changed from this version on. Overwrite your `ui-lovelace.yaml` file with the one in this version! Do you have any custom resources? Go to the folder `dwains-theme/resources/` rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in that file! This file will never be overwritten with updates instead of the old way, so you can keep your own additional resources safe.*

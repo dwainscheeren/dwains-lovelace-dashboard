@@ -36,6 +36,7 @@
 * [Update theme](information/update.md)
 * [Changelog](information/update.md)
 * [Releases](https://github.com/dwainscheeren/lovelace-dwains-theme/releases)
+* [Tips and Tricks](information/tips-and-tricks.md)
 
 ### How to guides
 * [How to choose and use an icon](how-tos/how-to-choose-icon.md)
