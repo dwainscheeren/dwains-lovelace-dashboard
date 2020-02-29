@@ -4,14 +4,14 @@
 {% for room in _d_t_config.rooms %}
 {% if room["plant"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.plant.title_plural }}
-  path: {{ room["name"]|lower|replace(" ", "_") }}_plants
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_plants
   cards:   
     #Header
     - !include
       - ../../../partials/header.yaml
       - title: {{ _d_t_trans.plant.title_plural }}
         subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
     #Start for room lights content page
     {% if room["plant"].split('.')[0] == 'plant' %}
       #this is not used because its never linked to

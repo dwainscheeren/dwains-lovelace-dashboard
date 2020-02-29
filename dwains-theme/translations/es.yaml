@@ -156,3 +156,6 @@ es:
       version: "Versión"
       update_available: "¡Actualización disponible del tema Dwains!"
     more_page_addons: "Más complementos"
+
+  more_entities:
+    title: 'More entities'

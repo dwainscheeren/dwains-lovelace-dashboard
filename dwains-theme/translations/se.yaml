@@ -156,3 +156,6 @@ se:
       version: 'Version'
       update_available: 'Uppdatering tillgänglig av Dwains Theme!'
     more_page_addons: 'Fler tillägg'
+    
+  more_entities:
+    title: 'More entities'

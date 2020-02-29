@@ -156,3 +156,6 @@ nl:
       version: 'Versie'
       update_available: 'Update beschikbaar van Dwains Theme!'
     more_page_addons: 'Meer addons'
+
+  more_entities:
+    title: 'More entities'

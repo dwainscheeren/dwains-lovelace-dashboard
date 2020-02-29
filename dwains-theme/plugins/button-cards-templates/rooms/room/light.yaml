@@ -9,7 +9,7 @@ room_light:
   label: >
     [[[ 
       if (typeof(entity) === 'undefined') {
-        console.log('Dwains Theme Error: Invalid light entity rooms.yaml!');
+        console.log("Dwains Theme Error: Invalid light entity rooms.yaml!");
         return 'Entity Error!';
       } else {
         if(entity.state == 'on') {

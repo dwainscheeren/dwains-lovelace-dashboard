@@ -15,7 +15,7 @@ header_greeting:
           return "{{ _d_t_trans.alarm.disarmed }}";
         }
       } else {
-        console.log('Dwains Theme Error: Invalid global.yaml:alarm entity!');
+        console.log("Dwains Theme Error: Invalid global.yaml:alarm entity!");
         return 'Alarm Entity Error!';
       }
     ]]]

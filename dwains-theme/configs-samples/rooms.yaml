@@ -32,3 +32,15 @@
 #           some_data: 'This is some data parsed.'
 #           some_other_data: 'and some other data.'
 #           entity: vacuum.roborock
+#   - name: Bedroom
+#     icon: fal:bed
+#     more_entities:
+#       columns: 2 #optional
+#       entities:
+#         - entity: sensor.name1
+#         - entity: sensor.name2
+#     page_entities:
+#       columns: 1 #optional
+#       entities:
+#         - entity: sensor.name1
+#         - entity: sensor.name2

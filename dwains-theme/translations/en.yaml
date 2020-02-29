@@ -157,3 +157,6 @@ en:
       version: 'Version'
       update_available: 'Update available of Dwains Theme!'
     more_page_addons: 'More addons'
+
+  more_entities:
+    title: 'More entities'

@@ -42,8 +42,11 @@
                 template: more_page_house_information_favorites
                 {% if favorite["entity"].split('.')[0] == 'input_select' %}
                 tap_action:
+                  haptic: light
+                  action: more-info
+                double_tap_action:
+                  haptic: light
                   action: call-service
-                  haptic: light 
                   service: input_select.select_next
                   service_data:
                     entity_id: {{ favorite["entity"] }}

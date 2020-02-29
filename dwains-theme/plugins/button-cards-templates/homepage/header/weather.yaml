@@ -14,14 +14,14 @@ header_weather:
             return 'Outside temp no sensor type';
           {% endif %}
         } else {
-          console.log('Dwains Theme Error: Invalid global.yaml:outside_temperature entity!');
+          console.log("Dwains Theme Error: Invalid global.yaml:outside_temperature entity!");
           return 'Weather Entity Error!';
         }
       {% else %}
         if(entity){
           return entity.attributes.temperature + "° {{ _d_t_trans.climate.outside }}";
         } else {
-          console.log('Dwains Theme Error: Invalid global.yaml:weather entity!');
+          console.log("Dwains Theme Error: Invalid global.yaml:weather entity!");
           return 'Weather Entity Error!';
         }
       {% endif %}
@@ -44,7 +44,7 @@ header_weather:
           return 'NaN';
         {% endif %}
       } else {
-        console.log('Dwains Theme Error: Invalid global.yaml:inside_temperature entity!');
+        console.log("Dwains Theme Error: Invalid global.yaml:inside_temperature entity!");
       }
     ]]]
   {% else %}

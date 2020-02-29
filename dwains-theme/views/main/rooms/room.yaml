@@ -5,7 +5,7 @@
 
 {% for room in _d_t_config.rooms %}
 - title: {{ room["name"] }}
-  path: {{ room["name"]|lower|replace(" ", "_") }}
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}
   cards:   
     {% if room["more_entities"] and room["more_entities"]["entities"] %}
     #Header with grid
@@ -16,7 +16,7 @@
         navigation_path: home  
         type: button
         button_template: room_header_more_entities
-        button_navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_more_entities
+        button_navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
     {% else %}
     #Header
     - !include
@@ -92,7 +92,7 @@
                     return timeDifference(new Date(), new Date(entity.last_changed));
                   }
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.motion entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.motion entity!");
                   return 'Entity error!'
                 }
               ]]]
@@ -121,7 +121,7 @@
                     return '{{ _d_t_trans.door.open }}';
                   }
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.door entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.door entity!");
                   return 'Entity error!'
                 }
               ]]] 
@@ -140,7 +140,7 @@
                   });  
                   return ((openDoors >= 1) ? ((openDoors == 1) ? '1 {{ _d_t_trans.door.door_open }}' : openDoors + ' {{ _d_t_trans.door.doors_open }}') : '{{ _d_t_trans.door.closed }}');
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.door entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.door entity!");
                   return 'Entity error!'
                 }
               ]]]
@@ -170,7 +170,7 @@
                     return '{{ _d_t_trans.window.open }}';
                   }
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.window entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.window entity!");
                   return 'Entity error!'
                 }
               ]]] 
@@ -189,7 +189,7 @@
                   });  
                   return ((openWindows >= 1) ? ((openWindows == 1) ? '1 {{ _d_t_trans.window.window_open }}' : openWindows + ' {{ _d_t_trans.window.windows_open }}') : '{{ _d_t_trans.window.closed }}');
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.window entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.window entity!");
                   return 'Entity error!'
                 }
               ]]]
@@ -209,6 +209,9 @@
       style: |
         ha-card {
           padding: 8px 16px 20px 16px;
+          {% if room["page_entities"] and room["page_entities"]["entities"] %}
+          padding-bottom: 0px;
+          {% endif %}
         }
       card:
         type: vertical-stack
@@ -250,7 +253,7 @@
                     return '{{ _d_t_trans.light.on_text }}, ' + Math.round(((states['{{ room["light"] }}'].attributes.brightness/255)*100)) + '%';
                   }
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.light entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
                   return 'Entity error!';
                 }
               ]]] 
@@ -269,7 +272,7 @@
                     return '{{ _d_t_trans.light.on_text }}';
                   }
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.light entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
                   return 'Entity error!';
                 }
               ]]] 
@@ -278,7 +281,7 @@
             name: {{ _d_t_trans.light.title_plural }}
             tap_action: 
               action: navigate
-              navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_lights
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_lights
             double_tap_action:
               action: toggle
               haptic: light 
@@ -294,7 +297,7 @@
                   });  
                   return entitiesFromGroup.length + ' {{ _d_t_trans.light.title_plural }}' + ((onLights >= 1) ? '<br>' + ((onLights == 1) ? '1 {{ _d_t_trans.light.light_on }}' : onLights + ' {{ _d_t_trans.light.lights_on }}') : '');
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.light entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
                   return 'Entity error!';
                 }
               ]]]
@@ -314,21 +317,21 @@
             name: {{ _d_t_trans.climate.title }}
             tap_action: 
               action: navigate
-              navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_climate
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
             label: >
               [[[ 
                 {% if room["temperature"] %}
                   if(states['{{ room["temperature"] }}']){
                     var temperature = (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°';
                   } else {
-                    console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!');
+                    console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
                     return 'Temperature error';
                   }
                 {% elif room["climate"] %}
                   if(states['{{ room["climate"] }}']){
                     var temperature = (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + '°';
                   } else {
-                    console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!');
+                    console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!");
                     return 'Climate error';
                   }
                 {% endif %}
@@ -361,7 +364,7 @@
             icon: '{{ _d_t_icons.cover|default('mdi:window-shutter') }}'
             tap_action: 
               action: navigate
-              navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_cover
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_cover
             {% if room["cover"].split('.')[0] == 'cover' %}
             name: {{ _d_t_trans.cover.title }}
             label: >
@@ -375,7 +378,7 @@
                     return entity.state;
                   }
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.cover entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.cover entity!");
                   return 'Entity error!';
                 }
               ]]] 
@@ -395,7 +398,7 @@
                   });  
                   return entitiesFromGroup.length + ' {{ _d_t_trans.cover.title_plural }}' + ((openCovers >= 1) ? stateText : '');
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.cover entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.cover entity!");
                   return 'Entity error!';
                 }
               ]]]      
@@ -427,7 +430,7 @@
                     return name + '<br>{{ _d_t_trans.device.on_text }}';
                   }
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.device entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.device entity!");
                   return 'Entity error!';
                 }
               ]]] 
@@ -446,13 +449,13 @@
                   });  
                   return entitiesFromGroup.length + ' {{ _d_t_trans.device.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.device.device_on }}' : onDevices + ' {{ _d_t_trans.device.devices_on }}') : '');
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.device entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.device entity!");
                   return 'Entity error!';
                 }
               ]]]
             tap_action: 
               action: navigate
-              navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_devices
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_devices
             {% endif %}
           {% endif %}
 
@@ -474,7 +477,7 @@
                 if(entity){
                   return entity.state;
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.media_player entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.media_player entity!");
                   return 'Entity error!';
                 }
               ]]] 
@@ -493,13 +496,13 @@
                   });  
                   return entitiesFromGroup.length + ' {{ _d_t_trans.media_player.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.media_player.media_player_on }}' : onDevices + ' {{ _d_t_trans.media_player.media_players_on }}') : '');
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.media_player entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.media_player entity!");
                   return 'Entity error!';
                 }
               ]]]
             tap_action: 
               action: navigate
-              navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_media_players
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_media_players
             {% endif %}
           {% endif %}
 
@@ -512,13 +515,13 @@
             icon: '{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}'
             tap_action: 
               action: navigate
-              navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_vacuum
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
             label: >
               [[[ 
                 if(entity){
                   return entity.state;
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.vacuum entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.vacuum entity!");
                   return 'Entity error!';
                 }
               ]]]
@@ -542,7 +545,7 @@
                 if(entity){
                   return entity.state;
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.plant entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.plant entity!");
                   return 'Entity error!';
                 }
               ]]] 
@@ -561,13 +564,13 @@
                   });  
                   return entitiesFromGroup.length + ' {{ _d_t_trans.plant.title_plural }}' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 {{ _d_t_trans.plant.plant_problem }}' : problemPlants + ' {{ _d_t_trans.plant.plants_problem }}') : '');
                 } else {
-                  console.log('Invalid rooms.yaml:{{ room["name"] }}.plant entity!');
+                  console.log("Invalid rooms.yaml:{{ room["name"] }}.plant entity!");
                   return 'Entity error!';
                 }
               ]]]
             tap_action: 
               action: navigate
-              navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_plants
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_plants
             {% endif %}
           {% endif %}
 
@@ -579,6 +582,8 @@
               - ../../../../{{ addon["button_path"] }}
               - name: {{ addon["name"] }}
                 icon: {{ addon["icon"] }}
+                navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
+                room_name: {{ room["name"] }}
                 {% if addon["data"] %}
                 data: '{{ addon["data"]|tojson }}'
                 {% endif %}
@@ -589,8 +594,38 @@
             name: {{ addon["name"] }}
             tap_action: 
               action: navigate
-              navigation_path: {{ room["name"]|lower|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace(" ", "_") }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
           {% endif %}
           {% endfor %}
           {% endif %}
+
+    {% if room["page_entities"] and room["page_entities"]["entities"] %}
+    {% if room["page_entities"]["show_title"] != 'false' %}
+    #Heading
+    - !include
+      - ../../partials/heading.yaml
+      - title: {{ _d_t_trans.more_entities.title }}
+    {% endif %}
+    - type: custom:mod-card
+      style: |
+        ha-card {
+          padding: 0px 8px 20px 8px;
+        }
+      card:
+        type: custom:layout-card
+        min_columns: {{ room["page_entities"]["columns"] | default('2') }}
+        max_columns: {{ room["page_entities"]["columns"] | default('2') }}
+        layout: horizontal
+        justify_content: start
+        cards:
+          {% for more_entity in room["page_entities"]["entities"] %}
+          - type: custom:button-card
+            entity: {{ more_entity["entity"] }}
+            template: room_more_entity
+            tap_action:
+              !include 
+                - ../../popups/more-info.yaml
+                - entity: {{ more_entity["entity"] }}
+          {% endfor %}
+    {% endif %}
 {% endfor %}

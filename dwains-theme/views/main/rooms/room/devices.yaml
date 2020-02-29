@@ -5,14 +5,14 @@
 {% for room in _d_t_config.rooms %}
 {% if room["device"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.device.title_plural }}
-  path: {{ room["name"]|lower|replace(" ", "_") }}_devices
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_devices
   cards:   
     #Header
     - !include
       - ../../../partials/header.yaml
       - title: {{ _d_t_trans.device.title_plural }}
         subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
     #Start for room devices content page
     {% if room["device"].split('.')[0] == 'device' %}
     # this room has only 1 device

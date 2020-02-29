@@ -52,6 +52,9 @@
               show_state: true
               tap_action:
                 haptic: light
+                action: more-info
+              double_tap_action:
+                haptic: light
                 action: call-service
                 service: input_select.select_next
                 service_data:

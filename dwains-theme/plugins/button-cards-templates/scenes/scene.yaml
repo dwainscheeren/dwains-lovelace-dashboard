@@ -3,7 +3,7 @@ scene:
   label: >
     [[[ 
       if (typeof(entity) === 'undefined') {
-        console.log('Dwains Theme Error: Invalid scene entity scenes.yaml!');
+        console.log("Dwains Theme Error: Invalid scene entity scenes.yaml!");
       }
     ]]]
   styles:

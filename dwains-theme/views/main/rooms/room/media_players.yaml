@@ -5,14 +5,14 @@
 {% for room in _d_t_config.rooms %}
 {% if room["media_player"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.media_player.title_plural }}
-  path: {{ room["name"]|lower|replace(" ", "_") }}_media_players
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_media_players
   cards:   
     #Header
     - !include
       - ../../../partials/header.yaml
       - title: {{ _d_t_trans.media_player.title_plural }}
         subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
     #Start for room media_players content page
     {% if room["media_player"].split('.')[0] == 'media_player' %}
     # this room has only 1 media_player

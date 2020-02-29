@@ -75,6 +75,7 @@ loader.yaml.SafeLoader.add_constructor("!include", _include_yaml)
 async def async_setup(hass, config):
     #Load main config
     dwains_theme_config.update(config.get("dwains_theme")["configuration"]);
+    _LOGGER.warning(dwains_theme_config);
 
     #Load translations
     language = dwains_theme_config["global"]["language"];
@@ -95,7 +96,7 @@ async def async_setup(hass, config):
 
         #Main config
         config_new = OrderedDict()
-        for fname in loader._find_files("dwains-theme/configs/", "*.yaml"):
+        for fname in loader._find_files(hass.config.path("dwains-theme/configs/"), "*.yaml"):
             loaded_yaml = load_yaml(fname)
             if isinstance(loaded_yaml, dict):
                 config_new.update(loaded_yaml)
@@ -104,12 +105,12 @@ async def async_setup(hass, config):
 
         #Translations
         language = dwains_theme_config["global"]["language"];
-        translations = load_yaml("dwains-theme/translations/"+language+".yaml")
+        translations = load_yaml(hass.config.path("dwains-theme/translations/"+language+".yaml"))
 
         dwains_theme_translations.update(translations[language])
 
         #Icons
-        icons = load_yaml("dwains-theme/configs/icons.yaml")
+        icons = load_yaml(hass.config.path("dwains-theme/configs/icons.yaml"))
         dwains_theme_icons = {} #Make it empty so it can go from used to non-used.
         if isinstance(icons, dict):
             if ("icons" in icons):

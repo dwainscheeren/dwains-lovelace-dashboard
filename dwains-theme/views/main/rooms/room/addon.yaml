@@ -6,7 +6,7 @@
 {% if room["addons"] %}
 {% for addon in room["addons"] %}
 - title: {{ addon["name"] }}
-  path: {{ room["name"]|lower|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace(" ", "_") }}
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
   badges: []
   cards:
     - type: vertical-stack
@@ -16,7 +16,7 @@
           - ../../../partials/header.yaml
           - title: {{ addon["name"] }}
             subtitle: {{ room["name"] }}
-            navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+            navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
         #Start for a custom more page
         - type: vertical-stack
           cards:

@@ -66,7 +66,7 @@
             name: {{ person["name"] }}
             tap_action: 
               action: navigate
-              navigation_path: {{ person["name"]|lower|replace(" ", "_")  }}
+              navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
           {% endfor %}
           {% endif %}
     #END HOMEPAGE HEADER
@@ -116,7 +116,7 @@
 
                         return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°' + icon;
                       } else {
-                        console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!');
+                        console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
                         return 'Temperature error';
                       }
                     {% elif room["climate"] %}
@@ -131,7 +131,7 @@
 
                         return (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + '°' + icon;
                       } else {
-                        console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!');
+                        console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!");
                         return 'Climate error';
                       }
                     {% endif %}
@@ -142,7 +142,7 @@
                 icon: '{{ room["icon"]|default('mdi:square-outline') }}'
                 tap_action: 
                   action: navigate
-                  navigation_path: {{ room["name"]|lower|replace(" ", "_")  }}
+                  navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
                 custom_fields:
                   additional_info: >
                     [[[
@@ -164,7 +164,7 @@
                             }  
                           {% endif %}
                         } else {
-                          console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.window entity!');
+                          console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.window entity!");
                           additional_info += 'W-E!<br>';
                         }
                       {% endif %}
@@ -185,7 +185,7 @@
                             }  
                           {% endif %}
                         } else {
-                          console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.motion entity!');
+                          console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.motion entity!");
                           additional_info += 'M-E!<br>';
                         }
                       {% endif %}
@@ -206,7 +206,7 @@
                             }  
                           {% endif %}
                         } else {
-                          console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.door entity!');
+                          console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.door entity!");
                           additional_info += 'D-E!<br>';
                         }
                       {% endif %}
@@ -228,7 +228,7 @@
                             </ha-icon>`
                         }
                       } else {
-                        console.log('Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.light entity!');
+                        console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.light entity!");
                         return 'L-E!<br>';
                       }
                     ]]]   

@@ -5,7 +5,7 @@
 {% for room in _d_t_config.rooms %}
 {% if room["climate"] or room["temperature"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.climate.title }}
-  path: {{ room["name"]|lower|replace(" ", "_") }}_climate
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
   cards:   
     - type: vertical-stack
       cards:
@@ -14,7 +14,7 @@
           - ../../../partials/header.yaml
           - title: {{ _d_t_trans.climate.title }}
             subtitle: {{ room["name"] }}
-            navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+            navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
         #Start for room climate content page
         {% if room["climate"] %}
         - type: custom:mod-card

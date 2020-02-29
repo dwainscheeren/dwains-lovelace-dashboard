@@ -1,18 +1,18 @@
 # dwains_theme
 
-#Page for more entities for a room
-
-{% for room in _d_t_config.rooms %}
-{% if room["more_entities"] %}
-- title: {{ room["name"] }} {{ _d_t_trans.more_entities.title }}
-  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
+#Page for more entities for a person
+{% if _d_t_config.persons %}
+{% for person in _d_t_config.persons %}
+{% if person["more_entities"] %}
+- title: {{ person["name"] }} {{ _d_t_trans.more_entities.title }}
+  path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
   cards:   
     #Header
     - !include
       - ../../../partials/header.yaml
       - title: {{ _d_t_trans.more_entities.title }}
-        subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+        subtitle: {{ person["name"] }}
+        navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
     #Start for room more_entities content page
     - type: custom:mod-card
       style: |
@@ -21,12 +21,12 @@
         }
       card:
         type: custom:layout-card
-        min_columns: {{ room["more_entities"]["columns"] | default('2') }}
-        max_columns: {{ room["more_entities"]["columns"] | default('2') }}
+        min_columns: {{ person["more_entities"]["columns"] | default('2') }}
+        max_columns: {{ person["more_entities"]["columns"] | default('2') }}
         layout: horizontal
         justify_content: start
         cards:
-          {% for more_entity in room["more_entities"]["entities"] %}
+          {% for more_entity in person["more_entities"]["entities"] %}
           - type: custom:button-card
             entity: {{ more_entity["entity"] }}
             template: room_more_entity
@@ -37,3 +37,4 @@
           {% endfor %}
 {% endif %}
 {% endfor %}
+{% endif %}

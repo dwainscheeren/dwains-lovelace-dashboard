@@ -4,7 +4,7 @@
 {% if _d_t_config.more_page and _d_t_config.more_page["addons"]%}
 {% for addon in _d_t_config.more_page["addons"] %}
 - title: {{ addon["name"] }}
-  path: more_page_addon_{{ addon["name"]|lower|replace(" ", "_") }}
+  path: more_page_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
   badges: []
   cards:
     - type: vertical-stack

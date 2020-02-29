@@ -5,14 +5,14 @@
 {% for room in _d_t_config.rooms %}
 {% if room["vacuum"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.vacuum.title }}
-  path: {{ room["name"]|lower|replace(" ", "_") }}_vacuum
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
   cards:   
     #Header
     - !include
       - ../../../partials/header.yaml
       - title: {{ _d_t_trans.vacuum.title }}
         subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
     #Start for room vacuum content page
     - type: custom:mod-card
       style: |

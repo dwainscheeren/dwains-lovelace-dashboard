@@ -6,6 +6,9 @@ entity: {{ (data | fromjson)['entity'] }}
 template: rooms_child
 name: {{ name }}
 icon: {{ icon|default('fas:puzzle-piece') }}
+tap_action: 
+  action: navigate
+  navigation_path: {{ navigation_path }}   
 label: >
   [[[ 
     if(entity){

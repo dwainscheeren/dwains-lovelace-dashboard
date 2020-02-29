@@ -4,16 +4,28 @@
 {% if _d_t_config.persons %}
 {% for person in _d_t_config.persons %}
 - title: {{ person["name"] }}
-  path: {{ person["name"]|lower|replace(" ", "_")  }}
+  path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
   cards:   
     - type: vertical-stack
       cards:
+        {% if person["more_entities"] and person["more_entities"]["entities"] %}
+        #Header with grid
+        - !include
+          - ../../partials/header_grid.yaml
+          - title: {{ person["name"] }}
+            subtitle: {{ _d_t_trans.home.title }}
+            navigation_path: home  
+            type: button
+            button_template: person_header_more_entities
+            button_navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
+        {% else %}
         #Header
         - !include
           - ../../partials/header.yaml
           - title: {{ person["name"] }}
             subtitle: {{ _d_t_trans.home.title }}
             navigation_path: home  
+        {% endif %}
         #Start for person content page
         - type: custom:mod-card
           style: |
@@ -46,7 +58,7 @@
                         .content {
                           padding: 10px 0 0 0;
                         }
-              {% if person["more_entities"] and person["more_entities"]["entities"] %}
+              {% if person["page_entities"] and person["page_entities"]["entities"] %}
               - type: custom:mod-card
                 style: |
                   ha-card {
@@ -59,19 +71,19 @@
                   }
                 card:
                   type: custom:layout-card
-                  min_columns: 2
-                  max_columns: 2
+                  min_columns: {{ person["page_entities"]["columns"] | default('2') }}
+                  max_columns: {{ person["page_entities"]["columns"] | default('2') }}
                   layout: horizontal
                   justify_content: start
                   cards:
-                    {% for more_entity in person["more_entities"]["entities"] %}
+                    {% for page_entity in person["page_entities"]["entities"] %}
                     - type: custom:button-card
-                      entity: {{ more_entity["entity"] }}
+                      entity: {{ page_entity["entity"] }}
                       template: person_more_entity
                       tap_action:
                         !include 
                           - ../../popups/more-info.yaml
-                          - entity: {{ more_entity["entity"] }}
+                          - entity: {{ page_entity["entity"] }}
                     {% endfor %}
               {% endif %}
               {% if person["show_map"] != 'false' %}
