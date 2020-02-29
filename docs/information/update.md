@@ -34,7 +34,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
-## Update 1.2.1 (coming soon)
+## Update 1.2.1
 * Enabled the HA sidebar on mobile on all pages. (Future update will have a option to enable/disable it) Please let me know, if you don't want the sidebar enabled on all pages, in the HA thread.
 * Fixed bug in new reload config version that it doesn't find the config files on some HA setups.
 * Fixed bottom navbar on Android to be smaller in height then on iPhone. (@Rik)
