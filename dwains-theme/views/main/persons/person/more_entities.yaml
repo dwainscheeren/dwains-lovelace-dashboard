@@ -13,7 +13,7 @@
       - title: {{ _d_t_trans.more_entities.title }}
         subtitle: {{ person["name"] }}
         navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-    #Start for room more_entities content page
+    #Start for person more_entities content page
     - type: custom:mod-card
       style: |
         ha-card {
