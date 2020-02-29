@@ -14,11 +14,13 @@
 
 # Dwains Lovelace Theme
 
-Hello, I am Dwain. I'm using Home Assistant for over 1 year now. At the end of the summer 2019 I thought why does nobody has made a theme which builds automatic by a configuration file. I have a own web development company so I thought why not make a own theme and release it to the public. The result: Dwains Lovelace Theme.
+Hello, I am Dwain. I've been using Home Assistant for over a year now. At the end of summer 2019 I thought, "Why hasn't anybody made a theme yet that builds itself automatically by providing only minimum configuration info?" 
 
-**Have a feature request?**
+I own a web development company, and I want to give something back to the Home Assistant community. So I decided to build this theme and release it to the public. The result: Dwains Lovelace Theme.
 
-[Open an issue on GitHub](https://github.com/dwainscheeren/lovelace-dwains-theme/issues/new) with the title  `FR`  or  `Feature Request`
+**Want to request a new feature request?**
+
+[Open an issue on GitHub](https://github.com/dwainscheeren/lovelace-dwains-theme/issues/new) with the title starting with  `FR`  or  `Feature Request`
 
 
 **Support**
@@ -31,16 +33,16 @@ Or join me on Slack!
 
 [Dutch Speaking Slack](https://join.slack.com/t/homeassistantnlbe/shared_invite/enQtNzc4MzAwMTEyNDIwLTgwZGVmNmNhZjZkNmVkMjM1NTM3N2UwODIzZTFjMzY1ZmUyMGJiZDU5ZTEyZWEyYzMzYzQzYWJmNGE3MWVjN2I)
 
-I manage these channels together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains) it has a lot of same features as Dwains Theme. 
+I manage these channels together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains) it has a lot of similar features as Dwains Theme. 
 
 **YouTube Channel**
 
-If you like you can subscribe on my [Home Assistant YouTube channel](https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A) I will soon start posting some more videos there.
+If you like my content, then please do subscribe to my [Home Assistant YouTube channel](https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A) I will start posting some more videos there soon.
 
 **Like what you see?**
 
-If you appreciate what I have made you can [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx) or [donate to my PayPal account](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=urldonate).
-You can also post a reply in [this HA thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) with how happy you are. :crazy_face:
+If you appreciate what I have developed, then please consider buying me a coffe or beer: [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx) or [donate to my PayPal account](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=urldonate).
+You can also reply to [this HA thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) and let everyone know how happy you are with this theme! :crazy_face:
 
 Greetings,
 

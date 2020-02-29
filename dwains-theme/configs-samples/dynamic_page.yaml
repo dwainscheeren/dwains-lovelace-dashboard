@@ -1,5 +1,5 @@
 # https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/dynamic_page.html
-# Enabling this page (uncomment code below) will result in a dynamic page but it will override the camera page!
+# Enabling this page by uncommenting the code below. It will result in a dynamic page but it will override the camera page!
 
 # dynamic_page:
 #   addon:

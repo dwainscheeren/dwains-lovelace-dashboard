@@ -1,24 +1,24 @@
 #Copy from here#
-#Start of dwains-theme necesary code#
+#Start of dwains-theme necessary code#
 homeassistant:
   # If you want to customize entries with friendly_name or custom icon.
   # Read more here: https://www.home-assistant.io/docs/configuration/customizing-devices/
   # Uncomment line below and create file customize.yaml or edit it
   # customize: !include customize.yaml
 
-  # Below is link to packages folder for Dwains Theme
+  # Below entry links to the packages folder required for Dwains Theme
   packages: !include_dir_named packages/ # Comment this whole line if you want to disable Dwains Theme
 
   # If you had any important strings before in homeassistant: place them back here below
   # 
-#End of dwains-theme necesary code#
+#End of dwains-theme necessary code#
 #Copy till here#
 
 
 
 
 ######################################################################
-# Below this line is some example code of how the rest of your configuration.yaml file can look like
+# Below this line you can find some code examples of how the rest of your configuration.yaml file can look like
 
 # # Configure a default setup of Home Assistant (frontend, api, etc)
 # default_config:

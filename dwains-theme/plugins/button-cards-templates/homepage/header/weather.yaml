@@ -31,7 +31,7 @@ header_weather:
     !include 
       - ../../../../views/popups/weather.yaml
       - entity: {{ _d_t_config.global["weather"] }}
-  #lets see if we can add a inside temperature
+  #lets see if we can add the inside temperature
   {% if _d_t_config.global["inside_temperature"] %}
   label: >
     [[[ 
