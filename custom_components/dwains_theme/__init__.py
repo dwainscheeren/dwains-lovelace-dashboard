@@ -75,7 +75,7 @@ loader.yaml.SafeLoader.add_constructor("!include", _include_yaml)
 async def async_setup(hass, config):
     #Load main config
     dwains_theme_config.update(config.get("dwains_theme")["configuration"]);
-    _LOGGER.warning(dwains_theme_config);
+    #_LOGGER.warning(dwains_theme_config);
 
     #Load translations
     language = dwains_theme_config["global"]["language"];
