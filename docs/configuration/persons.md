@@ -27,7 +27,8 @@ Persons sections, all persons you want to be visible on the homepage. [How to cr
 | track | string | Required | person.dwain | Person entity |
 | picture_path | string | A auto generated avatar | 'images/persons/dwain.jpg' | Path to person picture (Place this in your `www/images/persons` folder) |
 | show_map | string | Optional (default: 'true') | 'true' or 'false' | If you want to show map of device tracker on person page |
-| more_entities | object | Optional | See example below | If you want to show some more entities on person page.
+| more_entities | object | Optional | See example below | If you want to show some more entities for a person (opens in new view, accessible from icon in header top right). |
+| page_entities | object | Optional | See example below | If you want to show some additional entities on person page (visibile on person page itself). |
 | addons              | object | No       |                               | Persons support addons, they are called *persons addons.* [Read more here](../addons/persons.md). |
 
 
@@ -39,7 +40,36 @@ persons:
     picture_path: 'images/persons/dwain.jpg'
     show_map: 'false' #If you want to show map remove this line
     more_entities:
+      columns: 1 #optional
       entities:
-        - entity: sensor.dwain_iphone_battery_level
-        - entity: sensor.dwain_iphone_steps
+        - entity: sensor.steps
+        - entity: sensor.steps
+    page_entities:
+      columns: 2 #optional
+      entities:
+        - entity: sensor.steps
+        - entity: sensor.steps
 ```    
+
+
+### More_entities object
+
+Example for using some additional entities on person page (opens in new view, accessible from icon in header top right):
+```
+    more_entities:
+      columns: 2 #optional
+      entities:
+        - entity: sensor.name1
+        - entity: sensor.name2
+```
+
+### Page_entities object
+
+Example for showing some entities in the person page itself:
+```
+    page_entities:
+      columns: 1 #optional
+      entities:
+        - entity: sensor.name1
+        - entity: sensor.name2
+```

@@ -40,7 +40,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Fixed bottom navbar on Android to be smaller in height then on iPhone. (@Rik)
 * Fixed bug with using apostrophe in names. You can now use them.
 * Parsing the `navigation_path` and `room_name` now to the data of an room addon button. So you can use that to link to the addon page.
-* Changed the way the `more_entities` work inside `rooms.yaml`. Inside the `more_entities` object you now have the option to use: `popup` and/or `page`. The first one will be placed in the popup which can be accessed by pressing the button on the top right (in the header). The second one will be directly visible on the bottom of the room page itself.
+* Changed the way the `more_entities` work inside `rooms.yaml` and `persons.yaml`. Next to the existing `more_entities` object which is now always in the popup (header top right icon), you now have the option to use: `page_entities` this one will be directly visible on the bottom of the page itself.
+* Also added an option `columns:` inside `more_entities` and `page_entities` so you can set them to 1 (then you have full width stacked cards).
 * Changed input_select on scenes and house_information page, tapping it wil open a popup to select your input_select input and double tap will loop thought each item in your input_select.
 * Added haptic feedback on single press of house information favorite entity.
 
