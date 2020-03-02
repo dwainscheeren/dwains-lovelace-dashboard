@@ -34,6 +34,14 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 1.3.0 (coming soon)
+
+* **Reworked the design to be responsive, works now fully on desktop, tablet and mobile!!**
+* **Changed the way HACS plugins are loaded with the new `/hacsfiles/` path, make sure you are at least running HACS 0.22!!**
+* Added more info dialog on click of item on All sensors & All batteries page.
+* Fixed bug with Android app not showing sidebar on swipe from left.
+
+
 ## Update 1.2.1
 * Enabled the HA sidebar on mobile on all pages. (Future update will have a option to enable/disable it) Please let me know, if you don't want the sidebar enabled on all pages, in the HA thread.
 * Fixed bug in new reload config version that it doesn't find the config files on some HA setups.
