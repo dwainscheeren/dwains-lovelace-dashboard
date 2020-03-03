@@ -58,6 +58,10 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @haplm — Great job!
+
+> @Mike_D — Awesome theme. Keep up the great work.
+
 > @Rik —  Best friend, hero, mastermind, etc
 
 > @Smakkie — Worked hard, deserves coffee ;-)
