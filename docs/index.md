@@ -58,6 +58,8 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @Tosko — As promised, a small donation as a token of appreciation for the hard work you've done so far. Keep up the good work! 👍
+
 > @haplm — Great job!
 
 > @Mike_D — Awesome theme. Keep up the great work.
