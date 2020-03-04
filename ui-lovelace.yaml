@@ -9,7 +9,7 @@
 resources: 
   !include_dir_merge_list dwains-theme/resources/
 
-#########################################################################################
+########################################################################################
 # Start of the dwains theme ui-lovelace.yaml
 # You must have this code in your ui-lovelace.yaml file!
 # Don't change anything below this section, only if you know what you are doing
