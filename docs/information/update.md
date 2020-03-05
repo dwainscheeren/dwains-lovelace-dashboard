@@ -42,6 +42,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Fixed bug with Android app not showing sidebar on swipe from left.
 * Fixed bug Show brightness value only when it is supported on room page (@joyka).
 * Added icon for cooling on homepage next to temperature if climate is on cooling.
+* Added on room page if a window or door has other state then on/True or off/False then show that state as plain text.
+* If cover with supported_features has also 7 then show the slider instead of the up/down buttons.
 
 
 ## Update 1.2.1
