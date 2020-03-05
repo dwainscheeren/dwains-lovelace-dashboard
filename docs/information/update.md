@@ -40,6 +40,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * **Changed the way HACS plugins are loaded with the new `/hacsfiles/` path, make sure you are at least running HACS 0.22!!**
 * Added more info dialog on click of item on All sensors & All batteries page.
 * Fixed bug with Android app not showing sidebar on swipe from left.
+* Fixed bug Show brightness value only when it is supported on room page (@joyka).
+* Added icon for cooling on homepage next to temperature if climate is on cooling.
 
 
 ## Update 1.2.1
