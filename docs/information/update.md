@@ -37,6 +37,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 ## Update 1.3.0 (coming soon)
 
 * **Reworked the design to be responsive, works now fully on desktop, tablet and mobile!!**
+* **Added devices view on the homepage, now you can switch between rooms and devices direct from the homepage!**
+* **Added new Black and White themes, check them out! :D**
 * **Changed the way HACS plugins are loaded with the new `/hacsfiles/` path, make sure you are at least running HACS 0.22!!**
 * Added more info dialog on click of item on All sensors & All batteries page.
 * Fixed bug with Android app not showing sidebar on swipe from left.
