@@ -37,6 +37,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 ## Update 1.3.0 (coming soon)
 
 * **Reworked the design to be responsive, works now fully on desktop, tablet and mobile!!**
+* **Added Dwains Theme Notifications, you can now push notifications into my theme with service call `dwains_theme.notification_create` they will show on the homepage header.**
 * **Added devices view on the homepage, now you can switch between rooms and devices direct from the homepage!**
 * **Added new Black and White themes, check them out! :D**
 * **Changed the way HACS plugins are loaded with the new `/hacsfiles/` path, make sure you are at least running HACS 0.22!!**
@@ -46,6 +47,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added icon for cooling on homepage next to temperature if climate is on cooling.
 * Added on room page if a window or door has other state then on/True or off/False then show that state as plain text.
 * If cover with supported_features has also 7 then show the slider instead of the up/down buttons.
+* Hide voice button on Android app.
 
 
 ## Update 1.2.1
