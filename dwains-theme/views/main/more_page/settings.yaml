@@ -2,111 +2,125 @@
 
 - title: {{ _d_t_trans.more_page.settings.title }}
   path: more_page_settings
-  cards:
-    - type: vertical-stack
-      cards:
-        #Header
-        - !include
-          - ../../partials/header.yaml
-          - title: {{ _d_t_trans.more_page.settings.title }}
-            subtitle: {{ _d_t_trans.more_page.title }}
-            navigation_path: more_page
-        #Start for settings page
-        #heading  
-        - !include
-          - ../../partials/heading.yaml
-          - title: Dwains Theme
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 0px 16px 20px 16px;
-            }
-          card:
-            type: vertical-stack
-            cards:
-              - type: custom:button-card
-                template: more_page_list-item
-                entity: sensor.dwains_theme_version
-                name: {{ _d_t_trans.more_page.settings.update_available }}
-                show_state: true
-                tap_action: 
-                  action: url
-                  url_path: 'https://dwainscheeren.github.io/lovelace-dwains-theme/information/update.html'
-                styles:
-                  grid:
-                    - grid-template-areas: '"n i""s i"'
-                  name:
-                    - color: white
-                  state:
-                    - color: white
-                  card:
-                    - background-color: '#ff5454'
-                    - display: >
-                        [[[
-                          if(entity){
-                            if('{{ _d_t_information.version }}' < entity.state){
-                              //Update available
-                              return 'block';
-                            } else {
-                              //No update
-                              return 'none';
-                            }
-                          }
-                        ]]]
-
-              - type: entities
-                style: |
-                  ha-card {
-                    box-shadow: none;
-                    background: var(--dwains-theme-primary);
-                  }
-                entities: 
-                  - entity: input_select.theme_selector
-                    icon: mdi:brush 
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _d_t_trans.more_page.settings.reload_configuration }}
-                icon: mdi:refresh 
-                tap_action: 
-                  action: call-service
-                  service: dwains_theme.reload
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _d_t_trans.more_page.settings.theme_docs }}
-                tap_action: 
-                  action: url
-                  url_path: 'https://dwainscheeren.github.io/lovelace-dwains-theme/'
-              - type: custom:button-card
-                template: more_page_list-item
-                name: Github
-                tap_action: 
-                  action: url
-                  url_path: 'https://github.com/dwainscheeren/lovelace-dwains-theme'
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _d_t_trans.more_page.settings.support_paypal }}
-                tap_action: 
-                  action: url
-                  url_path: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url'
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _d_t_trans.more_page.settings.buy_coffee }}
-                tap_action: 
-                  action: url
-                  url_path: 'https://www.buymeacoffee.com/FAkYvrx'
-                
-        #Credits
-        - type: markdown
-          style: |
-            ha-card {
-              box-shadow: none;
-              background: none;
-              text-align: center;
-            }
-            span {
-              opacity: 0.5;
-            }
-          content: |
-            <strong>DWAINS THEME</strong>
-            <span>{{ _d_t_trans.more_page.settings.by }} Dwain Scheeren</span>
-            <span>{{ _d_t_trans.more_page.settings.version }} {{ _d_t_information.version }}</span>
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      card:
+        type: custom:layout-card
+        column_width: 1465px
+        cards:
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.more_page.settings.title }}
+              subtitle: {{ _d_t_trans.more_page.title }}
+              navigation_path: more_page
+          #Start for settings page
+          #heading  
+          - !include
+            - ../../partials/heading.yaml
+            - title: Dwains Theme
+          - type: custom:button-card
+            template: more_page_list-item
+            entity: sensor.dwains_theme_version
+            name: {{ _d_t_trans.more_page.settings.update_available }}
+            show_state: true
+            tap_action: 
+              action: url
+              url_path: 'https://dwainscheeren.github.io/lovelace-dwains-theme/information/update.html'
+            styles:
+              grid:
+                - grid-template-areas: '"n i""s i"'
+              name:
+                - color: white
+              state:
+                - color: white
+              card:
+                - background-color: '#ff5454'
+                - padding: 15px 0
+                - display: >
+                    [[[
+                      if(entity){
+                        if('{{ _d_t_information.version }}' < entity.state){
+                          //Update available
+                          return 'block';
+                        } else {
+                          //No update
+                          return 'none';
+                        }
+                      }
+                    ]]]
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-top: 10px;
+                padding-bottom: 20px;
+              }
+            card:
+              type: custom:layout-card
+              column_width: 360px #420px
+              layout: horizontal
+              justify_content: start
+              cards:
+                - type: entities
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                      background: var(--dwains-theme-primary);
+                      margin-top: -6px;
+                    }
+                  entities: 
+                    - entity: input_select.theme_selector
+                      icon: mdi:brush 
+                - type: custom:button-card
+                  template: more_page_list-item
+                  name: {{ _d_t_trans.more_page.settings.reload_configuration }}
+                  icon: mdi:refresh 
+                  tap_action: 
+                    action: call-service
+                    service: dwains_theme.reload
+                - type: custom:button-card
+                  template: more_page_list-item
+                  name: {{ _d_t_trans.more_page.settings.theme_docs }}
+                  tap_action: 
+                    action: url
+                    url_path: 'https://dwainscheeren.github.io/lovelace-dwains-theme/'
+                - type: custom:button-card
+                  template: more_page_list-item
+                  name: Github
+                  tap_action: 
+                    action: url
+                    url_path: 'https://github.com/dwainscheeren/lovelace-dwains-theme'
+                - type: custom:button-card
+                  template: more_page_list-item
+                  name: {{ _d_t_trans.more_page.settings.support_paypal }}
+                  tap_action: 
+                    action: url
+                    url_path: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url'
+                - type: custom:button-card
+                  template: more_page_list-item
+                  name: {{ _d_t_trans.more_page.settings.buy_coffee }}
+                  tap_action: 
+                    action: url
+                    url_path: 'https://www.buymeacoffee.com/FAkYvrx'
+                  
+          #Credits
+          - type: markdown
+            style: |
+              ha-card {
+                box-shadow: none;
+                background: none;
+                text-align: center;
+              }
+              span {
+                opacity: 0.5;
+              }
+            content: |
+              <strong>DWAINS THEME</strong>
+              <span>{{ _d_t_trans.more_page.settings.by }} Dwain Scheeren</span>
+              <span>{{ _d_t_trans.more_page.settings.version }} {{ _d_t_information.version }}</span>

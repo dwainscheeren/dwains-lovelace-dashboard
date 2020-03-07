@@ -3,7 +3,7 @@ dwains-theme-black:
   primary-font-family: 'Open Sans'
 
   dwains-theme-background: '#000000'
-  dwains-theme-primary: '#171717'
+  dwains-theme-primary: '#121212'
   dwains-theme-accent: '#299ec2'
   dwains-theme-names: '#f2f2f7'
   dwains-theme-grey: '#ffffff'
@@ -66,3 +66,5 @@ dwains-theme-black:
   switch-unchecked-button-color: '#616161'               # Knob Off
   switch-checked-track-color: '#515357'                # Background On
   switch-unchecked-track-color: '#131314'              # Background Off
+
+  app-header-background-color: '#fffbdd'

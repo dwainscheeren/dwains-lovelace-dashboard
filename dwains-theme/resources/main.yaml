@@ -9,29 +9,29 @@
 - type: module
   url: /local/dwains-theme/plugins/cover-card.js?v=1
 - type: module
-  url: /community_plugin/weather-card/weather-card.js
+  url: /hacsfiles/weather-card/weather-card.js
 - type: module
-  url: /community_plugin/lovelace-card-mod/card-mod.js
+  url: /hacsfiles/lovelace-card-mod/card-mod.js
 - type: module
-  url: /community_plugin/button-card/button-card.js
+  url: /hacsfiles/button-card/button-card.js
 - type: js
-  url: /community_plugin/light-entity-card/light-entity-card.js 
+  url: /hacsfiles/light-entity-card/light-entity-card.js 
 - type: module   
-  url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js 
+  url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js 
 - type: module
-  url: /community_plugin/lovelace-auto-entities/auto-entities.js
+  url: /hacsfiles/lovelace-auto-entities/auto-entities.js
 - type: module
-  url: /community_plugin/lovelace-layout-card/layout-card.js
+  url: /hacsfiles/lovelace-layout-card/layout-card.js
 - type: module
-  url: /community_plugin/custom-header/custom-header.js
+  url: /hacsfiles/custom-header/custom-header.js
 - type: module 
-  url: /community_plugin/lovelace-more-info-card/more-info-card.js
+  url: /hacsfiles/lovelace-more-info-card/more-info-card.js
 - type: module
-  url: /community_plugin/lovelace-state-switch/state-switch.js
+  url: /hacsfiles/lovelace-state-switch/state-switch.js
 
 # Plugins resources which are not required if you dont have a rooted roborock or a house calendar
 # you can comment these out
 - type: module
-  url: /community_plugin/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js    
+  url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js    
 - type: module
-  url: /community_plugin/atomic_calendar/atomic_calendar.js
+  url: /hacsfiles/atomic_calendar/atomic_calendar.js

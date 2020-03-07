@@ -1,4 +1,4 @@
-partials_heading:
+partials_heading_switch:
   show_icon: false
   styles:
     card:
@@ -9,5 +9,5 @@ partials_heading:
       - color: var(--dwains-theme-grey)
       - font-weight: bold
       - justify-self: start
-      - font-size: 14px
+      - font-size: 16px
       - padding-left: 1px

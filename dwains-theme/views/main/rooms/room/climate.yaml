@@ -6,248 +6,257 @@
 {% if room["climate"] or room["temperature"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.climate.title }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
-  cards:   
-    - type: vertical-stack
-      cards:
-        #Header
-        - !include
-          - ../../../partials/header.yaml
-          - title: {{ _d_t_trans.climate.title }}
-            subtitle: {{ room["name"] }}
-            navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-        #Start for room climate content page
-        {% if room["climate"] %}
-        - type: custom:mod-card
-          card:
-            type: custom:layout-card
-            layout: grid
-            gridrows: auto
-            gridcols: 75% 25%
-            cards:    
-              - type: thermostat
-                gridrow: 1 / 1
-                gridcol: 1 / 2
-                entity: {{ room["climate"] }}
-                name: ''
-                style: |
-                  ha-card {
-                    background: transparent; 
-                    box-shadow: none;
-                    height: 100%;
-                    margin-top: 15px;
-                  }
-                  #controls {
-                    padding: 0px !important;
-                  }
-                  round-slider {
-                    padding-bottom: 0% !important;
-                  }
-                  #info {
-                    display: none;
-                  } 
-              - type: vertical-stack
-                gridrow: 1 / 1
-                gridcol: 2 / 2
-                cards:
-                  {% set climate_hvac_modes = [
-                      [
-                        "off",
-                        "off_text",
-                        "fas:power-off",
-						            "climate_off",
-                      ],
-                      [
-                        "heat",
-                        "heat",
-                        "fas:fire-alt",
-						            "climate_heat",
-                      ],
-                      [
-                        "auto",
-                        "auto",
-                        "far:clock",
-						            "climate_auto",
-                      ],
-                      [
-                        "cool",
-                        "cool",
-                        "hass:snowflake",
-						            "climate_cool",
-                      ],
-                      [
-                        "heat_cool",
-                        "heat_cool",
-                        "far:clock",
-						            "climate_heat_cool",
-                      ],
-                      [
-                        "dry",
-                        "dry",
-                        "hass:water-percent",
-						            "climate_dry",
-                      ],
-                      [
-                        "fan_only",
-                        "fan_only",
-                        "hass:fan",
-						            "climate_fan_only",
-                      ],
-                    ] 
-                  %}
-                  {% for button in climate_hvac_modes %}
-                  - type: custom:button-card
-                    template: room_climate
-                    entity: {{ room["climate"] }}
-                    icon: '{{ _d_t_icons[button[3]]|default(button[2]) }}'
-                    name: '{{ _d_t_trans.climate[button[1]] }}'
-                    tap_action: 
-                      action: call-service
-                      service: climate.set_hvac_mode
-                      service_data:
-                        entity_id: {{ room["climate"] }}
-                        hvac_mode: '{{ button[0] }}'
-                    styles:
-                      card:
-                        - display: >
-                            [[[
-                              if(entity && entity.attributes.hvac_modes.includes('{{ button[0] }}')){
-                                return 'block';
-                              } else {
-                                return 'none';
-                              }
-                            ]]]
-                    state:
-                      - value: '{{ button[0] }}'
-                        styles:
-                          img_cell:
-                            - background: var(--dwains-theme-accent)
-                            - border: '1px solid var(--dwains-theme-accent)'
-                          icon:
-                            - color: '#ffffff'
-                          name: 
-                            - color: var(--dwains-theme-names)
-                  {% endfor %}
-        {% elif room["temperature"] %}
-        - type: markdown
-          gridrow: 1 / 1
-          gridcol: 1 / 2
-          style: |
-            ha-card {
-              box-shadow: none;
-              background: none;
-              font-size: 50px;
-              text-align: center;
-            }
-          content: >
-            {% raw %}{{ states('{% endraw %}{{ room["temperature"] }}{% raw %}') }}{% endraw %} °C
-        {% endif %}
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      card:
+        type: custom:layout-card
+        column_width: 1465px
+        cards: 
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.climate.title }}
+              subtitle: {{ room["name"] }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          #Start for room climate content page
+          {% if room["climate"] %}
+          - type: custom:mod-card
+            card:
+              type: custom:layout-card
+              layout: grid
+              gridrows: auto
+              gridcols: 75% 25%
+              cards:    
+                - type: thermostat
+                  gridrow: 1 / 1
+                  gridcol: 1 / 2
+                  entity: {{ room["climate"] }}
+                  name: ''
+                  style: |
+                    ha-card {
+                      background: transparent; 
+                      box-shadow: none;
+                      height: 100%;
+                      margin-top: 15px;
+                    }
+                    #controls {
+                      padding: 0px !important;
+                    }
+                    round-slider {
+                      padding-bottom: 0% !important;
+                    }
+                    #info {
+                      display: none;
+                    } 
+                - type: vertical-stack
+                  gridrow: 1 / 1
+                  gridcol: 2 / 2
+                  cards:
+                    {% set climate_hvac_modes = [
+                        [
+                          "off",
+                          "off_text",
+                          "fas:power-off",
+                          "climate_off",
+                        ],
+                        [
+                          "heat",
+                          "heat",
+                          "fas:fire-alt",
+                          "climate_heat",
+                        ],
+                        [
+                          "auto",
+                          "auto",
+                          "far:clock",
+                          "climate_auto",
+                        ],
+                        [
+                          "cool",
+                          "cool",
+                          "hass:snowflake",
+                          "climate_cool",
+                        ],
+                        [
+                          "heat_cool",
+                          "heat_cool",
+                          "far:clock",
+                          "climate_heat_cool",
+                        ],
+                        [
+                          "dry",
+                          "dry",
+                          "hass:water-percent",
+                          "climate_dry",
+                        ],
+                        [
+                          "fan_only",
+                          "fan_only",
+                          "hass:fan",
+                          "climate_fan_only",
+                        ],
+                      ] 
+                    %}
+                    {% for button in climate_hvac_modes %}
+                    - type: custom:button-card
+                      template: room_climate
+                      entity: {{ room["climate"] }}
+                      icon: '{{ _d_t_icons[button[3]]|default(button[2]) }}'
+                      name: '{{ _d_t_trans.climate[button[1]] }}'
+                      tap_action: 
+                        action: call-service
+                        service: climate.set_hvac_mode
+                        service_data:
+                          entity_id: {{ room["climate"] }}
+                          hvac_mode: '{{ button[0] }}'
+                      styles:
+                        card:
+                          - display: >
+                              [[[
+                                if(entity && entity.attributes.hvac_modes.includes('{{ button[0] }}')){
+                                  return 'block';
+                                } else {
+                                  return 'none';
+                                }
+                              ]]]
+                      state:
+                        - value: '{{ button[0] }}'
+                          styles:
+                            img_cell:
+                              - background: var(--dwains-theme-accent)
+                              - border: '1px solid var(--dwains-theme-accent)'
+                            icon:
+                              - color: '#ffffff'
+                            name: 
+                              - color: var(--dwains-theme-names)
+                    {% endfor %}
+          {% elif room["temperature"] %}
+          - type: markdown
+            gridrow: 1 / 1
+            gridcol: 1 / 2
+            style: |
+              ha-card {
+                box-shadow: none;
+                background: none;
+                font-size: 50px;
+                text-align: center;
+              }
+            content: >
+              {% raw %}{{ states('{% endraw %}{{ room["temperature"] }}{% raw %}') }}{% endraw %} °C
+          {% endif %}
 
-        #Start of graphs
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 8px;
-            }
-          card:
-            type: custom:layout-card
-            min_columns: 2
-            max_columns: 2
-            layout: horizontal
-            justify_content: start
-            cards:
-              #This room temp & hum combined
-              {% if 
-                    room["temperature"] or 
-                    room["humidity"] 
-              %}
-              - type: custom:mini-graph-card
-                name: {{ _d_t_trans.climate.this_room|upper }}
-                hour24: true 
-                action: none
-                font_size: 65
-                entities:
-                  {% if room["temperature"] %}
-                  - entity: {{ room["temperature"] }}
-                    show_state: true
-                    show_indicator: true
-                    name: {{ _d_t_trans.climate.temperature }}
-                  {% endif %}
-                  {% if room["humidity"] %}
-                  - entity: {{ room["humidity"] }}
-                    show_state: true
-                    show_indicator: true
-                    name: {{ _d_t_trans.climate.humidity }}
-                  {% endif %}
-                graph: line
-                show:
-                  icon: false
-              {% endif %}
-              #Outside
-              {% if 
-                    _d_t_config.global["outside_temperature"] or 
-                    _d_t_config.global["outside_humidity"] 
-              %}
-              - type: custom:mini-graph-card
-                name: {{ _d_t_trans.climate.outside|upper }}
-                hour24: true 
-                action: none
-                font_size: 65
-                entities:
-                  {% if _d_t_config.global["outside_temperature"] %}
-                  - entity: {{ _d_t_config.global["outside_temperature"] }}
-                    show_state: true
-                    show_indicator: true
-                    name: {{ _d_t_trans.climate.temperature }}
-                  {% endif %}
-                  {% if _d_t_config.global["outside_humidity"] %}
-                  - entity: {{ _d_t_config.global["outside_humidity"] }}
-                    show_state: true
-                    show_indicator: true
-                    name: {{ _d_t_trans.climate.humidity }}
-                  {% endif %}
-                graph: line
-                show:
-                  icon: false        
-              {% endif %}
-        {% if 
-              room["temperature"] and
-              room["humidity"] 
-        %}
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 0px 16px 20px 16px;
-            }
-          card:
-            type: vertical-stack
-            cards:
-              #This room temp
-              - type: custom:mini-graph-card
-                name: {{ _d_t_trans.climate.this_room|upper }} - {{ _d_t_trans.climate.temperature }}
-                hour24: true 
-                action: none
-                font_size: 65
-                entities:
-                  - entity: {{ room["temperature"] }}
-                    show_state: true
-                    show_indicator: true
-                    name: {{ _d_t_trans.climate.temperature }}
-                graph: line
-                show:
-                  icon: false
-              - type: custom:mini-graph-card
-                name: {{ _d_t_trans.climate.this_room|upper }} - {{ _d_t_trans.climate.humidity }}
-                hour24: true 
-                action: none
-                font_size: 65
-                entities:
-                  - entity: {{ room["humidity"] }}
-                    show_state: true
-                    show_indicator: true
-                    name: {{ _d_t_trans.climate.humidity }}
-                graph: line
-                show:
-                  icon: false
-        {% endif %}
+          #Start of graphs
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding: 8px;
+              }
+            card:
+              type: custom:layout-card
+              min_columns: 2
+              max_columns: 2
+              layout: horizontal
+              justify_content: start
+              cards:
+                #This room temp & hum combined
+                {% if 
+                      room["temperature"] or 
+                      room["humidity"] 
+                %}
+                - type: custom:mini-graph-card
+                  name: {{ _d_t_trans.climate.this_room|upper }}
+                  hour24: true 
+                  action: none
+                  font_size: 65
+                  entities:
+                    {% if room["temperature"] %}
+                    - entity: {{ room["temperature"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: {{ _d_t_trans.climate.temperature }}
+                    {% endif %}
+                    {% if room["humidity"] %}
+                    - entity: {{ room["humidity"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: {{ _d_t_trans.climate.humidity }}
+                    {% endif %}
+                  graph: line
+                  show:
+                    icon: false
+                {% endif %}
+                #Outside
+                {% if 
+                      _d_t_config.global["outside_temperature"] or 
+                      _d_t_config.global["outside_humidity"] 
+                %}
+                - type: custom:mini-graph-card
+                  name: {{ _d_t_trans.climate.outside|upper }}
+                  hour24: true 
+                  action: none
+                  font_size: 65
+                  entities:
+                    {% if _d_t_config.global["outside_temperature"] %}
+                    - entity: {{ _d_t_config.global["outside_temperature"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: {{ _d_t_trans.climate.temperature }}
+                    {% endif %}
+                    {% if _d_t_config.global["outside_humidity"] %}
+                    - entity: {{ _d_t_config.global["outside_humidity"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: {{ _d_t_trans.climate.humidity }}
+                    {% endif %}
+                  graph: line
+                  show:
+                    icon: false        
+                {% endif %}
+          {% if 
+                room["temperature"] and
+                room["humidity"] 
+          %}
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding: 0px 16px 20px 16px;
+              }
+            card:
+              type: vertical-stack
+              cards:
+                #This room temp
+                - type: custom:mini-graph-card
+                  name: {{ _d_t_trans.climate.this_room|upper }} - {{ _d_t_trans.climate.temperature }}
+                  hour24: true 
+                  action: none
+                  font_size: 65
+                  entities:
+                    - entity: {{ room["temperature"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: {{ _d_t_trans.climate.temperature }}
+                  graph: line
+                  show:
+                    icon: false
+                - type: custom:mini-graph-card
+                  name: {{ _d_t_trans.climate.this_room|upper }} - {{ _d_t_trans.climate.humidity }}
+                  hour24: true 
+                  action: none
+                  font_size: 65
+                  entities:
+                    - entity: {{ room["humidity"] }}
+                      show_state: true
+                      show_indicator: true
+                      name: {{ _d_t_trans.climate.humidity }}
+                  graph: line
+                  show:
+                    icon: false
+          {% endif %}
 {% endif %}
 {% endfor %}

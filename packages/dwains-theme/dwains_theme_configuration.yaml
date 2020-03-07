@@ -9,7 +9,7 @@ frontend:
   extra_html_url:
     - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-solid.html
     - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-regular.html
-    # - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html #If have Font Awesome Light uncomment this line
+    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html #If have Font Awesome Light uncomment this line
 
 #Load browser_mod (https://github.com/thomasloven/hass-browser_mod)
 browser_mod:
@@ -40,9 +40,12 @@ input_select:
   theme_selector:
     name: Theme Selector 
     options:
-      - Auto Mode
+      - Auto Mode (Dark/Light)
       - Dark Mode
       - Light Mode
+      - Auto Mode (Black/White)
+      - Black Mode
+      - White Mode
 
 #Theme automations
 automation:
@@ -60,14 +63,22 @@ automation:
       - service: frontend.set_theme
         data_template:
           name: >
-            {% if (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
+            {% if (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode (Dark/Light)'))  %}
               dwains-theme-light
-            {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
+            {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode (Dark/Light)'))  %}
               dwains-theme-dark
             {% elif is_state('input_select.theme_selector', 'Dark Mode') %}
               dwains-theme-dark
             {% elif is_state('input_select.theme_selector', 'Light Mode') %}
               dwains-theme-light
+            {% elif (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode (Black/White)'))  %}
+              dwains-theme-white
+            {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode (Black/White)'))  %}
+              dwains-theme-black
+            {% elif is_state('input_select.theme_selector', 'Black Mode') %}
+              dwains-theme-black
+            {% elif is_state('input_select.theme_selector', 'White Mode') %}
+              dwains-theme-white
             {% else %}
               dwains-theme-light
             {% endif %}

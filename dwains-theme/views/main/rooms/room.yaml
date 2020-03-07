@@ -6,631 +6,638 @@
 {% for room in _d_t_config.rooms %}
 - title: {{ room["name"] }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}
-  cards:   
-    {% if room["more_entities"] and room["more_entities"]["entities"] %}
-    #Header with grid
-    - !include
-      - ../../partials/header_grid.yaml
-      - title: {{ room["name"] }}
-        subtitle: {{ _d_t_trans.home.title }}
-        navigation_path: home  
-        type: button
-        button_template: room_header_more_entities
-        button_navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
-    {% else %}
-    #Header
-    - !include
-      - ../../partials/header.yaml
-      - title: {{ room["name"] }}
-        subtitle: {{ _d_t_trans.home.title }}
-        navigation_path: home  
-    {% endif %}
-    #Subheader with room information
-    {% if room["motion"] or room["door"] or room["window"] %}
+  panel: true
+  cards:    
     - type: custom:mod-card
-      style: |
-        ha-card {
-          background-color: var(--dwains-theme-header-background);
-          margin-top: -25px;
-          padding-top: 0px;
-          padding-bottom: 4px;
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
         }
       card:
         type: custom:layout-card
-        min_columns: 3
-        max_columns: 3
+        column_width: 1465px
         layout: horizontal
-        justify_content: start
         cards:
-          {% if room["motion"] %}
-          - type: custom:button-card
-            template: rooms_subheader
-            entity: {{ room["motion"] }}
-            name: {{ _d_t_trans.motion.title }}
-            icon: '{{ _d_t_icons.motion_off|default('fas:walking') }}'
-            state:
-              - value: 'on'
-                icon: '{{ _d_t_icons.motion_on|default('mdi:motion-sensor') }}'
-            tap_action:
-              !include 
-                - ../../popups/more-info.yaml
-                - entity: {{ room["motion"] }}
-            label: >
-              [[[
-                function timeDifference(current, previous) {
-                  var msPerMinute = 60 * 1000;
-                  var msPerHour = msPerMinute * 60;
-                  var msPerDay = msPerHour * 24;
-                  var msPerMonth = msPerDay * 30;
-                  var msPerYear = msPerDay * 365;
-
-                  var elapsed = current - previous;
-
-                  if (elapsed < msPerMinute) {
-                      return Math.round(elapsed/1000) + ' {{ _d_t_trans.history.sec_ago }}';   
-                  }
-                  else if (elapsed < msPerHour) {
-                      return Math.round(elapsed/msPerMinute) + ' {{ _d_t_trans.history.min_ago }}';   
-                  }
-                  else if (elapsed < msPerDay ) {
-                      return Math.round(elapsed/msPerHour ) + ' {{ _d_t_trans.history.h_ago }}';   
-                  }
-                  else if (elapsed < msPerMonth) {
-                      return Math.round(elapsed/msPerDay) + ' {{ _d_t_trans.history.d_ago }}';   
-                  }
-                  else if (elapsed < msPerYear) {
-                      return Math.round(elapsed/msPerMonth) + ' {{ _d_t_trans.history.m_ago }}';   
-                  }
-                  else {
-                      return Math.round(elapsed/msPerYear ) + ' {{ _d_t_trans.history.y_ago }}';   
-                  }
-                }
-                if(entity){
-                  if(entity.state == 'on' || entity.state == 'True'){
-                    return '{{ _d_t_trans.motion.motion_on }}';
-                  } else {
-                    return timeDifference(new Date(), new Date(entity.last_changed));
-                  }
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.motion entity!");
-                  return 'Entity error!'
-                }
-              ]]]
-          {% endif %}
-          {% if room["door"] %}
-          - type: custom:button-card
-            template: rooms_subheader
-            entity: {{ room["door"] }}
-            icon: '{{ _d_t_icons.door_closed|default('mdi:door-closed') }}'
-            state:
-              - value: 'on'
-                icon: '{{ _d_t_icons.door_open|default('mdi:door-open') }}'
-            tap_action:
-              !include 
-                - ../../popups/more-info.yaml
-                - entity: {{ room["door"] }}
-            {% if room["door"].split('.')[0] == 'binary_sensor' %}
-            # this room has only 1 door
-            name: {{ _d_t_trans.door.title }}
-            label: >
-              [[[ 
-                if(entity){
-                  if(entity.state == 'off' || entity.state == 'False'){
-                    return '{{ _d_t_trans.door.closed }}';
-                  } else {
-                    return '{{ _d_t_trans.door.open }}';
-                  }
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.door entity!");
-                  return 'Entity error!'
-                }
-              ]]] 
-            {% else %}
-            # this room has group of doors
-            name: {{ _d_t_trans.door.title_plural }}
-            label: >
-              [[[
-                if(entity){
-                  const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
-                  var openDoors = 0;
-                  entitiesFromGroup.forEach(function(entity){
-                    if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'True'){
-                      openDoors++;
-                    }
-                  });  
-                  return ((openDoors >= 1) ? ((openDoors == 1) ? '1 {{ _d_t_trans.door.door_open }}' : openDoors + ' {{ _d_t_trans.door.doors_open }}') : '{{ _d_t_trans.door.closed }}');
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.door entity!");
-                  return 'Entity error!'
-                }
-              ]]]
-            {% endif %}
-          {% endif %}
-          {% if room["window"] %}
-          - type: custom:button-card
-            template: rooms_subheader
-            entity: {{ room["window"] }}
-            icon: '{{ _d_t_icons.window_closed|default('mdi:window-closed-variant') }}'
-            state:
-              - value: 'on'
-                icon: '{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}'
-            tap_action:
-              !include 
-                - ../../popups/more-info.yaml
-                - entity: {{ room["window"] }}
-            {% if room["window"].split('.')[0] == 'binary_sensor' or room["window"].split('.')[0] == 'sensor' %}
-            # this room has only 1 window
-            name: {{ _d_t_trans.window.title }}
-            label: >
-              [[[ 
-                if(entity){
-                  if(entity.state == 'off' || entity.state == 'False'){
-                    return '{{ _d_t_trans.window.closed }}';
-                  } else {
-                    return '{{ _d_t_trans.window.open }}';
-                  }
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.window entity!");
-                  return 'Entity error!'
-                }
-              ]]] 
-            {% else %}
-            # this room has group of windows
-            name: {{ _d_t_trans.window.title_plural }}
-            label: >
-              [[[
-                if(entity){
-                  const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
-                  var openWindows = 0;
-                  entitiesFromGroup.forEach(function(entity){
-                    if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'True'){
-                      openWindows++;
-                    }
-                  });  
-                  return ((openWindows >= 1) ? ((openWindows == 1) ? '1 {{ _d_t_trans.window.window_open }}' : openWindows + ' {{ _d_t_trans.window.windows_open }}') : '{{ _d_t_trans.window.closed }}');
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.window entity!");
-                  return 'Entity error!'
-                }
-              ]]]
-            {% endif %}
-          {% endif %}
-          - type: custom:button-card
-            color_type: blank-card
-            aspect_ratio: 1/1
-          - type: custom:button-card
-            color_type: blank-card
-            aspect_ratio: 1/1
-      {% endif %}
-
-    #Start for room content page
-    #Lights
-    - type: custom:mod-card
-      style: |
-        ha-card {
-          padding: 8px 16px 20px 16px;
-          {% if room["page_entities"] and room["page_entities"]["entities"] %}
-          padding-bottom: 0px;
-          {% endif %}
-        }
-      card:
-        type: vertical-stack
-        cards:
-          #Blank card for empty vertical stack error
-          - type: custom:button-card
-            color_type: blank-card
-            aspect_ratio: 1/1
-
-          #Card for lights (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
-          {% if room["light"] %}
-          - type: custom:button-card
-            entity: {{ room["light"] }}
-            template: rooms_child
-            icon: '{{ _d_t_icons.light_off|default('far:lightbulb') }}'
-            styles:
-              img_cell:
-                - padding-left: 5px
-                - width: 40px
-            state:
-              - value: 'on'
-                icon: '{{ _d_t_icons.light_on|default('fas:lightbulb') }}'
-            {% if room["light"].split('.')[0] == 'light' %}
-            # this room has only 1 light (light entity)
-            name: {{ _d_t_trans.light.title }}
-            double_tap_action:
-              action: toggle
-              haptic: light 
-            tap_action:
-              !include 
-                - ../../popups/light.yaml
-                - entity: {{ room["light"] }}
-            label: >
-              [[[ 
-                if(entity){
-                  if(entity.state == 'off'){
-                    return '{{ _d_t_trans.light.off_text }}';
-                  } else {
-                    if (states['{{ room["light"] }}'].attributes && (states['{{ room["light"] }}'].attributes.brightness <= 255)) { 
-                      var bri = Math.round(states['{{ room["light"] }}'].attributes.brightness / 2.55); 
-                      return '{{ _d_t_trans.light.on_text }}, ' + (bri ? bri : '0') + '%'; 
-                    } else {
-                      return '{{ _d_t_trans.light.on_text }}';
-                    }
-                  }
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
-                  return 'Entity error!';
-                }
-              ]]] 
-            {% elif room["light"].split('.')[0] == 'switch' %}
-            # this room has only 1 light (switch entity)
-            name: {{ _d_t_trans.light.title }}
-            tap_action:
-              action: toggle
-              haptic: light 
-            label: >
-              [[[ 
-                if(entity){
-                  if(entity.state == 'off'){
-                    return '{{ _d_t_trans.light.off_text }}';
-                  } else {
-                    return '{{ _d_t_trans.light.on_text }}';
-                  }
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
-                  return 'Entity error!';
-                }
-              ]]] 
-            {% else %}
-            # this room has group of lights
-            name: {{ _d_t_trans.light.title_plural }}
-            tap_action: 
-              action: navigate
-              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_lights
-            double_tap_action:
-              action: toggle
-              haptic: light 
-            label: >
-              [[[
-                if(entity){
-                  const entitiesFromGroup = states['{{ room["light"] }}'].attributes['entity_id'];
-                  var onLights = 0;
-                  entitiesFromGroup.forEach(function(entity){
-                    if(states[entity] && states[entity].state == 'on'){
-                      onLights++;
-                    }
-                  });  
-                  return entitiesFromGroup.length + ' {{ _d_t_trans.light.title_plural }}' + ((onLights >= 1) ? '<br>' + ((onLights == 1) ? '1 {{ _d_t_trans.light.light_on }}' : onLights + ' {{ _d_t_trans.light.lights_on }}') : '');
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
-                  return 'Entity error!';
-                }
-              ]]]
-            {% endif %}
-          {% endif %}
-
-          #Card for climate (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
-          {% if room["climate"] or room["temperature"] %}
-          - type: custom:button-card
-            entity: {{ room["climate"] if room["climate"] else room["temperature"] }}
-            template: rooms_child
-            icon: '{{ _d_t_icons.climate|default('fas:thermometer-three-quarters') }}'
-            styles:
-              img_cell:
-                - padding-left: 8px
-                - width: 37px
-            name: {{ _d_t_trans.climate.title }}
-            tap_action: 
-              action: navigate
-              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
-            label: >
-              [[[ 
-                {% if room["temperature"] %}
-                  if(states['{{ room["temperature"] }}']){
-                    var temperature = (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°';
-                  } else {
-                    console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
-                    return 'Temperature error';
-                  }
-                {% elif room["climate"] %}
-                  if(states['{{ room["climate"] }}']){
-                    var temperature = (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + '°';
-                  } else {
-                    console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!");
-                    return 'Climate error';
-                  }
-                {% endif %}
-
-                {% if room["climate"] %}
-                if(states['{{ room["climate"] }}']){
-                  if (entity.attributes.hvac_action  == 'idle'){
-                    return temperature + '<br>{{ _d_t_trans.climate.idle }}';
-                  } else if(entity.attributes.hvac_action == 'heating'){
-                    return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
-                  } else if(entity.attributes.hvac_action == 'off'){
-                    return temperature + '<br>{{ _d_t_trans.climate.off_text }}';
-                  } else if(entity.attributes.hvac_action == 'heat'){
-                    return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
-                  } else {
-                    return temperature + '<br>' + entity.state;
-                  }
-                }
-                {% endif %}
-
-                return temperature;
-              ]]] 
-          {% endif %}
-
-          #Card for covers (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
-          {% if room["cover"] %}
-          - type: custom:button-card
-            entity: {{ room["cover"] }}
-            template: rooms_child
-            icon: '{{ _d_t_icons.cover|default('mdi:window-shutter') }}'
-            tap_action: 
-              action: navigate
-              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_cover
-            {% if room["cover"].split('.')[0] == 'cover' %}
-            name: {{ _d_t_trans.cover.title }}
-            label: >
-              [[[ 
-                if(entity){
-                  if(entity.state == 'open'){
-                    return '{{ _d_t_trans.cover.cover_open }} ' + states['{{ room["cover"] }}'].attributes.current_position + '%';
-                  } else if(entity.state == 'closed') {
-                    return '{{ _d_t_trans.cover.cover_closed }}';
-                  } else {
-                    return entity.state;
-                  }
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.cover entity!");
-                  return 'Entity error!';
-                }
-              ]]] 
-            {% else %}
-            name: {{ _d_t_trans.cover.title_plural }}
-            label: >
-              [[[ 
-                if(entity){
-                  const entitiesFromGroup = states['{{ room["cover"] }}'].attributes['entity_id'];
-                  var openCovers = 0;
-                  var stateText = '';
-                  entitiesFromGroup.forEach(function(entity){
-                    if(states[entity] && states[entity].state == 'open'){
-                      openCovers++;
-                      stateText += '<br>1 {{ _d_t_trans.cover.cover_open }} ' + states[entity].attributes.current_position + '%';
-                    }
-                  });  
-                  return entitiesFromGroup.length + ' {{ _d_t_trans.cover.title_plural }}' + ((openCovers >= 1) ? stateText : '');
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.cover entity!");
-                  return 'Entity error!';
-                }
-              ]]]      
-            {% endif %}
-          {% endif %}
-
-          #Card for devices (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
-          {% if room["device"] %}
-          - type: custom:button-card
-            entity: {{ room["device"] }}
-            template: rooms_child
-            icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
-            {% if room["device"].split('.')[0] != 'group' %}
-            # this room has only 1 device
-            name: {{ _d_t_trans.device.title }}
-            tap_action:
-              action: toggle
-              haptic: light 
-            label: >
-              [[[ 
-                if(entity){
-                  var name = entity.attributes.friendly_name === undefined
-                        ? entity.entity_id.split(".")[1].replace(/_/g, " ")
-                        : entity.attributes.friendly_name;
-
-                  if(entity.state == 'off'){
-                    return name + '<br>{{ _d_t_trans.device.off_text }}';
-                  } else {
-                    return name + '<br>{{ _d_t_trans.device.on_text }}';
-                  }
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.device entity!");
-                  return 'Entity error!';
-                }
-              ]]] 
-            {% else %}
-            # this room has group of devices
-            name: {{ _d_t_trans.device.title_plural }}
-            label: >
-              [[[
-                if(entity){
-                  const entitiesFromGroup = states['{{ room["device"] }}'].attributes['entity_id'];
-                  var onDevices = 0;
-                  entitiesFromGroup.forEach(function(entity){
-                    if(states[entity] && states[entity].state == 'on'){
-                      onDevices++;
-                    }
-                  });  
-                  return entitiesFromGroup.length + ' {{ _d_t_trans.device.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.device.device_on }}' : onDevices + ' {{ _d_t_trans.device.devices_on }}') : '');
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.device entity!");
-                  return 'Entity error!';
-                }
-              ]]]
-            tap_action: 
-              action: navigate
-              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_devices
-            {% endif %}
-          {% endif %}
-
-          #Card for media players (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
-          {% if room["media_player"] %}
-          - type: custom:button-card
-            entity: {{ room["media_player"] }}
-            template: rooms_child
-            icon: '{{ _d_t_icons.media_player|default('fas:play') }}'
-            {% if room["media_player"].split('.')[0] == 'media_player' %}
-            # this room has only 1 media player
-            name: {{ _d_t_trans.media_player.title }}
-            tap_action:
-              !include 
-                - ../../popups/more-info.yaml
-                - entity: {{ room["media_player"] }}
-            label: >
-              [[[ 
-                if(entity){
-                  return entity.state;
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.media_player entity!");
-                  return 'Entity error!';
-                }
-              ]]] 
-            {% else %}
-            # this room has group of media players
-            name: {{ _d_t_trans.media_player.title_plural }}
-            label: >
-              [[[
-                if(entity){
-                  const entitiesFromGroup = states['{{ room["media_player"] }}'].attributes['entity_id'];
-                  var onDevices = 0;
-                  entitiesFromGroup.forEach(function(entity){
-                    if(states[entity] && states[entity].state == 'on'){
-                      onDevices++;
-                    }
-                  });  
-                  return entitiesFromGroup.length + ' {{ _d_t_trans.media_player.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.media_player.media_player_on }}' : onDevices + ' {{ _d_t_trans.media_player.media_players_on }}') : '');
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.media_player entity!");
-                  return 'Entity error!';
-                }
-              ]]]
-            tap_action: 
-              action: navigate
-              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_media_players
-            {% endif %}
-          {% endif %}
-
-          #Card for vacuums (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
-          {% if room["vacuum"] %}
-          - type: custom:button-card
-            entity: {{ room["vacuum"]["entity"] }}
-            template: rooms_child
-            name: {{ _d_t_trans.vacuum.title }}
-            icon: '{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}'
-            tap_action: 
-              action: navigate
-              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
-            label: >
-              [[[ 
-                if(entity){
-                  return entity.state;
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.vacuum entity!");
-                  return 'Entity error!';
-                }
-              ]]]
-          {% endif %}
-
-          #Card for plants (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
-          {% if room["plant"] %}
-          - type: custom:button-card
-            entity: {{ room["plant"] }}
-            template: rooms_child
-            icon: '{{ _d_t_icons.plant|default('fas:leaf') }}'
-            {% if room["plant"].split('.')[0] == 'plant' %}
-            # this room has only 1 plant
-            name: {{ _d_t_trans.plant.title }}
-            tap_action:
-              !include 
-                - ../../popups/more-info.yaml
-                - entity: {{ room["plant"] }}
-            label: >
-              [[[ 
-                if(entity){
-                  return entity.state;
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.plant entity!");
-                  return 'Entity error!';
-                }
-              ]]] 
-            {% else %}
-            # this room has group of plants
-            name: {{ _d_t_trans.plant.title_plural }}
-            label: >
-              [[[
-                if(entity){
-                  const entitiesFromGroup = states['{{ room["plant"] }}'].attributes['entity_id'];
-                  var problemPlants = 0;
-                  entitiesFromGroup.forEach(function(entity){
-                    if(states[entity] && states[entity].state == 'problem'){
-                      problemPlants++;
-                    }
-                  });  
-                  return entitiesFromGroup.length + ' {{ _d_t_trans.plant.title_plural }}' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 {{ _d_t_trans.plant.plant_problem }}' : problemPlants + ' {{ _d_t_trans.plant.plants_problem }}') : '');
-                } else {
-                  console.log("Invalid rooms.yaml:{{ room["name"] }}.plant entity!");
-                  return 'Entity error!';
-                }
-              ]]]
-            tap_action: 
-              action: navigate
-              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_plants
-            {% endif %}
-          {% endif %}
-
-          #Card for room addons
-          {% if room["addons"] %}
-          {% for addon in room["addons"] %}
-          {% if addon["button_path"] %}
-          - !include 
-              - ../../../../{{ addon["button_path"] }}
-              - name: {{ addon["name"] }}
-                icon: {{ addon["icon"] }}
-                navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
-                room_name: {{ room["name"] }}
-                {% if addon["data"] %}
-                data: '{{ addon["data"]|tojson }}'
-                {% endif %}
+          {% if room["more_entities"] and room["more_entities"]["entities"] %}
+          #Header with grid
+          - !include
+            - ../../partials/header_grid.yaml
+            - title: {{ room["name"] }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home  
+              type: button
+              button_template: room_header_more_entities
+              button_navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
           {% else %}
-          - type: custom:button-card
-            template: rooms_child
-            icon: {{ addon["icon"]|default('fas:puzzle-piece') }}
-            name: {{ addon["name"] }}
-            tap_action: 
-              action: navigate
-              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ room["name"] }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home  
           {% endif %}
-          {% endfor %}
-          {% endif %}
+          #Subheader with room information
+          {% if room["motion"] or room["door"] or room["window"] %}
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                background-color: var(--dwains-theme-header-background);
+                margin: -25px -4px 0px -4px;
+                padding-top: 0px;
+                padding-bottom: 4px;
+              }
+            card:
+              type: custom:layout-card
+              min_columns: 3
+              max_columns: 3
+              layout: horizontal
+              justify_content: start
+              cards:
+                {% if room["motion"] %}
+                - type: custom:button-card
+                  template: rooms_subheader
+                  entity: {{ room["motion"] }}
+                  name: {{ _d_t_trans.motion.title }}
+                  icon: '{{ _d_t_icons.motion_off|default('fas:walking') }}'
+                  state:
+                    - value: 'on'
+                      icon: '{{ _d_t_icons.motion_on|default('mdi:motion-sensor') }}'
+                  tap_action:
+                    !include 
+                      - ../../popups/more-info.yaml
+                      - entity: {{ room["motion"] }}
+                  label: >
+                    [[[
+                      function timeDifference(current, previous) {
+                        var msPerMinute = 60 * 1000;
+                        var msPerHour = msPerMinute * 60;
+                        var msPerDay = msPerHour * 24;
+                        var msPerMonth = msPerDay * 30;
+                        var msPerYear = msPerDay * 365;
 
-    {% if room["page_entities"] and room["page_entities"]["entities"] %}
-    {% if room["page_entities"]["show_title"] != 'false' %}
-    #Heading
-    - !include
-      - ../../partials/heading.yaml
-      - title: {{ _d_t_trans.more_entities.title }}
-    {% endif %}
-    - type: custom:mod-card
-      style: |
-        ha-card {
-          padding: 0px 8px 20px 8px;
-        }
-      card:
-        type: custom:layout-card
-        min_columns: {{ room["page_entities"]["columns"] | default('2') }}
-        max_columns: {{ room["page_entities"]["columns"] | default('2') }}
-        layout: horizontal
-        justify_content: start
-        cards:
-          {% for more_entity in room["page_entities"]["entities"] %}
-          - type: custom:button-card
-            entity: {{ more_entity["entity"] }}
-            template: room_more_entity
-            tap_action:
-              !include 
-                - ../../popups/more-info.yaml
-                - entity: {{ more_entity["entity"] }}
-          {% endfor %}
-    {% endif %}
+                        var elapsed = current - previous;
+
+                        if (elapsed < msPerMinute) {
+                            return Math.round(elapsed/1000) + ' {{ _d_t_trans.history.sec_ago }}';   
+                        }
+                        else if (elapsed < msPerHour) {
+                            return Math.round(elapsed/msPerMinute) + ' {{ _d_t_trans.history.min_ago }}';   
+                        }
+                        else if (elapsed < msPerDay ) {
+                            return Math.round(elapsed/msPerHour ) + ' {{ _d_t_trans.history.h_ago }}';   
+                        }
+                        else if (elapsed < msPerMonth) {
+                            return Math.round(elapsed/msPerDay) + ' {{ _d_t_trans.history.d_ago }}';   
+                        }
+                        else if (elapsed < msPerYear) {
+                            return Math.round(elapsed/msPerMonth) + ' {{ _d_t_trans.history.m_ago }}';   
+                        }
+                        else {
+                            return Math.round(elapsed/msPerYear ) + ' {{ _d_t_trans.history.y_ago }}';   
+                        }
+                      }
+                      if(entity){
+                        if(entity.state == 'on' || entity.state == 'True'){
+                          return '{{ _d_t_trans.motion.motion_on }}';
+                        } else {
+                          return timeDifference(new Date(), new Date(entity.last_changed));
+                        }
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.motion entity!");
+                        return 'Entity error!'
+                      }
+                    ]]]
+                {% endif %}
+                {% if room["door"] %}
+                - type: custom:button-card
+                  template: rooms_subheader
+                  entity: {{ room["door"] }}
+                  icon: '{{ _d_t_icons.door_closed|default('mdi:door-closed') }}'
+                  state:
+                    - value: 'on'
+                      icon: '{{ _d_t_icons.door_open|default('mdi:door-open') }}'
+                  tap_action:
+                    !include 
+                      - ../../popups/more-info.yaml
+                      - entity: {{ room["door"] }}
+                  {% if room["door"].split('.')[0] == 'binary_sensor' %}
+                  # this room has only 1 door
+                  name: {{ _d_t_trans.door.title }}
+                  label: >
+                    [[[ 
+                      if(entity){
+                        if(entity.state == 'off' || entity.state == 'False'){
+                          return '{{ _d_t_trans.door.closed }}';
+                        } else if(entity.state == 'on' || entity.state == 'True') {
+                          return '{{ _d_t_trans.door.open }}';
+                        } else {
+                          return entity.state;
+                        }
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.door entity!");
+                        return 'Entity error!'
+                      }
+                    ]]] 
+                  {% else %}
+                  # this room has group of doors
+                  name: {{ _d_t_trans.door.title_plural }}
+                  label: >
+                    [[[
+                      if(entity){
+                        const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
+                        var openDoors = 0;
+                        entitiesFromGroup.forEach(function(entity){
+                          if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'True'){
+                            openDoors++;
+                          }
+                        });  
+                        return ((openDoors >= 1) ? ((openDoors == 1) ? '1 {{ _d_t_trans.door.door_open }}' : openDoors + ' {{ _d_t_trans.door.doors_open }}') : '{{ _d_t_trans.door.closed }}');
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.door entity!");
+                        return 'Entity error!'
+                      }
+                    ]]]
+                  {% endif %}
+                {% endif %}
+                {% if room["window"] %}
+                - type: custom:button-card
+                  template: rooms_subheader
+                  entity: {{ room["window"] }}
+                  icon: '{{ _d_t_icons.window_closed|default('mdi:window-closed-variant') }}'
+                  state:
+                    - value: 'on'
+                      icon: '{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}'
+                  tap_action:
+                    !include 
+                      - ../../popups/more-info.yaml
+                      - entity: {{ room["window"] }}
+                  {% if room["window"].split('.')[0] == 'binary_sensor' or room["window"].split('.')[0] == 'sensor' %}
+                  # this room has only 1 window
+                  name: {{ _d_t_trans.window.title }}
+                  label: >
+                    [[[ 
+                      if(entity){
+                        if(entity.state == 'off' || entity.state == 'False'){
+                          return '{{ _d_t_trans.window.closed }}';
+                        } else if(entity.state == 'on' || entity.state == 'True') {
+                          return '{{ _d_t_trans.window.open }}';
+                        } else {
+                          return entity.state;
+                        }
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.window entity!");
+                        return 'Entity error!'
+                      }
+                    ]]] 
+                  {% else %}
+                  # this room has group of windows
+                  name: {{ _d_t_trans.window.title_plural }}
+                  label: >
+                    [[[
+                      if(entity){
+                        const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
+                        var openWindows = 0;
+                        entitiesFromGroup.forEach(function(entity){
+                          if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'True'){
+                            openWindows++;
+                          }
+                        });  
+                        return ((openWindows >= 1) ? ((openWindows == 1) ? '1 {{ _d_t_trans.window.window_open }}' : openWindows + ' {{ _d_t_trans.window.windows_open }}') : '{{ _d_t_trans.window.closed }}');
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.window entity!");
+                        return 'Entity error!'
+                      }
+                    ]]]
+                  {% endif %}
+                {% endif %}
+                - type: custom:button-card
+                  color_type: blank-card
+                  aspect_ratio: 1/1
+                - type: custom:button-card
+                  color_type: blank-card
+                  aspect_ratio: 1/1
+            {% endif %}
+
+          #Start for room content page
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-top: 20px;
+                padding-bottom: 20px;
+              }
+            card:
+              type: custom:layout-card
+              column_width: 360px #420px
+              layout: horizontal
+              justify_content: start
+              cards:
+                #Card for lights (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+                {% if room["light"] %}
+                - type: custom:button-card
+                  entity: {{ room["light"] }}
+                  template: rooms_child
+                  icon: '{{ _d_t_icons.light_off|default('far:lightbulb') }}'
+                  styles:
+                    img_cell:
+                      - padding-left: 5px
+                      - width: 40px
+                  state:
+                    - value: 'on'
+                      icon: '{{ _d_t_icons.light_on|default('fas:lightbulb') }}'
+                  {% if room["light"].split('.')[0] == 'light' %}
+                  # this room has only 1 light (light entity)
+                  name: {{ _d_t_trans.light.title }}
+                  double_tap_action:
+                    action: toggle
+                    haptic: light 
+                  tap_action:
+                    !include 
+                      - ../../popups/light.yaml
+                      - entity: {{ room["light"] }}
+                  label: >
+                    [[[ 
+                      if(entity){
+                        if(entity.state == 'off'){
+                          return '{{ _d_t_trans.light.off_text }}';
+                        } else {
+                          return '{{ _d_t_trans.light.on_text }}, ' + Math.round(((states['{{ room["light"] }}'].attributes.brightness/255)*100)) + '%';
+                        }
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
+                        return 'Entity error!';
+                      }
+                    ]]] 
+                  {% elif room["light"].split('.')[0] == 'switch' %}
+                  # this room has only 1 light (switch entity)
+                  name: {{ _d_t_trans.light.title }}
+                  tap_action:
+                    action: toggle
+                    haptic: light 
+                  label: >
+                    [[[ 
+                      if(entity){
+                        if(entity.state == 'off'){
+                          return '{{ _d_t_trans.light.off_text }}';
+                        } else {
+                          return '{{ _d_t_trans.light.on_text }}';
+                        }
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
+                        return 'Entity error!';
+                      }
+                    ]]] 
+                  {% else %}
+                  # this room has group of lights
+                  name: {{ _d_t_trans.light.title_plural }}
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_lights
+                  double_tap_action:
+                    action: toggle
+                    haptic: light 
+                  label: >
+                    [[[
+                      if(entity){
+                        const entitiesFromGroup = states['{{ room["light"] }}'].attributes['entity_id'];
+                        var onLights = 0;
+                        entitiesFromGroup.forEach(function(entity){
+                          if(states[entity] && states[entity].state == 'on'){
+                            onLights++;
+                          }
+                        });  
+                        return entitiesFromGroup.length + ' {{ _d_t_trans.light.title_plural }}' + ((onLights >= 1) ? '<br>' + ((onLights == 1) ? '1 {{ _d_t_trans.light.light_on }}' : onLights + ' {{ _d_t_trans.light.lights_on }}') : '');
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
+                        return 'Entity error!';
+                      }
+                    ]]]
+                  {% endif %}
+                {% endif %}
+
+                #Card for climate (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+                {% if room["climate"] or room["temperature"] %}
+                - type: custom:button-card
+                  entity: {{ room["climate"] if room["climate"] else room["temperature"] }}
+                  template: rooms_child
+                  icon: '{{ _d_t_icons.climate|default('fas:thermometer-three-quarters') }}'
+                  styles:
+                    img_cell:
+                      - padding-left: 8px
+                      - width: 37px
+                  name: {{ _d_t_trans.climate.title }}
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
+                  label: >
+                    [[[ 
+                      {% if room["temperature"] %}
+                        if(states['{{ room["temperature"] }}']){
+                          var temperature = (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°';
+                        } else {
+                          console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
+                          return 'Temperature error';
+                        }
+                      {% elif room["climate"] %}
+                        if(states['{{ room["climate"] }}']){
+                          var temperature = (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + '°';
+                        } else {
+                          console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!");
+                          return 'Climate error';
+                        }
+                      {% endif %}
+
+                      {% if room["climate"] %}
+                      if(states['{{ room["climate"] }}']){
+                        if (entity.attributes.hvac_action  == 'idle'){
+                          return temperature + '<br>{{ _d_t_trans.climate.idle }}';
+                        } else if(entity.attributes.hvac_action == 'heating'){
+                          return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                        } else if(entity.attributes.hvac_action == 'off'){
+                          return temperature + '<br>{{ _d_t_trans.climate.off_text }}';
+                        } else if(entity.attributes.hvac_action == 'heat'){
+                          return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                        } else {
+                          return temperature + '<br>' + entity.state;
+                        }
+                      }
+                      {% endif %}
+
+                      return temperature;
+                    ]]] 
+                {% endif %}
+
+                #Card for covers (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+                {% if room["cover"] %}
+                - type: custom:button-card
+                  entity: {{ room["cover"] }}
+                  template: rooms_child
+                  icon: '{{ _d_t_icons.cover|default('mdi:window-shutter') }}'
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_cover
+                  {% if room["cover"].split('.')[0] == 'cover' %}
+                  name: {{ _d_t_trans.cover.title }}
+                  label: >
+                    [[[ 
+                      if(entity){
+                        if(entity.state == 'open'){
+                          return '{{ _d_t_trans.cover.cover_open }} ' + states['{{ room["cover"] }}'].attributes.current_position + '%';
+                        } else if(entity.state == 'closed') {
+                          return '{{ _d_t_trans.cover.cover_closed }}';
+                        } else {
+                          return entity.state;
+                        }
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.cover entity!");
+                        return 'Entity error!';
+                      }
+                    ]]] 
+                  {% else %}
+                  name: {{ _d_t_trans.cover.title_plural }}
+                  label: >
+                    [[[ 
+                      if(entity){
+                        const entitiesFromGroup = states['{{ room["cover"] }}'].attributes['entity_id'];
+                        var openCovers = 0;
+                        var stateText = '';
+                        entitiesFromGroup.forEach(function(entity){
+                          if(states[entity] && states[entity].state == 'open'){
+                            openCovers++;
+                            stateText += '<br>1 {{ _d_t_trans.cover.cover_open }} ' + states[entity].attributes.current_position + '%';
+                          }
+                        });  
+                        return entitiesFromGroup.length + ' {{ _d_t_trans.cover.title_plural }}' + ((openCovers >= 1) ? stateText : '');
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.cover entity!");
+                        return 'Entity error!';
+                      }
+                    ]]]      
+                  {% endif %}
+                {% endif %}
+
+                #Card for devices (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+                {% if room["device"] %}
+                - type: custom:button-card
+                  entity: {{ room["device"] }}
+                  template: rooms_child
+                  icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
+                  {% if room["device"].split('.')[0] != 'group' %}
+                  # this room has only 1 device
+                  name: {{ _d_t_trans.device.title }}
+                  tap_action:
+                    action: toggle
+                    haptic: light 
+                  label: >
+                    [[[ 
+                      if(entity){
+                        var name = entity.attributes.friendly_name === undefined
+                              ? entity.entity_id.split(".")[1].replace(/_/g, " ")
+                              : entity.attributes.friendly_name;
+
+                        if(entity.state == 'off'){
+                          return name + '<br>{{ _d_t_trans.device.off_text }}';
+                        } else {
+                          return name + '<br>{{ _d_t_trans.device.on_text }}';
+                        }
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.device entity!");
+                        return 'Entity error!';
+                      }
+                    ]]] 
+                  {% else %}
+                  # this room has group of devices
+                  name: {{ _d_t_trans.device.title_plural }}
+                  label: >
+                    [[[
+                      if(entity){
+                        const entitiesFromGroup = states['{{ room["device"] }}'].attributes['entity_id'];
+                        var onDevices = 0;
+                        entitiesFromGroup.forEach(function(entity){
+                          if(states[entity] && states[entity].state == 'on'){
+                            onDevices++;
+                          }
+                        });  
+                        return entitiesFromGroup.length + ' {{ _d_t_trans.device.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.device.device_on }}' : onDevices + ' {{ _d_t_trans.device.devices_on }}') : '');
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.device entity!");
+                        return 'Entity error!';
+                      }
+                    ]]]
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_devices
+                  {% endif %}
+                {% endif %}
+
+                #Card for media players (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+                {% if room["media_player"] %}
+                - type: custom:button-card
+                  entity: {{ room["media_player"] }}
+                  template: rooms_child
+                  icon: '{{ _d_t_icons.media_player|default('fas:play') }}'
+                  {% if room["media_player"].split('.')[0] == 'media_player' %}
+                  # this room has only 1 media player
+                  name: {{ _d_t_trans.media_player.title }}
+                  tap_action:
+                    !include 
+                      - ../../popups/more-info.yaml
+                      - entity: {{ room["media_player"] }}
+                  label: >
+                    [[[ 
+                      if(entity){
+                        return entity.state;
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.media_player entity!");
+                        return 'Entity error!';
+                      }
+                    ]]] 
+                  {% else %}
+                  # this room has group of media players
+                  name: {{ _d_t_trans.media_player.title_plural }}
+                  label: >
+                    [[[
+                      if(entity){
+                        const entitiesFromGroup = states['{{ room["media_player"] }}'].attributes['entity_id'];
+                        var onDevices = 0;
+                        entitiesFromGroup.forEach(function(entity){
+                          if(states[entity] && states[entity].state == 'on'){
+                            onDevices++;
+                          }
+                        });  
+                        return entitiesFromGroup.length + ' {{ _d_t_trans.media_player.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.media_player.media_player_on }}' : onDevices + ' {{ _d_t_trans.media_player.media_players_on }}') : '');
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.media_player entity!");
+                        return 'Entity error!';
+                      }
+                    ]]]
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_media_players
+                  {% endif %}
+                {% endif %}
+
+                #Card for vacuums (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+                {% if room["vacuum"] %}
+                - type: custom:button-card
+                  entity: {{ room["vacuum"]["entity"] }}
+                  template: rooms_child
+                  name: {{ _d_t_trans.vacuum.title }}
+                  icon: '{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}'
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
+                  label: >
+                    [[[ 
+                      if(entity){
+                        return entity.state;
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.vacuum entity!");
+                        return 'Entity error!';
+                      }
+                    ]]]
+                {% endif %}
+
+                #Card for plants (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+                {% if room["plant"] %}
+                - type: custom:button-card
+                  entity: {{ room["plant"] }}
+                  template: rooms_child
+                  icon: '{{ _d_t_icons.plant|default('fas:leaf') }}'
+                  {% if room["plant"].split('.')[0] == 'plant' %}
+                  # this room has only 1 plant
+                  name: {{ _d_t_trans.plant.title }}
+                  tap_action:
+                    !include 
+                      - ../../popups/more-info.yaml
+                      - entity: {{ room["plant"] }}
+                  label: >
+                    [[[ 
+                      if(entity){
+                        return entity.state;
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.plant entity!");
+                        return 'Entity error!';
+                      }
+                    ]]] 
+                  {% else %}
+                  # this room has group of plants
+                  name: {{ _d_t_trans.plant.title_plural }}
+                  label: >
+                    [[[
+                      if(entity){
+                        const entitiesFromGroup = states['{{ room["plant"] }}'].attributes['entity_id'];
+                        var problemPlants = 0;
+                        entitiesFromGroup.forEach(function(entity){
+                          if(states[entity] && states[entity].state == 'problem'){
+                            problemPlants++;
+                          }
+                        });  
+                        return entitiesFromGroup.length + ' {{ _d_t_trans.plant.title_plural }}' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 {{ _d_t_trans.plant.plant_problem }}' : problemPlants + ' {{ _d_t_trans.plant.plants_problem }}') : '');
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.plant entity!");
+                        return 'Entity error!';
+                      }
+                    ]]]
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_plants
+                  {% endif %}
+                {% endif %}
+
+                #Card for room addons
+                {% if room["addons"] %}
+                {% for addon in room["addons"] %}
+                {% if addon["button_path"] %}
+                - !include 
+                    - ../../../../{{ addon["button_path"] }}
+                    - name: {{ addon["name"] }}
+                      icon: {{ addon["icon"] }}
+                      navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
+                      room_name: {{ room["name"] }}
+                      {% if addon["data"] %}
+                      data: '{{ addon["data"]|tojson }}'
+                      {% endif %}
+                {% else %}
+                - type: custom:button-card
+                  template: rooms_child
+                  icon: {{ addon["icon"]|default('fas:puzzle-piece') }}
+                  name: {{ addon["name"] }}
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+          {% if room["page_entities"] and room["page_entities"]["entities"] %}
+          {% if room["page_entities"]["show_title"] != 'false' %}
+          #Heading
+          - !include
+            - ../../partials/heading.yaml
+            - title: {{ _d_t_trans.more_entities.title }}
+          {% endif %}
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-bottom: 20px;
+              }
+            card:
+              type: custom:layout-card
+              column_width: 360px #420px
+              #min_columns: {{ room["page_entities"]["columns"] | default('2') }}
+              #max_columns: {{ room["page_entities"]["columns"] | default('2') }}
+              layout: horizontal
+              justify_content: start
+              cards:
+                {% for more_entity in room["page_entities"]["entities"] %}
+                - type: custom:button-card
+                  entity: {{ more_entity["entity"] }}
+                  template: room_more_entity
+                  tap_action:
+                    !include 
+                      - ../../popups/more-info.yaml
+                      - entity: {{ more_entity["entity"] }}
+                {% endfor %}
+          {% endif %}
 {% endfor %}

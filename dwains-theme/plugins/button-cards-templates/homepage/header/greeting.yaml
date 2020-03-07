@@ -50,12 +50,12 @@ header_greeting:
       - border-radius: 100%
       - justify-self: end
     label:
-      - color: white
+      - color: var(--dwains-theme-header-text)
       - justify-self: start
       - font-size: 14px
       - align-self: flex-start
     name:
-      - color: white
+      - color: var(--dwains-theme-header-text)
       - justify-self: start
       - font-size: 22px
       - font-weight: bold

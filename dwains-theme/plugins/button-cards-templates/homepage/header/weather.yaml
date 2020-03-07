@@ -97,14 +97,14 @@ header_weather:
       - height: 45px
       - color: white
     state:
-      - color: white
+      - color: var(--dwains-theme-header-text)
       - justify-self: start
       - font-size: 14px
     name:
-      - color: white
+      - color: var(--dwains-theme-header-text)
       - justify-self: start
       - font-size: 12px
     label:
       - justify-self: start
       - font-size: 12px
-      - color: white
+      - color: var(--dwains-theme-header-text)

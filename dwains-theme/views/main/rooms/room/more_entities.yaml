@@ -6,34 +6,46 @@
 {% if room["more_entities"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.more_entities.title }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
-  cards:   
-    #Header
-    - !include
-      - ../../../partials/header.yaml
-      - title: {{ _d_t_trans.more_entities.title }}
-        subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-    #Start for room more_entities content page
+  panel: true
+  cards:    
     - type: custom:mod-card
-      style: |
-        ha-card {
-          padding: 8px;
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
         }
       card:
         type: custom:layout-card
-        min_columns: {{ room["more_entities"]["columns"] | default('2') }}
-        max_columns: {{ room["more_entities"]["columns"] | default('2') }}
-        layout: horizontal
-        justify_content: start
-        cards:
-          {% for more_entity in room["more_entities"]["entities"] %}
-          - type: custom:button-card
-            entity: {{ more_entity["entity"] }}
-            template: room_more_entity
-            tap_action:
-              !include 
-                - ../../../popups/more-info.yaml
-                - entity: {{ more_entity["entity"] }}
-          {% endfor %}
+        column_width: 1465px
+        cards:  
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.more_entities.title }}
+              subtitle: {{ room["name"] }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          #Start for room more_entities content page
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding: 8px;
+              }
+            card:
+              type: custom:layout-card
+              min_columns: {{ room["more_entities"]["columns"] | default('2') }}
+              max_columns: {{ room["more_entities"]["columns"] | default('2') }}
+              column_width: 180px
+              layout: horizontal
+              justify_content: start
+              cards:
+                {% for more_entity in room["more_entities"]["entities"] %}
+                - type: custom:button-card
+                  entity: {{ more_entity["entity"] }}
+                  template: room_more_entity
+                  tap_action:
+                    !include 
+                      - ../../../popups/more-info.yaml
+                      - entity: {{ more_entity["entity"] }}
+                {% endfor %}
 {% endif %}
 {% endfor %}

@@ -123,11 +123,11 @@ header_house_information:
       - color: white
       - border-radius: 100%
     label:
-      - color: white
+      - color: var(--dwains-theme-header-text)
       - justify-self: start
       - font-size: 12px
       - text-align: left
     name:
-      - color: white
+      - color: var(--dwains-theme-header-text)
       - justify-self: start
       - font-size: 14px

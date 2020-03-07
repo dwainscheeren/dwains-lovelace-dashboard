@@ -5,7 +5,7 @@
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"></a>
 
 [![dwains-theme_01](https://user-images.githubusercontent.com/3868853/73613069-43326600-45f2-11ea-99a5-8f058530d72e.jpg)](https://dwainscheeren.github.io/lovelace-dwains-theme/)
-[![dwains-theme_02](https://user-images.githubusercontent.com/3868853/73613071-4594c000-45f2-11ea-852e-7a2eae5c1dec.jpg)](https://youtu.be/Wdh0q8K3JSk)
+[![dwains-theme_02](https://user-images.githubusercontent.com/3868853/73613071-4594c000-45f2-11ea-852e-7a2eae5c1dec.jpg)](https://youtu.be/vjUG8mTCNY8)
 ![dwains-theme_04](https://user-images.githubusercontent.com/3868853/73613073-462d5680-45f2-11ea-9164-e69a0e3dc7d9.jpg)
 ![dwains-theme_05](https://user-images.githubusercontent.com/3868853/73613074-462d5680-45f2-11ea-97c6-3bd1cc757307.jpg)
 ![dwains-theme_06](https://user-images.githubusercontent.com/3868853/73613075-462d5680-45f2-11ea-8079-b53a5b290aa9.jpg)

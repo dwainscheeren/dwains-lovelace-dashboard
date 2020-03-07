@@ -6,179 +6,193 @@
 {% if room["vacuum"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.vacuum.title }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
-  cards:   
-    #Header
-    - !include
-      - ../../../partials/header.yaml
-      - title: {{ _d_t_trans.vacuum.title }}
-        subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-    #Start for room vacuum content page
+  panel: true
+  cards:    
     - type: custom:mod-card
-      style: |
-        ha-card {
-          padding: 8px;
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
         }
       card:
-        type: vertical-stack
-        cards:
+        type: custom:layout-card
+        column_width: 1465px
+        cards:  
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.vacuum.title }}
+              subtitle: {{ room["name"] }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          #Start for room vacuum content page
           - type: custom:mod-card
             style: |
               ha-card {
-                margin-top: 14px;
-                background: #fff;
-                padding: 0px 8px 10px 8px;
-                border-radius: 0;
+                padding: 8px;
               }
             card:
               type: custom:layout-card
-              min_columns: 5
-              max_columns: 5
-              layout: horizontal
-              justify_content: start
-              column_width: [55, 55, 55, 55, 55]
-              #column_width: 55px
+              column_width: 540px
               cards:
-                #First card is start
-                - type: custom:button-card
-                  entity: {{ room["vacuum"]["entity"] }}
-                  template: room_vacuum_top_icons
-                  icon: 'mdi:play'
-                  tap_action:
-                    haptic: heavy  
-                    action: call-service
-                    service: vacuum.start
-                    service_data:
-                      entity_id: {{ room["vacuum"]["entity"] }}
-                #Second card is Pause
-                - type: custom:button-card
-                  entity: {{ room["vacuum"]["entity"] }}
-                  template: room_vacuum_top_icons
-                  icon: 'mdi:pause'
-                  tap_action:
-                    haptic: heavy  
-                    action: call-service
-                    service: vacuum.pause
-                    service_data:
-                      entity_id: {{ room["vacuum"]["entity"] }}
-                #Third card is Locate
-                - type: custom:button-card
-                  entity: {{ room["vacuum"]["entity"] }}
-                  icon: 'mdi:map-marker'
-                  template: room_vacuum_top_icons
-                  tap_action:
-                    haptic: heavy  
-                    action: call-service
-                    service: vacuum.locate
-                    service_data:
-                      entity_id: {{ room["vacuum"]["entity"] }}
-                #Fourth card is Go back to dock
-                - type: custom:button-card
-                  entity: {{ room["vacuum"]["entity"] }}
-                  icon: 'mdi:home'
-                  template: room_vacuum_top_icons
-                  tap_action:
-                    haptic: heavy  
-                    action: call-service
-                    service: vacuum.return_to_base
-                    service_data:
-                      entity_id: {{ room["vacuum"]["entity"] }}
-                #Fifth card is Info
-                - type: custom:button-card
-                  entity: {{ room["vacuum"]["entity"] }}
-                  icon: 'mdi:information-outline'
-                  template: room_vacuum_top_icons
-                  tap_action:
-                    !include 
-                      - ../../../popups/more-info.yaml
-                      - entity: {{ room["vacuum"]["entity"] }}
+                - type: vertical-stack
+                  cards:
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          margin-top: 14px;
+                          background: #fff;
+                          padding: 0px 8px 10px 8px;
+                          border-radius: 0;
+                        }
+                      card:
+                        type: custom:layout-card
+                        min_columns: 5
+                        max_columns: 5
+                        layout: horizontal
+                        justify_content: start
+                        column_width: [55, 55, 55, 55, 55]
+                        #column_width: 55px
+                        cards:
+                          #First card is start
+                          - type: custom:button-card
+                            entity: {{ room["vacuum"]["entity"] }}
+                            template: room_vacuum_top_icons
+                            icon: 'mdi:play'
+                            tap_action:
+                              haptic: heavy  
+                              action: call-service
+                              service: vacuum.start
+                              service_data:
+                                entity_id: {{ room["vacuum"]["entity"] }}
+                          #Second card is Pause
+                          - type: custom:button-card
+                            entity: {{ room["vacuum"]["entity"] }}
+                            template: room_vacuum_top_icons
+                            icon: 'mdi:pause'
+                            tap_action:
+                              haptic: heavy  
+                              action: call-service
+                              service: vacuum.pause
+                              service_data:
+                                entity_id: {{ room["vacuum"]["entity"] }}
+                          #Third card is Locate
+                          - type: custom:button-card
+                            entity: {{ room["vacuum"]["entity"] }}
+                            icon: 'mdi:map-marker'
+                            template: room_vacuum_top_icons
+                            tap_action:
+                              haptic: heavy  
+                              action: call-service
+                              service: vacuum.locate
+                              service_data:
+                                entity_id: {{ room["vacuum"]["entity"] }}
+                          #Fourth card is Go back to dock
+                          - type: custom:button-card
+                            entity: {{ room["vacuum"]["entity"] }}
+                            icon: 'mdi:home'
+                            template: room_vacuum_top_icons
+                            tap_action:
+                              haptic: heavy  
+                              action: call-service
+                              service: vacuum.return_to_base
+                              service_data:
+                                entity_id: {{ room["vacuum"]["entity"] }}
+                          #Fifth card is Info
+                          - type: custom:button-card
+                            entity: {{ room["vacuum"]["entity"] }}
+                            icon: 'mdi:information-outline'
+                            template: room_vacuum_top_icons
+                            tap_action:
+                              !include 
+                                - ../../../popups/more-info.yaml
+                                - entity: {{ room["vacuum"]["entity"] }}
 
-          - type: custom:mod-card
-            style: |
-              ha-card {
-                margin-top: 0px;
-                background: #33a1f5;
-                padding: 0px 8px 10px 8px;
-                margin-bottom: -11px;
-                border-radius: 0;
-              }
-            card:
-              type: custom:layout-card
-              min_columns: 3
-              max_columns: 3
-              layout: horizontal
-              justify_content: start
-              cards:
-                #First card is state
-                - type: custom:button-card
-                  entity: {{ room["vacuum"]["entity"] }}
-                  template: room_vacuum_card_icons
-                  show_label: false
-                  show_state: true
-                  styles:
-                    state:
-                      - align-self: start
-                      - justify-self: left
-                #Second card is vacuum mode
-                - type: custom:button-card
-                  entity: {{ room["vacuum"]["entity"] }}
-                  template: room_vacuum_card_icons
-                  styles:
-                    label:
-                      - font-weight: normal
-                  label: >
-                    [[[
-                      return entity.attributes.fan_speed + `<ha-icon style="height: 20px" icon="mdi:fan"></ha-icon>`;
-                    ]]]
-                #Third card is battery percentage
-                - type: custom:button-card
-                  entity: {{ room["vacuum"]["entity"] }}
-                  template: room_vacuum_card_icons
-                  styles:
-                    label:
-                      - align-self: end
-                      - justify-self: right
-                  label: >
-                    [[[
-                      if (entity.state != 'unknown' && entity.attributes.battery_level != 100) {
-                        var battery = Math.round(states[`this.entity_id`].state / 10) * 10
-                        return  entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="mdi:battery-' + battery + '"></ha-icon>';
-                      } else {
-                        return  entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="mdi:battery"></ha-icon>';
-                      }
-                    ]]]
-          {% if room["vacuum"]["camera"] %}
-          #The card itself with zone support
-          - type: 'custom:xiaomi-vacuum-map-card'
-            entity: {{ room["vacuum"]["entity"] }}
-            map_camera: {{ room["vacuum"]["camera"] }}
-            debug: false
-            default_mode: predefined_zones
-            calibration_points: 
-              - vacuum:
-                  x: 25500
-                  y: 25500
-                map:
-                  x: 466
-                  y: 1889
-              - vacuum:
-                  x: 26500
-                  y: 26500
-                map:
-                  x: 730
-                  y: 1625
-              - vacuum:
-                  x: 25500
-                  y: 26500
-                map:
-                  x: 466
-                  y: 1625
-            zones:
-              - - - 25778
-                  - 29353
-                  - 26125
-                  - 29690
-                  - 1
-          {% endif %}
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          margin-top: 0px;
+                          background: #33a1f5;
+                          padding: 0px 8px 10px 8px;
+                          margin-bottom: -11px;
+                          border-radius: 0;
+                        }
+                      card:
+                        type: custom:layout-card
+                        min_columns: 3
+                        max_columns: 3
+                        layout: horizontal
+                        justify_content: start
+                        cards:
+                          #First card is state
+                          - type: custom:button-card
+                            entity: {{ room["vacuum"]["entity"] }}
+                            template: room_vacuum_card_icons
+                            show_label: false
+                            show_state: true
+                            styles:
+                              state:
+                                - align-self: start
+                                - justify-self: left
+                          #Second card is vacuum mode
+                          - type: custom:button-card
+                            entity: {{ room["vacuum"]["entity"] }}
+                            template: room_vacuum_card_icons
+                            styles:
+                              label:
+                                - font-weight: normal
+                            label: >
+                              [[[
+                                return entity.attributes.fan_speed + `<ha-icon style="height: 20px" icon="mdi:fan"></ha-icon>`;
+                              ]]]
+                          #Third card is battery percentage
+                          - type: custom:button-card
+                            entity: {{ room["vacuum"]["entity"] }}
+                            template: room_vacuum_card_icons
+                            styles:
+                              label:
+                                - align-self: end
+                                - justify-self: right
+                            label: >
+                              [[[
+                                if (entity.state != 'unknown' && entity.attributes.battery_level != 100) {
+                                  var battery = Math.round(states[`this.entity_id`].state / 10) * 10
+                                  return  entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="mdi:battery-' + battery + '"></ha-icon>';
+                                } else {
+                                  return  entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="mdi:battery"></ha-icon>';
+                                }
+                              ]]]
+                    {% if room["vacuum"]["camera"] %}
+                    #The card itself with zone support
+                    - type: 'custom:xiaomi-vacuum-map-card'
+                      entity: {{ room["vacuum"]["entity"] }}
+                      map_camera: {{ room["vacuum"]["camera"] }}
+                      debug: false
+                      default_mode: predefined_zones
+                      calibration_points: 
+                        - vacuum:
+                            x: 25500
+                            y: 25500
+                          map:
+                            x: 466
+                            y: 1889
+                        - vacuum:
+                            x: 26500
+                            y: 26500
+                          map:
+                            x: 730
+                            y: 1625
+                        - vacuum:
+                            x: 25500
+                            y: 26500
+                          map:
+                            x: 466
+                            y: 1625
+                      zones:
+                        - - - 25778
+                            - 29353
+                            - 26125
+                            - 29690
+                            - 1
+                    {% endif %}
 {% endif %}
 {% endfor %}

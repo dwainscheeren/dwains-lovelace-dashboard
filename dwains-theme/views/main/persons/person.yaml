@@ -5,104 +5,113 @@
 {% for person in _d_t_config.persons %}
 - title: {{ person["name"] }}
   path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
-  cards:   
-    - type: vertical-stack
-      cards:
-        {% if person["more_entities"] and person["more_entities"]["entities"] %}
-        #Header with grid
-        - !include
-          - ../../partials/header_grid.yaml
-          - title: {{ person["name"] }}
-            subtitle: {{ _d_t_trans.home.title }}
-            navigation_path: home  
-            type: button
-            button_template: person_header_more_entities
-            button_navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
-        {% else %}
-        #Header
-        - !include
-          - ../../partials/header.yaml
-          - title: {{ person["name"] }}
-            subtitle: {{ _d_t_trans.home.title }}
-            navigation_path: home  
-        {% endif %}
-        #Start for person content page
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 8px; 
-            }
-          card:
-            type: vertical-stack
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      card:
+        type: custom:layout-card
+        column_width: 1465px
+        cards:
+          {% if person["more_entities"] and person["more_entities"]["entities"] %}
+          #Header with grid
+          - !include
+            - ../../partials/header_grid.yaml
+            - title: {{ person["name"] }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home  
+              type: button
+              button_template: person_header_more_entities
+              button_navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
+          {% else %}
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ person["name"] }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home  
+          {% endif %}
+          #Start for person content page
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding: 8px; 
+              }
+            card:
+              type: vertical-stack
+              cards:
+                - type: custom:button-card
+                  template: persons_person
+                  entity: {{ person["track"] }}
+                  {% if person["picture_path"] %}
+                  entity_picture: '/local/{{ person["picture_path"] }}'
+                  {% else %}
+                  entity_picture: 'https://avatars.dicebear.com/v2/initials/{{ person["name"] }}.svg'
+                  {% endif %}
+                  name: {{ person["name"] }}
+                  custom_fields:
+                    graph:
+                      card:
+                        type: history-graph
+                        entities:
+                          - entity: {{ person["track"] }}
+                        style: |
+                          ha-card {
+                            box-shadow: none;
+                            background-color: var(--dwains-theme-primary);
+                          }
+                          .content {
+                            padding: 10px 0 0 0;
+                          }
+                {% if person["page_entities"] and person["page_entities"]["entities"] %}
+                - type: custom:mod-card
+                  style: |
+                    ha-card {
+                      padding: 0px;
+                    }
+                    layout-card {
+                      padding: 0px !important;
+                      margin-left: -4px;
+                      margin-right: -4px;
+                    }
+                  card:
+                    type: custom:layout-card
+                    min_columns: {{ person["page_entities"]["columns"] | default('2') }}
+                    max_columns: {{ person["page_entities"]["columns"] | default('2') }}
+                    layout: horizontal
+                    justify_content: start
+                    cards:
+                      {% for page_entity in person["page_entities"]["entities"] %}
+                      - type: custom:button-card
+                        entity: {{ page_entity["entity"] }}
+                        template: person_more_entity
+                        tap_action:
+                          !include 
+                            - ../../popups/more-info.yaml
+                            - entity: {{ page_entity["entity"] }}
+                      {% endfor %}
+                {% endif %}
+                {% if person["show_map"] != 'false' %}
+                - type: map
+                  aspect_ratio: 16x9
+                  entities:
+                    - {{ person["track"] }}
+                {% endif %}
+          {% if person["addons"] %}
+          {% for addon in person["addons"] %}
+          - type: vertical-stack
             cards:
-              - type: custom:button-card
-                template: persons_person
-                entity: {{ person["track"] }}
-                {% if person["picture_path"] %}
-                entity_picture: '/local/{{ person["picture_path"] }}'
-                {% else %}
-                entity_picture: 'https://avatars.dicebear.com/v2/initials/{{ person["name"] }}.svg'
-                {% endif %}
-                name: {{ person["name"] }}
-                custom_fields:
-                  graph:
-                    card:
-                      type: history-graph
-                      entities:
-                        - entity: {{ person["track"] }}
-                      style: |
-                        ha-card {
-                          box-shadow: none;
-                          background-color: var(--dwains-theme-primary);
-                        }
-                        .content {
-                          padding: 10px 0 0 0;
-                        }
-              {% if person["page_entities"] and person["page_entities"]["entities"] %}
-              - type: custom:mod-card
-                style: |
-                  ha-card {
-                    padding: 0px;
-                  }
-                  layout-card {
-                    padding: 0px !important;
-                    margin-left: -4px;
-                    margin-right: -4px;
-                  }
-                card:
-                  type: custom:layout-card
-                  min_columns: {{ person["page_entities"]["columns"] | default('2') }}
-                  max_columns: {{ person["page_entities"]["columns"] | default('2') }}
-                  layout: horizontal
-                  justify_content: start
-                  cards:
-                    {% for page_entity in person["page_entities"]["entities"] %}
-                    - type: custom:button-card
-                      entity: {{ page_entity["entity"] }}
-                      template: person_more_entity
-                      tap_action:
-                        !include 
-                          - ../../popups/more-info.yaml
-                          - entity: {{ page_entity["entity"] }}
-                    {% endfor %}
-              {% endif %}
-              {% if person["show_map"] != 'false' %}
-              - type: map
-                aspect_ratio: 16x9
-                entities:
-                  - {{ person["track"] }}
-              {% endif %}
-        {% if person["addons"] %}
-        {% for addon in person["addons"] %}
-        - type: vertical-stack
-          cards:
-            !include 
-              - ../../../../{{ addon["path"] }}
-              - name: {{ addon["name"] }}
-                {% if addon["data"] %}
-                data: '{{ addon["data"]|tojson }}'
-                {% endif %}
-        {% endfor %}
-        {% endif %}
+              !include 
+                - ../../../../{{ addon["path"] }}
+                - name: {{ addon["name"] }}
+                  {% if addon["data"] %}
+                  data: '{{ addon["data"]|tojson }}'
+                  {% endif %}
+          {% endfor %}
+          {% endif %}
 {% endfor %}
 {% endif %}

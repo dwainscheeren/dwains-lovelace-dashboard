@@ -6,44 +6,54 @@
 {% if room["device"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.device.title_plural }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_devices
-  cards:   
-    #Header
-    - !include
-      - ../../../partials/header.yaml
-      - title: {{ _d_t_trans.device.title_plural }}
-        subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-    #Start for room devices content page
-    {% if room["device"].split('.')[0] == 'device' %}
-    # this room has only 1 device
-    {% else %}
-    # this room has group of devices
-    - type: entities
-      style: |
-        ha-card {
-          box-shadow: none;
-          background: transparent;
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
         }
-      entities:
-        - type: custom:auto-entities
-          filter:
-            include:
-              - group: {{ room["device"] }}
-                options:
-                  type: custom:button-card
-                  template: room_device
-                  tap_action:
-                    !include 
-                      - ../../../popups/more-info.yaml
-                      - entity: this.entity_id
-          sort:
-            method: name
-            ignore_case: true
-          card:
-            type: custom:layout-card
-            min_columns: 2
-            max_columns: 2
-            layout: horizontal
-    {% endif %}
+      card:
+        type: custom:layout-card
+        column_width: 1465px
+        cards: 
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.device.title_plural }}
+              subtitle: {{ room["name"] }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          #Start for room devices content page
+          {% if room["device"].split('.')[0] == 'device' %}
+          # this room has only 1 device
+          {% else %}
+          # this room has group of devices
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-bottom: 20px;
+              }
+            card:
+              type: custom:auto-entities
+              filter:
+                include:
+                  - group: {{ room["device"] }}
+                    options:
+                      type: custom:button-card
+                      template: room_device
+                      tap_action:
+                        !include 
+                          - ../../../popups/more-info.yaml
+                          - entity: this.entity_id
+              sort:
+                method: name
+                ignore_case: true
+              card:
+                type: custom:layout-card
+                column_width: 180px
+                layout: horizontal
+                justify_content: start
+          {% endif %}
 {% endif %}
 {% endfor %}

@@ -6,74 +6,84 @@
 {% if room["cover"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.cover.title_plural }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_cover
-  cards:   
-    #Header
-    - !include
-      - ../../../partials/header.yaml
-      - title: {{ _d_t_trans.cover.title_plural }}
-        subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-    {% if room["cover"].split('.')[0] == 'cover' %}
-    # this room has only 1 cover
-    - type: custom:cover-slider-card
-      style: |
-        ha-card {
-          margin: 16px;
-          background: var(--dwains-theme-primary) !important;
-          color: var(--dwains-theme-names) !important;
-        }
-        input[type="range"].range {
-          background: var(--dwains-theme-background) !important;
-          border: none !important;
-        }
-        .percentage {
-          color: var(--dwains-theme-accent) !important;
-        }
-        input[type="range"].range::-webkit-slider-thumb {
-          background: var(--dwains-theme-accent) !important;
-        }
-      entity: {{ room["cover"] }}
-    {% else %}
-    # this room has group of covers
+  panel: true
+  cards:    
     - type: custom:mod-card
-      style: |
-        ha-card {
-          padding: 8px 8px 20px 8px;
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
         }
       card:
-        type: custom:auto-entities
-        filter:
-          include:
-            - domain: cover
-              group: {{ room["cover"] }}
-              options:
-                type: custom:cover-slider-card
-                style: |
-                  ha-card {
-                    background: var(--dwains-theme-primary) !important;
-                    color: var(--dwains-theme-names) !important;
-                  }
-                  input[type="range"].range {
-                    background: var(--dwains-theme-background) !important;
-                    border: none !important;
-                  }
-                  .percentage {
-                    color: var(--dwains-theme-accent) !important;
-                  }
-                  input[type="range"].range::-webkit-slider-thumb {
-                    background: var(--dwains-theme-accent) !important;
-                  }
-          exclude:
-            - state: unavailable
-        sort:
-          method: name
-          ignore_case: true
-        card:
-          type: custom:layout-card 
-          min_columns: 2
-          max_columns: 2
-          layout: horizontal
-          justify_content: start
-    {% endif %}
+        type: custom:layout-card
+        column_width: 1465px
+        cards:    
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.cover.title_plural }}
+              subtitle: {{ room["name"] }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          {% if room["cover"].split('.')[0] == 'cover' %}
+          # this room has only 1 cover
+          - type: custom:cover-slider-card
+            style: |
+              ha-card {
+                margin: 16px;
+                background: var(--dwains-theme-primary) !important;
+                color: var(--dwains-theme-names) !important;
+              }
+              input[type="range"].range {
+                background: var(--dwains-theme-background) !important;
+                border: none !important;
+              }
+              .percentage {
+                color: var(--dwains-theme-accent) !important;
+              }
+              input[type="range"].range::-webkit-slider-thumb {
+                background: var(--dwains-theme-accent) !important;
+              }
+            entity: {{ room["cover"] }}
+          {% else %}
+          # this room has group of covers
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-bottom: 20px;
+              }
+            card:
+              type: custom:auto-entities
+              filter:
+                include:
+                  - domain: cover
+                    group: {{ room["cover"] }}
+                    options:
+                      type: custom:cover-slider-card
+                      style: |
+                        ha-card {
+                          background: var(--dwains-theme-primary) !important;
+                          color: var(--dwains-theme-names) !important;
+                        }
+                        input[type="range"].range {
+                          background: var(--dwains-theme-background) !important;
+                          border: none !important;
+                        }
+                        .percentage {
+                          color: var(--dwains-theme-accent) !important;
+                        }
+                        input[type="range"].range::-webkit-slider-thumb {
+                          background: var(--dwains-theme-accent) !important;
+                        }
+                exclude:
+                  - state: unavailable
+              sort:
+                method: name
+                ignore_case: true
+              card:
+                type: custom:layout-card
+                column_width: 180px
+                layout: horizontal
+                justify_content: start
+          {% endif %}
 {% endif %}
 {% endfor %}

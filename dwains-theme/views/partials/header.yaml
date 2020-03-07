@@ -8,7 +8,7 @@ style: |
     padding: 10px 0px;
     color: #fff;
     background-color: var(--dwains-theme-header-background);
-    margin-top: -4px;
+    margin: -4px;
     border-radius: 0; 
     font-weight: bold;
     font-size: 14px;

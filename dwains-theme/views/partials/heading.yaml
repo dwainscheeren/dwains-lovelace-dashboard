@@ -12,7 +12,7 @@ style: |
     font-size: 14px;
   }
   .markdown {
-    padding: 0px 16px 0px 16px;
+    padding: 0px 16px 0px 8px;
   }
 content: "{{ title }}"
 {% else %}

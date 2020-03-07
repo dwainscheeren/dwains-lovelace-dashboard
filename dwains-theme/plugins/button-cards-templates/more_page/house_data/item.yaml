@@ -39,4 +39,4 @@ house_data_item:
       - color: var(--dwains-theme-grey)
   tap_action:
     haptic: heavy
-    action: page-info
+    action: more-info

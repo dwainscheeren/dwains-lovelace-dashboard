@@ -2,190 +2,199 @@
 
 - title: {{ _d_t_trans.house_information.title }}
   path: more_page_house_information
-  cards:
-    - type: vertical-stack
-      cards:
-        #Header
-        - !include
-          - ../../partials/header.yaml
-          - title: {{ _d_t_trans.house_information.title }}
-            subtitle: {{ _d_t_trans.home.title }}
-            navigation_path: home  
-        #Start of house information page
-        {% if _d_t_config.house_information %}
-        #Favorites
-        {% if _d_t_config.house_information["favorites"] %}
-        #heading  
-        - !include
-          - ../../partials/heading.yaml
-          - title: {{ _d_t_trans.house_information.favorites }}
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 6px 16px 0px 16px;
-            } 
-            layout-card {
-              border-radius: 4px;
-              background-color: var(--dwains-theme-primary);
-            }
-          card:
-            type: custom:layout-card
-            min_columns: 2
-            max_columns: 2
-            layout: horizontal
-            justify_content: start
-            cards:  
-              #Start for house information page
-              {% for favorite in _d_t_config.house_information["favorites"] %}
-              - type: custom:button-card
-                entity: {{ favorite["entity"] }}
-                template: more_page_house_information_favorites
-                {% if favorite["entity"].split('.')[0] == 'input_select' %}
-                tap_action:
-                  haptic: light
-                  action: more-info
-                double_tap_action:
-                  haptic: light
-                  action: call-service
-                  service: input_select.select_next
-                  service_data:
-                    entity_id: {{ favorite["entity"] }}
-                {% else %}
-                tap_action:
-                  !include 
-                    - ../../popups/more-info.yaml
-                    - entity: {{ favorite["entity"] }}
-                {% endif %}
-                #there is a type defined so  lets change some styling and options
-                state:
-                  {% if favorite['icon_off'] %}
-                  - value: 'off'
-                    icon: '{{ favorite['icon_off'] }}'
-                  {% endif %}
-                  {% if favorite['icon_on'] %}
-                  - value: 'on'
-                    icon: '{{ favorite['icon_on'] }}'
-                  {% endif %}
-              {% endfor %}
-          {% endif %}
-
-        #House calendar
-        {% if _d_t_config.house_information["calendar"] %}
-        #heading  
-        - !include
-          - ../../partials/heading.yaml
-          - title: {{ _d_t_trans.house_information.house_calendar }}
-        #Calendar card
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 0px 16px 0px 16px;
-            }
-          card:
-            type: custom:atomic-calendar
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      card:
+        type: custom:layout-card
+        column_width: 1465px
+        cards:
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.house_information.title }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home  
+          #Start of house information page
+          {% if _d_t_config.house_information %}
+          #Favorites
+          {% if _d_t_config.house_information["favorites"] %}
+          #heading  
+          - !include
+            - ../../partials/heading.yaml
+            - title: {{ _d_t_trans.house_information.favorites }}
+          - type: custom:mod-card
             style: |
               ha-card {
+                padding: 6px 16px 0px 16px;
+              } 
+              layout-card {
                 border-radius: 4px;
-                box-shadow: none;
                 background-color: var(--dwains-theme-primary);
               }
-              .cal-titleContainer {
-                display: none;
+            card:
+              type: custom:layout-card
+              min_columns: 2
+              max_columns: 2
+              layout: horizontal
+              justify_content: start
+              cards:  
+                #Start for house information page
+                {% for favorite in _d_t_config.house_information["favorites"] %}
+                - type: custom:button-card
+                  entity: {{ favorite["entity"] }}
+                  template: more_page_house_information_favorites
+                  {% if favorite["entity"].split('.')[0] == 'input_select' %}
+                  tap_action:
+                    haptic: light
+                    action: more-info
+                  double_tap_action:
+                    haptic: light
+                    action: call-service
+                    service: input_select.select_next
+                    service_data:
+                      entity_id: {{ favorite["entity"] }}
+                  {% else %}
+                  tap_action:
+                    !include 
+                      - ../../popups/more-info.yaml
+                      - entity: {{ favorite["entity"] }}
+                  {% endif %}
+                  #there is a type defined so  lets change some styling and options
+                  state:
+                    {% if favorite['icon_off'] %}
+                    - value: 'off'
+                      icon: '{{ favorite['icon_off'] }}'
+                    {% endif %}
+                    {% if favorite['icon_on'] %}
+                    - value: 'on'
+                      icon: '{{ favorite['icon_on'] }}'
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+          #House calendar
+          {% if _d_t_config.house_information["calendar"] %}
+          #heading  
+          - !include
+            - ../../partials/heading.yaml
+            - title: {{ _d_t_trans.house_information.house_calendar }}
+          #Calendar card
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding: 0px 16px 0px 16px;
               }
-            showProgressBar: false
-            eventBarColor: 'var(--dwains-theme-grey)'
-            dayWrapperLineColor: 'var(--dwains-theme-grey)'
-            timeColor: 'var(--dwains-theme-grey)'
-            entities:
-              {% for calendar in _d_t_config.house_information["calendar"] %}
-              - {{ calendar }}
-              {% endfor %}
-        {% endif %}
-        {% endif %}
-
-        #heading  
-        - !include
-          - ../../partials/heading.yaml
-          - title: {{ _d_t_trans.house_information.activity }}
-        #loop all rooms and get all open doors, windows, motion
-        {% for room in _d_t_config.rooms %}
-        #Doors
-        {% if room["door"] %}
-        - type: conditional
-          conditions:
-            - entity: {{ room["door"] }}
-              state: "on"
-          card:
-            {% if room["door"].split('.')[0] == 'binary_sensor' %}
-            # this room has only 1 door
-            type: custom:button-card
-            entity: {{ room["door"] }}
-            template: more_page_house_information_activity
-            {% else %}
-            type: custom:auto-entities
-            filter:
-              include:
-                - group: {{ room["door"] }}
-                  state: "on"
-                  options:
-                    type: custom:button-card
-                    template: more_page_house_information_activity
             card:
-              type: entities
+              type: custom:atomic-calendar
               style: |
                 ha-card {
-                  --ha-card-background: transparent;
-                  box-shadow: none;   
+                  border-radius: 4px;
+                  box-shadow: none;
+                  background-color: var(--dwains-theme-primary);
                 }
-                .card-content {
-                  padding: 0px;
+                .cal-titleContainer {
+                  display: none;
                 }
-            {% endif %}
-        {% endif %}
+              showProgressBar: false
+              eventBarColor: 'var(--dwains-theme-grey)'
+              dayWrapperLineColor: 'var(--dwains-theme-grey)'
+              timeColor: 'var(--dwains-theme-grey)'
+              entities:
+                {% for calendar in _d_t_config.house_information["calendar"] %}
+                - {{ calendar }}
+                {% endfor %}
+          {% endif %}
+          {% endif %}
 
-        #Motion
-        {% if room["motion"] %}
-        - type: conditional
-          conditions:
-            - entity: {{ room["motion"] }}
-              state: "on"
-          card:
-            type: custom:button-card
-            entity: {{ room["motion"] }}
-            template: more_page_house_information_activity
-        {% endif %}
-
-        #Windows
-        {% if room["window"] %}
-        - type: conditional
-          conditions:
-            - entity: {{ room["window"] }}
-              state: "on"
-          card:
-            {% if room["window"].split('.')[0] == 'binary_sensor' %}
-            # this room has only 1 window
-            type: custom:button-card
-            entity: {{ room["window"] }}
-            template: more_page_house_information_activity
-            {% else %}
-            type: custom:auto-entities
-            filter:
-              include:
-                - group: {{ room["window"] }}
-                  state: "on"
-                  options:
-                    type: custom:button-card
-                    template: more_page_house_information_activity
+          #heading  
+          - !include
+            - ../../partials/heading.yaml
+            - title: {{ _d_t_trans.house_information.activity }}
+          #loop all rooms and get all open doors, windows, motion
+          {% for room in _d_t_config.rooms %}
+          #Doors
+          {% if room["door"] %}
+          - type: conditional
+            conditions:
+              - entity: {{ room["door"] }}
+                state: "on"
             card:
-              type: entities
-              style: |
-                ha-card {
-                  --ha-card-background: transparent;
-                  box-shadow: none;   
-                }
-                .card-content {
-                  padding: 0px;
-                }
-            {% endif %}
-        {% endif %}
-        {% endfor %}
+              {% if room["door"].split('.')[0] == 'binary_sensor' %}
+              # this room has only 1 door
+              type: custom:button-card
+              entity: {{ room["door"] }}
+              template: more_page_house_information_activity
+              {% else %}
+              type: custom:auto-entities
+              filter:
+                include:
+                  - group: {{ room["door"] }}
+                    state: "on"
+                    options:
+                      type: custom:button-card
+                      template: more_page_house_information_activity
+              card:
+                type: entities
+                style: |
+                  ha-card {
+                    --ha-card-background: transparent;
+                    box-shadow: none;   
+                  }
+                  .card-content {
+                    padding: 0px;
+                  }
+              {% endif %}
+          {% endif %}
+
+          #Motion
+          {% if room["motion"] %}
+          - type: conditional
+            conditions:
+              - entity: {{ room["motion"] }}
+                state: "on"
+            card:
+              type: custom:button-card
+              entity: {{ room["motion"] }}
+              template: more_page_house_information_activity
+          {% endif %}
+
+          #Windows
+          {% if room["window"] %}
+          - type: conditional
+            conditions:
+              - entity: {{ room["window"] }}
+                state: "on"
+            card:
+              {% if room["window"].split('.')[0] == 'binary_sensor' %}
+              # this room has only 1 window
+              type: custom:button-card
+              entity: {{ room["window"] }}
+              template: more_page_house_information_activity
+              {% else %}
+              type: custom:auto-entities
+              filter:
+                include:
+                  - group: {{ room["window"] }}
+                    state: "on"
+                    options:
+                      type: custom:button-card
+                      template: more_page_house_information_activity
+              card:
+                type: entities
+                style: |
+                  ha-card {
+                    --ha-card-background: transparent;
+                    box-shadow: none;   
+                  }
+                  .card-content {
+                    padding: 0px;
+                  }
+              {% endif %}
+          {% endif %}
+          {% endfor %}

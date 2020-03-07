@@ -2,42 +2,48 @@
 
 - title: {{ _d_t_trans.more_page.house_data.all_sensors }}
   path: more_page_house_data_sensors
-  cards:
-    - type: vertical-stack
-      cards:
-        #Header
-        - !include
-          - ../../../partials/header.yaml
-          - title: {{ _d_t_trans.more_page.house_data.all_sensors }}
-            subtitle: {{ _d_t_trans.more_page.house_data.title }}
-            navigation_path: more_page_house_data
-        #Start for all data page
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 8px;
-            }
-          card:
-            type: custom:layout-card
-            cards:
-              - type: custom:auto-entities
-                filter:
-                  include:
-                    - domain: binary_sensor
-                      options:
-                        type: custom:button-card
-                        template: house_data_item
-                        entity: this.entity_id
-                    - type: custom:button-card
-                      color_type: blank-card
-                      aspect_ratio: 1/1
-                show_empty: false
-                sort:
-                  method: name
-                  numeric: true
-                card:
-                  type: custom:layout-card
-                  min_columns: 2
-                  max_columns: 2
-                  justify_content: start
-                  layout: horizontal
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        layout-card {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      card:
+        type: custom:layout-card
+        column_width: 1465px
+        cards:
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.more_page.house_data.all_sensors }}
+              subtitle: {{ _d_t_trans.more_page.house_data.title }}
+              navigation_path: more_page_house_data
+          #Start for all sensors page
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-bottom: 20px;
+              }
+            card:
+              type: custom:auto-entities
+              filter:
+                include:
+                  - domain: binary_sensor
+                    options:
+                      type: custom:button-card
+                      template: house_data_item
+                      entity: this.entity_id
+                  - type: custom:button-card
+                    color_type: blank-card
+                    aspect_ratio: 1/1
+              show_empty: false
+              sort:
+                method: name
+                numeric: true
+              card:
+                type: custom:layout-card
+                column_width: 180px
+                layout: horizontal
+                justify_content: start

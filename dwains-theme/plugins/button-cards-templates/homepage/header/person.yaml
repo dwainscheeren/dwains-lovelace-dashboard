@@ -30,10 +30,10 @@ header_person:
       - color: white
       - border-radius: 100%
     state:
-      - color: white
+      - color: var(--dwains-theme-header-text)
       - justify-self: start
       - font-size: 12px
     name:
-      - color: white
+      - color: var(--dwains-theme-header-text)
       - justify-self: start
       - font-size: 14px
