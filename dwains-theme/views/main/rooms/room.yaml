@@ -261,7 +261,12 @@
                         if(entity.state == 'off'){
                           return '{{ _d_t_trans.light.off_text }}';
                         } else {
-                          return '{{ _d_t_trans.light.on_text }}, ' + Math.round(((states['{{ room["light"] }}'].attributes.brightness/255)*100)) + '%';
+                          if (states['{{ room["light"] }}'].attributes && (states['{{ room["light"] }}'].attributes.brightness <= 255)) { 
+                            var bri = Math.round(states['{{ room["light"] }}'].attributes.brightness / 2.55); 
+                            return '{{ _d_t_trans.light.on_text }}, ' + (bri ? bri : '0') + '%'; 
+                          } else {
+                            return '{{ _d_t_trans.light.on_text }}';
+                          }
                         }
                       } else {
                         console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
