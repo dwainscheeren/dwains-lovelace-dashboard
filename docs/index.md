@@ -117,3 +117,4 @@ If you donate please write a short message with your HA username :D
 > @Warwick Jaensch — For great work on Dwains Theme!
 
 > @Joeri94 — Very nice and easy to install theme and good work for the Dutch HA community
+
