@@ -27,9 +27,9 @@ I own a web development company, and I want to give something back to the Home A
 
 You can use the [thread on the Home Assistant community](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) to ask any questions you have. 
 
-Or join me on our (Discord Server](https://discord.gg/7yt64uX)
+Or join me on Discord [Discord Server Home Assistant Addicts](https://discord.gg/7yt64uX)
 
-I manage this server together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains) it has a lot of similar features as Dwains Theme. 
+I manage this server together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains). 
 
 **YouTube Channel**
 
