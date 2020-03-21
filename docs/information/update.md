@@ -41,6 +41,10 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * **Added devices view on the homepage, now you can switch between rooms and devices direct from the homepage!**
 * **Added new Black and White themes, check them out! :D**
 * **Changed the way HACS plugins are loaded with the new `/hacsfiles/` path, make sure you are at least running HACS 0.22!!**
+* **Made theme compatible with HA 0.107^**
+* Added new `dwains-weather-card` for weather information in the header on the homepage on desktop/tablet.
+* Changed `custom:cover-slider-card` to `custom:dwains-cover-card`.
+* Made theme compatible with HA 107.
 * Added more info dialog on click of item on All sensors & All batteries page.
 * Fixed bug with Android app not showing sidebar on swipe from left.
 * Fixed bug Show brightness value only when it is supported on room page (@joyka).
@@ -48,6 +52,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added on room page if a window or door has other state then on/True or off/False then show that state as plain text.
 * If cover with supported_features has also 7 then show the slider instead of the up/down buttons.
 * Hide voice button on Android app.
+* Changed the version number scrape sensor to check 1 times an hour for new theme version.
 
 
 ## Update 1.2.1
