@@ -42,6 +42,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * **Added new Black and White themes, check them out! :D**
 * **Changed the way HACS plugins are loaded with the new `/hacsfiles/` path, make sure you are at least running HACS 0.22!!**
 * **Made theme compatible with HA 0.107^**
+* Added support for locks inside a room, use them with `lock:` can be single lock entity or group of locks!
 * Added new `dwains-weather-card` for weather information in the header on the homepage on desktop/tablet.
 * Changed `custom:cover-slider-card` to `custom:dwains-cover-card`.
 * Made theme compatible with HA 107.
