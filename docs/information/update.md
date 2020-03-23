@@ -43,6 +43,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * **Changed the way HACS plugins are loaded with the new `/hacsfiles/` path, make sure you are at least running HACS 0.22!!**
 * **Made theme compatible with HA 0.107^**
 * Added support for locks inside a room, use them with `lock:` can be single lock entity or group of locks!
+* Theme automatic detects your Unit System settings from HA automatic and then switchs between Celsius and Fahrenheit.
 * Added new `dwains-weather-card` for weather information in the header on the homepage on desktop/tablet.
 * Changed `custom:cover-slider-card` to `custom:dwains-cover-card`.
 * Made theme compatible with HA 107.
