@@ -34,6 +34,13 @@ sensor:
     select: ".current-version h1"
     value_template: '{{ value.split(":")[1] }}'
 
+#Input boolean
+input_boolean:
+  # Toast Light Notifications
+  light_notify:
+    initial: on
+    name: Lightyfy # Thought that might be a nice name :)    
+
 #Input select
 input_select:
   #Theme selector
