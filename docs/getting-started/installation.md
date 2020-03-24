@@ -31,7 +31,7 @@ In the left side menu click on Community and then on the Tab PLUGINS. Search for
 | Lovelace Xiaomi  Vacuum Map Card | Module | Yes | This card enables you to specify a target or start a zoned cleanup using  live or static map, just like in Mi Home app. Additionally you can define a  list of zones and choose the ones to be cleaned. |
 | Atomic Calendar | Module | Yes | Custom calendar card for Home Assistant with Lovelace |
 | state-switch | Module | Yes | Dynamically replace lovelace cards depending on occasion |
-
+| Swipe Card | Module | Yes | Card that allows you to swipe throught multiple cards for Home Assistant Lovelace |
 
 ### Install HACS components
 
