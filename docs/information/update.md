@@ -36,12 +36,19 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 ## Update 1.3.0 (coming soon)
 
-**This version is only compatible with Home Assistant version 0.107 or newer, please make sure you are at least curring 0.107.**
+#### How to update to 1.3.0?
 
-**This version needs Swipe Card so download that in HACS. Go to HACS -> Plugins -> Search for "Swipe Card" and install it!**
+* Step 1: **This version is only compatible with Home Assistant version 0.107 or newer, please make sure you are at least curring 0.107.**
 
-**From HA 0.107 there is a new function to make multiple dashboards. Dwains Theme will be installed as a individual dashboard. You need to configure Dwains Theme as default dashboard on each device in your household. You can do this by going to Configuration -> Lovelace Dashboards -> Click on Dwains Theme and click on Set as Default on this device.**
+* Step 2: This version needs Swipe Card so download that in HACS. Go to HACS -> Plugins -> Search for "Swipe Card" and install it!
 
+* Step 3: `ui-lovelace.yaml` in the root of your HA setup is no longer required so remove this file.
+
+* Step 4: Copy all the files from 1.3.0 over your existing files.
+
+* Step 3: From HA 0.107 there is a new function to make multiple dashboards. Dwains Theme will be installed as a individual dashboard. You need to configure Dwains Theme as default dashboard on each device in your household. You can do this by going to Configuration -> Lovelace Dashboards -> Click on Dwains Theme and click on Set as Default on this device.
+
+#### Changes:
 
 * **Reworked the design to be responsive, works now fully on desktop, tablet and mobile!!**
 * **Added Dwains Theme Notifications, you can now push notifications into my theme with service call `dwains_theme.notification_create` they will show on the homepage header.**
