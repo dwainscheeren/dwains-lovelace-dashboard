@@ -33,8 +33,6 @@ dwains_theme:
     !include_dir_merge_named ../../dwains-theme/translations/
   configuration:
     !include_dir_merge_named ../../dwains-theme/configs/
-  icons:
-    !include ../../dwains-theme/configs/icons.yaml
 
 #Sensor for latest version
 sensor:
