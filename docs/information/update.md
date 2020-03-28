@@ -38,6 +38,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 **This version is only compatible with Home Assistant version 0.107 or newer, please make sure you are at least curring 0.107.**
 
+**This version needs Swipe Card so download that in HACS. Go to HACS -> Plugins -> Search for "Swipe Card" and install it!**
+
 **From HA 0.107 there is a new function to make multiple dashboards. Dwains Theme will be installed as a individual dashboard. You need to configure Dwains Theme as default dashboard on each device in your household. You can do this by going to Configuration -> Lovelace Dashboards -> Click on Dwains Theme and click on Set as Default on this device.**
 
 
