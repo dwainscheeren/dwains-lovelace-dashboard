@@ -300,11 +300,10 @@ async def async_setup(hass, config):
     #Load styles
     dwains_theme_styles.update(config.get("dwains_theme")["global"]);
 
-
     #Load icons
-    if ("icons" in config.get("dwains_theme")):
-        if ("icons" in config.get("dwains_theme")["icons"]):
-            icons_config = config.get("dwains_theme")["icons"]["icons"];
+    if ("icons" in config.get("dwains_theme")["configuration"]):
+        if config.get("dwains_theme")["configuration"]["icons"]:
+            icons_config = config.get("dwains_theme")["configuration"]["icons"];
             dwains_theme_icons.update(icons_config);
 
     async def handle_reload(call):
@@ -328,11 +327,10 @@ async def async_setup(hass, config):
 
         #Icons
         icons = load_yaml(hass.config.path("dwains-theme/configs/icons.yaml"))
-        dwains_theme_icons = {} #Make it empty so it can go from used to non-used.
+        dwains_theme_icons.clear()
         if isinstance(icons, dict):
             if ("icons" in icons):
-                if isinstance(icons["icons"], dict):
-                    dwains_theme_icons.update(icons["icons"]);
+                dwains_theme_icons.update(icons["icons"]);
 
         #Reload lovelace
         _LOGGER.debug("reload lovelace")        
