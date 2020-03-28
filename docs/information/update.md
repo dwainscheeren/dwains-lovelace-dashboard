@@ -40,6 +40,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 * Step 1: **This version is only compatible with Home Assistant version 0.107 or newer, please make sure you update to 0.107. Note that version Dwains Theme 1.2.1 or older wont work again in HA 0.107**
 
+* Step 2: **The way HACS plugins are loaded  is changed its now `/hacsfiles/` path, so update HACS & All Plugins you have installed! And make sure you are at least running HACS 0.22!**
+
 * Step 2: This version needs Swipe Card so download that in HACS. Go to HACS -> Plugins -> Search for "Swipe Card" and install it!
 
 * Step 3: `ui-lovelace.yaml` in the root of your HA setup is no longer required so remove this file.
