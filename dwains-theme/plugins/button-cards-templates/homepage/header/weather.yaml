@@ -1,15 +1,14 @@
 # dwains_theme
 
 header_weather:
-  layout: icon_name_state2nd
   show_state: true
-  show_label: true
+  show_label: false
   name: >
     [[[ 
       {% if _d_t_config.global["outside_temperature"] %}
         if(states['{{ _d_t_config.global["outside_temperature"] }}']){
           {% if _d_t_config.global["outside_temperature"].split('.')[0] == 'sensor' %}
-            return (Math.round(states['{{ _d_t_config.global["outside_temperature"] }}'].state * 10) / 10) + '° {{ _d_t_trans.climate.outside }}';
+            return ', ' + (Math.round(states['{{ _d_t_config.global["outside_temperature"] }}'].state * 10) / 10) + '°';
           {% else %}
             return 'Outside temp no sensor type';
           {% endif %}
@@ -19,7 +18,7 @@ header_weather:
         }
       {% else %}
         if(entity){
-          return entity.attributes.temperature + "° {{ _d_t_trans.climate.outside }}";
+          return ', ' + entity.attributes.temperature + "°";
         } else {
           console.log("Dwains Theme Error: Invalid global.yaml:weather entity!");
           return 'Weather Entity Error!';
@@ -31,25 +30,6 @@ header_weather:
     !include 
       - ../../../../views/popups/weather.yaml
       - entity: {{ _d_t_config.global["weather"] }}
-  #lets see if we can add the inside temperature
-  {% if _d_t_config.global["inside_temperature"] %}
-  label: >
-    [[[ 
-      if(states['{{ _d_t_config.global["inside_temperature"] }}']){
-        {% if _d_t_config.global["inside_temperature"].split('.')[0] == 'sensor' %}
-          return (Math.round(states['{{ _d_t_config.global["inside_temperature"] }}'].state * 10) / 10) + '° {{ _d_t_trans.climate.inside }}';
-        {% elif _d_t_config.global["inside_temperature"].split('.')[0] == 'climate' %}
-          return states['{{ _d_t_config.global["inside_temperature"] }}'].attributes.current_temperature + '° {{ _d_t_trans.climate.inside }}'; 
-        {% else %}
-          return 'NaN';
-        {% endif %}
-      } else {
-        console.log("Dwains Theme Error: Invalid global.yaml:inside_temperature entity!");
-      }
-    ]]]
-  {% else %}
-  label: '&nbsp;'
-  {% endif %}
   state:
     - value: clear-night
       icon: mdi:weather-night
@@ -83,28 +63,31 @@ header_weather:
       icon: mdi:weather-windy-variant
   styles:
     grid:
-      - grid-template-areas: '"i s""i n""i l"'
-      - grid-template-columns: 35% 1fr
+      - grid-template-areas: '"i s n"'
+      - grid-template-columns: 25px min-content min-content
+      - grid-template-rows: auto
+      - justify-self: center
+      - width: auto
+      - background: '#181818'
+      - border-radius: 15px
+      - padding: 0 10px
     card:
       - box-shadow: none
       - padding: 0%
-      - height: 55px
+      - height: 40px
     icon:
       - color: '#feb00b'
       - width: 100%
     img_cell:
-      - width: 45px
-      - height: 45px
-      - color: white
+      - width: 20px
+      - height: 20px
     state:
       - color: var(--dwains-theme-header-text)
       - justify-self: start
-      - font-size: 14px
+      - align-self: center
+      - font-size: 12px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: start
+      - align-self: center
       - font-size: 12px
-    label:
-      - justify-self: start
-      - font-size: 12px
-      - color: var(--dwains-theme-header-text)

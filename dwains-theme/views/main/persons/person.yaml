@@ -9,13 +9,13 @@
   cards:    
     - type: custom:mod-card
       style: | 
-        layout-card {
-          padding-left: 0px;
-          padding-right: 0px;
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
       card:
-        type: custom:layout-card
-        column_width: 1465px
+        type: vertical-stack
         cards:
           {% if person["more_entities"] and person["more_entities"]["entities"] %}
           #Header with grid
@@ -39,7 +39,8 @@
           - type: custom:mod-card
             style: |
               ha-card {
-                padding: 8px; 
+                padding-left: 11px;
+                padding-right: 11px;
               }
             card:
               type: vertical-stack

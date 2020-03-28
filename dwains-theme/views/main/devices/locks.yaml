@@ -1,0 +1,99 @@
+# dwains_theme
+
+#House all locks
+
+- title: {{ _d_t_trans.lock.title_plural }}
+  path: devices_locks
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+        }
+      card:
+        type: vertical-stack
+        cards:  
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.lock.title_plural }}
+              navigation_path: home
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                //padding-left: 11px;
+              }
+            card:
+              type: custom:layout-card
+              column_width: 360px
+              #layout: horizontal
+              justify_content: start
+              cards:
+                {% for room in _d_t_config.rooms %}
+                {% if room["lock"] %}
+                - type: vertical-stack
+                  cards:
+                    #Heading
+                    - !include
+                      - ../../partials/heading.yaml
+                      - title: {{ room["name"] }}
+                    {% if room["lock"].split('.')[0] == 'lock' %}
+                    # this room has only 1 lock
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          padding-left: 11px;
+                        }
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            template: room_light
+                            entity: {{ room["lock"] }}
+                            {% if room["light"].split('.')[0] == 'light' %}
+                            tap_action:
+                              !include 
+                                - ../../popups/light.yaml
+                                - entity: {{ room["light"] }}
+                            {% endif %}
+                    {% else %}
+                    # this room has group of locks
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          padding-left: 11px;
+                          margin: 0px;
+                        }
+                        layout-card {
+                          padding-left: 0px;
+                          padding-right: 0px;
+                        }
+                        
+                      card:
+                        type: custom:auto-entities
+                        filter:
+                          include:
+                            - group: {{ room["lock"] }}
+                              options:
+                                type: custom:button-card
+                                template: room_light
+                                tap_action:
+                                  !include 
+                                    - ../../popups/light.yaml
+                                    - entity: this.entity_id
+                        sort:
+                          method: name
+                          ignore_case: true
+                        card:
+                          type: custom:layout-card
+                          min_columns: 2
+                          max_columns: 2
+                          column_width: 180px
+                          layout: horizontal
+                          justify_content: start
+                    {% endif %}
+                {% endif %}
+                {% endfor %}

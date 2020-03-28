@@ -3,7 +3,7 @@ partials_heading_switch:
   styles:
     card:
       - box-shadow: none
-      - padding: 16px 0 0 0
+      - padding: 6px 0 0 0
       - background: transparent
     name:
       - color: var(--dwains-theme-grey)

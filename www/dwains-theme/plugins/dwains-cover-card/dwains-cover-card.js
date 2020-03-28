@@ -4,7 +4,7 @@ import {
   css
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-class CoverSliderCard extends LitElement {
+class DwainsCoverCard extends LitElement {
 
 static get properties() {
   return {
@@ -27,8 +27,8 @@ render() {
           ? stateObj.entity_id.split(".")[1].replace(/_/g, " ")
           : stateObj.attributes.friendly_name;
 
-  if(stateObj.attributes.supported_features == 15){
-    //Cover has support for position (15)
+  if(stateObj.attributes.supported_features == 15 || stateObj.attributes.supported_features == 7){
+    //Cover has support for position (15 or 7)
     return html`
       <ha-card
           .header=${this.config.title || name}>
@@ -188,4 +188,4 @@ static get styles() {
 
 }
 
-customElements.define('cover-slider-card', CoverSliderCard);
+customElements.define('dwains-cover-card', DwainsCoverCard);

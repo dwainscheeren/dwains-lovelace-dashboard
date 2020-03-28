@@ -6,13 +6,13 @@
   cards:    
     - type: custom:mod-card
       style: | 
-        layout-card {
-          padding-left: 0px;
-          padding-right: 0px;
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
       card:
-        type: custom:layout-card
-        column_width: 1465px
+        type: vertical-stack
         cards:
           #Header
           - !include
@@ -24,8 +24,7 @@
           - type: custom:mod-card
             style: |
               ha-card {
-                padding-top: 20px;
-                padding-bottom: 20px;
+                padding-left: 11px;
               }
             card:
               type: custom:layout-card

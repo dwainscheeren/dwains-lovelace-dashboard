@@ -23,10 +23,11 @@ more_page_house_information_activity:
       - background-color: var(--dwains-theme-primary)
       - border-radius: 5px
       - margin-bottom: 0px
-      - margin-left: 16px
-      - margin-right: 16px
-      - width: auto
-      - padding: 2% 0%
+      - margin-left: 11px
+      - margin-right: 11px
+      - width: 349px
+      - padding-top: 14px
+      - padding-bottom: 14px
     icon:
       - color: var(--dwains-theme-accent)
       - width: 55%

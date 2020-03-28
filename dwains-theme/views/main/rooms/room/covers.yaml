@@ -10,14 +10,14 @@
   cards:    
     - type: custom:mod-card
       style: | 
-        layout-card {
-          padding-left: 0px;
-          padding-right: 0px;
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
       card:
-        type: custom:layout-card
-        column_width: 1465px
-        cards:    
+        type: vertical-stack
+        cards:  
           #Header
           - !include
             - ../../../partials/header.yaml
@@ -26,10 +26,10 @@
               navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           {% if room["cover"].split('.')[0] == 'cover' %}
           # this room has only 1 cover
-          - type: custom:cover-slider-card
+          - type: custom:dwains-cover-card
             style: |
               ha-card {
-                margin: 16px;
+                margin: 11px;
                 background: var(--dwains-theme-primary) !important;
                 color: var(--dwains-theme-names) !important;
               }
@@ -49,7 +49,7 @@
           - type: custom:mod-card
             style: |
               ha-card {
-                padding-bottom: 20px;
+                padding-left: 11px;
               }
             card:
               type: custom:auto-entities
@@ -58,7 +58,7 @@
                   - domain: cover
                     group: {{ room["cover"] }}
                     options:
-                      type: custom:cover-slider-card
+                      type: custom:dwains-cover-card
                       style: |
                         ha-card {
                           background: var(--dwains-theme-primary) !important;

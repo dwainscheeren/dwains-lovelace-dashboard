@@ -9,13 +9,13 @@
   cards:    
     - type: custom:mod-card
       style: | 
-        layout-card {
-          padding-left: 0px;
-          padding-right: 0px;
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
       card:
-        type: custom:layout-card
-        column_width: 1465px
+        type: vertical-stack
         cards:
           #Header
           - !include
@@ -24,13 +24,20 @@
               subtitle: {{ _d_t_trans.more_page.title }}
               navigation_path: more_page
           #Start for a custom more_page page
-          - type: vertical-stack
-            cards:
-              !include 
-                - ../../../../{{ addon["path"] }}
-                - name: {{ addon["name"] }}
-                  {% if addon["data"] %}
-                  data: '{{ addon["data"]|tojson }}'
-                  {% endif %}
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-left: 11px;
+                padding-right: 11px;
+              }
+            card:
+              type: vertical-stack
+              cards:
+                !include 
+                  - ../../../../{{ addon["path"] }}
+                  - name: {{ addon["name"] }}
+                    {% if addon["data"] %}
+                    data: '{{ addon["data"]|tojson }}'
+                    {% endif %}
 {% endfor %}
 {% endif %}

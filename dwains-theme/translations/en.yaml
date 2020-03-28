@@ -45,10 +45,10 @@ en:
   door:
     title: 'Door'
     title_plural: 'Doors'
-    door_open: 'door open'
-    doors_open: 'doors open'
-    all_doors_open: 'All doors open'
-    all_doors_closed: 'All doors closed'
+    door_open: 'open'
+    doors_open: 'open'
+    all_doors_open: 'All open'
+    all_doors_closed: 'All closed'
     open: 'Open'
     closed: 'Closed'
 
@@ -160,3 +160,7 @@ en:
 
   more_entities:
     title: 'More entities'
+
+  lock:
+    title: 'Lock'
+    title_plural: 'Locks'

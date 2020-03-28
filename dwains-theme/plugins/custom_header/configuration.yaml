@@ -14,6 +14,7 @@ exceptions:
       footer_mode: true
       disable_sidebar: false
       menu_hide: true
+      voice_hide: true
       chevrons: false
       indicator_top: true
       all_tabs_css: "width: calc(20vw - 3.6px) !important; padding: 0px !important;"

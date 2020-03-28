@@ -1,6 +1,14 @@
 #Set lovelace to YAML mode to make frontend completly from yaml files instead from gui editor
 lovelace:
   mode: yaml
+  resources: !include_dir_merge_list ../../dwains-theme/resources/
+  dashboards:
+    dwains-theme:
+      mode: yaml
+      title: Dwains Theme
+      icon: mdi:alpha-d-box
+      show_in_sidebar: true
+      filename: dwains-theme-lovelace.yaml
 
 #Set frontend for themes and Font Awesome Icons (Note that you dont have frontend: in any other file)
 frontend:
@@ -17,8 +25,10 @@ browser_mod:
 #Dwains theme definitions (this is for doing all the jinja2 inside YAML files) 
 #You need to have a folder called dwains-theme/configs with all the configuration files inside
 dwains_theme:
-  information:
+  global:
     version: '1.3.0'
+  styles:
+    padding-left: '10px'
   translations:
     !include_dir_merge_named ../../dwains-theme/translations/
   configuration:
@@ -33,6 +43,7 @@ sensor:
     name: Dwains Theme Version
     select: ".current-version h1"
     value_template: '{{ value.split(":")[1] }}'
+    scan_interval: 3600
 
 #Input select
 input_select:

@@ -8,14 +8,22 @@ style: |
     padding: 10px 0px;
     color: #fff;
     background-color: var(--dwains-theme-header-background);
-    margin: -4px;
     border-radius: 0; 
     font-weight: bold;
     font-size: 14px;
+    margin-bottom: 15px;
+  }
+  @media only screen and (min-width: 600px) {
+    ha-card {
+      margin-top: 25px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
   }
   ha-markdown {
     padding-top: 0px !important;
     padding-bottom: 14px !important;
+    padding-left: 11px !important;
   }
   ha-card a {
     color: var(--dwains-theme-header-text) !important;
@@ -43,6 +51,6 @@ style: |
     {% endif %}
   }
 content: |
-  {% if navigation_path %}[<ha-icon icon="{{ _d_t_icons.menu_back|default('fas:chevron-left') }}"></ha-icon>](/lovelace/{{ navigation_path }}){% endif %}
+  {% if navigation_path %}[<ha-icon icon="{{ _d_t_icons.menu_back|default('fas:chevron-left') }}"></ha-icon>](/dwains-theme/{{ navigation_path }}){% endif %}
   <h3>{{ subtitle }}</h3>
   <h1>{{ title }}</h1>

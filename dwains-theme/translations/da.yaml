@@ -159,3 +159,7 @@ da:
   
   more_entities:
     title: 'More entities'
+
+  lock:
+    title: 'Lock'
+    title_plural: 'Locks'

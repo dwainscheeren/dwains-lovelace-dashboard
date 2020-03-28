@@ -12,13 +12,13 @@
   cards:    
     - type: custom:mod-card
       style: | 
-        layout-card {
-          padding-left: 0px;
-          padding-right: 0px;
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
       card:
-        type: custom:layout-card
-        column_width: 1465px
+        type: vertical-stack
         cards:
           #Header
           - !include
@@ -29,24 +29,25 @@
             - title: {{ _d_t_trans.cameras.title }}
             {% endif %}
           #Start for dynamic page
-          {% if _d_t_config.dynamic_page and _d_t_config.dynamic_page.addon %}
-          #Dynamic addon
-          - type: vertical-stack
-            cards:
-              !include 
-                - ../../../{{ _d_t_config.dynamic_page.addon.path }}
-                - name: {{ _d_t_config.dynamic_page.addon.name }}
-                  {% if _d_t_config.dynamic_page.addon.data %}
-                  data: '{{ _d_t_config.dynamic_page.addon.data|tojson }}'
-                  {% endif %}
-          {% else %}
-          #Cameras
           - type: custom:mod-card
             style: |
               ha-card {
                 padding-bottom: 20px;
+                padding-left: 11px;
               }
             card:
+              {% if _d_t_config.dynamic_page and _d_t_config.dynamic_page.addon %}
+              #Dynamic addon
+              type: vertical-stack
+              cards:
+                !include 
+                  - ../../../{{ _d_t_config.dynamic_page.addon.path }}
+                  - name: {{ _d_t_config.dynamic_page.addon.name }}
+                    {% if _d_t_config.dynamic_page.addon.data %}
+                    data: '{{ _d_t_config.dynamic_page.addon.data|tojson }}'
+                    {% endif %}
+              {% else %}
+              #Cameras
               type: custom:layout-card
               column_width: 360px #420px
               layout: horizontal
@@ -60,4 +61,4 @@
                 - type: markdown
                   content: {{ _d_t_trans.cameras.not_defined }}
                 {% endfor %}
-          {% endif %}
+              {% endif %}

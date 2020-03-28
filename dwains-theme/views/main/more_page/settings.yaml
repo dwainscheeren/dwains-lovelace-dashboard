@@ -6,13 +6,13 @@
   cards:    
     - type: custom:mod-card
       style: | 
-        layout-card {
-          padding-left: 0px;
-          padding-right: 0px;
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
       card:
-        type: custom:layout-card
-        column_width: 1465px
+        type: vertical-stack
         cards:
           #Header
           - !include
@@ -46,7 +46,7 @@
                 - display: >
                     [[[
                       if(entity){
-                        if('{{ _d_t_information.version }}' < entity.state){
+                        if('{{ _d_t_global.version }}' < entity.state){
                           //Update available
                           return 'block';
                         } else {
@@ -58,8 +58,7 @@
           - type: custom:mod-card
             style: |
               ha-card {
-                padding-top: 10px;
-                padding-bottom: 20px;
+                padding-left: 11px;
               }
             card:
               type: custom:layout-card
@@ -123,4 +122,4 @@
             content: |
               <strong>DWAINS THEME</strong>
               <span>{{ _d_t_trans.more_page.settings.by }} Dwain Scheeren</span>
-              <span>{{ _d_t_trans.more_page.settings.version }} {{ _d_t_information.version }}</span>
+              <span>{{ _d_t_trans.more_page.settings.version }} {{ _d_t_global.version }}</span>

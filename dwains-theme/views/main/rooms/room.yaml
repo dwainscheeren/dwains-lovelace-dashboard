@@ -10,14 +10,13 @@
   cards:    
     - type: custom:mod-card
       style: | 
-        layout-card {
-          padding-left: 0px;
-          padding-right: 0px;
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
       card:
-        type: custom:layout-card
-        column_width: 1465px
-        layout: horizontal
+        type: vertical-stack
         cards:
           {% if room["more_entities"] and room["more_entities"]["entities"] %}
           #Header with grid
@@ -43,14 +42,14 @@
             style: |
               ha-card {
                 background-color: var(--dwains-theme-header-background);
-                margin: -25px -4px 0px -4px;
+                margin-top: -25px;
                 padding-top: 0px;
                 padding-bottom: 4px;
+                padding-left: 11px;
               }
             card:
               type: custom:layout-card
-              min_columns: 3
-              max_columns: 3
+              column_width: 120px
               layout: horizontal
               justify_content: start
               cards:
@@ -224,7 +223,7 @@
             style: |
               ha-card {
                 padding-top: 20px;
-                padding-bottom: 20px;
+                padding-left: 11px;
               }
             card:
               type: custom:layout-card
@@ -232,6 +231,64 @@
               layout: horizontal
               justify_content: start
               cards:
+                #Card for locks (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+                {% if room["lock"] %}
+                - type: custom:button-card
+                  entity: {{ room["lock"] }}
+                  template: rooms_child
+                  icon: '{{ _d_t_icons.lock_locked|default('mdi:lock') }}'
+                  styles:
+                    img_cell:
+                      - padding-left: 5px
+                      - width: 40px
+                  state:
+                    - value: 'unlocked'
+                      icon: '{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}'
+                  {% if room["lock"].split('.')[0] == 'lock' %}
+                  # this room has only 1 lock (lock entity)
+                  name: {{ _d_t_trans.lock.title }}
+                  tap_action:
+                    !include 
+                      - ../../popups/more-info.yaml
+                      - entity: {{ room["lock"] }}
+                  label: >
+                    [[[ 
+                      if(entity){
+                        if(entity.state == 'locked'){
+                          return hass.localize('state.lock.locked');
+                        } else {
+                          return hass.localize('state.lock.unlocked');
+                        }
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.lock entity!");
+                        return 'Entity error!';
+                      }
+                    ]]] 
+                  {% elif room["lock"].split('.')[0] == 'group' %}
+                  # this room has group of locks
+                  name: {{ _d_t_trans.lock.title_plural }}
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_locks
+                  label: >
+                    [[[
+                      if(entity){
+                        const entitiesFromGroup = states['{{ room["lock"] }}'].attributes['entity_id'];
+                        var openLocks = 0;
+                        entitiesFromGroup.forEach(function(entity){
+                          if(states[entity] && states[entity].state == 'on'){
+                            openLocks++;
+                          }
+                        });  
+                        return entitiesFromGroup.length + ' {{ _d_t_trans.lock.title_plural }}' + ((openLocks >= 1) ? '<br>' + ((openLocks == 1) ? '1 ' + hass.localize('state.lock.unlocked') : openLocks + hass.localize('state.lock.unlocked')) : '');
+                      } else {
+                        console.log("Invalid rooms.yaml:{{ room["name"] }}.lock entity!");
+                        return 'Entity error!';
+                      }
+                    ]]]
+                  {% endif %}
+                {% endif %}
+
                 #Card for lights (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
                 {% if room["light"] %}
                 - type: custom:button-card
@@ -338,14 +395,14 @@
                     [[[ 
                       {% if room["temperature"] %}
                         if(states['{{ room["temperature"] }}']){
-                          var temperature = (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + '°';
+                          var temperature = (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + hass.config.unit_system["temperature"];
                         } else {
                           console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
                           return 'Temperature error';
                         }
                       {% elif room["climate"] %}
                         if(states['{{ room["climate"] }}']){
-                          var temperature = (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + '°';
+                          var temperature = (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + hass.config.unit_system["temperature"];
                         } else {
                           console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!");
                           return 'Climate error';
@@ -357,11 +414,11 @@
                         if (entity.attributes.hvac_action  == 'idle'){
                           return temperature + '<br>{{ _d_t_trans.climate.idle }}';
                         } else if(entity.attributes.hvac_action == 'heating'){
-                          return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                          return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
                         } else if(entity.attributes.hvac_action == 'off'){
                           return temperature + '<br>{{ _d_t_trans.climate.off_text }}';
                         } else if(entity.attributes.hvac_action == 'heat'){
-                          return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + '°';
+                          return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
                         } else {
                           return temperature + '<br>' + entity.state;
                         }
@@ -625,7 +682,7 @@
           - type: custom:mod-card
             style: |
               ha-card {
-                padding-bottom: 20px;
+                padding-left: 11px;
               }
             card:
               type: custom:layout-card

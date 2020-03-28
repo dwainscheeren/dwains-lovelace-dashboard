@@ -1,0 +1,40 @@
+# dwains_theme
+
+- title: {{ _d_t_trans.house_information.title }}
+  path: more_page_notifications
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+        }
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.house_information.title }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home  
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-left: 11px;
+                margin-bottom: 15px;
+              } 
+            card:
+              type: custom:dwains-notification-card
+              style: |
+                ha-card {
+                  padding: 15px;
+                }
+                #title {
+                  font-size: 22px;
+                  font-weight: bold;
+                }                        
+              title: Notifications
+              navigation_path: more_page_notifications

@@ -55,3 +55,6 @@
 #   more_page_house_data: 'fas:question'
 #   more_page_settings: 'fas:question'
 #   more_page_list_chevron: 'fas:question'
+
+#   lock_locked: 'fas:question'
+#   lock_unlocked: 'fas:question'

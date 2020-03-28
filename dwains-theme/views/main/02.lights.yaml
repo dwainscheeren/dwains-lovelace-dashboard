@@ -7,13 +7,13 @@
   cards:    
     - type: custom:mod-card
       style: | 
-        layout-card {
-          padding-left: 0px;
-          padding-right: 0px;
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
       card:
-        type: custom:layout-card
-        column_width: 1465px
+        type: vertical-stack
         cards:
           #Header with all lights on/off button
           - !include
@@ -24,75 +24,81 @@
                 
           #Start for all lights page
           #All lights
-          - type: custom:layout-card
-            column_width: 360px
-            #layout: horizontal
-            justify_content: start
-            cards:
-              {% for room in _d_t_config.rooms %}
-              {% if room["light"] %}
-              - type: vertical-stack
-                cards:
-                  #Heading
-                  - !include
-                    - ../partials/heading.yaml
-                    - title: {{ room["name"] }}
-                      type: button
-                      entity: {{ room["light"] }}
-                  {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                  # this room has only 1 light (light or switch entity)
-                  - type: custom:mod-card
-                    style: |
-                      ha-card {
-                        padding: 0px;
-                      }
-                    card:
-                      type: horizontal-stack
-                      cards:
-                        - type: custom:button-card
-                          template: room_light
-                          entity: {{ room["light"] }}
-                          {% if room["light"].split('.')[0] == 'light' %}
-                          tap_action:
-                            !include 
-                              - ../popups/light.yaml
-                              - entity: {{ room["light"] }}
-                          {% endif %}
-                  {% else %}
-                  # this room has group of lights
-                  - type: custom:mod-card
-                    style: |
-                      ha-card {
-                        padding: 0px;
-                        margin: -4px;
-                      }
-                      layout-card {
-                        padding-left: 0px;
-                        padding-right: 0px;
-                      }
-                      
-                    card:
-                      type: custom:auto-entities
-                      filter:
-                        include:
-                          - group: {{ room["light"] }}
-                            options:
-                              type: custom:button-card
-                              template: room_light
-                              tap_action:
-                                !include 
-                                  - ../popups/light.yaml
-                                  - entity: this.entity_id
-                      sort:
-                        method: name
-                        ignore_case: true
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding-left: 11px;
+              }
+            card:
+              type: custom:layout-card
+              column_width: 360px
+              #layout: horizontal
+              justify_content: start
+              cards:
+                {% for room in _d_t_config.rooms %}
+                {% if room["light"] %}
+                - type: vertical-stack
+                  cards:
+                    #Heading
+                    - !include
+                      - ../partials/heading.yaml
+                      - title: {{ room["name"] }}
+                        type: button
+                        entity: {{ room["light"] }}
+                    {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
+                    # this room has only 1 light (light or switch entity)
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          padding: 0px;
+                        }
                       card:
-                        type: custom:layout-card
-                        min_columns: 2
-                        max_columns: 2
-                        column_width: 180px
-                        layout: horizontal
-                        justify_content: start
-                  {% endif %}
-              {% endif %}
-              {% endfor %}
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            template: room_light
+                            entity: {{ room["light"] }}
+                            {% if room["light"].split('.')[0] == 'light' %}
+                            tap_action:
+                              !include 
+                                - ../popups/light.yaml
+                                - entity: {{ room["light"] }}
+                            {% endif %}
+                    {% else %}
+                    # this room has group of lights
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          padding: 0px;
+                          margin: 0px;
+                        }
+                        layout-card {
+                          padding-left: 0px;
+                          padding-right: 0px;
+                        }
+                        
+                      card:
+                        type: custom:auto-entities
+                        filter:
+                          include:
+                            - group: {{ room["light"] }}
+                              options:
+                                type: custom:button-card
+                                template: room_light
+                                tap_action:
+                                  !include 
+                                    - ../popups/light.yaml
+                                    - entity: this.entity_id
+                        sort:
+                          method: name
+                          ignore_case: true
+                        card:
+                          type: custom:layout-card
+                          min_columns: 2
+                          max_columns: 2
+                          column_width: 180px
+                          layout: horizontal
+                          justify_content: start
+                    {% endif %}
+                {% endif %}
+                {% endfor %}

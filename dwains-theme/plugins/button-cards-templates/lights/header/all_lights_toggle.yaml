@@ -9,6 +9,6 @@ lights_header_all_lights_toggle:
       - align-self: end
       - text-align: right
     card:
-      - padding: 8px 0 0 0
+      - padding: 8px 4px 0 0
       - box-shadow: none
       - background: transparent
