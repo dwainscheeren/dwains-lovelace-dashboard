@@ -42,7 +42,7 @@
                     options:
                       type: custom:button-card
                       template: room_light
-                      tap_action:
+                      double_tap_action:
                         !include 
                           - ../../../popups/light.yaml
                           - entity: this.entity_id

@@ -60,6 +60,6 @@ room_light:
       - align-self: left
       - font-size: 13px
       - color: var(--dwains-theme-grey)
-  double_tap_action:
+  tap_action:
     action: toggle
     haptic: light 

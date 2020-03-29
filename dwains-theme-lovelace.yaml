@@ -1,19 +1,9 @@
-# These are all resources (plugins) used for dwains theme (mostly installed through HACS)
-#
-# If you want to install plugins manually, then keep in mind that the path might be different. Please contact me if you want to know how to do this.
-# Do not change the file dwains-theme/resources/main.yaml!
-#
+# Start of the dwains theme ui-lovelace.yaml
+# Don't change anything below this section, only if you know what you are doing
+
 # Do you have any custom resources? Go to the folder dwains-theme/resources/, 
 # if you don't have the file custom_resources.yaml then rename the file custom_resources-sample.yaml
 # to custom_resources.yaml and place your resources in the file custom_resources.yaml!
-# resources: 
-#   !include_dir_merge_list dwains-theme/resources/
-
-####################################################################################
-# Start of the dwains theme ui-lovelace.yaml
-# You must have this code in your ui-lovelace.yaml file!
-# Don't change anything below this section, only if you know what you are doing
-
 
 # Loading all necessary components for dwains theme...
 # Custom Header with some custom configuration (https://github.com/maykar/custom-header)

@@ -59,7 +59,7 @@
                             template: room_light
                             entity: {{ room["light"] }}
                             {% if room["light"].split('.')[0] == 'light' %}
-                            tap_action:
+                            double_tap_action:
                               !include 
                                 - ../popups/light.yaml
                                 - entity: {{ room["light"] }}
@@ -85,7 +85,7 @@
                               options:
                                 type: custom:button-card
                                 template: room_light
-                                tap_action:
+                                double_tap_action:
                                   !include 
                                     - ../popups/light.yaml
                                     - entity: this.entity_id

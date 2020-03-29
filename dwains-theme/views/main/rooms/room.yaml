@@ -305,10 +305,10 @@
                   {% if room["light"].split('.')[0] == 'light' %}
                   # this room has only 1 light (light entity)
                   name: {{ _d_t_trans.light.title }}
-                  double_tap_action:
+                  tap_action:
                     action: toggle
                     haptic: light 
-                  tap_action:
+                  double_tap_action:
                     !include 
                       - ../../popups/light.yaml
                       - entity: {{ room["light"] }}
