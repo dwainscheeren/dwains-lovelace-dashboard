@@ -26,24 +26,6 @@
               navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           {% if room["lock"].split('.')[0] == 'lock' %}
           # this room has only 1 lock
-          - type: custom:dwains-lock-card
-            style: |
-              ha-card {
-                margin: 11px;
-                background: var(--dwains-theme-primary) !important;
-                color: var(--dwains-theme-names) !important;
-              }
-              input[type="range"].range {
-                background: var(--dwains-theme-background) !important;
-                border: none !important;
-              }
-              .percentage {
-                color: var(--dwains-theme-accent) !important;
-              }
-              input[type="range"].range::-webkit-slider-thumb {
-                background: var(--dwains-theme-accent) !important;
-              }
-            entity: {{ room["lock"] }}
           {% else %}
           # this room has group of locks
           - type: custom:mod-card
