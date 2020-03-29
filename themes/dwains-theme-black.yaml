@@ -10,6 +10,7 @@ dwains-theme-black:
 
   dwains-theme-header-background: 'var(--dwains-theme-primary)'
   dwains-theme-header-text: 'var(--dwains-theme-names)'
+  dwains-theme-header-button-text: '#f2f2f7'
 
   #homepage alarm icon
   dwains-theme-alarm-background: 'var(--dwains-theme-background)'

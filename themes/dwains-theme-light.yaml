@@ -10,6 +10,7 @@ dwains-theme-light:
 
   dwains-theme-header-background: '#262628'
   dwains-theme-header-text: '#f2f2f7'
+  dwains-theme-header-button-text: '#f2f2f7'
 
   #homepage alarm icon
   dwains-theme-alarm-background: '#1c1c1e'

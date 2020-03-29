@@ -32,7 +32,7 @@ header_house_information_large:
       - border-radius: 100%
       - justify-self: start
     name:
-      - color: var(--dwains-theme-header-text)
+      - color: var(--dwains-theme-header-button-text)
       - justify-self: start
       - font-size: 14px
       - padding-right: 10px

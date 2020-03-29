@@ -134,8 +134,8 @@
                       type: custom:dwains-weather-card
                       entity: {{ _d_t_config.global["weather"] }}
                       style: |
-                        .variations, .variations ha-icon {
-                          color: var(--dwains-theme-header-text) !important;
+                        .variations, .variations ha-icon, #main {
+                          color: var(--dwains-theme-header-button-text) !important;
                         }
 
                 {% endif %}
