@@ -20,7 +20,8 @@
           - !include
             - ../../partials/header.yaml
             - title: {{ _d_t_trans.vacuum.title }}
-              navigation_path: home
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home#devices
           #Start for room vacuum content page
           - type: custom:mod-card
             style: |
@@ -34,17 +35,15 @@
               justify_content: start
               cards:
                 {% for room in _d_t_config.rooms %}
-                {% if room["light"] %}
+                {% if room["vacuum"] %}
                 - type: vertical-stack
                   cards:
                     #Heading
                     - !include
                       - ../../partials/heading.yaml
                       - title: {{ room["name"] }}
-                        type: button
-                        entity: {{ room["light"] }}
-                    {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                    # this room has only 1 light (light or switch entity)
+                    {% if room["vacuum"]["entity"].split('.')[0] != 'group' %}
+                    # this room has only 1 vacuum
                     - type: custom:mod-card
                       style: |
                         ha-card {
@@ -54,16 +53,16 @@
                         type: horizontal-stack
                         cards:
                           - type: custom:button-card
-                            template: room_light
-                            entity: {{ room["light"] }}
-                            {% if room["light"].split('.')[0] == 'light' %}
+                            template: room_vacuum
+                            entity: {{ room["vacuum"] }}
+                            {% if room["vacuum"]["entity"].split('.')[0] == 'vacuum' %}
                             tap_action:
                               !include 
-                                - ../../popups/light.yaml
-                                - entity: {{ room["light"] }}
+                                - ../../popups/more-info.yaml
+                                - entity: {{ room["vacuum"]["entity"] }}
                             {% endif %}
                     {% else %}
-                    # this room has group of lights
+                    # this room has group of vacuums
                     - type: custom:mod-card
                       style: |
                         ha-card {
@@ -79,13 +78,13 @@
                         type: custom:auto-entities
                         filter:
                           include:
-                            - group: {{ room["light"] }}
+                            - group: {{ room["vacuum"] }}
                               options:
                                 type: custom:button-card
-                                template: room_light
+                                template: room_vacuum
                                 tap_action:
                                   !include 
-                                    - ../../popups/light.yaml
+                                    - ../../popups/more-info.yaml
                                     - entity: this.entity_id
                         sort:
                           method: name

@@ -19,7 +19,8 @@
           - !include
             - ../../partials/header.yaml
             - title: {{ _d_t_trans.media_player.title_plural }}
-              navigation_path: home
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home#devices
           #Start for room media_players content page
           - type: custom:mod-card
             style: |
@@ -33,36 +34,26 @@
               justify_content: start
               cards:
                 {% for room in _d_t_config.rooms %}
-                {% if room["light"] %}
+                {% if room["media_player"] %}
                 - type: vertical-stack
                   cards:
                     #Heading
                     - !include
                       - ../../partials/heading.yaml
                       - title: {{ room["name"] }}
-                        type: button
-                        entity: {{ room["light"] }}
-                    {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                    # this room has only 1 light (light or switch entity)
-                    - type: custom:mod-card
-                      style: |
-                        ha-card {
-                          padding: 0px;
-                        }
-                      card:
-                        type: horizontal-stack
-                        cards:
-                          - type: custom:button-card
-                            template: room_light
-                            entity: {{ room["light"] }}
-                            {% if room["light"].split('.')[0] == 'light' %}
-                            tap_action:
-                              !include 
-                                - ../../popups/light.yaml
-                                - entity: {{ room["light"] }}
-                            {% endif %}
+                    {% if room["media_player"].split('.')[0] != 'group' %}
+                    # this room has only 1 media player
+                    - type: custom:button-card
+                      template: room_media_player
+                      entity: {{ room["media_player"] }}
+                      {% if room["media_player"].split('.')[0] == 'media_player' %}
+                      tap_action:
+                        !include 
+                          - ../../popups/more-info.yaml
+                          - entity: {{ room["media_player"] }}
+                      {% endif %}
                     {% else %}
-                    # this room has group of lights
+                    # this room has group of media players
                     - type: custom:mod-card
                       style: |
                         ha-card {
@@ -78,13 +69,13 @@
                         type: custom:auto-entities
                         filter:
                           include:
-                            - group: {{ room["light"] }}
+                            - group: {{ room["media_player"] }}
                               options:
                                 type: custom:button-card
-                                template: room_light
+                                template: room_media_player
                                 tap_action:
                                   !include 
-                                    - ../../popups/light.yaml
+                                    - ../../popups/more-info.yaml
                                     - entity: this.entity_id
                         sort:
                           method: name

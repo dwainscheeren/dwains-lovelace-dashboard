@@ -20,12 +20,13 @@
           - !include
             - ../../partials/header.yaml
             - title: {{ _d_t_trans.climate.title }}
-              navigation_path: home
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home#devices
           #Start for room climate content page
           - type: custom:mod-card
             style: |
               ha-card {
-                //padding-left: 11px;
+                padding-left: 11px;
               }
             card:
               type: custom:layout-card
@@ -43,17 +44,9 @@
                       - title: {{ room["name"] }}
                     {% if room["climate"].split('.')[0] == 'climate' %}
                     # this room has only 1 climate
-                    - type: custom:mod-card
-                      style: |
-                        ha-card {
-                          padding-left: 11px;
-                        }
-                      card:
-                        type: horizontal-stack
-                        cards:
-                          - type: custom:button-card
-                            template: room_light
-                            entity: {{ room["climate"] }}
+                    - type: custom:button-card
+                      template: room_light
+                      entity: {{ room["climate"] }}
                     {% else %}
                     # this room has group of climate
                     # not yet supported                    

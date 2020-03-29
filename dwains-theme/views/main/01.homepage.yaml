@@ -175,6 +175,16 @@
                         template: header_states_lock
                       - type: custom:button-card
                         template: header_states_light
+                      - type: custom:button-card
+                        template: header_states_cover
+                      - type: custom:button-card
+                        template: header_states_device
+                      - type: custom:button-card
+                        template: header_states_media_player
+                      - type: custom:button-card
+                        template: header_states_vacuum
+                      - type: custom:button-card
+                        template: header_states_plant
                 #End header states
           #END HOMEPAGE HEADER
 
@@ -183,6 +193,13 @@
             style: |
               ha-card {
                 padding-left: 11px;
+              }
+              @media only screen and (max-width: 600px) {
+                ha-card {
+                  width: 360px;
+                  margin: 0 auto;
+                  padding-left: 8px;
+                }
               }
             card:
               type: custom:state-switch
@@ -452,7 +469,34 @@
                             navigation_path: devices_locks
                           label: >
                             [[[
-                              return 'Need to make...';
+                              var openLocks = 0;
+
+                              {% for room in _d_t_config.rooms %}                        
+                                //Do some things for the locks
+                                {% if room["lock"] %}
+                                  {% if room["lock"].split('.')[0] == 'lock' %}
+                                  //This room has only 1 lock
+                                    if(states['{{ room["lock"] }}'] && states['{{ room["lock"] }}'].state == 'unlocked') {
+                                      openLocks++;
+                                    }
+                                  {% elif room["lock"].split('.')[0] == 'group' %}
+                                  //This room has group of locks
+                                    if(states['{{ room["lock"] }}']){
+                                      states['{{ room["lock"] }}'].attributes['entity_id'].forEach(function(entity){
+                                        if(states[entity] && states[entity].state == 'unlocked'){
+                                          openLocks++;
+                                        }
+                                      });  
+                                    }
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
+
+                              if(openLocks > 0){
+                                return openLocks + ' ' + hass.localize('state.lock.unlocked');
+                              } else {
+                                return '&nbsp;';
+                              }
                             ]]]
                         {% endif %}
 
@@ -489,7 +533,11 @@
                                 {% endif %}
                               {% endfor %}
 
-                              return ((onLights >= 1) ? ((onLights == 1) ? '1 ' + hass.localize('state.default.on') : onLights + ' ' + hass.localize('state.default.on')) : '&nbsp;')
+                              if(onLights > 0){
+                                return onLights + ' ' + hass.localize('state.default.on');
+                              } else {  
+                                return '&nbsp;';
+                              }
                             ]]]
                         {% endif %}
 
@@ -517,7 +565,34 @@
                             navigation_path: devices_covers
                           label: >
                             [[[
-                              return 'Need to make...';
+                              var openCovers = 0;
+
+                              {% for room in _d_t_config.rooms %}                        
+                                //Do some things for the covers
+                                {% if room["cover"] %}
+                                  {% if room["cover"].split('.')[0] == 'cover' %}
+                                  //This room has only 1 cover
+                                    if(states['{{ room["cover"] }}'] && states['{{ room["cover"] }}'].state == 'open') {
+                                      openCovers++;
+                                    }
+                                  {% elif room["cover"].split('.')[0] == 'group' %}
+                                  //This room has group of covers
+                                    if(states['{{ room["cover"] }}']){
+                                      states['{{ room["cover"] }}'].attributes['entity_id'].forEach(function(entity){
+                                        if(states[entity] && states[entity].state == 'open'){
+                                          openCovers++;
+                                        }
+                                      });  
+                                    }
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
+                          
+                              if(openCovers > 0){
+                                return openCovers + ' ' + hass.localize('state.cover.open');
+                              } else {  
+                                return '&nbsp;';
+                              }
                             ]]]
                         {% endif %}
 
@@ -531,7 +606,34 @@
                             navigation_path: devices_devices
                           label: >
                             [[[
-                              return 'Need to make...';
+                              var onDevices = 0;
+
+                              {% for room in _d_t_config.rooms %}
+                                //Do some things for the Devices
+                                {% if room["device"] %}
+                                  {% if room["device"].split('.')[0] != 'group' %}
+                                  //This room has only 1 device
+                                    if(states['{{ room["device"] }}'] && states['{{ room["device"] }}'].state == 'on') {
+                                      onDevices++;
+                                    }
+                                  {% else %}
+                                  //This room has group of Devices
+                                    if(states['{{ room["device"] }}']){
+                                      states['{{ room["device"] }}'].attributes['entity_id'].forEach(function(entity){
+                                        if(states[entity] && states[entity].state == 'on'){
+                                          onDevices++;
+                                        }
+                                      });  
+                                    }
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
+
+                              if(onDevices > 0){
+                                return onDevices + ' ' + hass.localize('state.default.on');
+                              } else {  
+                                return '&nbsp;';
+                              }
                             ]]]
                         {% endif %}
 
@@ -545,7 +647,34 @@
                             navigation_path: devices_media_players
                           label: >
                             [[[
-                              return 'Need to make...';
+                              var onMediaPlayers = 0;
+
+                              {% for room in _d_t_config.rooms %}
+                                //Do some things for the media_players
+                                {% if room["media_player"] %}
+                                  {% if room["media_player"].split('.')[0] != 'group' %}
+                                  //This room has only 1 media_player
+                                    if(states['{{ room["media_player"] }}'] && states['{{ room["media_player"] }}'].state == 'on') {
+                                      onMediaPlayers++;
+                                    }
+                                  {% else %}
+                                  //This room has group of media_players
+                                    if(states['{{ room["media_player"] }}']){
+                                      states['{{ room["media_player"] }}'].attributes['entity_id'].forEach(function(entity){
+                                        if(states[entity] && states[entity].state == 'on'){
+                                          onMediaPlayers++;
+                                        }
+                                      });  
+                                    }
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
+
+                              if(onMediaPlayers > 0){
+                                return onDevices + ' ' + hass.localize('state.default.on');
+                              } else {  
+                                return '&nbsp;';
+                              }
                             ]]]
                         {% endif %}
 
@@ -573,7 +702,34 @@
                             navigation_path: devices_plants
                           label: >
                             [[[
-                              return 'Need to make...';
+                              var problemPlants = 0;
+
+                              {% for room in _d_t_config.rooms %}
+                                //Do some things for the plants
+                                {% if room["plant"] %}
+                                  {% if room["plant"].split('.')[0] != 'group' %}
+                                  //This room has only 1 plant
+                                    if(states['{{ room["plant"] }}'] && states['{{ room["plant"] }}'].state == 'problem') {
+                                      problemPlants++;
+                                    }
+                                  {% else %}
+                                  //This room has group of plants
+                                    if(states['{{ room["plant"] }}']){
+                                      states['{{ room["plant"] }}'].attributes['entity_id'].forEach(function(entity){
+                                        if(states[entity] && states[entity].state == 'problem'){
+                                          problemPlants++;
+                                        }
+                                      });  
+                                    }
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
+
+                              if(problemPlants > 0){
+                                return problemPlants + ' ' + hass.localize('state.binary_sensor.problem.on');
+                              } else {  
+                                return '&nbsp;';
+                              }
                             ]]]
                         {% endif %}
 

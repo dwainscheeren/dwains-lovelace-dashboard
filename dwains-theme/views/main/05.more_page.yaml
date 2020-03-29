@@ -61,6 +61,7 @@
           - !include
             - ../partials/heading.yaml
             - title: {{ _d_t_trans.more_page.more_page_addons }}
+              padding_left: 11px
           #Addons start
           - type: custom:mod-card
             style: |

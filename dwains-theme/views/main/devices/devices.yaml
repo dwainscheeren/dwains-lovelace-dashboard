@@ -20,7 +20,8 @@
           - !include
             - ../../partials/header.yaml
             - title: {{ _d_t_trans.device.title_plural }}
-              navigation_path: home
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home#devices
           #Start for room devices content page
           - type: custom:mod-card
             style: |
@@ -34,36 +35,26 @@
               justify_content: start
               cards:
                 {% for room in _d_t_config.rooms %}
-                {% if room["light"] %}
+                {% if room["device"] %}
                 - type: vertical-stack
                   cards:
                     #Heading
                     - !include
                       - ../../partials/heading.yaml
                       - title: {{ room["name"] }}
-                        type: button
-                        entity: {{ room["light"] }}
-                    {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                    # this room has only 1 light (light or switch entity)
-                    - type: custom:mod-card
-                      style: |
-                        ha-card {
-                          padding: 0px;
-                        }
-                      card:
-                        type: horizontal-stack
-                        cards:
-                          - type: custom:button-card
-                            template: room_light
-                            entity: {{ room["light"] }}
-                            {% if room["light"].split('.')[0] == 'light' %}
-                            tap_action:
-                              !include 
-                                - ../../popups/light.yaml
-                                - entity: {{ room["light"] }}
-                            {% endif %}
+                    {% if room["device"].split('.')[0] != 'group' %}
+                    # this room has only 1 device
+                    - type: custom:button-card
+                      template: room_light
+                      entity: {{ room["device"] }}
+                      {% if room["light"].split('.')[0] == 'light' %}
+                      tap_action:
+                        !include 
+                          - ../../popups/light.yaml
+                          - entity: {{ room["light"] }}
+                      {% endif %}
                     {% else %}
-                    # this room has group of lights
+                    # this room has group of devices
                     - type: custom:mod-card
                       style: |
                         ha-card {
@@ -79,7 +70,7 @@
                         type: custom:auto-entities
                         filter:
                           include:
-                            - group: {{ room["light"] }}
+                            - group: {{ room["device"] }}
                               options:
                                 type: custom:button-card
                                 template: room_light
