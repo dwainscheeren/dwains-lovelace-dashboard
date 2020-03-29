@@ -54,12 +54,10 @@
                           - type: custom:button-card
                             template: room_plant
                             entity: {{ room["plant"] }}
-                            {% if room["plant"].split('.')[0] == 'plant' %}
                             tap_action:
                               !include 
                                 - ../../popups/more-info.yaml
                                 - entity: {{ room["plant"] }}
-                            {% endif %}
                     {% else %}
                     # this room has group of plants
                     - type: custom:mod-card

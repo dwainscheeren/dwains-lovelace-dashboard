@@ -37,3 +37,6 @@ room_device:
       - align-self: left
       - font-size: 12px
       - color: var(--dwains-theme-grey)
+  double_tap_action:
+    action: toggle
+    haptic: light 

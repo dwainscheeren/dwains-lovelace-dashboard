@@ -43,15 +43,21 @@
                       - title: {{ room["name"] }}
                     {% if room["lock"].split('.')[0] == 'lock' %}
                     # this room has only 1 lock
-                    - type: custom:button-card
-                      template: room_light
-                      entity: {{ room["lock"] }}
-                      {% if room["light"].split('.')[0] == 'light' %}
-                      tap_action:
-                        !include 
-                          - ../../popups/light.yaml
-                          - entity: {{ room["light"] }}
-                      {% endif %}
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          padding: 0px;
+                        }
+                      card:
+                        type: horizontal-stack
+                        cards:
+                        - type: custom:button-card
+                          template: room_lock
+                          entity: {{ room["lock"] }}
+                          tap_action:
+                            !include 
+                              - ../../popups/more-info.yaml
+                              - entity: {{ room["lock"] }}
                     {% else %}
                     # this room has group of locks
                     - type: custom:mod-card
@@ -72,10 +78,10 @@
                             - group: {{ room["lock"] }}
                               options:
                                 type: custom:button-card
-                                template: room_light
+                                template: room_lock
                                 tap_action:
                                   !include 
-                                    - ../../popups/light.yaml
+                                    - ../../popups/more-info.yaml
                                     - entity: this.entity_id
                         sort:
                           method: name

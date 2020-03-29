@@ -1,0 +1,17 @@
+room_climate_hvac:
+  styles:
+    card:
+      - box-shadow: none
+      - background: transparent
+      - padding-bottom: 0px
+    img_cell:
+      - background: transparent
+      - border: '1px solid var(--dwains-theme-grey)'
+      - border-radius: 5px
+      - width: 50px
+      - height: 50px
+    icon:
+      - color: var(--dwains-theme-grey)
+    name: 
+      - color: var(--dwains-theme-grey)
+      - font-size: 12px

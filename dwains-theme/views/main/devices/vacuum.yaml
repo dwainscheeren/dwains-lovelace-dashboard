@@ -54,13 +54,11 @@
                         cards:
                           - type: custom:button-card
                             template: room_vacuum
-                            entity: {{ room["vacuum"] }}
-                            {% if room["vacuum"]["entity"].split('.')[0] == 'vacuum' %}
+                            entity: {{ room["vacuum"]["entity"] }}
                             tap_action:
                               !include 
                                 - ../../popups/more-info.yaml
                                 - entity: {{ room["vacuum"]["entity"] }}
-                            {% endif %}
                     {% else %}
                     # this room has group of vacuums
                     - type: custom:mod-card

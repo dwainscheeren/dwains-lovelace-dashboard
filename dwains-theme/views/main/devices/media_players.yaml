@@ -43,15 +43,21 @@
                       - title: {{ room["name"] }}
                     {% if room["media_player"].split('.')[0] != 'group' %}
                     # this room has only 1 media player
-                    - type: custom:button-card
-                      template: room_media_player
-                      entity: {{ room["media_player"] }}
-                      {% if room["media_player"].split('.')[0] == 'media_player' %}
-                      tap_action:
-                        !include 
-                          - ../../popups/more-info.yaml
-                          - entity: {{ room["media_player"] }}
-                      {% endif %}
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          padding: 0px;
+                        }
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            template: room_media_player
+                            entity: {{ room["media_player"] }}
+                            tap_action:
+                              !include 
+                                - ../../popups/more-info.yaml
+                                - entity: {{ room["media_player"] }}
                     {% else %}
                     # this room has group of media players
                     - type: custom:mod-card

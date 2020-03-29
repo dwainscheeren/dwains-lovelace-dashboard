@@ -68,4 +68,4 @@ dwains-theme-black:
   switch-checked-track-color: '#515357'                # Background On
   switch-unchecked-track-color: '#131314'              # Background Off
 
-  app-header-background-color: '#fffbdd'
+  app-header-background-color: '#121212'

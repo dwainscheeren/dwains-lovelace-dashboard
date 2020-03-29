@@ -1,7 +1,8 @@
-room_climate:
+room_vacuum:
   show_name: true
   show_icon: true
   show_state: true
+  show_label: false
   show_last_changed: true
   color: 'auto'
   styles:

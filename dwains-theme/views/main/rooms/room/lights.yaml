@@ -25,7 +25,7 @@
               subtitle: {{ room["name"] }}
               navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           #Start for room lights content page
-          {% if room["light"].split('.')[0] == 'light' %}
+          {% if room["light"].split('.')[0] != 'group' %}
           # this room has only 1 light
           {% else %}
           # this room has group of lights

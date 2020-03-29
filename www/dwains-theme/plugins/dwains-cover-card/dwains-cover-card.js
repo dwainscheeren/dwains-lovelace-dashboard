@@ -101,7 +101,7 @@ static get styles() {
         display: block;
         position: relative;
         background: white;
-        margin-bottom: 25px;
+        margin: 0 0 25px 0;
       }
       .card-header {
         font-size: 16px;

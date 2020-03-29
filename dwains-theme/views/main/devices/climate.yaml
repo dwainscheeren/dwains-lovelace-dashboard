@@ -44,9 +44,17 @@
                       - title: {{ room["name"] }}
                     {% if room["climate"].split('.')[0] == 'climate' %}
                     # this room has only 1 climate
-                    - type: custom:button-card
-                      template: room_light
-                      entity: {{ room["climate"] }}
+                    - type: custom:mod-card
+                      style: |
+                        ha-card {
+                          padding: 0px;
+                        }
+                      card:
+                        type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            template: room_climate
+                            entity: {{ room["climate"] }}
                     {% else %}
                     # this room has group of climate
                     # not yet supported                    

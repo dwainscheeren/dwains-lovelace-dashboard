@@ -105,7 +105,7 @@
                     %}
                     {% for button in climate_hvac_modes %}
                     - type: custom:button-card
-                      template: room_climate
+                      template: room_climate_hvac
                       entity: {{ room["climate"] }}
                       icon: '{{ _d_t_icons[button[3]]|default(button[2]) }}'
                       name: '{{ _d_t_trans.climate[button[1]] }}'
