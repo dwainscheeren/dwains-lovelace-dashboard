@@ -48,7 +48,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 * Step 5: Copy all the files from the 1.3.0 zip file over your existing files.
 
-* Step 6: From HA 0.107 there is a new function to make multiple dashboards. Dwains Theme will be installed as a individual dashboard. You need to configure Dwains Theme as default dashboard on each device in your household. You can do this by going to Configuration -> Lovelace Dashboards -> Click on Dwains Theme and click on Set as Default on this device.
+* Step 6: From HA 0.107 there is a new function to make multiple dashboards. Dwains Theme will be installed as a individual dashboard so you need to access it left in the menu from now on. You also need to configure Dwains Theme as default dashboard on each device in your household. You can do this by going to Configuration -> Lovelace Dashboards -> Click on Dwains Theme and click on Set as Default on this device.
 
 #### Changes:
 
