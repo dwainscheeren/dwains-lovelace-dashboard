@@ -62,6 +62,7 @@ Follow all the steps below:
 * **Added new Black and White themes, check them out! :D**
 * **Changed the way HACS plugins are loaded with the new `/hacsfiles/` path, make sure you are at least running HACS 0.22!!**
 * **Made theme compatible with HA 0.107^**
+* On a single light card, now single tap is toggle on/off and double tap is the more info popup.
 * Added support for locks inside a room, use them with `lock:` can be single lock entity or group of locks!
 * Theme automatic detects your Unit System settings from HA automatic and then switchs between Celsius and Fahrenheit.
 * Added new `dwains-weather-card` for weather information in the header on the homepage on desktop/tablet.
