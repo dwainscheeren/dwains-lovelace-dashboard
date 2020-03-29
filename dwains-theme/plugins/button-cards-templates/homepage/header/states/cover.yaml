@@ -65,7 +65,7 @@ header_states_cover:
           [[[
             if(variables.status && variables.status > 0){
               //Open covers
-              return 'bcover';
+              return 'block';
             } else {
               //No open covers
               return 'none';

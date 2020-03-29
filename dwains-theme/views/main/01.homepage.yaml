@@ -35,7 +35,7 @@
               }
             card:
               type: custom:layout-card
-              column_width: [400, 350, 500]
+              column_width: [375, 325, 470]
               layout: horizontal
               justify_content: start
               cards:
@@ -69,9 +69,10 @@
                               template: header_alarm
                               entity: {{ _d_t_config.global["alarm"] }}
                               tap_action:
-                                !include 
-                                  - ../popups/alarm.yaml
-                                  - entity: {{ _d_t_config.global["alarm"] }}
+                                action: more-info
+                                #!include 
+                                #  - ../popups/alarm.yaml
+                                #  - entity: {{ _d_t_config.global["alarm"] }}
                         {% endif %}
                     - type: horizontal-stack
                       cards: 
@@ -90,9 +91,10 @@
                               template: header_alarm_large
                               entity: {{ _d_t_config.global["alarm"] }}
                               tap_action:
-                                !include 
-                                  - ../popups/alarm.yaml
-                                  - entity: {{ _d_t_config.global["alarm"] }}
+                                action: more-info
+                                #!include 
+                                #  - ../popups/alarm.yaml
+                                #  - entity: {{ _d_t_config.global["alarm"] }}
                         {% endif %}
                     - type: custom:layout-card
                       column_width: 360
