@@ -5,6 +5,7 @@ dwains-theme-white:
   dwains-theme-background: '#ffffff'
   dwains-theme-primary: '#fafafa'
   dwains-theme-accent: '#299ec2'
+  dwains-theme-lightbulb: '#fdd613'
   dwains-theme-names: '#262626'
   dwains-theme-grey: '#262626'
 
