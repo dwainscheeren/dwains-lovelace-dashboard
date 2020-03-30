@@ -388,7 +388,7 @@
                                 if(entity){
                                   if (entity.state == 'on'){
                                     return `<ha-icon
-                                      style="height: 20px; color: var(--dwains-theme-accent)"
+                                      style="height: 20px; color: var(--dwains-theme-lightbulb)"
                                       icon="{{ _d_t_icons.light_on|default('fas:lightbulb') }}">
                                       </ha-icon>`
                                   } else {
