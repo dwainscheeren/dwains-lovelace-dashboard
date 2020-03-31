@@ -27,8 +27,7 @@
 - type: module
   url: /hacsfiles/lovelace-layout-card/layout-card.js?v=100
 - type: module
-  #url: /hacsfiles/custom-header/custom-header.js
-  url: /local/dwains-theme/custom-header136.js
+  url: /hacsfiles/custom-header/custom-header.js
 - type: module 
   url: /hacsfiles/lovelace-more-info-card/more-info-card.js
 - type: module
