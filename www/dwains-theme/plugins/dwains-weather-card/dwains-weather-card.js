@@ -8,7 +8,9 @@ import {
     html,
     css
   } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
-  
+
+const VERSION = '0.0.1';
+
 const windDirections = [
   "N",
   "NNE",
@@ -330,4 +332,12 @@ class DwainsWeatherCard extends LitElement {
   }
 }
   
-customElements.define('dwains-weather-card', DwainsWeatherCard);
+
+if(!customElements.get("dwains-weather-card")) {
+  customElements.define("dwains-weather-card", DwainsWeatherCard);
+  console.info(
+    `%c DWAINS-WEATHER-CARD \n%c    Version ${VERSION}    `,
+    'color: #2fbae5; font-weight: bold; background: black',
+    'color: white; font-weight: bold; background: dimgray',
+  );
+}

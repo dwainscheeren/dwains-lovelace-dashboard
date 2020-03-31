@@ -5,6 +5,7 @@ partials_heading_switch:
       - box-shadow: none
       - padding: 6px 0 0 0
       - background: transparent
+      - width: 90px
     name:
       - color: var(--dwains-theme-grey)
       - font-weight: bold

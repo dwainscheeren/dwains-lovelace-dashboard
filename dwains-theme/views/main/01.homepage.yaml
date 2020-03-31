@@ -17,11 +17,12 @@
       card:
         type: vertical-stack
         cards:
+
           #START HOMEPAGE HEADER
           - type: custom:mod-card
             style: |
               ha-card {
-                padding: 4px 4px 4px 4px;
+                padding: 0px;
                 background-color: var(--dwains-theme-header-background);
                 --ha-card-background: transparent;
                 border-radius: 0;
@@ -34,60 +35,39 @@
                 }
               }
             card:
-              type: custom:layout-card
-              column_width: [375, 325, 470]
-              layout: horizontal
-              justify_content: start
+              type: custom:dwains-flexbox-card
               cards:
                 - type: vertical-stack
+                  item_classes: 'col-xs-12 col-sm-6 col-md-5 col-lg-4'
                   cards:
-                    - type: custom:layout-card
-                      column_width: [20%, 60%, 20%]
-                      layout: horizontal
-                      justify_content: start
-                      cards:  
-                        - type: custom:state-switch
-                          entity: mediaquery
-                          states:
-                            "(max-width: 1000px)":
-                              type: custom:button-card
-                              template: header_house_information
+                    - type: custom:dwains-flexbox-card
+                      cards:
+                        - type: custom:button-card
+                          item_classes: 'col-xs-3 d-block d-sm-none'
+                          template: header_house_information
                         {% if _d_t_config.global["weather"] %}
-                        - type: custom:state-switch
-                          entity: mediaquery
-                          states:
-                            "(max-width: 1000px)":
-                              type: custom:button-card
-                              template: header_weather
+                        - type: custom:button-card
+                          item_classes: 'col-xs-6 d-block d-sm-none'
+                          template: header_weather
                         {% endif %}
                         {% if _d_t_config.global["alarm"] %}
-                        - type: custom:state-switch
-                          entity: mediaquery
-                          states:
-                            "(max-width: 1000px)":
-                              type: custom:button-card
-                              template: header_alarm
-                              entity: {{ _d_t_config.global["alarm"] }}
-                              tap_action:
-                                action: more-info
-                                #!include 
-                                #  - ../popups/alarm.yaml
-                                #  - entity: {{ _d_t_config.global["alarm"] }}
+                        - type: custom:button-card
+                          item_classes: 'col-xs-3 d-block d-sm-none'
+                          template: header_alarm
+                          entity: {{ _d_t_config.global["alarm"] }}
+                          tap_action:
+                            action: more-info
+                            #!include 
+                            #  - ../popups/alarm.yaml
+                            #  - entity: {{ _d_t_config.global["alarm"] }}
                         {% endif %}
-                    - type: horizontal-stack
-                      cards: 
-                        - type: custom:state-switch
-                          entity: mediaquery
-                          states:
-                            "(min-width: 1000px)":
-                              type: custom:button-card
+                        - type: horizontal-stack
+                          item_classes: 'col-xs-12 d-none d-sm-block'
+                          cards: 
+                            - type: custom:button-card
                               template: header_house_information_large
-                        {% if _d_t_config.global["alarm"] %}
-                        - type: custom:state-switch
-                          entity: mediaquery
-                          states:
-                            "(min-width: 1000px)":
-                              type: custom:button-card
+                            {% if _d_t_config.global["alarm"] %}
+                            - type: custom:button-card
                               template: header_alarm_large
                               entity: {{ _d_t_config.global["alarm"] }}
                               tap_action:
@@ -95,52 +75,43 @@
                                 #!include 
                                 #  - ../popups/alarm.yaml
                                 #  - entity: {{ _d_t_config.global["alarm"] }}
-                        {% endif %}
-                    - type: custom:layout-card
-                      column_width: 360
-                      layout: horizontal
-                      justify_content: start
-                      cards:   
-                        - type: custom:dwains-notification-card
-                          style: |
-                            ha-card {
-                              padding: 0px 11px 0px;
-                            }
-                            #title {
-                              color: var(--dwains-theme-header-text);
-                              font-size: 22px;
-                              font-weight: bold;
-                            }                        
-                          title: >
-                            [[[
-                              var today = new Date()
-                              var curHr = today.getHours()
-
-                              if (curHr < 12) {
-                                return "{{ _d_t_trans.greetings.good_morning }}";
-                              } else if (curHr < 18) {
-                                return "{{ _d_t_trans.greetings.good_afternoon }}";
-                              } else {
-                                return "{{ _d_t_trans.greetings.good_evening }}";
-                              }
-                            ]]]
-                          max_notifications: 2
-                          navigation_path: more_page_notifications
-                {% if _d_t_config.global["weather"] %}
-                - type: custom:state-switch
-                  entity: mediaquery
-                  states:
-                    "(min-width: 1000px)":
-                      type: custom:dwains-weather-card
-                      entity: {{ _d_t_config.global["weather"] }}
+                            {% endif %}
+                    - type: custom:dwains-notification-card
                       style: |
-                        .variations, .variations ha-icon, #main {
-                          color: var(--dwains-theme-header-button-text) !important;
+                        ha-card {
+                          padding: 0px 11px 0px;
                         }
+                        #title {
+                          color: var(--dwains-theme-header-text);
+                          font-size: 22px;
+                          font-weight: bold;
+                        }                        
+                      title: >
+                        [[[
+                          var today = new Date()
+                          var curHr = today.getHours()
 
-                {% endif %}
+                          if (curHr < 12) {
+                            return "{{ _d_t_trans.greetings.good_morning }}";
+                          } else if (curHr < 18) {
+                            return "{{ _d_t_trans.greetings.good_afternoon }}";
+                          } else {
+                            return "{{ _d_t_trans.greetings.good_evening }}";
+                          }
+                        ]]]
+                      max_notifications: 2
+                      navigation_path: more_page_notifications
+
+                - type: custom:dwains-weather-card
+                  item_classes: 'd-none d-sm-block col-sm-6 col-md-3 col-lg-3'
+                  entity: {{ _d_t_config.global["weather"] }}
+                  style: |
+                    .variations, .variations ha-icon, #main {
+                      color: var(--dwains-theme-header-button-text) !important;
+                    }
                 #Start header states
                 - type: custom:mod-card
+                  item_classes: 'col-12 col-sm-12 col-md-4 col-lg-5'
                   style: |
                     ha-card {
                       margin-top: 5px;
@@ -194,14 +165,7 @@
           - type: custom:mod-card
             style: |
               ha-card {
-                padding-left: 11px;
-              }
-              @media only screen and (max-width: 600px) {
-                ha-card {
-                  width: 360px;
-                  margin: 0 auto;
-                  padding-left: 8px;
-                }
+                padding: 11px;
               }
             card:
               type: custom:state-switch
@@ -222,14 +186,12 @@
                             navigation_path: "#rooms"
                           - name: Devices
                             navigation_path: "#devices"
-                    - type: custom:layout-card
-                      column_width: 180px
-                      layout: horizontal
-                      justify_content: start
+                    - type: custom:dwains-flexbox-card
                       cards:
                         {% for room in _d_t_config.rooms %}
                         # Since we are looping in the rooms do some stuff for the all devices view
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_room
                           {% if room["light"] %}
                           entity: {{ room["light"] }}
@@ -407,9 +369,6 @@
                         - type: markdown
                           content: No rooms defined
                         {% endfor %}
-                        - type: custom:button-card
-                          color_type: blank-card
-                          aspect_ratio: 1/1
 
                 #DEVICES VIEW
                 devices:
@@ -425,10 +384,7 @@
                             navigation_path: "#rooms"
                           - name: Devices
                             navigation_path: "#devices"
-                    - type: custom:layout-card
-                      column_width: 180px
-                      layout: horizontal
-                      justify_content: start
+                    - type: custom:dwains-flexbox-card
                       cards:
                         {% 
                           set devices = namespace (hasLock=false, hasLight=false, hasClimate=false, hasCover=false, hasDevice=false, 
@@ -463,6 +419,7 @@
 
                         {% if devices.hasLock == true %}
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_device
                           icon: '{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}'
                           name: {{ _d_t_trans.lock.title_plural }}
@@ -504,6 +461,7 @@
 
                         {% if devices.hasLight == true %}
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_device
                           icon: '{{ _d_t_icons.light_off|default('far:lightbulb') }}'
                           name: {{ _d_t_trans.light.title_plural }}
@@ -545,6 +503,7 @@
 
                         {% if devices.hasClimate == true %}
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_device
                           icon: '{{ _d_t_icons.climate|default('fas:thermometer-three-quarters') }}'
                           name: {{ _d_t_trans.climate.title }}
@@ -559,6 +518,7 @@
 
                         {% if devices.hasCover == true %}
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_device
                           icon: '{{ _d_t_icons.cover|default('mdi:window-shutter') }}'
                           name: {{ _d_t_trans.cover.title_plural }}
@@ -600,6 +560,7 @@
 
                         {% if devices.hasDevice == true %}
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_device
                           icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
                           name: {{ _d_t_trans.device.title_plural }}
@@ -641,6 +602,7 @@
 
                         {% if devices.hasMediaPlayer == true %}
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_device
                           icon: '{{ _d_t_icons.media_player|default('fas:play') }}'
                           name: {{ _d_t_trans.media_player.title_plural }}
@@ -673,7 +635,7 @@
                               {% endfor %}
 
                               if(onMediaPlayers > 0){
-                                return onDevices + ' ' + hass.localize('state.default.on');
+                                return onMediaPlayers + ' ' + hass.localize('state.default.on');
                               } else {  
                                 return '&nbsp;';
                               }
@@ -682,6 +644,7 @@
 
                         {% if devices.hasVacuum == true %}
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_device
                           icon: '{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}'
                           name: {{ _d_t_trans.vacuum.title }}
@@ -696,6 +659,7 @@
 
                         {% if devices.hasPlant == true %}
                         - type: custom:button-card
+                          item_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
                           template: homepage_device
                           icon: '{{ _d_t_icons.plant|default('fas:leaf') }}'
                           name: {{ _d_t_trans.plant.title_plural }}
@@ -734,7 +698,3 @@
                               }
                             ]]]
                         {% endif %}
-
-                        - type: custom:button-card
-                          color_type: blank-card
-                          aspect_ratio: 1/1

@@ -5,15 +5,15 @@
 - type: css
   url: /local/dwains-theme/style.css
 - type: module
-  url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js
+  url: /local/dwains-theme/plugins/dwains-weather-card/dwains-weather-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-notification-card/dwains-notification-card.js
+  url: /local/dwains-theme/plugins/dwains-notification-card/dwains-notification-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-weather-card/dwains-weather-card.js
+  url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.1
+- type: module
+  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=0.0.1
 
 # Plugins resources (required for dwains theme)
-- type: module
-  url: /hacsfiles/weather-card/weather-card.js
 - type: module
   url: /hacsfiles/lovelace-card-mod/card-mod.js
 - type: module
@@ -27,7 +27,8 @@
 - type: module
   url: /hacsfiles/lovelace-layout-card/layout-card.js?v=100
 - type: module
-  url: /hacsfiles/custom-header/custom-header.js
+  #url: /hacsfiles/custom-header/custom-header.js
+  url: /local/dwains-theme/custom-header136.js
 - type: module 
   url: /hacsfiles/lovelace-more-info-card/more-info-card.js
 - type: module

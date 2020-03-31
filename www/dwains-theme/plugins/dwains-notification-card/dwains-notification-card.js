@@ -4,6 +4,8 @@ import {
   css
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
   
+const VERSION = '0.0.1';
+
 class DwainsNotificationCard extends LitElement {
   constructor() {
     super();
@@ -174,4 +176,11 @@ class DwainsNotificationCard extends LitElement {
   }
 }
 
-customElements.define('dwains-notification-card', DwainsNotificationCard);
+if(!customElements.get("dwains-notification-card")) {
+  customElements.define("dwains-notification-card", DwainsNotificationCard);
+  console.info(
+    `%c DWAINS-NOTIFICATION-CARD  \n%c       Version ${VERSION}       `,
+    'color: #2fbae5; font-weight: bold; background: black',
+    'color: white; font-weight: bold; background: dimgray',
+  );
+}

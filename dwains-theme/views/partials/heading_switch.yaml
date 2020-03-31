@@ -1,10 +1,7 @@
 # dwains_theme
 
 # Heading switch partial
-type: custom:layout-card
-column_width: 95px
-layout: horizontal
-justify_content: start
+type: horizontal-stack
 cards:
   {% for heading in headings %}
   - type: custom:button-card
