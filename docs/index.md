@@ -57,6 +57,8 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @derelict — Thank you very much for this awesome looking and easy to configure Theme
+
 > @Patrick — Great work and thanks for your help!
 
 > @Tom — Nice work!

@@ -76,7 +76,7 @@ Follow all the steps below:
 * If cover with supported_features has also 7 then show the slider instead of the up/down buttons.
 * Hide voice button on Android app.
 * Changed the version number scrape sensor to check 1 times an hour for new theme version.
-
+* Added double click on device card to toggle the device
 
 ## Update 1.2.1
 * Enabled the HA sidebar on mobile on all pages. (Future update will have a option to enable/disable it) Please let me know, if you don't want the sidebar enabled on all pages, in the HA thread.
