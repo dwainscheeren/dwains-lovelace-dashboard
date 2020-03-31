@@ -26,9 +26,13 @@ class DwainsFlexboxCard extends LitElement {
 			.item {
 				margin-bottom: .5rem;
 			}
+
+			.wrapper {
+				overflow: hidden;
+			}
 			.row {
 				overflow: hidden;
-				width: 100%;
+				width: auto;
 			}
 
 			.d-none {
@@ -250,9 +254,11 @@ class DwainsFlexboxCard extends LitElement {
 	  }
   
 	  return html`
-      	<div class="row">
-          ${this._cards}
-      	</div>
+		<div class="wrapper">
+			<div class="row">
+			${this._cards}
+			</div>
+		</div>
 	  `;
 	}
   
