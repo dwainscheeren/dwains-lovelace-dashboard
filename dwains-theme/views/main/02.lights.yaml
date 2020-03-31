@@ -30,14 +30,12 @@
                 padding-left: 11px;
               }
             card:
-              type: custom:layout-card
-              column_width: 360px
-              #layout: horizontal
-              justify_content: start
+              type: custom:dwains-flexbox-card
               cards:
                 {% for room in _d_t_config.rooms %}
                 {% if room["light"] %}
                 - type: vertical-stack
+                  item_classes: 'col-12 col-sm-6 col-md-3 col-lg-3'
                   cards:
                     #Heading
                     - !include
@@ -96,7 +94,7 @@
                           type: custom:layout-card
                           min_columns: 2
                           max_columns: 2
-                          column_width: 180px
+                          column_width: 50%
                           layout: horizontal
                           justify_content: start
                     {% endif %}
