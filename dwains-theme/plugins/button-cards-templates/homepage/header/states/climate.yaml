@@ -1,0 +1,76 @@
+# dwains_theme
+
+header_states_climate:
+  show_state: false
+  show_label: true
+  tap_action: 
+    action: more-info
+  name: {{ _d_t_trans.climate.title }}
+  icon: '{{ _d_t_icons.climate|default('fas:thermometer-three-quarters') }}'
+  variables:
+    status: >
+      [[[
+        var onClimates = 0;
+
+        {% for room in _d_t_config.rooms %}                        
+          //Do some things for the climate
+          {% if room["climate"] %}
+            {% if room["climate"].split('.')[0] == 'climate' %}
+            //This room has only 1 climate
+              if(states['{{ room["climate"] }}']){
+                if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
+                  onClimates++;
+                } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
+                  onClimates++;
+                }
+              }
+            {% elif room["climate"].split('.')[0] == 'group' %}
+            //This room has group of climates
+            //Not yet supported
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        return onClimates;
+      ]]]
+  label: >
+    [[[
+      if(variables.status > 0){
+        var onClimates = variables.status;
+        return onClimates + ' ' + hass.localize('state.default.on');
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i""n""l"'
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 40px
+      - height: 40px
+      - background: '#661fff'
+      - color: white
+      - border-radius: 100%
+    card:
+      - box-shadow: none
+      - padding: 0%
+      - width: 61px
+      - display: >
+          [[[
+            if(variables.status && variables.status > 0){
+              //On devices
+              return 'block';
+            } else {
+              //No on devices
+              return 'none';
+            }
+          ]]]
+    label:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 12px
+    name:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 13px

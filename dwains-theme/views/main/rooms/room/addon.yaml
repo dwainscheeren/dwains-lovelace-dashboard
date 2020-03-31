@@ -7,7 +7,7 @@
 {% for addon in room["addons"] %}
 - title: {{ addon["name"] }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
-  badges: []
+  panel: true
   cards:    
     - type: custom:mod-card
       style: | 

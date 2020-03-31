@@ -18,7 +18,7 @@ header_states_vacuum:
         {% for room in _d_t_config.rooms %}
           //Do some things for the vacuums
           {% if room["vacuum"] %}
-            if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state == 'on') {
+            if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked') {
               onVacuums++;
             }
           {% endif %}
