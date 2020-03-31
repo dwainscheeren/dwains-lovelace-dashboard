@@ -15,7 +15,7 @@ header_house_information:
       - grid-template-rows: min-content
     card:
       - box-shadow: none
-      - padding: 0 0 0 7px
+      - padding: 0 0
     icon:
       - color: white
       - width: 55%

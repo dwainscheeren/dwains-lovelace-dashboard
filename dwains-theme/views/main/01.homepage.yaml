@@ -22,10 +22,11 @@
           - type: custom:mod-card
             style: |
               ha-card {
-                padding: 0px;
+                padding: 11px;
                 background-color: var(--dwains-theme-header-background);
                 --ha-card-background: transparent;
                 border-radius: 0;
+                overflow: hidden;
               } 
               @media only screen and (min-width: 600px) {
                 ha-card {
@@ -79,7 +80,7 @@
                     - type: custom:dwains-notification-card
                       style: |
                         ha-card {
-                          padding: 0px 11px 0px;
+                          padding: 0px;
                         }
                         #title {
                           color: var(--dwains-theme-header-text);

@@ -282,12 +282,12 @@ class DwainsWeatherCard extends LitElement {
         font-weight: 300;
         color: var(--primary-text-color);
         list-style: none;
-        padding: 0 1em;
+        padding: 0 0.5em;
         margin: 0;
       }
       .variations ha-icon {
         height: 22px;
-        margin-right: 5px;
+        margin-right: 3px;
         color: var(--paper-item-icon-color);
       }
       .variations li {
