@@ -4,7 +4,8 @@ header_states_plant:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_plants
   name: {{ _d_t_trans.plant.title }}
   icon: '{{ _d_t_icons.plant|default('fas:leaf') }}'
   variables:

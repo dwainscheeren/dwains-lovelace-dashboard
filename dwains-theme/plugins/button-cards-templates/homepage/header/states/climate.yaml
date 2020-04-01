@@ -4,7 +4,8 @@ header_states_climate:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_climates
   name: {{ _d_t_trans.climate.title }}
   icon: '{{ _d_t_icons.climate|default('fas:thermometer-three-quarters') }}'
   variables:

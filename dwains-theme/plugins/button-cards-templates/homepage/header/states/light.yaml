@@ -4,7 +4,8 @@ header_states_light:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: lights
   name: > 
     [[[ 
       return hass.localize('domain.light'); 

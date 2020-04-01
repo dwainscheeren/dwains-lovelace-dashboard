@@ -4,7 +4,8 @@ header_states_device:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_devices
   name: {{ _d_t_trans.device.title }}
   icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
   variables:

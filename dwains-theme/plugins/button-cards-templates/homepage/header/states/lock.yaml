@@ -4,7 +4,8 @@ header_states_lock:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_locks
   name: > 
     [[[ 
       return hass.localize('domain.lock'); 

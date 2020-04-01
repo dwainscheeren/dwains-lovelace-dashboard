@@ -4,7 +4,8 @@ header_states_media_player:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_media_players
   name: {{ _d_t_trans.media_player.title }}
   icon: '{{ _d_t_icons.media_player|default('fas:play') }}'
   variables:

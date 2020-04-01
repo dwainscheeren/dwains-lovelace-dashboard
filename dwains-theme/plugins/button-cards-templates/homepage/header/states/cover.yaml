@@ -4,7 +4,8 @@ header_states_cover:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_covers
   name: > 
     [[[ 
       return hass.localize('domain.cover'); 
