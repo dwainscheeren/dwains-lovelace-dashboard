@@ -26,7 +26,9 @@
               subtitle: {{ room["name"] }}
               navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           #Start for a custom more page
-          - type: vertical-stack
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12'
             cards:
               !include 
                 - ../../../../../{{ addon["path"] }}

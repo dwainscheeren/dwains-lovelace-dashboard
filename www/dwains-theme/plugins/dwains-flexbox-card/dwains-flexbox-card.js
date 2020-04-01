@@ -5,7 +5,7 @@ import {
   } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 	
 const CUSTOM_TYPE_PREFIX = "custom:";
-const VERSION = '0.0.1';
+const VERSION = '0.0.2';
   
 class DwainsFlexboxCard extends LitElement {
 	static get properties() {
@@ -29,6 +29,10 @@ class DwainsFlexboxCard extends LitElement {
 
 			.wrapper {
 				overflow: hidden;
+				padding: 0px;
+			}
+			.wrapper.padding {
+				padding: 11px;
 			}
 			.row {
 				overflow: hidden;
@@ -207,14 +211,24 @@ class DwainsFlexboxCard extends LitElement {
 	}
   
 	setConfig(config) {
-	  if (!config || !config.cards || !Array.isArray(config.cards)) {
+	  if (!config 
+		  && ((!config.cards && !Array.isArray(config.cards)) 
+			  || (!config.entities || !Array.isArray(config.entities)) ) 
+    ) {
 		  throw new Error("Card config incorrect");
 	  }
 	  this._config = config;
-	  this._cards = this._config.cards.map((card) => {
-		const element = this._createCardElement(card);
-		  return element;
-	  });
+		if(config.entities){
+      this._cards = this._config.entities.map((card) => {
+      const element = this._createCardElement(card);
+        return element;
+      });
+		} else if(config.cards){
+      this._cards = this._config.cards.map((card) => {
+        const element = this._createCardElement(card);
+          return element;
+        });
+		}
 	}
   
 	set hass(hass) {
@@ -252,13 +266,18 @@ class DwainsFlexboxCard extends LitElement {
 	  if (!this._config || !this._hass) {
 		  return html``;
 	  }
+
+	  var padding;
+	  if(this._config.padding){
+		  padding = 'padding';
+	  }
   
 	  return html`
-		<div class="wrapper">
-			<div class="row">
-			${this._cards}
-			</div>
-		</div>
+      <div class="wrapper ${padding}">
+        <div class="row">
+          ${this._cards}
+        </div>
+      </div>
 	  `;
 	}
   
@@ -302,7 +321,11 @@ class DwainsFlexboxCard extends LitElement {
 		  //console.log(cardConfig.grid);
       element.className = "item " + cardConfig.item_classes;
     } else {
-	    element.className = "item";
+      if(this._config.items_classes){
+          element.className = "item " + this._config.items_classes;
+        } else {
+          element.className = "item";
+      }
     }
   
 	  if ("card_width" in this._config) {

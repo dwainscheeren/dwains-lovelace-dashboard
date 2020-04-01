@@ -17,7 +17,7 @@ header_house_information_large:
     card:
       - box-shadow: none
       - padding: 4px
-      - background: '#181818'
+      - background: var(--dwains-theme-header-button-background)
       - border-radius: 15px
       - width: auto
     icon:

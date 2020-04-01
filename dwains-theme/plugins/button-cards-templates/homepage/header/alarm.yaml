@@ -18,7 +18,7 @@ header_alarm:
     img_cell:
       - width: 40px
       - height: 40px
-      - background-color: var(--dwains-theme-alarm-background)
+      - background: var(--dwains-theme-header-button-background)
       - border-radius: 100%
       - justify-self: end
   state:

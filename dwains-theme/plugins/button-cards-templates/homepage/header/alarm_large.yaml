@@ -13,7 +13,7 @@ header_alarm_large:
     card:
       - box-shadow: none
       - padding: 4px
-      - background: '#181818'
+      - background: var(--dwains-theme-header-button-background)
       - border-radius: 15px
       - margin-left: 11px
       - width: auto

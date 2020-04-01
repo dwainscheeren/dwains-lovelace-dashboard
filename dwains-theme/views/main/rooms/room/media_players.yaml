@@ -29,31 +29,24 @@
           # this room has only 1 media_player
           {% else %}
           # this room has group of media_players
-          - type: custom:mod-card
-            style: |
-              ha-card {
-                padding-left: 11px;
-              }
+          - type: custom:auto-entities
+            filter:
+              include:
+                - group: {{ room["media_player"] }}
+                  options:
+                    type: custom:button-card
+                    template: room_media_player
+                    tap_action:
+                      !include 
+                        - ../../../popups/more-info.yaml
+                        - entity: this.entity_id
+            sort:
+              method: name
+              ignore_case: true
             card:
-              type: custom:auto-entities
-              filter:
-                include:
-                  - group: {{ room["media_player"] }}
-                    options:
-                      type: custom:button-card
-                      template: room_media_player
-                      tap_action:
-                        !include 
-                          - ../../../popups/more-info.yaml
-                          - entity: this.entity_id
-              sort:
-                method: name
-                ignore_case: true
-              card:
-                type: custom:layout-card
-                column_width: 180px
-                layout: horizontal
-                justify_content: start
+              type: custom:dwains-flexbox-card
+              padding: true
+              items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
           {% endif %}
 {% endif %}
 {% endfor %}

@@ -6,6 +6,7 @@
 {% if person["more_entities"] %}
 - title: {{ person["name"] }} {{ _d_t_trans.more_entities.title }}
   path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
+  panel: true
   cards:    
     - type: custom:mod-card
       style: | 
@@ -24,28 +25,19 @@
               subtitle: {{ person["name"] }}
               navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           #Start for person more_entities content page
-          - type: custom:mod-card
-            style: |
-              ha-card {
-                padding-left: 11px;
-              }
-            card:
-              type: custom:layout-card
-              min_columns: {{ person["more_entities"]["columns"] | default('2') }}
-              max_columns: {{ person["more_entities"]["columns"] | default('2') }}
-              column_width: 180px
-              layout: horizontal
-              justify_content: start
-              cards:
-                {% for more_entity in person["more_entities"]["entities"] %}
-                - type: custom:button-card
-                  entity: {{ more_entity["entity"] }}
-                  template: room_more_entity
-                  tap_action:
-                    !include 
-                      - ../../../popups/more-info.yaml
-                      - entity: {{ more_entity["entity"] }}
-                {% endfor %}
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+            cards:
+              {% for more_entity in person["more_entities"]["entities"] %}
+              - type: custom:button-card
+                entity: {{ more_entity["entity"] }}
+                template: room_more_entity
+                tap_action:
+                  !include 
+                    - ../../../popups/more-info.yaml
+                    - entity: {{ more_entity["entity"] }}
+              {% endfor %}
 {% endif %}
 {% endfor %}
 {% endif %}

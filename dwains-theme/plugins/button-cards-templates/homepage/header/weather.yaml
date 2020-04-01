@@ -68,7 +68,7 @@ header_weather:
       - grid-template-rows: auto
       - justify-self: center
       - width: auto
-      - background: '#181818'
+      - background: var(--dwains-theme-header-button-background)
       - border-radius: 15px
       - padding: 0 10px
     card:

@@ -51,7 +51,7 @@ header_states_plant:
     img_cell:
       - width: 40px
       - height: 40px
-      - background: '#661fff'
+      - background: var(--dwains-theme-header-button-background)
       - color: white
       - border-radius: 100%
     card:

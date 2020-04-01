@@ -11,10 +11,7 @@ dwains-theme-white:
   dwains-theme-header-background: '#fafafa'
   dwains-theme-header-text: 'var(--dwains-theme-names)'
   dwains-theme-header-button-text: '#f2f2f7'
-
-  #homepage alarm icon
-  dwains-theme-alarm-background: '#1c1c1e'
-  dwains-theme-alarm-icon: ''
+  dwains-theme-header-button-background: '#1c1c1e'
 
   ## Lovelace Theme
   # Wallpaper/Background Image

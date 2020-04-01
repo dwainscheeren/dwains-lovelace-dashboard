@@ -11,7 +11,7 @@
 - type: module
   url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=0.0.1
+  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=0.0.2
 
 # Plugins resources (required for dwains theme)
 - type: module
@@ -25,7 +25,7 @@
 - type: module
   url: /hacsfiles/lovelace-auto-entities/auto-entities.js
 - type: module
-  url: /hacsfiles/lovelace-layout-card/layout-card.js?v=100
+  url: /hacsfiles/lovelace-layout-card/layout-card.js
 - type: module
   url: /hacsfiles/custom-header/custom-header.js
 - type: module 

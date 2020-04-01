@@ -22,7 +22,7 @@ header_house_information:
     img_cell:
       - width: 40px
       - height: 40px
-      - background: '#181818'
+      - background: var(--dwains-theme-header-button-background)
       - color: white
       - border-radius: 100%
       - justify-self: start

@@ -52,7 +52,7 @@ header_states_door:
     img_cell:
       - width: 40px
       - height: 40px
-      - background: '#01c953'
+      - background: var(--dwains-theme-header-button-background)
       - color: white
       - border-radius: 100%
     card:

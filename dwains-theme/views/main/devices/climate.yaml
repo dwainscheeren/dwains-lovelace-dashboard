@@ -23,41 +23,34 @@
               subtitle: {{ _d_t_trans.home.title }}
               navigation_path: home#devices
           #Start for room climate content page
-          - type: custom:mod-card
-            style: |
-              ha-card {
-                padding-left: 11px;
-              }
-            card:
-              type: custom:layout-card
-              column_width: 360px
-              #layout: horizontal
-              justify_content: start
-              cards:
-                {% for room in _d_t_config.rooms %}
-                {% if room["climate"] %}
-                - type: vertical-stack
-                  cards:
-                    #Heading
-                    - !include
-                      - ../../partials/heading.yaml
-                      - title: {{ room["name"] }}
-                    {% if room["climate"].split('.')[0] == 'climate' %}
-                    # this room has only 1 climate
-                    - type: custom:mod-card
-                      style: |
-                        ha-card {
-                          padding: 0px;
-                        }
-                      card:
-                        type: horizontal-stack
-                        cards:
-                          - type: custom:button-card
-                            template: room_climate
-                            entity: {{ room["climate"] }}
-                    {% else %}
-                    # this room has group of climate
-                    # not yet supported                    
-                    {% endif %}
-                {% endif %}
-                {% endfor %}
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+            cards:
+              {% for room in _d_t_config.rooms %}
+              {% if room["climate"] %}
+              - type: vertical-stack
+                cards:
+                  #Heading
+                  - !include
+                    - ../../partials/heading.yaml
+                    - title: {{ room["name"] }}
+                  {% if room["climate"].split('.')[0] == 'climate' %}
+                  # this room has only 1 climate
+                  - type: custom:mod-card
+                    style: |
+                      ha-card {
+                        padding: 0px;
+                      }
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:button-card
+                          template: room_climate
+                          entity: {{ room["climate"] }}
+                  {% else %}
+                  # this room has group of climate
+                  # not yet supported                    
+                  {% endif %}
+              {% endif %}
+              {% endfor %}
