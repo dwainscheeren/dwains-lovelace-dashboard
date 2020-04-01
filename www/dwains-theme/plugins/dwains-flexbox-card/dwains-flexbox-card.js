@@ -210,7 +210,7 @@ class DwainsFlexboxCard extends LitElement {
 	  ];
 	}
   
-	setConfig(config) {
+	async setConfig(config) {
 	  if (!config 
 		  && ((!config.cards && !Array.isArray(config.cards)) 
 			  || (!config.entities || !Array.isArray(config.entities)) ) 
