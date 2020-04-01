@@ -18,13 +18,12 @@ header_alarm_large:
       - margin-left: 11px
       - width: auto
     icon:
-      - color: white
+      - color: var(--dwains-theme-header-button-text)
       - width: 55%
     img_cell:
       - width: 40px
       - height: 40px
-      - background: '#181818'
-      - color: white
+      - color: var(--dwains-theme-header-button-text)
       - border-radius: 100%
       - justify-self: start
     state:

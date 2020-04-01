@@ -108,6 +108,9 @@
                   item_classes: 'd-none d-sm-block col-sm-6 col-md-3 col-lg-3'
                   entity: {{ _d_t_config.global["weather"] }}
                   style: |
+                    ha-card {
+                      background: var(--dwains-theme-header-button-background) !important;
+                    }
                     .variations, .variations ha-icon, #main {
                       color: var(--dwains-theme-header-button-text) !important;
                     }

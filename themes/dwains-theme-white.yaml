@@ -10,8 +10,8 @@ dwains-theme-white:
 
   dwains-theme-header-background: '#fafafa'
   dwains-theme-header-text: 'var(--dwains-theme-names)'
-  dwains-theme-header-button-text: '#f2f2f7'
-  dwains-theme-header-button-background: '#1c1c1e'
+  dwains-theme-header-button-text: '#262626'
+  dwains-theme-header-button-background: '#e3e3e3'
 
   ## Lovelace Theme
   # Wallpaper/Background Image
