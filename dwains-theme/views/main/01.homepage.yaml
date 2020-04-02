@@ -126,6 +126,7 @@
                     }
                   card:
                     type: custom:swipe-card
+                    card_width: '62px'
                     cards:
                       {% if _d_t_config.persons %}
                       {% for person in _d_t_config.persons %}

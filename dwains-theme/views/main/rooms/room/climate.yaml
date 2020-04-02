@@ -29,7 +29,7 @@
             padding: true
             items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
             cards:
-              {% if room["climate"] %}
+              {% if room["climatee"] %}
               - type: custom:dwains-flexbox-card
                 cards:
                   - type: thermostat
@@ -134,16 +134,24 @@
                                 - color: var(--dwains-theme-names)
                       {% endfor %}
               {% elif room["temperature"] %}
-              - type: markdown
-                style: |
-                  ha-card {
-                    box-shadow: none;
-                    background: none;
-                    font-size: 50px;
-                    text-align: center;
-                  }
-                content: >
-                  {% raw %}{{ states('{% endraw %}{{ room["temperature"] }}{% raw %}') }}{% endraw %} °C
+              - type: custom:dwains-flexbox-card
+                cards:
+                  - type: custom:button-card
+                    item_classes: 'col-xs-12'
+                    template: room_climate_info
+                    entity: {{ room["temperature"] }}
+                  {% if room["humidity"] %}
+                  - type: custom:button-card
+                    item_classes: 'col-xs-6'
+                    template: room_climate_info
+                    entity: {{ room["humidity"] }}
+                  {% endif %}
+                  {% if room["pressure"] %}
+                  - type: custom:button-card
+                    item_classes: 'col-xs-6'
+                    template: room_climate_info
+                    entity: {{ room["pressure"] }}
+                  {% endif %}
               {% endif %}
 
               #Start of graphs
@@ -173,6 +181,11 @@
                         show_state: true
                         show_indicator: true
                         name: {{ _d_t_trans.climate.humidity }}
+                      {% endif %}
+                      {% if room["pressure"] %}
+                      - entity: {{ room["pressure"] }}
+                        show_state: true
+                        show_indicator: true
                       {% endif %}
                     graph: line
                     show:

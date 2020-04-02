@@ -27,9 +27,7 @@ header_weather:
     ]]]
   entity: {{ _d_t_config.global["weather"] }}
   tap_action:
-    !include 
-      - ../../../../views/popups/weather.yaml
-      - entity: {{ _d_t_config.global["weather"] }}
+    action: more-info
   state:
     - value: clear-night
       icon: mdi:weather-night
