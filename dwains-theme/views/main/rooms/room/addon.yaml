@@ -26,16 +26,20 @@
               subtitle: {{ room["name"] }}
               navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           #Start for a custom more page
-          - type: custom:dwains-flexbox-card
-            padding: true
-            items_classes: 'col-xs-12'
-            cards:
-              !include 
-                - ../../../../../{{ addon["path"] }}
-                - name: {{ addon["name"] }}
-                  {% if addon["data"] %}
-                  data: '{{ addon["data"]|tojson }}'
-                  {% endif %}
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                padding: 11px;
+              }
+            card:
+              type: vertical-stack
+              cards:
+                !include 
+                  - ../../../../../{{ addon["path"] }}
+                  - name: {{ addon["name"] }}
+                    {% if addon["data"] %}
+                    data: '{{ addon["data"]|tojson }}'
+                    {% endif %}
 {% endfor %}
 {% endif %}
 {% endfor %}

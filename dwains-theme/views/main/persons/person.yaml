@@ -38,7 +38,7 @@
           #Start for person content page
           - type: custom:dwains-flexbox-card
             padding: true
-            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+            items_classes: 'col-xs-12 col-sm-6 col-md-4 col-lg-4'
             cards:
               - type: custom:button-card
                 template: persons_person
@@ -65,7 +65,7 @@
                         }
               {% if person["page_entities"] and person["page_entities"]["entities"] %}
               - type: custom:dwains-flexbox-card
-                items_classes: 'col-xs-12'
+                items_classes: 'col-xs-6'
                 cards:
                   {% for page_entity in person["page_entities"]["entities"] %}
                   - type: custom:button-card
@@ -76,6 +76,12 @@
                         - ../../popups/more-info.yaml
                         - entity: {{ page_entity["entity"] }}
                   {% endfor %}
+              {% endif %}
+              {% if person["show_map"] != 'false' %}
+              - type: map
+                aspect_ratio: 16x9
+                entities:
+                  - {{ person["track"] }}
               {% endif %}
               {% if person["addons"] %}
               {% for addon in person["addons"] %}
@@ -90,11 +96,5 @@
                       {% endif %}
               {% endfor %}
               {% endif %}
-          {% if person["show_map"] != 'false' %}
-          - type: map
-            aspect_ratio: 16x9
-            entities:
-              - {{ person["track"] }}
-          {% endif %}
 {% endfor %}
 {% endif %}

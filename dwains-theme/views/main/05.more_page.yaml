@@ -53,7 +53,6 @@
               - !include
                 - ../partials/heading.yaml
                 - title: {{ _d_t_trans.more_page.more_page_addons }}
-                  padding_left: 11px
               #Addons start
               {% for more_page in _d_t_config.more_page["addons"] %}
               - type: custom:button-card

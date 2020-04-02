@@ -110,6 +110,7 @@
           - !include
             - ../../partials/heading.yaml
             - title: {{ _d_t_trans.house_information.activity }}
+              padding_left: 11px
           #loop all rooms and get all open doors, windows, motion
           {% for room in _d_t_config.rooms %}
           #Doors

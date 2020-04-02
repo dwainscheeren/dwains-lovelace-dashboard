@@ -39,23 +39,36 @@
               type: custom:dwains-flexbox-card
               padding: true
               cards:
-                - type: vertical-stack
+                - type: custom:dwains-flexbox-card
                   item_classes: 'col-xs-12 col-sm-6 col-md-5 col-lg-4'
                   cards:
-                    - type: custom:dwains-flexbox-card
-                      cards:
+                    - type: custom:button-card
+                      item_classes: 'col-xs-3 d-block d-sm-none'
+                      template: header_house_information
+                    {% if _d_t_config.global["weather"] %}
+                    - type: custom:button-card
+                      item_classes: 'col-xs-6 d-block d-sm-none'
+                      template: header_weather
+                    {% endif %}
+                    {% if _d_t_config.global["alarm"] %}
+                    - type: custom:button-card
+                      item_classes: 'col-xs-3 d-block d-sm-none'
+                      template: header_alarm
+                      entity: {{ _d_t_config.global["alarm"] }}
+                      tap_action:
+                        action: more-info
+                        #!include 
+                        #  - ../popups/alarm.yaml
+                        #  - entity: {{ _d_t_config.global["alarm"] }}
+                    {% endif %}
+                    - type: horizontal-stack
+                      item_classes: 'col-xs-12 d-none d-sm-block'
+                      cards: 
                         - type: custom:button-card
-                          item_classes: 'col-xs-3 d-block d-sm-none'
-                          template: header_house_information
-                        {% if _d_t_config.global["weather"] %}
-                        - type: custom:button-card
-                          item_classes: 'col-xs-6 d-block d-sm-none'
-                          template: header_weather
-                        {% endif %}
+                          template: header_house_information_large
                         {% if _d_t_config.global["alarm"] %}
                         - type: custom:button-card
-                          item_classes: 'col-xs-3 d-block d-sm-none'
-                          template: header_alarm
+                          template: header_alarm_large
                           entity: {{ _d_t_config.global["alarm"] }}
                           tap_action:
                             action: more-info
@@ -63,22 +76,8 @@
                             #  - ../popups/alarm.yaml
                             #  - entity: {{ _d_t_config.global["alarm"] }}
                         {% endif %}
-                        - type: horizontal-stack
-                          item_classes: 'col-xs-12 d-none d-sm-block'
-                          cards: 
-                            - type: custom:button-card
-                              template: header_house_information_large
-                            {% if _d_t_config.global["alarm"] %}
-                            - type: custom:button-card
-                              template: header_alarm_large
-                              entity: {{ _d_t_config.global["alarm"] }}
-                              tap_action:
-                                action: more-info
-                                #!include 
-                                #  - ../popups/alarm.yaml
-                                #  - entity: {{ _d_t_config.global["alarm"] }}
-                            {% endif %}
                     - type: custom:dwains-notification-card
+                      item_classes: 'col-xs-12'
                       style: |
                         ha-card {
                           padding: 0px;
@@ -103,7 +102,6 @@
                         ]]]
                       max_notifications: 2
                       navigation_path: more_page_notifications
-
                 - type: custom:dwains-weather-card
                   item_classes: 'd-none d-sm-block col-sm-6 col-md-3 col-lg-3'
                   entity: {{ _d_t_config.global["weather"] }}

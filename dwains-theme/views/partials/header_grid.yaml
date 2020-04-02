@@ -12,7 +12,7 @@ style: |
     font-weight: bold;
     font-size: 14px;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
   }
   @media only screen and (min-width: 600px) {
     ha-card {
@@ -22,14 +22,10 @@ style: |
     }
   }
 card:
-  type: custom:layout-card
-  layout: grid
-  gridrows: auto
-  gridcols: 90% 10%
-  cards:    
+  type: custom:dwains-flexbox-card
+  cards:
     - type: markdown
-      gridrow: 1 / 1
-      gridcol: 1 / 2
+      item_classes: 'col-xs-8'
       style: | 
         ha-card {
           background: transparent;
@@ -71,8 +67,7 @@ card:
         <h3>{{ subtitle }}</h3>
         <h1>{{ title }}</h1>
     - type: vertical-stack
-      gridrow: 1 / 1
-      gridcol: 2 / 2
+      item_classes: 'col-xs-4'
       cards:
         {% if type and type == 'button' %}
         - type: custom:button-card

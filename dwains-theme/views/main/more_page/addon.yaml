@@ -27,8 +27,7 @@
           - type: custom:mod-card
             style: |
               ha-card {
-                padding-left: 11px;
-                padding-right: 11px;
+                padding: 11px;
               }
             card:
               type: vertical-stack

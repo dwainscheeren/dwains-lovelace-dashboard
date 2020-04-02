@@ -11,7 +11,7 @@ style: |
     border-radius: 0; 
     font-weight: bold;
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
   }
   @media only screen and (min-width: 600px) {
     ha-card {

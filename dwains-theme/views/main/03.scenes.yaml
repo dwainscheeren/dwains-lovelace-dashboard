@@ -22,7 +22,7 @@
           #Start for scenes page
           #Scenes
           - type: custom:dwains-flexbox-card
-            items_classes: 'col-xs-12 col-sm-6 col-md-4 col-lg-3'
+            items_classes: 'col-xs-6 col-sm-4 col-md-3 col-lg-2'
             padding: true
             cards:
             {% for scene in _d_t_config.scenes %}
