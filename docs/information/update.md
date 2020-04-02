@@ -48,7 +48,7 @@ Follow all the steps below:
 
 * Step 4: `ui-lovelace.yaml` in the root of your HA setup is no longer required so remove this file.
 
-* Step 5: **This version is only compatible with Home Assistant version 0.107 or newer, please make sure you update to 0.107. Note that version Dwains Theme 1.2.1 or older wont work again in HA 0.107**
+* Step 5: **Update your HA to 0.107! This version is only compatible with Home Assistant version 0.107 or newer.**
 
 * Step 6: Reboot your HA!! And clear your browser cache.
 
@@ -64,6 +64,7 @@ Follow all the steps below:
 * **Made theme compatible with HA 0.107^**
 * On a single light card, now single tap is toggle on/off and double tap is the more info popup.
 * Added support for locks inside a room, use them with `lock:` can be single lock entity or group of locks!
+* Added support for pressure inside a room, use them with `pressure:`.
 * Theme automatic detects your Unit System settings from HA automatic and then switchs between Celsius and Fahrenheit.
 * Added new `dwains-weather-card` for weather information in the header on the homepage on desktop/tablet.
 * Changed `custom:cover-slider-card` to `custom:dwains-cover-card`.
