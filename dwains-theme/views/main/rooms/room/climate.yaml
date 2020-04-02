@@ -29,7 +29,7 @@
             padding: true
             items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
             cards:
-              {% if room["climatee"] %}
+              {% if room["climate"] %}
               - type: custom:dwains-flexbox-card
                 cards:
                   - type: thermostat
