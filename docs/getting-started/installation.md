@@ -2,7 +2,7 @@
 
 # Installation
 
-Did you read and followed the preparation part? No? [Check that out first](preparation.md).
+Did you read and followed the preparation part? No? [Check that out first](preparations.md).
 
 **Dwains Theme is only compatible with HA 0.107 or newer!**
 
