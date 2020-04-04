@@ -34,7 +34,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
-## Update 1.3.0 (coming soon)
+## Update 1.3.0
 
 #### How to update to 1.3.0? 
 

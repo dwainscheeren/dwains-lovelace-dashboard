@@ -2,6 +2,10 @@
 
 # Installation
 
+Did you read and followed the preparation part? No? [Check that out first](preparation.md).
+
+**Dwains Theme is only compatible with HA 0.107 or newer!**
+
 Follow all the steps on this page! Start with the HACS part.
 
 ## Installing required HACS Plugins & Components
@@ -53,10 +57,7 @@ Download the [latest release from the release page](https://github.com/dwainsche
 
 1. Unzip the file you just downloaded and copy the content of it. 
 2. Go to the main folder of your Home Assistant installation. This is the folder where you config is. (Hint: its the folder where the file `ui-lovelace.yaml` and `configuration.yaml` is located).
-3. Rename your existing file `ui-lovelace.yaml` to `ui-lovelace.back.yaml` (so you have a backup of this file).
-2. Copy the content of the downloaded folder to the main folder of your Home Assistant installation.
-
-*NOTE: You need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder*
+3. Copy the content of the downloaded folder to the main folder of your Home Assistant installation.
 
 ### Step 3 - Set the configuration files
 
