@@ -65,6 +65,8 @@ If you donate please write a short message with your HA username :D
 
 > @Scotty — love your theme, hope you enjoy the coffee :-)
 
+> @Chrisiesmit93 — Thanks for all the hard work on your theme and the support you give to everyone! Keep up the good work :)
+
 > @canedje — Beautifull theme
 
 > @smithtec — Thanks for all the hard work on your theme and the support you give to everyone! Keep up the good work :)
