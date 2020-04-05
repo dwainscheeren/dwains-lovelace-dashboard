@@ -57,6 +57,10 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @Greetoz — 
+
+> @Scotty — love your theme, hope you enjoy the coffee :-)
+
 > @canedje — Beautifull theme
 
 > @smithtec — Thanks for all the hard work on your theme and the support you give to everyone! Keep up the good work :)
