@@ -57,6 +57,8 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @Rooaaarrrr — Hey Dwain, amazing work deserves more than one coffee!!
+
 > @Greetoz — 
 
 > @Scotty — love your theme, hope you enjoy the coffee :-)
