@@ -57,6 +57,16 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> @Cameron — Thank you for all your hard work and keep going its nice to be able to use your theme. Cameron
+
+> @Dank — many thanks for your hard work on this theme...it is gorgeous
+
+> @stocker — 
+
+> @noodlemctwoodle — 
+
+> @Janus — 
+
 > @Broesie — 
 
 > @Rooaaarrrr — Hey Dwain, amazing work deserves more than one coffee!!
