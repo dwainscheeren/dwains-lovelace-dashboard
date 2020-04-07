@@ -46,6 +46,8 @@ Follow the normal update manual (top of this page)
 
 * Fixed a bug in `dwains-flexbox-card` that it sometimes loads slow, now it's a lot faster.
 * Added translations for Rooms & Devices on homepage.
+* The margin above the header is now only applied on laptop & dekstop view.
+* Fixed bug for width of tabs on mobile, now you can't scroll horizontal anymore.
 
 
 ## Update 1.3.0

@@ -23,7 +23,6 @@ In the left side menu click on Community and then on the Tab PLUGINS. Search for
 
 | Name | Type | Required | Description |
 |----------------------------------|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Weather card | Module | Yes | Weather Card with animated icons for Home Assistant Lovelace |
 | Card-mod | Module | Yes | Add CSS styles to (almost) any lovelace card |
 | Button Card | Module | Yes | Lovelace button-card for home assistant |
 | Light Entity Card | js | Yes | Control any light or switch entity |
