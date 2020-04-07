@@ -4,9 +4,13 @@ import {
 	css
   } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 	
-const VERSION = '0.1.0';
+const VERSION = '0.1.2';
   
 class DwainsFlexboxCard extends LitElement {
+	constructor() {
+		super();
+	}
+
 	static get properties() {
 		return {
 			_config: {},
@@ -38,12 +42,14 @@ class DwainsFlexboxCard extends LitElement {
 			const promises = config.entities.map(config => this.createCardElement(config));
 			Promise.all(promises).then((cards) => {
 				this._refCards = cards;
+				this.requestUpdate();
 				//Removed some code here
 			})
 		} else {
 			const promises = config.cards.map(config => this.createCardElement(config));
 			Promise.all(promises).then((cards) => {
 				this._refCards = cards;
+				this.requestUpdate();
 				//Removed some code here
 			})
 		}
@@ -84,6 +90,8 @@ class DwainsFlexboxCard extends LitElement {
         }
 
 		const element = createThing(tag, cardConfig);
+
+		//console.log(element);
 		
 		if(cardConfig.item_classes){
 			//console.log(cardConfig.grid);
@@ -123,6 +131,9 @@ class DwainsFlexboxCard extends LitElement {
 		if (!this._config || !this._hass || !this._refCards) {
 			return html``;
 		}
+
+		//console.log(this._refCards);
+
 		var padding;
 		if(this._config.padding){
 			padding = 'padding';

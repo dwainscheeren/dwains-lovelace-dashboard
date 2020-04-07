@@ -28,7 +28,7 @@
                 border-radius: 0;
                 overflow: hidden;
               } 
-              @media only screen and (min-width: 600px) {
+              @media only screen and (min-width: 1025px) {
                 ha-card {
                   margin-top: 25px;
                   padding-top: 15px;
@@ -102,6 +102,7 @@
                         ]]]
                       max_notifications: 2
                       navigation_path: more_page_notifications
+                {% if _d_t_config.global["weather"] %}
                 - type: custom:dwains-weather-card
                   item_classes: 'd-none d-sm-block col-sm-6 col-md-3 col-lg-3'
                   entity: {{ _d_t_config.global["weather"] }}
@@ -112,6 +113,7 @@
                     .variations, .variations ha-icon, #main {
                       color: var(--dwains-theme-header-button-text) !important;
                     }
+                {% endif %}
                 #Start header states
                 - type: custom:mod-card
                   item_classes: 'col-12 col-sm-12 col-md-4 col-lg-5'
@@ -186,9 +188,9 @@
                         - button_template: partials_heading_switch
                           active: Rooms
                           headings:
-                            - name: Rooms
+                            - name: {{ _d_t_trans.rooms.title }}
                               navigation_path: "#rooms"
-                            - name: Devices
+                            - name: {{ _d_t_trans.device.title_plural }}
                               navigation_path: "#devices"
                       {% for room in _d_t_config.rooms %}
                       # Since we are looping in the rooms do some stuff for the all devices view
@@ -387,9 +389,9 @@
                         - button_template: partials_heading_switch
                           active: Devices
                           headings:
-                            - name: Rooms
+                            - name: {{ _d_t_trans.rooms.title }}
                               navigation_path: "#rooms"
-                            - name: Devices
+                            - name: {{ _d_t_trans.device.title_plural }}
                               navigation_path: "#devices"
                       {% 
                         set devices = namespace (hasLock=false, hasLight=false, hasClimate=false, hasCover=false, hasDevice=false, 

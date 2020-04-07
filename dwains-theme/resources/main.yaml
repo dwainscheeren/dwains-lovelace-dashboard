@@ -11,7 +11,7 @@
 - type: module
   url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=0.1.0
+  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=0.1.2
 
 # Plugins resources (required for dwains theme)
 - type: module

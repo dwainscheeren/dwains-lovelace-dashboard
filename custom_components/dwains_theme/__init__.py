@@ -298,7 +298,7 @@ async def async_setup(hass, config):
     dwains_theme_global.update(config.get("dwains_theme")["global"]);
 
     #Load styles
-    dwains_theme_styles.update(config.get("dwains_theme")["global"]);
+    dwains_theme_styles.update(config.get("dwains_theme")["styles"]);
 
     #Load icons
     if ("icons" in config.get("dwains_theme")["configuration"]):

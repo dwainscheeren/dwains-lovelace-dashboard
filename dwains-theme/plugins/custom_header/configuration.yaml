@@ -20,7 +20,7 @@ exceptions:
       all_tabs_css: "width: calc(20vw - 3.6px) !important; padding: 0px !important;"
       header_css: 'padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;'
       view_css: 'padding-top: 96px !important;'
-      tab_container_css: "width: auto !important; margin: 0 !important;"
+      tab_container_css: "width: auto !important; margin: 0 !important; padding: 0 !important;"
       options_hide: true
   - conditions:
       user_agent: Mobile
@@ -33,5 +33,5 @@ exceptions:
       all_tabs_css: "width: calc(20vw - 3.6px) !important; padding: 0px !important;"
       header_css: 'padding-bottom: 20px !important; padding-left: 0px !important; padding-right: 0px !important;'
       view_css: 'padding-top: 96px !important;'
-      tab_container_css: "width: auto !important; margin: 0 !important;"
+      tab_container_css: "width: auto !important; margin: 0 !important; padding: 0 !important;"
       options_hide: true 

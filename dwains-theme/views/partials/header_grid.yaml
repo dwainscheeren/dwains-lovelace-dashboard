@@ -14,7 +14,7 @@ style: |
     overflow: hidden;
     margin-bottom: 1px;
   }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 1025px) {
     ha-card {
       margin-top: 25px;
       padding-top: 15px;
