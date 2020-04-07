@@ -34,9 +34,9 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
-## Update 1.3.1 (coming soon)
+## Update 1.3.1
 
-#### How to update to 1.3.0? 
+#### How to update to 1.3.1? 
 
 **If you are running Dwains Theme 1.3.0**: 
 Follow the normal update manual (top of this page)
