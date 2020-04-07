@@ -34,6 +34,20 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 1.3.1 (coming soon)
+
+#### How to update to 1.3.0? 
+
+**If you are running Dwains Theme 1.3.0**: 
+Follow the normal update manual (top of this page)
+**If you are running older version of Dwains Theme then 1.3.0**: Follow the update manual of 1.3.0 [see here](https://dwainscheeren.github.io/lovelace-dwains-theme/information/update.html#how-to-update-to-130)
+
+#### Changes:
+
+* Fixed a bug in `dwains-flexbox-card` that it sometimes loads slow, now it's a lot faster.
+* Added translations for Rooms & Devices on homepage.
+
+
 ## Update 1.3.0
 
 #### How to update to 1.3.0? 
