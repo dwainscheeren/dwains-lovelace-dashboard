@@ -8,7 +8,7 @@ no:
   
   alarm:
     armed_away: 'Alarm aktivert (Borte).'
-    armed_home: 'Alarm saktivert (Hjemme).'
+    armed_home: 'Alarm aktivert (Hjemme).'
     disarmed: 'Alarm deaktivert.'
 
   history:
