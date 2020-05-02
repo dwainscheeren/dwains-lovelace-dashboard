@@ -1,4 +1,5 @@
 # Translation by Ryssk
+# Adjusted for 1.3.0
 
 se:
   greetings:
@@ -20,9 +21,9 @@ se:
     y_ago: 'å sedan'
 
   house_information:
-    title: 'Hus Information'
+    title: 'Hus Info'
     favorites: 'Favoriter'
-    house_calendar: 'Hus Kalender'
+    house_calendar: 'Huskalender'
     activity: 'Aktivitet (Dörrar, Fönster, Rörelse)'
 
   motion:
@@ -72,10 +73,10 @@ se:
     off_text: 'Av'
     auto: 'Program'
     heat: 'Värme'
-    cool: 'Cool'
-    heat_cool: 'Heat/Cool'
-    dry: 'Dry'
-    fan_only: 'Fan only'
+    cool: 'Kyla'
+    heat_cool: 'Värme/Kyla'
+    dry: 'Torr'
+    fan_only: 'Endast fläkt'
     this_room: 'Detta rum'
     temperature: 'Temperatur'
     humidity: 'Fuktighet'
@@ -117,8 +118,8 @@ se:
   plant:
     title: 'Växt'
     title_plural: 'Växter'
-    plant_problem: 'plant problem'
-    plants_problem: 'plants problem'
+    plant_problem: 'Växt problem'
+    plants_problem: 'Växt problem'
     
   home:
     title: 'Hemsida'
@@ -139,7 +140,7 @@ se:
 
   more_page:
     title: 'Mer'
-    house_info: 'Husinformation'
+    house_info: 'Hus info'
     house_data: 
       title: 'Hus data'
       all_sensors: 'Alla sensorer'
@@ -147,19 +148,19 @@ se:
       config: 'Konfiguration'
       developer_tools: 'Utvecklar verktyg'
     settings:
-      title: 'Thema inställningar'
-      reload_configuration: 'Reload theme configuration'
-      theme_docs: 'Thema dokumentation'
+      title: 'Tema inställningar'
+      reload_configuration: 'Ladda om konfiguration'
+      theme_docs: 'Tema dokumentation'
       support_paypal: 'Stödja/Donera med PayPal'
       buy_coffee: 'Skänk mig en kaffe'
       by: 'Av'
       version: 'Version'
-      update_available: 'Uppdatering tillgänglig av Dwains Theme!'
+      update_available: 'Uppdatering tillgänglig för Dwains Tema!'
     more_page_addons: 'Fler tillägg'
     
   more_entities:
-    title: 'More entities'
+    title: 'Fler enheter'
 
   lock:
-    title: 'Lock'
-    title_plural: 'Locks'
+    title: 'Lås'
+    title_plural: 'Lås'
