@@ -57,21 +57,39 @@
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
 
+> Edwin — /
+
+> @Marc0 — Top theme :) Groeten Marc0
+
+> Damianos — Kepp up the good job!
+
+> Florian — Yes I like it :)
+
+> @Martikainen — And keep going strong!
+
+> @Martikainen — Thanks for all the work!
+
+> @Dank — On-going support for such a great theme...can't wait for 1.4.0
+
+> @Helixon — Nice
+
+> @Chad — Great work with this theme.
+
 > @Cameron — Thank you for all your hard work and keep going its nice to be able to use your theme. Cameron
 
 > @Dank — many thanks for your hard work on this theme...it is gorgeous
 
-> @stocker — 
+> @stocker — /
 
-> @noodlemctwoodle — 
+> @noodlemctwoodle — /
 
-> @Janus — 
+> @Janus — /
 
-> @Broesie — 
+> @Broesie — /
 
 > @Rooaaarrrr — Hey Dwain, amazing work deserves more than one coffee!!
 
-> @Greetoz — 
+> @Greetoz — /
 
 > @Scotty — love your theme, hope you enjoy the coffee :-)
 
