@@ -34,6 +34,14 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 1.4.0 (NOT YET RELEASED)
+
+#### Changes:
+
+* Changed some translation loadings, because from HA 0.109 its changed.
+
+
+
 ## Update 1.3.1
 
 #### How to update to 1.3.1? 
