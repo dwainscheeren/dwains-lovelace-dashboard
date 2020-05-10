@@ -1,14 +1,19 @@
 <div class="row" style="display: grid; grid-template-columns: 60% 40%;">
   <div class="column">
   <h2>Welcome to the Dwains Lovelace Theme documentation!</h2>
-  <p>Besides the documentation, you can also get support and ask questions on the <a href="https://community.home-assistant.io/t/dwains-theme-released-an-auto-generating-lovelace-ui-theme/168593?u=dwains">HA Forum</a>. I spend a lot of free time into this project. If you appreciate what I have made you can <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank">Buy me a coffee/beer</a> or <a href="https://www.paypal.me/dwainscheeren" target="_blank">donate to my PayPal account</a>. If you like you can subscribe on my <a href="https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A" target="_blank">Home Assistant YouTube channel</a>.</p>
+  <p>Besides the documentation, you can also get support and ask questions on the <a href="https://community.home-assistant.io/t/dwains-theme-released-an-auto-generating-lovelace-ui-theme/168593?u=dwains">HA Forum</a> or even better join my Discord server for any questions. <a href="https://discord.gg/7yt64uX">Join my Discord Server here, it's 100% free!</a>
+  
+  I spend a lot of free time into this project. If you appreciate what I have made you can <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank">Buy me a coffee/beer</a> or <a href="https://www.paypal.me/dwainscheeren" target="_blank">donate to my PayPal account</a>. 
+  
+  If you like you can subscribe on my <a href="https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A" target="_blank">Home Assistant YouTube channel</a>.
+
+  If you are new to this theme and want to install it, please start on the Preparations page below.
+  </p>
   </div>
   <div class="column" style="text-align: right;">
    <img src="images/preview1.jpg">
   </div>
 </div>
-
-If you are new to this theme and want to install it, please start on the Preparations page below.
 
 ### Getting started
 * [Preparations](getting-started/preparations.md)

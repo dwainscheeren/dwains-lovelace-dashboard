@@ -1,10 +1,10 @@
 [< Go back to Home](../index.md)
 
 # Installation
-
-Did you read and followed the preparation part? No? [Check that out first](preparations.md).
-
 **Dwains Theme is only compatible with HA 0.107 or newer!**
+
+Did you read and followed the preparation part? No? [Check that out first](preparations.md). If you experience any problems during the installation of Dwains Theme then please join my Discord server for live support questions so I can help you. [Join my Discord Server here, it's 100% free!](https://discord.gg/7yt64uX)
+
 
 Follow all the steps on this page! Start with the HACS part.
 
