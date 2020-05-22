@@ -49,7 +49,7 @@
                         entity: {{ room["lock"] }}
                         tap_action:
                           !include 
-                            - ../../popups/more-info.yaml
+                            - ../../popups/lock.yaml
                             - entity: {{ room["lock"] }}
                   {% else %}
                   # this room has group of locks
@@ -62,7 +62,7 @@
                             template: room_lock
                             tap_action:
                               !include 
-                                - ../../popups/more-info.yaml
+                                - ../../popups/lock.yaml
                                 - entity: this.entity_id
                     sort:
                       method: name
