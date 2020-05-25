@@ -39,7 +39,12 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 #### Changes:
 
 * Changed some translation loadings, because from HA 0.109 its changed.
-
+* Added option to have house information favorites on the homepage.
+* Removed mini graph cards so the plugin is no longer needed. I  now use the default HA sensor card.
+* Replaced all Font Awesome icons with Material Design Icons, so FA is no longer needed (you can still use it yourself and override icons with FA icons
+* Fixed all translations for HA 0.110.
+* Some small speed improvements.
+* Some small bug fixes for HA 0.110.
 
 
 ## Update 1.3.1
