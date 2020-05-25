@@ -40,12 +40,13 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 * Changed some translation loadings, because from HA 0.109 its changed.
 * Added option to have house information favorites on the homepage.
-* Removed mini graph cards so the plugin is no longer needed. I  now use the default HA sensor card.
+* Removed Mini Graph Cards so the plugin is no longer needed. I  now use the default HA sensor card.
 * Replaced all Font Awesome icons with Material Design Icons, so FA is no longer needed (you can still use it yourself and override icons with FA icons
 * Fixed all translations for HA 0.110.
 * Some small speed improvements.
 * Some small bug fixes for HA 0.110.
-
+* Lock buttons are now single click for toggle and hold/double tap for more info.
+* Removed layout-card so the plugin is no longer needed. All is now done with my own Dwains Flexbox Card.
 
 ## Update 1.3.1
 
