@@ -47,7 +47,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Some small bug fixes for HA 0.110.
 * Lock buttons are now single click for toggle and hold/double tap for more info.
 * Removed layout-card so the plugin is no longer needed. All is now done with my own Dwains Flexbox Card.
-* Added fixed with and height for icons in homepage room and devices cards.
+* Added fixed width and height for icons in homepage room and device cards.
 * Added Dwains Tab Card, a new card for the tabs on the homepage, it will replace state switch card so that card can be removed.
 
 
