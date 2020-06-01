@@ -16,6 +16,8 @@
   </div>
 </div>
 
+### Latest available version 1.3.1. Only compatible with HA 0.109.*
+
 ### Getting started
 * [Preparations](getting-started/preparations.md)
 * [Installation](getting-started/installation.md)
