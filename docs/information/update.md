@@ -54,6 +54,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * If room entity is just 1 item place the name of the entity in the card instead of the translation of the domain. So for example, instead of Media Player it now says the entity name.
 * Add option to remove the header in more_page addons. Use `show_header: 'false'`, this variable is not required and true by default.
 * On All batteries page added the unknown icon and if battery is under 10% then a empty icon.
+* Added filter 'sensor' on all batteries page, it only shows sensor entities with the word 'battery' inside it.
 
 
 ## Update 1.3.1
