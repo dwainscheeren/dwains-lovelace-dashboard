@@ -52,6 +52,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added Dwains Tab Card, a new card for the tabs on the homepage, it will replace state switch card so that card can be removed.
 * Added HA (new) Media Control Card for media_players, so you now have a fancy card.
 * If room entity is just 1 item place the name of the entity in the card instead of the translation of the domain. So for example, instead of Media Player it now says the entity name.
+* Add option to remove the header in more_page addons. Use `show_header: 'false'`, this variable is not required and true by default.
 
 
 ## Update 1.3.1
