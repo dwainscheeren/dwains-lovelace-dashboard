@@ -1,4 +1,4 @@
-# Translation by Charlie d'Gabriel
+# Translation by Charlie d'Gabriel and Adrian Scillato
 
 es:
   greetings:
@@ -7,22 +7,22 @@ es:
     good_evening: "Buena Noches"
 
   alarm:
-    armed_away: "Sistema de alarma activado (Armado Ausente)."
-    armed_home: "Sistema de alarma activado (Inicio armado)."
+    armed_away: "Sistema de alarma activado (Modo No Estoy)."
+    armed_home: "Sistema de alarma activado (Modo Estoy)."
     disarmed: "Sistema de alarma desactivado."
 
   history:
-    sec_ago: "hace seg"
-    min_ago: "hace min"
+    sec_ago: "hace un seg"
+    min_ago: "hace un min"
     h_ago: "hace una hora"
-    d_ago: "hace un dia"
+    d_ago: "hace un día"
     m_ago: "hace un minuto"
-    y_ago: "hace años"
+    y_ago: "hace un año"
 
   house_information:
     title: "Información de la Casa"
     favorites: "Favoritos"
-    house_calendar: "Calendario de la Casa"
+    house_calendar: "Calendario"
     activity: "Actividad (puertas, ventanas, movimiento)"
 
   motion:
@@ -36,7 +36,7 @@ es:
     light_on: "luz encendida"
     lights_on: "luces encendidas"
     light_off: "luz apagada"
-    lights_off: "luces apagada"
+    lights_off: "luces apagadas
     all_lights_on: "Todas las luces encendidas"
     all_lights_off: "Todas las luces apagadas"
     on_text: "Encendida"
@@ -54,7 +54,7 @@ es:
 
   window:
     title: "Ventana"
-    title_plural: "Ventansa"
+    title_plural: "Ventanas
     window_open: "ventana abierta"
     windows_open: "ventanas abiertas"
     all_windows_open: "Todas las ventanas abiertas"
@@ -67,15 +67,15 @@ es:
     title_plural: "Temperaturas"
     inside: "adentro"
     outside: "afuera"
-    idle: "Espera"
+    idle: "En espera"
     heating: "Calentar a"
     off_text: "Apagado"
-    auto: "Programa"
-    heat: "Calor"
-    cool: 'Cool'
-    heat_cool: 'Heat/Cool'
-    dry: 'Dry'
-    fan_only: 'Fan only'
+    auto: "Automático"
+    heat: "Calentar"
+    cool: 'Enfriar'
+    heat_cool: 'Calentar/Enfriar'
+    dry: 'Seco'
+    fan_only: 'Ventilador solamente'
     this_room: "Esta habitación"
     temperature: "Temperatura"
     humidity: "Humedad"
@@ -94,17 +94,17 @@ es:
     on_text: "Encendido"
     off_text: "Apagado"
     device_off: "Dispositivo apagado"
-    devices_off: "Dispositivos Apagados"
+    devices_off: "Dispositivos apagados"
     all_devices_on: "Todos los dispositivos encendidos"
     all_devices_off: "Todos los dispositivos apagados"
 
   media_player:
     title: "Reproductor multimedia"
-    title_plural: "Reproductors multimedia"
+    title_plural: "Reproductores multimedia"
     media_player_on: "reproductor multimedia encendido"
-    media_players_on: "reproductors multimedia encendidos"
+    media_players_on: "reproductores multimedia encendidos"
     media_player_off: "Reproductor multimedia apagado"
-    media_players_off: "Reproductors multimedia apagados"
+    media_players_off: "Reproductores multimedia apagados"
     all_media_players_on: "Todos los reproductores multimedia encendidos"
     all_media_players_off: "Todos los reproductores multimedia apagados"
     on_text: "Encendido"
@@ -117,14 +117,14 @@ es:
   plant:
     title: "Planta"
     title_plural: "Plantas"
-    plant_problem: 'plant problem'
-    plants_problem: 'plants problem'
+    plant_problem: 'Problema con la planta'
+    plants_problem: 'Problema con las plantas'
 
   home:
     title: "Página principal"
 
   rooms:
-    title: "Habitacións"
+    title: "Habitaciones"
 
   all_lights:
     title: "Todas las luces"
@@ -148,9 +148,9 @@ es:
       developer_tools: "Herramientas de desarrollo"
     settings:
       title: "Configuración de temas"
-      reload_configuration: 'Reload theme configuration'
-      theme_docs: "Documentos de temas"
-      support_paypal: "Apoyo/Done con PayPal"
+      reload_configuration: 'Recargar temas'
+      theme_docs: "Lista de temas"
+      support_paypal: "Done con PayPal"
       buy_coffee: "Cómprame un café"
       by: "Por"
       version: "Versión"
@@ -158,8 +158,8 @@ es:
     more_page_addons: "Más complementos"
 
   more_entities:
-    title: 'More entities'
+    title: 'Más entidades'
 
   lock:
-    title: 'Lock'
-    title_plural: 'Locks'
+    title: 'Cerradura'
+    title_plural: 'Cerraduras'
