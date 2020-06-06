@@ -55,7 +55,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Add option to remove the header in more_page addons. Use `show_header: 'false'`, this variable is not required and true by default.
 * On All batteries page added the unknown icon and if battery is under 10% then a empty icon.
 * Added filter 'sensor' on all batteries page, it only shows sensor entities with the word 'battery' inside it.
-* Fixed bug that custom font "Open Sans" was not loaded anymore in my theme, not it's working again.
+* Fixed bug that custom font "Open Sans" was not loaded anymore in my theme, now it is loaded again.
 * Re-programmed Flexbox card from scratch.
 * Merged PR lock popup [#126](https://github.com/dwainscheeren/lovelace-dwains-theme/pull/126)
 
