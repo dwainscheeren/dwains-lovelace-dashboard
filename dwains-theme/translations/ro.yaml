@@ -1,0 +1,166 @@
+# Translation by Gabriel Colceriu
+
+ro:
+  greetings:
+    good_morning: 'Bună dimineața'
+    good_afternoon: 'Bună ziua'
+    good_evening: 'Bună seara'
+  
+  alarm:
+    armed_away: 'Sistemul de alarmă este activat (Armat Plecat).'
+    armed_home: 'Sistemul de alarmă este activat (Armat Acasă).'
+    disarmed: 'Sistemul de alarmă este dezactivat.'
+
+  history:
+    sec_ago: 'secunde'
+    min_ago: 'minute'
+    h_ago: 'ore'
+    d_ago: 'zile'
+    m_ago: 'luni'
+    y_ago: 'ani'
+
+  house_information:
+    title: 'Informații casă'
+    favorites: 'Favorite'
+    house_calendar: 'Calendar casă'
+    activity: 'Activitate (Uși, Geamuri, Mișcare)'
+
+  motion:
+    title: 'Mișcare'
+    title_plural: 'Mișcări'
+    motion_on: 'Detectată'
+
+  light:
+    title: 'Lumină'
+    title_plural: 'Lumini'
+    light_on: 'lumină pornită'
+    lights_on: 'lumini pornite'
+    light_off: 'lumina oprită'
+    lights_off: 'lumini oprite'
+    all_lights_on: 'Toate luminile pornite'
+    all_lights_off: 'Toate luminile oprite'
+    on_text: 'Pornit'
+    off_text: 'Oprit'
+
+  door:
+    title: 'Ușă'
+    title_plural: 'Uși'
+    door_open: 'Deschisă'
+    doors_open: 'Deschise'
+    all_doors_open: 'Toate deschise'
+    all_doors_closed: 'Toate închise'
+    open: 'Deschisă'
+    closed: 'Închisă'
+
+  window:
+    title: 'Geam'
+    title_plural: 'Geamuri'
+    window_open: 'Geam deschis'
+    windows_open: 'Geamuri deschise'
+    all_windows_open: 'Toate geamurile deschise'
+    all_windows_closed: 'Toate geamurile închise'
+    open: 'Deschis'
+    closed: 'Închis'
+
+  climate:
+    title: 'Temperatură'
+    title_plural: 'Temperaturi'
+    inside: 'înăuntru'
+    outside: 'afară'
+    idle: 'Stand-by'
+    heating: 'Încălzind la'
+    off_text: 'Oprit'
+    auto: 'Program'
+    heat: 'Încălzește'
+    cool: 'Răcește'
+    heat_cool: 'Încălzește/Răcește'
+    dry: 'Uscat'
+    fan_only: 'Doar ventilator'
+    this_room: 'Această cameră'
+    temperature: 'Temperatură'
+    humidity: 'Umiditate'
+
+
+  cover:
+    title: 'Jaluzea'
+    title_plural: 'Jaluzele'
+    cover_open: 'Deschis'
+    cover_closed: 'Închis'
+
+  device:
+    title: 'Echipament'
+    title_plural: 'Echipamente'
+    device_on: 'echipament pornit'
+    devices_on: 'echipamente pornite'
+    on_text: 'Pornit'
+    off_text: 'Oprit'
+    device_off: 'Echipament oprit'
+    devices_off: 'Echipamente oprite'
+    all_devices_on: 'Toate echipamentele pornite'
+    all_devices_off: 'Toate echipamentele oprite'
+
+  media_player:
+    title: 'Player Media'
+    title_plural: 'Playere Media'
+    media_player_on: 'Player media pornit'
+    media_players_on: 'Pleyere media pornite'
+    media_player_off: 'Player media oprit'
+    media_players_off: 'Playere media oprite'
+    all_media_players_on: 'Toate playerele media pornite'
+    all_media_players_off: 'Toate playerele media oprite'
+    on_text: 'Pornit'
+    off_text: 'Oprit'
+
+  vacuum:
+    title: 'Aspirator'
+    title_plural: 'Aspiratoare'
+
+  plant:
+    title: 'Plantă'
+    title_plural: 'Plante'
+    plant_problem: 'Probleme plantă'
+    plants_problem: 'Probleme plante'
+
+  home:
+    title: 'Acasă'
+
+  rooms:
+    title: 'Camere'
+
+  all_lights:
+    title: 'Toate luminile'
+
+  scenes:
+    title: 'Scene'
+    not_defined: 'Nu sunt scene definite'
+
+  cameras:
+    title: 'Camere'
+    not_defined: 'Nu sunt camere definite'
+
+  more_page:
+    title: 'Mai mult'
+    house_info: 'Informații casă'
+    house_data: 
+      title: 'Date casă'
+      all_sensors: 'Toți senzorii'
+      all_batteries: 'Toate bateriile'
+      config: 'Configurare'
+      developer_tools: 'Unelte dezvoltator'
+    settings:
+      title: 'Setări teme'
+      reload_configuration: 'Reîncarcă configurarea temei'
+      theme_docs: 'Documente despre temă'
+      support_paypal: 'Ajută/Donează cu PayPal'
+      buy_coffee: 'Cumpără-mi o cafea'
+      by: 'De'
+      version: 'Versiune'
+      update_available: 'Versiune nouă a Temei Dwains!'
+    more_page_addons: 'Mai multe addonuri'
+
+  more_entities:
+    title: 'Mai multe entități'
+
+  lock:
+    title: 'Încuietoare'
+    title_plural: 'Încuietori'
