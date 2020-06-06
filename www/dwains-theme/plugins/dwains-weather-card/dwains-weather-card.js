@@ -104,7 +104,7 @@ class DwainsWeatherCard extends LitElement {
 
   renderMain(stateObj){
     const icon = weatherIcons[stateObj.state];
-    const state = this.hass.localize('state.weather.'+stateObj.state);
+    const state = this.hass.localize('component.weather.state._.'+stateObj.state);
     const temperature = stateObj.attributes.temperature;
 
     return html`

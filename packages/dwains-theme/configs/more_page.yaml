@@ -1,0 +1,20 @@
+more_page:
+  addons:
+    - name: Hello more page
+      icon: fas:chart-area
+      path: 'dwains-theme/addons/more_page/hello-more-page/page.yaml'
+      data:
+        some_data: 'This is some data parsed.'
+        some_other_data: 'and some other data.'
+#    - name: Zigbee2mqtt
+#      icon: fal:satellite-dish
+#      path: 'dwainconfig/zigbee2mqtt.yaml'
+#    - name: Statistics
+#      icon: far:chart-area
+#      path: 'dwainconfig/statistics.yaml'
+#     - name: Zigbee2mqtt
+#       icon: fal:satellite-dish
+#       path: 'dwainconfig/zigbee2mqtt.yaml'
+#     - name: Custom page
+#       icon: far:infinity
+#       path: 'dwainconfig/test.yaml'

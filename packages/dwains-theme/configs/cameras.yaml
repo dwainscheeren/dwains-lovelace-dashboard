@@ -1,0 +1,3 @@
+cameras:
+  - entity: camera.oprit_camera
+  - entity: camera.garage_camera

@@ -1,0 +1,52 @@
+# dwains_theme
+
+#Page for devices for a room
+
+{% for room in _d_t_config.rooms %}
+{% if room["device"] %}
+- title: {{ room["name"] }} {{ _d_t_trans.device.title_plural }}
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_devices
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+        }
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.device.title_plural }}
+              subtitle: {{ room["name"] }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          #Start for room devices content page
+          {% if room["device"].split('.')[0] == 'device' %}
+          # this room has only 1 device
+          {% else %}
+          # this room has group of devices
+          - type: custom:auto-entities
+            filter:
+              include:
+                - group: {{ room["device"] }}
+                  options:
+                    type: custom:button-card
+                    template: room_device
+                    tap_action:
+                      !include 
+                        - ../../../popups/more-info.yaml
+                        - entity: this.entity_id
+            sort:
+              method: name
+              ignore_case: true
+            card:
+              type: custom:dwains-flexbox-card
+              padding: true
+              items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          {% endif %}
+{% endif %}
+{% endfor %}

@@ -1,0 +1,51 @@
+more_page_house_information_activity:
+  show_last_changed: false
+  show_label: true
+  label: >
+    [[[
+      var last_changed = new Date(entity.last_changed);
+      if((new Date() - last_changed) > (60 * 60 * 24 * 1000 )){
+        //Its older then 1 day
+        return last_changed.getHours() + ':' + ('0'+last_changed.getMinutes()).slice(-2) + '<br>' + last_changed.getDate() + '-' + (last_changed.getMonth()+1);
+      } else {
+        //Its today
+        return last_changed.getHours() + ':' + ('0'+last_changed.getMinutes()).slice(-2);
+      }
+    ]]]
+  tap_action: 
+    action: more-info 
+  styles:
+    grid:
+      - grid-template-areas: '"i n l"'
+      - grid-template-columns: 15% 55% 30%
+      - grid-template-rows: min-content
+    card:
+      - background-color: var(--dwains-theme-primary)
+      - border-radius: 5px
+      - margin-bottom: 0px
+      - margin-left: 11px
+      - margin-right: 11px
+      - width: 349px
+      - padding-top: 14px
+      - padding-bottom: 14px
+    icon:
+      - color: var(--dwains-theme-accent)
+      - width: 55%
+    img_cell:
+      - width: 35px
+      - height: 35px
+      - background: var(--dwains-theme-background)
+      - color: white
+      - border-radius: 100%
+    name:
+      - color: var(--dwains-theme-names)
+      - justify-self: start
+      - font-size: 13px
+      - align-self: center
+    label:
+      - justify-self: end
+      - align-self: center
+      - font-size: 13px
+      - color: var(--dwains-theme-grey)
+      - text-align: right
+      - margin-right: 20px

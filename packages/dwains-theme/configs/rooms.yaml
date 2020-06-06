@@ -1,0 +1,111 @@
+rooms:
+  - name: Hallway
+    #show_name: 'false'
+    icon: mdi:key-variant
+    light: group.hal_lampen
+    temperature: sensor.hal_temperature
+    climate: climate.hal
+    device: switch.zigbee2mqtt_main_join
+    humidity: sensor.hal_humidity
+    motion: binary_sensor.gang_sensor_motion
+    door: binary_sensor.hallway_door_contact
+    window: binary_sensor.wc_window_contact
+    lock: lock.garage_door
+    more_entities:
+      columns: 1
+      entities:
+        - entity: sensor.steps
+        - entity: sensor.steps
+    page_entities:
+      columns: 2
+      entities:
+        - entity: sensor.steps
+        - entity: sensor.steps
+    addons:
+      - name: Hello room
+        icon: fas:fan
+        path: 'dwains-theme/addons/rooms/hello-room/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/hello-room/button.yaml'
+        data:
+          some_data: 'This is some data parsed.'
+          some_other_data: 'and some other data.'
+          entity: vacuum.consuela
+  - name: Living room
+    icon: mdi:sofa
+    light: group.living_room_lights
+    temperature: sensor.woonkamer_temperature
+    humidity: sensor.woonkamer_humidity
+    pressure: sensor.living_room_tempsensor_pressure
+    climate: climate.woonkamer
+    cover: group.living_room_covers
+    plant: group.living_room_plants
+    media_player: media_player.tv
+    window: sensor.woonkamer_early_start
+    door: group.living_room_doors
+    vacuum: 
+      entity: vacuum.consuela
+      camera: camera.consuela_map
+  - name: Kitchen
+    icon: mdi:silverware-fork-knife
+    light: group.keuken_lampen
+    humidity: sensor.woonkamer_humidity
+    climate: climate.woonkamer
+    device: group.kitchen_devices
+    media_player: group.living_room_media_players
+    motion: binary_sensor.keuken_sensor_motion
+    door: group.kitchen_doors
+  - name: Office
+    icon: mdi:laptop
+    light: light.kantoor_lamp_light
+    temperature: sensor.living_room_tempsensor_temperature
+    humidity: sensor.woonkamer_humidity
+    climate: climate.woonkamer
+    cover: cover.kantoor_rolluik
+  - name: Garage
+    icon: mdi:car
+    light: group.garage_lights
+    temperature: sensor.garage_tempsensor_temperature
+    humidity: sensor.garage_tempsensor_humidity
+    motion: binary_sensor.garage_motionsensor_occupancy
+    door: binary_sensor.garage_doorfront_contact
+  - name: Toilet
+    icon: mdi:toilet
+    light: light.wc_onder_spot
+    temperature: sensor.wc_temperature
+    humidity: sensor.wc_humidity
+    climate: climate.wc
+    motion: binary_sensor.wc_sensor_motion
+    window: binary_sensor.wc_window_contact
+  - name: Shower room
+    icon: mdi:shower-head
+    light: group.douchekamer_lampen
+    temperature: sensor.douchekamer_temperature
+    climate: climate.douchekamer
+    window: binary_sensor.shower_room_window_contact
+  - name: Bathroom
+    icon: mdi:shower
+    light: light.badkamer_lamp
+    temperature: sensor.badkamer_sensor_temperature
+    motion: binary_sensor.badkamer_sensor_motion
+  - name: Bedroom
+    icon: mdi:bed-king
+    light: light.slaapkamer_lamp
+    temperature: sensor.bedroom_tempsensor_temperature
+    cover: cover.slaapkamer_rolluik 
+    window: binary_sensor.bedroom_window1_contact
+  - name: Closet room
+    icon: mdi:tshirt-crew
+    light: light.prullenkamer_lamp
+    cover: cover.prullekamer_rolluik
+  - name: Cellar
+    icon: mdi:home-floor-b
+    light: light.kelder_lamp
+    temperature: sensor.cellar_tempsensor_temperature
+  - name: Attic
+    icon: mdi:home-floor-a
+    light: group.zolder_lampen
+    temperature: sensor.zolder_aqara_temp_temperature
+  - name: Front outside
+    light: group.buiten_voren
+    motion: binary_sensor.oprit_sensor_motion
+    temperature: sensor.oprit_sensor_temperature

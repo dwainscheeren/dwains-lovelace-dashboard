@@ -1,0 +1,79 @@
+# dwains_theme
+
+header_states_window:
+  show_state: false
+  show_label: true
+  tap_action: 
+    action: more-info
+  name: {{ _d_t_trans.window.title_plural }}
+  icon: '{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}'
+  variables:
+    status: >
+      [[[
+        var openWindows = 0;
+
+        {% for room in _d_t_config.rooms %}       
+          //Do some things for the windows
+          {% if room["window"] %}
+            {% if room["window"].split('.')[0] == 'binary_sensor' or room["window"].split('.')[0] == 'sensor' %}
+            //This room has only 1 window
+              if(states['{{ room["window"] }}'] && states['{{ room["window"] }}'].state == 'on' || 
+                    states['{{ room["window"] }}'] && states['{{ room["window"] }}'].state == 'True') {
+                openWindows++;
+              }
+            {% else %}
+            //This room has group of windows
+              if(states['{{ room["window"] }}']){
+                states['{{ room["window"] }}'].attributes['entity_id'].forEach(function(entity){
+                  if(states[entity].state && states[entity].state == 'True' || states[entity].state && states[entity].state == 'on'){
+                    openWindows++;
+                  }
+                });  
+              }
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        return openWindows;
+      ]]]
+  label: >
+    [[[
+      if(variables.status > 0){
+        var openWindows = variables.status;
+        return openWindows + ' ' + hass.localize('state.cover.open');
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i""n""l"'
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 40px
+      - height: 40px
+      - background: var(--dwains-theme-header-button-background)
+      - color: white
+      - border-radius: 100%
+    card:
+      - box-shadow: none
+      - padding: 0%
+      - width: 61px
+      - display: >
+          [[[
+            if(variables.status && variables.status > 0){
+              //Open windows
+              return 'block';
+            } else {
+              //No open windows
+              return 'none';
+            }
+          ]]]
+    label:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 12px
+    name:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 13px

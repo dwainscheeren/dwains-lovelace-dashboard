@@ -1,0 +1,60 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/icons.html
+# Only uncomment lines below if you want to override default icons and use own ones!! Including icons:
+
+# icons:
+#   #Menu icons
+#   menu_back: 'fas:question'
+#   menu_home: 'fas:question'
+#   menu_lights: 'fas:question'
+#   menu_scenes: 'fas:question'
+#   menu_cameras: 'fas:question'
+#   menu_more_page: 'fas:question'
+
+#   #Global icons
+#   light_on: 'fas:question'
+#   light_off: 'fal:smile-wink'
+
+#   room_header_more_entities: 'fas:question'
+#   person_header_more_entities: 'fas:question'
+#   climate: 'fas:question'
+#   climate_heating: 'fas:question'
+#   climate_auto: 'fas:question'
+#   climate_off: 'fas:question'
+#   climate_heat: 'fas:question'
+#   climate_cool: 'fas:question'
+#   climate_heat_cool: 'fas:question'
+#   climate_dry: 'fas:question'
+#   climate_fan_only: 'fas:question'
+
+#   window_open: 'fas:question'
+#   window_closed: 'fas:question'
+
+#   door_open: 'fas:question'
+#   door_closed: 'fas:question'
+
+#   motion_on: 'fas:question'
+#   motion_off: 'fas:question'
+
+#   cover: 'fas:question'
+
+#   device: 'fas:question'
+
+#   media_player: 'fas:question'
+  
+#   vacuum: 'fas:question'
+
+#   plant: 'fas:question'
+
+#   alarm_disarmed: 'fas:question'
+#   alarm_pending: 'fas:question'
+#   alarm_armed_away: 'fas:question'
+#   armed_home: 'fas:question'
+
+#   #More page icons
+#   more_page_house_information: 'fas:question'
+#   more_page_house_data: 'fas:question'
+#   more_page_settings: 'fas:question'
+#   more_page_list_chevron: 'fas:question'
+
+#   lock_locked: 'fas:question'
+#   lock_unlocked: 'fas:question'

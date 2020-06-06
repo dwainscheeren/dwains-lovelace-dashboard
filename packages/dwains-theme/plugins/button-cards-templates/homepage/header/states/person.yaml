@@ -1,0 +1,48 @@
+header_states_person:
+  show_entity_picture: true
+  show_state: true
+  show_label: true
+  label: >
+    [[[ 
+      if(!entity){
+        console.log("Dwains Theme Error: Invalid person entity persons.yaml!");
+      }
+    ]]]
+  tap_action: 
+    action: more-info
+  state:
+    - value: not_home
+      styles:
+        entity_picture:
+          - filter: grayscale(100%)
+  styles:
+    grid:
+      - grid-template-areas: '"i""n""s"'
+      - grid-template-columns: min-content
+      - grid-template-rows: auto auto auto
+      - justify-self: center
+      - width: auto
+    card:
+      - box-shadow: none
+      - padding: 0%
+      - width: 61px
+    entity_picture:
+      - width: 100% 
+    img_cell:
+      - width: 40px
+      - height: 40px
+      - color: white
+      - border-radius: 100%
+      - justify-self: center
+    state:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 12px
+    name:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 13px
+    label:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 12px

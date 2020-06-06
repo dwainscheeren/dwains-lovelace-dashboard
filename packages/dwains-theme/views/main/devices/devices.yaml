@@ -1,0 +1,76 @@
+# dwains_theme
+
+#House all devices
+
+- title: {{ _d_t_trans.device.title_plural }}
+  path: devices_devices
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+        }
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.device.title_plural }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home#devices
+          #Start for room devices content page
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+            cards:
+              {% for room in _d_t_config.rooms %}
+              {% if room["device"] %}
+              - type: vertical-stack
+                cards:
+                  #Heading
+                  - !include
+                    - ../../partials/heading.yaml
+                    - title: {{ room["name"] }}
+                  {% if room["device"].split('.')[0] != 'group' %}
+                  # this room has only 1 device
+                  - type: custom:mod-card
+                    style: |
+                      ha-card {
+                        padding: 0px;
+                      }
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:button-card
+                          template: room_device
+                          entity: {{ room["device"] }}
+                          tap_action:
+                            !include 
+                              - ../../popups/more-info.yaml
+                              - entity: this.entity_id
+                  {% else %}
+                  # this room has group of devices
+                  - type: custom:auto-entities
+                    filter:
+                      include:
+                        - group: {{ room["device"] }}
+                          options:
+                            type: custom:button-card
+                            template: room_device
+                            tap_action:
+                              !include 
+                                - ../../popups/more-info.yaml
+                                - entity: this.entity_id
+                    sort:
+                      method: name
+                      ignore_case: true
+                    card:
+                      type: custom:dwains-flexbox-card
+                      items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
+                  {% endif %}
+              {% endif %}
+              {% endfor %}

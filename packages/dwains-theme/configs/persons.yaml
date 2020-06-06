@@ -1,0 +1,31 @@
+persons: 
+  - name: Dwain
+    track: person.dwain
+    picture_path: 'dwains-theme/images/persons/dwain.jpg'
+    more_entities:
+      entities:
+        - entity: sensor.battery_level
+        - entity: sensor.battery_state
+        - entity: sensor.steps
+    page_entities:
+      columns: 1
+      entities:
+        - entity: sensor.battery_level
+        - entity: sensor.battery_state
+        - entity: sensor.steps
+  - name: Verena
+    track: person.verena
+    picture_path: 'dwains-theme/images/persons/verena.jpg'
+    show_map: 'false'
+    addons:
+      - name: Hello more page
+        icon: fas:chart-area
+        path: 'dwainconfig/mobile-info.yaml'
+        data:
+          battery_level: sensor.battery_level
+      - name: Hello more page
+        icon: fas:chart-area
+        path: 'dwains-theme/addons/persons/hello-person/page.yaml'
+        data:
+          some_data: 'This is some data parsed.'
+          some_other_data: 'and some other data.'

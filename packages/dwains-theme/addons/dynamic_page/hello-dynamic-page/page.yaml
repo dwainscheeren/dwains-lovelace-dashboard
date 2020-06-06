@@ -1,0 +1,7 @@
+# dwains_theme
+
+- type: markdown
+  content: >
+    This is a dynamic page addon. It can also parse some data from the global dynamic_page config.
+    Don't believe it? Here it is: {{ (data | fromjson)['some_data'] }}<br>
+    {{ (data | fromjson)['some_other_data'] }}

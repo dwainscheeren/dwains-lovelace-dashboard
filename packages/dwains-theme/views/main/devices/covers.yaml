@@ -1,0 +1,90 @@
+# dwains_theme
+
+#House all covers
+- title: {{ _d_t_trans.cover.title_plural }}
+  path: devices_covers
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+        }
+      card:
+        type: vertical-stack
+        cards:  
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.cover.title_plural }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home#devices
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12 col-sm-6 col-md-4 col-lg-4'
+            cards:
+              {% for room in _d_t_config.rooms %}
+              {% if room["cover"] %}
+              - type: vertical-stack
+                cards:
+                  #Heading
+                  - !include
+                    - ../../partials/heading.yaml
+                    - title: {{ room["name"] }}
+                  {% if room["cover"].split('.')[0] == 'cover' %}
+                  # this room has only 1 cover
+                  - type: custom:dwains-cover-card
+                    style: |
+                      ha-card {
+                        margin: 11px;
+                        background: var(--dwains-theme-primary) !important;
+                        color: var(--dwains-theme-names) !important;
+                      }
+                      input[type="range"].range {
+                        background: var(--dwains-theme-background) !important;
+                        border: none !important;
+                      }
+                      .percentage {
+                        color: var(--dwains-theme-accent) !important;
+                      }
+                      input[type="range"].range::-webkit-slider-thumb {
+                        background: var(--dwains-theme-accent) !important;
+                      }
+                    entity: {{ room["cover"] }}
+                  {% else %}
+                  # this room has group of covers
+                  - type: custom:auto-entities
+                    filter:
+                      include:
+                        - domain: cover
+                          group: {{ room["cover"] }}
+                          options:
+                            type: custom:dwains-cover-card
+                            style: |
+                              ha-card {
+                                background: var(--dwains-theme-primary) !important;
+                                color: var(--dwains-theme-names) !important;
+                              }
+                              input[type="range"].range {
+                                background: var(--dwains-theme-background) !important;
+                                border: none !important;
+                              }
+                              .percentage {
+                                color: var(--dwains-theme-accent) !important;
+                              }
+                              input[type="range"].range::-webkit-slider-thumb {
+                                background: var(--dwains-theme-accent) !important;
+                              }
+                      exclude:
+                        - state: unavailable
+                    sort:
+                      method: name
+                      ignore_case: true
+                    card:
+                      type: custom:dwains-flexbox-card
+                      items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
+                  {% endif %}
+              {% endif %}
+              {% endfor %}

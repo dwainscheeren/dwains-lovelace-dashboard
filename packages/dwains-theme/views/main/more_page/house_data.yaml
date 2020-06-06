@@ -1,0 +1,51 @@
+# dwains_theme
+
+- title: {{ _d_t_trans.more_page.house_data.title }}
+  path: more_page_house_data
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+        }
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.more_page.house_data.title }}
+              subtitle: {{ _d_t_trans.more_page.title }}
+              navigation_path: more_page
+          #Start for all data page
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+            cards:
+              - type: custom:button-card
+                template: more_page_list-item
+                name: {{ _d_t_trans.more_page.house_data.all_sensors }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: more_page_house_data_sensors
+              - type: custom:button-card
+                template: more_page_list-item
+                name: {{ _d_t_trans.more_page.house_data.all_batteries }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: more_page_house_data_batteries
+              - type: custom:button-card
+                template: more_page_list-item
+                name: {{ _d_t_trans.more_page.house_data.config }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: /config
+              - type: custom:button-card
+                template: more_page_list-item
+                name: {{ _d_t_trans.more_page.house_data.developer_tools }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: /developer-tools

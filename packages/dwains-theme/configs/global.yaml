@@ -1,0 +1,9 @@
+global:
+  language: en
+  weather: weather.dark_sky #test
+  outside_temperature: sensor.dark_sky_temperature
+  outside_humidity: sensor.dark_sky_humidity #test
+  alarm: alarm_control_panel.alarm_systeem #test
+  inside_temperature: climate.woonkamer
+
+  favorites_homepage: 'true'

@@ -1,13 +1,17 @@
 import {
-    LitElement,
-    html,
-    css
+	LitElement,
+	html,
+	css
   } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
-
+	
 const VERSION = '0.0.1';
   
-class DwainsSwipeCard extends LitElement {
-  static get properties() {
+class DwainsTabCard extends LitElement {
+  constructor() {
+		super();
+	}
+
+	static get properties() {
 		return {
 			_config: {},
 			_cards: {},
@@ -17,11 +21,14 @@ class DwainsSwipeCard extends LitElement {
 
 	async setConfig(config) {
         if (!config 
-			&& ((!config.cards && !Array.isArray(config.cards)) 
+			&& ((!config.tabs && !Array.isArray(config.tabs)) 
 				|| (!config.entities || !Array.isArray(config.entities)) ) 
 		) {
             throw new Error('Card config incorrect');
         }
+
+        window.addEventListener("location-changed", () => this.test(new Map()));
+
         this._config = config;
         this._refCards = [];
 
@@ -29,9 +36,11 @@ class DwainsSwipeCard extends LitElement {
             this.helpers = await window.loadCardHelpers();
         }
 
-        this.renderCard();
-        
-        this._transform = null;
+		this.renderCard();
+    }
+
+    test(changedProperties) {
+      console.log('test');
     }
 
     renderCard() {
@@ -40,12 +49,14 @@ class DwainsSwipeCard extends LitElement {
 			const promises = config.entities.map(config => this.createCardElement(config));
 			Promise.all(promises).then((cards) => {
 				this._refCards = cards;
+				this.requestUpdate();
 				//Removed some code here
 			})
 		} else {
-			const promises = config.cards.map(config => this.createCardElement(config));
-			Promise.all(promises).then((cards) => {
-				this._refCards = cards;
+			const promises = config.tabs.map(config => this.createCardElement(config));
+			Promise.all(promises).then((tabs) => {
+				this._refTabs = tabs;
+				this.requestUpdate();
 				//Removed some code here
 			})
 		}
@@ -86,6 +97,8 @@ class DwainsSwipeCard extends LitElement {
         }
 
 		const element = createThing(tag, cardConfig);
+
+		//console.log(element);
 		
 		if(cardConfig.item_classes){
 			//console.log(cardConfig.grid);
@@ -119,72 +132,35 @@ class DwainsSwipeCard extends LitElement {
                 card.hass = hass;
             });
         }
-    }
-    
-    firstUpdated(){
-        this.addEventListener('mousedown', this.mouseDown, false);
-        this.addEventListener('touchestart', this.mouseDown, false);
-
-        this.addEventListener('mouseup', this.mouseUp, false);
-        this.addEventListener('toucheend', this.mouseUp, false);
-    }
-
-    updateDivPosition (event) {
-        //var divRect = div.getBoundingClientRect()
-        //var startX = seekbar.getBoundingClientRect().left
-        var mouseX = event.clientX
-        //div.style.transform = 'translateX(' + (mouseX - startX) + 'px)'
-        this._transform = mouseX;
-        console.log(mouseX);
-        //div.style.left = mouseX - startX + 'px';
-    }
-
-    mouseUp() {
-        console.log('mouseup')
-        window.removeEventListener('mousemove', this.updateDivPosition, true);
-    }
-
-    mouseDown() {	
-        console.log('mousedown');
-        window.addEventListener('mousemove', this.updateDivPosition, true);
-    }
+	}
 	
 	render() {
-		if (!this._config || !this._hass || !this._refCards) {
+		if (!this._config || !this._hass || !this._refTabs) {
 			return html``;
-    }
+		}
+
+		//console.log(this._refCards);
+
+		var padding;
+		if(this._config.padding){
+			padding = 'padding';
+		}
 
 		return html`
-            <div class="glider">
-                <div class="glider-track" style="transform: translateX('${this._transform}')">
-                    ${this._refCards}
-                </div>
+			<div class="wrapper ${padding}">
+				<div class="row">
+				  ${this._refTabs}
+				</div>
 			</div>
 		`;
 	}
 
   	static get styles() {
 	return [
-    css`
-        .glider {
-            background: red;
-        }
-        .glider {
-            margin: 0 auto;
-            position: relative;
-            overflow-x: hidden;
-            overflow-y: hidden;
-        }
-        .glider-track {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            z-index: 1;
-        }
-        .item {
-            pointer-events: none;
-        }
+	  css`
+		  .wrapper {
+        background: red;
+      }
 	  `
 	];
 	}
@@ -193,11 +169,11 @@ class DwainsSwipeCard extends LitElement {
 		return 3;
 	}
 }
-
-if(!customElements.get("dwains-swipe-card")) {
-  customElements.define("dwains-swipe-card", DwainsSwipeCard);
+  
+if(!customElements.get("dwains-tab-card")) {
+  customElements.define("dwains-tab-card", DwainsTabCard);
   console.info(
-    `%c DWAINS-SWIPE-CARD \n%c   Version ${VERSION}   `,
+    `%c DWAINS-TAB-CARD \n%c  Version ${VERSION}  `,
     'color: #2fbae5; font-weight: bold; background: black',
     'color: white; font-weight: bold; background: dimgray',
   );

@@ -1,0 +1,23 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/scenes.html
+
+scenes:
+  - entity: scene.carnaval
+    icon: fal:tv
+    #icon_color: '#ffffff'
+    #background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+  - entity: scene.bedtime
+    icon: fal:bed
+    #icon_color: '#ffffff'
+    #background: 'linear-gradient( 135deg, #FCCF31 10%, #F55555 100%)'
+  - entity: input_boolean.scheisse
+  - entity: scene.sunset_inside
+    #icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+  - entity: scene.sunset_outside
+    icon: fal:sunset
+    icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #FCCF31 10%, #F55555 100%)'
+  - entity: input_select.zigbee2mqtt_log_level
+    icon: fal:sunset
+    icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #FCCF31 10%, #F55555 100%)'
