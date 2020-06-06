@@ -3,7 +3,7 @@ compact_mode: true
 hide_unused: true
 hide_config: true
 hide_raw: true
-show_tabs: 'home, lights, scenes, dynamic_page, more_page'
+show_tabs: 'home, lights, scenes, dynamic_page, more_page, testdwain'
 hidden_tab_redirect: false
 tab_container_css: 'max-width: 1425px !important; margin: 0 auto !important;'
 all_tabs_css: "width: 35px !important;"

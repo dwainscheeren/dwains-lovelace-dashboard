@@ -6,4 +6,5 @@ custom_components/dwains_theme/__pycache__/
 www/*/
 !www/dwains-theme
 www/dwains-theme/images/
-www/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html
+packages/*/
+!packages/dwains_theme

@@ -15,7 +15,7 @@
 - type: module
   url: /local/dwains-theme/plugins/dwains-tab-card/dwains-tab-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-collapse-card/dwains-collapse-card.js?v=0.0.1
+  url: /local/dwains-theme/plugins/dwains-collapse-card/dwains-collapse-card.js?v=0.0.2
 
 # Plugins resources (required for dwains theme)
 - type: module
@@ -34,8 +34,6 @@
   url: /hacsfiles/lovelace-more-info-card/more-info-card.js
 - type: module
   url: /hacsfiles/lovelace-state-switch/state-switch.js
-- type: module
-  url: /hacsfiles/swipe-card/swipe-card.js
 
 # Plugins resources which are not required if you dont have a rooted roborock or a house calendar
 # you can comment these out
@@ -43,7 +41,3 @@
   url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js    
 - type: module
   url: /hacsfiles/atomic_calendar/atomic_calendar.js
-
-
-- url: /hacsfiles/sidebar-card/sidebar-card.js
-  type: module

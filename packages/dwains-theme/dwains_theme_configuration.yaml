@@ -98,33 +98,3 @@ automation:
             {% else %}
               dwains-theme-light
             {% endif %}
-  #Light Toast notification (Can be extended to all other domains!)
-  - alias: Notify State Change Light
-    initial_state: true
-    trigger:
-      - platform: event
-        event_type: state_changed
-    condition:
-      - condition: template
-        value_template: "{{ trigger.event.data.entity_id is not none }}"
-      - condition: template
-        value_template: >-
-          {% set domain = trigger.event.data.entity_id.split('.')[0] %}
-          {% if domain == 'light' %}
-            True
-          {% else %}
-            False
-          {% endif %}
-      - condition: template
-        value_template: "{{ trigger.event.data.old_state.state !=  trigger.event.data.new_state.state }}"
-      - condition: state
-        entity_id: input_boolean.light_notify
-        state: 'on'
-    action:
-      - service: browser_mod.toast
-        data_template:
-          duration: 3000
-          message: >-
-            {% set e = trigger.event.data.entity_id %}
-            {% set friendly_name = states[e.split('.')[0]][e.split('.')[1]].attributes.friendly_name %}
-            {{ friendly_name }} turned {{ trigger.event.data.new_state.state }}
