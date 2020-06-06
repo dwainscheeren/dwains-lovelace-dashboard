@@ -1,3 +1,7 @@
+# Do you have any custom resources? Go to the folder dwains-theme/resources/, 
+# if you don't have the file custom_resources.yaml then rename the file custom_resources-sample.yaml
+# to custom_resources.yaml and place your resources in the file custom_resources.yaml!
+
 #Set lovelace to YAML mode to make frontend completly from yaml files instead from gui editor
 lovelace:
   mode: yaml
@@ -14,10 +18,6 @@ lovelace:
 frontend:
   #Load dwain themes folder from your HA root folder.
   themes: !include_dir_merge_named ../../themes/
-  extra_html_url:
-    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-solid.html
-    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-regular.html
-    # - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html #If have Font Awesome Light uncomment this line
 
 #Load browser_mod (https://github.com/thomasloven/hass-browser_mod)
 browser_mod:
@@ -26,7 +26,7 @@ browser_mod:
 #You need to have a folder called dwains-theme/configs with all the configuration files inside
 dwains_theme:
   global:
-    version: '1.3.1'
+    version: '1.4.0'
   styles:
     padding-left: '10px'
   translations:
@@ -37,7 +37,7 @@ dwains_theme:
 #Sensor for latest version
 sensor:
   - platform: scrape
-    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.3.1
+    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.4.0
     name: Dwains Theme Version
     select: ".current-version h1"
     value_template: '{{ value.split(":")[1] }}'
@@ -55,6 +55,13 @@ input_select:
       - Auto Mode (Black/White)
       - Black Mode
       - White Mode
+
+#Input boolean
+input_boolean:
+  # Toast Light Notifications
+  dwains_lightyfy:
+    initial: off
+    name: Lightyfy
 
 #Theme automations
 automation:
@@ -91,3 +98,33 @@ automation:
             {% else %}
               dwains-theme-light
             {% endif %}
+  #Light Toast notification (Can be extended to all other domains!)
+  - alias: Notify State Change Light
+    initial_state: true
+    trigger:
+      - platform: event
+        event_type: state_changed
+    condition:
+      - condition: template
+        value_template: "{{ trigger.event.data.entity_id is not none }}"
+      - condition: template
+        value_template: >-
+          {% set domain = trigger.event.data.entity_id.split('.')[0] %}
+          {% if domain == 'light' %}
+            True
+          {% else %}
+            False
+          {% endif %}
+      - condition: template
+        value_template: "{{ trigger.event.data.old_state.state !=  trigger.event.data.new_state.state }}"
+      - condition: state
+        entity_id: input_boolean.light_notify
+        state: 'on'
+    action:
+      - service: browser_mod.toast
+        data_template:
+          duration: 3000
+          message: >-
+            {% set e = trigger.event.data.entity_id %}
+            {% set friendly_name = states[e.split('.')[0]][e.split('.')[1]].attributes.friendly_name %}
+            {{ friendly_name }} turned {{ trigger.event.data.new_state.state }}
