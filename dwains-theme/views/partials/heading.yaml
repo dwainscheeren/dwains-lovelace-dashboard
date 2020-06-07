@@ -12,7 +12,7 @@ style: |
     font-weight: bold;
     font-size: 14px;
   }
-  .markdown {
+  ha-markdown {
     padding: 0px 16px 0px {{ padding_left | default('0px') }} !important;
   }
 content: "{{ title }}"

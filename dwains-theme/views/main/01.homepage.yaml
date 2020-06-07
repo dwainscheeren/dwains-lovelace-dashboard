@@ -13,6 +13,7 @@
           max-width: 1465px;
           padding-bottom: 50px;
           margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
         }
       card:
         type: vertical-stack
@@ -271,9 +272,9 @@
                                 {% if room["climate"] %}
                                 if(states['{{ room["climate"] }}']){
                                   if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
-                                    icon = '<ha-icon style="height: 15px;" icon="{{ _d_t_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
+                                    icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _d_t_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
                                   } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
-                                    icon = '<ha-icon style="height: 15px;" icon="{{ _d_t_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
+                                    icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _d_t_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
                                   }
                                 }
                                 {% endif %}
@@ -289,9 +290,9 @@
 
                                 if(states['{{ room["climate"] }}']){
                                   if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
-                                    icon = '<ha-icon style="height: 15px;" icon="{{ _d_t_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
+                                    icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _d_t_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
                                   } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
-                                    icon = '<ha-icon style="height: 15px;" icon="{{ _d_t_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
+                                    icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _d_t_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
                                   }
                                 }
 

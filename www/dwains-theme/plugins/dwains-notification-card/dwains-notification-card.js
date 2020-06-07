@@ -4,7 +4,7 @@ import {
   css
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
   
-const VERSION = '0.0.1';
+const VERSION = '0.0.2';
 
 class DwainsNotificationCard extends LitElement {
   constructor() {
@@ -156,6 +156,9 @@ class DwainsNotificationCard extends LitElement {
       ha-card {
         box-shadow: none;
         color: var(--text-primary-color);
+      }
+      #title {
+        padding-bottom: 3px;
       }
       .notification {
         filter: brightness(90%);

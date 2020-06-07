@@ -2,16 +2,14 @@
 # Some dwains theme resources
 - type: css
   url: 'https://fonts.googleapis.com/css?family=Open+Sans&display=swap'
-- type: css
-  url: /local/dwains-theme/style.css
 - type: module
   url: /local/dwains-theme/plugins/dwains-weather-card/dwains-weather-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-notification-card/dwains-notification-card.js?v=0.0.1
+  url: /local/dwains-theme/plugins/dwains-notification-card/dwains-notification-card.js?v=0.0.2
 - type: module
   url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=0.1.2
+  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=1.0.0
 - type: module
   url: /local/dwains-theme/plugins/dwains-tab-card/dwains-tab-card.js?v=0.0.1
 - type: module

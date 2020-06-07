@@ -4,7 +4,7 @@ import {
   css,
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = "0.1.2";
+const VERSION = "1.0.0";
 
 const createError = (error, config) => {
   return createThing("hui-error-card", {
