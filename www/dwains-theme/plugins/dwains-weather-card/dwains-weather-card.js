@@ -9,7 +9,7 @@ import {
     css
   } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = '0.0.1';
+const VERSION = '0.0.2';
 
 const windDirections = [
   "N",

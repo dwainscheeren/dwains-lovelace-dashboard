@@ -4,7 +4,7 @@ import {
   css,
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = "0.0.2";
+const VERSION = "0.0.3";
 
 class DwainsCollapseCard extends LitElement {
   constructor() {
@@ -23,9 +23,7 @@ class DwainsCollapseCard extends LitElement {
   async setConfig(config) {
     if (
       !config &&
-      ((!config.cards && !Array.isArray(config.cards)) ||
-        !config.entities ||
-        !Array.isArray(config.entities))
+      ((!config.cards && !Array.isArray(config.cards)))
     ) {
       throw new Error("Card config incorrect");
     }
@@ -42,25 +40,16 @@ class DwainsCollapseCard extends LitElement {
 
   renderCard() {
     const config = this._config;
-    if (config.entities) {
-      const promises = config.entities.map((config) =>
-        this.createCardElement(config)
-      );
-      Promise.all(promises).then((cards) => {
-        this._refCards = cards;
-        this.requestUpdate();
-        //Removed some code here
-      });
-    } else {
-      const promises = config.cards.map((config) =>
-        this.createCardElement(config)
-      );
-      Promise.all(promises).then((cards) => {
-        this._refCards = cards;
-        this.requestUpdate();
-        //Removed some code here
-      });
-    }
+
+    const promises = config.cards.map((config) =>
+      this.createCardElement(config)
+    );
+    Promise.all(promises).then((cards) => {
+      this._refCards = cards;
+      this.requestUpdate();
+      //Removed some code here
+    });
+    
   }
 
   async createCardElement(cardConfig) {
@@ -146,13 +135,6 @@ class DwainsCollapseCard extends LitElement {
       return html``;
     }
 
-    //console.log('re-render');
-
-    var padding;
-    if (this._config.padding) {
-      padding = "padding";
-    }
-
     var widthTest = 0;
 
     for (let k in this._refCards) {
@@ -168,7 +150,7 @@ class DwainsCollapseCard extends LitElement {
     var hideToggle = items <= maxItems ? true : false;
 
     return html`
-      <div class="wrapper ${padding}">
+      <div class="wrapper">
         <div
           class="items ${this.open ? "expanded" : "collapsed"}"
           ?open=${this.open}

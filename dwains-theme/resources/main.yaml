@@ -3,7 +3,7 @@
 - type: css
   url: 'https://fonts.googleapis.com/css?family=Open+Sans&display=swap'
 - type: module
-  url: /local/dwains-theme/plugins/dwains-weather-card/dwains-weather-card.js?v=0.0.1
+  url: /local/dwains-theme/plugins/dwains-weather-card/dwains-weather-card.js?v=0.0.2
 - type: module
   url: /local/dwains-theme/plugins/dwains-notification-card/dwains-notification-card.js?v=0.0.2
 - type: module
@@ -13,7 +13,7 @@
 - type: module
   url: /local/dwains-theme/plugins/dwains-tab-card/dwains-tab-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-collapse-card/dwains-collapse-card.js?v=0.0.2
+  url: /local/dwains-theme/plugins/dwains-collapse-card/dwains-collapse-card.js?v=0.0.3
 
 # Plugins resources (required for dwains theme)
 - type: module
