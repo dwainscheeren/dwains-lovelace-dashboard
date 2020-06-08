@@ -7,7 +7,7 @@ header_states_climate:
     action: navigate
     navigation_path: devices_climates
   name: {{ _d_t_trans.climate.title }}
-  icon: "{{ _d_t_icons.climate|default('fas:thermometer-three-quarters') }}"
+  icon: "{{ _d_t_icons.climate|default('mdi:thermometer') }}"
   variables:
     status: >
       [[[

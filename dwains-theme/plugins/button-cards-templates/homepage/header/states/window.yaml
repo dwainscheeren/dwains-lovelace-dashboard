@@ -4,9 +4,10 @@ header_states_window:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_windows
   name: {{ _d_t_trans.window.title_plural }}
-  icon: '{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}'
+  icon: "{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}"
   variables:
     status: >
       [[[
@@ -40,7 +41,7 @@ header_states_window:
     [[[
       if(variables.status > 0){
         var openWindows = variables.status;
-        return openWindows + ' ' + hass.localize('state.cover.open');
+        return openWindows + ' ' + hass.localize('component.binary_sensor.state.window.on');
       }
     ]]]
   styles:
@@ -72,7 +73,7 @@ header_states_window:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

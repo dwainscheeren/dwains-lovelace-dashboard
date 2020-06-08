@@ -6,8 +6,8 @@ header_states_device:
   tap_action: 
     action: navigate
     navigation_path: devices_devices
-  name: {{ _d_t_trans.device.title }}
-  icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
+  name: {{ _d_t_trans.device.title_plural }}
+  icon: "{{ _d_t_icons.device|default('mdi:power-plug') }}"
   variables:
     status: >
       [[[
@@ -40,7 +40,7 @@ header_states_device:
     [[[
       if(variables.status > 0){
         var onDevices = variables.status;
-        return onDevices + ' ' + hass.localize('state.default.on');
+        return onDevices + ' ' + hass.localize('component.switch.state._.on');
       }
     ]]]
   styles:
@@ -72,7 +72,7 @@ header_states_device:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

@@ -6,8 +6,8 @@ header_states_plant:
   tap_action: 
     action: navigate
     navigation_path: devices_plants
-  name: {{ _d_t_trans.plant.title }}
-  icon: '{{ _d_t_icons.plant|default('fas:leaf') }}'
+  name: {{ _d_t_trans.plant.title_plural }}
+  icon: "{{ _d_t_icons.plant|default('mdi:flower') }}"
   variables:
     status: >
       [[[
@@ -40,7 +40,7 @@ header_states_plant:
     [[[
       if(variables.status > 0){
         var problemPlants = variables.status;
-        return problemPlants + ' ' + hass.localize('state.binary_sensor.problem.on');
+        return problemPlants + ' ' + hass.localize('component.binary_sensor.state.problem.on');
       }
     ]]]
   styles:
@@ -72,7 +72,7 @@ header_states_plant:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

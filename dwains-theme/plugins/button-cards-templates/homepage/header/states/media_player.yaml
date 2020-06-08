@@ -6,8 +6,8 @@ header_states_media_player:
   tap_action: 
     action: navigate
     navigation_path: devices_media_players
-  name: {{ _d_t_trans.media_player.title }}
-  icon: '{{ _d_t_icons.media_player|default('fas:play') }}'
+  name: {{ _d_t_trans.media_player.title_plural }}
+  icon: "{{ _d_t_icons.media_player|default('mdi:play-pause') }}"
   variables:
     status: >
       [[[
@@ -40,7 +40,7 @@ header_states_media_player:
     [[[
       if(variables.status > 0){
         var onMediaPlayers = variables.status;
-        return onMediaPlayers + ' ' + hass.localize('state.default.on');
+        return onMediaPlayers + ' ' + hass.localize('component.media_player.state._.on');
       }
     ]]]
   styles:
@@ -72,7 +72,7 @@ header_states_media_player:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

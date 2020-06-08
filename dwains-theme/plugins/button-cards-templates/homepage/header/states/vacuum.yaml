@@ -6,11 +6,8 @@ header_states_vacuum:
   tap_action: 
     action: navigate
     navigation_path: devices_vacuums
-  name: > 
-    [[[ 
-      return hass.localize('domain.vacuum'); 
-    ]]]
-  icon: '{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}'
+  name: {{ _d_t_trans.vacuum.title }}
+  icon: "{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}"
   variables:
     status: >
       [[[
@@ -31,7 +28,7 @@ header_states_vacuum:
     [[[
       if(variables.status > 0){
         var onVacuums = variables.status;
-        return onVacuums + ' ' + hass.localize('state.default.on');
+        return onVacuums + ' ' + hass.localize('component.vacuum.state._.on');
       }
     ]]]
   styles:
@@ -63,7 +60,7 @@ header_states_vacuum:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

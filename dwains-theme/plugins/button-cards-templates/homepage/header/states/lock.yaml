@@ -6,11 +6,8 @@ header_states_lock:
   tap_action: 
     action: navigate
     navigation_path: devices_locks
-  name: > 
-    [[[ 
-      return hass.localize('ui.card.lock.lock'); 
-    ]]]
-  icon: '{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}'
+  name: {{ _d_t_trans.lock.title_plural }}
+  icon: "{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}"
   variables:
     status: >
       [[[
@@ -43,7 +40,7 @@ header_states_lock:
     [[[
       if(variables.status > 0){
         var openLocks = variables.status;
-        return openLocks + ' ' + hass.localize('state.lock.unlocked');
+        return openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on');
       }
     ]]]
   styles:
@@ -75,7 +72,7 @@ header_states_lock:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

@@ -479,11 +479,11 @@
                       {% if devices.hasLock == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: '{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}'
+                        icon: "{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}"
                         name: {{ _d_t_trans.lock.title_plural }}
                         tap_action: 
                           action: navigate
-                          navigation_path: devices_locks
+                          navigation_path: devices_locks#devices
                         label: >
                           [[[
                             var openLocks = 0;
@@ -510,7 +510,7 @@
                             {% endfor %}
 
                             if(openLocks > 0){
-                              return openLocks + ' ' + hass.localize('state.lock.unlocked');
+                              return openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on');
                             } else {
                               return '&nbsp;';
                             }
@@ -520,11 +520,11 @@
                       {% if devices.hasLight == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: '{{ _d_t_icons.light_off|default('mdi:lightbulb') }}'
+                        icon: "{{ _d_t_icons.light_off|default('mdi:lightbulb') }}"
                         name: {{ _d_t_trans.light.title_plural }}
                         tap_action: 
                           action: navigate
-                          navigation_path: lights
+                          navigation_path: devices_lights#devices
                         label: >
                           [[[
                             var onLights = 0;
@@ -551,7 +551,7 @@
                             {% endfor %}
 
                             if(onLights > 0){
-                              return onLights + ' ' + hass.localize('state.default.on');
+                              return onLights + ' ' + hass.localize('component.light.state._.on');
                             } else {  
                               return '&nbsp;';
                             }
@@ -561,11 +561,11 @@
                       {% if devices.hasClimate == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: '{{ _d_t_icons.climate|default('mdi:thermometer') }}'
+                        icon: "{{ _d_t_icons.climate|default('mdi:thermometer') }}"
                         name: {{ _d_t_trans.climate.title }}
                         tap_action: 
                           action: navigate
-                          navigation_path: devices_climates
+                          navigation_path: devices_climates#devices
                         label: >
                           [[[
                             var onClimates = 0;
@@ -600,11 +600,11 @@
                       {% if devices.hasCover == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: '{{ _d_t_icons.cover|default('mdi:window-shutter') }}'
+                        icon: "{{ _d_t_icons.cover|default('mdi:window-shutter') }}"
                         name: {{ _d_t_trans.cover.title_plural }}
                         tap_action: 
                           action: navigate
-                          navigation_path: devices_covers
+                          navigation_path: devices_covers#devices
                         label: >
                           [[[
                             var openCovers = 0;
@@ -631,7 +631,7 @@
                             {% endfor %}
                         
                             if(openCovers > 0){
-                              return openCovers + ' ' + hass.localize('state.cover.open');
+                              return openCovers + ' ' + hass.localize('component.cover.state._.open');
                             } else {  
                               return '&nbsp;';
                             }
@@ -641,11 +641,11 @@
                       {% if devices.hasDevice == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
+                        icon: "{{ _d_t_icons.device|default('mdi:power-plug') }}"
                         name: {{ _d_t_trans.device.title_plural }}
                         tap_action: 
                           action: navigate
-                          navigation_path: devices_devices
+                          navigation_path: devices_devices#devices
                         label: >
                           [[[
                             var onDevices = 0;
@@ -672,7 +672,7 @@
                             {% endfor %}
 
                             if(onDevices > 0){
-                              return onDevices + ' ' + hass.localize('state.default.on');
+                              return onDevices + ' ' + hass.localize('component.switch.state._.on');
                             } else {  
                               return '&nbsp;';
                             }
@@ -682,11 +682,11 @@
                       {% if devices.hasMediaPlayer == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: '{{ _d_t_icons.media_player|default('mdi:play-pause') }}'
+                        icon: "{{ _d_t_icons.media_player|default('mdi:play-pause') }}"
                         name: {{ _d_t_trans.media_player.title_plural }}
                         tap_action: 
                           action: navigate
-                          navigation_path: devices_media_players
+                          navigation_path: devices_media_players#devices
                         label: >
                           [[[
                             var onMediaPlayers = 0;
@@ -713,7 +713,7 @@
                             {% endfor %}
 
                             if(onMediaPlayers > 0){
-                              return onMediaPlayers + ' ' + hass.localize('state.default.on');
+                              return onMediaPlayers + ' ' + hass.localize('component.media_player.state._.on');
                             } else {  
                               return '&nbsp;';
                             }
@@ -723,11 +723,11 @@
                       {% if devices.hasVacuum == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: '{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}'
+                        icon: "{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}"
                         name: {{ _d_t_trans.vacuum.title }}
                         tap_action: 
                           action: navigate
-                          navigation_path: devices_vacuums
+                          navigation_path: devices_vacuums#devices
                         label: >
                           [[[
                             var onVacuums = 0;
@@ -748,7 +748,7 @@
                             {% endfor %}
 
                             if(onVacuums > 0){
-                              return onVacuums + ' ' + hass.localize('state.default.on');
+                              return onVacuums + ' ' + hass.localize('component.vacuum.state._.on');
                             } else {
                               return '&nbsp;';
                             }
@@ -758,11 +758,11 @@
                       {% if devices.hasPlant == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: '{{ _d_t_icons.plant|default('mdi:flower') }}'
+                        icon: "{{ _d_t_icons.plant|default('mdi:flower') }}"
                         name: {{ _d_t_trans.plant.title_plural }}
                         tap_action: 
                           action: navigate
-                          navigation_path: devices_plants
+                          navigation_path: devices_plants#devices
                         label: >
                           [[[
                             var problemPlants = 0;
@@ -789,7 +789,7 @@
                             {% endfor %}
 
                             if(problemPlants > 0){
-                              return problemPlants + ' ' + hass.localize('state.binary_sensor.problem.on');
+                              return problemPlants + ' ' + hass.localize('component.binary_sensor.state.problem.on');
                             } else {  
                               return '&nbsp;';
                             }

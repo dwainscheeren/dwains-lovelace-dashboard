@@ -4,9 +4,10 @@ header_states_door:
   show_state: false
   show_label: true
   tap_action: 
-    action: more-info
+    action: navigate
+    navigation_path: devices_doors
   name: {{ _d_t_trans.door.title_plural }}
-  icon: '{{ _d_t_icons.door_open|default('mdi:door-open') }}'
+  icon: "{{ _d_t_icons.door_open|default('mdi:door-open') }}"
   variables:
     status: >
       [[[
@@ -40,7 +41,7 @@ header_states_door:
     [[[
       if(variables.status > 0){
         var openDoors = variables.status;
-        return openDoors + ' ' + hass.localize('state.cover.open');
+        return openDoors + ' ' + hass.localize('component.binary_sensor.state.door.on');
       }
     ]]]
   styles:

@@ -6,11 +6,8 @@ header_states_cover:
   tap_action: 
     action: navigate
     navigation_path: devices_covers
-  name: > 
-    [[[ 
-      return hass.localize('frontend.domain.cover'); 
-    ]]]
-  icon: '{{ _d_t_icons.cover|default('mdi:window-shutter') }}'
+  name: {{ _d_t_trans.cover.title_plural }}
+  icon: "{{ _d_t_icons.cover|default('mdi:window-shutter') }}"
   variables:
     status: >
       [[[
@@ -43,7 +40,7 @@ header_states_cover:
     [[[
       if(variables.status > 0){
         var openCovers = variables.status;
-        return openCovers + ' ' + hass.localize('state.cover.open');
+        return openCovers + ' ' + hass.localize('component.cover.state._.open');
       }
     ]]]
   styles:
@@ -75,7 +72,7 @@ header_states_cover:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

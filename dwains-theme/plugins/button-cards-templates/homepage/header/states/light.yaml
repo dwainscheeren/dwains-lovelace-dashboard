@@ -6,11 +6,8 @@ header_states_light:
   tap_action: 
     action: navigate
     navigation_path: lights
-  name: > 
-    [[[ 
-      return hass.localize('domain.light'); 
-    ]]]
-  icon: '{{ _d_t_icons.light_on|default('mdi:lightbulb') }}'
+  name: {{ _d_t_trans.light.title_plural }}
+  icon: "{{ _d_t_icons.light_on|default('mdi:lightbulb') }}"
   variables:
     status: >
       [[[
@@ -43,7 +40,7 @@ header_states_light:
     [[[
       if(variables.status > 0){
         var onLights = variables.status;
-        return onLights + ' ' + hass.localize('state.default.on');
+        return onLights + ' ' + hass.localize('component.light.state._.on');
       }
     ]]]
   styles:
@@ -75,7 +72,7 @@ header_states_light:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
