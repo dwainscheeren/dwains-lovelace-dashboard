@@ -61,6 +61,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Some very small design changes.
 * Added page for Windows overview.
 * Added page for Doors overview.
+* Re-programmed the Activity section on the House Information page, it now is responsive and orders by name default.
 
 
 ## Update 1.3.1
