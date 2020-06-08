@@ -43,6 +43,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 #### Changes:
 
 * **Replaced all Font Awesome icons with Material Design Icons, so FA is no longer included in my theme. If you use rooms with Font Awesome (FAS/FAR) icons you need to replace them with Material Design (MDI) icons!! (If you want to use FA icons, please look [here](../how-tos/how-to-choose-icon.md)).**
+* Created Dwains Collapse Card. I removed the swipe card from the header, now too many (state) items will collapse and can be toggled with an chevron up/down button. The swipe card plugin is no longer used and loaded by default!
 * Changed some translation loadings, because from HA 0.109 its changed.
 * Added option to have house information favorites on the homepage.
 * Removed Mini Graph Cards so the plugin is no longer needed. I  now use the default HA sensor card.
@@ -55,6 +56,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added fixed width and height for icons on the more page.
 * Added Dwains Tab Card, a new card for the tabs on the homepage, it will replace state switch card so that card can be removed.
 * Added HA (new) Media Control Card for media_players, so you now have a fancy card.
+* Fixed an bug on the vacuum page with the battery state.
 * If room entity is just 1 item place the name of the entity in the card instead of the translation of the domain. So for example, instead of Media Player it now says the entity name.
 * Added option to remove the header in more_page addons.
 * On All batteries page added the unknown icon and if battery is under 10% then a empty icon.
