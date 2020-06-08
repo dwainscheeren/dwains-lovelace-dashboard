@@ -38,10 +38,10 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 #### Changes:
 
+* **Replaced all Font Awesome icons with Material Design Icons, so FA is no longer included in my theme. If you use rooms with Font Awesome (FAS/FAR) icons you need to replace them with Material Design (MDI) icons!! (If you want to use FA icons, please look [here](../how-tos/how-to-choose-icon.md)).**
 * Changed some translation loadings, because from HA 0.109 its changed.
 * Added option to have house information favorites on the homepage.
 * Removed Mini Graph Cards so the plugin is no longer needed. I  now use the default HA sensor card.
-* Replaced all Font Awesome icons with Material Design Icons, so FA is no longer needed (you can still use it yourself and override icons with FA icons
 * Fixed all translations for HA 0.110.
 * Some small speed improvements.
 * Some small bug fixes for HA 0.110.
@@ -57,7 +57,10 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added filter 'sensor' on all batteries page, it only shows sensor entities with the word 'battery' inside it.
 * Fixed bug that custom font "Open Sans" was not loaded anymore in my theme, now it is loaded again.
 * Re-programmed Dwains Flexbox Card from scratch.
-* Merged PR lock popup [#126](https://github.com/dwainscheeren/lovelace-dwains-theme/pull/126)
+* Merged PR lock popup [#126](https://github.com/dwainscheeren/lovelace-dwains-theme/pull/126).
+* Some very small design changes.
+* Added page for Windows overview.
+* Added page for Doors overview.
 
 
 ## Update 1.3.1
