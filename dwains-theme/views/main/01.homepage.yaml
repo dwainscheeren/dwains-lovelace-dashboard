@@ -107,6 +107,11 @@
                 - type: custom:dwains-weather-card
                   item_classes: 'd-none d-sm-block col-sm-6 col-md-3 col-lg-3'
                   entity: {{ _d_t_config.global["weather"] }}
+                  {% if _d_t_config.global["outside_temperature"] %}
+                  {% if _d_t_config.global["outside_temperature"].split('.')[0] == 'sensor' %}
+                  tempsensor_entity: {{ _d_t_config.global["outside_temperature"] }}
+                  {% endif %}
+                  {% endif %}
                   style: |
                     ha-card {
                       background: var(--dwains-theme-header-button-background) !important;
