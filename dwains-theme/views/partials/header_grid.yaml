@@ -24,6 +24,9 @@ card:
           name: {{ subtitle }}
           show_icon: false
           show_label: true
+          tap_action: 
+            action: navigate
+            navigation_path: /dwains-theme/{{ navigation_path }}
           label: > 
             [[[         
               return `<ha-icon
