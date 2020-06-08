@@ -38,6 +38,7 @@ header_states_person:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
       - font-size: 11px
+      - line-height: 12px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
@@ -45,4 +46,5 @@ header_states_person:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
+      - line-height: 12px
