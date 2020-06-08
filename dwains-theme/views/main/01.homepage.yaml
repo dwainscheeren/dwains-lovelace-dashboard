@@ -176,6 +176,7 @@
           #END HOMEPAGE HEADER
 
           #START HOMEPAGE CONTENT
+          {% if _d_t_config.global["favorites_homepage"] %}
           #Favorites start
           {% if _d_t_config.house_information["favorites"] %}
           - type: custom:dwains-flexbox-card
@@ -223,7 +224,7 @@
                   {% endfor %}
           {% endif %}
           #Favorites end  
-
+          {% endif %}
 
 
           #Start of rooms and devices
