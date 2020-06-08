@@ -22,10 +22,6 @@ more_page_house_information_activity:
     card:
       - background-color: var(--dwains-theme-primary)
       - border-radius: 5px
-      - margin-bottom: 0px
-      - margin-left: 11px
-      - margin-right: 11px
-      - width: 349px
       - padding-top: 14px
       - padding-bottom: 14px
     icon:

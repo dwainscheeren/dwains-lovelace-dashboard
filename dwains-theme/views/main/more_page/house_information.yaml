@@ -21,6 +21,7 @@
             - title: {{ _d_t_trans.house_information.title }}
               subtitle: {{ _d_t_trans.home.title }}
               navigation_path: home  
+
           #Start of house information page
           - type: custom:dwains-flexbox-card
             padding: true
@@ -76,6 +77,7 @@
               - !include
                 - ../../partials/heading.yaml
                 - title: {{ _d_t_trans.house_information.house_calendar }}
+
           #Outside dwains flexbox card because of a bug
           #Calendar card
           - type: custom:mod-card
@@ -107,90 +109,70 @@
           {% endif %}
           {% endif %}
 
-          #heading  
+
+          #heading
           - !include
             - ../../partials/heading.yaml
             - title: {{ _d_t_trans.house_information.activity }}
               padding_left: 11px
-          #loop all rooms and get all open doors, windows, motion
-          {% for room in _d_t_config.rooms %}
-          #Doors
-          {% if room["door"] %}
-          - type: conditional
-            conditions:
-              - entity: {{ room["door"] }}
-                state: "on"
+          - type: custom:auto-entities
+            filter:
+              include:
+                {% for room in _d_t_config.rooms %}
+                {% if room["door"] %}
+                {% if room["door"].split('.')[0] == 'group' %}
+                - group: "{{ room["door"] }}"
+                  state: "on"
+                  options:
+                    type: custom:button-card
+                    template: more_page_house_information_activity
+                {% else %}
+                - entity_id: "{{ room["door"] }}"
+                  state: "on"
+                  options:
+                    type: custom:button-card
+                    template: more_page_house_information_activity
+                {% endif %}
+                {% endif %}
+                {% if room["window"] %}
+                {% if room["window"].split('.')[0] == 'group' %}
+                - group: "{{ room["window"] }}"
+                  state: "on"
+                  options:
+                    type: custom:button-card
+                    template: more_page_house_information_activity
+                {% else %}
+                - entity_id: "{{ room["window"] }}"
+                  state: "on"
+                  options:
+                    type: custom:button-card
+                    template: more_page_house_information_activity
+                {% endif %}
+                {% endif %}
+                {% if room["motion"] %}
+                {% if room["motion"].split('.')[0] == 'group' %}
+                - group: "{{ room["motion"] }}"
+                  state: "on"
+                  options:
+                    type: custom:button-card
+                    template: more_page_house_information_activity
+                {% else %}
+                - entity_id: "{{ room["motion"] }}"
+                  state: "on"
+                  options:
+                    type: custom:button-card
+                    template: more_page_house_information_activity
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                - type: custom:button-card
+                  color_type: blank-card
+                  aspect_ratio: 1/1
+            show_empty: false
+            sort:
+              method: name
+              numeric: true
             card:
-              {% if room["door"].split('.')[0] == 'binary_sensor' %}
-              # this room has only 1 door
-              type: custom:button-card
-              entity: {{ room["door"] }}
-              template: more_page_house_information_activity
-              {% else %}
-              type: custom:auto-entities
-              filter:
-                include:
-                  - group: {{ room["door"] }}
-                    state: "on"
-                    options:
-                      type: custom:button-card
-                      template: more_page_house_information_activity
-              card:
-                type: entities
-                style: |
-                  ha-card {
-                    --ha-card-background: transparent;
-                    box-shadow: none;   
-                  }
-                  .card-content {
-                    padding: 0px;
-                  }
-              {% endif %}
-          {% endif %}
-
-          #Motion
-          {% if room["motion"] %}
-          - type: conditional
-            conditions:
-              - entity: {{ room["motion"] }}
-                state: "on"
-            card:
-              type: custom:button-card
-              entity: {{ room["motion"] }}
-              template: more_page_house_information_activity
-          {% endif %}
-
-          #Windows
-          {% if room["window"] %}
-          - type: conditional
-            conditions:
-              - entity: {{ room["window"] }}
-                state: "on"
-            card:
-              {% if room["window"].split('.')[0] == 'binary_sensor' %}
-              # this room has only 1 window
-              type: custom:button-card
-              entity: {{ room["window"] }}
-              template: more_page_house_information_activity
-              {% else %}
-              type: custom:auto-entities
-              filter:
-                include:
-                  - group: {{ room["window"] }}
-                    state: "on"
-                    options:
-                      type: custom:button-card
-                      template: more_page_house_information_activity
-              card:
-                type: entities
-                style: |
-                  ha-card {
-                    --ha-card-background: transparent;
-                    box-shadow: none;   
-                  }
-                  .card-content {
-                    padding: 0px;
-                  }
-              {% endif %}
-          {% endif %}
-          {% endfor %}
+              type: custom:dwains-flexbox-card
+              padding: true
+              items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'

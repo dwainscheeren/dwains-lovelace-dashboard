@@ -2,7 +2,7 @@
 
 - type: custom:button-card
   template: lights_header_all_lights_toggle
-  icon: {{ _d_t_icons.light_on|default('fas:lightbulb') }}
+  icon: "{{ _d_t_icons.light_on|default('mdi:lightbulb') }}"
   tap_action:
     haptic: light
     action: call-service
@@ -17,6 +17,7 @@
         {% endfor %}
   styles:
     card:
+      - padding-top: 16px
       - display: >
           [[[
             var onLights = 0;
@@ -49,7 +50,7 @@
           ]]]
 - type: custom:button-card
   template: lights_header_all_lights_toggle
-  icon: {{ _d_t_icons.light_on|default('far:lightbulb') }}
+  icon: "{{ _d_t_icons.light_off|default('mdi:lightbulb-outline') }}"
   tap_action:
     haptic: light
     action: call-service
@@ -64,7 +65,6 @@
         {% endfor %}
   styles:
     card:
-      - padding: 0px 0 0 0
       - display: >
           [[[
             var onLights = 0;

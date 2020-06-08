@@ -74,6 +74,7 @@ header_states_window:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
       - font-size: 11px
+      - height: 30px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

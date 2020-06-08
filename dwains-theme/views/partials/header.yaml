@@ -1,56 +1,84 @@
 # dwains_theme
 
 # Header partial
-type: markdown
-style: |
+type: custom:mod-card
+style: | 
   ha-card {
-    box-shadow: none;
-    padding: 10px 0px;
-    color: #fff;
     background-color: var(--dwains-theme-header-background);
-    border-radius: 0; 
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 1px;
+    color: var(--dwains-theme-header-text);
   }
   @media only screen and (min-width: 1025px) {
     ha-card {
-      margin-top: 25px;
-      padding-top: 15px;
-      padding-bottom: 15px;
+      margin-top: 20px;
     }
   }
-  ha-markdown {
-    padding-top: 0px !important;
-    padding-bottom: 14px !important;
-    padding-left: 11px !important;
-  }
-  ha-card a {
-    color: var(--dwains-theme-header-text) !important;
-  }
-  ha-card p {
-    margin-bottom: 0px;
-  }
-  ha-card h1 {
-    color: var(--dwains-theme-header-text);
-    font-size: 1.5em;
+card:
+  type: vertical-stack
+  cards:
     {% if subtitle %}
-    margin: 0;
-    {% else %}
-    margin: 10px 0 0 0;
+    - type: custom:button-card
+      icon: mdi:chevron-left
+      name: {{ subtitle }}
+      show_icon: false
+      show_label: true
+      label: > 
+        [[[         
+          return `<ha-icon
+            style="height: 30px; width: 30px; color: var(--dwains-theme-header-text)"
+            icon="{{ _d_t_icons.menu_back|default('mdi:chevron-left') }}">
+            </ha-icon>`
+        ]]]
+      styles:
+        grid:
+          - grid-template-areas: '"i""l""n"'
+          - grid-template-columns: min-content
+          - grid-template-rows: min-content
+        card:
+          - background-color: transparent
+          - margin-bottom: 0px
+          - padding-top: 14px
+          - padding-bottom: 0px
+          - padding-left: 16px
+          - box-shadow: none
+        icon:
+          - width: 50px
+          - height: 50px
+          - color: var(--dwains-theme-header-text)
+          - justify-self: start
+          - align-self: center
+        img_cell:
+          - justify-self: start
+          - align-self: center
+        name:
+          - color: var(--dwains-theme-header-text)
+          - justify-self: start
+          - font-size: 13px
+          - align-self: center
+          - font-weight: bold
+          - padding-top: 10px
+        label:
+          - color: var(--dwains-theme-header-text)
+          - justify-self: start
+          - font-size: 13px
+          - align-self: center
+          - font-weight: bold
+          - margin-left: -8px
     {% endif %}
-  }
-  ha-card h3 {
-    font-size: 13px;
-    font-weight: normal;
-    color: var(--dwains-theme-header-text);
-    {% if subtitle %}
-    margin: 14px 0 0 0;
-    {% else %}
-    margin: 0;
-    {% endif %}
-  }
-content: |
-  {% if navigation_path %}[<ha-icon icon="{{ _d_t_icons.menu_back|default('fas:chevron-left') }}"></ha-icon>](/dwains-theme/{{ navigation_path }}){% endif %}
-  <h3>{{ subtitle }}</h3>
-  <h1>{{ title }}</h1>
+    - type: markdown
+      style: |
+        ha-card {
+          box-shadow: none;
+          background-color: transparent;
+          color: var(--dwains-theme-header-text) !important;
+          font-size: 1.5em !important;
+          font-weight: bold;
+        }
+        ha-markdown {
+          {% if subtitle %}
+          padding-top: 0px !important;
+          {% else %}
+          padding-top: 20px !important;
+          padding-bottom: 20px !important;
+          {% endif %}
+        }
+      content: {{ title }}

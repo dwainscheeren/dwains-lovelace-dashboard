@@ -31,7 +31,7 @@
               } 
               @media only screen and (min-width: 1025px) {
                 ha-card {
-                  margin-top: 25px;
+                  margin-top: 20px;
                   padding-top: 15px;
                   padding-bottom: 15px;
                 }
@@ -413,7 +413,7 @@
                                 } else {
                                   return `<ha-icon
                                     style="height: 20px;"
-                                    icon="{{ _d_t_icons.light_on|default('mdi:lightbulb-outline') }}">
+                                    icon="{{ _d_t_icons.light_off|default('mdi:lightbulb-outline') }}">
                                     </ha-icon>`
                                 }
                               } else {
