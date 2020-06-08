@@ -30,7 +30,7 @@
               - type: custom:button-card
                 template: scene
                 entity: {{ scene["entity"] }}   
-                icon: '{{ scene["icon"]|default('far:play-circle') }}'
+                icon: '{{ scene["icon"]|default('mdi:play-circle') }}'
                 {% if scene["entity"].split('.')[0] == 'scene' %}
                 # its a scene entity
                 tap_action: 
