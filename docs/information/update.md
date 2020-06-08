@@ -36,6 +36,10 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 ## Update 1.4.0 (NOT YET RELEASED)
 
+#### New Features:
+* You can add your house information favorites on the homepage now. Add the line `favorites_homepage: 'true'` to your `global.yaml` file.
+* Add option to remove the header in more_page addons. Use `show_header: 'false'`, this variable is not required and true by default.
+
 #### Changes:
 
 * **Replaced all Font Awesome icons with Material Design Icons, so FA is no longer included in my theme. If you use rooms with Font Awesome (FAS/FAR) icons you need to replace them with Material Design (MDI) icons!! (If you want to use FA icons, please look [here](../how-tos/how-to-choose-icon.md)).**
@@ -52,7 +56,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added Dwains Tab Card, a new card for the tabs on the homepage, it will replace state switch card so that card can be removed.
 * Added HA (new) Media Control Card for media_players, so you now have a fancy card.
 * If room entity is just 1 item place the name of the entity in the card instead of the translation of the domain. So for example, instead of Media Player it now says the entity name.
-* Add option to remove the header in more_page addons. Use `show_header: 'false'`, this variable is not required and true by default.
+* Added option to remove the header in more_page addons.
 * On All batteries page added the unknown icon and if battery is under 10% then a empty icon.
 * Added filter 'sensor' on all batteries page, it only shows sensor entities with the word 'battery' inside it.
 * Fixed bug that custom font "Open Sans" was not loaded anymore in my theme, now it is loaded again.
