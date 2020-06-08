@@ -62,6 +62,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added page for Windows overview.
 * Added page for Doors overview.
 * Re-programmed the Activity section on the House Information page, it now is responsive and orders by name default.
+* Re-programmed the headers on all pages. The back button is now bigger (for people with big fingers haha).
 
 
 ## Update 1.3.1
