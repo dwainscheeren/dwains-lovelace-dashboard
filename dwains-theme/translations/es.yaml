@@ -36,7 +36,7 @@ es:
     light_on: "luz encendida"
     lights_on: "luces encendidas"
     light_off: "luz apagada"
-    lights_off: "luces apagadas
+    lights_off: "luces apagadas"
     all_lights_on: "Todas las luces encendidas"
     all_lights_off: "Todas las luces apagadas"
     on_text: "Encendida"
@@ -54,7 +54,7 @@ es:
 
   window:
     title: "Ventana"
-    title_plural: "Ventanas
+    title_plural: "Ventanas"
     window_open: "ventana abierta"
     windows_open: "ventanas abiertas"
     all_windows_open: "Todas las ventanas abiertas"
