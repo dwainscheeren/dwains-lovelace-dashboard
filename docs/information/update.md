@@ -67,6 +67,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Added page for Doors overview.
 * Re-programmed the Activity section on the House Information page, it now is responsive and orders by name default.
 * Re-programmed the headers on all pages. The back button is now bigger (for people with big fingers haha).
+* Fixed bug that outside_temperature is not showing in the weather card on dekstop/tablet.
 
 
 ## Update 1.3.1
