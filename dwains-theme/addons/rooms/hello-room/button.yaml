@@ -5,7 +5,7 @@ type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
 template: rooms_child
 name: {{ name }}
-icon: {{ icon|default('fas:puzzle-piece') }}
+icon: {{ icon|default('mdi:puzzle') }}
 tap_action: 
   action: navigate
   navigation_path: {{ navigation_path }}   

@@ -4,7 +4,7 @@
 # dynamic_page:
 #   addon:
 #     name: Hello dynamic page
-#     icon: fas:puzzle-piece
+#     icon: mdi:puzzle
 #     path: 'dwains-theme/addons/dynamic_page/hello-dynamic-page/page.yaml'
 #     data:
 #       some_data: 'This is some data parsed.'

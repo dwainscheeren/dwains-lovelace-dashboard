@@ -2,7 +2,7 @@
 
 # rooms:
 #   - name: Hallway
-#     icon: fas:key
+#     icon: mdi:key
 #     light: light.hallway
 #     temperature: sensor.hallway_temperature
 #     climate: climate.hallway_climate
@@ -20,12 +20,12 @@
 #         - entity: sensor.hallway_motion_battery_level
 #         - entity: sensor.smokedetector_battery
 #   - name: Garage
-#     icon: fas:garage
+#     icon: mdi:garage
 #     light: group.garage_lights
 #     door: group.garage_doors
 #     addons:
 #       - name: Hello room
-#         icon: fas:puzzle-piece
+#         icon: mdi:puzzle
 #         path: 'dwains-theme/addons/rooms/hello-room/page.yaml'
 #         button_path: 'dwains-theme/addons/rooms/hello-room/button.yaml'
 #         data:

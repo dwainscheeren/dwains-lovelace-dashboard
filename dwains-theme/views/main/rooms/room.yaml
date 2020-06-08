@@ -517,7 +517,7 @@
               - type: custom:button-card
                 entity: {{ room["media_player"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.media_player|default('fas:play') }}'
+                icon: '{{ _d_t_icons.media_player|default('mdi:play-pause') }}'
                 {% if room["media_player"].split('.')[0] == 'media_player' %}
                 # this room has only 1 media player
                 name: {{ _d_t_trans.media_player.title }}
@@ -642,7 +642,7 @@
               {% else %}
               - type: custom:button-card
                 template: rooms_child
-                icon: {{ addon["icon"]|default('fas:puzzle-piece') }}
+                icon: {{ addon["icon"]|default('mdi:puzzle') }}
                 name: {{ addon["name"] }}
                 tap_action: 
                   action: navigate

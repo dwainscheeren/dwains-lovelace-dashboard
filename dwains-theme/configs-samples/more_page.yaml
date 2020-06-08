@@ -3,7 +3,7 @@
 # more_page:
 #   addons:
 #     - name: Hello more page
-#       icon: fas:chart-area
+#       icon: mdi:chart-bar
 #       path: 'dwains-theme/addons/more_page/hello-more-page/page.yaml'
 #       data:
 #         some_data: 'This is some data parsed.'
