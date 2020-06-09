@@ -13,9 +13,13 @@ If there is a update of Dwains Theme here is how to install it.
 
 1. Unzip the file you just downloaded. 
 
-2. Copy the content of this folder to the root of your Home Assistant installation.
+2. Make a backup of the folder `dwains-theme/configs` this is very important!
 
-**WARNING: You may need to overwrite the file `ui-lovelace.yaml` with the file from the downloaded folder.**
+3. Remove the folder `dwains-theme` in your main HA folder.
+
+4. Copy the content of the folder you just downloaded to the root of your Home Assistant installation.
+
+5. Copy back the folder `configs` to the folder `dwains-theme`.
 
 **Do you have any custom resources? Go to the folder `dwains-theme/resources/`, if you don't have the file `custom_resources.yaml` then rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in the file `custom_resources.yaml`!**
 
@@ -35,6 +39,13 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 # Changelog
 
 ## Update 1.4.0 (NOT YET RELEASED)
+
+#### How to update to 1.4.0? 
+
+**If you are running Dwains Theme 1.3.0**: 
+Follow the normal update manual (top of this page). Please follow all steps.
+
+**If you are running older version of Dwains Theme then 1.3.0**: Then follow the update manual of 1.3.0 first [see here](https://dwainscheeren.github.io/lovelace-dwains-theme/information/update.html#how-to-update-to-130).
 
 #### New Features:
 * You can add your house information favorites on the homepage now. Add the line `favorites_homepage: 'true'` to your `global.yaml` file.

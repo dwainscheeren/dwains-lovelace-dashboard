@@ -17,7 +17,7 @@ After you made sure you got HACS up and running you can continue to install Dwai
 
 ### Install HACS plugins
 
-In the left side menu click on Community and then on the Tab PLUGINS. Search for each plugin in the table below and install it.
+In the left side menu click on HACS and then on Frontend. Click on the + sign bottom right and search for each plugin in the table below and install it.
 
 *NOTE: You don't have to add each plugin JS url to your lovelace configuration/resources list. You just need to click Install for now on each plugin.
 
@@ -26,9 +26,7 @@ In the left side menu click on Community and then on the Tab PLUGINS. Search for
 | Card-mod | Module | Yes | Add CSS styles to (almost) any lovelace card |
 | Button Card | Module | Yes | Lovelace button-card for home assistant |
 | Light Entity Card | js | Yes | Control any light or switch entity |
-| Mini Graph Card | Module | Yes | Minimalistic graph card for Home Assistant Lovelace UI |
 | auto-entities | Module | Yes | Automatically populate the entities-list of lovelace cards |
-| layout-card | Module | Yes | Get more control over the placement of lovelace cards. |
 | Custom Header | Module | Yes | Lovelace Custom Header |
 | more-info-card | Module | Yes | Display the more-info dialog of any entity as a lovelace card |
 | Lovelace Xiaomi  Vacuum Map Card | Module | Yes | This card enables you to specify a target or start a zoned cleanup using  live or static map, just like in Mi Home app. Additionally you can define a  list of zones and choose the ones to be cleaned. |
@@ -38,7 +36,7 @@ In the left side menu click on Community and then on the Tab PLUGINS. Search for
 
 ### Install HACS components
 
-We also need to download 1 component from the HACS store. In the top tabs inside HACS click on the tab INTEGRATIONS and install the component from the table below.
+We also need to download 1 component from the HACS store. Click again on HACS in your left sidebar and then on Integrations, click on the + sign bottom right and search for the module in the table below and install it.
 
 | Name | HACS | Required | Description |
 |-------------|-------------|----------|---------------------------------------------------------------------------------------------------------|
