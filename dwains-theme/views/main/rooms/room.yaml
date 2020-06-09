@@ -318,9 +318,9 @@
                   [[[ 
                     if(entity){
                       if(entity.state == 'off'){
-                        return hass.localize('component.light.state._.on');
-                      } else {
                         return hass.localize('component.light.state._.off');
+                      } else {
+                        return hass.localize('component.light.state._.on');
                       }
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");

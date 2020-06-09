@@ -49,9 +49,7 @@
                           template: room_door
                           entity: {{ room["door"] }}
                           tap_action:
-                            !include 
-                              - ../../popups/more-info.yaml
-                              - entity: {{ room["door"] }}
+                            action: more-info
                   {% else %}
                   # this room has group of doors
                   - type: custom:auto-entities

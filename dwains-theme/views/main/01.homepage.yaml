@@ -178,7 +178,7 @@
           #START HOMEPAGE CONTENT
           {% if _d_t_config.global["favorites_homepage"] %}
           #Favorites start
-          {% if _d_t_config.house_information["favorites"] %}
+          {% if _d_t_config.house_information and _d_t_config.house_information["favorites"] %}
           - type: custom:dwains-flexbox-card
             padding: true
             items_classes: 'col-xs-12'
