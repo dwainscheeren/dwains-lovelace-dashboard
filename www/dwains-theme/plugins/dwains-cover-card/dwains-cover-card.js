@@ -4,7 +4,7 @@ import {
   css
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = '0.0.1';
+const VERSION = '0.0.2';
 
 class DwainsCoverCard extends LitElement {
 
@@ -35,7 +35,7 @@ class DwainsCoverCard extends LitElement {
         <ha-card
             .header=${this.config.title || name}>
             <div class="slider">
-                <span class="open">Open <span class="percentage" id="percentage">${stateObj.state === "closed" ? 0 : stateObj.attributes.current_position} %</span></span>
+                <span class="open">${this.hass.localize('component.cover.state._.open')} <span class="percentage" id="percentage">${stateObj.state === "closed" ? 0 : stateObj.attributes.current_position} %</span></span>
                 <div class="outer">
                     <input 
                         type="range" 
@@ -44,7 +44,7 @@ class DwainsCoverCard extends LitElement {
                         @change=${e => this._setPosition(stateObj, e.target.value)}
                     >
                 </div>
-                <span class="open">Closed</span>
+                <span class="open">${this.hass.localize('component.cover.state._.closed')}</span>
             </div>
         </ha-card>
       `;
