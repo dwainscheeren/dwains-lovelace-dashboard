@@ -3,58 +3,58 @@
 
 # icons:
 #   #Menu icons
-#   menu_back: 'fas:question'
-#   menu_home: 'fas:question'
-#   menu_lights: 'fas:question'
-#   menu_scenes: 'fas:question'
-#   menu_cameras: 'fas:question'
-#   menu_more_page: 'fas:question'
+#   menu_back: 'mdi:help'
+#   menu_home: 'mdi:help'
+#   menu_lights: 'mdi:help'
+#   menu_scenes: 'mdi:help'
+#   menu_cameras: 'mdi:help'
+#   menu_more_page: 'mdi:help'
 
 #   #Global icons
-#   light_on: 'fas:question'
+#   light_on: 'mdi:help'
 #   light_off: 'fal:smile-wink'
 
-#   room_header_more_entities: 'fas:question'
-#   person_header_more_entities: 'fas:question'
-#   climate: 'fas:question'
-#   climate_heating: 'fas:question'
-#   climate_auto: 'fas:question'
-#   climate_off: 'fas:question'
-#   climate_heat: 'fas:question'
-#   climate_cool: 'fas:question'
-#   climate_heat_cool: 'fas:question'
-#   climate_dry: 'fas:question'
-#   climate_fan_only: 'fas:question'
+#   room_header_more_entities: 'mdi:help'
+#   person_header_more_entities: 'mdi:help'
+#   climate: 'mdi:help'
+#   climate_heating: 'mdi:help'
+#   climate_auto: 'mdi:help'
+#   climate_off: 'mdi:help'
+#   climate_heat: 'mdi:help'
+#   climate_cool: 'mdi:help'
+#   climate_heat_cool: 'mdi:help'
+#   climate_dry: 'mdi:help'
+#   climate_fan_only: 'mdi:help'
 
-#   window_open: 'fas:question'
-#   window_closed: 'fas:question'
+#   window_open: 'mdi:help'
+#   window_closed: 'mdi:help'
 
-#   door_open: 'fas:question'
-#   door_closed: 'fas:question'
+#   door_open: 'mdi:help'
+#   door_closed: 'mdi:help'
 
-#   motion_on: 'fas:question'
-#   motion_off: 'fas:question'
+#   motion_on: 'mdi:help'
+#   motion_off: 'mdi:help'
 
-#   cover: 'fas:question'
+#   cover: 'mdi:help'
 
-#   device: 'fas:question'
+#   device: 'mdi:help'
 
-#   media_player: 'fas:question'
+#   media_player: 'mdi:help'
   
-#   vacuum: 'fas:question'
+#   vacuum: 'mdi:help'
 
-#   plant: 'fas:question'
+#   plant: 'mdi:help'
 
-#   alarm_disarmed: 'fas:question'
-#   alarm_pending: 'fas:question'
-#   alarm_armed_away: 'fas:question'
-#   armed_home: 'fas:question'
+#   alarm_disarmed: 'mdi:help'
+#   alarm_pending: 'mdi:help'
+#   alarm_armed_away: 'mdi:help'
+#   armed_home: 'mdi:help'
 
 #   #More page icons
-#   more_page_house_information: 'fas:question'
-#   more_page_house_data: 'fas:question'
-#   more_page_settings: 'fas:question'
-#   more_page_list_chevron: 'fas:question'
+#   more_page_house_information: 'mdi:help'
+#   more_page_house_data: 'mdi:help'
+#   more_page_settings: 'mdi:help'
+#   more_page_list_chevron: 'mdi:help'
 
-#   lock_locked: 'fas:question'
-#   lock_unlocked: 'fas:question'
+#   lock_locked: 'mdi:help'
+#   lock_unlocked: 'mdi:help'
