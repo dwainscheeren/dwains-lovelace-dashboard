@@ -31,7 +31,7 @@ en:
     title: 'Temperature'
     title_plural: 'Temperates'
     inside: 'inside'
-    outside: 'outside'
+    outside: 'Outside'
     idle: 'Stand-by'
     heating: 'Heating to'
     off_text: 'Off'

@@ -158,70 +158,62 @@
               #Start of graphs
               - type: custom:dwains-flexbox-card
                 padding: true
-                items_classes: 'col-xs-6 col-sm-12'
+                items_classes: 'col-xs-6'
                 cards:
-                  #This room temp & hum combined
+                  #This room temp, humidity and pressure
                   {% if 
                         room["temperature"] or 
-                        room["humidity"] 
+                        room["humidity"] or
+                        room["pressure"]
                   %}
-                  - type: sensor
-                    entity: {{ room["temperature"] }}
-                    name: {{ _d_t_trans.climate.temperature }}
-                    graph: line
-                  - type: custom:mini-graph-card
-                    name: {{ _d_t_trans.climate.this_room|upper }}
-                    hour24: true 
-                    action: none
-                    font_size: 65
-                    entities:
+                  - type: vertical-stack
+                    cards:
+                      #Heading
+                      - !include
+                        - ../../../partials/heading.yaml
+                        - title: {{ _d_t_trans.climate.this_room }}
                       {% if room["temperature"] %}
-                      - entity: {{ room["temperature"] }}
-                        show_state: true
-                        show_indicator: true
+                      - type: sensor
+                        entity: {{ room["temperature"] }}
                         name: {{ _d_t_trans.climate.temperature }}
+                        graph: line
                       {% endif %}
                       {% if room["humidity"] %}
-                      - entity: {{ room["humidity"] }}
-                        show_state: true
-                        show_indicator: true
+                      - type: sensor
+                        entity: {{ room["humidity"] }}
                         name: {{ _d_t_trans.climate.humidity }}
+                        graph: line
                       {% endif %}
                       {% if room["pressure"] %}
-                      - entity: {{ room["pressure"] }}
-                        show_state: true
-                        show_indicator: true
+                      - type: sensor
+                        entity: {{ room["pressure"] }}
+                        graph: line
                       {% endif %}
-                    graph: line
-                    show:
-                      icon: false
                   {% endif %}
-                  #Outside
+
+                  #Outside temp and humidity
                   {% if 
                         _d_t_config.global["outside_temperature"] or 
                         _d_t_config.global["outside_humidity"] 
                   %}
-                  - type: custom:mini-graph-card
-                    name: {{ _d_t_trans.climate.outside|upper }}
-                    hour24: true 
-                    action: none
-                    font_size: 65
-                    entities:
+                  - type: vertical-stack
+                    cards:
+                      #Heading
+                      - !include
+                        - ../../../partials/heading.yaml
+                        - title: {{ _d_t_trans.climate.outside }}
                       {% if _d_t_config.global["outside_temperature"] %}
-                      - entity: {{ _d_t_config.global["outside_temperature"] }}
-                        show_state: true
-                        show_indicator: true
+                      - type: sensor
+                        entity: {{ _d_t_config.global["outside_temperature"] }}
                         name: {{ _d_t_trans.climate.temperature }}
+                        graph: line
                       {% endif %}
                       {% if _d_t_config.global["outside_humidity"] %}
-                      - entity: {{ _d_t_config.global["outside_humidity"] }}
-                        show_state: true
-                        show_indicator: true
+                      - type: sensor
+                        entity: {{ _d_t_config.global["outside_humidity"] }}
                         name: {{ _d_t_trans.climate.humidity }}
-                      {% endif %}
-                    graph: line
-                    show:
-                      icon: false        
+                        graph: line
+                      {% endif %}      
                   {% endif %}
 {% endif %}
 {% endfor %}

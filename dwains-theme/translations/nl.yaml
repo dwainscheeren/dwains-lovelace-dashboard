@@ -31,7 +31,7 @@ nl:
     title: 'Temperatuur'
     title_plural: 'Temperaturen'
     inside: 'binnen'
-    outside: 'buiten'
+    outside: 'Buiten'
     idle: 'Stand-by'
     heating: 'Verwarmen naar'
     off_text: 'Uit'
