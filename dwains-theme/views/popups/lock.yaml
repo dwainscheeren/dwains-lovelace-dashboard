@@ -15,6 +15,7 @@ service_data:
         template: homepage_room
         entity: {{ entity }}
         name: Lock
+        icon: mdi:lock
         tap_action:
           action: call-service
           service: lock.lock 
@@ -24,6 +25,7 @@ service_data:
         template: homepage_room
         entity: {{ entity }}
         name: Unlock
+        icon: mdi:lock-open
         tap_action:
           action: call-service
           service: lock.unlock

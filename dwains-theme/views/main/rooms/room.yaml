@@ -260,11 +260,11 @@
                       const entitiesFromGroup = states['{{ room["lock"] }}'].attributes['entity_id'];
                       var openLocks = 0;
                       entitiesFromGroup.forEach(function(entity){
-                        if(states[entity] && states[entity].state == 'on'){
+                        if(states[entity] && (states[entity].state == 'on' || states[entity].state == 'unlocked')){
                           openLocks++;
                         }
                       });  
-                      return entitiesFromGroup.length + ' {{ _d_t_trans.lock.title_plural }}' + ((openLocks >= 1) ? '<br>' + ((openLocks == 1) ? '1 ' + hass.localize('component.binary_sensor.state.lock.on') : openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on') : '');
+                      return entitiesFromGroup.length + ' {{ _d_t_trans.lock.title_plural }}' + (openLocks >= 1 ? '<br>' + openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on') : '');
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.lock entity!");
                       return 'Entity error!';
