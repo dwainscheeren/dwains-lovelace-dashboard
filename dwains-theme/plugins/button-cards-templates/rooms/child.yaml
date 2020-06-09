@@ -16,6 +16,8 @@ rooms_child:
       - padding: 15px 0
     icon:
       - color: var(--dwains-theme-accent)
+      - height: 25px
+      - width: 25px
     img_cell:
       - width: 45px
       - height: 45px
