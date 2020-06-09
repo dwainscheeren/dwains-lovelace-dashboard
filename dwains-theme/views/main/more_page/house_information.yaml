@@ -72,6 +72,7 @@
               {% endif %}
               {% endif %}
 
+              {% if _d_t_config.house_information %}
               {% if _d_t_config.house_information["addons"] %}
               {% for addon in _d_t_config.house_information["addons"] %}
               - type: vertical-stack
@@ -85,7 +86,8 @@
                       {% endif %}
               {% endfor %}
               {% endif %}
-
+              {% endif %}
+              
               #All activity (doors, windows, motion)
               - !include
                 - ../../partials/heading.yaml
