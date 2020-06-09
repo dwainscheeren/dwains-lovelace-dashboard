@@ -39,12 +39,14 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 #### New Features:
 * You can add your house information favorites on the homepage now. Add the line `favorites_homepage: 'true'` to your `global.yaml` file.
 * Add option to remove the header in more_page addons. Use `show_header: 'false'`, this variable is not required and true by default.
+* It is now possible to create and add addons to the house information page. Just use the `addons:` tag in the `house_information.yaml` file.
 
 #### Changes:
 
-* **Replaced all Font Awesome icons with Material Design Icons, so FA is no longer included in my theme. If you use rooms with Font Awesome (FAS/FAR) icons you need to replace them with Material Design (MDI) icons!! (If you want to use FA icons, please look [here](../how-tos/how-to-choose-icon.md)).**
+* **BREAKING: Replaced all Font Awesome icons with Material Design Icons, so FA is no longer included in my theme. If you use rooms with Font Awesome (FAS/FAR) icons you need to replace them with Material Design (MDI) icons!! (If you want to use FA icons, please look [here](../how-tos/how-to-choose-icon.md)).**
 * Created Dwains Collapse Card. I removed the swipe card from the header, now too many (state) items will collapse and can be toggled with an chevron up/down button. The swipe card plugin is no longer used and loaded by default!
 * Changed some translation loadings, because from HA 0.109 its changed.
+* Replaced 99% of the translations in my theme with native HA translations. The language files are still required for some titles but are a lot smaller now.
 * Added option to have house information favorites on the homepage.
 * Removed Mini Graph Cards so the plugin is no longer needed. I  now use the default HA sensor card.
 * Fixed all translations for HA 0.110.
@@ -70,7 +72,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 * Re-programmed the Activity section on the House Information page, it now is responsive and orders by name default.
 * Re-programmed the headers on all pages. The back button is now bigger (for people with big fingers haha).
 * Fixed bug that outside_temperature is not showing in the weather card on dekstop/tablet.
-
+* Added HA translations to dwains cover card for open/closed covers.
 
 ## Update 1.3.1
 
