@@ -16,15 +16,15 @@ room_light:
           if ('brightness' in entity.attributes) { 
             if (entity.attributes && (entity.attributes.brightness <= 255)) { 
               var bri = Math.round(entity.attributes.brightness / 2.55); 
-              return '{{ _d_t_trans.light.on_text }}, ' + (bri ? bri : '0') + '%'; 
+              return hass.localize('component.light.state._.on') + ', ' + (bri ? bri : '0') + '%'; 
             } else {
-              return '{{ _d_t_trans.light.on_text }}';
+              return hass.localize('component.light.state._.on');
             }
           } else {
-            return '{{ _d_t_trans.light.on_text }}';
+            return hass.localize('component.light.state._.on');
           }
         } else {
-          return '{{ _d_t_trans.light.off_text }}';
+          return hass.localize('component.light.state._.off');
         }
       }
     ]]]
