@@ -730,7 +730,7 @@
                       - type: custom:button-card
                         template: homepage_device
                         icon: "{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}"
-                        name: {{ _d_t_trans.vacuum.title }}
+                        name: {{ _d_t_trans.vacuum.title_plural }}
                         tap_action: 
                           action: navigate
                           navigation_path: devices_vacuums#devices

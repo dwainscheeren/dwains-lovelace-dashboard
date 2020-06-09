@@ -4,7 +4,7 @@ import {
   css,
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = "1.0.1";
+const VERSION = "1.0.2";
 
 const createError = (error, config) => {
   return createThing("hui-error-card", {
@@ -50,6 +50,9 @@ class DwainsFlexboxCard extends LitElement {
 
   set hass(hass) {
     this._hass = hass;
+    if (!this._refCards && this._config) {
+      this.renderCard();
+    }
     if (this._refCards) {
       this._refCards.forEach((card) => {
         card.hass = hass;
@@ -69,17 +72,11 @@ class DwainsFlexboxCard extends LitElement {
     }
 
     this._config = config;
-    this._refCards = [];
+    //this._refCards = [];
 
-    if(document.querySelector('hc-main')) {
-      this._hass = document.querySelector('hc-main').hass;
+    if (this._hass) {
+      this.renderCard();
     }
-
-    if(document.querySelector('home-assistant')) {
-      this._hass = document.querySelector('home-assistant').hass;
-    }
-
-    this.renderCard();
   }
 
   renderCard() {

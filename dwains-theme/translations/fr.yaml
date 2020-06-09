@@ -5,19 +5,6 @@ fr:
     good_morning: 'Bonjour'
     good_afternoon: 'Bon après-midi'
     good_evening: 'Bonsoir'
-  
-  alarm:
-    armed_away: "Alarme activée (Armée à l'extérieur)."
-    armed_home: "Alarme activée (Armée à la maison)."
-    disarmed: "Alarme désactivée"
-
-  history:
-    sec_ago: 'sec depuis'
-    min_ago: 'min depuis'
-    h_ago: 'h depuis'
-    d_ago: 'j depuis'
-    m_ago: 'm depuis'
-    y_ago: 'a depuis'
 
   house_information:
     title: 'Infos maison'
@@ -28,39 +15,17 @@ fr:
   motion:
     title: 'Mouvement'
     title_plural: 'Mouvements'
-    motion_on: 'Détecté'
 
   light:
-    title: 'Lumière'
     title_plural: 'Lumières'
-    light_on: 'lumière allumée'
-    lights_on: 'lumières allumées'
-    light_off: 'lumière éteinte'
-    lights_off: 'lumières éteintes'
-    all_lights_on: 'Toutes lumières allumées'
-    all_lights_off: 'Toutes lumières éteintes'
-    on_text: 'Allumée'
-    off_text: 'Éteinte'
 
   door:
     title: 'Porte'
     title_plural: 'Portes'
-    door_open: 'porte ouverte'
-    doors_open: 'portes ouvertes'
-    all_doors_open: 'Toutes portes ouvertes'
-    all_doors_closed: 'Toutes portes fermées'
-    open: 'Ouverte'
-    closed: 'Fermée'
 
   window:
     title: 'Fenêtre'
     title_plural: 'Fenêtres'
-    window_open: 'fenêtre ouverte'
-    windows_open: 'fenêtres ouvertes'
-    all_windows_open: 'Toutes fenêtres ouvertes'
-    all_windows_closed: 'Toutes fenêtres fermées'
-    open: 'Ouverte'
-    closed: 'Fermée'
 
   climate:
     title: 'Température'
@@ -81,44 +46,20 @@ fr:
     humidity: 'Humidité'
 
   cover:
-    title: 'Volet'
     title_plural: 'Volets'
-    cover_open: 'Ouvert'
-    cover_closed: 'Fermé'
 
   device:
-    title: 'Périphérique'
     title_plural: 'Périphériques'
-    device_on: 'périphérique allumé'
-    devices_on: 'périphériques allumés'
-    on_text: 'Allumé'
-    off_text: 'Eteint'
-    device_off: 'Périphérique éteint'
-    devices_off: 'Périphériques éteints'
-    all_devices_on: 'Tous périphériques allumés'
-    all_devices_off: 'Tous périphériques éteints'
 
   media_player:
-    title: 'Lecteur multimédia'
     title_plural: 'Lecteurs multimédias'
-    media_player_on: 'Lecteur multimédia allumé'
-    media_players_on: 'Lecteurs multimédias allumés'
-    media_player_off: 'Lecteur multimédia éteint'
-    media_players_off: 'Lecteurs multimédias éteints'
-    all_media_players_on: 'Tous lecteurs multimédias allumés'
-    all_media_players_off: 'Tous lecteurs multimédias éteints'
-    on_text: 'Allumé'
-    off_text: 'Eteint'
 
   vacuum:
     title: 'Aspirateur'
     title_plural: 'Aspirateurs'
 
   plant:
-    title: 'Plante'
     title_plural: 'Plantes'
-    plant_problem: 'plant problem'
-    plants_problem: 'plants problem'
     
   home:
     title: 'Accueil'
@@ -161,5 +102,4 @@ fr:
     title: 'More entities'
 
   lock:
-    title: 'Lock'
     title_plural: 'Locks'

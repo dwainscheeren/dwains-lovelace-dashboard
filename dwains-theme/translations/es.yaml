@@ -6,19 +6,6 @@ es:
     good_afternoon: "Buenas Tardes"
     good_evening: "Buena Noches"
 
-  alarm:
-    armed_away: "Sistema de alarma activado (Modo No Estoy)."
-    armed_home: "Sistema de alarma activado (Modo Estoy)."
-    disarmed: "Sistema de alarma desactivado."
-
-  history:
-    sec_ago: "hace un seg"
-    min_ago: "hace un min"
-    h_ago: "hace una hora"
-    d_ago: "hace un día"
-    m_ago: "hace un minuto"
-    y_ago: "hace un año"
-
   house_information:
     title: "Información de la Casa"
     favorites: "Favoritos"
@@ -28,39 +15,17 @@ es:
   motion:
     title: "Movimiento"
     title_plural: "Movimientos"
-    motion_on: "Detectado"
 
   light:
-    title: "Luz"
     title_plural: "Luces"
-    light_on: "luz encendida"
-    lights_on: "luces encendidas"
-    light_off: "luz apagada"
-    lights_off: "luces apagadas"
-    all_lights_on: "Todas las luces encendidas"
-    all_lights_off: "Todas las luces apagadas"
-    on_text: "Encendida"
-    off_text: "Apagada"
 
   door:
     title: "Puerta"
     title_plural: "Puertas"
-    door_open: "puerta abierta"
-    doors_open: "puertas abiertas"
-    all_doors_open: "Todas las puertas abiertas"
-    all_doors_closed: "Todas las puertas cerradas"
-    open: "Abierta"
-    closed: "Cerrada"
 
   window:
     title: "Ventana"
     title_plural: "Ventanas"
-    window_open: "ventana abierta"
-    windows_open: "ventanas abiertas"
-    all_windows_open: "Todas las ventanas abiertas"
-    all_windows_closed: "Todas las ventanas cerradas"
-    open: "Abierta"
-    closed: "Cerrada"
 
   climate:
     title: "Temperatura"
@@ -81,44 +46,20 @@ es:
     humidity: "Humedad"
 
   cover:
-    title: "Persiana"
     title_plural: "Persianas"
-    cover_open: "Abierta"
-    cover_closed: "Cerrada"
 
   device:
-    title: "Dispositivo"
     title_plural: "Dispositivos"
-    device_on: "dispositivo encendido"
-    devices_on: "dispositivos encendidos"
-    on_text: "Encendido"
-    off_text: "Apagado"
-    device_off: "Dispositivo apagado"
-    devices_off: "Dispositivos apagados"
-    all_devices_on: "Todos los dispositivos encendidos"
-    all_devices_off: "Todos los dispositivos apagados"
 
   media_player:
-    title: "Reproductor multimedia"
     title_plural: "Reproductores multimedia"
-    media_player_on: "reproductor multimedia encendido"
-    media_players_on: "reproductores multimedia encendidos"
-    media_player_off: "Reproductor multimedia apagado"
-    media_players_off: "Reproductores multimedia apagados"
-    all_media_players_on: "Todos los reproductores multimedia encendidos"
-    all_media_players_off: "Todos los reproductores multimedia apagados"
-    on_text: "Encendido"
-    off_text: "Apagado"
 
   vacuum:
     title: "Aspiradora"
     title_plural: "Aspiradoras"
 
   plant:
-    title: "Planta"
     title_plural: "Plantas"
-    plant_problem: 'Problema con la planta'
-    plants_problem: 'Problema con las plantas'
 
   home:
     title: "Página principal"
@@ -161,5 +102,4 @@ es:
     title: 'Más entidades'
 
   lock:
-    title: 'Cerradura'
     title_plural: 'Cerraduras'

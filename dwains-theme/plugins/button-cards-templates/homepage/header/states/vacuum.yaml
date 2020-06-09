@@ -6,7 +6,7 @@ header_states_vacuum:
   tap_action: 
     action: navigate
     navigation_path: devices_vacuums
-  name: {{ _d_t_trans.vacuum.title }}
+  name: {{ _d_t_trans.vacuum.title_plural }}
   icon: "{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}"
   variables:
     status: >

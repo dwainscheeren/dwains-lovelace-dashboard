@@ -9,7 +9,7 @@
 - type: module
   url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.1
 - type: module
-  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=1.0.1
+  url: /local/dwains-theme/plugins/dwains-flexbox-card/dwains-flexbox-card.js?v=1.0.2
 - type: module
   url: /local/dwains-theme/plugins/dwains-tab-card/dwains-tab-card.js?v=0.0.1
 - type: module

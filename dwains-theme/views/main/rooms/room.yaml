@@ -76,27 +76,24 @@
                         var elapsed = current - previous;
 
                         if (elapsed < msPerMinute) {
-                            return Math.round(elapsed/1000) + ' {{ _d_t_trans.history.sec_ago }}';   
+                            return hass.localize('ui.components.relative_time.past', 'time', hass.localize('ui.duration.second', 'count', Math.round(elapsed/1000)));
                         }
                         else if (elapsed < msPerHour) {
-                            return Math.round(elapsed/msPerMinute) + ' {{ _d_t_trans.history.min_ago }}';   
+                            return hass.localize('ui.components.relative_time.past', 'time', hass.localize('ui.duration.minute', 'count', Math.round(elapsed/msPerMinute)));
                         }
                         else if (elapsed < msPerDay ) {
-                            return Math.round(elapsed/msPerHour ) + ' {{ _d_t_trans.history.h_ago }}';   
+                            return hass.localize('ui.components.relative_time.past', 'time', hass.localize('ui.duration.hour', 'count', Math.round(elapsed/msPerHour)));
                         }
                         else if (elapsed < msPerMonth) {
-                            return Math.round(elapsed/msPerDay) + ' {{ _d_t_trans.history.d_ago }}';   
-                        }
-                        else if (elapsed < msPerYear) {
-                            return Math.round(elapsed/msPerMonth) + ' {{ _d_t_trans.history.m_ago }}';   
+                            return hass.localize('ui.components.relative_time.past', 'time', hass.localize('ui.duration.day', 'count', Math.round(elapsed/elapsed/msPerDay)));
                         }
                         else {
-                            return Math.round(elapsed/msPerYear ) + ' {{ _d_t_trans.history.y_ago }}';   
+                            return hass.localize('ui.components.relative_time.past', 'time', hass.localize('ui.duration.day', 'count', Math.round(elapsed/elapsed/msPerDay)));
                         }
                       }
                       if(entity){
                         if(entity.state == 'on' || entity.state == 'True'){
-                          return '{{ _d_t_trans.motion.motion_on }}';
+                          return hass.localize('component.binary_sensor.state.motion.on');
                         } else {
                           return timeDifference(new Date(), new Date(entity.last_changed));
                         }
@@ -125,9 +122,9 @@
                     [[[ 
                       if(entity){
                         if(entity.state == 'off' || entity.state == 'False'){
-                          return '{{ _d_t_trans.door.closed }}';
+                          return hass.localize('component.binary_sensor.state.door.off');
                         } else if(entity.state == 'on' || entity.state == 'True') {
-                          return '{{ _d_t_trans.door.open }}';
+                          return hass.localize('component.binary_sensor.state.door.on');
                         } else {
                           return entity.state;
                         }
@@ -149,7 +146,7 @@
                             openDoors++;
                           }
                         });  
-                        return ((openDoors >= 1) ? ((openDoors == 1) ? '1 {{ _d_t_trans.door.door_open }}' : openDoors + ' {{ _d_t_trans.door.doors_open }}') : '{{ _d_t_trans.door.closed }}');
+                        return (openDoors >= 1 ? openDoors + hass.localize('component.binary_sensor.state.door.on') : hass.localize('component.binary_sensor.state.door.off'));
                       } else {
                         console.log("Invalid rooms.yaml:{{ room["name"] }}.door entity!");
                         return 'Entity error!'
@@ -176,9 +173,9 @@
                     [[[ 
                       if(entity){
                         if(entity.state == 'off' || entity.state == 'False'){
-                          return '{{ _d_t_trans.window.closed }}';
+                          return hass.localize('component.binary_sensor.state.window.off');
                         } else if(entity.state == 'on' || entity.state == 'True') {
-                          return '{{ _d_t_trans.window.open }}';
+                          return hass.localize('component.binary_sensor.state.window.on');
                         } else {
                           return entity.state;
                         }
@@ -200,7 +197,7 @@
                             openWindows++;
                           }
                         });  
-                        return ((openWindows >= 1) ? ((openWindows == 1) ? '1 {{ _d_t_trans.window.window_open }}' : openWindows + ' {{ _d_t_trans.window.windows_open }}') : '{{ _d_t_trans.window.closed }}');
+                        return (openWindows >= 1 ? openWindows + hass.localize('component.binary_sensor.state.window.on') : hass.localize('component.binary_sensor.state.window.off'));
                       } else {
                         console.log("Invalid rooms.yaml:{{ room["name"] }}.window entity!");
                         return 'Entity error!'
@@ -232,7 +229,6 @@
                     icon: '{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}'
                 {% if room["lock"].split('.')[0] == 'lock' %}
                 # this room has only 1 lock (lock entity)
-                name: {{ _d_t_trans.lock.title }}
                 tap_action:
                   action: toggle
                 hold_action:
@@ -243,9 +239,9 @@
                   [[[ 
                     if(entity){
                       if(entity.state == 'locked'){
-                        return hass.localize('state.lock.locked');
+                        return hass.localize('component.binary_sensor.state.lock.off');
                       } else {
-                        return hass.localize('state.lock.unlocked');
+                        return hass.localize('component.binary_sensor.state.lock.on');
                       }
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.lock entity!");
@@ -268,7 +264,7 @@
                           openLocks++;
                         }
                       });  
-                      return entitiesFromGroup.length + ' {{ _d_t_trans.lock.title_plural }}' + ((openLocks >= 1) ? '<br>' + ((openLocks == 1) ? '1 ' + hass.localize('state.lock.unlocked') : openLocks + hass.localize('state.lock.unlocked')) : '');
+                      return entitiesFromGroup.length + ' {{ _d_t_trans.lock.title_plural }}' + ((openLocks >= 1) ? '<br>' + ((openLocks == 1) ? '1 ' + hass.localize('component.binary_sensor.state.lock.on') : openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on') : '');
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.lock entity!");
                       return 'Entity error!';
@@ -288,7 +284,6 @@
                     icon: '{{ _d_t_icons.light_on|default('mdi:lightbulb') }}'
                 {% if room["light"].split('.')[0] == 'light' %}
                 # this room has only 1 light (light entity)
-                name: {{ _d_t_trans.light.title }}
                 tap_action:
                   action: toggle
                   haptic: light 
@@ -300,13 +295,13 @@
                   [[[ 
                     if(entity){
                       if(entity.state == 'off'){
-                        return '{{ _d_t_trans.light.off_text }}';
+                        return hass.localize('component.light.state._.off');
                       } else {
                         if (states['{{ room["light"] }}'].attributes && (states['{{ room["light"] }}'].attributes.brightness <= 255)) { 
                           var bri = Math.round(states['{{ room["light"] }}'].attributes.brightness / 2.55); 
-                          return '{{ _d_t_trans.light.on_text }}, ' + (bri ? bri : '0') + '%'; 
+                          return hass.localize('component.light.state._.on') + ', ' + (bri ? bri : '0') + '%'; 
                         } else {
-                          return '{{ _d_t_trans.light.on_text }}';
+                          return hass.localize('component.light.state._.on');
                         }
                       }
                     } else {
@@ -316,7 +311,6 @@
                   ]]] 
                 {% elif room["light"].split('.')[0] == 'switch' %}
                 # this room has only 1 light (switch entity)
-                name: {{ _d_t_trans.light.title }}
                 tap_action:
                   action: toggle
                   haptic: light 
@@ -324,9 +318,9 @@
                   [[[ 
                     if(entity){
                       if(entity.state == 'off'){
-                        return '{{ _d_t_trans.light.off_text }}';
+                        return hass.localize('component.light.state._.on');
                       } else {
-                        return '{{ _d_t_trans.light.on_text }}';
+                        return hass.localize('component.light.state._.off');
                       }
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
@@ -352,7 +346,7 @@
                           onLights++;
                         }
                       });  
-                      return entitiesFromGroup.length + ' {{ _d_t_trans.light.title_plural }}' + ((onLights >= 1) ? '<br>' + ((onLights == 1) ? '1 {{ _d_t_trans.light.light_on }}' : onLights + ' {{ _d_t_trans.light.lights_on }}') : '');
+                      return entitiesFromGroup.length + ' {{ _d_t_trans.light.title_plural }}' + ((onLights >= 1) ? '<br>' + ((onLights == 1) ? '1 ' + hass.localize('component.light.state._.on') : onLights + ' ' + hass.localize('component.light.state._.on')) : '');
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
                       return 'Entity error!';
@@ -367,7 +361,6 @@
                 entity: {{ room["climate"] if room["climate"] else room["temperature"] }}
                 template: rooms_child
                 icon: '{{ _d_t_icons.climate|default('mdi:thermometer') }}'
-                name: {{ _d_t_trans.climate.title }}
                 tap_action: 
                   action: navigate
                   navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
@@ -392,13 +385,19 @@
                     {% if room["climate"] %}
                     if(states['{{ room["climate"] }}']){
                       if (entity.attributes.hvac_action  == 'idle'){
-                        return temperature + '<br>{{ _d_t_trans.climate.idle }}';
+                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.idle');
                       } else if(entity.attributes.hvac_action == 'heating'){
-                        return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.heating') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
                       } else if(entity.attributes.hvac_action == 'off'){
-                        return temperature + '<br>{{ _d_t_trans.climate.off_text }}';
+                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.off');
                       } else if(entity.attributes.hvac_action == 'heat'){
-                        return temperature + '<br>{{ _d_t_trans.climate.heating }} ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.heat') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                      } else if(entity.attributes.hvac_action == 'cooling'){
+                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.cooling') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                      } else if(entity.attributes.hvac_action == 'drying'){
+                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.drying') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                      } else if(entity.attributes.hvac_action == 'fan'){
+                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.fan') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
                       } else {
                         return temperature + '<br>' + entity.state;
                       }
@@ -419,14 +418,13 @@
                   action: navigate
                   navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_cover
                 {% if room["cover"].split('.')[0] == 'cover' %}
-                name: {{ _d_t_trans.cover.title }}
                 label: >
                   [[[ 
                     if(entity){
                       if(entity.state == 'open'){
-                        return '{{ _d_t_trans.cover.cover_open }} ' + states['{{ room["cover"] }}'].attributes.current_position + '%';
+                        return hass.localize('component.cover.state._.open') + ' ' + states['{{ room["cover"] }}'].attributes.current_position + '%';
                       } else if(entity.state == 'closed') {
-                        return '{{ _d_t_trans.cover.cover_closed }}';
+                        return hass.localize('component.cover.state._.closed');
                       } else {
                         return entity.state;
                       }
@@ -446,7 +444,7 @@
                       entitiesFromGroup.forEach(function(entity){
                         if(states[entity] && states[entity].state == 'open'){
                           openCovers++;
-                          stateText += '<br>1 {{ _d_t_trans.cover.cover_open }} ' + states[entity].attributes.current_position + '%';
+                          stateText += '<br>1 ' + hass.localize('component.cover.state._.open') + ' ' + states[entity].attributes.current_position + '%';
                         }
                       });  
                       return entitiesFromGroup.length + ' {{ _d_t_trans.cover.title_plural }}' + ((openCovers >= 1) ? stateText : '');
@@ -466,7 +464,6 @@
                 icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
                 {% if room["device"].split('.')[0] != 'group' %}
                 # this room has only 1 device
-                name: {{ _d_t_trans.device.title }}
                 tap_action:
                   action: toggle
                   haptic: light 
@@ -478,9 +475,9 @@
                             : entity.attributes.friendly_name;
 
                       if(entity.state == 'off'){
-                        return name + '<br>{{ _d_t_trans.device.off_text }}';
+                        return name + '<br>' + hass.localize('component.switch.state._.off');
                       } else {
-                        return name + '<br>{{ _d_t_trans.device.on_text }}';
+                        return name + '<br>' + hass.localize('component.switch.state._.on');
                       }
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.device entity!");
@@ -500,7 +497,7 @@
                           onDevices++;
                         }
                       });  
-                      return entitiesFromGroup.length + ' {{ _d_t_trans.device.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 {{ _d_t_trans.device.device_on }}' : onDevices + ' {{ _d_t_trans.device.devices_on }}') : '');
+                      return entitiesFromGroup.length + ' {{ _d_t_trans.device.title_plural }}' + ((onDevices >= 1) ? '<br>' + ((onDevices == 1) ? '1 ' + hass.localize('component.switch.state._.on') : onDevices + ' ' + hass.localize('component.switch.state._.on')) : '');
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.device entity!");
                       return 'Entity error!';
@@ -520,7 +517,6 @@
                 icon: '{{ _d_t_icons.media_player|default('mdi:play-pause') }}'
                 {% if room["media_player"].split('.')[0] == 'media_player' %}
                 # this room has only 1 media player
-                name: {{ _d_t_trans.media_player.title }}
                 tap_action:
                   action: navigate
                   navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_media_players
@@ -563,7 +559,6 @@
               - type: custom:button-card
                 entity: {{ room["vacuum"]["entity"] }}
                 template: rooms_child
-                name: {{ _d_t_trans.vacuum.title }}
                 icon: '{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}'
                 tap_action: 
                   action: navigate
@@ -587,7 +582,6 @@
                 icon: '{{ _d_t_icons.plant|default('mdi:flower') }}'
                 {% if room["plant"].split('.')[0] == 'plant' %}
                 # this room has only 1 plant
-                name: {{ _d_t_trans.plant.title }}
                 tap_action:
                   !include 
                     - ../../popups/more-info.yaml
@@ -614,7 +608,7 @@
                           problemPlants++;
                         }
                       });  
-                      return entitiesFromGroup.length + ' {{ _d_t_trans.plant.title_plural }}' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 {{ _d_t_trans.plant.plant_problem }}' : problemPlants + ' {{ _d_t_trans.plant.plants_problem }}') : '');
+                      return entitiesFromGroup.length + ' {{ _d_t_trans.plant.title_plural }}' + ((problemPlants >= 1) ? '<br>' + ((problemPlants == 1) ? '1 ' + hass.localize('component.binary_sensor.state.problem.on') : problemPlants + ' ' + hass.localize('component.binary_sensor.state.problem.on')) : '');
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.plant entity!");
                       return 'Entity error!';

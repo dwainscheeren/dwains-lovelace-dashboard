@@ -6,7 +6,7 @@ header_states_climate:
   tap_action: 
     action: navigate
     navigation_path: devices_climates
-  name: {{ _d_t_trans.climate.title }}
+  name: {{ _d_t_trans.climate.title_plural }}
   icon: "{{ _d_t_icons.climate|default('mdi:thermometer') }}"
   variables:
     status: >

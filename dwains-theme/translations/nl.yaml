@@ -5,19 +5,6 @@ nl:
     good_morning: 'Goedemorgen'
     good_afternoon: 'Goedemiddag'
     good_evening: 'Goedenavond'
-  
-  alarm:
-    armed_away: 'Alarm systeem geactiveerd (Afwezig).'
-    armed_home: 'Alarm systeem geactiveerd (Thuis).'
-    disarmed: 'Alarm systeem gedeactiveerd.'
-
-  history:
-    sec_ago: 'sec geleden'
-    min_ago: 'min geleden'
-    h_ago: 'h geleden'
-    d_ago: 'd geleden'
-    m_ago: 'm geleden'
-    y_ago: 'y geleden'
 
   house_information:
     title: 'Huis informatie'
@@ -28,39 +15,17 @@ nl:
   motion:
     title: 'Beweging'
     title_plural: 'Bewegingen'
-    motion_on: 'Gedetecteerd'
 
   light:
-    title: 'Lamp'
     title_plural: 'Lampen'
-    light_on: 'lamp aan'
-    lights_on: 'lampen aan'
-    light_off: 'lamp uit'
-    lights_off: 'lampen uit'
-    all_lights_on: 'Alle lampen aan'
-    all_lights_off: 'Alle lampen uit'
-    on_text: 'Aan'
-    off_text: 'Uit'
 
   door:
     title: 'Deur'
     title_plural: 'Deuren'
-    door_open: 'deur open'
-    doors_open: 'deuren open'
-    all_doors_open: 'Alle deuren open'
-    all_doors_closed: 'Alle deuren gesloten'
-    open: 'Open'
-    closed: 'Gesloten'
 
   window:
     title: 'Raam'
     title_plural: 'Ramen'
-    window_open: 'raam open'
-    windows_open: 'ramen open'
-    all_windows_open: 'Alle ramen open'
-    all_windows_closed: 'Alle ramen gesloten'
-    open: 'Open'
-    closed: 'Gesloten'
 
   climate:
     title: 'Temperatuur'
@@ -81,44 +46,20 @@ nl:
     humidity: 'Vochtigheid'
 
   cover:
-    title: 'Cover'
     title_plural: 'Covers'
-    cover_open: 'Open'
-    cover_closed: 'Gesloten'
 
   device:
-    title: 'Apparaat'
     title_plural: 'Apparaten'
-    device_on: 'apparaat aan'
-    devices_on: 'apparaten aan'
-    on_text: 'Aan'
-    off_text: 'Uit'
-    device_off: 'Apparaat uit'
-    devices_off: 'Apparaten uit'
-    all_devices_on: 'Alle apparaten aan'
-    all_devices_off: 'Alle apparaten uit'
 
   media_player:
-    title: 'Media player'
     title_plural: 'Media players'
-    media_player_on: 'media player aan'
-    media_players_on: 'media players aan'
-    media_player_off: 'Media player uit'
-    media_players_off: 'Media players uit'
-    all_media_players_on: 'Alle media players aan'
-    all_media_players_off: 'Alle media players uit'
-    on_text: 'Aan'
-    off_text: 'Uit'
 
   vacuum:
     title: 'Stofzuiger'
     title_plural: 'Stofzuigers'
 
   plant:
-    title: 'Plant'
     title_plural: 'Planten'
-    plant_problem: 'plant problem'
-    plants_problem: 'plants problem'
 
   home:
     title: 'Homepage'
@@ -158,8 +99,7 @@ nl:
     more_page_addons: 'Meer addons'
 
   more_entities:
-    title: 'More entities'
+    title: 'Meer entities'
 
   lock:
-    title: 'Lock'
-    title_plural: 'Locks'
+    title_plural: 'Sloten'

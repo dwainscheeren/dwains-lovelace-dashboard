@@ -7,19 +7,6 @@ se:
     good_afternoon: 'God Eftermiddag'
     good_evening: 'God Kväll'
   
-  alarm:
-    armed_away: 'Larmet aktiverat (Aktiverat Borta).'
-    armed_home: 'Larm systemet aktiverat (Aktiverat Hemma).'
-    disarmed: 'Larmet avaktiverat.'
-
-  history:
-    sec_ago: 'sek sedan'
-    min_ago: 'min sedan'
-    h_ago: 't sedan'
-    d_ago: 'd sedan'
-    m_ago: 'm sedan'
-    y_ago: 'å sedan'
-
   house_information:
     title: 'Hus Info'
     favorites: 'Favoriter'
@@ -29,39 +16,15 @@ se:
   motion:
     title: 'Rörelse'
     title_plural: 'Rörelser'
-    motion_on: 'Detekterat'
 
   light:
-    title: 'Lampa'
     title_plural: 'Lampor'
-    light_on: 'Lampa på'
-    lights_on: 'Lampor på'
-    light_off: 'Lampa av'
-    lights_off: 'Lampor av'
-    all_lights_on: 'Alla lampor på'
-    all_lights_off: 'Alla lampor av'
-    on_text: 'På'
-    off_text: 'Av'
 
   door:
-    title: 'Dörr'
     title_plural: 'Dörrar'
-    door_open: 'Dörr öppen'
-    doors_open: 'Dörrar öppna'
-    all_doors_open: 'Alla dörrar öppna'
-    all_doors_closed: 'Alla dörrar stängda'
-    open: 'Öppen'
-    closed: 'Stängd'
 
   window:
-    title: 'Fönster'
     title_plural: 'Fönster'
-    window_open: 'Fönster öppen'
-    windows_open: 'Fönster öppna'
-    all_windows_open: 'Alla fönster öppna'
-    all_windows_closed: 'Alla fönster stängda'
-    open: 'Öppen'
-    closed: 'Stängd'
 
   climate:
     title: 'Temperatur'
@@ -82,44 +45,20 @@ se:
     humidity: 'Fuktighet'
 
   cover:
-    title: 'Omslag'
     title_plural: 'Omslag'
-    cover_open: 'Öppen'
-    cover_closed: 'Stängd'
 
   device:
-    title: 'Enhet'
     title_plural: 'Enheter'
-    device_on: 'enhet på'
-    devices_on: 'enheter på'
-    on_text: 'På'
-    off_text: 'Av'
-    device_off: 'Enhet av'
-    devices_off: 'Enheter av'
-    all_devices_on: 'Alla enheter på'
-    all_devices_off: 'Alla enheter av'
 
   media_player:
-    title: 'Media spelare'
     title_plural: 'Media spelare'
-    media_player_on: 'media spelare på'
-    media_players_on: 'media spelare på'
-    media_player_off: 'Media spelare av'
-    media_players_off: 'Media spelare av'
-    all_media_players_on: 'Alla media spelare på'
-    all_media_players_off: 'Alla media spelare av'
-    on_text: 'På'
-    off_text: 'Av'
 
   vacuum:
     title: 'Dammsugare'
     title_plural: 'Dammsugare'
 
   plant:
-    title: 'Växt'
     title_plural: 'Växter'
-    plant_problem: 'Växt problem'
-    plants_problem: 'Växt problem'
     
   home:
     title: 'Hemsida'
@@ -162,5 +101,4 @@ se:
     title: 'Fler enheter'
 
   lock:
-    title: 'Lås'
     title_plural: 'Lås'
