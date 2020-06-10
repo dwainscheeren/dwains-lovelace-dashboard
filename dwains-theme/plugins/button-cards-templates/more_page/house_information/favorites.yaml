@@ -15,8 +15,9 @@ more_page_house_information_favorites:
       - grid-template-rows: min-content min-content
     card:
       - background-color: var(--dwains-theme-primary)
-      - border-radius: 0
-      - box-shadow: none     
+      - border-radius: 5px
+      #- border-radius: 0
+      #- box-shadow: none     
     name: 
       - font-size: 15px
       - font-weight: bold
@@ -34,3 +35,4 @@ more_page_house_information_favorites:
       - justify-self: start
     icon:
       - color: var(--dwains-theme-accent)
+      - height: 35px

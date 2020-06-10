@@ -62,11 +62,11 @@
                     state:
                       {% if favorite['icon_off'] %}
                       - value: 'off'
-                        icon: '{{ favorite['icon_off'] }}'
+                        icon: "{{ favorite['icon_off'] }}"
                       {% endif %}
                       {% if favorite['icon_on'] %}
                       - value: 'on'
-                        icon: '{{ favorite['icon_on'] }}'
+                        icon: "{{ favorite['icon_on'] }}"
                       {% endif %}
                   {% endfor %}
               {% endif %}

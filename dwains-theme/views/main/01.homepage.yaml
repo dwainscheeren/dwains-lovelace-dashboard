@@ -215,11 +215,11 @@
                     state:
                       {% if favorite['icon_off'] %}
                       - value: 'off'
-                        icon: '{{ favorite['icon_off'] }}'
+                        icon: "{{ favorite['icon_off'] }}"
                       {% endif %}
                       {% if favorite['icon_on'] %}
                       - value: 'on'
-                        icon: '{{ favorite['icon_on'] }}'
+                        icon: "{{ favorite['icon_on'] }}"
                       {% endif %}
                   {% endfor %}
           {% endif %}
@@ -312,7 +312,7 @@
                         {% else %}
                         label: '&nbsp;'
                         {% endif %}
-                        icon: '{{ room["icon"]|default('mdi:square-outline') }}'
+                        icon: "{{ room["icon"]|default('mdi:square-outline') }}"
                         tap_action: 
                           action: navigate
                           navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_")  }}

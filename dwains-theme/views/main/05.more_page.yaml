@@ -30,21 +30,21 @@
             cards:
               - type: custom:button-card
                 template: more_page_main
-                icon: '{{ _d_t_icons.more_page_house_information|default('mdi:home') }}'
+                icon: "{{ _d_t_icons.more_page_house_information|default('mdi:home') }}"
                 name: {{ _d_t_trans.more_page.house_info }}
                 tap_action: 
                   action: navigate
                   navigation_path: more_page_house_information
               - type: custom:button-card
                 template: more_page_main
-                icon: '{{ _d_t_icons.more_page_house_data|default('mdi:information-outline') }}'
+                icon: "{{ _d_t_icons.more_page_house_data|default('mdi:information-outline') }}"
                 name: {{ _d_t_trans.more_page.house_data.title }}
                 tap_action: 
                   action: navigate
                   navigation_path: more_page_house_data
               - type: custom:button-card
                 template: more_page_main
-                icon: '{{ _d_t_icons.more_page_settings|default('mdi:cogs') }}'
+                icon: "{{ _d_t_icons.more_page_settings|default('mdi:cogs') }}"
                 name: {{ _d_t_trans.more_page.settings.title }}
                 tap_action: 
                   action: navigate

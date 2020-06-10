@@ -2,7 +2,7 @@
 
 more_page_list-item:
   show_label: false
-  icon: '{{ _d_t_icons.more_page_list_chevron|default('mdi:chevron-right') }}'
+  icon: "{{ _d_t_icons.more_page_list_chevron|default('mdi:chevron-right') }}"
   styles:
     grid:
       - grid-template-areas: '"n i"'

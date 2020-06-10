@@ -1,7 +1,7 @@
 # dwains_theme
 
 header_alarm_large:
-  icon: '{{ _d_t_icons.alarm_disarmed|default('mdi:lock-open-variant-outline') }}'
+  icon: "{{ _d_t_icons.alarm_disarmed|default('mdi:lock-open-variant-outline') }}"
   show_icon: true
   show_name: false
   show_state: true
@@ -33,21 +33,21 @@ header_alarm_large:
       - padding-right: 10px
   state:
     - value: pending
-      icon: '{{ _d_t_icons.alarm_pending|default('mdi:home-lock') }}'
+      icon: "{{ _d_t_icons.alarm_pending|default('mdi:home-lock') }}"
       styles:
         img_cell:
           - background-color: '#ffb94f'
         icon:
           - color: '#fcfcff'
     - value: armed_away
-      icon: '{{ _d_t_icons.alarm_armed_away|default('mdi:home-lock') }}'
+      icon: "{{ _d_t_icons.alarm_armed_away|default('mdi:home-lock') }}"
       styles: 
         img_cell:
           - background-color: '#ff5454'
         icon:
           - color: '#fcfcff'
     - value: armed_home
-      icon: '{{ _d_t_icons.alarm_armed_home|default('mdi:home-lock') }}'
+      icon: "{{ _d_t_icons.alarm_armed_home|default('mdi:home-lock') }}"
       styles: 
         img_cell:
           - background-color: '#ff5454'

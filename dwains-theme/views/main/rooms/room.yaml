@@ -43,7 +43,7 @@
             style: |
               ha-card {
                 background-color: var(--dwains-theme-header-background);
-                margin-top: -25px;
+                margin-top: -20px;
                 padding: 0px;
               }
             card:
@@ -56,10 +56,10 @@
                   template: rooms_subheader
                   entity: {{ room["motion"] }}
                   name: {{ _d_t_trans.motion.title }}
-                  icon: '{{ _d_t_icons.motion_off|default('mdi:walk') }}'
+                  icon: "{{ _d_t_icons.motion_off|default('mdi:walk') }}"
                   state:
                     - value: 'on'
-                      icon: '{{ _d_t_icons.motion_on|default('mdi:motion-sensor') }}'
+                      icon: "{{ _d_t_icons.motion_on|default('mdi:motion-sensor') }}"
                   tap_action:
                     !include 
                       - ../../popups/more-info.yaml
@@ -107,10 +107,10 @@
                 - type: custom:button-card
                   template: rooms_subheader
                   entity: {{ room["door"] }}
-                  icon: '{{ _d_t_icons.door_closed|default('mdi:door-closed') }}'
+                  icon: "{{ _d_t_icons.door_closed|default('mdi:door-closed') }}"
                   state:
                     - value: 'on'
-                      icon: '{{ _d_t_icons.door_open|default('mdi:door-open') }}'
+                      icon: "{{ _d_t_icons.door_open|default('mdi:door-open') }}"
                   tap_action:
                     !include 
                       - ../../popups/more-info.yaml
@@ -158,10 +158,10 @@
                 - type: custom:button-card
                   template: rooms_subheader
                   entity: {{ room["window"] }}
-                  icon: '{{ _d_t_icons.window_closed|default('mdi:window-closed-variant') }}'
+                  icon: "{{ _d_t_icons.window_closed|default('mdi:window-closed-variant') }}"
                   state:
                     - value: 'on'
-                      icon: '{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}'
+                      icon: "{{ _d_t_icons.window_open|default('mdi:window-open-variant') }}"
                   tap_action:
                     !include 
                       - ../../popups/more-info.yaml
@@ -223,10 +223,10 @@
               - type: custom:button-card
                 entity: {{ room["lock"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.lock_locked|default('mdi:lock') }}'
+                icon: "{{ _d_t_icons.lock_locked|default('mdi:lock') }}"
                 state:
                   - value: 'unlocked'
-                    icon: '{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}'
+                    icon: "{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}"
                 {% if room["lock"].split('.')[0] == 'lock' %}
                 # this room has only 1 lock (lock entity)
                 tap_action:
@@ -278,10 +278,10 @@
               - type: custom:button-card
                 entity: {{ room["light"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.light_off|default('mdi:lightbulb-outline') }}'
+                icon: "{{ _d_t_icons.light_off|default('mdi:lightbulb-outline') }}"
                 state:
                   - value: 'on'
-                    icon: '{{ _d_t_icons.light_on|default('mdi:lightbulb') }}'
+                    icon: "{{ _d_t_icons.light_on|default('mdi:lightbulb') }}"
                 {% if room["light"].split('.')[0] == 'light' %}
                 # this room has only 1 light (light entity)
                 tap_action:
@@ -360,7 +360,7 @@
               - type: custom:button-card
                 entity: {{ room["climate"] if room["climate"] else room["temperature"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.climate|default('mdi:thermometer') }}'
+                icon: "{{ _d_t_icons.climate|default('mdi:thermometer') }}"
                 tap_action: 
                   action: navigate
                   navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
@@ -413,7 +413,7 @@
               - type: custom:button-card
                 entity: {{ room["cover"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.cover|default('mdi:window-shutter') }}'
+                icon: "{{ _d_t_icons.cover|default('mdi:window-shutter') }}"
                 tap_action: 
                   action: navigate
                   navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_cover
@@ -461,7 +461,7 @@
               - type: custom:button-card
                 entity: {{ room["device"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.device|default('mdi:power-plug') }}'
+                icon: "{{ _d_t_icons.device|default('mdi:power-plug') }}"
                 {% if room["device"].split('.')[0] != 'group' %}
                 # this room has only 1 device
                 tap_action:
@@ -514,7 +514,7 @@
               - type: custom:button-card
                 entity: {{ room["media_player"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.media_player|default('mdi:play-pause') }}'
+                icon: "{{ _d_t_icons.media_player|default('mdi:play-pause') }}"
                 {% if room["media_player"].split('.')[0] == 'media_player' %}
                 # this room has only 1 media player
                 tap_action:
@@ -559,7 +559,7 @@
               - type: custom:button-card
                 entity: {{ room["vacuum"]["entity"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}'
+                icon: "{{ _d_t_icons.vacuum|default('mdi:robot-vacuum') }}"
                 tap_action: 
                   action: navigate
                   navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
@@ -579,7 +579,7 @@
               - type: custom:button-card
                 entity: {{ room["plant"] }}
                 template: rooms_child
-                icon: '{{ _d_t_icons.plant|default('mdi:flower') }}'
+                icon: "{{ _d_t_icons.plant|default('mdi:flower') }}"
                 {% if room["plant"].split('.')[0] == 'plant' %}
                 # this room has only 1 plant
                 tap_action:
