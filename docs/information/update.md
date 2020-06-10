@@ -42,8 +42,10 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 #### How to update to 1.4.0? 
 
-**If you are running Dwains Theme 1.3.0**: 
+**If you are running Dwains Theme 1.3.*:** 
 Follow the normal update manual (top of this page). Please follow all steps.
+
+*The file `dwains-theme/plugins/button-cards-templates/homepage/header/greeting.yaml` is no longer used, so make sure you remove/don't have that file.*
 
 **If you are running older version of Dwains Theme then 1.3.0**: Then follow the update manual of 1.3.0 first [see here](https://dwainscheeren.github.io/lovelace-dwains-theme/information/update.html#how-to-update-to-130).
 
