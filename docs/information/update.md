@@ -57,6 +57,7 @@ Follow the normal update manual (top of this page). Please follow all steps.
 #### Changes:
 
 * **BREAKING: Replaced all Font Awesome icons with Material Design Icons, so FA is no longer included in my theme. If you use rooms with Font Awesome (FAS/FAR) icons you need to replace them with Material Design (MDI) icons!! (If you want to use FA icons, please look [here](../how-tos/how-to-choose-icon.md)).**
+* **BREAKING: Calendar on the house information is removed/deprecated. Now you can use addons between the favorites and the activity. The calendar is now an addon, please take a look hereNEEDTOMAKELINK.
 * Created Dwains Collapse Card. I removed the swipe card from the header, now too many (state) items will collapse and can be toggled with an chevron up/down button. The swipe card plugin is no longer used and loaded by default!
 * Changed some translation loadings, because from HA 0.109 its changed.
 * Replaced 99% of the translations in my theme with native HA translations. The language files are still required for some titles but are a lot smaller now.
