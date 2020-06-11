@@ -85,5 +85,6 @@ card:
           padding-top: 20px !important;
           padding-bottom: 20px !important;
           {% endif %}
+          margin-bottom: 0.5rem;
         }
       content: {{ title }}
