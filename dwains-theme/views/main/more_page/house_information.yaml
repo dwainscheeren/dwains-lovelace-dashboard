@@ -28,6 +28,7 @@
             items_classes: 'col-xs-12'
             cards:
               {% if _d_t_config.house_information %}
+
               #Favorites
               {% if _d_t_config.house_information["favorites"] %}
               #heading  
@@ -70,7 +71,6 @@
                       {% endif %}
                   {% endfor %}
               {% endif %}
-              {% endif %}
 
               {% if _d_t_config.house_information["addons"] %}
               {% for addon in _d_t_config.house_information["addons"] %}
@@ -84,6 +84,8 @@
                       data: '{{ addon["data"]|tojson }}'
                       {% endif %}
               {% endfor %}
+              {% endif %}
+
               {% endif %}
 
               #All activity (doors, windows, motion)

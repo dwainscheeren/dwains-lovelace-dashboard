@@ -9,7 +9,7 @@
 - type: module
   url: /local/dwains-theme/plugins/dwains-notification-card/dwains-notification-card.js?v=0.0.2
 - type: module
-  url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.2
+  url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.3
 - type: module
   url: /local/dwains-theme/plugins/dwains-collapse-card/dwains-collapse-card.js?v=0.0.3
 
@@ -29,9 +29,7 @@
 - type: module
   url: /hacsfiles/lovelace-state-switch/state-switch.js
 
-# Plugins resources which are not required if you dont have a rooted roborock or a house calendar
+# Plugins resources which are not required if you dont have a rooted roborock
 # you can comment these out
 - type: module
   url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js    
-- type: module
-  url: /hacsfiles/atomic_calendar/atomic_calendar.js

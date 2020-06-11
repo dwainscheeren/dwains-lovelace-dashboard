@@ -57,10 +57,18 @@
                       template: header_alarm
                       entity: {{ _d_t_config.global["alarm"] }}
                       tap_action:
-                        #action: more-info
-                        !include 
-                          - ../popups/alarm.yaml
-                          - entity: {{ _d_t_config.global["alarm"] }}
+                        haptic: heavy
+                        action: call-service
+                        service: browser_mod.popup
+                        service_data:
+                          title: '[[[ return entity.attributes.friendly_name ]]]'
+                          style:
+                            background: var(--dwains-theme-primary)
+                          card:
+                            type: alarm-panel
+                            entity: {{ _d_t_config.global["alarm"] }}
+                          deviceID:
+                            - this
                     {% endif %}
                     - type: horizontal-stack
                       item_classes: 'col-xs-12 d-none d-sm-block'
@@ -72,10 +80,18 @@
                           template: header_alarm_large
                           entity: {{ _d_t_config.global["alarm"] }}
                           tap_action:
-                            #action: more-info
-                            !include 
-                              - ../popups/alarm.yaml
-                              - entity: {{ _d_t_config.global["alarm"] }}
+                            haptic: heavy
+                            action: call-service
+                            service: browser_mod.popup
+                            service_data:
+                              title: '[[[ return entity.attributes.friendly_name ]]]'
+                              style:
+                                background: var(--dwains-theme-primary)
+                              card:
+                                type: alarm-panel
+                                entity: {{ _d_t_config.global["alarm"] }}
+                              deviceID:
+                                - this
                         {% endif %}
                     - type: custom:dwains-notification-card
                       item_classes: 'col-xs-12'

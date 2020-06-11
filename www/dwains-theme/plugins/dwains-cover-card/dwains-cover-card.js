@@ -4,7 +4,7 @@ import {
   css
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = '0.0.2';
+const VERSION = '0.0.3';
 
 class DwainsCoverCard extends LitElement {
 
@@ -29,8 +29,8 @@ class DwainsCoverCard extends LitElement {
             ? stateObj.entity_id.split(".")[1].replace(/_/g, " ")
             : stateObj.attributes.friendly_name;
 
-    if(stateObj.attributes.supported_features == 15 || stateObj.attributes.supported_features == 7){
-      //Cover has support for position (15 or 7)
+    if(stateObj.attributes.supported_features & 7 > 0){
+      //Cover has flags for position active
       return html`
         <ha-card
             .header=${this.config.title || name}>
