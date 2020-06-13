@@ -45,13 +45,8 @@
                     card:
                       type: horizontal-stack
                       cards:
-                        - type: custom:button-card
-                          template: room_media_player
+                        - type: media-control
                           entity: {{ room["media_player"] }}
-                          tap_action:
-                            !include 
-                              - ../../popups/more-info.yaml
-                              - entity: {{ room["media_player"] }}
                   {% else %}
                   # this room has group of media players
                   - type: custom:auto-entities
@@ -59,18 +54,13 @@
                       include:
                         - group: {{ room["media_player"] }}
                           options:
-                            type: custom:button-card
-                            template: room_media_player
-                            tap_action:
-                              !include 
-                                - ../../popups/more-info.yaml
-                                - entity: this.entity_id
+                            type: media-control
                     sort:
                       method: name
                       ignore_case: true
                     card:
                       type: custom:dwains-flexbox-card
-                      items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
+                      items_classes: 'col-xs-12'
                   {% endif %}
               {% endif %}
               {% endfor %}
