@@ -102,3 +102,6 @@ se:
 
   lock:
     title_plural: 'Lås'
+
+  alarm:
+    title: 'Alarm'

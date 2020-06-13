@@ -103,3 +103,6 @@ it:
 
   lock:
     title_plural: 'Locks'
+
+  alarm:
+    title: 'Alarm'

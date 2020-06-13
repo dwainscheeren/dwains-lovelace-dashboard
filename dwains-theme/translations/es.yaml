@@ -103,3 +103,6 @@ es:
 
   lock:
     title_plural: 'Cerraduras'
+
+  alarm:
+    title: 'Alarm'

@@ -1,0 +1,33 @@
+# dwains_theme
+
+{% if _d_t_config.global["alarm"] %}
+- title: {{ _d_t_trans.alarm.title }}
+  path: more_page_alarm
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
+        }
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.alarm.title }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home  
+
+          #Start of alarm page
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12'
+            cards:
+              - type: alarm-panel
+                entity: {{ _d_t_config.global["alarm"] }}
+{% endif %}

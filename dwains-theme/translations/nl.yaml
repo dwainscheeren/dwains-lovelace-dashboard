@@ -103,3 +103,6 @@ nl:
 
   lock:
     title_plural: 'Sloten'
+
+  alarm:
+    title: 'Alarm'
