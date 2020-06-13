@@ -87,6 +87,12 @@ Follow the normal update manual (top of this page). Please follow all steps.
 * Re-programmed the headers on all pages. The back button is now bigger (for people with big fingers haha).
 * Fixed bug that outside_temperature is not showing in the weather card on dekstop/tablet.
 * Added HA translations to dwains cover card for open/closed covers.
+* On devices -> climate page. If you click on an climate you go to that room climate page.
+* Fixed all haptic feedbacks in the theme.
+* Made a own page for the alarm, because there was a bug with using it inside browser_mod popup.
+* Changed lock to 1 tap is toggle and double tap or hold is more info.
+* On devices -> vacuum page. If you click on an vacuum you go to that room vacuum page.
+
 
 ## Update 1.3.1
 
