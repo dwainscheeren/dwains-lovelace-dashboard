@@ -55,12 +55,7 @@
                     - type: custom:button-card
                       item_classes: 'col-xs-3 d-block d-sm-none'
                       template: header_alarm
-                      entity: {{ _d_t_config.global["alarm"] }}
-                      tap_action:
-                        haptic: light
-                        action: navigate
-                        navigation_path: more_page_alarm
-                        
+                      entity: {{ _d_t_config.global["alarm"] }}                        
                     {% endif %}
                     - type: horizontal-stack
                       item_classes: 'col-xs-12 d-none d-sm-block'
@@ -71,11 +66,6 @@
                         - type: custom:button-card
                           template: header_alarm_large
                           entity: {{ _d_t_config.global["alarm"] }}
-                          tap_action:
-                            haptic: light
-                            action: navigate
-                            navigation_path: more_page_alarm
-
                         {% endif %}
                     - type: custom:dwains-notification-card
                       item_classes: 'col-xs-12'
@@ -197,7 +187,6 @@
                     template: more_page_house_information_favorites
                     {% if favorite["entity"].split('.')[0] == 'input_select' %}
                     tap_action:
-                      haptic: light
                       action: more-info
                     double_tap_action:
                       haptic: light

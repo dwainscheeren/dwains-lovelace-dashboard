@@ -36,7 +36,11 @@
                   options:
                     type: custom:button-card
                     template: room_lock
-                    tap_action:
+                    hold_action:
+                      !include 
+                        - ../../../popups/more-info.yaml
+                        - entity: this.entity_id
+                    double_tap_action:
                       !include 
                         - ../../../popups/more-info.yaml
                         - entity: this.entity_id

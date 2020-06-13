@@ -38,3 +38,6 @@ room_lock:
       - align-self: left
       - font-size: 12px
       - color: var(--dwains-theme-grey)
+  tap_action:
+    action: toggle
+    haptic: heavy

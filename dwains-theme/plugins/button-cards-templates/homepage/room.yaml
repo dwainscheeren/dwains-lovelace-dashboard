@@ -2,6 +2,7 @@ homepage_room:
   size: 55px
   show_label: true
   double_tap_action:
+    haptic: heavy
     action: toggle
   styles:
     grid:

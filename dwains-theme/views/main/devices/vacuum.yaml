@@ -50,9 +50,8 @@
                           template: room_vacuum
                           entity: {{ room["vacuum"]["entity"] }}
                           tap_action:
-                            !include 
-                              - ../../popups/more-info.yaml
-                              - entity: {{ room["vacuum"]["entity"] }}
+                            action: navigate
+                            navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
                   {% else %}
                   # this room has group of vacuums
                   - type: custom:auto-entities
@@ -63,9 +62,8 @@
                             type: custom:button-card
                             template: room_vacuum
                             tap_action:
-                              !include 
-                                - ../../popups/more-info.yaml
-                                - entity: this.entity_id
+                              action: navigate
+                              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
                     sort:
                       method: name
                       ignore_case: true

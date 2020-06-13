@@ -49,6 +49,9 @@
                         - type: custom:button-card
                           template: room_climate
                           entity: {{ room["climate"] }}
+                          tap_action:
+                            action: navigate
+                            navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
                   {% else %}
                   # this room has group of climate
                   # not yet supported                    

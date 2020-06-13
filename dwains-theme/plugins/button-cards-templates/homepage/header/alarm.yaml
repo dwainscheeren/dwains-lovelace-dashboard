@@ -4,6 +4,9 @@ header_alarm:
   icon: "{{ _d_t_icons.alarm_disarmed|default('mdi:lock-open-variant-outline') }}"
   show_icon: true
   show_name: false
+  tap_action:
+    action: navigate
+    navigation_path: more_page_alarm
   styles:
     grid:
       - grid-template-areas: '"i"'

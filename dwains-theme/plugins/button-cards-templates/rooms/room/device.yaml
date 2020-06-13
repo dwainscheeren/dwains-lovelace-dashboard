@@ -39,4 +39,4 @@ room_device:
       - color: var(--dwains-theme-grey)
   double_tap_action:
     action: toggle
-    haptic: light 
+    haptic: heavy

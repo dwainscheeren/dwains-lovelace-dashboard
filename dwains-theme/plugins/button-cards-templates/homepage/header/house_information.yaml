@@ -5,7 +5,7 @@ header_house_information:
   show_label: false
   show_name: false
   icon: "{{ _d_t_icons.more_house_information|default('mdi:home') }}"
-  tap_action: 
+  tap_action:
     action: navigate
     navigation_path: more_page_house_information
   styles:

@@ -62,4 +62,4 @@ room_light:
       - color: var(--dwains-theme-grey)
   tap_action:
     action: toggle
-    haptic: light 
+    haptic: heavy

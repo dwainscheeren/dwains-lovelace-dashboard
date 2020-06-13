@@ -48,7 +48,11 @@
                       - type: custom:button-card
                         template: room_lock
                         entity: {{ room["lock"] }}
-                        tap_action:
+                        hold_action:
+                          !include 
+                            - ../../popups/lock.yaml
+                            - entity: {{ room["lock"] }}
+                        double_tap_action:
                           !include 
                             - ../../popups/lock.yaml
                             - entity: {{ room["lock"] }}
@@ -61,10 +65,14 @@
                           options:
                             type: custom:button-card
                             template: room_lock
-                            tap_action:
+                            hold_action:
                               !include 
                                 - ../../popups/lock.yaml
-                                - entity: this.entity_id
+                                - entity: {{ room["lock"] }}
+                            double_tap_action:
+                              !include 
+                                - ../../popups/lock.yaml
+                                - entity: {{ room["lock"] }}
                     sort:
                       method: name
                       ignore_case: true
