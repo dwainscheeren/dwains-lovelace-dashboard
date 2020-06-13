@@ -18,7 +18,7 @@ dwains-theme-black:
   background-image: 'var(--dwains-theme-background)' 
 
   #color for top small bar notch on ios
-  primary-color: 'var(--dwains-theme-primary)'
+  primary-color: 'var(--dwains-theme-names)'
   primary-text-color: 'var(--dwains-theme-names)'
   text-primary-color: 'var(--primary-text-color)'
   secondary-text-color: 'var(--primary-text-color)'
@@ -66,3 +66,6 @@ dwains-theme-black:
   switch-unchecked-track-color: '#131314'              # Background Off
 
   app-header-background-color: '#121212'
+
+  #ios 
+  app-header-background-color: 'var(--dwains-theme-primary)'
