@@ -92,7 +92,7 @@ Follow the normal update manual (top of this page). Please follow all steps.
 * Made a own page for the alarm, because there was a bug with using it inside browser_mod popup.
 * Changed lock to 1 tap is toggle and double tap or hold is more info.
 * On devices -> vacuum page. If you click on an vacuum you go to that room vacuum page.
-
+* Added HA (new) Media Control Card for media_players on the devices -> media players page too, so you now have a fancy card.
 
 ## Update 1.3.1
 
