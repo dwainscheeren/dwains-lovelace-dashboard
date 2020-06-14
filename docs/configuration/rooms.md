@@ -87,7 +87,7 @@ rooms:
 ### More_entities object
 
 Example for using some additional entities in a room (opens in new view, accessible from icon in header top right):
-```
+```YAML
     more_entities:
       columns: 2 #optional
       entities:
@@ -98,7 +98,7 @@ Example for using some additional entities in a room (opens in new view, accessi
 ### Page_entities object
 
 Example for showing some entities in the room page itself:
-```
+```YAML
     page_entities:
       columns: 1 #optional
       show_title: 'false' #optional
@@ -111,12 +111,24 @@ Example for showing some entities in the room page itself:
 
 | Name | Type | Default | Example | Description |
 |----------|--------|---------------------|---------------------|---------------------------------------------------------|
+| advanced_view | string | false | 'true' | Enable advance view (read below) |
 | entity | string | Required | vacuum.rockrobo | entity_id |
 | camera | string | Not required | camera.rockrobo_map | If you have rooted your roborock paste the camera here. |
 
 Example for vacuum inside a room:
-```
+```YAML
     vacuum: 
+      advanced_view: 'true'
       entity: vacuum.rockrobo
       camera: camera.rockrobo_map
-````
+```
+
+The advanced view loads an custom lovelace card with a live map (if you have a camera entity) or some nice animation of your vacuum. 
+
+To enable this advanced view, put `advanced_view: 'true'` in your vacuum config.
+
+Go to HACS and install the plugin Vacuum card (by denysdovhan) and add the following code to your `custom_resources.yaml` ([look here for instructions](../how-tos/custom-cards.md) on how to do this):
+```YAML
+- type: module
+  url: hacsfiles/vacuum-card/vacuum-card.js
+```
