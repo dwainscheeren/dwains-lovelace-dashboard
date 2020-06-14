@@ -67,5 +67,5 @@ dwains-theme-black:
 
   app-header-background-color: '#121212'
 
-  #ios 
+  #iOS app
   app-header-background-color: 'var(--dwains-theme-primary)'

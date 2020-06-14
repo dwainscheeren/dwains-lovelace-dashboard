@@ -26,163 +26,44 @@
               subtitle: {{ room["name"] }}
               navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           #Start for room vacuum content page
-          - type: custom:mod-card
-            style: |
-              ha-card {
-                padding-left: 11px;
-                padding-right: 11px;
-              }
-            card:
-              type: vertical-stack
-              cards:
-                - type: vertical-stack
-                  cards:
-                    - type: custom:mod-card
-                      style: |
-                        ha-card {
-                          margin-top: 14px;
-                          background: #fff;
-                          padding: 0px 8px 10px 8px;
-                          border-radius: 0;
-                        }
-                      card:
-                        type: custom:dwains-flexbox-card
-                        cards:
-                          #First card is start
-                          - type: custom:button-card
-                            entity: {{ room["vacuum"]["entity"] }}
-                            template: room_vacuum_top_icons
-                            icon: 'mdi:play'
-                            tap_action:
-                              haptic: heavy  
-                              action: call-service
-                              service: vacuum.start
-                              service_data:
-                                entity_id: {{ room["vacuum"]["entity"] }}
-                          #Second card is Pause
-                          - type: custom:button-card
-                            entity: {{ room["vacuum"]["entity"] }}
-                            template: room_vacuum_top_icons
-                            icon: 'mdi:pause'
-                            tap_action:
-                              haptic: heavy  
-                              action: call-service
-                              service: vacuum.pause
-                              service_data:
-                                entity_id: {{ room["vacuum"]["entity"] }}
-                          #Third card is Locate
-                          - type: custom:button-card
-                            entity: {{ room["vacuum"]["entity"] }}
-                            icon: 'mdi:map-marker'
-                            template: room_vacuum_top_icons
-                            tap_action:
-                              haptic: heavy  
-                              action: call-service
-                              service: vacuum.locate
-                              service_data:
-                                entity_id: {{ room["vacuum"]["entity"] }}
-                          #Fourth card is Go back to dock
-                          - type: custom:button-card
-                            entity: {{ room["vacuum"]["entity"] }}
-                            icon: 'mdi:home'
-                            template: room_vacuum_top_icons
-                            tap_action:
-                              haptic: heavy  
-                              action: call-service
-                              service: vacuum.return_to_base
-                              service_data:
-                                entity_id: {{ room["vacuum"]["entity"] }}
-                          #Fifth card is Info
-                          - type: custom:button-card
-                            entity: {{ room["vacuum"]["entity"] }}
-                            icon: 'mdi:information-outline'
-                            template: room_vacuum_top_icons
-                            tap_action:
-                              !include 
-                                - ../../../popups/more-info.yaml
-                                - entity: {{ room["vacuum"]["entity"] }}
-
-                    - type: custom:mod-card
-                      style: |
-                        ha-card {
-                          margin-top: 0px;
-                          background: #33a1f5;
-                          padding: 0px 8px 10px 8px;
-                          margin-bottom: -11px;
-                          border-radius: 0;
-                        }
-                      card:
-                        type: custom:dwains-flexbox-card
-                        cards:
-                          #First card is state
-                          - type: custom:button-card
-                            entity: {{ room["vacuum"]["entity"] }}
-                            template: room_vacuum_card_icons
-                            show_label: false
-                            show_state: true
-                            styles:
-                              state:
-                                - align-self: start
-                                - justify-self: left
-                          #Second card is vacuum mode
-                          - type: custom:button-card
-                            entity: {{ room["vacuum"]["entity"] }}
-                            template: room_vacuum_card_icons
-                            styles:
-                              label:
-                                - font-weight: normal
-                            label: >
-                              [[[
-                                if(entity){
-                                  return entity.attributes.fan_speed + `<ha-icon style="height: 20px" icon="mdi:fan"></ha-icon>`;
-                                }
-                              ]]]
-                          #Third card is battery percentage
-                          - type: custom:button-card
-                            entity: {{ room["vacuum"]["entity"] }}
-                            template: room_vacuum_card_icons
-                            styles:
-                              label:
-                                - align-self: end
-                                - justify-self: right
-                            label: >
-                              [[[
-                                if(entity){
-                                  return entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="' + entity.attributes.battery_icon + '"></ha-icon>';
-                                }
-                              ]]]
-                    {% if room["vacuum"]["camera"] %}
-                    #The card itself with zone support
-                    - type: 'custom:xiaomi-vacuum-map-card'
-                      entity: {{ room["vacuum"]["entity"] }}
-                      map_camera: {{ room["vacuum"]["camera"] }}
-                      debug: false
-                      default_mode: predefined_zones
-                      calibration_points: 
-                        - vacuum:
-                            x: 25500
-                            y: 25500
-                          map:
-                            x: 466
-                            y: 1889
-                        - vacuum:
-                            x: 26500
-                            y: 26500
-                          map:
-                            x: 730
-                            y: 1625
-                        - vacuum:
-                            x: 25500
-                            y: 26500
-                          map:
-                            x: 466
-                            y: 1625
-                      zones:
-                        - - - 25778
-                            - 29353
-                            - 26125
-                            - 29690
-                            - 1
-                    {% endif %}
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12'
+            cards:
+              {% if room["vacuum"]["advanced_view"] and room["vacuum"]["advanced_view"] == 'true' %}
+              - type: 'custom:vacuum-card'
+                entity: {{ room["vacuum"]["entity"] }}
+                {% if room["vacuum"]["camera"] %}
+                map: {{ room["vacuum"]["camera"] }}
+                {% endif %}
+                stats:
+                  default:
+                    - attribute: filter_left
+                      unit: hours
+                      subtitle: Filter
+                    - attribute: side_brush_left
+                      unit: hours
+                      subtitle: Side brush
+                    - attribute: main_brush_left
+                      unit: hours
+                      subtitle: Main brush
+                    - attribute: sensor_dirty_left
+                      unit: hours
+                      subtitle: Sensors
+                  cleaning:
+                    - attribute: cleaned_area
+                      unit: m2
+                      subtitle: Cleaning area
+                    - attribute: cleaning_time
+                      unit: minutes
+                      subtitle: Cleaning time
+              {% else %}
+              - type: custom:more-info-card
+                style: |
+                  .card-header {
+                    display: none;
+                  }
+                entity: {{ room["vacuum"]["entity"] }}
+              {% endif %}
 {% endif %}
 {% endfor %}
