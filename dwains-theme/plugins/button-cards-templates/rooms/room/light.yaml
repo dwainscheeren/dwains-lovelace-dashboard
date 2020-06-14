@@ -23,6 +23,9 @@ room_light:
           } else {
             return hass.localize('component.light.state._.on');
           }
+        }
+        else if(entity.state == 'unavailable') {
+          return hass.localize('state.default.unavailable');
         } else {
           return hass.localize('component.light.state._.off');
         }
