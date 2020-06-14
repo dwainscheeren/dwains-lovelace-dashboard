@@ -49,6 +49,7 @@
 * [How to use Dwains Theme notifications](how-tos/notifications.md)
 * [How to choose and use an icon](how-tos/how-to-choose-icon.md)
 * [How to update Dwains Theme](information/update.md)
+* [How to add/load custom cards in Dwains Theme](how-tos/custom-cards.md)
 
 ### Support
 * [Report a bug](https://github.com/dwainscheeren/lovelace-dwains-theme/issues)
