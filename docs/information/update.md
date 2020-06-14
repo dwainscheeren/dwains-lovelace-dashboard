@@ -93,6 +93,8 @@ Follow the normal update manual (top of this page). Please follow all steps.
 * Changed lock to 1 tap is toggle and double tap or hold is more info.
 * On devices -> vacuum page. If you click on an vacuum you go to that room vacuum page.
 * Added HA (new) Media Control Card for media_players on the devices -> media players page too, so you now have a fancy card.
+* Fixed the primary color in the black and dark theme. Now text on states pages (for example) is readable again. This color was used for the navbar on iOS but this is now done by `--app-header-background-color`.
+
 
 ## Update 1.3.1
 
