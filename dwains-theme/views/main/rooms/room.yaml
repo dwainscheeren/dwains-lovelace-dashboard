@@ -296,6 +296,9 @@
                     if(entity){
                       if(entity.state == 'off'){
                         return hass.localize('component.light.state._.off');
+                      }
+                      else if(entity.state == 'unavailable') {
+                        return hass.localize('state.default.unavailable');
                       } else {
                         if (states['{{ room["light"] }}'].attributes && (states['{{ room["light"] }}'].attributes.brightness <= 255)) { 
                           var bri = Math.round(states['{{ room["light"] }}'].attributes.brightness / 2.55); 
@@ -319,6 +322,9 @@
                     if(entity){
                       if(entity.state == 'off'){
                         return hass.localize('component.light.state._.off');
+                      }
+                      else if(entity.state == 'unavailable') {
+                        return hass.localize('state.default.unavailable');
                       } else {
                         return hass.localize('component.light.state._.on');
                       }
