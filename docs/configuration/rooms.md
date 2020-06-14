@@ -130,5 +130,5 @@ To enable this advanced view, put `advanced_view: 'true'` in your vacuum config.
 Go to HACS and install the plugin Vacuum card (by denysdovhan) and add the following code to your `custom_resources.yaml` ([look here for instructions](../how-tos/custom-cards.md) on how to do this):
 ```YAML
 - type: module
-  url: hacsfiles/vacuum-card/vacuum-card.js
+  url: /hacsfiles/vacuum-card/vacuum-card.js
 ```
