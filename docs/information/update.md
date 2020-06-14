@@ -40,6 +40,8 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 ## Update 1.4.0
 
+v1.4.0 is compatible with HA 0.110 and HA 0.111
+
 #### How to update to 1.4.0? 
 
 **If you are running Dwains Theme 1.3.*:** 

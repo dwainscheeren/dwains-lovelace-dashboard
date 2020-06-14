@@ -29,10 +29,7 @@ In the left side menu click on HACS and then on Frontend. Click on the + sign bo
 | auto-entities | Module | Yes | Automatically populate the entities-list of lovelace cards |
 | Custom Header | Module | Yes | Lovelace Custom Header |
 | more-info-card | Module | Yes | Display the more-info dialog of any entity as a lovelace card |
-| Lovelace Xiaomi  Vacuum Map Card | Module | Yes | This card enables you to specify a target or start a zoned cleanup using  live or static map, just like in Mi Home app. Additionally you can define a  list of zones and choose the ones to be cleaned. |
-| Atomic Calendar | Module | Yes | Custom calendar card for Home Assistant with Lovelace |
 | state-switch | Module | Yes | Dynamically replace lovelace cards depending on occasion |
-| Swipe Card | Module | Yes | Card that allows you to swipe throught multiple cards for Home Assistant Lovelace |
 
 ### Install HACS components
 
