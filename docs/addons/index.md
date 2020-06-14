@@ -18,8 +18,13 @@ By default the dynamic page shows the cameras. But not everyone has cameras in h
 ### Persons addons
 With persons addons you can add own cards to a person page. Like for example a map, traveling time to work or home. It can also parse some data to that view. 
 
+### House information addons
+With house information addons you can add own cards to the global house information page. Like for example an calendar, traveling time to work or home. It can also parse some data to that view. 
+
+
 ## Addons
 * [Rooms addons](rooms.md)
 * [More page addons](more_page.md)
 * [Dynamic page addons](dynamic_page.md)
 * [Persons addons](persons.md)
+* [House information addons](house_information.md)

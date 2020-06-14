@@ -6,6 +6,7 @@
 * [More page addons](more_page.md)
 * [Dynamic page addons](dynamic_page.md)
 * [Persons addons](persons.md)
+* [House information addons](house_information.md)
 
 ---
 
