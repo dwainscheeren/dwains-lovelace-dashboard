@@ -34,6 +34,7 @@
 * [dynamic_page.yaml](configuration/dynamic_page.md)
 
 ### [Addons](addons/index.md)
+Also take a look in the [community addons repository](https://github.com/dwainscheeren/dwains-theme-addons).
 * [Rooms addons](addons/rooms.md)
 * [More page addons](addons/more_page.md)
 * [Dynamic page addons](addons/dynamic_page.md)
