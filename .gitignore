@@ -1,5 +1,8 @@
 dwains-theme/configs
 dwains-theme/.vscode/*
+dwains-theme/resources/custom_resources.yaml
+dwains-theme/addons/house_information/*/
+!dwains_theme/addons/house_information/hello-house-information/
 custom_components/*/
 !custom_components/dwains_theme
 custom_components/dwains_theme/__pycache__/

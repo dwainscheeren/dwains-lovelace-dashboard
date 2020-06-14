@@ -9,7 +9,6 @@ da:
   house_information:
     title: 'Hus Information'
     favorites: 'Favoritter'
-    house_calendar: 'Hus Kalender'
     activity: 'Kalender (Døre, Vinduer, Bevægelse)'
 
   motion:
