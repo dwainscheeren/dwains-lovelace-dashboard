@@ -58,6 +58,7 @@ Follow the normal update manual (top of this page). Please follow all steps.
 
 * **BREAKING: Replaced all Font Awesome icons with Material Design Icons, so FA is no longer included in my theme. If you use rooms with Font Awesome (FAS/FAR) icons you need to replace them with Material Design (MDI) icons!! (If you want to use FA icons, please look [here](../how-tos/how-to-choose-icon.md)).**
 * **BREAKING: Calendar on the house information is removed/deprecated. Now you can use addons between the favorites and the activity. The calendar is now an addon, please take a look [here for an calendar addon](https://github.com/dwainscheeren/dwains-theme-addons/tree/master/house_information/calendar).**
+* **BREAKING: Vacuum page has changed. I removed the HACS lovelace-xiaomi-vacuum-map-card from the theme and replaced it with denysdovhan/vacuum-card. But this is card is not required. You can enable it in your vacuum settings, [take a look here](https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/rooms.html#vacuum-object) on how to configure this.**
 * Created Dwains Collapse Card. I removed the swipe card from the header, now too many (state) items will collapse and can be toggled with an chevron up/down button. The swipe card plugin is no longer used and loaded by default!
 * Changed some translation loadings, because from HA 0.109 its changed.
 * Replaced 99% of the translations in my theme with native HA translations. The language files are still required for some titles but are a lot smaller now.
@@ -94,7 +95,7 @@ Follow the normal update manual (top of this page). Please follow all steps.
 * On devices -> vacuum page. If you click on an vacuum you go to that room vacuum page.
 * Added HA (new) Media Control Card for media_players on the devices -> media players page too, so you now have a fancy card.
 * Fixed the primary color in the black and dark theme. Now text on states pages (for example) is readable again. This color was used for the navbar on iOS but this is now done by `--app-header-background-color`.
-
+* Removed the lovelace-xiaomi-vacuum-map-card from main resources file.
 
 ## Update 1.3.1
 
