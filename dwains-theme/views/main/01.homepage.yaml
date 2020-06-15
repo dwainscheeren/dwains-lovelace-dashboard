@@ -233,7 +233,7 @@
                       - !include
                         - ../partials/heading_switch.yaml
                         - button_template: partials_heading_switch
-                          active: Rooms
+                          active: {{ _d_t_trans.rooms.title }}
                           headings:
                             - name: {{ _d_t_trans.rooms.title }}
                               navigation_path: "#rooms"
@@ -434,7 +434,7 @@
                       - !include
                         - ../partials/heading_switch.yaml
                         - button_template: partials_heading_switch
-                          active: Devices
+                          active: {{ _d_t_trans.device.title_plural }}
                           headings:
                             - name: {{ _d_t_trans.rooms.title }}
                               navigation_path: "#rooms"
