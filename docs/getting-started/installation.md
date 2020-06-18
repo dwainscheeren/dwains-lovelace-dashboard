@@ -24,7 +24,7 @@ In the left side menu click on HACS and then on Frontend. Click on the + sign bo
 | Name | Type | Required | Description |
 |----------------------------------|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Card-mod | Module | Yes | Add CSS styles to (almost) any lovelace card |
-| Button Card | Module | Yes | Lovelace button-card for home assistant |
+| Button-card | Module | Yes | Lovelace button-card for home assistant |
 | Light Entity Card | js | Yes | Control any light or switch entity |
 | auto-entities | Module | Yes | Automatically populate the entities-list of lovelace cards |
 | Custom Header | Module | Yes | Lovelace Custom Header |
@@ -37,7 +37,7 @@ We also need to download 1 component from the HACS store. Click again on HACS in
 
 | Name | HACS | Required | Description |
 |-------------|-------------|----------|---------------------------------------------------------------------------------------------------------|
-| Browser mod | Integration | Yes | A Home Assistant integration to turn your browser into a controllable entity - and also an audio player |
+| Browser_mod | Integration | Yes | A Home Assistant integration to turn your browser into a controllable entity - and also an audio player |
 
 After installing both HACS plugins and the 1 HACS component and you make sure you don't forgot any, you can continue to install Dwains Theme below.
 
