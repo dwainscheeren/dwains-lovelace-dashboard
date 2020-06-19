@@ -30,4 +30,8 @@
             cards:
               - type: alarm-panel
                 entity: {{ _d_t_config.global["alarm"] }}
+                states:
+                  - arm_home
+                  - arm_away
+                  - arm_night
 {% endif %}
