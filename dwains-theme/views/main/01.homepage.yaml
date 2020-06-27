@@ -394,7 +394,34 @@
                                   additional_info += 'L-E!<br>';
                                 }
                               {% endif %}
-
+                              {% if room["safety"] %}
+                                if(states['{{ room["safety"] }}']){
+                                  {% if room["safety"].split('.')[0] != 'group' %}
+                                    if(
+                                      states['{{ room["safety"] }}'].state != 'ok' &&
+                                      states['{{ room["safety"] }}'].state != 'Idle'
+                                    ){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
+                                    }
+                                  {% else %}
+                                    const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
+                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                      if(
+                                        states[entitiesFromGroup[i]] && (
+                                          states[entitiesFromGroup[i]].state != 'ok' &&
+                                          states[entitiesFromGroup[i]].state != 'Idle'
+                                        )
+                                      ) {
+                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
+                                        break;
+                                      }
+                                    }  
+                                  {% endif %}
+                                } else {
+                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.safety entity!");
+                                  additional_info += 'S-E!<br>';
+                                }
+                              {% endif %}
 
                               return additional_info;
                             ]]]
