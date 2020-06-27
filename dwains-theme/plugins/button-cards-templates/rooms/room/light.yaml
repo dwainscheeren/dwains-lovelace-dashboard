@@ -35,7 +35,11 @@ room_light:
     - value: 'off'
       styles:
         icon:
-          - color: var(--dwains-theme-grey)
+          - color: var(--dwains-theme-off)
+    - value: 'unavailable'
+      styles:
+        icon:
+          - color: var(--dwains-theme-unavailable)
   styles:
     grid:
       - grid-template-areas: '"i n""i l"'

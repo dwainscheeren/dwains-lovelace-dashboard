@@ -31,3 +31,7 @@ dwains-theme-light:
   more-info-header-color: 'var(--dwains-theme-header-text)'
 
   #ha-card-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.1)
+
+  #Lights
+  dwains-theme-unavailable: '#303030'
+  dwains-theme-off: '#909090'
