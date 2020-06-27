@@ -1,0 +1,90 @@
+# dwains_theme
+
+header_states_safety:
+  show_state: false
+  show_label: true
+  tap_action: 
+    action: navigate
+    navigation_path: devices_safety
+  name: {{ _d_t_trans.safety.title_plural }}
+  icon: "{{ _d_t_icons.safety_ok|default('mdi:shield-alert-outline') }}"
+  variables:
+    status: >
+      [[[
+        var notOkSafety = 0;
+
+        {% for room in _d_t_config.rooms %}
+          //Do some things for the Devices
+          {% if room["safety"] %}
+            {% if room["safety"].split('.')[0] != 'group' %}
+            //This room has only 1 safety device
+              if(
+                states['{{ room["safety"] }}'] && (
+                  states['{{ room["safety"] }}'].state != 'ok' &&
+                  states['{{ room["safety"] }}'].state != 'Idle'
+                )
+              ) {
+                notOkSafety++;
+              }
+            {% else %}
+            //This room has group of Safety Devices
+              if(states['{{ room["safety"] }}']){
+                states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
+                  if(
+                    states[entity] && (
+                      states[entity].state == 'ok' &&
+                      states[entity].state == 'Idle'
+                    )
+                  ){
+                    notOkSafety++;
+                  }
+                });  
+              }
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        return notOkSafety;
+      ]]]
+  label: >
+    [[[
+      if(variables.status > 0){
+        var notOkSafety = variables.status;
+        return notOkSafety + ' ' + hass.localize('component.binary_sensor.state.safety.on');
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i""n""l"'
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 40px
+      - height: 40px
+      - background: var(--dwains-theme-header-button-background)
+      - color: white
+      - border-radius: 100%
+    card:
+      - box-shadow: none
+      - padding: 0%
+      - width: 61px
+      - display: >
+          [[[
+            if(variables.status && variables.status > 0){
+              //On devices
+              return 'block';
+            } else {
+              //No on devices
+              return 'none';
+            }
+          ]]]
+    label:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 11px
+      - line-height: 12px
+    name:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 13px

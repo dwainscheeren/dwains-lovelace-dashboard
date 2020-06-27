@@ -366,7 +366,16 @@
               - type: custom:button-card
                 entity: {{ room["safety"] }}
                 template: rooms_child
-                icon: "{{ _d_t_icons.safety|default('mdi:shield-check') }}"
+                icon: >
+                  [[[
+                    if(
+                      entity.state == 'ok' ||
+                      entity.state == 'Idle'
+                    )
+                      return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
+                    else
+                      return "{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}";
+                  ]]]
                 {% if room["safety"].split('.')[0] != 'group' %}
                 # this room has only 1 safety device
                 tap_action:

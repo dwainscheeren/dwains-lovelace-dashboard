@@ -49,6 +49,16 @@
                         - type: custom:button-card
                           template: room_safety
                           entity: {{ room["safety"] }}
+                          icon: >
+                            [[[
+                              if(
+                                entity.state == 'ok' ||
+                                entity.state == 'Idle'
+                              )
+                                return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
+                              else
+                                return "{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}";
+                            ]]]
                           tap_action:
                             !include 
                               - ../../popups/more-info.yaml

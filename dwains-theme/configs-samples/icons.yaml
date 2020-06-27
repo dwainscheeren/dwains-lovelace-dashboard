@@ -58,3 +58,6 @@
 
 #   lock_locked: 'mdi:help'
 #   lock_unlocked: 'mdi:help'
+
+#   safety_ok: 'mdi:help'
+#   safety_alert: 'mdi:help'

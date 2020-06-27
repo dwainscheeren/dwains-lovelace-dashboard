@@ -143,6 +143,8 @@
                       {% endfor %}
                       {% endif %}
                       - type: custom:button-card
+                        template: header_states_safety
+                      - type: custom:button-card
                         template: header_states_door
                       - type: custom:button-card
                         template: header_states_window
