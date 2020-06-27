@@ -442,7 +442,7 @@
                               navigation_path: "#devices"
                       {% 
                         set devices = namespace (hasLock=false, hasLight=false, hasClimate=false, hasCover=false, hasDevice=false, 
-                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false) 
+                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false, hasSafety=false) 
                       %}
                       {% for room in _d_t_config.rooms %}
                           {% if room["lock"] %}
@@ -468,6 +468,9 @@
                           {% endif %}
                           {% if room["plant"] %}
                               {% set devices.hasPlant = true %}
+                          {% endif %}
+                          {% if room["safety"] %}
+                              {% set devices.hasSafety = true %}
                           {% endif %}
                       {% endfor %}
 
@@ -508,6 +511,57 @@
                               return openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on');
                             } else {
                               return '&nbsp;';
+                            }
+                          ]]]
+                      {% endif %}
+
+                      {% if devices.hasSafety == true %}
+                      - type: custom:button-card
+                        template: homepage_device
+                        icon: "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}"
+                        name: {{ _d_t_trans.safety.title_plural }}
+                        tap_action: 
+                          action: navigate
+                          navigation_path: devices_safety#devices
+                        label: >
+                          [[[
+                            var notOkSafety = 0;
+
+                            {% for room in _d_t_config.rooms %}
+                              //Do some things for the Safeties
+                              {% if room["safety"] %}
+                                {% if room["safety"].split('.')[0] != 'group' %}
+                                //This room has only 1 safety device
+                                  if(
+                                    states['{{ room["safety"] }}'] && (
+                                      states['{{ room["safety"] }}'].state != 'ok' &&
+                                      states['{{ room["safety"] }}'].state != 'Idle'
+                                    )
+                                  ) {
+                                    notOkSafety++;
+                                  }
+                                {% else %}
+                                //This room has group of Safeties
+                                  if(states['{{ room["safety"] }}']){
+                                    states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(
+                                        states[entity] && (
+                                          states[entity].state != 'ok' &&
+                                          states[entity].state != 'Idle'
+                                        )
+                                      ){
+                                        notOkSafety++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(notOkSafety > 0){
+                              return notOkSafety + ' ' + hass.localize('component.binary_sensor.state.safety.on');
+                            } else {  
+                              return hass.localize('component.binary_sensor.state.safety.off');
                             }
                           ]]]
                       {% endif %}

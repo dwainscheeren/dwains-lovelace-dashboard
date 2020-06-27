@@ -361,6 +361,71 @@
                 {% endif %}
               {% endif %}
 
+              #Card for safeties (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+              {% if room["safety"] %}
+              - type: custom:button-card
+                entity: {{ room["safety"] }}
+                template: rooms_child
+                icon: "{{ _d_t_icons.safety|default('mdi:shield-check') }}"
+                {% if room["safety"].split('.')[0] != 'group' %}
+                # this room has only 1 safety device
+                tap_action:
+                  action: more-info
+                  haptic: light 
+                label: >
+                  [[[ 
+                    if(entity){
+                      var name = entity.attributes.friendly_name === undefined
+                            ? entity.entity_id.split(".")[1].replace(/_/g, " ")
+                            : entity.attributes.friendly_name;
+
+                      if(
+                        entity.state != 'ok' &&
+                        entity.state != 'Idle'
+                      ){
+                        return name + '<br>' + hass.localize('component.binary_sensor.state.safety.on');
+                      } else {
+                        return name + '<br>' + hass.localize('component.binary_sensor.state.safety.off');
+                      }
+                    } else {
+                      console.log("Invalid rooms.yaml:{{ room["name"] }}.safety entity!");
+                      return 'Entity error!';
+                    }
+                  ]]] 
+                {% else %}
+                # this room has group of safety devices
+                name: {{ _d_t_trans.safety.title_plural }}
+                label: >
+                  [[[
+                    if(entity){
+                      const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
+                      var notOkSafety = 0;
+                      entitiesFromGroup.forEach(function(entity){
+                        if(
+                          states[entity] && (
+                            states[entity].state != 'ok' &&
+                            states[entity].state != 'Idle'
+                          )
+                        ){
+                          notOkSafety++;
+                        }
+                      });  
+                      return entitiesFromGroup.length + ' {{ _d_t_trans.safety.title_plural }}' + (
+                        (notOkSafety >= 1) ? '<br>' + (
+                          (notOkSafety == 1) ? '1 ' + hass.localize('component.binary_sensor.state.safety.on') : notOkSafety + ' ' + hass.localize('component.binary_sensor.state.safety.on')
+                        ) : ''
+                      );
+                    } else {
+                      console.log("Invalid rooms.yaml:{{ room["name"] }}.safety entity!");
+                      return 'Entity error!';
+                    }
+                  ]]]
+                tap_action: 
+                  action: navigate
+                  navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_safeties
+                {% endif %}
+              {% endif %}
+
               #Card for climate (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
               {% if room["climate"] or room["temperature"] %}
               - type: custom:button-card

@@ -50,6 +50,9 @@ en:
   device:
     title_plural: 'Devices'
 
+  safety:
+    title_plural: 'Safties'
+
   media_player:
     title_plural: 'Media players'
 
