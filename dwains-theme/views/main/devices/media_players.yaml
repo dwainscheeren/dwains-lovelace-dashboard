@@ -47,6 +47,10 @@
                       cards:
                         - type: media-control
                           entity: {{ room["media_player"] }}
+                          style: |
+                            ha-card div.no-image div.color-block, ha-card div.no-image div.no-img{
+                              background-color: var(--dwains-theme-header-background);
+                            }
                   {% else %}
                   # this room has group of media players
                   - type: custom:auto-entities
@@ -55,6 +59,10 @@
                         - group: {{ room["media_player"] }}
                           options:
                             type: media-control
+                            style: |
+                              ha-card div.no-image div.color-block, ha-card div.no-image div.no-img{
+                                background-color: var(--dwains-theme-header-background);
+                              }
                     sort:
                       method: name
                       ignore_case: true
