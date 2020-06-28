@@ -2,7 +2,7 @@
 
 #House all devices
 
-- title: {{ _d_t_trans.device.title_plural }} Test
+- title: {{ _d_t_trans.device.title_plural }}
   path: devices_safety
   panel: true
   cards:    
