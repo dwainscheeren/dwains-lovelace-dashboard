@@ -32,8 +32,8 @@ header_states_safety:
                 states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
                   if(
                     states[entity] && (
-                      states[entity].state == 'ok' &&
-                      states[entity].state == 'Idle'
+                      states[entity].state != 'ok' &&
+                      states[entity].state != 'Idle'
                     )
                   ){
                     notOkSafety++;
