@@ -20,7 +20,7 @@ header_states_safety:
             //This room has only 1 safety device
               if(
                 states['{{ room["safety"] }}'] && (
-                  states['{{ room["safety"] }}'].state != 'ok' &&
+                  states['{{ room["safety"] }}'].state != 'Ok' &&
                   states['{{ room["safety"] }}'].state != 'Idle'
                 )
               ) {
@@ -32,7 +32,7 @@ header_states_safety:
                 states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
                   if(
                     states[entity] && (
-                      states[entity].state != 'ok' &&
+                      states[entity].state != 'Ok' &&
                       states[entity].state != 'Idle'
                     )
                   ){

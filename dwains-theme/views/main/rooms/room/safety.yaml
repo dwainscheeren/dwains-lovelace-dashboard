@@ -40,7 +40,7 @@
                     icon: >
                       [[[
                         if(
-                          entity.state == 'ok' ||
+                          entity.state == 'Ok' ||
                           entity.state == 'Idle'
                         )
                           return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";

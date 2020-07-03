@@ -369,7 +369,7 @@
                 icon: >
                   [[[
                     if(
-                      entity.state == 'ok' ||
+                      entity.state == 'Ok' ||
                       entity.state == 'Idle'
                     )
                       return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
@@ -389,7 +389,7 @@
                             : entity.attributes.friendly_name;
 
                       if(
-                        entity.state != 'ok' &&
+                        entity.state != 'Ok' &&
                         entity.state != 'Idle'
                       ){
                         return name + '<br>' + hass.localize('component.binary_sensor.state.safety.on');
@@ -412,7 +412,7 @@
                       entitiesFromGroup.forEach(function(entity){
                         if(
                           states[entity] && (
-                            states[entity].state != 'ok' &&
+                            states[entity].state != 'Ok' &&
                             states[entity].state != 'Idle'
                           )
                         ){
@@ -422,7 +422,7 @@
                       return entitiesFromGroup.length + ' {{ _d_t_trans.safety.title_plural }}' + (
                         (notOkSafety >= 1) ? '<br>' + (
                           (notOkSafety == 1) ? '1 ' + hass.localize('component.binary_sensor.state.safety.on') : notOkSafety + ' ' + hass.localize('component.binary_sensor.state.safety.on')
-                        ) : ''
+                        ) : '<br>' + hass.localize('component.binary_sensor.state.safety.off')
                       );
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.safety entity!");

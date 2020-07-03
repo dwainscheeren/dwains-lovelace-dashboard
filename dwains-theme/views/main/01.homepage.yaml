@@ -398,7 +398,7 @@
                                 if(states['{{ room["safety"] }}']){
                                   {% if room["safety"].split('.')[0] != 'group' %}
                                     if(
-                                      states['{{ room["safety"] }}'].state != 'ok' &&
+                                      states['{{ room["safety"] }}'].state != 'Ok' &&
                                       states['{{ room["safety"] }}'].state != 'Idle'
                                     ){
                                       additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
@@ -408,7 +408,7 @@
                                     for (let i = 0; i < entitiesFromGroup.length; i++) {
                                       if(
                                         states[entitiesFromGroup[i]] && (
-                                          states[entitiesFromGroup[i]].state != 'ok' &&
+                                          states[entitiesFromGroup[i]].state != 'Ok' &&
                                           states[entitiesFromGroup[i]].state != 'Idle'
                                         )
                                       ) {
@@ -563,7 +563,7 @@
                                 //This room has only 1 safety device
                                   if(
                                     states['{{ room["safety"] }}'] && (
-                                      states['{{ room["safety"] }}'].state != 'ok' &&
+                                      states['{{ room["safety"] }}'].state != 'Ok' &&
                                       states['{{ room["safety"] }}'].state != 'Idle'
                                     )
                                   ) {
@@ -575,7 +575,7 @@
                                     states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
                                       if(
                                         states[entity] && (
-                                          states[entity].state != 'ok' &&
+                                          states[entity].state != 'Ok' &&
                                           states[entity].state != 'Idle'
                                         )
                                       ){
