@@ -50,6 +50,9 @@ es:
   device:
     title_plural: "Dispositivos"
 
+  safety:
+    title_plural: 'Safties'
+
   media_player:
     title_plural: "Reproductores multimedia"
 

@@ -99,6 +99,9 @@ ro:
     all_devices_on: 'Toate echipamentele pornite'
     all_devices_off: 'Toate echipamentele oprite'
 
+  safety:
+    title_plural: 'Siguranțele'
+
   media_player:
     title: 'Player Media'
     title_plural: 'Playere Media'
