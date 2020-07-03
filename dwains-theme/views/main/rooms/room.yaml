@@ -431,7 +431,7 @@
                   ]]]
                 tap_action: 
                   action: navigate
-                  navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_safeties
+                  navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_safety
                 {% endif %}
               {% endif %}
 
