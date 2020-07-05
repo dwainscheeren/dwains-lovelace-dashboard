@@ -368,10 +368,9 @@
                 template: rooms_child
                 icon: >
                   [[[
-                    if(
-                      entity.state == 'Ok' ||
-                      entity.state == 'Idle'
-                    )
+                    // Default Safety Values
+                    var ok_states = ["Ok", "Idle", "off"];
+                    if(ok_states.includes(entity.state))
                       return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
                     else
                       return "{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}";
@@ -388,13 +387,12 @@
                             ? entity.entity_id.split(".")[1].replace(/_/g, " ")
                             : entity.attributes.friendly_name;
 
-                      if(
-                        entity.state != 'Ok' &&
-                        entity.state != 'Idle'
-                      ){
-                        return name + '<br>' + hass.localize('component.binary_sensor.state.safety.on');
-                      } else {
+                      // Default Safety Values
+                      var ok_states = ["Ok", "Idle", "off"];
+                      if(ok_states.includes(entity.state)){
                         return name + '<br>' + hass.localize('component.binary_sensor.state.safety.off');
+                      } else {
+                        return name + '<br>' + hass.localize('component.binary_sensor.state.safety.on');
                       }
                     } else {
                       console.log("Invalid rooms.yaml:{{ room["name"] }}.safety entity!");
@@ -409,13 +407,13 @@
                     if(entity){
                       const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
                       var notOkSafety = 0;
+                      // Default Safety Values
+                      var ok_states = ["Ok", "Idle", "off"];
+
                       entitiesFromGroup.forEach(function(entity){
+
                         if(
-                          states[entity] && (
-                            states[entity].state != 'Ok' &&
-                            states[entity].state != 'Idle'
-                          )
-                        ){
+                          states[entity] && (! ok_states.includes(entity.state))){
                           notOkSafety++;
                         }
                       });  

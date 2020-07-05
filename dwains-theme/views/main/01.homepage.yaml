@@ -395,23 +395,17 @@
                                 }
                               {% endif %}
                               {% if room["safety"] %}
+                                // Default Safety Values
+                                var ok_states = ["Ok", "Idle", "off"];
                                 if(states['{{ room["safety"] }}']){
                                   {% if room["safety"].split('.')[0] != 'group' %}
-                                    if(
-                                      states['{{ room["safety"] }}'].state != 'Ok' &&
-                                      states['{{ room["safety"] }}'].state != 'Idle'
-                                    ){
+                                    if(! ok_states.includes( states['{{ room["safety"] }}'].state )){
                                       additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
                                     }
                                   {% else %}
                                     const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
                                     for (let i = 0; i < entitiesFromGroup.length; i++) {
-                                      if(
-                                        states[entitiesFromGroup[i]] && (
-                                          states[entitiesFromGroup[i]].state != 'Ok' &&
-                                          states[entitiesFromGroup[i]].state != 'Idle'
-                                        )
-                                      ) {
+                                      if(states[entitiesFromGroup[i]] && (! ok_states.includes( states[entitiesFromGroup[i]].state ))) {
                                         additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
                                         break;
                                       }
@@ -555,30 +549,22 @@
                         label: >
                           [[[
                             var notOkSafety = 0;
+                            // Default Safety Values
+                            var ok_states = ["Ok", "Idle", "off"];
 
                             {% for room in _d_t_config.rooms %}
                               //Do some things for the Safeties
                               {% if room["safety"] %}
                                 {% if room["safety"].split('.')[0] != 'group' %}
                                 //This room has only 1 safety device
-                                  if(
-                                    states['{{ room["safety"] }}'] && (
-                                      states['{{ room["safety"] }}'].state != 'Ok' &&
-                                      states['{{ room["safety"] }}'].state != 'Idle'
-                                    )
-                                  ) {
+                                  if(states['{{ room["safety"] }}'] && (! ok_states.includes( states['{{ room["safety"] }}'].state ))) {
                                     notOkSafety++;
                                   }
                                 {% else %}
                                 //This room has group of Safeties
                                   if(states['{{ room["safety"] }}']){
                                     states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(
-                                        states[entity] && (
-                                          states[entity].state != 'Ok' &&
-                                          states[entity].state != 'Idle'
-                                        )
-                                      ){
+                                      if(states[entity] && (! ok_states.includes( states[entity].state ))){
                                         notOkSafety++;
                                       }
                                     });  

@@ -39,10 +39,9 @@
                     template: room_safety
                     icon: >
                       [[[
-                        if(
-                          entity.state == 'Ok' ||
-                          entity.state == 'Idle'
-                        )
+                        // Default Safety Values
+                        var ok_states = ["Ok", "Idle", "off"];
+                        if(ok_states.includes(entity.state))
                           return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
                         else
                           return "{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}";

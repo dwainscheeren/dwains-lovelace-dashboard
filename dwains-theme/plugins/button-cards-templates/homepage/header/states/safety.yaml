@@ -12,30 +12,22 @@ header_states_safety:
     status: >
       [[[
         var notOkSafety = 0;
+        // Default Safety Values
+        var ok_states = ["Ok", "Idle", "off"];
 
         {% for room in _d_t_config.rooms %}
           //Do some things for the Devices
           {% if room["safety"] %}
             {% if room["safety"].split('.')[0] != 'group' %}
             //This room has only 1 safety device
-              if(
-                states['{{ room["safety"] }}'] && (
-                  states['{{ room["safety"] }}'].state != 'Ok' &&
-                  states['{{ room["safety"] }}'].state != 'Idle'
-                )
-              ) {
+              if(states['{{ room["safety"] }}'] && (! ok_states.includes( states['{{ room["safety"] }}'].state ))) {
                 notOkSafety++;
               }
             {% else %}
             //This room has group of Safety Devices
               if(states['{{ room["safety"] }}']){
                 states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
-                  if(
-                    states[entity] && (
-                      states[entity].state != 'Ok' &&
-                      states[entity].state != 'Idle'
-                    )
-                  ){
+                  if(states[entity] && (! ok_states.includes( states[entity].state ))){
                     notOkSafety++;
                   }
                 });  
