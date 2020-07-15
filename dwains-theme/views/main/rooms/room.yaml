@@ -146,7 +146,7 @@
                             openDoors++;
                           }
                         });  
-                        return (openDoors >= 1 ? openDoors + hass.localize('component.binary_sensor.state.door.on') : hass.localize('component.binary_sensor.state.door.off'));
+                        return (openDoors >= 1 ? openDoors + ' ' + hass.localize('component.binary_sensor.state.door.on') : hass.localize('component.binary_sensor.state.door.off'));
                       } else {
                         console.log("Invalid rooms.yaml:{{ room["name"] }}.door entity!");
                         return 'Entity error!'
@@ -197,7 +197,7 @@
                             openWindows++;
                           }
                         });  
-                        return (openWindows >= 1 ? openWindows + hass.localize('component.binary_sensor.state.window.on') : hass.localize('component.binary_sensor.state.window.off'));
+                        return (openWindows >= 1 ? openWindows + ' ' + hass.localize('component.binary_sensor.state.window.on') : hass.localize('component.binary_sensor.state.window.off'));
                       } else {
                         console.log("Invalid rooms.yaml:{{ room["name"] }}.window entity!");
                         return 'Entity error!'

@@ -3,6 +3,8 @@ lights_header_all_lights_toggle:
   styles:
     icon:
       - color: var(--dwains-theme-header-text)
+      - height: 30px
+      - width: 30px
     img_cell:
       - display: block
       - justify-self: end

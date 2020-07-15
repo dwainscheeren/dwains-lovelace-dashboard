@@ -52,7 +52,8 @@ room_light:
       - padding-top: 14px
       - padding-bottom: 14px
     icon:
-      - width: 55%
+      - width: 25px
+      - height: 25px
     img_cell:
       - width: 45px
       - height: 45px
