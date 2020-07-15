@@ -38,6 +38,27 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 1.4.1
+
+v1.4.1 is compatible with HA 0.110, 0.111, 0.112
+
+**If you are running Dwains Theme 1.3.*:** 
+Follow the normal update manual (top of this page). Please follow all steps.
+
+*The file `dwains-theme/plugins/button-cards-templates/homepage/header/greeting.yaml` is no longer used, so make sure you remove/don't have that file.*
+
+**If you are running older version of Dwains Theme then 1.3.0**: Then follow the update manual of 1.3.0 first [see here](https://dwainscheeren.github.io/lovelace-dwains-theme/information/update.html#how-to-update-to-130).
+
+#### Changes:
+
+* Made all 3 info cards on a climate page equal width when you don't have a climate entity.
+* Added a space in the header in a room for doors and windows.
+* Add light unavailable state @Klumpe (https://github.com/dwainscheeren/lovelace-dwains-theme/pull/143)
+* 01.homepage.yaml - show active tab in other langs @Benjy04 (https://github.com/dwainscheeren/lovelace-dwains-theme/pull/144)
+* Remove Duplicate key - app-header-background-color @bacco007 (https://github.com/dwainscheeren/lovelace-dwains-theme/pull/145)
+* Fix for light colors when off and unavailable @roblandry (https://github.com/dwainscheeren/lovelace-dwains-theme/pull/153)
+* Fix media_player background color. Fixes #151 @roblandry (https://github.com/dwainscheeren/lovelace-dwains-theme/pull/154)
+
 ## Update 1.4.0
 
 v1.4.0 is compatible with HA 0.110 and HA 0.111
