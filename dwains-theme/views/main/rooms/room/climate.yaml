@@ -143,13 +143,13 @@
                     entity: {{ room["temperature"] }}
                   {% if room["humidity"] %}
                   - type: custom:button-card
-                    item_classes: 'col-xs-6'
+                    item_classes: 'col-xs-12'
                     template: room_climate_info
                     entity: {{ room["humidity"] }}
                   {% endif %}
                   {% if room["pressure"] %}
                   - type: custom:button-card
-                    item_classes: 'col-xs-6'
+                    item_classes: 'col-xs-12'
                     template: room_climate_info
                     entity: {{ room["pressure"] }}
                   {% endif %}
