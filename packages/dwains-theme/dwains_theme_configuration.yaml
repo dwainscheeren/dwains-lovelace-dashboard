@@ -26,7 +26,7 @@ browser_mod:
 #You need to have a folder called dwains-theme/configs with all the configuration files inside
 dwains_theme:
   global:
-    version: '1.4.0'
+    version: '1.4.1'
   styles:
     padding-left: '10px'
   translations:
@@ -37,7 +37,7 @@ dwains_theme:
 #Sensor for latest version
 sensor:
   - platform: scrape
-    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.4.0
+    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.4.1
     name: Dwains Theme Version
     select: ".current-version h1"
     value_template: '{{ value.split(":")[1] }}'
