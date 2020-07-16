@@ -29,7 +29,7 @@ class DwainsCoverCard extends LitElement {
             ? stateObj.entity_id.split(".")[1].replace(/_/g, " ")
             : stateObj.attributes.friendly_name;
 
-    if(stateObj.attributes.supported_features & 7 > 0){
+    if(stateObj.attributes.supported_features & 4 > 0){
       //Cover has flags for position active
       return html`
         <ha-card
