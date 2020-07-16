@@ -15,13 +15,13 @@ If there is a update of Dwains Theme here is how to install it.
 
 2. Make a backup of the folder `dwains-theme/configs` and `dwains-theme/addons` this is very important!
 
+3. If you use the `custom_resources.yaml file`, then backup that one too (`dwains-theme/resources/custom_resources.yaml`)
+
 3. Remove the folder `dwains-theme` in your main HA folder.
 
 4. Copy the content of the folder you just downloaded to the root of your Home Assistant installation.
 
-5. Copy the `configs` and `addons` folders back to to the folder `dwains-theme`.
-
-**Do you have any custom resources? Go to the folder `dwains-theme/resources/`, if you don't have the file `custom_resources.yaml` then rename the file `custom_resources-sample.yaml` to `custom_resources.yaml` and place your resources in the file `custom_resources.yaml`!**
+5. Copy the `configs` and `addons` folders back to to the folder `dwains-theme`. If you use the `custom_resources.yaml` file, then copy this back into dwains-theme/resources.
 
 ### Step 3 - Reboot Home Assistant
 
@@ -40,7 +40,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 ## Update 1.4.1
 
-v1.4.1 is compatible with HA 0.110, 0.111, 0.112
+v1.4.1 is compatible with HA 0.110, 0.111, 0.112, 0.113
 
 **If you are running Dwains Theme 1.3.*:** 
 Follow the normal update manual (top of this page). Please follow all steps.
