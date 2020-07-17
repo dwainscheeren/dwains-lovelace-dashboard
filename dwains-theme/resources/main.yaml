@@ -9,7 +9,7 @@
 - type: module
   url: /local/dwains-theme/plugins/dwains-notification-card/dwains-notification-card.js?v=0.0.2
 - type: module
-  url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.3
+  url: /local/dwains-theme/plugins/dwains-cover-card/dwains-cover-card.js?v=0.0.4
 - type: module
   url: /local/dwains-theme/plugins/dwains-collapse-card/dwains-collapse-card.js?v=0.0.3
 
