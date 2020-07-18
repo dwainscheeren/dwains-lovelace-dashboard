@@ -625,6 +625,7 @@
                                       }
                                       openCovers++;
                                     } else {
+                                      partlyClosedCovers++;                                    
                                       closedCovers++;
                                     }
                                   } 
@@ -639,6 +640,7 @@
                                           }
                                           openCovers++;                      
                                         } else {
+                                          partlyClosedCovers++;                                        
                                           closedCovers++;
                                         }                  
                                       }
