@@ -34,6 +34,7 @@ header_states_cover:
                   }
                   openCovers++;
                 } else {
+                  partlyClosedCovers++;                
                   closedCovers++;
                 }
               }              
@@ -48,6 +49,7 @@ header_states_cover:
                       }
                       openCovers++;                      
                     } else {
+                      partlyClosedCovers++;                    
                       closedCovers++;
                     }                  
                   }
