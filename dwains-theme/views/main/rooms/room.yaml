@@ -419,7 +419,14 @@
               - type: custom:button-card
                 entity: {{ room["cover"] }}
                 template: rooms_child
-                icon: "{{ _d_t_icons.cover|default('mdi:window-shutter') }}"
+                icon: >
+                  [[[
+                    {% if _d_t_config.global['show_covers'] in ['partly_closed','closed'] %}
+                      return "{{ _d_t_icons.cover|default('mdi:window-shutter') }}"
+                    {% else %}
+                      return "{{ _d_t_icons.cover|default('mdi:window-shutter-open') }}"
+                    {% endif %}
+                  ]]]
                 tap_action: 
                   action: navigate
                   navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_cover
