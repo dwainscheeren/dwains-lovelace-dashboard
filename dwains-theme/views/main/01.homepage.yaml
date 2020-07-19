@@ -451,7 +451,7 @@
                           {% if room["light"] %}
                               {% set devices.hasLight = true %}
                           {% endif %}
-                          {% if room["climate"] %}
+                          {% if room["climate"] or room["temperature"] %}
                               {% set devices.hasClimate = true %}
                           {% endif %}
                           {% if room["cover"] %}
