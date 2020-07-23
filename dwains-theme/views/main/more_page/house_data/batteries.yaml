@@ -27,7 +27,9 @@
               exclude:
                 - entity_id: '*battery_state*'
               include:
-                - entity_id: '*battery*'
+
+                - attributes:
+                    device_class: battery
                   domain: sensor
                   options:
                     type: custom:button-card
@@ -53,8 +55,43 @@
                   aspect_ratio: 1/1
             show_empty: false
             sort:
-              method: name
+              method: state
               numeric: true
+            card:
+              type: custom:dwains-flexbox-card
+              padding: true
+              items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          - type: custom:auto-entities
+            filter:
+              exclude:
+                - entity_id: '*battery_state*'
+              include:
+                - attributes:
+                    device_class: battery
+                  domain: binary_sensor
+                  options:
+                    type: custom:button-card
+                    template: house_data_item
+                    entity: this.entity_id
+                    icon: >
+                      [[[ 
+                        if(states[`this.entity_id`]){
+                          if (states[`this.entity_id`].state == 'unknown'){
+                            return 'mdi:battery-alert';
+                          } else if (states[`this.entity_id`].state == 'on') {
+                            return 'mdi:battery-outline';
+                          } else {
+                            return 'mdi:battery';
+                          }
+                        }
+                      ]]]
+                - type: custom:button-card
+                  color_type: blank-card
+                  aspect_ratio: 1/1
+            show_empty: false
+            sort:
+              method: state
+              reverse: true        
             card:
               type: custom:dwains-flexbox-card
               padding: true
