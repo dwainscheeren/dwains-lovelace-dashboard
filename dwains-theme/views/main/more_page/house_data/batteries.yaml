@@ -27,8 +27,10 @@
               exclude:
                 - entity_id: '*battery_state*'
               include:
-                - entity_id: '*battery*'
-                  domain: sensor
+
+                - attributes:
+                    device_class: battery
+                  domain: "/binary_sensor|sensor/"
                   options:
                     type: custom:button-card
                     template: house_data_item
@@ -38,7 +40,8 @@
                         if(states[`this.entity_id`]){
                           if (states[`this.entity_id`].state == 'unknown'){
                             return 'mdi:battery-alert';
-                          } else if (states[`this.entity_id`].state != 'unknown' && states[`this.entity_id`].state <= 10) {
+                          } else if (states[`this.entity_id`].state != 'unknown' && 
+                                    (states[`this.entity_id`].state <= 10 || states[`this.entity_id`].state == 'on')) {
                             return 'mdi:battery-outline';
                           } else if (states[`this.entity_id`].state != 'unknown' && states[`this.entity_id`].state <= 95) {
                             var battery = Math.round(states[`this.entity_id`].state / 10) * 10
