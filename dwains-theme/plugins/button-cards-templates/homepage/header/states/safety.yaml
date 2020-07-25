@@ -12,8 +12,8 @@ header_states_safety:
     status: >
       [[[
         var notOkSafety = 0;
-        // Default Safety Values
-        var ok_states = ["Ok", "Idle", "off"];
+        let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+        let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
 
         {% for room in _d_t_config.rooms %}
           //Do some things for the Devices

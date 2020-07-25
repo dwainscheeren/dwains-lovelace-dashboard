@@ -370,8 +370,9 @@
                 # this room has only 1 safety device
                 icon: >
                   [[[
-                    // Default Safety Values
-                    var ok_states = ["Ok", "Idle", "off"];
+                    let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                    let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+
                     if(ok_states.includes(entity.state))
                       return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
                     else
@@ -387,8 +388,9 @@
                             ? entity.entity_id.split(".")[1].replace(/_/g, " ")
                             : entity.attributes.friendly_name;
 
-                      // Default Safety Values
-                      var ok_states = ["Ok", "Idle", "off"];
+                      let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                      let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+
                       if(ok_states.includes(entity.state)){
                         return name + '<br>' + hass.localize('component.binary_sensor.state.safety.off');
                       } else {
@@ -406,8 +408,8 @@
                     if(entity){
                       const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
                       var notOkSafety = 0;
-                      // Default Safety Values
-                      var ok_states = ["Ok", "Idle", "off"];
+                      let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                      let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
 
                       entitiesFromGroup.forEach(function(entity){
 
@@ -427,8 +429,8 @@
                     if(entity){
                       const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
                       var notOkSafety = 0;
-                      // Default Safety Values
-                      var ok_states = ["Ok", "Idle", "off"];
+                      let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                      let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
 
                       entitiesFromGroup.forEach(function(entity){
 

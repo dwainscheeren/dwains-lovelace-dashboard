@@ -51,8 +51,9 @@
                           entity: {{ room["safety"] }}
                           icon: >
                             [[[
-                              // Default Safety Values
-                              var ok_states = ["Ok", "Idle", "off"];
+                              let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                              let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+
                               if(ok_states.includes(entity.state))
                                 return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
                               else
@@ -73,8 +74,9 @@
                             template: room_safety
                             icon: >
                               [[[
-                                // Default Safety Values
-                                var ok_states = ["Ok", "Idle", "off"];
+                                let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                                let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+
                                 if(ok_states.includes(entity.state))
                                   return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
                                 else
