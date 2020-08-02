@@ -38,9 +38,16 @@
                     type: custom:button-card
                     template: room_device
                     tap_action:
-                      !include 
-                        - ../../../popups/more-info.yaml
-                        - entity: this.entity_id
+                      action: toggle
+                      haptic: light
+                    hold_action:
+                      !include
+                      - ../../../popups/more-info.yaml
+                      - entity: this.entity_id
+                    double_tap_action:
+                      !include
+                      - ../../../popups/light.yaml
+                      - entity: this.entity_id
             sort:
               method: name
               ignore_case: true
