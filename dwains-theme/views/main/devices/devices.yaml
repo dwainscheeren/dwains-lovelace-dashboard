@@ -58,7 +58,7 @@
                             - entity: {{ room["device"] }}
                           double_tap_action:
                             !include
-                            - ../../popups/light.yaml
+                            - ../../popups/more-info.yaml
                             - entity: {{ room["device"] }}
                   {% else %}
                   # this room has group of devices
@@ -78,7 +78,7 @@
                               - entity: this.entity_id
                             double_tap_action:
                               !include
-                              - ../../popups/light.yaml
+                              - ../../popups/more-info.yaml
                               - entity: this.entity_id
                     sort:
                       method: name
