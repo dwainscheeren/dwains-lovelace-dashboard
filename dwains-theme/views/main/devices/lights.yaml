@@ -57,11 +57,11 @@
                           {% if room["light"].split('.')[0] == 'light' %}
                           hold_action:
                             !include
-                              - ../../popups/more-info.yaml
+                              - ../../popups/light.yaml
                               - entity: {{ room["light"] }}
                           double_tap_action:
                             !include
-                              - ../../popups/more-info.yaml
+                              - ../../popups/light.yaml
                               - entity: {{ room["light"] }}
                           {% endif %}
                   {% else %}
