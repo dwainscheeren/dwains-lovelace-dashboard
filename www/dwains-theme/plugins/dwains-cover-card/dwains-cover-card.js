@@ -4,7 +4,7 @@ import {
   css
 } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = '0.0.3';
+const VERSION = '0.0.4';
 
 class DwainsCoverCard extends LitElement {
 
@@ -29,8 +29,63 @@ class DwainsCoverCard extends LitElement {
             ? stateObj.entity_id.split(".")[1].replace(/_/g, " ")
             : stateObj.attributes.friendly_name;
 
-    if(stateObj.attributes.supported_features & 7 > 0){
-      //Cover has flags for position active
+    if((stateObj.attributes.supported_features & 4) > 0  && (stateObj.attributes.supported_features & 128) > 0 ) {
+      //Cover has both flags for position and tilt
+      return html`
+        <ha-card
+            .header=${this.config.title || name}>
+            
+            <div class="group">
+              <center>
+                <span class="title">Position <span class="percentage" id="percentage">${stateObj.attributes.current_position} %</span></span>
+              </center>
+              <div class="left">
+                <div class="spacer">
+                  <span class="open">${this.hass.localize('component.cover.state._.open')}</span>
+                </div>
+              </div>
+              <div class="right">
+                <div class="spacer">
+                  <span class="closed">${this.hass.localize('component.cover.state._.closed')}</span>
+                </div>
+              </div>
+              <div class="spacer">
+                <input 
+                  type="range" 
+                  class="range horizontal round" 
+                  .value="${stateObj.state === "closed" ? 0 : stateObj.attributes.current_position}" 
+                  @change=${e => this._setCoverPosition(stateObj, e.target.value)}
+                >
+              </div>
+            </div>
+
+            <div class="group">
+              <center>
+                <span class="title">Tilt <span class="percentage" id="percentage">${stateObj.attributes.current_tilt_position} %</span></span>
+              </center>
+              <div class="left">
+                <div class="spacer">
+                  <span class="open">${this.hass.localize('component.cover.state._.open')}</span>
+                </div>
+              </div>
+              <div class="right">
+                <div class="spacer">
+                  <span class="closed">${this.hass.localize('component.cover.state._.closed')}</span>
+                </div>
+              </div>
+              <div class="spacer">
+                <input 
+                  type="range" 
+                  class="range horizontal round" 
+                  .value="${stateObj.attributes.current_tilt_position}" 
+                  @change=${e => this._setTiltPosition(stateObj, e.target.value)}
+                >
+              </spacer>
+            </div>
+        </ha-card>
+      `;
+    } else if((stateObj.attributes.supported_features & 4) > 0) {
+      //Cover supports position only
       return html`
         <ha-card
             .header=${this.config.title || name}>
@@ -41,7 +96,7 @@ class DwainsCoverCard extends LitElement {
                         type="range" 
                         class="range vertical-heighest-first round" 
                         .value="${stateObj.state === "closed" ? 0 : stateObj.attributes.current_position}" 
-                        @change=${e => this._setPosition(stateObj, e.target.value)}
+                        @change=${e => this._setCoverPosition(stateObj, e.target.value)}
                     >
                 </div>
                 <span class="open">${this.hass.localize('component.cover.state._.closed')}</span>
@@ -72,10 +127,17 @@ class DwainsCoverCard extends LitElement {
     return items;
   }
 
-  _setPosition(state, value) {
+  _setCoverPosition(state, value) {
     this.hass.callService("cover", "set_cover_position", {
         entity_id: state.entity_id,
         position: value
+    });
+  }
+
+  _setTiltPosition(state, value) {
+    this.hass.callService("cover", "set_cover_tilt_position", {
+        entity_id: state.entity_id,
+        tilt_position: value
     });
   }
 
@@ -121,7 +183,7 @@ class DwainsCoverCard extends LitElement {
           margin-left: 30px;
           margin-top: 48px;
         }
-        .open, .closed {
+        .title, .open, .closed {
           font-size: 13px;
           display: block
         }
@@ -133,11 +195,33 @@ class DwainsCoverCard extends LitElement {
           padding-top: 60px;
           display: block;
         }
+        .group {
+          padding-top: 15px;
+        }
+        .left .right
+        {
+          width: 50%;
+        }
+        .left
+        {
+          float:left;
+          text-align: left;
+        }
+
+        .right
+        {
+          float:right;
+          text-aling: right;
+        }
+
+        .spacer
+        {
+          padding: 0 20px;
+        }
 
         input[type="range"].range
         {
             cursor: pointer;
-            width: 120px !important;
             -webkit-appearance: none;
             z-index: 200;
             width: 60px;
@@ -149,6 +233,7 @@ class DwainsCoverCard extends LitElement {
             background-image: -moz-linear-gradient(right, #e6e6e6, #d2d2d2);
             background-image: -ms-linear-gradient(right, #e6e6e6, #d2d2d2);
             background-image: -o-linear-gradient(right, #e6e6e6, #d2d2d2);
+            margin: 5px;
         }
         input[type="range"].range:focus
         {
@@ -179,11 +264,22 @@ class DwainsCoverCard extends LitElement {
         }
         .vertical-heighest-first
         {
+            width: 120px !important;
             -webkit-transform:rotate(270deg);
             -moz-transform:rotate(270deg);
             -o-transform:rotate(270deg);
             -ms-transform:rotate(270deg);
             transform:rotate(270deg);
+        }
+
+        .horizontal
+        {
+          width: 100% !important;
+          -webkit-transform:rotate(180deg);
+            -moz-transform:rotate(180deg);
+            -o-transform:rotate(180deg);
+            -ms-transform:rotate(180deg);
+            transform:rotate(180deg);
         }
     `;
   }  
