@@ -35,7 +35,7 @@
             - ../../partials/header.yaml
             - title: {{ room["name"] }}
               subtitle: {{ _d_t_trans.home.title }}
-              navigation_path: home  
+              navigation_path: home
           {% endif %}
           #Subheader with room information
           {% if room["motion"] or room["door"] or room["window"] %}
@@ -671,6 +671,88 @@
                       return 'Entity error!';
                     }
                   ]]]
+              {% endif %}
+
+              #Card for vibration (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)
+              {% if room["vibration"] %}
+              - type: custom:button-card
+                entity: {{ room["vibration"] }}
+                template: rooms_child
+                {% if room["vibration"].split('.')[0] != 'group' %}
+                # this room has only 1 vibration sensor
+                icon: >
+                  [[[
+                    if(entity.state == 'on')
+                      return "{{ _d_t_icons.vibration_on|default('mdi:vibration') }}";
+                    else if(entity.state == 'off')
+                      return "{{ _d_t_icons.safety_alert|default('mdi:vibrate-off') }}";
+                    else
+                      return "{{ _d_t_icons.safety_alert|default('mdi:cancel') }}";
+                  ]]]
+                tap_action:
+                  action: more-info
+                  haptic: light 
+                label: >
+                  [[[ 
+                    if(entity){
+                      var name = entity.attributes.friendly_name === undefined
+                            ? entity.entity_id.split(".")[1].replace(/_/g, " ")
+                            : entity.attributes.friendly_name;
+
+                      if(entity.state == 'unavailable'){
+                        return name + '<br>' + hass.localize('state.default.unavailable');
+                      } else if (entity.state == 'off') {
+                        return name + '<br>' + hass.localize('component.binary_sensor.state.vibration.off');
+                      } else {
+                        return name + '<br>' + hass.localize('component.binary_sensor.state.vibration.on');
+                      }
+                    } else {
+                      console.log("Invalid rooms.yaml:{{ room["name"] }}.vibration entity!");
+                      return 'Entity error!';
+                    }
+                  ]]] 
+                {% else %}
+                # this room has group of vibration sensors
+                icon: >
+                  [[[
+                    if(entity){
+                      const entitiesFromGroup = states['{{ room["vibration"] }}'].attributes['entity_id'];
+                      var vibrationOn = 0;
+                      entitiesFromGroup.forEach(function(entity){
+                        if(states[entity] && states[entity].state == 'on'){
+                          vibrationOn++;
+                        }
+                      });
+
+                      if(vibrationOn >= 1) return "{{ _d_t_icons.vibration_on|default('mdi:vibration') }}";
+                      else return "{{ _d_t_icons.safety_alert|default('mdi:vibrate-off') }}";
+
+                    } else {
+                      console.log("Invalid rooms.yaml:{{ room["name"] }}.media_player entity!");
+                      return 'Entity error!';
+                    }
+                  ]]]
+                name: {{ _d_t_trans.vibration.title_plural }}
+                label: >
+                  [[[
+                    if(entity){
+                      const entitiesFromGroup = states['{{ room["vibration"] }}'].attributes['entity_id'];
+                      var vibrationOn = 0;
+                      entitiesFromGroup.forEach(function(entity){
+                        if(states[entity] && states[entity].state == 'on'){
+                          vibrationOn++;
+                        }
+                      });  
+                      return entitiesFromGroup.length + ' {{ _d_t_trans.vibration.title_plural }}' + ((vibrationOn >= 1) ? '<br>' + ((vibrationOn == 1) ? '1 ' + hass.localize('component.binary_sensor.state.vibration.on') : vibrationOn + ' ' + hass.localize('component.binary_sensor.state.vibration.on')) : '');
+                    } else {
+                      console.log("Invalid rooms.yaml:{{ room["name"] }}.vibration entity!");
+                      return 'Entity error!';
+                    }
+                  ]]]
+                tap_action: 
+                  action: navigate
+                  navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vibration
+                {% endif %}
               {% endif %}
 
               #Card for plants (dwains-theme/plugins/button-cards-templates/rooms/child.yaml)

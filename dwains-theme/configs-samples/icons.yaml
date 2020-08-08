@@ -61,3 +61,6 @@
 
 #   safety_ok: 'mdi:help'
 #   safety_alert: 'mdi:help'
+
+#   vibration_on: 'mdi:help'
+#   vibration_off: 'mdi:help'

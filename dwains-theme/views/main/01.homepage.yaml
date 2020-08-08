@@ -164,6 +164,8 @@
                         template: header_states_vacuum
                       - type: custom:button-card
                         template: header_states_plant
+                      - type: custom:button-card
+                        template: header_states_vibration
                 #End header states
           #END HOMEPAGE HEADER
 
@@ -416,6 +418,27 @@
                                   additional_info += 'S-E!<br>';
                                 }
                               {% endif %}
+                              {% if room["vibration"] %}
+                                if(states['{{ room["vibration"] }}']){
+                                  {% if room["vibration"].split('.')[0] == 'binary_sensor' or room["vibration"].split('.')[0] == 'sensor' %}
+                                    if(states['{{ room["vibration"] }}'].state == 'on' || states['{{ room["vibration"] }}'].state == 'True'){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.vibrate_on|default('mdi:vibrate') }}"></ha-icon><br>';
+                                    }
+                                  {% else %}
+                                    const entitiesFromGroup = states['{{ room["vibration"] }}'].attributes['entity_id'];
+                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                          states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
+                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.vibration_on|default('mdi:vibrate') }}"></ha-icon><br>';
+                                        break;
+                                      }
+                                    }
+                                  {% endif %}
+                                } else {
+                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.vibration entity!");
+                                  additional_info += 'A-E!<br>';
+                                }
+                              {% endif %}
 
                               return additional_info;
                             ]]]
@@ -465,7 +488,7 @@
                               navigation_path: "#devices"
                       {% 
                         set devices = namespace (hasLock=false, hasLight=false, hasClimate=false, hasCover=false, hasDevice=false, 
-                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false, hasSafety=false) 
+                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false, hasSafety=false, hasVibration=false) 
                       %}
                       {% for room in _d_t_config.rooms %}
                           {% if room["lock"] %}
@@ -494,6 +517,9 @@
                           {% endif %}
                           {% if room["safety"] %}
                               {% set devices.hasSafety = true %}
+                          {% endif %}
+                          {% if room["vibration"] %}
+                              {% set devices.hasVibration = true %}
                           {% endif %}
                       {% endfor %}
 
@@ -855,6 +881,47 @@
                             if(problemPlants > 0){
                               return problemPlants + ' ' + hass.localize('component.binary_sensor.state.problem.on');
                             } else {  
+                              return '&nbsp;';
+                            }
+                          ]]]
+                      {% endif %}
+
+                      {% if devices.hasVibration == true %}
+                      - type: custom:button-card
+                        template: homepage_device
+                        icon: "{{ _d_t_icons.vibration_on|default('mdi:vibrate') }}"
+                        name: {{ _d_t_trans.vibration.title_plural }}
+                        tap_action: 
+                          action: navigate
+                          navigation_path: devices_vibration#devices
+                        label: >
+                          [[[
+                            var vibrationOn = 0;
+
+                            {% for room in _d_t_config.rooms %}                        
+                              //Do some things for the vibration sensors
+                              {% if room["vibration"] %}
+                                {% if room["vibration"].split('.')[0] != 'group' %}
+                                //This room has only 1 vibration sensor
+                                  if(states['{{ room["vibration"] }}'] && states['{{ room["vibration"] }}'].state == 'on') {
+                                    vibrationOn++;
+                                  }
+                                {% else %}
+                                //This room has group of vibration sensors
+                                  if(states['{{ room["vibration"] }}']){
+                                    states['{{ room["vibration"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && states[entity].state == 'on'){
+                                        vibrationOn++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(vibrationOn > 0){
+                              return vibrationOn + ' ' + hass.localize('component.binary_sensor.state.vibration.on');
+                            } else {
                               return '&nbsp;';
                             }
                           ]]]

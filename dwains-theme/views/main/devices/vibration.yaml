@@ -1,0 +1,95 @@
+# dwains_theme
+
+#House all devices
+
+- title: {{ _d_t_trans.vibration.title }}
+  path: devices_vibration
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
+        }
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../../partials/header.yaml
+            - title: {{ _d_t_trans.vibration.title_plural }}
+              subtitle: {{ _d_t_trans.home.title }}
+              navigation_path: home#devices
+          #Start for room vibration content page
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+            cards:
+              {% for room in _d_t_config.rooms %}
+              {% if room["vibration"] %}
+              - type: vertical-stack
+                cards:
+                  #Heading
+                  - !include
+                    - ../../partials/heading.yaml
+                    - title: {{ room["name"] }}
+                  {% if room["vibration"].split('.')[0] != 'group' %}
+                  # this room has only 1 vibration sensor
+                  - type: custom:mod-card
+                    style: |
+                      ha-card {
+                        padding: 0px;
+                      }
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:button-card
+                          template: room_vibration
+                          entity: {{ room["vibration"] }}
+                          tap_action:
+                            !include 
+                              - ../../popups/more-info.yaml
+                              - entity: this.entity_id
+                          icon: >
+                            [[[
+                              if(entity.state == 'on')
+                                return "{{ _d_t_icons.vibration_on|default('mdi:vibration') }}";
+                              else if(entity.state == 'off')
+                                return "{{ _d_t_icons.safety_alert|default('mdi:vibrate-off') }}";
+                              else
+                                return "{{ _d_t_icons.safety_alert|default('mdi:cancel') }}";
+                            ]]]
+                  {% else %}
+                  # this room has group of devices
+                  - type: custom:auto-entities
+                    filter:
+                      include:
+                        - group: {{ room["vibration"] }}
+                          options:
+                            type: custom:button-card
+                            template: room_vibration
+                            tap_action:
+                              !include 
+                                - ../../popups/more-info.yaml
+                                - entity: this.entity_id
+                            icon: >
+                              [[[
+                                if(entity.state == 'on')
+                                  return "{{ _d_t_icons.vibration_on|default('mdi:vibration') }}";
+                                else if(entity.state == 'off')
+                                  return "{{ _d_t_icons.safety_alert|default('mdi:vibrate-off') }}";
+                                else
+                                  return "{{ _d_t_icons.safety_alert|default('mdi:cancel') }}";
+                              ]]]
+                    sort:
+                      method: name
+                      ignore_case: true
+                    card:
+                      type: custom:dwains-flexbox-card
+                      items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
+                  {% endif %}
+              {% endif %}
+              {% endfor %}

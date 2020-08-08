@@ -108,3 +108,7 @@ nl:
 
   alarm:
     title: 'Alarm'
+
+  vibration:
+    title: 'Vibration'
+    title_plural: "Vibration Sensors"

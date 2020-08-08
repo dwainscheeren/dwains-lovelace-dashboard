@@ -111,3 +111,7 @@ en:
 
   weather:
     title: 'Weather'
+
+  vibration:
+    title: 'Vibration'
+    title_plural: "Vibration Sensors"

@@ -167,3 +167,7 @@ ro:
   lock:
     title: 'Încuietoare'
     title_plural: 'Încuietori'
+
+  vibration:
+    title: 'Vibration'
+    title_plural: "Vibration Sensors"
