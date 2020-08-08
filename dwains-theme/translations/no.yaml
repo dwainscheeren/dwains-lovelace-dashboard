@@ -99,6 +99,9 @@ no:
     all_devices_on: 'Alle enheter på'
     all_devices_off: 'Alle enheter av'
 
+  safety:
+    title_plural: 'Sikrings'
+
   media_player:
     title: 'Mediespiller'
     title_plural: 'Mediespillere'

@@ -143,6 +143,8 @@
                       {% endfor %}
                       {% endif %}
                       - type: custom:button-card
+                        template: header_states_safety
+                      - type: custom:button-card
                         template: header_states_door
                       - type: custom:button-card
                         template: header_states_window
@@ -392,7 +394,28 @@
                                   additional_info += 'L-E!<br>';
                                 }
                               {% endif %}
-
+                              {% if room["safety"] %}
+                                let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                                let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+                                if(states['{{ room["safety"] }}']){
+                                  {% if room["safety"].split('.')[0] != 'group' %}
+                                    if(! ok_states.includes( states['{{ room["safety"] }}'].state )){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
+                                    }
+                                  {% else %}
+                                    const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
+                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                      if(states[entitiesFromGroup[i]] && (! ok_states.includes( states[entitiesFromGroup[i]].state ))) {
+                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
+                                        break;
+                                      }
+                                    }  
+                                  {% endif %}
+                                } else {
+                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.safety entity!");
+                                  additional_info += 'S-E!<br>';
+                                }
+                              {% endif %}
 
                               return additional_info;
                             ]]]
@@ -442,7 +465,7 @@
                               navigation_path: "#devices"
                       {% 
                         set devices = namespace (hasLock=false, hasLight=false, hasClimate=false, hasCover=false, hasDevice=false, 
-                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false) 
+                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false, hasSafety=false) 
                       %}
                       {% for room in _d_t_config.rooms %}
                           {% if room["lock"] %}
@@ -468,6 +491,9 @@
                           {% endif %}
                           {% if room["plant"] %}
                               {% set devices.hasPlant = true %}
+                          {% endif %}
+                          {% if room["safety"] %}
+                              {% set devices.hasSafety = true %}
                           {% endif %}
                       {% endfor %}
 
@@ -508,6 +534,49 @@
                               return openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on');
                             } else {
                               return '&nbsp;';
+                            }
+                          ]]]
+                      {% endif %}
+
+                      {% if devices.hasSafety == true %}
+                      - type: custom:button-card
+                        template: homepage_device
+                        icon: "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}"
+                        name: {{ _d_t_trans.safety.title_plural }}
+                        tap_action: 
+                          action: navigate
+                          navigation_path: devices_safety#devices
+                        label: >
+                          [[[
+                            var notOkSafety = 0;
+                            let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                            let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+
+                            {% for room in _d_t_config.rooms %}
+                              //Do some things for the Safeties
+                              {% if room["safety"] %}
+                                {% if room["safety"].split('.')[0] != 'group' %}
+                                //This room has only 1 safety device
+                                  if(states['{{ room["safety"] }}'] && (! ok_states.includes( states['{{ room["safety"] }}'].state ))) {
+                                    notOkSafety++;
+                                  }
+                                {% else %}
+                                //This room has group of Safeties
+                                  if(states['{{ room["safety"] }}']){
+                                    states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && (! ok_states.includes( states[entity].state ))){
+                                        notOkSafety++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(notOkSafety > 0){
+                              return notOkSafety + ' ' + hass.localize('component.binary_sensor.state.safety.on');
+                            } else {  
+                              return hass.localize('component.binary_sensor.state.safety.off');
                             }
                           ]]]
                       {% endif %}

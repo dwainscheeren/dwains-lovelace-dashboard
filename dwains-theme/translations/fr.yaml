@@ -50,6 +50,9 @@ fr:
   device:
     title_plural: 'Périphériques'
 
+  safety:
+    title_plural: 'Sécurités'
+
   media_player:
     title_plural: 'Lecteurs multimédias'
 

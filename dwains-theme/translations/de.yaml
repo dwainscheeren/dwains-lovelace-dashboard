@@ -50,6 +50,9 @@ de:
   device:
     title_plural: 'Geräte'
 
+  safety:
+    title_plural: 'Sicherheiten'
+
   media_player:
     title_plural: 'Wiedergabegeräte'
 

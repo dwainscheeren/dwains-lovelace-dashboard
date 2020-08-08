@@ -50,6 +50,9 @@ da:
   device:
     title_plural: 'Enheder'
   
+  safety:
+    title_plural: 'Safties'
+
   media_player:
     title_plural: 'Medie afspillere'
   

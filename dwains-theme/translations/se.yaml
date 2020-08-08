@@ -49,6 +49,9 @@ se:
   device:
     title_plural: 'Enheter'
 
+  safety:
+    title_plural: 'Safties'
+
   media_player:
     title_plural: 'Media spelare'
 
