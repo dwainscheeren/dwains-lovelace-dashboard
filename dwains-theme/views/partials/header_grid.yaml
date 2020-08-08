@@ -104,11 +104,11 @@ card:
           tap_action: 
             action: navigate
             navigation_path: >
-          [[[
-            let path = window.location.pathname;
-            let sub_path = path.substring(0, path.lastIndexOf('/'));
-            return sub_path + "/{{ button_navigation_path }}";
-          ]]]
+              [[[
+                let path = window.location.pathname;
+                let sub_path = path.substring(0, path.lastIndexOf('/'));
+                return sub_path + "/{{ button_navigation_path }}";
+              ]]]
         {% elif type and type == 'include' %}
         !include
           - ../../{{ path }}
