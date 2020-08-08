@@ -81,6 +81,12 @@
               {% if person["show_map"] != 'false' %}
               - type: map
                 aspect_ratio: 16x9
+                hours_to_show: |
+                  {% if person["map_hours_to_show"] %}
+                    {{ person["map_hours_to_show"]|int }}
+                  {% else %}
+                    0
+                  {% endif %}
                 entities:
                   - {{ person["track"] }}
               {% endif %}
