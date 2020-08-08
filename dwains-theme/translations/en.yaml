@@ -108,3 +108,6 @@ en:
 
   alarm:
     title: 'Alarm'
+
+  weather:
+    title: 'Weather'

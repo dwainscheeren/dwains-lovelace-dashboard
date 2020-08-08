@@ -9,7 +9,7 @@ import {
     css
   } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = '0.0.2';
+const VERSION = '0.0.3';
 
 const windDirections = [
   "N",
@@ -319,7 +319,14 @@ class DwainsWeatherCard extends LitElement {
   }
 
   _handleClick() {
-    fireEvent(this, "hass-more-info", { entityId: this._config.entity });
+    //fireEvent(this, "hass-more-info", { entityId: this._config.entity });
+    let e;
+    let path = window.location.pathname;
+    let nav_path = path.substring(0, path.lastIndexOf('/')) + "/more_page_weather";
+    window.history.pushState(null, '', nav_path);
+    e = new Event('location-changed', { composed: true });
+    e.detail = { replace: false };
+    window.dispatchEvent(e);
   }
   
   getCardSize() {
