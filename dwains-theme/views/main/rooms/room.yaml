@@ -35,7 +35,7 @@
             - ../../partials/header.yaml
             - title: {{ room["name"] }}
               subtitle: {{ _d_t_trans.home.title }}
-              navigation_path: home
+              navigation_path: home  
           {% endif %}
           #Subheader with room information
           {% if room["motion"] or room["door"] or room["window"] %}
