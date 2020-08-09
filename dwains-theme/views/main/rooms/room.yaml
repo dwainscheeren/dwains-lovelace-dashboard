@@ -572,7 +572,7 @@
                 icon: "{{ _d_t_icons.device_on|default('mdi:power-plug-outline') }}"
                 state:
                   - value: 'on'
-                    icon: "{{ _d_t_icons.device_off|default('mdi:power-plug-outline') }}"
+                    icon: "{{ _d_t_icons.device_off|default('mdi:power-plug') }}"
                 {% if room["device"].split('.')[0] != 'group' %}
                 # this room has only 1 device
                 tap_action:
