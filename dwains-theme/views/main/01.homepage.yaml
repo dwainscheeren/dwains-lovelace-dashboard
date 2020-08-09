@@ -500,7 +500,37 @@
                       {% if devices.hasLock == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: "{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}"
+                        icon: >
+                          [[[
+                            var openLocks = 0;
+
+                            {% for room in _d_t_config.rooms %}                        
+                              //Do some things for the locks
+                              {% if room["lock"] %}
+                                {% if room["lock"].split('.')[0] == 'lock' %}
+                                //This room has only 1 lock
+                                  if(states['{{ room["lock"] }}'] && states['{{ room["lock"] }}'].state == 'unlocked') {
+                                    openLocks++;
+                                  }
+                                {% elif room["lock"].split('.')[0] == 'group' %}
+                                //This room has group of locks
+                                  if(states['{{ room["lock"] }}']){
+                                    states['{{ room["lock"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && states[entity].state == 'unlocked'){
+                                        openLocks++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(openLocks > 0){
+                              return "{{ _d_t_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}";
+                            } else {
+                              return "{{ _d_t_icons.lock_locked|default('mdi:lock') }}";
+                            }
+                          ]]]
                         name: {{ _d_t_trans.lock.title_plural }}
                         tap_action: 
                           action: navigate
@@ -541,7 +571,39 @@
                       {% if devices.hasSafety == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}"
+                        icon: >
+                          [[[
+                            var notOkSafety = 0;
+                            let conf = {{ _d_t_config.global["safety_ok_strings"] | tojson }};
+                            let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+
+                            {% for room in _d_t_config.rooms %}
+                              //Do some things for the Safeties
+                              {% if room["safety"] %}
+                                {% if room["safety"].split('.')[0] != 'group' %}
+                                //This room has only 1 safety device
+                                  if(states['{{ room["safety"] }}'] && (! ok_states.includes( states['{{ room["safety"] }}'].state ))) {
+                                    notOkSafety++;
+                                  }
+                                {% else %}
+                                //This room has group of Safeties
+                                  if(states['{{ room["safety"] }}']){
+                                    states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && (! ok_states.includes( states[entity].state ))){
+                                        notOkSafety++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(notOkSafety > 0){
+                              return "{{ _d_t_icons.safety_alert|default('mdi:shield-alert-outline') }}";
+                            } else {  
+                              return "{{ _d_t_icons.safety_ok|default('mdi:shield-check') }}";
+                            }
+                          ]]]
                         name: {{ _d_t_trans.safety.title_plural }}
                         tap_action: 
                           action: navigate
@@ -584,7 +646,37 @@
                       {% if devices.hasLight == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: "{{ _d_t_icons.light_off|default('mdi:lightbulb') }}"
+                        icon: >
+                          [[[
+                            var onLights = 0;
+
+                            {% for room in _d_t_config.rooms %}
+                              //Do some things for the lights
+                              {% if room["light"] %}
+                                {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
+                                //This room has only 1 light
+                                  if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
+                                    onLights++;
+                                  }
+                                {% else %}
+                                //This room has group of lights
+                                  if(states['{{ room["light"] }}']){
+                                    states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && states[entity].state == 'on'){
+                                        onLights++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(onLights > 0){
+                              return "{{ _d_t_icons.light_on|default('mdi:lightbulb') }}";
+                            } else {  
+                              return "{{ _d_t_icons.light_off|default('mdi:lightbulb-outline') }}";
+                            }
+                          ]]]
                         name: {{ _d_t_trans.light.title_plural }}
                         tap_action: 
                           action: navigate
@@ -664,7 +756,37 @@
                       {% if devices.hasCover == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: "{{ _d_t_icons.cover|default('mdi:window-shutter') }}"
+                        icon: >
+                          [[[
+                            var openCovers = 0;
+
+                            {% for room in _d_t_config.rooms %}                        
+                              //Do some things for the covers
+                              {% if room["cover"] %}
+                                {% if room["cover"].split('.')[0] == 'cover' %}
+                                //This room has only 1 cover
+                                  if(states['{{ room["cover"] }}'] && states['{{ room["cover"] }}'].state == 'open') {
+                                    openCovers++;
+                                  }
+                                {% elif room["cover"].split('.')[0] == 'group' %}
+                                //This room has group of covers
+                                  if(states['{{ room["cover"] }}']){
+                                    states['{{ room["cover"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && states[entity].state == 'open'){
+                                        openCovers++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+                        
+                            if(openCovers >= 1){
+                              return "{{ _d_t_icons.cover_open|default('mdi:window-shutter-open') }}";
+                            } else {  
+                              return "{{ _d_t_icons.cover_closed|default('mdi:window-shutter') }}";
+                            }
+                          ]]]
                         name: {{ _d_t_trans.cover.title_plural }}
                         tap_action: 
                           action: navigate
@@ -705,7 +827,37 @@
                       {% if devices.hasDevice == true %}
                       - type: custom:button-card
                         template: homepage_device
-                        icon: "{{ _d_t_icons.device|default('mdi:power-plug') }}"
+                        icon: >
+                          [[[
+                            var onDevices = 0;
+
+                            {% for room in _d_t_config.rooms %}
+                              //Do some things for the Devices
+                              {% if room["device"] %}
+                                {% if room["device"].split('.')[0] != 'group' %}
+                                //This room has only 1 device
+                                  if(states['{{ room["device"] }}'] && states['{{ room["device"] }}'].state == 'on') {
+                                    onDevices++;
+                                  }
+                                {% else %}
+                                //This room has group of Devices
+                                  if(states['{{ room["device"] }}']){
+                                    states['{{ room["device"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && states[entity].state == 'on'){
+                                        onDevices++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(onDevices > 0){
+                              return "{{ _d_t_icons.device_on|default('mdi:power-plug') }}";
+                            } else {  
+                              return "{{ _d_t_icons.device_off|default('mdi:power-plug-outline') }}";
+                            }
+                          ]]]
                         name: {{ _d_t_trans.device.title_plural }}
                         tap_action: 
                           action: navigate

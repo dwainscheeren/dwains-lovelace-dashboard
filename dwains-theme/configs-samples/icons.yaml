@@ -35,9 +35,12 @@
 #   motion_on: 'mdi:help'
 #   motion_off: 'mdi:help'
 
-#   cover: 'mdi:help'
+#   cover_open: 'mdi:help'
+#   cover_moving: 'mdi:help'
+#   cover_closed: 'mdi:help'
 
-#   device: 'mdi:help'
+#   device_on: 'mdi:help'
+#   device_off: 'mdi:help'
 
 #   media_player: 'mdi:help'
   
