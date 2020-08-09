@@ -678,17 +678,14 @@
               - type: custom:button-card
                 entity: {{ room["vibration"] }}
                 template: rooms_child
+                icon: "{{ _d_t_icons.vibration_on|default('mdi:vibrate-off') }}"
+                state:
+                  - value: 'on'
+                    icon: "{{ _d_t_icons.vibration_on|default('mdi:vibrate') }}"
+                  - value: 'unavailable'
+                    icon: "mdi:cancel"
                 {% if room["vibration"].split('.')[0] != 'group' %}
                 # this room has only 1 vibration sensor
-                icon: >
-                  [[[
-                    if(entity.state == 'on')
-                      return "{{ _d_t_icons.vibration_on|default('mdi:vibration') }}";
-                    else if(entity.state == 'off')
-                      return "{{ _d_t_icons.safety_alert|default('mdi:vibrate-off') }}";
-                    else
-                      return "{{ _d_t_icons.safety_alert|default('mdi:cancel') }}";
-                  ]]]
                 tap_action:
                   action: more-info
                   haptic: light 
@@ -713,25 +710,6 @@
                   ]]] 
                 {% else %}
                 # this room has group of vibration sensors
-                icon: >
-                  [[[
-                    if(entity){
-                      const entitiesFromGroup = states['{{ room["vibration"] }}'].attributes['entity_id'];
-                      var vibrationOn = 0;
-                      entitiesFromGroup.forEach(function(entity){
-                        if(states[entity] && states[entity].state == 'on'){
-                          vibrationOn++;
-                        }
-                      });
-
-                      if(vibrationOn >= 1) return "{{ _d_t_icons.vibration_on|default('mdi:vibration') }}";
-                      else return "{{ _d_t_icons.safety_alert|default('mdi:vibrate-off') }}";
-
-                    } else {
-                      console.log("Invalid rooms.yaml:{{ room["name"] }}.media_player entity!");
-                      return 'Entity error!';
-                    }
-                  ]]]
                 name: {{ _d_t_trans.vibration.title_plural }}
                 label: >
                   [[[
