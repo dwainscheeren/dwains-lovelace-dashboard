@@ -155,14 +155,21 @@
                   {% endif %}
               {% endif %}
 
+              {% if
+                    room["temperature"] or
+                    room["humidity"] or
+                    room["pressure"] or
+                    _d_t_config.global["outside_temperature"] or
+                    _d_t_config.global["outside_humidity"]
+              %}
               #Start of graphs
               - type: custom:dwains-flexbox-card
                 padding: true
                 items_classes: 'col-xs-6'
                 cards:
                   #This room temp, humidity and pressure
-                  {% if 
-                        room["temperature"] or 
+                  {% if
+                        room["temperature"] or
                         room["humidity"] or
                         room["pressure"]
                   %}
@@ -192,9 +199,9 @@
                   {% endif %}
 
                   #Outside temp and humidity
-                  {% if 
-                        _d_t_config.global["outside_temperature"] or 
-                        _d_t_config.global["outside_humidity"] 
+                  {% if
+                        _d_t_config.global["outside_temperature"] or
+                        _d_t_config.global["outside_humidity"]
                   %}
                   - type: vertical-stack
                     cards:
@@ -215,5 +222,6 @@
                         graph: line
                       {% endif %}      
                   {% endif %}
+              {% endif %}
 {% endif %}
 {% endfor %}
