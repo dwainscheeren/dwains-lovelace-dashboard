@@ -30,7 +30,7 @@ curl -sSL -o hacs.zip http://github.com/hacs/integration/releases/latest/downloa
   && \
   mkdir -p /usr/share/hassio/homeassistant/custom_components/hacs/ \
   && \
-  unzip hacs.zip -o -d /usr/share/hassio/homeassistant/custom_components/hacs \
+  unzip -qq -f -d /usr/share/hassio/homeassistant/custom_components/hacs hacs.zip \
   && \
   rm -f hacs.zip \
   || \
@@ -38,7 +38,15 @@ curl -sSL -o hacs.zip http://github.com/hacs/integration/releases/latest/downloa
 ```
 
 ## Step 4
-Install HACS plugins
+Get a _personal access token_ for your Github account.
+
+```
+hacs:
+  token: xxxcdxfxabxxabxxcafxcbcxxxxxxcxxxexxdxff
+```
+
+## Step 5
+Install HACS _frontend_ plugins
 
 Name|Type|Required|Description
 :-------|-------:|-------:|-------:|-------:
@@ -51,3 +59,29 @@ more-info-card|Module|Yes|Display the more-info dialog of any entity as a lovela
 state-switch|Module|Yes|Dynamically replace lovelace cards depending on occasion
 --------|--------|--------|--------|--------
 
+## Step 5
+Install `dwains-theme`
+
+```
+curl -sSL -o dwainstheme.tar.gz https://github.com/dwainscheeren/lovelace-dwains-theme/archive/v1.4.1.tar.gz \
+  && \
+  tar xzf dwainstheme.tar.gz -C /usr/share/hassio/homeassistant \
+  || \
+  echo "dwains-theme failed to install" &> /dev/stderr
+```
+
+## Step 6
+Configure Home-Assistant to use `dwains-theme` (n.b. starting with _default_ `configuration.yaml`)
+
+```
+cd /usr/share/hassio/homeassistant
+mv ./dwains-theme/configs-sample/ ./dwains-theme/configs/
+echo 'homeassistant:' >> ./configuration.yaml
+echo '  packages: !include_dir_named packages/' >> ./configuration.yaml
+```
+
+## Step 7
+Configure `dwains-theme` using files in `./dwains-theme/configs/` directory
+
+```
+```

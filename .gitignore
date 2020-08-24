@@ -1,4 +1,14 @@
 dwains-theme/configs
+.HA_VERSION
+.storage/
+automations.yaml
+configuration.yaml
+groups.yaml
+home-assistant.log
+home-assistant_v2.db
+scenes.yaml
+scripts.yaml
+secrets.yaml
 dwains-theme/.vscode/*
 dwains-theme/resources/custom_resources.yaml
 dwains-theme/addons/house_information/*/
