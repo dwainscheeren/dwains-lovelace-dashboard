@@ -1,4 +1,8 @@
 # `QUICKSTART.md`
+This _quick start_ is suitable for the following:
+
++ Ubuntu 18.04 systems on `amd64` and `aarch64` (e.g. nVidia Jetson Nano)
++ Rasbian Buster on `armv7` (e.g. RaspberryPi models 3 & 4)
 
 ## Step 1
 Update, upgrade, and install packages
