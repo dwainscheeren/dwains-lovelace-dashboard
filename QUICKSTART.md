@@ -62,7 +62,7 @@ Custom Header|Module|Yes|Lovelace Custom Header
 more-info-card|Module|Yes|Display the more-info dialog of any entity as a lovelace card
 state-switch|Module|Yes|Dynamically replace lovelace cards depending on occasion
 
-## Step 5
+## Step 6
 Install `dwains-theme`
 
 ```
@@ -73,7 +73,7 @@ curl -sSL -o dwainstheme.tar.gz https://github.com/dwainscheeren/lovelace-dwains
   echo "dwains-theme failed to install" &> /dev/stderr
 ```
 
-## Step 6
+## Step 7
 Configure Home-Assistant to use `dwains-theme` (n.b. starting with _default_ `configuration.yaml`)
 
 ```
@@ -83,7 +83,7 @@ echo 'homeassistant:' >> ./configuration.yaml
 echo '  packages: !include_dir_named packages/' >> ./configuration.yaml
 ```
 
-## Step 7
+## Step 8
 Configure `dwains-theme` using files in `./dwains-theme/configs/` directory
 
 ```
