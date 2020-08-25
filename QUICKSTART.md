@@ -52,8 +52,8 @@ hacs:
 ## Step 5
 Install HACS _frontend_ plugins
 
-Name|Type|Required|Description
-:-------|-------:|-------:|-------:|-------:
+Name|Type|Required|Description|
+:-------|-------:|-------:|-------
 Card-mod|Module|Yes|Add CSS styles to (almost) any lovelace card
 Button-card|Module|Yes |Lovelace button-card for home assistant
 Light Entity Card|js|Yes|Control any light or switch entity
