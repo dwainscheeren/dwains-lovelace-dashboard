@@ -53,7 +53,7 @@ hacs:
 Install HACS _frontend_ plugins
 
 Name|Type|Required|Description|
-:-------|-------:|-------:|-------
+:-------|-------|-------|:-------
 Card-mod|Module|Yes|Add CSS styles to (almost) any lovelace card
 Button-card|Module|Yes |Lovelace button-card for home assistant
 Light Entity Card|js|Yes|Control any light or switch entity
@@ -61,7 +61,6 @@ auto-entities|Module|Yes|Automatically populate the entities-list of lovelace ca
 Custom Header|Module|Yes|Lovelace Custom Header
 more-info-card|Module|Yes|Display the more-info dialog of any entity as a lovelace card
 state-switch|Module|Yes|Dynamically replace lovelace cards depending on occasion
---------|--------|--------|--------|--------
 
 ## Step 5
 Install `dwains-theme`
