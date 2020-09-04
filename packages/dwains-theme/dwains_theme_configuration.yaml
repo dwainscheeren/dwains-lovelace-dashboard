@@ -59,7 +59,7 @@ input_select:
 #Theme automations
 automation:
   #Theme Selector
-  - alias: 'themes'
+  - alias: 'Dwains Theme: Set theme according to sun'
     initial_state: 'true'
     trigger:
       - platform: state
