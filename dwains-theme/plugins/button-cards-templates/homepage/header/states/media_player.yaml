@@ -18,14 +18,14 @@ header_states_media_player:
           {% if room["media_player"] %}
             {% if room["media_player"].split('.')[0] != 'group' %}
             //This room has only 1 media_player
-              if(states['{{ room["media_player"] }}'] && states['{{ room["media_player"] }}'].state == 'on') {
+              if(states['{{ room["media_player"] }}'] && states['{{ room["media_player"] }}'].state == 'on' || states['{{ room["media_player"] }}'] && states['{{ room["media_player"] }}'].state == 'playing') {
                 onMediaPlayers++;
               }
             {% else %}
             //This room has group of media_players
               if(states['{{ room["media_player"] }}']){
                 states['{{ room["media_player"] }}'].attributes['entity_id'].forEach(function(entity){
-                  if(states[entity] && states[entity].state == 'on'){
+                  if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'playing') {
                     onMediaPlayers++;
                   }
                 });  
