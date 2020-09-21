@@ -38,6 +38,19 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 1.5.0 (Coming soon)
+
+To do:
+Re-merge this https://github.com/dwainscheeren/lovelace-dwains-theme/pull/191 into 1.5
+Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
+Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/188
+
+#### New Features:
+
+#### Changes:
+
+
+
 ## Update 1.4.1
 
 v1.4.1 is compatible with HA 0.110, 0.111, 0.112, 0.113
