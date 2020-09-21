@@ -5,7 +5,7 @@ haptic: heavy
 action: call-service
 service: browser_mod.popup
 service_data:
-  title: '[[[ return entity.attributes.friendly_name ]]]'
+  title: ' '
   card:
     type: vertical-stack
     cards:
@@ -27,5 +27,6 @@ service_data:
         show_slider_percent: true
         smooth_color_wheel: true
         header: false
+        hide_header: true
   deviceID:
     - this

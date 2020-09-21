@@ -50,9 +50,16 @@
                           template: room_device
                           entity: {{ room["device"] }}
                           tap_action:
-                            !include 
-                              - ../../popups/more-info.yaml
-                              - entity: this.entity_id
+                            action: toggle
+                            haptic: light
+                          hold_action:
+                            !include
+                            - ../../popups/more-info.yaml
+                            - entity: {{ room["device"] }}
+                          double_tap_action:
+                            !include
+                            - ../../popups/more-info.yaml
+                            - entity: {{ room["device"] }}
                   {% else %}
                   # this room has group of devices
                   - type: custom:auto-entities
@@ -63,9 +70,16 @@
                             type: custom:button-card
                             template: room_device
                             tap_action:
-                              !include 
-                                - ../../popups/more-info.yaml
-                                - entity: this.entity_id
+                              action: toggle
+                              haptic: light
+                            hold_action:
+                              !include
+                              - ../../popups/more-info.yaml
+                              - entity: this.entity_id
+                            double_tap_action:
+                              !include
+                              - ../../popups/more-info.yaml
+                              - entity: this.entity_id
                     sort:
                       method: name
                       ignore_case: true

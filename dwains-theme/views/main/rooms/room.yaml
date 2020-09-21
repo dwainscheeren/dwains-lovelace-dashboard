@@ -287,8 +287,12 @@
                 tap_action:
                   action: toggle
                   haptic: light 
+                hold_action:
+                  !include
+                    - ../../popups/light.yaml
+                    - entity: {{ room["light"] }}
                 double_tap_action:
-                  !include 
+                  !include
                     - ../../popups/light.yaml
                     - entity: {{ room["light"] }}
                 label: >
@@ -566,6 +570,14 @@
                 tap_action:
                   action: toggle
                   haptic: light 
+                hold_action:
+                  !include
+                    - ../../popups/more-info.yaml
+                    - entity: {{ room["device"] }}
+                double_tap_action:
+                  !include
+                    - ../../popups/more-info.yaml
+                    - entity: {{ room["device"] }}
                 label: >
                   [[[ 
                     if(entity){
