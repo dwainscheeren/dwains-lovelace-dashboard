@@ -167,3 +167,7 @@ no:
   lock:
     title: 'Lås'
     title_plural: 'Lås'
+
+  vibration:
+    title: 'Vibration'
+    title_plural: "Vibration Sensors"
