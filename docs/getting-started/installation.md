@@ -92,4 +92,4 @@ Also read here some handy how to's:
 
 And checkout some [Tips & Tricks](../information/tips-and-tricks.md) of Dwains Theme.
 
-**WARNING: Please don't change any of the files inside the folder `dwains-theme`, because future updates of this theme may not work. If you want to extend or add own views/pages to this theme use [addons](../addons/index.md)**
+**WARNING: Please only changes files in the `dwains-theme/configs` and `dwains-theme/addon` folders. Changing any other files within `dwains-theme` or other subdirectories not mentioned above, will result in a loss of changes and/or errors with future updates. If you want to extend or add pages to this theme, please refer to the [addons](../addons/index.md) documentation.**

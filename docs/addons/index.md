@@ -4,6 +4,8 @@
 
 With Dwains Theme Addons you can extend the theme functionality with own addons without changing any of the theme cores code. This way you can always update to the latest version without problems but still add own views/cards.
 
+Community made addons for Dwains Theme can be found [here](https://github.com/dwainscheeren/dwains-theme-addons).
+
 There are a few type off addons possible right now:
 
 ### Rooms Addons
