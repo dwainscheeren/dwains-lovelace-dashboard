@@ -21,3 +21,14 @@ www/*/
 www/dwains-theme/images/
 packages/*/
 !packages/dwains_theme
+customize.yaml
+google_calendars.yaml
+zigbee.db
+known_devices.yaml
+home-assistant_v2.db-shm
+home-assistant_v2.db-wal
+.vscode/settings.json
+neighbours/
+tts/
+.google.token
+dwainconfig/
