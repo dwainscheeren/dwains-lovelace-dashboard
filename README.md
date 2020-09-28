@@ -23,14 +23,14 @@ I own a web development company, and I want to give something back to the Home A
 
 **Want to request a new feature request?**
 
-[Open an issue on GitHub](https://github.com/dwainscheeren/lovelace-dwains-theme/issues/new) with the title starting with  `FR`  or  `Feature Request`
+[Open an issue on GitHub](https://github.com/dwainscheeren/lovelace-dwains-theme/issues/new) with the title starting with  `FR`  or  `Feature Request`.
 
 
 **Support**
 
 You can use the [thread on the Home Assistant community](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) to ask any questions you have. 
 
-Or join me on Discord [Discord Server Home Assistant Addicts](https://discord.gg/7yt64uX)
+Or join me on Discord [Discord Server Home Assistant Addicts](https://discord.gg/7yt64uX).
 
 I manage this server together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains). 
 
@@ -41,7 +41,7 @@ If you like my content, then please do subscribe to my [Home Assistant YouTube 
 **Like what you see?**
 
 If you appreciate what I have developed, then please consider buying me a coffe or beer: [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx) or [donate to my PayPal account](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=urldonate).
-You can also reply to [this HA thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) and let everyone know how happy you are with this theme! :crazy_face:
+You can also reply to [this HA thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) and let everyone know how happy you are with this theme! :laughing:
 
 Greetings,
 
