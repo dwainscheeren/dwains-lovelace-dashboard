@@ -58,3 +58,9 @@
 
 #   lock_locked: 'mdi:help'
 #   lock_unlocked: 'mdi:help'
+
+
+#   fan: 'mdi:help'
+#   fan_speed1: 'mdi:help'
+#   fan_speed2: 'mdi:help'
+#   fan_speed3: 'mdi:help'
