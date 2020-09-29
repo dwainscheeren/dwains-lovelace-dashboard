@@ -392,6 +392,32 @@
                                   additional_info += 'L-E!<br>';
                                 }
                               {% endif %}
+                              {% if room["fan"] %}
+                                if(states['{{ room["fan"] }}']){
+                                  {% if room["fan"].split('.')[0] == 'fan' %}
+                                    if(states['{{ room["fan"] }}'].attributes.speed == 'low'){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.fan_speed1|default('mdi:fan-speed-1') }}"></ha-icon><br>';
+                                    }
+                                    if(states['{{ room["fan"] }}'].attributes.speed == 'medium'){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.fan_speed2|default('mdi:fan-speed-2') }}"></ha-icon><br>';
+                                    }
+                                    if(states['{{ room["fan"] }}'].attributes.speed == 'high'){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.fan_speed3|default('mdi:fan-speed-3') }}"></ha-icon><br>';
+                                    }
+                                  {% elif room["fan"].split('.')[0] == 'group' %}
+                                    const entitiesFromGroup = states['{{ room["fan"] }}'].attributes['entity_id'];
+                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on') {
+                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _d_t_icons.fan|default('mdi:fan') }}"></ha-icon><br>';
+                                        break;
+                                      }
+                                    }  
+                                  {% endif %}
+                                } else {
+                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.fan entity!");
+                                  additional_info += 'L-E!<br>';
+                                }
+                              {% endif %}                              
 
 
                               return additional_info;
