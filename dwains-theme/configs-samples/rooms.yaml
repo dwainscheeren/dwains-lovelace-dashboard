@@ -10,6 +10,7 @@
 #     motion: binary_sensor.hallway_sensor_motion
 #     door: binary_sensor.hallway_door_contact
 #     window: binary_sensor.hallway_window_contact
+#     fan: fan.hallway
 #     vacuum: 
 #       entity: vacuum.rockrobo
 #       camera: camera.rockrobo_map
