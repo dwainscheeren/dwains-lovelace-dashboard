@@ -278,12 +278,12 @@
               - type: custom:button-card
                 entity: {{ room["light"] }}
                 template: rooms_child
+                {% if room["light"].split('.')[0] == 'light' %}
+                # this room has only 1 light (light entity)
                 icon: "{{ _d_t_icons.light_off|default('mdi:lightbulb-outline') }}"
                 state:
                   - value: 'on'
                     icon: "{{ _d_t_icons.light_on|default('mdi:lightbulb') }}"
-                {% if room["light"].split('.')[0] == 'light' %}
-                # this room has only 1 light (light entity)
                 tap_action:
                   action: toggle
                   haptic: light 
@@ -346,6 +346,27 @@
                 double_tap_action:
                   action: toggle
                   haptic: light 
+                icon: >
+                  [[[
+                    if(entity){
+                      const entitiesFromGroup = states['{{ room["light"] }}'].attributes['entity_id'];
+                      var onLights = 0;
+                      entitiesFromGroup.forEach(function(entity){
+                        if(states[entity] && states[entity].state == 'on'){
+                          onLights++;
+                        }
+                      });  
+                      if(onLights >= 1){
+                        return "{{ _d_t_icons.light_on|default('mdi:lightbulb-group') }}";
+                      } else {
+                        return "{{ _d_t_icons.light_off|default('mdi:lightbulb-group-outline') }}";
+                      }
+
+                    } else {
+                      console.log("Invalid rooms.yaml:{{ room["name"] }}.light entity!");
+                      return 'Entity error!';
+                    }
+                  ]]]
                 label: >
                   [[[
                     if(entity){
@@ -516,7 +537,14 @@
               - type: custom:button-card
                 entity: {{ room["cover"] }}
                 template: rooms_child
-                icon: "{{ _d_t_icons.cover|default('mdi:window-shutter') }}"
+                icon: "{{ _d_t_icons.cover_closed|default('mdi:window-shutter') }}"
+                state:
+                  - value: 'open'
+                    icon: "{{ _d_t_icons.cover_closed|default('mdi:window-shutter-open') }}"
+                  - value: 'opening'
+                    icon: "{{ _d_t_icons.cover_moving|default('mdi:window-shutter-alert') }}"
+                  - value: 'closing'
+                    icon: "{{ _d_t_icons.cover_moving|default('mdi:window-shutter-alert') }}"
                 tap_action: 
                   action: navigate
                   navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_cover
@@ -524,8 +552,10 @@
                 label: >
                   [[[ 
                     if(entity){
+                      let position = states['{{ room["cover"] }}'].attributes.current_position;
+                      let position_text = (position =! 'undefined') ? ' ' + position + '%' : '';
                       if(entity.state == 'open'){
-                        return hass.localize('component.cover.state._.open') + ' ' + states['{{ room["cover"] }}'].attributes.current_position + '%';
+                        return hass.localize('component.cover.state._.open') + position_text;
                       } else if(entity.state == 'closed') {
                         return hass.localize('component.cover.state._.closed');
                       } else {
@@ -564,7 +594,10 @@
               - type: custom:button-card
                 entity: {{ room["device"] }}
                 template: rooms_child
-                icon: "{{ _d_t_icons.device|default('mdi:power-plug') }}"
+                icon: "{{ _d_t_icons.device_on|default('mdi:power-plug-outline') }}"
+                state:
+                  - value: 'on'
+                    icon: "{{ _d_t_icons.device_off|default('mdi:power-plug') }}"
                 {% if room["device"].split('.')[0] != 'group' %}
                 # this room has only 1 device
                 tap_action:
