@@ -37,8 +37,10 @@
                     entity: this.entity_id
                     icon: >
                       [[[ 
+                        let conf = {{ _d_t_config.global["battery_empty_strings"] | tojson }};
+                        let nok_states = (Array.isArray(conf) && conf.length) ? conf : 'unknown';
                         if(states[`this.entity_id`]){
-                          if (states[`this.entity_id`].state == 'unknown'){
+                          if (nok_states.includes(states[`this.entity_id`].state)){
                             return 'mdi:battery-alert';
                           } else if (states[`this.entity_id`].state != 'unknown' && states[`this.entity_id`].state <= 10) {
                             return 'mdi:battery-outline';
@@ -50,6 +52,26 @@
                           }
                         }
                       ]]]
+                    styles:
+                      icon:
+                        - color: >
+                            [[[
+                              let conf = {{ _d_t_config.global["battery_empty_strings"] | tojson }};
+                              let nok_states = (Array.isArray(conf) && conf.length) ? conf : 'unknown';
+                              if (nok_states.includes(states[`this.entity_id`].state)) return '#ff0000';
+                              else if (entity.state <= 0) return '#ff0000';
+                              else if (entity.state <= 10) return '#ff5b00';
+                              else if (entity.state <= 20) return '#ff8a00';
+                              else if (entity.state <= 30) return '#ffb300';
+                              else if (entity.state <= 40) return '#ffda00';
+                              else if (entity.state <= 50) return '#ffff00';
+                              else if (entity.state <= 60) return '#e3ff00';
+                              else if (entity.state <= 70) return '#c3ff00';
+                              else if (entity.state <= 80) return '#9eff00';
+                              else if (entity.state <= 90) return '#6fff00';
+                              else if (entity.state <= 100) return '#00ff00';
+                              else return '#00ff00';
+                            ]]]
                 - type: custom:button-card
                   color_type: blank-card
                   aspect_ratio: 1/1
