@@ -834,10 +834,17 @@
               - type: custom:button-card
                 entity: {{ more_entity["entity"] }}
                 template: room_more_entity
+                {% if more_entity["entity"].split('.')[0] in ('switch', 'light') %}
+                tap_action:
+                    action: toggle
+                hold_action:
+                    action: more-info
+                {% else %}
                 tap_action:
                   !include 
                     - ../../popups/more-info.yaml
                     - entity: {{ more_entity["entity"] }}
+                {% endif %}
               {% endfor %}
               {% endif %}
 {% endfor %}
