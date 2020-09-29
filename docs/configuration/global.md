@@ -30,6 +30,7 @@ The global section. Dwains theme uses this to build the pages.
 | outside_humidity | string | No | sensor.dark_sky_humidity | Outside humidity (Ex: [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |
 | alarm | string | No | alarm_control_panel.alarm_sys | Alarm entity. [Read more here](https://www.home-assistant.io/integrations/manual/) |
 | inside_temperature | string | No | climate.living_room | Inside temperature sensor |
+| safety_ok_strings | list | No | ["Ok", "Idle", "off"] | [Read more here](https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/rooms.html) |
 
 
 ## Global example
@@ -41,4 +42,5 @@ global:
   outside_humidity: sensor.dark_sky_humidity
   alarm: alarm_control_panel.alarm_system
   inside_temperature: climate.living_room
+  safety_ok_strings: ["Ok", "Idle", "off"]
 ```  
