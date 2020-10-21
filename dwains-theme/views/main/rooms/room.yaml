@@ -390,20 +390,20 @@
 
                     {% if room["climate"] %}
                     if(states['{{ room["climate"] }}']){
-                      if (entity.attributes.hvac_action  == 'idle'){
-                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.idle');
-                      } else if(entity.attributes.hvac_action == 'heating'){
-                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.heating') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
-                      } else if(entity.attributes.hvac_action == 'off'){
-                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.off');
-                      } else if(entity.attributes.hvac_action == 'heat'){
-                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.heat') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
-                      } else if(entity.attributes.hvac_action == 'cooling'){
-                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.cooling') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
-                      } else if(entity.attributes.hvac_action == 'drying'){
-                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.drying') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
-                      } else if(entity.attributes.hvac_action == 'fan'){
-                        return temperature + '<br>' + hass.localize('state_attributes.climate.hvac_action.fan') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                      if (entity.state == 'heat'){
+                        return temperature + '<br>' + hass.localize('component.climate.state._.heat') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                      } else if(entity.state == 'off'){
+                        return temperature + '<br>' + hass.localize('component.climate.state._.off');
+                      } else if(entity.state == 'heat'){
+                        return temperature + '<br>' + hass.localize('component.climate.state._.heat') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                      } else if(entity.state == 'cool'){
+                        return temperature + '<br>' + hass.localize('component.climate.state._.cool') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                      } else if(entity.state == 'heat_cool'){
+                        return temperature + '<br>' + hass.localize('component.climate.state._.heat_cool') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];  
+                      } else if(entity.state == 'dry'){
+                        return temperature + '<br>' + hass.localize('component.climate.state._.dry') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
+                      } else if(entity.state == 'fan_only'){
+                        return temperature + '<br>' + hass.localize('component.climate.state._.fan_only') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
                       } else {
                         return temperature + '<br>' + entity.state;
                       }
