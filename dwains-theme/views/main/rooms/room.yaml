@@ -394,8 +394,6 @@
                         return temperature + '<br>' + hass.localize('component.climate.state._.heat') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
                       } else if(entity.state == 'off'){
                         return temperature + '<br>' + hass.localize('component.climate.state._.off');
-                      } else if(entity.state == 'heat'){
-                        return temperature + '<br>' + hass.localize('component.climate.state._.heat') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
                       } else if(entity.state == 'cool'){
                         return temperature + '<br>' + hass.localize('component.climate.state._.cool') + ' ' + entity.attributes.temperature + hass.config.unit_system["temperature"];
                       } else if(entity.state == 'heat_cool'){
