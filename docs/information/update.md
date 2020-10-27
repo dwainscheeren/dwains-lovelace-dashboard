@@ -38,7 +38,20 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
-## Update 2.0.0 (Coming soon) :tada:
+## Update 2.0.0 (Coming soon) 🎉
+
+To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of Dwains Theme follow **all** steps below:
+
+With /config/ I mean the folder where your whole HA config is.
+
+1. Go to your /config/ folder and rename the folder **dwains-theme** to **dwains-dashboard**
+2. Go inside the folder /config/dwains-dashboard and remove the following folders **plugins**, **resources**, **translations**, **views**, but make sure you **keep the folders 'configs' and the folder 'addons'!**.
+3. Go to the folder /config/themes and remove the files **dwains-theme-black.yaml**, **dwains-theme-dark.yaml**, **dwains-theme-light.yaml**, **dwains-theme-white.yaml**
+4. Go to the folder /config/www and remove the folder **dwains-theme**
+5. Go to the folder /config/packages and remove the folder **dwains-theme**
+6. Go to the folder /config/custom_components and remove the folder **dwains-theme**
+7. Reboot your HA, Dwains Theme 1.* should now be fully removed except the _config_ folder _/config/dwains-dashboard/.._
+8. Install Dwains Dashboard 2.0.0 as explained [here](linkje)
 
 To do:
 Re-merge this https://github.com/dwainscheeren/lovelace-dwains-theme/pull/191 into 1.5
