@@ -42,7 +42,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 Note: Dwains Theme has been renamed to Dwains Dashboard!
 
-To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of Dwains Theme follow **all** steps below:
+To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of Dwains Theme follow **all** steps below (Don't worry we will keep your existing Dwains Theme config and addons, these will automatic work in 2.0.0):
 
 With /config/ I mean the folder where your whole HA config is.
 
