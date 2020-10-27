@@ -63,6 +63,11 @@ Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
 Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/188
 
 #### New Features:
+* Vibration Sensor @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/188)
+* Add weather page and link to it from weather widget. @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/187)
+* New Safety Devices @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/155)
+* Add Tracking to Map @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/185)
+* Correct batteries with string values. Add color gradient to batteries. @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/186)
 
 #### Changes:
 * **Changed the name Dwains Theme to Dwains Dashboard.**
@@ -72,6 +77,18 @@ Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pul
 * Removed the use of HA themes for my Dashboard. My theme is now only used inside my dashboard and not outside of it.
 * Created 2 full new cards for headings and headers to replace the yaml partials.
 * My dashboard is no longer dependent on the following third party addons: card-mod, auto-entities, custom header, state-switch and browser_mod. You can remove these from your HA setup if you don't use them in an other dashboard or Dwains Dashboard addon. I replaced them all with new made Dwains Lovelace Cards.
+* Show the Media Player icon if the state is "on" or "playing" instead of just "on". @Benjy04 (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/196)
+* Page Entities: Add toggle for switch and light, and more info on hold. @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/194)
+* If you have no temperature sensor but only a climate sensor set for a room, the page remains blank. @Klumpke (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/191)
+* Fix weather link when small screen. @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/190)
+* Homepage icons. Adds icon config for device and cover.
+Modifies homepage device for Lock, Safety, Light, Cover, and Device icons based on state. Modifies rooms for Cover and Device icons based on state. Fixes room cover text for devices without position.Uses different icon in rooms to show group of lights. @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/189)
+* Safety docs @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/165)
+* only show cover position slider if position flag is set @Xetoxyc (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/171)
+* Add temperature to climate view. @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/173)
+* Really all batteries @patman15 (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/174)
+* Hold press doesn't open the more info @jakezp (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/177)
+* Remove hard navigation link @roblandry (https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/184)
 
 ...
 
