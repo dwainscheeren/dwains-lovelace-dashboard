@@ -38,7 +38,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
-## Update 1.5.0 (Coming soon)
+## Update 2.0.0 (Coming soon) :tada:
 
 To do:
 Re-merge this https://github.com/dwainscheeren/lovelace-dwains-theme/pull/191 into 1.5
@@ -49,7 +49,7 @@ Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pul
 
 #### Changes:
 
-
+---
 
 ## Update 1.4.1
 
@@ -71,6 +71,8 @@ Follow the normal update manual (top of this page). Please follow all steps.
 * Remove Duplicate key - app-header-background-color @bacco007 (https://github.com/dwainscheeren/lovelace-dwains-theme/pull/145)
 * Fix for light colors when off and unavailable @roblandry (https://github.com/dwainscheeren/lovelace-dwains-theme/pull/153)
 * Fix media_player background color. Fixes #151 @roblandry (https://github.com/dwainscheeren/lovelace-dwains-theme/pull/154)
+
+---
 
 ## Update 1.4.0
 
@@ -132,6 +134,8 @@ Follow the normal update manual (top of this page). Please follow all steps.
 * Added HA (new) Media Control Card for media_players on the devices -> media players page too, so you now have a fancy card.
 * Fixed the primary color in the black and dark theme. Now text on states pages (for example) is readable again. This color was used for the navbar on iOS but this is now done by `--app-header-background-color`.
 * Removed the lovelace-xiaomi-vacuum-map-card from main resources file.
+
+---
 
 ## Update 1.3.1
 
