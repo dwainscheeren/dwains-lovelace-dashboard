@@ -67,7 +67,7 @@ Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pul
 #### Changes:
 * **Changed the name Dwains Theme to Dwains Dashboard.**
 * **Completly refactored all the code of Dwains Dashboard.**
-* **Use webpack now to compile my own Dwains Lovelace cards, no external load of Litelement thought unkpg.com. This means you can use Dwains Dashboard now fully offline from the internet without problems. It's also a lot faster as the custom cards for my dashboard are now compiled and optimized.**
+* **Use webpack now to compile my own Dwains Lovelace cards, no external load of Litelement through unkpg.com. This means you can use Dwains Dashboard now fully offline from the internet without problems. It's also a lot faster as the custom cards for my dashboard are now compiled and optimized.**
 * **You don't have to change/touch any of your existing HA files/config to setup and use Dwain Dashboard. Seting up Dwains Dashboard is now all done automatic during installation.**
 * **Removed the use of HA themes for my Dashboard. My theme is now only used inside my dashboard and not outside of it.**
 * **Created 2 full new cards for headings and headers to replace the yaml partials.**
