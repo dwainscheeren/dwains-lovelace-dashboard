@@ -63,6 +63,7 @@ Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
 Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/188
 
 #### New Features:
+* **Dwains Themes are now only applied to the Dwains Dashboard itself, this means that the colors are only used in the dashboard and not outside of it.** You now can also use the default HA theme if you want to create a complete own theme. And you can also now set a own primary color (to replace the blue color) for icons etc. These settings can be found under Options in the integration Dwains Dashboard on your integrations page.
 * Vibration Sensor @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/188)
 * Add weather page and link to it from weather widget. @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/187)
 * New Safety Devices @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/155)
