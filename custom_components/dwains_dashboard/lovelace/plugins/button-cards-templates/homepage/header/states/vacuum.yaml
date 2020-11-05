@@ -1,0 +1,69 @@
+# dwains_dashboard
+
+header_states_vacuum:
+  show_state: false
+  show_label: true
+  tap_action: 
+    action: navigate
+    navigation_path: devices_vacuums
+  name: {{ _dd_trans.vacuum.title_plural }}
+  icon: "{{ _dd_icons.vacuum|default('mdi:robot-vacuum') }}"
+  variables:
+    status: >
+      [[[
+        var onVacuums = 0;
+
+        {% for room in _dd_config.rooms %}
+          //Do some things for the vacuums
+          {% if room["vacuum"] %}
+            if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked') {
+              onVacuums++;
+            }
+          {% endif %}
+        {% endfor %}
+
+        return onVacuums;
+      ]]]
+  label: >
+    [[[
+      if(variables.status > 0){
+        var onVacuums = variables.status;
+        return onVacuums + ' ' + hass.localize('component.vacuum.state._.on');
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i""n""l"'
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 40px
+      - height: 40px
+      - background: var(--dwains-theme-header-button-background)
+      - color: white
+      - border-radius: 100%
+    card:
+      - background: transparent
+      - box-shadow: none
+      - padding: 0%
+      - width: 61px
+      - display: >
+          [[[
+            if(variables.status && variables.status > 0){
+              //On vacuums
+              return 'block';
+            } else {
+              //No on vacuums
+              return 'none';
+            }
+          ]]]
+    label:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 11px
+      - line-height: 12px
+    name:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 13px

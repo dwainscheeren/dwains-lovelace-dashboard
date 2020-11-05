@@ -1,0 +1,9 @@
+{
+  "domain": "dwains_dashboard",
+  "name": "Dwains Dashboard",
+  "documentation": "https://dwainscheeren.github.io/dwains-lovelace-dashboard/",
+  "dependencies": ["lovelace"],
+  "codeowners": ["Dwain Scheeren"],
+  "requirements": ["jinja2"],
+  "config_flow": true
+}

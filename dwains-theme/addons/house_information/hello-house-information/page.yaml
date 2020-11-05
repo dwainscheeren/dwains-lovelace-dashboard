@@ -1,7 +1,0 @@
-# dwains_theme
-
-- type: markdown
-  content: >
-    This is an house information addon. It can also parse some data from the global house information config.
-    Don't believe it? Here it is: {{ (data | fromjson)['some_data'] }}<br>
-    {{ (data | fromjson)['some_other_data'] }}

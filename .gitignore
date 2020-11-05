@@ -14,13 +14,11 @@ dwains-theme/resources/custom_resources.yaml
 dwains-theme/addons/house_information/*/
 !dwains_theme/addons/house_information/hello-house-information/
 custom_components/*/
-!custom_components/dwains_theme
-custom_components/dwains_theme/__pycache__/
-www/*/
-!www/dwains-theme
-www/dwains-theme/images/
-packages/*/
-!packages/dwains_theme
+!custom_components/dwains_dashboard
+custom_components/dwains_dashboard/__pycache__/
+www/
+packages/
+packages/dwains-theme/
 customize.yaml
 google_calendars.yaml
 zigbee.db
@@ -32,3 +30,7 @@ neighbours/
 tts/
 .google.token
 dwainconfig/
+dwains-dashboard/
+themes/
+test/
+image/

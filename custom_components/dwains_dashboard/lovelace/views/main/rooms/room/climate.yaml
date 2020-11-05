@@ -1,0 +1,224 @@
+# dwains_dashboard
+
+#Page climate for a room
+
+{% for room in _dd_config.rooms %}
+{% if room["climate"] or room["temperature"] %}
+- title: {{ room["name"] }} {{ _dd_trans.climate.title }}
+  path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_climate
+  panel: true
+  visible: false
+  cards:    
+    - type: custom:dwains-wrapper-card
+      css: | 
+        max-width: 1465px;
+        padding-bottom: 50px;
+        margin: 0 auto;
+        font-family: "Open Sans", sans-serif !important;
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - type: custom:dwains-header-card
+            title: {{ _dd_trans.climate.title }}
+            subtitle: {{ room["name"] }}
+            navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+          #Start for room climate content page
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
+            cards:
+              {% if room["climate"] %}
+              - type: custom:dwains-flexbox-card
+                cards:
+                  - type: thermostat
+                    item_classes: 'col-xs-8'
+                    entity: {{ room["climate"] }}
+                    name: ''
+                    style: |
+                      ha-card {
+                        background: transparent; 
+                        box-shadow: none;
+                        height: 100%;
+                        margin-top: 15px;
+                      }
+                      #controls {
+                        padding: 0px !important;
+                      }
+                      round-slider {
+                        padding-bottom: 0% !important;
+                      }
+                      #info {
+                        display: none;
+                      } 
+                  - type: vertical-stack
+                    item_classes: 'col-xs-4'
+                    cards:
+                      {% set climate_hvac_modes = [
+                          [
+                            "off",
+                            "off_text",
+                            "mdi:radiator-off",
+                            "climate_off",
+                          ],
+                          [
+                            "heat",
+                            "heat",
+                            "mdi:radiator",
+                            "climate_heat",
+                          ],
+                          [
+                            "auto",
+                            "auto",
+                            "mdi:clock-check",
+                            "climate_auto",
+                          ],
+                          [
+                            "cool",
+                            "cool",
+                            "hass:snowflake",
+                            "climate_cool",
+                          ],
+                          [
+                            "heat_cool",
+                            "heat_cool",
+                            "mdi:sync",
+                            "climate_heat_cool",
+                          ],
+                          [
+                            "dry",
+                            "dry",
+                            "hass:water-percent",
+                            "climate_dry",
+                          ],
+                          [
+                            "fan_only",
+                            "fan_only",
+                            "hass:fan",
+                            "climate_fan_only",
+                          ],
+                        ] 
+                      %}
+                      {% for button in climate_hvac_modes %}
+                      - type: custom:button-card
+                        template: room_climate_hvac
+                        entity: {{ room["climate"] }}
+                        icon: '{{ _dd_icons[button[3]]|default(button[2]) }}'
+                        name: '{{ _dd_trans.climate[button[1]] }}'
+                        tap_action: 
+                          action: call-service
+                          service: climate.set_hvac_mode
+                          service_data:
+                            entity_id: {{ room["climate"] }}
+                            hvac_mode: '{{ button[0] }}'
+                        styles:
+                          card:
+                            - display: >
+                                [[[
+                                  if(entity && entity.attributes.hvac_modes.includes('{{ button[0] }}')){
+                                    return 'block';
+                                  } else {
+                                    return 'none';
+                                  }
+                                ]]]
+                        state:
+                          - value: '{{ button[0] }}'
+                            styles:
+                              img_cell:
+                                - background: var(--dwains-theme-accent)
+                                - border: '1px solid var(--dwains-theme-accent)'
+                              icon:
+                                - color: '#ffffff'
+                              name: 
+                                - color: var(--dwains-theme-names)
+                      {% endfor %}
+              {% elif room["temperature"] %}
+              - type: custom:dwains-flexbox-card
+                cards:
+                  - type: custom:button-card
+                    item_classes: 'col-xs-12'
+                    template: room_climate_info
+                    entity: {{ room["temperature"] }}
+                  {% if room["humidity"] %}
+                  - type: custom:button-card
+                    item_classes: 'col-xs-12'
+                    template: room_climate_info
+                    entity: {{ room["humidity"] }}
+                  {% endif %}
+                  {% if room["pressure"] %}
+                  - type: custom:button-card
+                    item_classes: 'col-xs-12'
+                    template: room_climate_info
+                    entity: {{ room["pressure"] }}
+                  {% endif %}
+              {% endif %}
+
+              {% if
+                    room["temperature"] or
+                    room["humidity"] or
+                    room["pressure"] or
+                    _dd_config.global["outside_temperature"] or
+                    _dd_config.global["outside_humidity"]
+              %}
+              #Start of graphs
+              - type: custom:dwains-flexbox-card
+                padding: true
+                items_classes: 'col-xs-6'
+                cards:
+                  #This room temp, humidity and pressure
+                  {% if 
+                        room["temperature"] or 
+                        room["humidity"] or
+                        room["pressure"]
+                  %}
+                  - type: vertical-stack
+                    cards:
+                      #Heading
+                      - type: custom:dwains-heading-card
+                        title: {{ _dd_trans.climate.this_room }}
+                      {% if room["temperature"] %}
+                      - type: sensor
+                        entity: {{ room["temperature"] }}
+                        name: {{ _dd_trans.climate.temperature }}
+                        graph: line
+                      {% endif %}
+                      {% if room["humidity"] %}
+                      - type: sensor
+                        entity: {{ room["humidity"] }}
+                        name: {{ _dd_trans.climate.humidity }}
+                        graph: line
+                      {% endif %}
+                      {% if room["pressure"] %}
+                      - type: sensor
+                        entity: {{ room["pressure"] }}
+                        graph: line
+                      {% endif %}
+                  {% endif %}
+
+                  #Outside temp and humidity
+                  {% if 
+                        _dd_config.global["outside_temperature"] or 
+                        _dd_config.global["outside_humidity"] 
+                  %}
+                  - type: vertical-stack
+                    cards:
+                      #Heading
+                      - type: custom:dwains-heading-card
+                        title: {{ _dd_trans.climate.outside }}
+                      {% if _dd_config.global["outside_temperature"] %}
+                      - type: sensor
+                        entity: {{ _dd_config.global["outside_temperature"] }}
+                        name: {{ _dd_trans.climate.temperature }}
+                        graph: line
+                      {% endif %}
+                      {% if _dd_config.global["outside_humidity"] %}
+                      - type: sensor
+                        entity: {{ _dd_config.global["outside_humidity"] }}
+                        name: {{ _dd_trans.climate.humidity }}
+                        graph: line
+                      {% endif %}      
+                  {% endif %}
+              {% endif %}
+{% endif %}
+{% endfor %}

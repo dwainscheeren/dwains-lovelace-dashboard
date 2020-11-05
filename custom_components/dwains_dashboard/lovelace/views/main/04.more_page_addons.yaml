@@ -1,0 +1,47 @@
+# dwains_dashboard
+
+#More_page addon view - dwains dashboard with custom pages with more_page configuration 
+{% if _dd_config.more_page and _dd_config.more_page["addons"]%}
+{% for addon in _dd_config.more_page["addons"] %}
+- title: {{ addon["name"] }}
+  path: more_page_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
+  panel: true
+  icon: {{ addon["icon"] }}
+  {% if addon["main_menu"] and addon["main_menu"]== 'true' %}
+  visible: true
+  {% else %}
+  visible: false
+  {% endif %}
+  cards:    
+    - type: custom:dwains-wrapper-card
+      css: | 
+        max-width: 1465px;
+        padding-bottom: 50px;
+        margin: 0 auto;
+        font-family: "Open Sans", sans-serif !important;
+      card:
+        type: vertical-stack
+        cards:
+          {% if addon["show_header"] != 'false' %}
+          #Header
+          - type: custom:dwains-header-card
+            title:  {{ addon["name"] }}
+            subtitle: {{ _dd_trans.more_page.title }}
+            navigation_path: more_page
+            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+          {% endif %}
+          #Start for a custom more_page page
+          - type: custom:dwains-wrapper-card
+            css: |
+              padding: 11px;
+            card:
+              type: vertical-stack
+              cards:
+                !include 
+                  - ../../../../../{{ addon["path"] }}
+                  - name: {{ addon["name"] }}
+                    {% if addon["data"] %}
+                    data: '{{ addon["data"]|tojson }}'
+                    {% endif %}
+{% endfor %}
+{% endif %}

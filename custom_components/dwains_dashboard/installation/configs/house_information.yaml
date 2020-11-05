@@ -1,0 +1,10 @@
+# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/house_information.html
+
+#house_information:
+  # favorites:
+  #   - entity: binary_sensor.doorbell_button
+  #     icon_on: mdi:bell
+  #     icon_off: mdi:bell-outline
+  #   - entity: binary_sensor.hallway_door_contact
+  #     icon_on: mdi:door-open
+  #     icon_off: mdi:door-closed

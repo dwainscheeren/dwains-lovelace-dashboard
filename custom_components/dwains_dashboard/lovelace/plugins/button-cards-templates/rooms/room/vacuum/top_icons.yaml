@@ -1,0 +1,10 @@
+room_vacuum_top_icons:
+  show_icon: true
+  show_name: false
+  size: 25px
+  styles:
+    card:
+      - box-shadow: none
+      - background: transparent
+    icon:
+      - color: '#509ef2'

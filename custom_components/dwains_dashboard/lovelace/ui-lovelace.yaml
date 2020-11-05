@@ -1,0 +1,15 @@
+# Start of the dwains dashboard ui-lovelace.yaml
+
+#Load all settings for Dwains Dashboard
+dwains_dashboard:
+  !include plugins/dwains_dashboard.yaml
+
+# Button Card Templates folder (https://github.com/custom-cards/button-card#Configuration-Templates)
+# These are the templates used to avoid too much duplicate code.      
+button_card_templates:
+  !include_dir_merge_named plugins/button-cards-templates
+
+# Start of main lovelace theme 
+background: var(--background-image)
+views:
+  !include_dir_merge_list views/

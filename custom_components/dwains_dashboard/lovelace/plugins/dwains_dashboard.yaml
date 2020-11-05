@@ -1,0 +1,31 @@
+# dwains_dashboard
+
+version: "{{ _dd_global.version }}"
+theme: "{{ _dd_global.theme }}"
+primary_color: "{{ _dd_global.primary_color }}"
+themes: '{{ _dd_global.themes }}'
+popup_cards:
+  camera.garage_camera:
+    title: test
+    card:
+      type: markdown
+      content: >
+        test  
+        {% for entity in _dd_customize["entity_popups"] %}
+          1{{ entity }}
+          2{{ _dd_customize["entity_popups"][entity] }}
+          3{{ _dd_customize["entity_popups"][entity]["popup_data"] }}
+          {% if _dd_customize["entity_popups"][entity]["popup_data"] %}
+          data: '{{ _dd_customize["entity_popups"][entity]["popup_data"]|tojson }}'
+          {% endif %}
+        {% endfor %}
+  {% for entity in _dd_customize["entity_popups"] %}
+  {{ entity }}:
+    title: {{ _dd_customize["entity_popups"][entity]["popup_title"] }}
+    card:
+      !include 
+        - ../../../../{{ _dd_customize["entity_popups"][entity]["popup_path"] }}
+        - entity: {{ entity }}
+          data: '{{ _dd_customize["entity_popups"][entity]["popup_data"]|tojson }}'
+  {% endfor %}
+  

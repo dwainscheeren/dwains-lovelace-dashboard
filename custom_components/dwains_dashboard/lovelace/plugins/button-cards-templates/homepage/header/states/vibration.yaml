@@ -1,0 +1,81 @@
+# dwains_dashboard
+
+header_states_vibration:
+  show_state: false
+  show_label: true
+  tap_action: 
+    action: navigate
+    navigation_path: devices_vibration
+  name: {{ _dd_trans.vibration.title_plural }}
+  icon: "{{ _dd_icons.vibration_on|default('mdi:vibrate') }}"
+  variables:
+    status: >
+      [[[
+        var vibrationOn = 0;
+
+        {% for room in _dd_config.rooms %}                        
+          //Do some things for the vibration sensors
+          {% if room["vibration"] %}
+            {% if room["vibration"].split('.')[0] != 'group' %}
+            //This room has only 1 vibration sensor
+              if(states['{{ room["vibration"] }}'] && states['{{ room["vibration"] }}'].state == 'on') {
+                vibrationOn++;
+              }
+            {% else %}
+            //This room has group of vibration sensors
+              if(states['{{ room["vibration"] }}']){
+                states['{{ room["vibration"] }}'].attributes['entity_id'].forEach(function(entity){
+                  if(states[entity] && states[entity].state == 'on'){
+                    vibrationOn++;
+                  }
+                });  
+              }
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        return vibrationOn;
+      ]]]
+  label: >
+    [[[
+      if(variables.status > 0){
+        var vibrationOn = variables.status;
+        return vibrationOn + ' ' + hass.localize('component.binary_sensor.state.vibration.on');
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i""n""l"'
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 40px
+      - height: 40px
+      - background: var(--dwains-theme-header-button-background)
+      - color: white
+      - border-radius: 100%
+    card:
+      - background: transparent
+      - box-shadow: none
+      - padding: 0%
+      - width: 61px
+      - display: >
+          [[[
+            if(variables.status && variables.status > 0){
+              //On devices
+              return 'block';
+            } else {
+              //No on devices
+              return 'none';
+            }
+          ]]]
+    label:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 11px
+      - line-height: 12px
+    name:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 13px

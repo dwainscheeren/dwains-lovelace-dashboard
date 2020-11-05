@@ -1,0 +1,13 @@
+partials_heading:
+  show_icon: false
+  styles:
+    card:
+      - box-shadow: none
+      - padding: 6px 0 0 0
+      - background: transparent
+    name:
+      - color: var(--dwains-theme-grey)
+      - font-weight: bold
+      - justify-self: start
+      - font-size: 14px
+      - padding-left: 1px

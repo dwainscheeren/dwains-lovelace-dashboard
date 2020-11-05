@@ -1,0 +1,33 @@
+# dwains_dashboard
+
+- path: cameras
+  icon: {{ _dd_icons.menu_cameras|default('mdi:cctv') }}
+  title: {{ _dd_trans.cameras.title }}
+  panel: true
+  cards:    
+    - type: custom:dwains-wrapper-card
+      css: | 
+        max-width: 1465px;
+        padding-bottom: 50px;
+        margin: 0 auto;
+        font-family: "Open Sans", sans-serif !important;
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - type: custom:dwains-header-card
+            title: {{ _dd_trans.cameras.title }}
+        
+          #Cameras
+          - type: custom:dwains-flexbox-card
+            items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
+            padding: true
+            cards:
+              {% for camera in _dd_config.cameras %}
+              - type: picture-entity
+                camera_view: live
+                entity: {{ camera["entity"] }}
+              {% else %}
+              - type: markdown
+                content: {{ _dd_trans.cameras.not_defined }}
+              {% endfor %}

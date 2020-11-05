@@ -1,0 +1,24 @@
+{
+  "name": "dwains-dashboard",
+  "private": true,
+  "version": "0.0.1",
+  "description": "dwains-dashboard",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch --mode=development",
+    "update-card-tools": "npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"
+  },
+  "keywords": [],
+  "author": "Dwain Scheeren",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "card-tools": "github:thomasloven/lovelace-card-tools",
+    "custom-card-helpers": "^1.3.9",
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2"
+  }
+}

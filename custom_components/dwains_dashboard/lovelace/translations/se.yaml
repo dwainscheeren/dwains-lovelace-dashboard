@@ -1,0 +1,113 @@
+# Translation by Ryssk
+# Adjusted for 1.3.0
+
+se:
+  greetings:
+    good_morning: 'God Morgon'
+    good_afternoon: 'God Eftermiddag'
+    good_evening: 'God Kväll'
+  
+  house_information:
+    title: 'Hus Info'
+    favorites: 'Favoriter'
+    activity: 'Aktivitet (Dörrar, Fönster, Rörelse)'
+
+  motion:
+    title: 'Rörelse'
+    title_plural: 'Rörelser'
+
+  light:
+    title_plural: 'Lampor'
+
+  door:
+    title_plural: 'Dörrar'
+
+  window:
+    title_plural: 'Fönster'
+
+  climate:
+    title: 'Temperatur'
+    title_plural: 'Temperaturer'
+    inside: 'Inne'
+    outside: 'Ute'
+    idle: 'Stand-by'
+    heating: 'Värmer till'
+    off_text: 'Av'
+    auto: 'Program'
+    heat: 'Värme'
+    cool: 'Kyla'
+    heat_cool: 'Värme/Kyla'
+    dry: 'Torr'
+    fan_only: 'Endast fläkt'
+    this_room: 'Detta rum'
+    temperature: 'Temperatur'
+    humidity: 'Fuktighet'
+
+  cover:
+    title_plural: 'Omslag'
+
+  device:
+    title_plural: 'Enheter'
+
+  safety:
+    title_plural: 'Safties'
+
+  media_player:
+    title_plural: 'Media spelare'
+
+  vacuum:
+    title: 'Dammsugare'
+    title_plural: 'Dammsugare'
+
+  plant:
+    title_plural: 'Växter'
+    
+  home:
+    title: 'Hemsida'
+
+  rooms:
+    title: 'Rum'
+
+  all_lights:
+    title: 'Alla lampor'
+
+  scenes:
+    title: 'Scener'
+    not_defined: 'Inga scener definerade'
+
+  cameras:
+    title: 'Kameror'
+    not_defined: 'Inga kameror definerade'
+
+  more_page:
+    title: 'Mer'
+    house_info: 'Hus info'
+    house_data: 
+      title: 'Hus data'
+      all_sensors: 'Alla sensorer'
+      all_batteries: 'Alla batterier'
+      config: 'Konfiguration'
+      developer_tools: 'Utvecklar verktyg'
+    settings:
+      title: 'Tema inställningar'
+      reload_configuration: 'Ladda om konfiguration'
+      theme_docs: 'Tema dokumentation'
+      support_paypal: 'Stödja/Donera med PayPal'
+      buy_coffee: 'Skänk mig en kaffe'
+      by: 'Av'
+      version: 'Version'
+      update_available: 'Uppdatering tillgänglig för Dwains Tema!'
+    more_page_addons: 'Fler tillägg'
+    
+  more_entities:
+    title: 'Fler enheter'
+
+  lock:
+    title_plural: 'Lås'
+
+  alarm:
+    title: 'Alarm'
+
+  vibration:
+    title: 'Vibration'
+    title_plural: "Vibration Sensors"

@@ -1,0 +1,25 @@
+# dwains_dashboard
+
+# popup for lock
+type: horizontal-stack
+cards:
+  - type: custom:button-card
+    template: homepage_room
+    entity: {{ entity }}
+    name: Lock
+    icon: mdi:lock
+    tap_action:
+      action: call-service
+      service: lock.lock 
+      service_data:
+        entity_id: {{ entity }}
+  - type: custom:button-card
+    template: homepage_room
+    entity: {{ entity }}
+    name: Unlock
+    icon: mdi:lock-open
+    tap_action:
+      action: call-service
+      service: lock.unlock
+      service_data:
+        entity_id: {{ entity }}

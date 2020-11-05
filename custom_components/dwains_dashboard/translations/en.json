@@ -1,0 +1,24 @@
+{
+    "config": {
+      "title": "Dwains Dashboard",
+      "abort": {
+        "single_instance_allowed": "Only a single configuration of Dwains Dashboard is allowed."
+      }
+    },
+    "options": {
+      "step": {
+        "init": {
+          "title": "Dwains Dashboard Settings",
+          "description": "",
+          "data": {
+            "language": "Language",
+            "sidepanel_icon": "Side panel icon",
+            "sidepanel_title": "Side panel title",
+            "theme": "Theme",
+            "primary_color": "Theme Primary color",
+            "customize_path": "Path to customize.yaml, type path as: customfolder/mycustomize.yaml"
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,42 @@
+room_device:
+  show_name: true
+  show_icon: true
+  show_state: true
+  show_label: false
+  show_last_changed: true
+  color: 'auto'
+  styles:
+    grid:
+      - grid-template-areas: '"i n""i s""i l"'
+      - grid-template-columns: 30% 70%
+      - grid-template-rows: min-content
+    card:
+      - background-color: var(--dwains-theme-primary)
+      - border-radius: 5px
+      - margin-bottom: 0px
+      - padding-top: 14px
+      - padding-bottom: 14px
+    icon:
+      - width: 55%
+    img_cell:
+      - width: 45px
+      - height: 45px
+      - border-radius: 100%
+    name:
+      - color: var(--dwains-theme-names)
+      - justify-self: start
+      - font-size: 15px
+      - align-self: center
+    state:
+      - justify-self: start
+      - align-self: left
+      - font-size: 13px
+      - color: var(--dwains-theme-grey)
+    label:
+      - justify-self: start
+      - align-self: left
+      - font-size: 12px
+      - color: var(--dwains-theme-grey)
+  double_tap_action:
+    action: toggle
+    haptic: heavy

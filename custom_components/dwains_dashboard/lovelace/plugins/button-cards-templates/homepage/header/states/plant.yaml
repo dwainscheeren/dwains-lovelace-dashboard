@@ -1,0 +1,81 @@
+# dwains_dashboard
+
+header_states_plant:
+  show_state: false
+  show_label: true
+  tap_action: 
+    action: navigate
+    navigation_path: devices_plants
+  name: {{ _dd_trans.plant.title_plural }}
+  icon: "{{ _dd_icons.plant|default('mdi:flower') }}"
+  variables:
+    status: >
+      [[[
+        var problemPlants = 0;
+
+        {% for room in _dd_config.rooms %}
+          //Do some things for the plants
+          {% if room["plant"] %}
+            {% if room["plant"].split('.')[0] != 'group' %}
+            //This room has only 1 plant
+              if(states['{{ room["plant"] }}'] && states['{{ room["plant"] }}'].state == 'problem') {
+                problemPlants++;
+              }
+            {% else %}
+            //This room has group of plants
+              if(states['{{ room["plant"] }}']){
+                states['{{ room["plant"] }}'].attributes['entity_id'].forEach(function(entity){
+                  if(states[entity] && states[entity].state == 'problem'){
+                    problemPlants++;
+                  }
+                });  
+              }
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        return problemPlants;
+      ]]]
+  label: >
+    [[[
+      if(variables.status > 0){
+        var problemPlants = variables.status;
+        return problemPlants + ' ' + hass.localize('component.binary_sensor.state.problem.on');
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i""n""l"'
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 40px
+      - height: 40px
+      - background: var(--dwains-theme-header-button-background)
+      - color: white
+      - border-radius: 100%
+    card:
+      - background: transparent
+      - box-shadow: none
+      - padding: 0%
+      - width: 61px
+      - display: >
+          [[[
+            if(variables.status && variables.status > 0){
+              //On plants
+              return 'block';
+            } else {
+              //No on plants
+              return 'none';
+            }
+          ]]]
+    label:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 11px
+      - line-height: 12px
+    name:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 13px

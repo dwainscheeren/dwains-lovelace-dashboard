@@ -1,7 +1,0 @@
-# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/scenes.html
-
-# scenes:
-#   - entity: scene.watching_tv
-#     icon: mdi:sofa
-#     icon_color: '#ffffff'
-#     background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'

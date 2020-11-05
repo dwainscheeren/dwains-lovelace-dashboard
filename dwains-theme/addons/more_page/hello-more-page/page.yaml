@@ -1,7 +1,0 @@
-# dwains_theme
-
-- type: markdown
-  content: >
-    This is a more page addon. It can also parse some data from the global more_page addons config.
-    Don't believe it? Here it is: {{ (data | fromjson)['some_data'] }}<br>
-    {{ (data | fromjson)['some_other_data'] }}

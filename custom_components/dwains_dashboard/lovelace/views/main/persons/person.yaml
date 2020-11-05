@@ -1,0 +1,106 @@
+# dwains_dashboard
+
+#Loop thought all the persons in the person section
+{% if _dd_config.persons %}
+{% for person in _dd_config.persons %}
+- title: {{ person["name"] }}
+  path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
+  panel: true
+  visible: false
+  cards:    
+    - type: custom:dwains-wrapper-card
+      css: | 
+        max-width: 1465px;
+        padding-bottom: 50px;
+        margin: 0 auto;
+        font-family: "Open Sans", sans-serif !important;
+      card:
+        type: vertical-stack
+        cards:
+          {% if person["more_entities"] and person["more_entities"]["entities"] %}
+          - type: custom:dwains-header-card
+            title: {{ _dd_trans.home.title }}
+            subtitle: {{ _dd_trans.home.title }}
+            navigation_path: home  
+            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+            card:
+              type: custom:button-card
+              template: person_header_more_entities
+              tap_action: 
+                action: navigate
+                navigation_path: >
+                  [[[
+                    let path = window.location.pathname;
+                    let sub_path = path.substring(0, path.lastIndexOf('/'));
+                    return sub_path + "/{{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities";
+                  ]]]
+          {% else %}
+          #Header
+          - type: custom:dwains-header-card
+            title:  {{ person["name"] }}
+            subtitle: {{ _dd_trans.home.title }}
+            navigation_path: home  
+            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+          {% endif %}
+          #Start for person content page
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12 col-sm-6 col-md-4 col-lg-4'
+            cards:
+              - type: custom:button-card
+                template: persons_person
+                entity: {{ person["track"] }}
+                name: {{ person["name"] }}
+                custom_fields:
+                  graph:
+                    card:
+                      type: history-graph
+                      entities:
+                        - entity: {{ person["track"] }}
+                      style: |
+                        ha-card {
+                          box-shadow: none;
+                          background-color: var(--dwains-theme-primary);
+                        }
+                        .content {
+                          padding: 10px 0 0 0;
+                        }
+              {% if person["page_entities"] and person["page_entities"]["entities"] %}
+              - type: custom:dwains-flexbox-card
+                items_classes: 'col-xs-6'
+                cards:
+                  {% for page_entity in person["page_entities"]["entities"] %}
+                  - type: custom:button-card
+                    entity: {{ page_entity["entity"] }}
+                    template: person_more_entity
+                    tap_action:
+                      action: more-info
+                  {% endfor %}
+              {% endif %}
+              {% if person["show_map"] != 'false' %}
+              - type: map
+                aspect_ratio: 16x9
+                hours_to_show: |
+                  {% if person["map_hours_to_show"] %}
+                    {{ person["map_hours_to_show"]|int }}
+                  {% else %}
+                    0
+                  {% endif %}
+                entities:
+                  - {{ person["track"] }}
+              {% endif %}
+              {% if person["addons"] %}
+              {% for addon in person["addons"] %}
+              - type: vertical-stack
+                item_classes: 'col-xs-12'
+                cards:
+                  !include 
+                    - ../../../../{{ addon["path"] }}
+                    - name: {{ addon["name"] }}
+                      {% if addon["data"] %}
+                      data: '{{ addon["data"]|tojson }}'
+                      {% endif %}
+              {% endfor %}
+              {% endif %}
+{% endfor %}
+{% endif %}

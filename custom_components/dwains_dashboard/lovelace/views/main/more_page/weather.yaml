@@ -1,0 +1,46 @@
+# dwains_dashboard
+
+{% if _dd_config.global["weather"] %}
+- title: {{ _dd_trans.weather.title }}
+  path: more_page_weather
+  panel: true
+  visible: false
+  cards:    
+    - type: custom:dwains-wrapper-card
+      css: | 
+        max-width: 1465px;
+        padding-bottom: 50px;
+        margin: 0 auto;
+        font-family: "Open Sans", sans-serif !important;
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - type: custom:dwains-header-card
+            title:  {{ _dd_trans.weather.title }}
+            subtitle: {{ _dd_trans.home.title }}
+            navigation_path: home  
+            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+          #Start of weather page
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-12'
+            cards:
+              - type: weather-forecast
+                entity: {{ _dd_config.global["weather"] }}
+
+          {% if _dd_config.global["weather_radar"] %}
+          - type: custom:dwains-flexbox-card
+            padding: true
+            items_classes: 'col-xs-6'
+            cards:
+              {% for radar in _dd_config.global["weather_radar"] %}
+
+              - entity: {{ radar }}
+                type: picture-entity
+                show_state: false
+              {% endfor %}
+
+          {% endif %}
+
+{% endif %}
