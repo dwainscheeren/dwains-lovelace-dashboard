@@ -46,6 +46,31 @@
                 tap_action: 
                   action: navigate
                   navigation_path: more_page_settings
+              # Put link to cameras page if its used but disabled for main menu
+              {% if _dd_config.cameras %}
+              {% if _dd_config.cameras["main_menu"] and _dd_config.cameras["main_menu"] == 'false' %}
+              - type: custom:button-card
+                template: more_page_main
+                icon: "{{ _dd_icons.menu_cameras|default('mdi:cctv') }}"
+                name: {{ _dd_trans.cameras.title }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: cameras
+              {% endif %}
+              {% endif %}
+              # Put link to scenes page if its used but disabled for main menu
+              {% if _dd_config.scenes %}
+              {% if _dd_config.scenes["main_menu"] and _dd_config.scenes["main_menu"] == 'false' %}
+              - type: custom:button-card
+                template: more_page_main
+                icon: "{{ _dd_icons.menu_scenes|default('mdi:play-circle-outline') }}"
+                name: {{ _dd_trans.scenes.title }}
+                tap_action: 
+                  action: navigate
+                  navigation_path: scenes
+              {% endif %}
+              {% endif %}
+
               {% if _dd_config.more_page and _dd_config.more_page["addons"] %}
               #heading Addons
               - type: custom:dwains-heading-card

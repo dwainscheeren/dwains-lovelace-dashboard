@@ -1,9 +1,14 @@
 # dwains_dashboard
-
+{% if _dd_config.scenes %}
 - title: {{ _dd_trans.scenes.title }}
   path: scenes
   icon: {{ _dd_icons.menu_scenes|default('mdi:play-circle-outline') }}
   panel: true
+  {% if _dd_config.scenes["main_menu"] and _dd_config.scenes["main_menu"] == 'false' %}
+  visible: false
+  {% else %}
+  visible: true
+  {% endif %}
   cards:    
     - type: custom:dwains-wrapper-card
       css: | 
@@ -23,7 +28,7 @@
             items_classes: 'col-xs-6 col-sm-4 col-md-3 col-lg-2'
             padding: true
             cards:
-            {% for scene in _dd_config.scenes %}
+            {% for scene in _dd_config.scenes["entities"] %}
               - type: custom:button-card
                 template: scene
                 entity: {{ scene["entity"] }}   
@@ -98,3 +103,4 @@
             - type: markdown
               content: {{ _dd_trans.scenes.not_defined }}
             {% endfor %}
+{% endif %}

@@ -1,111 +1,1002 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/main.js");
-/******/ })
-/************************************************************************/
-/******/ ({
+!function(e){var t={};function l(s){if(t[s])return t[s].exports;var i=t[s]={i:s,l:!1,exports:{}};return e[s].call(i.exports,i,i.exports,l),i.l=!0,i.exports}l.m=e,l.c=t,l.d=function(e,t,s){l.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:s})},l.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(e,t){if(1&t&&(e=l(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var s=Object.create(null);if(l.r(s),Object.defineProperty(s,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)l.d(s,i,function(t){return e[t]}.bind(null,i));return s},l.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return l.d(t,"a",t),t},l.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},l.p="",l(l.s=0)}([function(e,t,l){const s=[customElements.whenDefined("hui-masonry-view"),customElements.whenDefined("hc-lovelace")];Promise.race(s).then(()=>{const e=customElements.get("hui-masonry-view")?Object.getPrototypeOf(customElements.get("hui-masonry-view")):Object.getPrototypeOf(customElements.get("hc-lovelace")),t=e.prototype.html,s=e.prototype.css,i=window.loadCardHelpers()?window.loadCardHelpers():void 0,o=async(e,t)=>{if(i){return(await i).createCardElement(t)}const l=document.createElement(e);try{l.setConfig(t)}catch(l){return console.error(e,l),((e,t)=>o("hui-error-card",{type:"error",error:e,config:t}))(l.message,t)}return l};class r extends e{constructor(){super()}static get properties(){return{_config:{},_refCards:{}}}set hass(e){this._hass=e,!this._refCards&&this._config&&this.renderCard(),this._refCards&&this._refCards.forEach(t=>{t.hass=e})}setConfig(e){if(!(e||(e.cards||Array.isArray(e.cards))&&e.entities&&Array.isArray(e.entities)))throw new Error("Card config incorrect");this._config=e,this._hass&&this.renderCard()}renderCard(){const e=(this._config.entities||this._config.cards).map(e=>this.createCardElement(e));Promise.all(e).then(e=>{this._refCards=e})}async createCardElement(e){let t=e.type;t=t.startsWith("divider")?"hui-divider-row":t.startsWith("custom:")?t.substr("custom:".length):`hui-${t}-card`;const l=await o(t,e);return e.item_classes?l.className="item "+e.item_classes:this._config.items_classes?l.className="item "+this._config.items_classes:l.className="item",l.hass=this._hass,l.addEventListener("ll-rebuild",t=>{t.stopPropagation(),this.createCardElement(e).then(()=>{this.renderCard()})},{once:!0}),l}render(){return this._config&&this._hass&&this._refCards?(this._config.padding&&(e="padding"),t`
+        <div class="wrapper ${e}">
+          <div class="row">
+            ${this._refCards}
+          </div>
+        </div>
+      `):t``;var e}static get styles(){return[s`
+          /* I used flexbox grid (http://flexboxgrid.com/) for now, not sure if it's good for all browsers */
+          .container,
+          .container-fluid {
+            margin-right: auto;
+            margin-left: auto;
+          }
+          .container-fluid {
+            padding-right: 2rem;
+            padding-left: 2rem;
+          }
+          .row {
+            box-sizing: border-box;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -0.25rem;
+            margin-left: -0.25rem;
+          }
+          .row.reverse {
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: reverse;
+            -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+          }
+          .col.reverse {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+          }
+          .col-xs,
+          .col-xs-1,
+          .col-xs-10,
+          .col-xs-11,
+          .col-xs-12,
+          .col-xs-2,
+          .col-xs-3,
+          .col-xs-4,
+          .col-xs-5,
+          .col-xs-6,
+          .col-xs-7,
+          .col-xs-8,
+          .col-xs-9,
+          .col-xs-offset-0,
+          .col-xs-offset-1,
+          .col-xs-offset-10,
+          .col-xs-offset-11,
+          .col-xs-offset-12,
+          .col-xs-offset-2,
+          .col-xs-offset-3,
+          .col-xs-offset-4,
+          .col-xs-offset-5,
+          .col-xs-offset-6,
+          .col-xs-offset-7,
+          .col-xs-offset-8,
+          .col-xs-offset-9 {
+            box-sizing: border-box;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            padding-right: 0.25rem;
+            padding-left: 0.25rem;
+          }
+          .col-xs {
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+            max-width: 100%;
+          }
+          .col-xs-1 {
+            -ms-flex-preferred-size: 8.33333333%;
+            flex-basis: 8.33333333%;
+            max-width: 8.33333333%;
+          }
+          .col-xs-2 {
+            -ms-flex-preferred-size: 16.66666667%;
+            flex-basis: 16.66666667%;
+            max-width: 16.66666667%;
+          }
+          .col-xs-3 {
+            -ms-flex-preferred-size: 25%;
+            flex-basis: 25%;
+            max-width: 25%;
+          }
+          .col-xs-4 {
+            -ms-flex-preferred-size: 33.33333333%;
+            flex-basis: 33.33333333%;
+            max-width: 33.33333333%;
+          }
+          .col-xs-5 {
+            -ms-flex-preferred-size: 41.66666667%;
+            flex-basis: 41.66666667%;
+            max-width: 41.66666667%;
+          }
+          .col-xs-6 {
+            -ms-flex-preferred-size: 50%;
+            flex-basis: 50%;
+            max-width: 50%;
+          }
+          .col-xs-7 {
+            -ms-flex-preferred-size: 58.33333333%;
+            flex-basis: 58.33333333%;
+            max-width: 58.33333333%;
+          }
+          .col-xs-8 {
+            -ms-flex-preferred-size: 66.66666667%;
+            flex-basis: 66.66666667%;
+            max-width: 66.66666667%;
+          }
+          .col-xs-9 {
+            -ms-flex-preferred-size: 75%;
+            flex-basis: 75%;
+            max-width: 75%;
+          }
+          .col-xs-10 {
+            -ms-flex-preferred-size: 83.33333333%;
+            flex-basis: 83.33333333%;
+            max-width: 83.33333333%;
+          }
+          .col-xs-11 {
+            -ms-flex-preferred-size: 91.66666667%;
+            flex-basis: 91.66666667%;
+            max-width: 91.66666667%;
+          }
+          .col-xs-12 {
+            -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+            max-width: 100%;
+          }
+          .col-xs-offset-0 {
+            margin-left: 0;
+          }
+          .col-xs-offset-1 {
+            margin-left: 8.33333333%;
+          }
+          .col-xs-offset-2 {
+            margin-left: 16.66666667%;
+          }
+          .col-xs-offset-3 {
+            margin-left: 25%;
+          }
+          .col-xs-offset-4 {
+            margin-left: 33.33333333%;
+          }
+          .col-xs-offset-5 {
+            margin-left: 41.66666667%;
+          }
+          .col-xs-offset-6 {
+            margin-left: 50%;
+          }
+          .col-xs-offset-7 {
+            margin-left: 58.33333333%;
+          }
+          .col-xs-offset-8 {
+            margin-left: 66.66666667%;
+          }
+          .col-xs-offset-9 {
+            margin-left: 75%;
+          }
+          .col-xs-offset-10 {
+            margin-left: 83.33333333%;
+          }
+          .col-xs-offset-11 {
+            margin-left: 91.66666667%;
+          }
+          .start-xs {
+            -webkit-box-pack: start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            text-align: start;
+          }
+          .center-xs {
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            text-align: center;
+          }
+          .end-xs {
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            text-align: end;
+          }
+          .top-xs {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+          }
+          .middle-xs {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+          }
+          .bottom-xs {
+            -webkit-box-align: end;
+            -ms-flex-align: end;
+            align-items: flex-end;
+          }
+          .around-xs {
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+          }
+          .between-xs {
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+          }
+          .first-xs {
+            -webkit-box-ordinal-group: 0;
+            -ms-flex-order: -1;
+            order: -1;
+          }
+          .last-xs {
+            -webkit-box-ordinal-group: 2;
+            -ms-flex-order: 1;
+            order: 1;
+          }
+          @media only screen and (min-width: 48em) {
+            .container {
+              width: 49rem;
+            }
+            .col-sm,
+            .col-sm-1,
+            .col-sm-10,
+            .col-sm-11,
+            .col-sm-12,
+            .col-sm-2,
+            .col-sm-3,
+            .col-sm-4,
+            .col-sm-5,
+            .col-sm-6,
+            .col-sm-7,
+            .col-sm-8,
+            .col-sm-9,
+            .col-sm-offset-0,
+            .col-sm-offset-1,
+            .col-sm-offset-10,
+            .col-sm-offset-11,
+            .col-sm-offset-12,
+            .col-sm-offset-2,
+            .col-sm-offset-3,
+            .col-sm-offset-4,
+            .col-sm-offset-5,
+            .col-sm-offset-6,
+            .col-sm-offset-7,
+            .col-sm-offset-8,
+            .col-sm-offset-9 {
+              box-sizing: border-box;
+              -webkit-box-flex: 0;
+              -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+              padding-right: 0.25rem;
+              padding-left: 0.25rem;
+            }
+            .col-sm {
+              -webkit-box-flex: 1;
+              -ms-flex-positive: 1;
+              flex-grow: 1;
+              -ms-flex-preferred-size: 0;
+              flex-basis: 0;
+              max-width: 100%;
+            }
+            .col-sm-1 {
+              -ms-flex-preferred-size: 8.33333333%;
+              flex-basis: 8.33333333%;
+              max-width: 8.33333333%;
+            }
+            .col-sm-2 {
+              -ms-flex-preferred-size: 16.66666667%;
+              flex-basis: 16.66666667%;
+              max-width: 16.66666667%;
+            }
+            .col-sm-3 {
+              -ms-flex-preferred-size: 25%;
+              flex-basis: 25%;
+              max-width: 25%;
+            }
+            .col-sm-4 {
+              -ms-flex-preferred-size: 33.33333333%;
+              flex-basis: 33.33333333%;
+              max-width: 33.33333333%;
+            }
+            .col-sm-5 {
+              -ms-flex-preferred-size: 41.66666667%;
+              flex-basis: 41.66666667%;
+              max-width: 41.66666667%;
+            }
+            .col-sm-6 {
+              -ms-flex-preferred-size: 50%;
+              flex-basis: 50%;
+              max-width: 50%;
+            }
+            .col-sm-7 {
+              -ms-flex-preferred-size: 58.33333333%;
+              flex-basis: 58.33333333%;
+              max-width: 58.33333333%;
+            }
+            .col-sm-8 {
+              -ms-flex-preferred-size: 66.66666667%;
+              flex-basis: 66.66666667%;
+              max-width: 66.66666667%;
+            }
+            .col-sm-9 {
+              -ms-flex-preferred-size: 75%;
+              flex-basis: 75%;
+              max-width: 75%;
+            }
+            .col-sm-10 {
+              -ms-flex-preferred-size: 83.33333333%;
+              flex-basis: 83.33333333%;
+              max-width: 83.33333333%;
+            }
+            .col-sm-11 {
+              -ms-flex-preferred-size: 91.66666667%;
+              flex-basis: 91.66666667%;
+              max-width: 91.66666667%;
+            }
+            .col-sm-12 {
+              -ms-flex-preferred-size: 100%;
+              flex-basis: 100%;
+              max-width: 100%;
+            }
+            .col-sm-offset-0 {
+              margin-left: 0;
+            }
+            .col-sm-offset-1 {
+              margin-left: 8.33333333%;
+            }
+            .col-sm-offset-2 {
+              margin-left: 16.66666667%;
+            }
+            .col-sm-offset-3 {
+              margin-left: 25%;
+            }
+            .col-sm-offset-4 {
+              margin-left: 33.33333333%;
+            }
+            .col-sm-offset-5 {
+              margin-left: 41.66666667%;
+            }
+            .col-sm-offset-6 {
+              margin-left: 50%;
+            }
+            .col-sm-offset-7 {
+              margin-left: 58.33333333%;
+            }
+            .col-sm-offset-8 {
+              margin-left: 66.66666667%;
+            }
+            .col-sm-offset-9 {
+              margin-left: 75%;
+            }
+            .col-sm-offset-10 {
+              margin-left: 83.33333333%;
+            }
+            .col-sm-offset-11 {
+              margin-left: 91.66666667%;
+            }
+            .start-sm {
+              -webkit-box-pack: start;
+              -ms-flex-pack: start;
+              justify-content: flex-start;
+              text-align: start;
+            }
+            .center-sm {
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              justify-content: center;
+              text-align: center;
+            }
+            .end-sm {
+              -webkit-box-pack: end;
+              -ms-flex-pack: end;
+              justify-content: flex-end;
+              text-align: end;
+            }
+            .top-sm {
+              -webkit-box-align: start;
+              -ms-flex-align: start;
+              align-items: flex-start;
+            }
+            .middle-sm {
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              align-items: center;
+            }
+            .bottom-sm {
+              -webkit-box-align: end;
+              -ms-flex-align: end;
+              align-items: flex-end;
+            }
+            .around-sm {
+              -ms-flex-pack: distribute;
+              justify-content: space-around;
+            }
+            .between-sm {
+              -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+              justify-content: space-between;
+            }
+            .first-sm {
+              -webkit-box-ordinal-group: 0;
+              -ms-flex-order: -1;
+              order: -1;
+            }
+            .last-sm {
+              -webkit-box-ordinal-group: 2;
+              -ms-flex-order: 1;
+              order: 1;
+            }
+          }
+          @media only screen and (min-width: 64em) {
+            .container {
+              width: 65rem;
+            }
+            .col-md,
+            .col-md-1,
+            .col-md-10,
+            .col-md-11,
+            .col-md-12,
+            .col-md-2,
+            .col-md-3,
+            .col-md-4,
+            .col-md-5,
+            .col-md-6,
+            .col-md-7,
+            .col-md-8,
+            .col-md-9,
+            .col-md-offset-0,
+            .col-md-offset-1,
+            .col-md-offset-10,
+            .col-md-offset-11,
+            .col-md-offset-12,
+            .col-md-offset-2,
+            .col-md-offset-3,
+            .col-md-offset-4,
+            .col-md-offset-5,
+            .col-md-offset-6,
+            .col-md-offset-7,
+            .col-md-offset-8,
+            .col-md-offset-9 {
+              box-sizing: border-box;
+              -webkit-box-flex: 0;
+              -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+              padding-right: 0.25rem;
+              padding-left: 0.25rem;
+            }
+            .col-md {
+              -webkit-box-flex: 1;
+              -ms-flex-positive: 1;
+              flex-grow: 1;
+              -ms-flex-preferred-size: 0;
+              flex-basis: 0;
+              max-width: 100%;
+            }
+            .col-md-1 {
+              -ms-flex-preferred-size: 8.33333333%;
+              flex-basis: 8.33333333%;
+              max-width: 8.33333333%;
+            }
+            .col-md-2 {
+              -ms-flex-preferred-size: 16.66666667%;
+              flex-basis: 16.66666667%;
+              max-width: 16.66666667%;
+            }
+            .col-md-3 {
+              -ms-flex-preferred-size: 25%;
+              flex-basis: 25%;
+              max-width: 25%;
+            }
+            .col-md-4 {
+              -ms-flex-preferred-size: 33.33333333%;
+              flex-basis: 33.33333333%;
+              max-width: 33.33333333%;
+            }
+            .col-md-5 {
+              -ms-flex-preferred-size: 41.66666667%;
+              flex-basis: 41.66666667%;
+              max-width: 41.66666667%;
+            }
+            .col-md-6 {
+              -ms-flex-preferred-size: 50%;
+              flex-basis: 50%;
+              max-width: 50%;
+            }
+            .col-md-7 {
+              -ms-flex-preferred-size: 58.33333333%;
+              flex-basis: 58.33333333%;
+              max-width: 58.33333333%;
+            }
+            .col-md-8 {
+              -ms-flex-preferred-size: 66.66666667%;
+              flex-basis: 66.66666667%;
+              max-width: 66.66666667%;
+            }
+            .col-md-9 {
+              -ms-flex-preferred-size: 75%;
+              flex-basis: 75%;
+              max-width: 75%;
+            }
+            .col-md-10 {
+              -ms-flex-preferred-size: 83.33333333%;
+              flex-basis: 83.33333333%;
+              max-width: 83.33333333%;
+            }
+            .col-md-11 {
+              -ms-flex-preferred-size: 91.66666667%;
+              flex-basis: 91.66666667%;
+              max-width: 91.66666667%;
+            }
+            .col-md-12 {
+              -ms-flex-preferred-size: 100%;
+              flex-basis: 100%;
+              max-width: 100%;
+            }
+            .col-md-offset-0 {
+              margin-left: 0;
+            }
+            .col-md-offset-1 {
+              margin-left: 8.33333333%;
+            }
+            .col-md-offset-2 {
+              margin-left: 16.66666667%;
+            }
+            .col-md-offset-3 {
+              margin-left: 25%;
+            }
+            .col-md-offset-4 {
+              margin-left: 33.33333333%;
+            }
+            .col-md-offset-5 {
+              margin-left: 41.66666667%;
+            }
+            .col-md-offset-6 {
+              margin-left: 50%;
+            }
+            .col-md-offset-7 {
+              margin-left: 58.33333333%;
+            }
+            .col-md-offset-8 {
+              margin-left: 66.66666667%;
+            }
+            .col-md-offset-9 {
+              margin-left: 75%;
+            }
+            .col-md-offset-10 {
+              margin-left: 83.33333333%;
+            }
+            .col-md-offset-11 {
+              margin-left: 91.66666667%;
+            }
+            .start-md {
+              -webkit-box-pack: start;
+              -ms-flex-pack: start;
+              justify-content: flex-start;
+              text-align: start;
+            }
+            .center-md {
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              justify-content: center;
+              text-align: center;
+            }
+            .end-md {
+              -webkit-box-pack: end;
+              -ms-flex-pack: end;
+              justify-content: flex-end;
+              text-align: end;
+            }
+            .top-md {
+              -webkit-box-align: start;
+              -ms-flex-align: start;
+              align-items: flex-start;
+            }
+            .middle-md {
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              align-items: center;
+            }
+            .bottom-md {
+              -webkit-box-align: end;
+              -ms-flex-align: end;
+              align-items: flex-end;
+            }
+            .around-md {
+              -ms-flex-pack: distribute;
+              justify-content: space-around;
+            }
+            .between-md {
+              -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+              justify-content: space-between;
+            }
+            .first-md {
+              -webkit-box-ordinal-group: 0;
+              -ms-flex-order: -1;
+              order: -1;
+            }
+            .last-md {
+              -webkit-box-ordinal-group: 2;
+              -ms-flex-order: 1;
+              order: 1;
+            }
+          }
+          @media only screen and (min-width: 75em) {
+            .container {
+              width: 76rem;
+            }
+            .col-lg,
+            .col-lg-1,
+            .col-lg-10,
+            .col-lg-11,
+            .col-lg-12,
+            .col-lg-2,
+            .col-lg-3,
+            .col-lg-4,
+            .col-lg-5,
+            .col-lg-6,
+            .col-lg-7,
+            .col-lg-8,
+            .col-lg-9,
+            .col-lg-offset-0,
+            .col-lg-offset-1,
+            .col-lg-offset-10,
+            .col-lg-offset-11,
+            .col-lg-offset-12,
+            .col-lg-offset-2,
+            .col-lg-offset-3,
+            .col-lg-offset-4,
+            .col-lg-offset-5,
+            .col-lg-offset-6,
+            .col-lg-offset-7,
+            .col-lg-offset-8,
+            .col-lg-offset-9 {
+              box-sizing: border-box;
+              -webkit-box-flex: 0;
+              -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+              padding-right: 0.25rem;
+              padding-left: 0.25rem;
+            }
+            .col-lg {
+              -webkit-box-flex: 1;
+              -ms-flex-positive: 1;
+              flex-grow: 1;
+              -ms-flex-preferred-size: 0;
+              flex-basis: 0;
+              max-width: 100%;
+            }
+            .col-lg-1 {
+              -ms-flex-preferred-size: 8.33333333%;
+              flex-basis: 8.33333333%;
+              max-width: 8.33333333%;
+            }
+            .col-lg-2 {
+              -ms-flex-preferred-size: 16.66666667%;
+              flex-basis: 16.66666667%;
+              max-width: 16.66666667%;
+            }
+            .col-lg-3 {
+              -ms-flex-preferred-size: 25%;
+              flex-basis: 25%;
+              max-width: 25%;
+            }
+            .col-lg-4 {
+              -ms-flex-preferred-size: 33.33333333%;
+              flex-basis: 33.33333333%;
+              max-width: 33.33333333%;
+            }
+            .col-lg-5 {
+              -ms-flex-preferred-size: 41.66666667%;
+              flex-basis: 41.66666667%;
+              max-width: 41.66666667%;
+            }
+            .col-lg-6 {
+              -ms-flex-preferred-size: 50%;
+              flex-basis: 50%;
+              max-width: 50%;
+            }
+            .col-lg-7 {
+              -ms-flex-preferred-size: 58.33333333%;
+              flex-basis: 58.33333333%;
+              max-width: 58.33333333%;
+            }
+            .col-lg-8 {
+              -ms-flex-preferred-size: 66.66666667%;
+              flex-basis: 66.66666667%;
+              max-width: 66.66666667%;
+            }
+            .col-lg-9 {
+              -ms-flex-preferred-size: 75%;
+              flex-basis: 75%;
+              max-width: 75%;
+            }
+            .col-lg-10 {
+              -ms-flex-preferred-size: 83.33333333%;
+              flex-basis: 83.33333333%;
+              max-width: 83.33333333%;
+            }
+            .col-lg-11 {
+              -ms-flex-preferred-size: 91.66666667%;
+              flex-basis: 91.66666667%;
+              max-width: 91.66666667%;
+            }
+            .col-lg-12 {
+              -ms-flex-preferred-size: 100%;
+              flex-basis: 100%;
+              max-width: 100%;
+            }
+            .col-lg-offset-0 {
+              margin-left: 0;
+            }
+            .col-lg-offset-1 {
+              margin-left: 8.33333333%;
+            }
+            .col-lg-offset-2 {
+              margin-left: 16.66666667%;
+            }
+            .col-lg-offset-3 {
+              margin-left: 25%;
+            }
+            .col-lg-offset-4 {
+              margin-left: 33.33333333%;
+            }
+            .col-lg-offset-5 {
+              margin-left: 41.66666667%;
+            }
+            .col-lg-offset-6 {
+              margin-left: 50%;
+            }
+            .col-lg-offset-7 {
+              margin-left: 58.33333333%;
+            }
+            .col-lg-offset-8 {
+              margin-left: 66.66666667%;
+            }
+            .col-lg-offset-9 {
+              margin-left: 75%;
+            }
+            .col-lg-offset-10 {
+              margin-left: 83.33333333%;
+            }
+            .col-lg-offset-11 {
+              margin-left: 91.66666667%;
+            }
+            .start-lg {
+              -webkit-box-pack: start;
+              -ms-flex-pack: start;
+              justify-content: flex-start;
+              text-align: start;
+            }
+            .center-lg {
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              justify-content: center;
+              text-align: center;
+            }
+            .end-lg {
+              -webkit-box-pack: end;
+              -ms-flex-pack: end;
+              justify-content: flex-end;
+              text-align: end;
+            }
+            .top-lg {
+              -webkit-box-align: start;
+              -ms-flex-align: start;
+              align-items: flex-start;
+            }
+            .middle-lg {
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              align-items: center;
+            }
+            .bottom-lg {
+              -webkit-box-align: end;
+              -ms-flex-align: end;
+              align-items: flex-end;
+            }
+            .around-lg {
+              -ms-flex-pack: distribute;
+              justify-content: space-around;
+            }
+            .between-lg {
+              -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+              justify-content: space-between;
+            }
+            .first-lg {
+              -webkit-box-ordinal-group: 0;
+              -ms-flex-order: -1;
+              order: -1;
+            }
+            .last-lg {
+              -webkit-box-ordinal-group: 2;
+              -ms-flex-order: 1;
+              order: 1;
+            }
+          }
 
-/***/ "./package.json":
-/*!**********************!*\
-  !*** ./package.json ***!
-  \**********************/
-/*! exports provided: name, private, version, description, scripts, keywords, author, license, devDependencies, dependencies, default */
-/***/ (function(module) {
+          .item {
+            margin-bottom: 0.5rem;
+          }
 
-eval("module.exports = JSON.parse(\"{\\\"name\\\":\\\"dwains-flexbox-card\\\",\\\"private\\\":true,\\\"version\\\":\\\"1.0.3\\\",\\\"description\\\":\\\"dwains-flexbox-card\\\",\\\"scripts\\\":{\\\"build\\\":\\\"webpack\\\",\\\"watch\\\":\\\"webpack --watch --mode=development\\\",\\\"update-card-tools\\\":\\\"npm uninstall card-tools && npm install thomasloven/lovelace-card-tools\\\"},\\\"keywords\\\":[],\\\"author\\\":\\\"Dwain Scheeren\\\",\\\"license\\\":\\\"MIT\\\",\\\"devDependencies\\\":{\\\"webpack\\\":\\\"^4.42.1\\\",\\\"webpack-cli\\\":\\\"^3.3.11\\\"},\\\"dependencies\\\":{\\\"card-tools\\\":\\\"github:thomasloven/lovelace-card-tools\\\"}}\");\n\n//# sourceURL=webpack:///./package.json?");
+          .wrapper {
+            overflow: hidden;
+            padding: 0px;
+          }
+          .wrapper.padding {
+            padding: 11px;
+          }
+          .row {
+            overflow: hidden;
+            width: auto;
+          }
 
-/***/ }),
+          .d-none {
+            display: none !important;
+          }
+          .d-inline {
+            display: inline !important;
+          }
+          .d-inline-block {
+            display: inline-block !important;
+          }
+          .d-block {
+            display: block !important;
+          }
+          .d-table {
+            display: table !important;
+          }
+          .d-table-row {
+            display: table-row !important;
+          }
+          .d-table-cell {
+            display: table-cell !important;
+          }
+          .d-flex {
+            display: -webkit-box !important;
+            display: -ms-flexbox !important;
+            display: flex !important;
+          }
+          .d-inline-flex {
+            display: -webkit-inline-box !important;
+            display: -ms-inline-flexbox !important;
+            display: inline-flex !important;
+          }
 
-/***/ "./src/main.js":
-/*!*********************!*\
-  !*** ./src/main.js ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+          @media (min-width: 576px) {
+            .d-sm-none {
+              display: none !important;
+            }
+            .d-sm-inline {
+              display: inline !important;
+            }
+            .d-sm-inline-block {
+              display: inline-block !important;
+            }
+            .d-sm-block {
+              display: block !important;
+            }
+            .d-sm-table {
+              display: table !important;
+            }
+            .d-sm-table-row {
+              display: table-row !important;
+            }
+            .d-sm-table-cell {
+              display: table-cell !important;
+            }
+            .d-sm-flex {
+              display: -webkit-box !important;
+              display: -ms-flexbox !important;
+              display: flex !important;
+            }
+            .d-sm-inline-flex {
+              display: -webkit-inline-box !important;
+              display: -ms-inline-flexbox !important;
+              display: inline-flex !important;
+            }
+          }
 
-eval("const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];\r\nPromise.race(bases).then(() => {\r\n\r\n  const LitElement = customElements.get('hui-masonry-view')\r\n    ? Object.getPrototypeOf(customElements.get('hui-masonry-view'))\r\n    : Object.getPrototypeOf(customElements.get('hc-lovelace'));\r\n\r\n  const html = LitElement.prototype.html;\r\n\r\n  const css = LitElement.prototype.css;\r\n\r\n\r\n  const createError = (error, config) => {\r\n    return createThing(\"hui-error-card\", {\r\n      type: \"error\",\r\n      error,\r\n      config,\r\n    });\r\n  };\r\n\r\n  const cardHelpers = window.loadCardHelpers()\r\n    ? window.loadCardHelpers()\r\n    : undefined;\r\n\r\n  const createThing = async (tag, config) => {\r\n    if (cardHelpers) {\r\n      const cardHelper = await cardHelpers;\r\n      return cardHelper.createCardElement(config);\r\n    }\r\n\r\n    const element = document.createElement(tag);\r\n\r\n    try {\r\n      element.setConfig(config);\r\n    } catch (err) {\r\n      console.error(tag, err);\r\n      return createError(err.message, config);\r\n    }\r\n\r\n    return element;\r\n  };\r\n\r\n  class DwainsFlexboxCard extends LitElement {\r\n    constructor() {\r\n      super();\r\n    }\r\n\r\n    static get properties() {\r\n      return {\r\n        _config: {},\r\n        _refCards: {},\r\n      };\r\n    }\r\n\r\n    set hass(hass) {\r\n      this._hass = hass;\r\n      if (!this._refCards && this._config) {\r\n        this.renderCard();\r\n      }\r\n      if (this._refCards) {\r\n        this._refCards.forEach((card) => {\r\n          card.hass = hass;\r\n        });\r\n      }\r\n    }\r\n\r\n\r\n    setConfig(config) {\r\n      if (\r\n        !config &&\r\n        ((!config.cards && !Array.isArray(config.cards)) ||\r\n          !config.entities ||\r\n          !Array.isArray(config.entities))\r\n      ) {\r\n        throw new Error(\"Card config incorrect\");\r\n      }\r\n\r\n      this._config = config;\r\n      //this._refCards = [];\r\n\r\n      if (this._hass) {\r\n        this.renderCard();\r\n      }\r\n    }\r\n\r\n    renderCard() {\r\n      const config = this._config.entities || this._config.cards;\r\n\r\n      const promises = config.map((config) => this.createCardElement(config));\r\n      Promise.all(promises).then((cards) => {\r\n        this._refCards = cards;\r\n      });\r\n    }\r\n\r\n    async createCardElement(cardConfig) {\r\n      let tag = cardConfig.type;\r\n\r\n      if (tag.startsWith(\"divider\")) {\r\n        tag = `hui-divider-row`;\r\n      } else if (tag.startsWith(\"custom:\")) {\r\n        tag = tag.substr(\"custom:\".length);\r\n      } else {\r\n        tag = `hui-${tag}-card`;\r\n      }\r\n\r\n      const element = await createThing(tag, cardConfig);\r\n\r\n      if (cardConfig.item_classes) {\r\n        element.className = \"item \" + cardConfig.item_classes;\r\n      } else {\r\n        if (this._config.items_classes) {\r\n          element.className = \"item \" + this._config.items_classes;\r\n        } else {\r\n          element.className = \"item\";\r\n        }\r\n      }\r\n\r\n      element.hass = this._hass;\r\n\r\n      element.addEventListener(\r\n        \"ll-rebuild\",\r\n        (ev) => {\r\n          ev.stopPropagation();\r\n          this.createCardElement(cardConfig).then(() => {\r\n            this.renderCard();\r\n          });\r\n        },\r\n        { once: true }\r\n      );\r\n\r\n      return element;\r\n    }\r\n\r\n    render() {\r\n      if (!this._config || !this._hass || !this._refCards) {\r\n        return html``;\r\n      }\r\n\r\n      var padding;\r\n      if (this._config.padding) {\r\n        padding = \"padding\";\r\n      }\r\n\r\n      return html`\r\n        <div class=\"wrapper ${padding}\">\r\n          <div class=\"row\">\r\n            ${this._refCards}\r\n          </div>\r\n        </div>\r\n      `;\r\n    }\r\n\r\n    static get styles() {\r\n      return [\r\n        css`\r\n          /* I used flexbox grid (http://flexboxgrid.com/) for now, not sure if it's good for all browsers */\r\n          .container,\r\n          .container-fluid {\r\n            margin-right: auto;\r\n            margin-left: auto;\r\n          }\r\n          .container-fluid {\r\n            padding-right: 2rem;\r\n            padding-left: 2rem;\r\n          }\r\n          .row {\r\n            box-sizing: border-box;\r\n            display: -webkit-box;\r\n            display: -ms-flexbox;\r\n            display: flex;\r\n            -webkit-box-flex: 0;\r\n            -ms-flex: 0 1 auto;\r\n            flex: 0 1 auto;\r\n            -webkit-box-orient: horizontal;\r\n            -webkit-box-direction: normal;\r\n            -ms-flex-direction: row;\r\n            flex-direction: row;\r\n            -ms-flex-wrap: wrap;\r\n            flex-wrap: wrap;\r\n            margin-right: -0.25rem;\r\n            margin-left: -0.25rem;\r\n          }\r\n          .row.reverse {\r\n            -webkit-box-orient: horizontal;\r\n            -webkit-box-direction: reverse;\r\n            -ms-flex-direction: row-reverse;\r\n            flex-direction: row-reverse;\r\n          }\r\n          .col.reverse {\r\n            -webkit-box-orient: vertical;\r\n            -webkit-box-direction: reverse;\r\n            -ms-flex-direction: column-reverse;\r\n            flex-direction: column-reverse;\r\n          }\r\n          .col-xs,\r\n          .col-xs-1,\r\n          .col-xs-10,\r\n          .col-xs-11,\r\n          .col-xs-12,\r\n          .col-xs-2,\r\n          .col-xs-3,\r\n          .col-xs-4,\r\n          .col-xs-5,\r\n          .col-xs-6,\r\n          .col-xs-7,\r\n          .col-xs-8,\r\n          .col-xs-9,\r\n          .col-xs-offset-0,\r\n          .col-xs-offset-1,\r\n          .col-xs-offset-10,\r\n          .col-xs-offset-11,\r\n          .col-xs-offset-12,\r\n          .col-xs-offset-2,\r\n          .col-xs-offset-3,\r\n          .col-xs-offset-4,\r\n          .col-xs-offset-5,\r\n          .col-xs-offset-6,\r\n          .col-xs-offset-7,\r\n          .col-xs-offset-8,\r\n          .col-xs-offset-9 {\r\n            box-sizing: border-box;\r\n            -webkit-box-flex: 0;\r\n            -ms-flex: 0 0 auto;\r\n            flex: 0 0 auto;\r\n            padding-right: 0.25rem;\r\n            padding-left: 0.25rem;\r\n          }\r\n          .col-xs {\r\n            -webkit-box-flex: 1;\r\n            -ms-flex-positive: 1;\r\n            flex-grow: 1;\r\n            -ms-flex-preferred-size: 0;\r\n            flex-basis: 0;\r\n            max-width: 100%;\r\n          }\r\n          .col-xs-1 {\r\n            -ms-flex-preferred-size: 8.33333333%;\r\n            flex-basis: 8.33333333%;\r\n            max-width: 8.33333333%;\r\n          }\r\n          .col-xs-2 {\r\n            -ms-flex-preferred-size: 16.66666667%;\r\n            flex-basis: 16.66666667%;\r\n            max-width: 16.66666667%;\r\n          }\r\n          .col-xs-3 {\r\n            -ms-flex-preferred-size: 25%;\r\n            flex-basis: 25%;\r\n            max-width: 25%;\r\n          }\r\n          .col-xs-4 {\r\n            -ms-flex-preferred-size: 33.33333333%;\r\n            flex-basis: 33.33333333%;\r\n            max-width: 33.33333333%;\r\n          }\r\n          .col-xs-5 {\r\n            -ms-flex-preferred-size: 41.66666667%;\r\n            flex-basis: 41.66666667%;\r\n            max-width: 41.66666667%;\r\n          }\r\n          .col-xs-6 {\r\n            -ms-flex-preferred-size: 50%;\r\n            flex-basis: 50%;\r\n            max-width: 50%;\r\n          }\r\n          .col-xs-7 {\r\n            -ms-flex-preferred-size: 58.33333333%;\r\n            flex-basis: 58.33333333%;\r\n            max-width: 58.33333333%;\r\n          }\r\n          .col-xs-8 {\r\n            -ms-flex-preferred-size: 66.66666667%;\r\n            flex-basis: 66.66666667%;\r\n            max-width: 66.66666667%;\r\n          }\r\n          .col-xs-9 {\r\n            -ms-flex-preferred-size: 75%;\r\n            flex-basis: 75%;\r\n            max-width: 75%;\r\n          }\r\n          .col-xs-10 {\r\n            -ms-flex-preferred-size: 83.33333333%;\r\n            flex-basis: 83.33333333%;\r\n            max-width: 83.33333333%;\r\n          }\r\n          .col-xs-11 {\r\n            -ms-flex-preferred-size: 91.66666667%;\r\n            flex-basis: 91.66666667%;\r\n            max-width: 91.66666667%;\r\n          }\r\n          .col-xs-12 {\r\n            -ms-flex-preferred-size: 100%;\r\n            flex-basis: 100%;\r\n            max-width: 100%;\r\n          }\r\n          .col-xs-offset-0 {\r\n            margin-left: 0;\r\n          }\r\n          .col-xs-offset-1 {\r\n            margin-left: 8.33333333%;\r\n          }\r\n          .col-xs-offset-2 {\r\n            margin-left: 16.66666667%;\r\n          }\r\n          .col-xs-offset-3 {\r\n            margin-left: 25%;\r\n          }\r\n          .col-xs-offset-4 {\r\n            margin-left: 33.33333333%;\r\n          }\r\n          .col-xs-offset-5 {\r\n            margin-left: 41.66666667%;\r\n          }\r\n          .col-xs-offset-6 {\r\n            margin-left: 50%;\r\n          }\r\n          .col-xs-offset-7 {\r\n            margin-left: 58.33333333%;\r\n          }\r\n          .col-xs-offset-8 {\r\n            margin-left: 66.66666667%;\r\n          }\r\n          .col-xs-offset-9 {\r\n            margin-left: 75%;\r\n          }\r\n          .col-xs-offset-10 {\r\n            margin-left: 83.33333333%;\r\n          }\r\n          .col-xs-offset-11 {\r\n            margin-left: 91.66666667%;\r\n          }\r\n          .start-xs {\r\n            -webkit-box-pack: start;\r\n            -ms-flex-pack: start;\r\n            justify-content: flex-start;\r\n            text-align: start;\r\n          }\r\n          .center-xs {\r\n            -webkit-box-pack: center;\r\n            -ms-flex-pack: center;\r\n            justify-content: center;\r\n            text-align: center;\r\n          }\r\n          .end-xs {\r\n            -webkit-box-pack: end;\r\n            -ms-flex-pack: end;\r\n            justify-content: flex-end;\r\n            text-align: end;\r\n          }\r\n          .top-xs {\r\n            -webkit-box-align: start;\r\n            -ms-flex-align: start;\r\n            align-items: flex-start;\r\n          }\r\n          .middle-xs {\r\n            -webkit-box-align: center;\r\n            -ms-flex-align: center;\r\n            align-items: center;\r\n          }\r\n          .bottom-xs {\r\n            -webkit-box-align: end;\r\n            -ms-flex-align: end;\r\n            align-items: flex-end;\r\n          }\r\n          .around-xs {\r\n            -ms-flex-pack: distribute;\r\n            justify-content: space-around;\r\n          }\r\n          .between-xs {\r\n            -webkit-box-pack: justify;\r\n            -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n          }\r\n          .first-xs {\r\n            -webkit-box-ordinal-group: 0;\r\n            -ms-flex-order: -1;\r\n            order: -1;\r\n          }\r\n          .last-xs {\r\n            -webkit-box-ordinal-group: 2;\r\n            -ms-flex-order: 1;\r\n            order: 1;\r\n          }\r\n          @media only screen and (min-width: 48em) {\r\n            .container {\r\n              width: 49rem;\r\n            }\r\n            .col-sm,\r\n            .col-sm-1,\r\n            .col-sm-10,\r\n            .col-sm-11,\r\n            .col-sm-12,\r\n            .col-sm-2,\r\n            .col-sm-3,\r\n            .col-sm-4,\r\n            .col-sm-5,\r\n            .col-sm-6,\r\n            .col-sm-7,\r\n            .col-sm-8,\r\n            .col-sm-9,\r\n            .col-sm-offset-0,\r\n            .col-sm-offset-1,\r\n            .col-sm-offset-10,\r\n            .col-sm-offset-11,\r\n            .col-sm-offset-12,\r\n            .col-sm-offset-2,\r\n            .col-sm-offset-3,\r\n            .col-sm-offset-4,\r\n            .col-sm-offset-5,\r\n            .col-sm-offset-6,\r\n            .col-sm-offset-7,\r\n            .col-sm-offset-8,\r\n            .col-sm-offset-9 {\r\n              box-sizing: border-box;\r\n              -webkit-box-flex: 0;\r\n              -ms-flex: 0 0 auto;\r\n              flex: 0 0 auto;\r\n              padding-right: 0.25rem;\r\n              padding-left: 0.25rem;\r\n            }\r\n            .col-sm {\r\n              -webkit-box-flex: 1;\r\n              -ms-flex-positive: 1;\r\n              flex-grow: 1;\r\n              -ms-flex-preferred-size: 0;\r\n              flex-basis: 0;\r\n              max-width: 100%;\r\n            }\r\n            .col-sm-1 {\r\n              -ms-flex-preferred-size: 8.33333333%;\r\n              flex-basis: 8.33333333%;\r\n              max-width: 8.33333333%;\r\n            }\r\n            .col-sm-2 {\r\n              -ms-flex-preferred-size: 16.66666667%;\r\n              flex-basis: 16.66666667%;\r\n              max-width: 16.66666667%;\r\n            }\r\n            .col-sm-3 {\r\n              -ms-flex-preferred-size: 25%;\r\n              flex-basis: 25%;\r\n              max-width: 25%;\r\n            }\r\n            .col-sm-4 {\r\n              -ms-flex-preferred-size: 33.33333333%;\r\n              flex-basis: 33.33333333%;\r\n              max-width: 33.33333333%;\r\n            }\r\n            .col-sm-5 {\r\n              -ms-flex-preferred-size: 41.66666667%;\r\n              flex-basis: 41.66666667%;\r\n              max-width: 41.66666667%;\r\n            }\r\n            .col-sm-6 {\r\n              -ms-flex-preferred-size: 50%;\r\n              flex-basis: 50%;\r\n              max-width: 50%;\r\n            }\r\n            .col-sm-7 {\r\n              -ms-flex-preferred-size: 58.33333333%;\r\n              flex-basis: 58.33333333%;\r\n              max-width: 58.33333333%;\r\n            }\r\n            .col-sm-8 {\r\n              -ms-flex-preferred-size: 66.66666667%;\r\n              flex-basis: 66.66666667%;\r\n              max-width: 66.66666667%;\r\n            }\r\n            .col-sm-9 {\r\n              -ms-flex-preferred-size: 75%;\r\n              flex-basis: 75%;\r\n              max-width: 75%;\r\n            }\r\n            .col-sm-10 {\r\n              -ms-flex-preferred-size: 83.33333333%;\r\n              flex-basis: 83.33333333%;\r\n              max-width: 83.33333333%;\r\n            }\r\n            .col-sm-11 {\r\n              -ms-flex-preferred-size: 91.66666667%;\r\n              flex-basis: 91.66666667%;\r\n              max-width: 91.66666667%;\r\n            }\r\n            .col-sm-12 {\r\n              -ms-flex-preferred-size: 100%;\r\n              flex-basis: 100%;\r\n              max-width: 100%;\r\n            }\r\n            .col-sm-offset-0 {\r\n              margin-left: 0;\r\n            }\r\n            .col-sm-offset-1 {\r\n              margin-left: 8.33333333%;\r\n            }\r\n            .col-sm-offset-2 {\r\n              margin-left: 16.66666667%;\r\n            }\r\n            .col-sm-offset-3 {\r\n              margin-left: 25%;\r\n            }\r\n            .col-sm-offset-4 {\r\n              margin-left: 33.33333333%;\r\n            }\r\n            .col-sm-offset-5 {\r\n              margin-left: 41.66666667%;\r\n            }\r\n            .col-sm-offset-6 {\r\n              margin-left: 50%;\r\n            }\r\n            .col-sm-offset-7 {\r\n              margin-left: 58.33333333%;\r\n            }\r\n            .col-sm-offset-8 {\r\n              margin-left: 66.66666667%;\r\n            }\r\n            .col-sm-offset-9 {\r\n              margin-left: 75%;\r\n            }\r\n            .col-sm-offset-10 {\r\n              margin-left: 83.33333333%;\r\n            }\r\n            .col-sm-offset-11 {\r\n              margin-left: 91.66666667%;\r\n            }\r\n            .start-sm {\r\n              -webkit-box-pack: start;\r\n              -ms-flex-pack: start;\r\n              justify-content: flex-start;\r\n              text-align: start;\r\n            }\r\n            .center-sm {\r\n              -webkit-box-pack: center;\r\n              -ms-flex-pack: center;\r\n              justify-content: center;\r\n              text-align: center;\r\n            }\r\n            .end-sm {\r\n              -webkit-box-pack: end;\r\n              -ms-flex-pack: end;\r\n              justify-content: flex-end;\r\n              text-align: end;\r\n            }\r\n            .top-sm {\r\n              -webkit-box-align: start;\r\n              -ms-flex-align: start;\r\n              align-items: flex-start;\r\n            }\r\n            .middle-sm {\r\n              -webkit-box-align: center;\r\n              -ms-flex-align: center;\r\n              align-items: center;\r\n            }\r\n            .bottom-sm {\r\n              -webkit-box-align: end;\r\n              -ms-flex-align: end;\r\n              align-items: flex-end;\r\n            }\r\n            .around-sm {\r\n              -ms-flex-pack: distribute;\r\n              justify-content: space-around;\r\n            }\r\n            .between-sm {\r\n              -webkit-box-pack: justify;\r\n              -ms-flex-pack: justify;\r\n              justify-content: space-between;\r\n            }\r\n            .first-sm {\r\n              -webkit-box-ordinal-group: 0;\r\n              -ms-flex-order: -1;\r\n              order: -1;\r\n            }\r\n            .last-sm {\r\n              -webkit-box-ordinal-group: 2;\r\n              -ms-flex-order: 1;\r\n              order: 1;\r\n            }\r\n          }\r\n          @media only screen and (min-width: 64em) {\r\n            .container {\r\n              width: 65rem;\r\n            }\r\n            .col-md,\r\n            .col-md-1,\r\n            .col-md-10,\r\n            .col-md-11,\r\n            .col-md-12,\r\n            .col-md-2,\r\n            .col-md-3,\r\n            .col-md-4,\r\n            .col-md-5,\r\n            .col-md-6,\r\n            .col-md-7,\r\n            .col-md-8,\r\n            .col-md-9,\r\n            .col-md-offset-0,\r\n            .col-md-offset-1,\r\n            .col-md-offset-10,\r\n            .col-md-offset-11,\r\n            .col-md-offset-12,\r\n            .col-md-offset-2,\r\n            .col-md-offset-3,\r\n            .col-md-offset-4,\r\n            .col-md-offset-5,\r\n            .col-md-offset-6,\r\n            .col-md-offset-7,\r\n            .col-md-offset-8,\r\n            .col-md-offset-9 {\r\n              box-sizing: border-box;\r\n              -webkit-box-flex: 0;\r\n              -ms-flex: 0 0 auto;\r\n              flex: 0 0 auto;\r\n              padding-right: 0.25rem;\r\n              padding-left: 0.25rem;\r\n            }\r\n            .col-md {\r\n              -webkit-box-flex: 1;\r\n              -ms-flex-positive: 1;\r\n              flex-grow: 1;\r\n              -ms-flex-preferred-size: 0;\r\n              flex-basis: 0;\r\n              max-width: 100%;\r\n            }\r\n            .col-md-1 {\r\n              -ms-flex-preferred-size: 8.33333333%;\r\n              flex-basis: 8.33333333%;\r\n              max-width: 8.33333333%;\r\n            }\r\n            .col-md-2 {\r\n              -ms-flex-preferred-size: 16.66666667%;\r\n              flex-basis: 16.66666667%;\r\n              max-width: 16.66666667%;\r\n            }\r\n            .col-md-3 {\r\n              -ms-flex-preferred-size: 25%;\r\n              flex-basis: 25%;\r\n              max-width: 25%;\r\n            }\r\n            .col-md-4 {\r\n              -ms-flex-preferred-size: 33.33333333%;\r\n              flex-basis: 33.33333333%;\r\n              max-width: 33.33333333%;\r\n            }\r\n            .col-md-5 {\r\n              -ms-flex-preferred-size: 41.66666667%;\r\n              flex-basis: 41.66666667%;\r\n              max-width: 41.66666667%;\r\n            }\r\n            .col-md-6 {\r\n              -ms-flex-preferred-size: 50%;\r\n              flex-basis: 50%;\r\n              max-width: 50%;\r\n            }\r\n            .col-md-7 {\r\n              -ms-flex-preferred-size: 58.33333333%;\r\n              flex-basis: 58.33333333%;\r\n              max-width: 58.33333333%;\r\n            }\r\n            .col-md-8 {\r\n              -ms-flex-preferred-size: 66.66666667%;\r\n              flex-basis: 66.66666667%;\r\n              max-width: 66.66666667%;\r\n            }\r\n            .col-md-9 {\r\n              -ms-flex-preferred-size: 75%;\r\n              flex-basis: 75%;\r\n              max-width: 75%;\r\n            }\r\n            .col-md-10 {\r\n              -ms-flex-preferred-size: 83.33333333%;\r\n              flex-basis: 83.33333333%;\r\n              max-width: 83.33333333%;\r\n            }\r\n            .col-md-11 {\r\n              -ms-flex-preferred-size: 91.66666667%;\r\n              flex-basis: 91.66666667%;\r\n              max-width: 91.66666667%;\r\n            }\r\n            .col-md-12 {\r\n              -ms-flex-preferred-size: 100%;\r\n              flex-basis: 100%;\r\n              max-width: 100%;\r\n            }\r\n            .col-md-offset-0 {\r\n              margin-left: 0;\r\n            }\r\n            .col-md-offset-1 {\r\n              margin-left: 8.33333333%;\r\n            }\r\n            .col-md-offset-2 {\r\n              margin-left: 16.66666667%;\r\n            }\r\n            .col-md-offset-3 {\r\n              margin-left: 25%;\r\n            }\r\n            .col-md-offset-4 {\r\n              margin-left: 33.33333333%;\r\n            }\r\n            .col-md-offset-5 {\r\n              margin-left: 41.66666667%;\r\n            }\r\n            .col-md-offset-6 {\r\n              margin-left: 50%;\r\n            }\r\n            .col-md-offset-7 {\r\n              margin-left: 58.33333333%;\r\n            }\r\n            .col-md-offset-8 {\r\n              margin-left: 66.66666667%;\r\n            }\r\n            .col-md-offset-9 {\r\n              margin-left: 75%;\r\n            }\r\n            .col-md-offset-10 {\r\n              margin-left: 83.33333333%;\r\n            }\r\n            .col-md-offset-11 {\r\n              margin-left: 91.66666667%;\r\n            }\r\n            .start-md {\r\n              -webkit-box-pack: start;\r\n              -ms-flex-pack: start;\r\n              justify-content: flex-start;\r\n              text-align: start;\r\n            }\r\n            .center-md {\r\n              -webkit-box-pack: center;\r\n              -ms-flex-pack: center;\r\n              justify-content: center;\r\n              text-align: center;\r\n            }\r\n            .end-md {\r\n              -webkit-box-pack: end;\r\n              -ms-flex-pack: end;\r\n              justify-content: flex-end;\r\n              text-align: end;\r\n            }\r\n            .top-md {\r\n              -webkit-box-align: start;\r\n              -ms-flex-align: start;\r\n              align-items: flex-start;\r\n            }\r\n            .middle-md {\r\n              -webkit-box-align: center;\r\n              -ms-flex-align: center;\r\n              align-items: center;\r\n            }\r\n            .bottom-md {\r\n              -webkit-box-align: end;\r\n              -ms-flex-align: end;\r\n              align-items: flex-end;\r\n            }\r\n            .around-md {\r\n              -ms-flex-pack: distribute;\r\n              justify-content: space-around;\r\n            }\r\n            .between-md {\r\n              -webkit-box-pack: justify;\r\n              -ms-flex-pack: justify;\r\n              justify-content: space-between;\r\n            }\r\n            .first-md {\r\n              -webkit-box-ordinal-group: 0;\r\n              -ms-flex-order: -1;\r\n              order: -1;\r\n            }\r\n            .last-md {\r\n              -webkit-box-ordinal-group: 2;\r\n              -ms-flex-order: 1;\r\n              order: 1;\r\n            }\r\n          }\r\n          @media only screen and (min-width: 75em) {\r\n            .container {\r\n              width: 76rem;\r\n            }\r\n            .col-lg,\r\n            .col-lg-1,\r\n            .col-lg-10,\r\n            .col-lg-11,\r\n            .col-lg-12,\r\n            .col-lg-2,\r\n            .col-lg-3,\r\n            .col-lg-4,\r\n            .col-lg-5,\r\n            .col-lg-6,\r\n            .col-lg-7,\r\n            .col-lg-8,\r\n            .col-lg-9,\r\n            .col-lg-offset-0,\r\n            .col-lg-offset-1,\r\n            .col-lg-offset-10,\r\n            .col-lg-offset-11,\r\n            .col-lg-offset-12,\r\n            .col-lg-offset-2,\r\n            .col-lg-offset-3,\r\n            .col-lg-offset-4,\r\n            .col-lg-offset-5,\r\n            .col-lg-offset-6,\r\n            .col-lg-offset-7,\r\n            .col-lg-offset-8,\r\n            .col-lg-offset-9 {\r\n              box-sizing: border-box;\r\n              -webkit-box-flex: 0;\r\n              -ms-flex: 0 0 auto;\r\n              flex: 0 0 auto;\r\n              padding-right: 0.25rem;\r\n              padding-left: 0.25rem;\r\n            }\r\n            .col-lg {\r\n              -webkit-box-flex: 1;\r\n              -ms-flex-positive: 1;\r\n              flex-grow: 1;\r\n              -ms-flex-preferred-size: 0;\r\n              flex-basis: 0;\r\n              max-width: 100%;\r\n            }\r\n            .col-lg-1 {\r\n              -ms-flex-preferred-size: 8.33333333%;\r\n              flex-basis: 8.33333333%;\r\n              max-width: 8.33333333%;\r\n            }\r\n            .col-lg-2 {\r\n              -ms-flex-preferred-size: 16.66666667%;\r\n              flex-basis: 16.66666667%;\r\n              max-width: 16.66666667%;\r\n            }\r\n            .col-lg-3 {\r\n              -ms-flex-preferred-size: 25%;\r\n              flex-basis: 25%;\r\n              max-width: 25%;\r\n            }\r\n            .col-lg-4 {\r\n              -ms-flex-preferred-size: 33.33333333%;\r\n              flex-basis: 33.33333333%;\r\n              max-width: 33.33333333%;\r\n            }\r\n            .col-lg-5 {\r\n              -ms-flex-preferred-size: 41.66666667%;\r\n              flex-basis: 41.66666667%;\r\n              max-width: 41.66666667%;\r\n            }\r\n            .col-lg-6 {\r\n              -ms-flex-preferred-size: 50%;\r\n              flex-basis: 50%;\r\n              max-width: 50%;\r\n            }\r\n            .col-lg-7 {\r\n              -ms-flex-preferred-size: 58.33333333%;\r\n              flex-basis: 58.33333333%;\r\n              max-width: 58.33333333%;\r\n            }\r\n            .col-lg-8 {\r\n              -ms-flex-preferred-size: 66.66666667%;\r\n              flex-basis: 66.66666667%;\r\n              max-width: 66.66666667%;\r\n            }\r\n            .col-lg-9 {\r\n              -ms-flex-preferred-size: 75%;\r\n              flex-basis: 75%;\r\n              max-width: 75%;\r\n            }\r\n            .col-lg-10 {\r\n              -ms-flex-preferred-size: 83.33333333%;\r\n              flex-basis: 83.33333333%;\r\n              max-width: 83.33333333%;\r\n            }\r\n            .col-lg-11 {\r\n              -ms-flex-preferred-size: 91.66666667%;\r\n              flex-basis: 91.66666667%;\r\n              max-width: 91.66666667%;\r\n            }\r\n            .col-lg-12 {\r\n              -ms-flex-preferred-size: 100%;\r\n              flex-basis: 100%;\r\n              max-width: 100%;\r\n            }\r\n            .col-lg-offset-0 {\r\n              margin-left: 0;\r\n            }\r\n            .col-lg-offset-1 {\r\n              margin-left: 8.33333333%;\r\n            }\r\n            .col-lg-offset-2 {\r\n              margin-left: 16.66666667%;\r\n            }\r\n            .col-lg-offset-3 {\r\n              margin-left: 25%;\r\n            }\r\n            .col-lg-offset-4 {\r\n              margin-left: 33.33333333%;\r\n            }\r\n            .col-lg-offset-5 {\r\n              margin-left: 41.66666667%;\r\n            }\r\n            .col-lg-offset-6 {\r\n              margin-left: 50%;\r\n            }\r\n            .col-lg-offset-7 {\r\n              margin-left: 58.33333333%;\r\n            }\r\n            .col-lg-offset-8 {\r\n              margin-left: 66.66666667%;\r\n            }\r\n            .col-lg-offset-9 {\r\n              margin-left: 75%;\r\n            }\r\n            .col-lg-offset-10 {\r\n              margin-left: 83.33333333%;\r\n            }\r\n            .col-lg-offset-11 {\r\n              margin-left: 91.66666667%;\r\n            }\r\n            .start-lg {\r\n              -webkit-box-pack: start;\r\n              -ms-flex-pack: start;\r\n              justify-content: flex-start;\r\n              text-align: start;\r\n            }\r\n            .center-lg {\r\n              -webkit-box-pack: center;\r\n              -ms-flex-pack: center;\r\n              justify-content: center;\r\n              text-align: center;\r\n            }\r\n            .end-lg {\r\n              -webkit-box-pack: end;\r\n              -ms-flex-pack: end;\r\n              justify-content: flex-end;\r\n              text-align: end;\r\n            }\r\n            .top-lg {\r\n              -webkit-box-align: start;\r\n              -ms-flex-align: start;\r\n              align-items: flex-start;\r\n            }\r\n            .middle-lg {\r\n              -webkit-box-align: center;\r\n              -ms-flex-align: center;\r\n              align-items: center;\r\n            }\r\n            .bottom-lg {\r\n              -webkit-box-align: end;\r\n              -ms-flex-align: end;\r\n              align-items: flex-end;\r\n            }\r\n            .around-lg {\r\n              -ms-flex-pack: distribute;\r\n              justify-content: space-around;\r\n            }\r\n            .between-lg {\r\n              -webkit-box-pack: justify;\r\n              -ms-flex-pack: justify;\r\n              justify-content: space-between;\r\n            }\r\n            .first-lg {\r\n              -webkit-box-ordinal-group: 0;\r\n              -ms-flex-order: -1;\r\n              order: -1;\r\n            }\r\n            .last-lg {\r\n              -webkit-box-ordinal-group: 2;\r\n              -ms-flex-order: 1;\r\n              order: 1;\r\n            }\r\n          }\r\n\r\n          .item {\r\n            margin-bottom: 0.5rem;\r\n          }\r\n\r\n          .wrapper {\r\n            overflow: hidden;\r\n            padding: 0px;\r\n          }\r\n          .wrapper.padding {\r\n            padding: 11px;\r\n          }\r\n          .row {\r\n            overflow: hidden;\r\n            width: auto;\r\n          }\r\n\r\n          .d-none {\r\n            display: none !important;\r\n          }\r\n          .d-inline {\r\n            display: inline !important;\r\n          }\r\n          .d-inline-block {\r\n            display: inline-block !important;\r\n          }\r\n          .d-block {\r\n            display: block !important;\r\n          }\r\n          .d-table {\r\n            display: table !important;\r\n          }\r\n          .d-table-row {\r\n            display: table-row !important;\r\n          }\r\n          .d-table-cell {\r\n            display: table-cell !important;\r\n          }\r\n          .d-flex {\r\n            display: -webkit-box !important;\r\n            display: -ms-flexbox !important;\r\n            display: flex !important;\r\n          }\r\n          .d-inline-flex {\r\n            display: -webkit-inline-box !important;\r\n            display: -ms-inline-flexbox !important;\r\n            display: inline-flex !important;\r\n          }\r\n\r\n          @media (min-width: 576px) {\r\n            .d-sm-none {\r\n              display: none !important;\r\n            }\r\n            .d-sm-inline {\r\n              display: inline !important;\r\n            }\r\n            .d-sm-inline-block {\r\n              display: inline-block !important;\r\n            }\r\n            .d-sm-block {\r\n              display: block !important;\r\n            }\r\n            .d-sm-table {\r\n              display: table !important;\r\n            }\r\n            .d-sm-table-row {\r\n              display: table-row !important;\r\n            }\r\n            .d-sm-table-cell {\r\n              display: table-cell !important;\r\n            }\r\n            .d-sm-flex {\r\n              display: -webkit-box !important;\r\n              display: -ms-flexbox !important;\r\n              display: flex !important;\r\n            }\r\n            .d-sm-inline-flex {\r\n              display: -webkit-inline-box !important;\r\n              display: -ms-inline-flexbox !important;\r\n              display: inline-flex !important;\r\n            }\r\n          }\r\n\r\n          @media (min-width: 768px) {\r\n            .d-md-none {\r\n              display: none !important;\r\n            }\r\n            .d-md-inline {\r\n              display: inline !important;\r\n            }\r\n            .d-md-inline-block {\r\n              display: inline-block !important;\r\n            }\r\n            .d-md-block {\r\n              display: block !important;\r\n            }\r\n            .d-md-table {\r\n              display: table !important;\r\n            }\r\n            .d-md-table-row {\r\n              display: table-row !important;\r\n            }\r\n            .d-md-table-cell {\r\n              display: table-cell !important;\r\n            }\r\n            .d-md-flex {\r\n              display: -webkit-box !important;\r\n              display: -ms-flexbox !important;\r\n              display: flex !important;\r\n            }\r\n            .d-md-inline-flex {\r\n              display: -webkit-inline-box !important;\r\n              display: -ms-inline-flexbox !important;\r\n              display: inline-flex !important;\r\n            }\r\n          }\r\n\r\n          @media (min-width: 992px) {\r\n            .d-lg-none {\r\n              display: none !important;\r\n            }\r\n            .d-lg-inline {\r\n              display: inline !important;\r\n            }\r\n            .d-lg-inline-block {\r\n              display: inline-block !important;\r\n            }\r\n            .d-lg-block {\r\n              display: block !important;\r\n            }\r\n            .d-lg-table {\r\n              display: table !important;\r\n            }\r\n            .d-lg-table-row {\r\n              display: table-row !important;\r\n            }\r\n            .d-lg-table-cell {\r\n              display: table-cell !important;\r\n            }\r\n            .d-lg-flex {\r\n              display: -webkit-box !important;\r\n              display: -ms-flexbox !important;\r\n              display: flex !important;\r\n            }\r\n            .d-lg-inline-flex {\r\n              display: -webkit-inline-box !important;\r\n              display: -ms-inline-flexbox !important;\r\n              display: inline-flex !important;\r\n            }\r\n          }\r\n\r\n          @media (min-width: 1200px) {\r\n            .d-xl-none {\r\n              display: none !important;\r\n            }\r\n            .d-xl-inline {\r\n              display: inline !important;\r\n            }\r\n            .d-xl-inline-block {\r\n              display: inline-block !important;\r\n            }\r\n            .d-xl-block {\r\n              display: block !important;\r\n            }\r\n            .d-xl-table {\r\n              display: table !important;\r\n            }\r\n            .d-xl-table-row {\r\n              display: table-row !important;\r\n            }\r\n            .d-xl-table-cell {\r\n              display: table-cell !important;\r\n            }\r\n            .d-xl-flex {\r\n              display: -webkit-box !important;\r\n              display: -ms-flexbox !important;\r\n              display: flex !important;\r\n            }\r\n            .d-xl-inline-flex {\r\n              display: -webkit-inline-box !important;\r\n              display: -ms-inline-flexbox !important;\r\n              display: inline-flex !important;\r\n            }\r\n          }\r\n        `,\r\n      ];\r\n    }\r\n\r\n    getCardSize() {\r\n      return 3;\r\n    }\r\n  }\r\n\r\n  if (!customElements.get(\"dwains-flexbox-card\")) {\r\n    customElements.define(\"dwains-flexbox-card\", DwainsFlexboxCard);\r\n    const pjson = __webpack_require__(/*! ../package.json */ \"./package.json\");\r\n    console.info(\r\n      `%c DWAINS-FLEXBOX-CARD \\n%c    Version ${pjson.version}    `,\r\n      \"color: #2fbae5; font-weight: bold; background: black\",\r\n      \"color: white; font-weight: bold; background: dimgray\"\r\n    );\r\n  }\r\n});\n\n//# sourceURL=webpack:///./src/main.js?");
+          @media (min-width: 768px) {
+            .d-md-none {
+              display: none !important;
+            }
+            .d-md-inline {
+              display: inline !important;
+            }
+            .d-md-inline-block {
+              display: inline-block !important;
+            }
+            .d-md-block {
+              display: block !important;
+            }
+            .d-md-table {
+              display: table !important;
+            }
+            .d-md-table-row {
+              display: table-row !important;
+            }
+            .d-md-table-cell {
+              display: table-cell !important;
+            }
+            .d-md-flex {
+              display: -webkit-box !important;
+              display: -ms-flexbox !important;
+              display: flex !important;
+            }
+            .d-md-inline-flex {
+              display: -webkit-inline-box !important;
+              display: -ms-inline-flexbox !important;
+              display: inline-flex !important;
+            }
+          }
 
-/***/ })
+          @media (min-width: 992px) {
+            .d-lg-none {
+              display: none !important;
+            }
+            .d-lg-inline {
+              display: inline !important;
+            }
+            .d-lg-inline-block {
+              display: inline-block !important;
+            }
+            .d-lg-block {
+              display: block !important;
+            }
+            .d-lg-table {
+              display: table !important;
+            }
+            .d-lg-table-row {
+              display: table-row !important;
+            }
+            .d-lg-table-cell {
+              display: table-cell !important;
+            }
+            .d-lg-flex {
+              display: -webkit-box !important;
+              display: -ms-flexbox !important;
+              display: flex !important;
+            }
+            .d-lg-inline-flex {
+              display: -webkit-inline-box !important;
+              display: -ms-inline-flexbox !important;
+              display: inline-flex !important;
+            }
+          }
 
-/******/ });
+          @media (min-width: 1200px) {
+            .d-xl-none {
+              display: none !important;
+            }
+            .d-xl-inline {
+              display: inline !important;
+            }
+            .d-xl-inline-block {
+              display: inline-block !important;
+            }
+            .d-xl-block {
+              display: block !important;
+            }
+            .d-xl-table {
+              display: table !important;
+            }
+            .d-xl-table-row {
+              display: table-row !important;
+            }
+            .d-xl-table-cell {
+              display: table-cell !important;
+            }
+            .d-xl-flex {
+              display: -webkit-box !important;
+              display: -ms-flexbox !important;
+              display: flex !important;
+            }
+            .d-xl-inline-flex {
+              display: -webkit-inline-box !important;
+              display: -ms-inline-flexbox !important;
+              display: inline-flex !important;
+            }
+          }
+        `]}getCardSize(){return 3}}if(!customElements.get("dwains-flexbox-card")){customElements.define("dwains-flexbox-card",r);const e=l(1);console.info(`%c DWAINS-FLEXBOX-CARD \n%c    Version ${e.version}    `,"color: #2fbae5; font-weight: bold; background: black","color: white; font-weight: bold; background: dimgray")}})},function(e){e.exports=JSON.parse('{"name":"dwains-flexbox-card","private":true,"version":"1.0.3","description":"dwains-flexbox-card","scripts":{"build":"webpack","watch":"webpack --watch --mode=development","update-card-tools":"npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"},"keywords":[],"author":"Dwain Scheeren","license":"MIT","devDependencies":{"webpack":"^4.42.1","webpack-cli":"^3.3.11"},"dependencies":{"card-tools":"github:thomasloven/lovelace-card-tools"}}')}]);
