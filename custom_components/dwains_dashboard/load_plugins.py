@@ -62,7 +62,7 @@ class ModView(HomeAssistantView):
 
         return web.Response(body=filecontent, content_type="text/javascript", charset="utf-8")
 
-    # name = "dwains_theme_script"
+    # name = "dwains_dashboard_script"
     # requires_auth = False
 
     # def __init__(self, hass, url):

@@ -26,13 +26,14 @@
             items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
             cards:
               - type: custom:button-card
+                item_classes: 'col-xs-12'
                 template: more_page_list-item
-                entity: sensor.dwains_theme_version
+                entity: sensor.dwains_dashboard_latest_version
                 name: {{ _dd_trans.more_page.settings.update_available }}
                 show_state: true
                 tap_action: 
                   action: url
-                  url_path: 'https://dwainscheeren.github.io/lovelace-dwains-theme/information/update.html'
+                  url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/information/update.html'
                 styles:
                   grid:
                     - grid-template-areas: '"n i""s i"'
