@@ -73,7 +73,7 @@
                 item_classes: 'col-xs-12'
                 cards:
                   !include 
-                    - ../../../../{{ addon["path"] }}
+                    - ../../../../../../{{ addon["path"] }}
                     - name: {{ addon["name"] }}
                       {% if addon["data"] %}
                       data: '{{ addon["data"]|tojson }}'
