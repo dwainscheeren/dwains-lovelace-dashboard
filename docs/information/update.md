@@ -49,7 +49,7 @@ With /config/ I mean the folder where your whole HA config is.
 1. Make a backup of your current HA.
 2. Go to your /config/ folder and rename the folder **dwains-theme** to **dwains-dashboard**.
 3. Go to your /config/ folder and remove the file **dwains-theme-lovelace-yaml**.
-4. Go inside the folder /config/dwains-dashboard and remove the following folders **plugins**, **resources**, **translations**, **views**, but make sure you **keep the folders 'configs' and the folder 'addons'!**.
+4. Go inside the folder /config/dwains-dashboard and remove the following folders: **plugins**, **resources**, **translations**, **views**. Make sure you **keep the folders 'configs' and the folder 'addons'!**.
 5. Go to the folder /config/themes and remove the files **dwains-theme-black.yaml**, **dwains-theme-dark.yaml**, **dwains-theme-light.yaml**, **dwains-theme-white.yaml**.
 6. Go to the folder /config/www and remove the folder **dwains-theme**.
 7. Go to the folder /config/packages and remove the folder **dwains-theme**.
@@ -58,7 +58,6 @@ With /config/ I mean the folder where your whole HA config is.
 10. Install Dwains Dashboard 2.0.0 as explained [here](linkje).
 
 To do:
-Re-merge this https://github.com/dwainscheeren/lovelace-dwains-theme/pull/191 into 1.5
 Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
 Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/188
 
