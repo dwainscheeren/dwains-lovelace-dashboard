@@ -823,7 +823,7 @@
               {% for addon in room["addons"] %}
               {% if addon["button_path"] %}
               - !include 
-                  - ../../../../{{ addon["button_path"] }}
+                  - ../../../../../../{{ addon["button_path"] }}
                   - name: {{ addon["name"] }}
                     icon: {{ addon["icon"] }}
                     navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}

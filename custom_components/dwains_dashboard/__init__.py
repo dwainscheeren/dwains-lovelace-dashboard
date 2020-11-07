@@ -20,6 +20,7 @@ async def async_setup(hass, config):
     #_LOGGER.warning("async_setup")
 
     hass.data[DOMAIN] = {
+        "installed": "",
         "notifications": {},
         "commands": {},
         'latest_version': ""
