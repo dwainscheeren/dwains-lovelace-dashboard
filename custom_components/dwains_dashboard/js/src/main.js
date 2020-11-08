@@ -65,6 +65,7 @@ class DwainsDashboard {
 
     const updater = this.update.bind(this);
     window.addEventListener("location-changed", updater);
+    window.addEventListener("popstate", updater);
 
     const pjson = require('../package.json');
     console.info(
