@@ -150,7 +150,7 @@ def process_yaml(hass, config_entry):
                 ("entity_popups", entity_popups)
             ]
         )
-        _LOGGER.error(dwains_dashboard_customize)
+        #_LOGGER.error(dwains_dashboard_customize)
 
         #Main config
         for fname in loader._find_files(hass.config.path("dwains-dashboard/configs/"), "*.yaml"):
@@ -158,7 +158,7 @@ def process_yaml(hass, config_entry):
             if isinstance(loaded_yaml, dict):
                 dwains_dashboard_config.update(loaded_yaml)
         
-        _LOGGER.error(dwains_dashboard_config)
+        #_LOGGER.error(dwains_dashboard_config)
         
 
         #Translations
