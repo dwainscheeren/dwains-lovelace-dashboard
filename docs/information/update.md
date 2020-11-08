@@ -42,6 +42,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 Note: Dwains Theme has been renamed to Dwains Dashboard!
 
+#### How to update to 2.0:
 To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of Dwains Theme follow **all** steps below (Don't worry we will keep your existing Dwains Theme config and addons, these will automatic work in 2.0.0):
 
 With /config/ I mean the folder where your whole HA config is.
@@ -54,8 +55,26 @@ With /config/ I mean the folder where your whole HA config is.
 6. Go to the folder /config/www and remove the folder **dwains-theme**.
 7. Go to the folder /config/packages and remove the folder **dwains-theme**.
 8. Go to the folder /config/custom_components and remove the folder **dwains-theme**.
-9. Reboot your HA, Dwains Theme 1.* should now be fully removed except the _config_ folder _/config/dwains-dashboard/.._
-10. Install Dwains Dashboard 2.0.0 as explained [here](linkje).
+9. If you have any addons installed follow this step, otherwise skip this step.
+Open up the folder /config/dwains-dashboard/configs and check, we need to make some adjustments to these files.
+* If you use addons the name of the folder dwains-theme has changed to dwains-dashboard so for check all your config files. For example rename `path: 'dwains-theme/addons/rooms/hello-room/page.yaml'` to `path: 'dwains-dashboard/addons/rooms/hello-room/page.yaml'`
+* Some addons use an include to heading.yaml, this file is deprecated.
+Change the code (this is an example)
+```
+- !include
+  - ../../../views/partials/heading.yaml
+  - title: {{ name }}
+```
+to
+```
+- type: custom:dwains-heading-card
+  title: {{ name }}
+```
+10. The files `scenes.yaml` and `cameras.yaml` in your dwains dashboard configs needs to be changed. If you use them go to /config/dwains-dashboard/configs and open them.
+* The file `cameras.yaml` needs to be changed like explained in [this screenshot](../images/camerasyaml2-0.jpg).
+* The file `scenes.yaml` needs to be changed like explained in [this screenshot](../images/scenesyaml2-0.jpg).
+11. Reboot your HA, Dwains Theme 1.* should now be fully removed.
+12. Install Dwains Dashboard 2.0.0 as explained [here](../getting-started/installation).
 
 To do:
 Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
