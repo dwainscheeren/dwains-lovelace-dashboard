@@ -50,21 +50,22 @@ With /config/ I mean the folder where your whole HA config is.
 1. Make a backup of your current HA.
 2. Go to your /config/ folder and rename the folder **dwains-theme** to **dwains-dashboard**.
 3. Go to your /config/ folder and remove the file **dwains-theme-lovelace-yaml**.
-4. Go inside the folder /config/dwains-dashboard and remove the following folders: **plugins**, **resources**, **translations**, **views**. Make sure you **keep the folders 'configs' and the folder 'addons'!**.
-5. Go to the folder /config/themes and remove the files **dwains-theme-black.yaml**, **dwains-theme-dark.yaml**, **dwains-theme-light.yaml**, **dwains-theme-white.yaml**.
-6. Go to the folder /config/www and remove the folder **dwains-theme**.
-7. Go to the folder /config/packages and remove the folder **dwains-theme**.
-8. Go to the folder /config/custom_components and remove the folder **dwains-theme**.
-9. If you have any addons installed follow this step, otherwise skip this step.
+4. If you use any custom resources then backup the file /config/dwains-dashboard/resources/custom_resources.yaml somewhere safe. You need to add these back after installing 2.0.
+5. Go inside the folder /config/dwains-dashboard and remove the following folders: **plugins**, **resources**, **translations**, **views**. Make sure you **keep the folders 'configs' and the folder 'addons'!**.
+6. Go to the folder /config/themes and remove the files **dwains-theme-black.yaml**, **dwains-theme-dark.yaml**, **dwains-theme-light.yaml** and **dwains-theme-white.yaml**.
+7. Go to the folder /config/www and remove the folder **dwains-theme**.
+8. Go to the folder /config/packages and remove the folder **dwains-theme**.
+9. Go to the folder /config/custom_components and remove the folder **dwains-theme**.
+10. If you have any addons installed follow this step, otherwise skip this step.
 Open up the folder /config/dwains-dashboard/configs and check, we need to make some adjustments to these files.
 * If you use addons the name of the folder dwains-theme has changed to dwains-dashboard so for check all your config files. For example rename `path: 'dwains-theme/addons/rooms/hello-room/page.yaml'` to `path: 'dwains-dashboard/addons/rooms/hello-room/page.yaml'`
 * Some addons use an include to heading.yaml, this file is deprecated.
 Change the code as explained in [this screenshot](../images/heading2-0.jpg).
-10. The files `scenes.yaml` and `cameras.yaml` in your dwains dashboard configs needs to be changed. If you use them go to /config/dwains-dashboard/configs and open them.
+11. The files `scenes.yaml` and `cameras.yaml` in your dwains dashboard configs needs to be changed. If you use them go to /config/dwains-dashboard/configs and open them.
 * The file `cameras.yaml` needs to be changed like explained in [this screenshot](../images/camerasyaml2-0.jpg).
 * The file `scenes.yaml` needs to be changed like explained in [this screenshot](../images/scenesyaml2-0.jpg).
-11. Reboot your HA, Dwains Theme 1.* should now be fully removed.
-12. Install Dwains Dashboard 2.0.0 as explained [here](../getting-started/installation).
+12. Reboot your HA, Dwains Theme 1.* should now be fully removed.
+13. Install Dwains Dashboard 2.0.0 as explained [here](../getting-started/installation).
 
 To do:
 Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
