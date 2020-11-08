@@ -1,4 +1,7 @@
 # https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/cameras.html
 
 # cameras:
-#   - entity: camera.driveway_camera
+#   main_menu: 'false' #If you want to hide the cameras in the main nav then enable this line
+#   live_view: 'false' #If you want to disable live view then enable this line
+#   entities:
+#     - camera.driveway_camera

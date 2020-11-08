@@ -16,6 +16,7 @@ dwains-theme/addons/house_information/*/
 custom_components/*/
 !custom_components/dwains_dashboard
 custom_components/dwains_dashboard/__pycache__/
+custom_components/dwains_dashboard/.installed
 www/
 packages/
 packages/dwains-theme/

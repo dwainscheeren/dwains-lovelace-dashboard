@@ -30,6 +30,19 @@ dwains_dashboard_global = {}
 dwains_dashboard_customize = {}
 llgen_config = {}
 
+LANGUAGES = {
+    "English": "en",
+    "Danish": "da",
+    "German": "de",
+    "Spanish": "es",
+    "French": "fr",
+    "Italian": "it",
+    "Norwegian": "no",
+    "Romanian": "ro",
+    "Swedish": "se",
+    "Dutch": "nl"
+}
+
 def load_yaml(fname, args={}):
     try:
         process_yaml = False
@@ -177,7 +190,10 @@ def process_yaml(hass, config_entry):
         
 
         #Translations
-        language = dwains_dashboard_config["global"]["language"];
+        if ("language" in config_entry.options):
+            language = LANGUAGES[config_entry.options["language"]]
+        else:
+            language = "en"
         translations = load_yaml(hass.config.path("custom_components/dwains_dashboard/lovelace/translations/"+language+".yaml"))
 
         dwains_dashboard_translations.update(translations[language])
@@ -200,12 +216,18 @@ def process_yaml(hass, config_entry):
             config_primary_color = ""
 
 
+        if os.path.exists(hass.config.path("custom_components/dwains_dashboard/.installed")):
+            installed = "true"
+        else:
+            installed = "false"
+
         dwains_dashboard_global.update(
             [
                 ("version", VERSION),
                 ("theme", config_theme),
                 ("primary_color", config_primary_color),
-                ("themes", json.dumps(themes))
+                ("themes", json.dumps(themes)),
+                ("installed", installed)
             ]
         )
 
@@ -234,17 +256,11 @@ def process_yaml(hass, config_entry):
         #Service call to Change the installed key in global config for Dwains dashboard
         _LOGGER.debug("Handle installed")
 
-        #Copy example config folder to root config path
-        # from distutils.dir_util import copy_tree
-        # fromDirectory = hass.config.path("custom_components/dwains_dashboard/installation/configs")
-        # toDirectory = hass.config.path("dwains-dashboard/configs")
-        # copy_tree(fromDirectory, toDirectory)
+        path = hass.config.path("custom_components/dwains_dashboard/.installed")
 
-
-        doc = load_yaml(hass.config.path("dwains-dashboard/configs/global.yaml"))
-        doc['global']['installed'] = 'true'
-        with open(hass.config.path("dwains-dashboard/configs/global.yaml"), 'w') as f:
-            yaml.safe_dump(doc, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        if not os.path.exists(path):
+            _LOGGER.debug("Create .installed file")
+            os.mknod(path)
 
         reload_configuration(hass)
 
@@ -276,11 +292,21 @@ def reload_configuration(hass):
                 ]
             )
 
-        #Translations
-        language = dwains_dashboard_config["global"]["language"];
-        translations = load_yaml(hass.config.path("custom_components/dwains_dashboard/lovelace/translations/"+language+".yaml"))
+        if os.path.exists(hass.config.path("custom_components/dwains_dashboard/.installed")):
+            installed = "true"
+        else:
+            installed = "false"
 
-        dwains_dashboard_translations.update(translations[language])
+        dwains_dashboard_global.update(
+            [
+                ("installed", installed)
+            ]
+        )
+
+        #Translations
+        #language = dwains_dashboard_config["global"]["language"];
+        #translations = load_yaml(hass.config.path("custom_components/dwains_dashboard/lovelace/translations/"+language+".yaml"))
+        #dwains_dashboard_translations.update(translations[language])
 
         #Icons
         icons = load_yaml(hass.config.path("dwains-dashboard/configs/icons.yaml"))

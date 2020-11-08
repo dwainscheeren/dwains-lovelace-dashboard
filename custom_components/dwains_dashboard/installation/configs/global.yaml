@@ -2,10 +2,9 @@
  
 global:
   installed: 'false'
-  language: en
-  safety_ok_strings: ["Ok", "Idle", "off"] #New since 1.5.0 REQUIRED
-  battery_empty_strings: ["unavailable"] #New since 1.5.0 REQUIRED
-  show_covers: closed #New since 1.5.0 NOT REQUIRED
+  safety_ok_strings: ["Ok", "Idle", "off"] #New since 2.0
+  battery_empty_strings: ["unavailable"] #New since 2.0
+  show_covers: closed #New since 2.0
 
   # weather: weather.dark_sky # Configure a weather entity see HA docs for more info.
   # outside_temperature: sensor.dark_sky_temperature # Configure a sensor here!

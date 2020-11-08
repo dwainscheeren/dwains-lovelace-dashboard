@@ -5,7 +5,7 @@
   path: home
   panel: true
   cards:
-    {% if _dd_config.global["installed"] and _dd_config.global["installed"] == 'false' %}
+    {% if _dd_global.installed and _dd_global.installed == 'false' %}
     - type: custom:dwains-wrapper-card
       css: | 
         max-width: 1465px;

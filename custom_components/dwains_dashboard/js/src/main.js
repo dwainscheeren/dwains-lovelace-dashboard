@@ -219,11 +219,11 @@ class DwainsDashboard {
       let nav_path = path.substring(1, path.lastIndexOf('/'));
 
       //Location check if user is in dwains dashboard
-      if(nav_path == "dwains-dashboard"){
+      //if(nav_path == "dwains-dashboard"){
         setTimeout(function() {
           document.location.reload()
         }, 5000);
-      }
+      //}
   }
 
   popup_card(ev) {
