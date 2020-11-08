@@ -59,17 +59,7 @@ With /config/ I mean the folder where your whole HA config is.
 Open up the folder /config/dwains-dashboard/configs and check, we need to make some adjustments to these files.
 * If you use addons the name of the folder dwains-theme has changed to dwains-dashboard so for check all your config files. For example rename `path: 'dwains-theme/addons/rooms/hello-room/page.yaml'` to `path: 'dwains-dashboard/addons/rooms/hello-room/page.yaml'`
 * Some addons use an include to heading.yaml, this file is deprecated.
-Change the code (this is an example)
-```
-- !include
-  - ../../../views/partials/heading.yaml
-  - title: {{ name }}
-```
-to
-```
-- type: custom:dwains-heading-card
-  title: {{ name }}
-```
+Change the code as explained in [this screenshot](../images/heading2-0.jpg).
 10. The files `scenes.yaml` and `cameras.yaml` in your dwains dashboard configs needs to be changed. If you use them go to /config/dwains-dashboard/configs and open them.
 * The file `cameras.yaml` needs to be changed like explained in [this screenshot](../images/camerasyaml2-0.jpg).
 * The file `scenes.yaml` needs to be changed like explained in [this screenshot](../images/scenesyaml2-0.jpg).
