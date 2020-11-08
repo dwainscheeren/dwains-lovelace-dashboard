@@ -86,6 +86,7 @@ Promise.race(bases).then(() => {
             padding-left: 16px;
           }
           ha-icon {
+            padding-top: 3px;
             display: inline-block;
             margin: auto;
             --mdc-icon-size: 100%;
@@ -104,12 +105,12 @@ Promise.race(bases).then(() => {
             padding-top: 0px;
             padding-bottom: 20px !important;
             margin-top: 0px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0px;
           }
           h2 {
             font-size: 13px;
             font-weight: bold;
-            padding-top: 10px;
+            padding-top: 8px;
             margin: 0px;
           }
           .container {

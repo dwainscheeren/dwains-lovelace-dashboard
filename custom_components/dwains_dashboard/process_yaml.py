@@ -102,7 +102,6 @@ def process_yaml(hass, config_entry):
 
     #_LOGGER.warning('Start of function to process all yaml files!')
 
-
     #Check for HKI intallation
     if os.path.exists(hass.config.path("homekit-infused/user/config")):
         _LOGGER.warning("HKI Installed!")
@@ -128,9 +127,9 @@ def process_yaml(hass, config_entry):
         
         entity_popups = OrderedDict()
         # Get custom entity popups if set
-        if config_entry.options["customize_path"]:
+        if ("customize_path" in config_entry.options):
             if os.path.exists(hass.config.path(config_entry.options["customize_path"])):
-                _LOGGER.warning("Process customize.yaml")
+                #_LOGGER.warning("Process customize.yaml")
                 customize_file = load_yaml(hass.config.path(config_entry.options["customize_path"]))
 
                 for key, values in customize_file.items():
@@ -189,15 +188,28 @@ def process_yaml(hass, config_entry):
             loaded_yaml = load_yaml(fname)
             if isinstance(loaded_yaml, dict):
                 themes.update(loaded_yaml)
+        
+        if ("theme" in config_entry.options):
+            config_theme = config_entry.options["theme"]
+        else:
+            config_theme = "Auto Mode (Dark/Light)"
+
+        if ("primary_color" in config_entry.options):
+            config_primary_color = config_entry.options["primary_color"]
+        else:
+            config_primary_color = ""
+
 
         dwains_dashboard_global.update(
             [
                 ("version", VERSION),
-                ("theme", config_entry.options["theme"]),
-                ("primary_color", config_entry.options["primary_color"]),
+                ("theme", config_theme),
+                ("primary_color", config_primary_color),
                 ("themes", json.dumps(themes))
             ]
         )
+
+        #_LOGGER.error(dwains_dashboard_global)
 
         #Icons
         icons = load_yaml(hass.config.path("dwains-dashboard/configs/icons.yaml"))
@@ -205,6 +217,8 @@ def process_yaml(hass, config_entry):
         if isinstance(icons, dict):
             if ("icons" in icons):
                 dwains_dashboard_icons.update(icons["icons"]);
+        
+        hass.bus.async_fire("dwains_dashboard_reload")
 
     async def handle_reload(call):
         #Service call to reload Dwains Theme config

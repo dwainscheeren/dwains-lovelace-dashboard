@@ -214,6 +214,15 @@ class DwainsDashboard {
     const ll = lovelace_view();
     if (ll)
       fireEvent("config-refresh", {}, ll);
+      let path = window.location.pathname;
+      let nav_path = path.substring(1, path.lastIndexOf('/'));
+
+      //Location check if user is in dwains dashboard
+      if(nav_path == "dwains-dashboard"){
+        setTimeout(function() {
+          document.location.reload()
+        }, 5000);
+      }
   }
 
   popup_card(ev) {

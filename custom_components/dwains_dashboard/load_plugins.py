@@ -30,12 +30,11 @@ def load_plugins(hass, name):
     url_set.add("/dwains_dashboard/cards/dwains-cover-card/dwains-cover-card.js")
     url_set.add("/dwains_dashboard/cards/dwains-auto-entities-card/dwains-auto-entities-card.js")
 
-    filee = f"{hass.config.path()}/www/community/button-card/button-card.js"
-    _LOGGER.warning(filee)
-    if os.path.isfile(filee):
-        _LOGGER.warning('Ja, je hebt HACS en button card geinstalleerd!')
-    else:
-        _LOGGER.warning('NEE2')
+    # button_card_path = f"{hass.config.path()}/www/community/button-card/button-card.js"
+    # if os.path.isfile(button_card_path):
+    #     _LOGGER.warning('Ja, je hebt HACS en button card geinstalleerd!')
+    # else:
+    #     _LOGGER.warning('Nee')
 
     hass.http.register_view(ModView(hass, name))
 
