@@ -31,6 +31,6 @@ tts/
 .google.token
 dwainconfig/
 dwains-dashboard/
-themes/
+/themes/
 test/
 image/
