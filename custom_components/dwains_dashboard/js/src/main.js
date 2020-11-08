@@ -130,18 +130,18 @@ class DwainsDashboard {
         root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-button-menu').style.display = 'none';  
       } 
 
-      /*Hide other tabs except the first 5 ones
-      const css = '#tabsContent > ::slotted(:not(#selectionBar):nth-child(n+6)) { display: none !important; }';
-      let style = document.createElement('style');
-      style.setAttribute('id', 'customHeaderStyle');
-      root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-tabs').shadowRoot.appendChild(style); //prepend
-      style.type = 'text/css';
-      if (style.styleSheet){
-        // This is required for IE8 and below.
-        style.styleSheet.cssText = css;
-      } else {
-        style.appendChild(document.createTextNode(css));
-      }*/
+      //Hide other tabs except the first 5 ones
+      // const css = '#tabsContent > ::slotted(:not(#selectionBar):nth-child(n+6)) { display: none !important; }';
+      // let style = document.createElement('style');
+      // style.setAttribute('id', 'customHeaderStyle');
+      // root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-button-menu').shadowRoot.appendChild(style); //prepend
+      // style.type = 'text/css';
+      // if (style.styleSheet){
+      //   // This is required for IE8 and below.
+      //   style.styleSheet.cssText = css;
+      // } else {
+      //   style.appendChild(document.createTextNode(css));
+      // }
     }
   }
 
@@ -163,7 +163,7 @@ class DwainsDashboard {
         // console.log(JSON.parse(config.themes));
 
         const sunState = hass().states["sun.sun"].state;
-        const themes = {themes: JSON.parse(config.themes.replace("#2fbae5","#e52f2f"))}
+        const themes = {themes: JSON.parse(config.themes.replaceAll("placeholder_primary_color", config.primary_color))}
         let theme = "";
 
         switch(config.theme) {

@@ -22,11 +22,10 @@ async def async_setup(hass, config):
     #_LOGGER.warning(config)
     #_LOGGER.warning(hass.data[DOMAIN])
 
-    if not config.get(DOMAIN):
-        _LOGGER.warning("no config!!!!")
+    # if not config.get(DOMAIN):
+    #     _LOGGER.warning("no config")
 
     hass.data[DOMAIN] = {
-        "installed": "",
         "notifications": {},
         "commands": {},
         'latest_version': ""

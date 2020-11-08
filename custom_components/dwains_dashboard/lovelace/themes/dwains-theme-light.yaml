@@ -4,7 +4,7 @@ dwains-theme-light:
 
   dwains-theme-background: '#f2f2f7'
   dwains-theme-primary: '#FFFFFF'
-  dwains-theme-accent: '#2fbae5'
+  dwains-theme-accent: 'placeholder_primary_color'
   dwains-theme-names: '#101012'
   dwains-theme-grey: '#adadb7'
 
@@ -12,6 +12,9 @@ dwains-theme-light:
   dwains-theme-header-text: '#f2f2f7'
   dwains-theme-header-button-text: '#f2f2f7'
   dwains-theme-header-button-background: '#1c1c1e'
+
+  app-header-background-color: 'var(--dwains-theme-header-background)'
+  app-header-text-color: 'var(--dwains-theme-header-text)'
 
   ## Lovelace Theme
   # Wallpaper/Background Image

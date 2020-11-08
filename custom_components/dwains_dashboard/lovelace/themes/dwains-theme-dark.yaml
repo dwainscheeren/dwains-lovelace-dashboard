@@ -3,7 +3,7 @@ dwains-theme-dark:
   primary-font-family: 'Open Sans'
 
   #This one will be replaced in the js with own accent color set by user
-  dwains-theme-accent: '#2fbae5'
+  dwains-theme-accent: 'placeholder_primary_color'
 
   #Rest of dwains theme colors
   dwains-theme-background: '#1c1c1e'
