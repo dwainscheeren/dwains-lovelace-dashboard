@@ -67,13 +67,16 @@ The files `scenes.yaml` and `cameras.yaml` in your dwains dashboard configs need
 
 **Adjust your addons**
 
-If you have any addons installed follow this step, otherwise skip this step.
+If you have any addons installed follow this step, otherwise skip this step!
+
 Open up the folder /config/dwains-dashboard/configs and check, we need to make some adjustments to these files.
 1. If you use addons the name of the folder dwains-theme has changed to dwains-dashboard so for check all your config files. For example rename `path: 'dwains-theme/addons/rooms/hello-room/page.yaml'` to `path: 'dwains-dashboard/addons/rooms/hello-room/page.yaml'`
 2. Some addons use an include to heading.yaml, this file is deprecated.
 Change the code as explained in [this screenshot](../images/heading2-0.jpg).
 3. The following variables have been renamed, so if you use them, please rename them.
 `_d_t_config` to `_dd_config`, `_d_t_trans` to `_dd_trans`, `_d_t_icons` to `_dd_icons` and `_d_t_global` to `_dd_global`
+
+**In 2.0 there isn't a `custom_resources.yaml` file anymore for any custom/third party cards. You will need to add them back by hand after installing 2.0. Go to HA Configuration -> Lovelace Dashboards and click in the top on Resources. Here you can click on the "+" sign bottom right and add all your custom cards you first had in `dwains-theme/resources/custom_resources.yaml`.**
 
 **Reboot HA**
 
