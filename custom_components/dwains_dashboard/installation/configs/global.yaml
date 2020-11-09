@@ -1,7 +1,6 @@
- # https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/global.html
+ # https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/global.html
  
 global:
-  installed: 'false'
   safety_ok_strings: ["Ok", "Idle", "off"] #New since 2.0
   battery_empty_strings: ["unavailable"] #New since 2.0
   show_covers: closed #New since 2.0

@@ -1,4 +1,4 @@
-# https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/cameras.html
+# https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/cameras.html
 
 # cameras:
 #   main_menu: 'false' #If you want to hide the cameras in the main nav then enable this line

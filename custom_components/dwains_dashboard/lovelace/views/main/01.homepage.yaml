@@ -47,7 +47,7 @@
                     - padding: 8px
                 tap_action: 
                   action: url
-                  url_path: 'https://dwainscheeren.github.io/lovelace-dwains-theme/'
+                  url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/'
     {% else %}
     - type: custom:dwains-wrapper-card
       css: | 
