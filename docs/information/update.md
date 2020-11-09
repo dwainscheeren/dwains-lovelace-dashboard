@@ -81,7 +81,7 @@ Reboot your HA, Dwains Theme 1.* should now be fully removed.
 
 **Install Dwains Dashboard 2.0**
 
-Install Dwains Dashboard 2.0.0 as explained [here](../getting-started/installation).
+Install Dwains Dashboard 2.0.0 as explained [here](../getting-started/installation-2-0).
 
 #### New Features:
 * **Dwains Themes are now only applied to the Dwains Dashboard itself, this means that the colors are only used in the dashboard and not outside of it.** You now can also use the default HA theme if you want to create a complete own theme. And you can also now set a own primary color (to replace the blue color) for icons etc. These settings can be found under Options in the integration Dwains Dashboard on your integrations page.
