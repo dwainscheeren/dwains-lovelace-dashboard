@@ -43,11 +43,13 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 Note: Dwains Theme has been renamed to Dwains Dashboard!
 
 #### How to update to 2.0:
-To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of Dwains Theme follow **all** steps below (Don't worry we will keep your existing Dwains Theme config and addons, these will automatic work in 2.0.0):
+The update process is a little bit complicated but I tried to make it as easy as possible.
+To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of Dwains Theme follow **all** steps below (Don't worry we will keep your existing Dwains Theme config and addons, these will automatic work in 2.0.0), after that we need to modify your config files and your addons.
 
-With /config/ I mean the folder where your whole HA config is.
+*With /config/ I mean the folder where your whole HA config is.*
 
-1. Make a backup of your current HA.
+**Remove Dwains Theme 1.***
+1. Make a backup of your current HA setup.
 2. Go to your /config/ folder and rename the folder **dwains-theme** to **dwains-dashboard**.
 3. Go to your /config/ folder and remove the file **dwains-theme-lovelace-yaml**.
 4. If you use any custom resources then backup the file /config/dwains-dashboard/resources/custom_resources.yaml somewhere safe. You need to add these back after installing 2.0.
@@ -56,20 +58,30 @@ With /config/ I mean the folder where your whole HA config is.
 7. Go to the folder /config/www and remove the folder **dwains-theme**.
 8. Go to the folder /config/packages and remove the folder **dwains-theme**.
 9. Go to the folder /config/custom_components and remove the folder **dwains-theme**.
-10. If you have any addons installed follow this step, otherwise skip this step.
-Open up the folder /config/dwains-dashboard/configs and check, we need to make some adjustments to these files.
-* If you use addons the name of the folder dwains-theme has changed to dwains-dashboard so for check all your config files. For example rename `path: 'dwains-theme/addons/rooms/hello-room/page.yaml'` to `path: 'dwains-dashboard/addons/rooms/hello-room/page.yaml'`
-* Some addons use an include to heading.yaml, this file is deprecated.
-Change the code as explained in [this screenshot](../images/heading2-0.jpg).
-11. The files `scenes.yaml` and `cameras.yaml` in your dwains dashboard configs needs to be changed. If you use them go to /config/dwains-dashboard/configs and open them.
-* The file `cameras.yaml` needs to be changed like explained in [this screenshot](../images/camerasyaml2-0.jpg).
-* The file `scenes.yaml` needs to be changed like explained in [this screenshot](../images/scenesyaml2-0.jpg).
-12. Reboot your HA, Dwains Theme 1.* should now be fully removed.
-13. Install Dwains Dashboard 2.0.0 as explained [here](../getting-started/installation).
 
-To do:
-Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
-Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/188
+**Some small changes to your existing Dwains Theme config files**
+
+The files `scenes.yaml` and `cameras.yaml` in your dwains dashboard configs needs to be changed. If you use them go to /config/dwains-dashboard/configs and open them.
+1. The file `cameras.yaml` needs to be changed like explained in [this screenshot](../images/camerasyaml2-0.jpg).
+2. The file `scenes.yaml` needs to be changed like explained in [this screenshot](../images/scenesyaml2-0.jpg).
+
+**Adjust your addons**
+
+If you have any addons installed follow this step, otherwise skip this step.
+Open up the folder /config/dwains-dashboard/configs and check, we need to make some adjustments to these files.
+1. If you use addons the name of the folder dwains-theme has changed to dwains-dashboard so for check all your config files. For example rename `path: 'dwains-theme/addons/rooms/hello-room/page.yaml'` to `path: 'dwains-dashboard/addons/rooms/hello-room/page.yaml'`
+2. Some addons use an include to heading.yaml, this file is deprecated.
+Change the code as explained in [this screenshot](../images/heading2-0.jpg).
+3. The following variables have been renamed, so if you use them, please rename them.
+`_d_t_config` to `_dd_config`, `_d_t_trans` to `_dd_trans`, `_d_t_icons` to `_dd_icons` and `_d_t_global` to `_dd_global`
+
+**Reboot HA**
+
+Reboot your HA, Dwains Theme 1.* should now be fully removed.
+
+**Install Dwains Dashboard 2.0**
+
+Install Dwains Dashboard 2.0.0 as explained [here](../getting-started/installation).
 
 #### New Features:
 * **Dwains Themes are now only applied to the Dwains Dashboard itself, this means that the colors are only used in the dashboard and not outside of it.** You now can also use the default HA theme if you want to create a complete own theme. And you can also now set a own primary color (to replace the blue color) for icons etc. These settings can be found under Options in the integration Dwains Dashboard on your integrations page.
@@ -101,7 +113,9 @@ Modifies homepage device for Lock, Safety, Light, Cover, and Device icons based 
 * Hold press doesn't open the more info @jakezp [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/177)
 * Remove hard navigation link @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/184)
 
-...
+To do:
+Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
+Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/188
 
 ---
 
