@@ -18,9 +18,9 @@
           #Header with all lights on/off button
           - type: custom:dwains-header-card
             title: {{ _dd_trans.all_lights.title }}
-            path: views/partials/header_grid/lights.yaml
             subtitle: {{ _dd_trans.home.title }}
             navigation_path: home#devices
+            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
             card:
               type: vertical-stack
               cards:

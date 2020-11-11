@@ -16,9 +16,9 @@ window.mobileAndTabletCheck = function() {
 class DwainsDashboard {
 
   async _load_lovelace() {
-    console.log('_load_lovelace');
+    //console.log('_load_lovelace');
     if(!await load_lovelace()) {
-      console.log('await');
+      //console.log('await');
       let timer = window.setTimeout(this._load_lovelace.bind(this), 100);
       this.test();
     } 
@@ -232,17 +232,38 @@ class DwainsDashboard {
     const data = {
       ...ll.config.dwains_dashboard.popup_cards,
     };
-
-    console.log(ev);
-
     if(!ev.detail || !ev.detail.entityId) return;
+
+    //Make an array with custom popups set by user
     const d = data[ev.detail.entityId];
-    if(!d) return;
-    const title = d.title !== null ? d.title : "";
-    window.setTimeout(() => {
-      fireEvent("hass-more-info", {entityId: "."}, document.querySelector("home-assistant"));
-      popUp(title, d.card, d.large || false, d.style);
-    }, 50);
+    let cardData;
+    let cardTitle;
+    let customCard = false;
+
+    if(!d || 0 === d.length) {
+      //Entity doesn't have a custom popup, let's check if it needs a global popup
+      const domain = ev.detail.entityId.split(".")[0];
+      let popupData;
+
+      if(popupData = ll.config.dwains_dashboard[domain+'_popup']){
+        cardData = JSON.parse(JSON.stringify(popupData.card).replaceAll("domain.placeholder", ev.detail.entityId));
+        cardTitle = hass().states[ev.detail.entityId].attributes.friendly_name;
+        customCard = true;
+      }
+    } else {
+      cardData = d.card;
+      cardTitle = d.title !== null ? d.title : "";
+      customCard = true;
+    }
+
+    if(customCard === true){
+      window.setTimeout(() => {
+        fireEvent("hass-more-info", {entityId: "."}, document.querySelector("home-assistant"));
+        popUp(cardTitle, cardData, false, '');
+      }, 50);
+    } else {
+      return;
+    }
   }
   
 }

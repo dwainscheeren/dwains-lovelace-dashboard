@@ -48,15 +48,7 @@
                 tap_action: 
                   action: url
                   url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/'
-    {% else %}
-    # - type: markdown
-    #   content: >
-    #     {% if _dd_config.global["light_popup"] %}
-    #       {% for room in _dd_config.rooms %}
-    #         {% if room["light"] %}
-    #         {% endif %}
-    #       {% endfor %}
-    #     {% endif %}
+    {% else %}        
     - type: custom:dwains-wrapper-card
       css: | 
         max-width: 1465px;
