@@ -84,6 +84,7 @@ Promise.race(bases).then(() => {
             color: var(--app-header-text-color, white);
             margin-top: -2px;
             padding-left: 16px;
+            box-shadow: none;
           }
           ha-icon {
             padding-top: 3px;

@@ -1,7 +1,8 @@
-rooms_child:
+rooms_child_light:
   layout: icon_name_state2nd
   show_label: true
   size: 50%
+  color: auto
   tap_action: 
     action: more-info 
   styles:
@@ -16,7 +17,7 @@ rooms_child:
       - margin-bottom: 10px
       - padding: 15px 0
     icon:
-      - color: var(--dwains-theme-accent)
+      #- color: var(--dwains-theme-accent)
       - height: 25px
       - width: 25px
     img_cell:

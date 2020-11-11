@@ -47,12 +47,10 @@
           #Subheader with room information
           {% if room["motion"] or room["door"] or room["window"] %}
           - type: custom:dwains-wrapper-card
-            style: |
-              ha-card {
-                background-color: var(--dwains-theme-header-background);
-                margin-top: -20px;
-                padding: 0px;
-              }
+            css: |
+              background-color: var(--dwains-theme-header-background);
+              margin-top: -20px;
+              padding: 0px;
             card:
               type: custom:dwains-flexbox-card
               items_classes: 'col-xs-4 col-sm-4 col-md-4 col-lg-3'
@@ -276,9 +274,9 @@
               {% if room["light"] %}
               - type: custom:button-card
                 entity: {{ room["light"] }}
-                template: rooms_child
                 {% if room["light"].split('.')[0] == 'light' %}
                 # this room has only 1 light (light entity)
+                template: rooms_child_light
                 icon: "{{ _dd_icons.light_off|default('mdi:lightbulb-outline') }}"
                 state:
                   - value: 'on'
@@ -313,6 +311,7 @@
                   ]]] 
                 {% elif room["light"].split('.')[0] == 'switch' %}
                 # this room has only 1 light (switch entity)
+                template: rooms_child_light
                 tap_action:
                   action: toggle
                   haptic: light 
@@ -334,6 +333,7 @@
                   ]]] 
                 {% else %}
                 # this room has group of lights
+                template: rooms_child
                 name: {{ _dd_trans.light.title_plural }}
                 tap_action: 
                   action: navigate
