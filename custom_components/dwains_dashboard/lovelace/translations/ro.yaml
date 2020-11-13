@@ -171,3 +171,6 @@ ro:
   vibration:
     title: 'Vibration'
     title_plural: "Vibration Sensors"
+
+  weather:
+    title: 'Weather'
