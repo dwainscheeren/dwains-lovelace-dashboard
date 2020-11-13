@@ -54,12 +54,12 @@
           <ha-card
               .header=${this.config.title||i}>
               <div class="slider">
-                  <span class="open">${this.hass.localize("component.cover.state._.open")} <span class="percentage" id="percentage">${"closed"===r.state?0:r.attributes.current_position} %</span></span>
+                  <span class="open">${this.hass.localize("component.cover.state._.open")} <span class="percentage" id="percentage">${r.attributes.current_position} %</span></span>
                   <div class="outer">
                       <input 
                           type="range" 
                           class="range vertical-heighest-first round" 
-                          .value="${"closed"===r.state?0:r.attributes.current_position}" 
+                          .value="${r.attributes.current_position}" 
                           @change=${e=>this._setCoverPosition(r,e.target.value)}
                       >
                   </div>
@@ -198,4 +198,4 @@
               -ms-transform:rotate(180deg);
               transform:rotate(180deg);
           }
-      `}}if(!customElements.get("dwains-cover-card")){customElements.define("dwains-cover-card",a);const e=r(1);console.info(`%c DWAINS-COVER-CARD \n%c   Version ${e.version}   `,"color: #2fbae5; font-weight: bold; background: black","color: white; font-weight: bold; background: dimgray")}})},function(e){e.exports=JSON.parse('{"name":"dwains-cover-card","private":true,"version":"0.0.5","description":"dwains-cover-card","scripts":{"build":"webpack","watch":"webpack --watch --mode=development","update-card-tools":"npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"},"keywords":[],"author":"Dwain Scheeren","license":"MIT","devDependencies":{"webpack":"^4.42.1","webpack-cli":"^3.3.11"},"dependencies":{"card-tools":"github:thomasloven/lovelace-card-tools","lit-element":"^2.2.1","lit-html":"^1.1.2"}}')}]);
+      `}}if(!customElements.get("dwains-cover-card")){customElements.define("dwains-cover-card",a);const e=r(1);console.info(`%c DWAINS-COVER-CARD \n%c   Version ${e.version}   `,"color: #2fbae5; font-weight: bold; background: black","color: white; font-weight: bold; background: dimgray")}})},function(e){e.exports=JSON.parse('{"name":"dwains-cover-card","private":true,"version":"0.0.6","description":"dwains-cover-card","scripts":{"build":"webpack","watch":"webpack --watch --mode=development","update-card-tools":"npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"},"keywords":[],"author":"Dwain Scheeren","license":"MIT","devDependencies":{"webpack":"^4.42.1","webpack-cli":"^3.3.11"},"dependencies":{"card-tools":"github:thomasloven/lovelace-card-tools","lit-element":"^2.2.1","lit-html":"^1.1.2"}}')}]);

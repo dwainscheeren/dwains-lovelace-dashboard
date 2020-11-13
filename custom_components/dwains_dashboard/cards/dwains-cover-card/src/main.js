@@ -94,12 +94,12 @@ Promise.race(bases).then(() => {
           <ha-card
               .header=${this.config.title || name}>
               <div class="slider">
-                  <span class="open">${this.hass.localize('component.cover.state._.open')} <span class="percentage" id="percentage">${stateObj.state === "closed" ? 0 : stateObj.attributes.current_position} %</span></span>
+                  <span class="open">${this.hass.localize('component.cover.state._.open')} <span class="percentage" id="percentage">${stateObj.attributes.current_position} %</span></span>
                   <div class="outer">
                       <input 
                           type="range" 
                           class="range vertical-heighest-first round" 
-                          .value="${stateObj.state === "closed" ? 0 : stateObj.attributes.current_position}" 
+                          .value="${stateObj.attributes.current_position}" 
                           @change=${e => this._setCoverPosition(stateObj, e.target.value)}
                       >
                   </div>
