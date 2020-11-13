@@ -128,12 +128,13 @@ def process_yaml(hass, config_entry):
 
     for fname in os.listdir(hass.config.path("custom_components/dwains_dashboard/installation/configs")):
         if not os.path.isfile(hass.config.path("dwains-dashboard/configs/"+fname)):
-            _LOGGER.debug("Copy: "+fname)
-            os.makedirs(hass.config.path("dwains-dashboard/addons"), exist_ok=True)
-            os.makedirs(hass.config.path("dwains-dashboard/configs"), exist_ok=True)
-            shutil.copy2(
-                hass.config.path("custom_components/dwains_dashboard/installation/configs/"+fname),
-                hass.config.path("dwains-dashboard/configs")
+            if fname.endswith('.yaml'):
+                _LOGGER.debug("Copy: "+fname)
+                os.makedirs(hass.config.path("dwains-dashboard/addons"), exist_ok=True)
+                os.makedirs(hass.config.path("dwains-dashboard/configs"), exist_ok=True)
+                shutil.copy2(
+                    hass.config.path("custom_components/dwains_dashboard/installation/configs/"+fname),
+                    hass.config.path("dwains-dashboard/configs")
             )
 
     if os.path.exists(hass.config.path("dwains-dashboard/configs")):
