@@ -172,7 +172,7 @@ Promise.race(bases).then(() => {
             margin: 0 0 25px 0;
           }
           .card-header {
-            font-size: 16px;
+            font-size: 14px;
             text-align: center;
             padding-left: 0px;
             padding-right: 0px;
@@ -284,6 +284,21 @@ Promise.race(bases).then(() => {
               -o-transform:rotate(180deg);
               -ms-transform:rotate(180deg);
               transform:rotate(180deg);
+          }
+          ha-card {
+            //margin: 11px;
+            background: var(--dwains-theme-primary) !important;
+            color: var(--dwains-theme-names) !important;
+          }
+          input[type="range"].range {
+            background: var(--dwains-theme-background) !important;
+            border: none !important;
+          }
+          .percentage {
+            color: var(--dwains-theme-accent) !important;
+          }
+          input[type="range"].range::-webkit-slider-thumb {
+            background: var(--dwains-theme-accent) !important;
           }
       `;
     }  

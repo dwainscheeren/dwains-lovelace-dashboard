@@ -1,6 +1,6 @@
-!function(e){var t={};function r(i){if(t[i])return t[i].exports;var a=t[i]={i:i,l:!1,exports:{}};return e[i].call(a.exports,a,a.exports,r),a.l=!0,a.exports}r.m=e,r.c=t,r.d=function(e,t,i){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:i})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var i=Object.create(null);if(r.r(i),Object.defineProperty(i,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)r.d(i,a,function(t){return e[t]}.bind(null,a));return i},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=0)}([function(e,t,r){const i=[customElements.whenDefined("home-assistant-main"),customElements.whenDefined("hui-view")];Promise.race(i).then(()=>{const e=customElements.get("home-assistant-main")?Object.getPrototypeOf(customElements.get("home-assistant-main")):Object.getPrototypeOf(customElements.get("hui-view")),t=e.prototype.html,i=e.prototype.css;class a extends e{static get properties(){return{hass:{},config:{},active:{}}}constructor(){super()}render(){var e=this.config.entity,r=this.hass.states[e];const i=void 0===r.attributes.friendly_name?r.entity_id.split(".")[1].replace(/_/g," "):r.attributes.friendly_name;return(4&r.attributes.supported_features)>0&&(128&r.attributes.supported_features)>0?t`
+!function(e){var t={};function r(a){if(t[a])return t[a].exports;var i=t[a]={i:a,l:!1,exports:{}};return e[a].call(i.exports,i,i.exports,r),i.l=!0,i.exports}r.m=e,r.c=t,r.d=function(e,t,a){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:a})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var a=Object.create(null);if(r.r(a),Object.defineProperty(a,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)r.d(a,i,function(t){return e[t]}.bind(null,i));return a},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=0)}([function(e,t,r){const a=[customElements.whenDefined("home-assistant-main"),customElements.whenDefined("hui-view")];Promise.race(a).then(()=>{const e=customElements.get("home-assistant-main")?Object.getPrototypeOf(customElements.get("home-assistant-main")):Object.getPrototypeOf(customElements.get("hui-view")),t=e.prototype.html,a=e.prototype.css;class i extends e{static get properties(){return{hass:{},config:{},active:{}}}constructor(){super()}render(){var e=this.config.entity,r=this.hass.states[e];const a=void 0===r.attributes.friendly_name?r.entity_id.split(".")[1].replace(/_/g," "):r.attributes.friendly_name;return(4&r.attributes.supported_features)>0&&(128&r.attributes.supported_features)>0?t`
           <ha-card
-              .header=${this.config.title||i}>
+              .header=${this.config.title||a}>
               
               <div class="group">
                 <center>
@@ -52,7 +52,7 @@
           </ha-card>
         `:(4&r.attributes.supported_features)>0?t`
           <ha-card
-              .header=${this.config.title||i}>
+              .header=${this.config.title||a}>
               <div class="slider">
                   <span class="open">${this.hass.localize("component.cover.state._.open")} <span class="percentage" id="percentage">${r.attributes.current_position} %</span></span>
                   <div class="outer">
@@ -68,7 +68,7 @@
           </ha-card>
         `:t`
           <ha-card
-              .header=${this.config.title||i}>
+              .header=${this.config.title||a}>
               <div class="buttons">
                 <ha-cover-controls
                     .hass="${this.hass}"
@@ -76,7 +76,7 @@
                 ></ha-cover-controls>
               </div>
           </ha-card>
-        `}_createRange(e){const t=[];for(let r=0;r<e;r++)t.push(r);return t}_setCoverPosition(e,t){this.hass.callService("cover","set_cover_position",{entity_id:e.entity_id,position:t})}_setTiltPosition(e,t){this.hass.callService("cover","set_cover_tilt_position",{entity_id:e.entity_id,tilt_position:t})}_switch(e){this.hass.callService("homeassistant","toggle",{entity_id:e.entity_id})}setConfig(e){if(!e.entity)throw new Error("You need to define an entity");this.config=e}getCardSize(){return 3}static get styles(){return i`
+        `}_createRange(e){const t=[];for(let r=0;r<e;r++)t.push(r);return t}_setCoverPosition(e,t){this.hass.callService("cover","set_cover_position",{entity_id:e.entity_id,position:t})}_setTiltPosition(e,t){this.hass.callService("cover","set_cover_tilt_position",{entity_id:e.entity_id,tilt_position:t})}_switch(e){this.hass.callService("homeassistant","toggle",{entity_id:e.entity_id})}setConfig(e){if(!e.entity)throw new Error("You need to define an entity");this.config=e}getCardSize(){return 3}static get styles(){return a`
           ha-card {
             padding: 0 0 15px 0px;
             display: block;
@@ -85,7 +85,7 @@
             margin: 0 0 25px 0;
           }
           .card-header {
-            font-size: 16px;
+            font-size: 14px;
             text-align: center;
             padding-left: 0px;
             padding-right: 0px;
@@ -198,4 +198,19 @@
               -ms-transform:rotate(180deg);
               transform:rotate(180deg);
           }
-      `}}if(!customElements.get("dwains-cover-card")){customElements.define("dwains-cover-card",a);const e=r(1);console.info(`%c DWAINS-COVER-CARD \n%c   Version ${e.version}   `,"color: #2fbae5; font-weight: bold; background: black","color: white; font-weight: bold; background: dimgray")}})},function(e){e.exports=JSON.parse('{"name":"dwains-cover-card","private":true,"version":"0.0.6","description":"dwains-cover-card","scripts":{"build":"webpack","watch":"webpack --watch --mode=development","update-card-tools":"npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"},"keywords":[],"author":"Dwain Scheeren","license":"MIT","devDependencies":{"webpack":"^4.42.1","webpack-cli":"^3.3.11"},"dependencies":{"card-tools":"github:thomasloven/lovelace-card-tools","lit-element":"^2.2.1","lit-html":"^1.1.2"}}')}]);
+          ha-card {
+            //margin: 11px;
+            background: var(--dwains-theme-primary) !important;
+            color: var(--dwains-theme-names) !important;
+          }
+          input[type="range"].range {
+            background: var(--dwains-theme-background) !important;
+            border: none !important;
+          }
+          .percentage {
+            color: var(--dwains-theme-accent) !important;
+          }
+          input[type="range"].range::-webkit-slider-thumb {
+            background: var(--dwains-theme-accent) !important;
+          }
+      `}}if(!customElements.get("dwains-cover-card")){customElements.define("dwains-cover-card",i);const e=r(1);console.info(`%c DWAINS-COVER-CARD \n%c   Version ${e.version}   `,"color: #2fbae5; font-weight: bold; background: black","color: white; font-weight: bold; background: dimgray")}})},function(e){e.exports=JSON.parse('{"name":"dwains-cover-card","private":true,"version":"0.0.6","description":"dwains-cover-card","scripts":{"build":"webpack","watch":"webpack --watch --mode=development","update-card-tools":"npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"},"keywords":[],"author":"Dwain Scheeren","license":"MIT","devDependencies":{"webpack":"^4.42.1","webpack-cli":"^3.3.11"},"dependencies":{"card-tools":"github:thomasloven/lovelace-card-tools","lit-element":"^2.2.1","lit-html":"^1.1.2"}}')}]);

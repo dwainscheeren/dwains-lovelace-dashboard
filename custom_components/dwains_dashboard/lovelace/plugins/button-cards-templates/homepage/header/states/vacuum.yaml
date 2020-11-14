@@ -16,7 +16,7 @@ header_states_vacuum:
         {% for room in _dd_config.rooms %}
           //Do some things for the vacuums
           {% if room["vacuum"] %}
-            if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked') {
+            if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked' && states['{{ room["vacuum"]["entity"] }}'].state != 'unavailable') {
               onVacuums++;
             }
           {% endif %}

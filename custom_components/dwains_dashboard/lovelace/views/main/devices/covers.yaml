@@ -35,22 +35,6 @@
                   {% if room["cover"].split('.')[0] == 'cover' %}
                   # this room has only 1 cover
                   - type: custom:dwains-cover-card
-                    style: |
-                      ha-card {
-                        margin: 11px;
-                        background: var(--dwains-theme-primary) !important;
-                        color: var(--dwains-theme-names) !important;
-                      }
-                      input[type="range"].range {
-                        background: var(--dwains-theme-background) !important;
-                        border: none !important;
-                      }
-                      .percentage {
-                        color: var(--dwains-theme-accent) !important;
-                      }
-                      input[type="range"].range::-webkit-slider-thumb {
-                        background: var(--dwains-theme-accent) !important;
-                      }
                     entity: {{ room["cover"] }}
                   {% else %}
                   # this room has group of covers
@@ -61,21 +45,6 @@
                           group: {{ room["cover"] }}
                           options:
                             type: custom:dwains-cover-card
-                            style: |
-                              ha-card {
-                                background: var(--dwains-theme-primary) !important;
-                                color: var(--dwains-theme-names) !important;
-                              }
-                              input[type="range"].range {
-                                background: var(--dwains-theme-background) !important;
-                                border: none !important;
-                              }
-                              .percentage {
-                                color: var(--dwains-theme-accent) !important;
-                              }
-                              input[type="range"].range::-webkit-slider-thumb {
-                                background: var(--dwains-theme-accent) !important;
-                              }
                       exclude:
                         - state: unavailable
                     sort:

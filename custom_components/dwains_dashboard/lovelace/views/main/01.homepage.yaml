@@ -1049,7 +1049,7 @@
                               {% if room["vacuum"] %}
                                 {% if room["vacuum"]["entity"].split('.')[0] == 'vacuum' %}
                                 //This room has only 1 vacuum
-                                  if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked'){
+                                  if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked' && states['{{ room["vacuum"]["entity"] }}'].state != 'unavailable'){
                                     onVacuums++;
                                   }
                                 {% elif room["vacuum"]["entity"].split('.')[0] == 'group' %}
