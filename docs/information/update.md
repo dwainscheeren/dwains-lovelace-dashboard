@@ -1,8 +1,8 @@
 [< Go back to Home](../index.md)
 
-# Updating Dwains Theme 
+# Updating Dwains Dashboard
 
-If there is a update of Dwains Theme here is how to install it.
+If there is a update of Dwains Dashboard here is how to install it.
 
 ### Step 1 - Download Dwains Theme latest release
 1. Download the [latest release from the release page][link](https://github.com/dwainscheeren/lovelace-dwains-theme/releases).
@@ -43,7 +43,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 Note: Dwains Theme has been renamed to Dwains Dashboard!
 
 ### How to update to 2.0:
-The update process is a little bit complicated but I tried to make it as easy as possible. I made splitted the upgrade guide into 5 sections. If you experience any issues during the installation of 2.0 you can get live personal assistant from me, [Dwains Theme Discord Server](https://discord.gg/7yt64uX)
+The update process is a little bit complicated but I tried to make it as easy as possible. I made splitted the upgrade guide into 5 sections. If you experience any issues during the installation of 2.0 you can get live personal assistant from me, [Dwains Dashboard Discord Server](https://discord.gg/7yt64uX)
 
 *Hint: With /config/ I mean the folder where your whole HA config is.*
 
@@ -77,11 +77,11 @@ Change the code as explained in [this screenshot](../images/heading2-0.jpg).
 3. The following variables have been renamed, so if you use them, please rename them.
 `_d_t_config` to `_dd_config`, `_d_t_trans` to `_dd_trans`, `_d_t_icons` to `_dd_icons` and `_d_t_global` to `_dd_global`
 
-**In 2.0 there isn't a `custom_resources.yaml` file anymore for any custom/third party cards. You will need to add them back by hand after installing 2.0. Go to HA Configuration -> Lovelace Dashboards and click in the top on Resources. Here you can click on the "+" sign bottom right and add all your custom cards you first had in `dwains-theme/resources/custom_resources.yaml`.**
+*In 2.0 there isn't a `custom_resources.yaml` file anymore for any custom/third party cards. You will need to add them back by hand after installing 2.0. Go to HA Configuration -> Lovelace Dashboards and click in the top on Resources. Here you can click on the "+" sign bottom right and add all your custom cards you first had in `dwains-theme/resources/custom_resources.yaml`.*
 
 **Section 4 - Reboot HA**
 
-Reboot your HA, Dwains Theme 1.* should now be fully removed.
+Reboot your Home Assistant. Dwains Theme 1.* should now be fully removed. Now we can install 2.0 with your existing config.
 
 **Section 5 - Install Dwains Dashboard 2.0**
 
@@ -89,9 +89,10 @@ Install Dwains Dashboard 2.0 as explained [here](../getting-started/installation
 
 #### New Features:
 * **Dwains Themes are now only applied to the Dwains Dashboard itself, this means that the colors are only used in the dashboard and not outside of it.** You now can also use the default HA theme if you want to create a complete own theme. And you can also now set a own primary color (to replace the blue color) for icons etc. These settings can be found under Options in the integration Dwains Dashboard on your integrations page.
-* Vibration Sensor @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/188)
+* Vibration Sensor support for rooms @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/188)
 * Add weather page and link to it from weather widget. @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/187)
 * New Safety Devices @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/155)
+You now can add specific devices to a room like for example a smoke sensor. When this sensor gets triggered you get a warning inside your main header and in the room card. See `safety:` in the [room docs](https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/rooms.html#rooms-information).
 * Add Tracking to Map @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/185)
 * Correct batteries with string values. Add color gradient to batteries. @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/186)
 
@@ -116,10 +117,6 @@ Modifies homepage device for Lock, Safety, Light, Cover, and Device icons based 
 * Really all batteries @patman15 [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/174)
 * Hold press doesn't open the more info @jakezp [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/177)
 * Remove hard navigation link @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/184)
-
-To do:
-Safety docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/165
-Vibration sensor docs https://github.com/dwainscheeren/lovelace-dwains-theme/pull/188
 
 ---
 

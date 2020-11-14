@@ -1,6 +1,6 @@
 <div class="row" style="display: grid; grid-template-columns: 60% 40%;">
   <div class="column">
-  <h2>Welcome to the Dwains Lovelace Theme documentation!</h2>
+  <h2>Welcome to the Dwains Lovelace Dashboard documentation!</h2>
   <p>Besides the documentation, you can also get support and ask questions on the <a href="https://community.home-assistant.io/t/dwains-theme-released-an-auto-generating-lovelace-ui-theme/168593?u=dwains">HA Forum</a> or even better join my Discord server (Home Assistant Addicts) for any questions or global talk about Home Assistant. <a href="https://discord.gg/7yt64uX">Join my Discord Home Assistant Addicts Server here, it's 100% free and 100% fun!</a></p>
   <p>
   I spend a lot of free time into this project. If you appreciate what I have made you can <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank">Buy me a coffee/beer</a> or <a href="https://www.paypal.me/dwainscheeren" target="_blank">donate to my PayPal account</a>. 
@@ -8,7 +8,7 @@
   <p>
   If you like you can subscribe on my <a href="https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A" target="_blank">Home Automation YouTube channel</a>.
 </p><p>
-  If you are new to this theme and want to install it, please start on the Preparations page below.
+  If you are new to this dashboard and want to install it, please start on the Preparations page below.
   </p>
   </div>
   <div class="column" style="text-align: right;">
@@ -38,25 +38,25 @@
 * [Persons addons](addons/persons.md)
 * [House information addons](addons/house_information.md)
 
-Also take a look in the [community addons repository](https://github.com/dwainscheeren/dwains-theme-addons).
+Also take a look in the [community addons repository](https://github.com/dwainscheeren/dwains-dashboard-addons).
 
 ### Information
-* [Update theme](information/update.md)
+* [Update dashboard](information/update.md)
 * [Changelog](information/update.md)
 * [Releases](https://github.com/dwainscheeren/lovelace-dwains-theme/releases)
 * [Tips and Tricks](information/tips-and-tricks.md)
 
 ### How to guides
-* [How to use Dwains Theme notifications](how-tos/notifications.md)
+* [How to use Dwains Dashboard notifications](how-tos/notifications.md)
 * [How to choose and use an icon](how-tos/how-to-choose-icon.md)
-* [How to update Dwains Theme](information/update.md)
-* [How to add/load custom cards in Dwains Theme](how-tos/custom-cards.md)
+* [How to update Dwains Dashboard](information/update.md)
+* [How to add/load custom cards in Dwains Dashboard](how-tos/custom-cards.md)
 
 ### Support
-* [Report a bug](https://github.com/dwainscheeren/lovelace-dwains-theme/issues)
-* [Ask for a Feature Requests](https://github.com/dwainscheeren/lovelace-dwains-theme/issues/new)
-* [Dwains Theme Home Assistant forum thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593?u=dwains)
-* [Dwains Theme Discord Server](https://discord.gg/7yt64uX)
+* [Report a bug](https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues)
+* [Ask for a Feature Requests](https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues/new)
+* [Dwains Dashboard Home Assistant forum thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593?u=dwains)
+* [Dwains Dashboard Discord Server](https://discord.gg/7yt64uX)
 
 ### Donate to Dwains
 * [PayPal](https://www.paypal.me/dwainscheeren)
@@ -66,6 +66,34 @@ Also take a look in the [community addons repository](https://github.com/dwainsc
 
 Many thanks to the people who donated, I really appreciate it! I love transparency so I will place all donations on this page.
 If you donate please write a short message with your HA username :D
+
+> Luuk - Super dashboard! Bedankt voor het harden werken aan de nieuwe versie :) gr. Luuk
+
+> Cameron - Thanks for any other great update.
+
+> David - awesome work, as always. thanks bro!
+
+> Robin - Thanks voor 't goede werk! Groeten Robin H
+
+> Marco - Alvast wat motivatie voor 1. 5 😃👍🏻.
+
+> Daniel Moses 
+
+> Raymond (2exclusive) - thanks for all your hard work and you are zzzz man!
+
+> Ruben Dijk - Great theme! Respect for all the work. Keep up the good work!
+
+> ScottT - Love the theme! I have no aesthetic talent, so finally turned my HA from functional but complex/ugly to something my partner loves to use! Can't thank you enough!❤️ 
+
+> Thombreeder - Great job!
+
+> Philip - 
+
+> Mattias S - Great work and effort! 🙌
+
+> Alan
+
+> Jason - Great work. Can't wait to see what's next.
 
 > Edwin — /
 
