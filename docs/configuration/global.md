@@ -30,6 +30,7 @@ The global section. Dwains Dashboard uses this to build the pages.
 | inside_temperature | string | No | climate.living_room | Inside temperature sensor |
 | batery_empty_string | list | No | See example below | A list of states the empty batteries are shown for |
 | safety_ok_strings | list | No | See example below | [Read more about safety for rooms here](rooms.md) |
+| show_covers | string | No | Default to open  | Use closed or partly_closed. For example in the header it default shows all open covers if you only want to see closed covers use set this key and use closed |
 | custom_popups | array | No | See example below | [Read more about custom popups here](../addons/popup.md) | 
 
 
@@ -47,6 +48,7 @@ global:
     - "Ok"
     - "Idle"
     - "off"
+  show_covers: closed
 
   custom_popups:
     - domain: cover
