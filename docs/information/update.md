@@ -56,11 +56,17 @@ Change the code as explained in [this screenshot](../images/heading2-0.jpg).
 
 *In 2.0 there isn't a `custom_resources.yaml` file anymore for any custom/third party cards. You will need to add them back by hand after installing 2.0. Go to HA Configuration -> Lovelace Dashboards and click in the top on Resources. Here you can click on the "+" sign bottom right and add all your custom cards you first had in `dwains-theme/resources/custom_resources.yaml`.*
 
-**Section 4 - Reboot HA**
+**Section 4 - Dynamic_page.yaml is deprecated**
+
+If you use the `dynamic_page.yaml` in your current installation I have some good and bad news. The bad news is that it is deprecated, the good news is I created a new function for this to put as many custom pages in the main navigation bar as you want!!
+You must copy the `addon:` part you had in `dwains-theme/configs/dynamic_page.yaml` into the `addon:` part in `dwains-dashboard/configs/more_page.yaml`. Then add the key `main_menu: 'true'` to the addon. Then this addon will show up in your main navigation bar!
+([Read more here](https://dwainscheeren.github.io/dwains-lovelace-dashboard/addons/more_page.html#more-page-addons))
+
+**Section 5 - Reboot HA**
 
 Reboot your Home Assistant. Dwains Theme 1.* should now be fully removed. Now we can install 2.0 with your existing config.
 
-**Section 5 - Install Dwains Dashboard 2.0**
+**Section 6 - Install Dwains Dashboard 2.0**
 
 Install Dwains Dashboard 2.0 as explained [here](../getting-started/installation).
 
