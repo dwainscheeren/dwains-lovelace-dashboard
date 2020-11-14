@@ -26,6 +26,8 @@ My dashboard has the slogan "An auto generating Home Assistant Lovelace UI Dashb
 
 ---
 
+**If you experience any problems during the installation of Dwains Dashboard then please join my Discord server, you get live personal support. [Join my Discord Server here, it's 100% free!](https://discord.gg/7yt64uX)**
+
 ## Step 1 - Download Dwains Dashboard latest release
 Download the [zip file](https://github.com/dwainscheeren/dwains-lovelace-dashboard/archive/2.0.zip)
 

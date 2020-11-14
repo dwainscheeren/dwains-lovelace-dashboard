@@ -28,7 +28,6 @@
 * [persons.yaml](configuration/persons.md)
 * [icons.yaml](configuration/icons.md)
 * [more_page.yaml](configuration/more_page.md)
-* [dynamic_page.yaml](configuration/dynamic_page.md)
 
 ### [Addons](addons/index.md)
 * [Rooms addons](addons/rooms.md)
@@ -36,13 +35,14 @@
 * [Dynamic page addons](addons/dynamic_page.md)
 * [Persons addons](addons/persons.md)
 * [House information addons](addons/house_information.md)
+* [Popup addons](popup.md)
 
 Also take a look in the [community addons repository](https://github.com/dwainscheeren/dwains-dashboard-addons).
 
 ### Information
 * [Update dashboard](information/update.md)
 * [Changelog](information/update.md)
-* [Releases](https://github.com/dwainscheeren/lovelace-dwains-theme/releases)
+* [Releases](https://github.com/dwainscheeren/dwains-lovelace-dashboard/releases)
 * [Tips and Tricks](information/tips-and-tricks.md)
 
 ### How to guides
