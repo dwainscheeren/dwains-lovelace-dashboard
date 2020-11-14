@@ -67,6 +67,14 @@ class DwainsDashboard {
     window.addEventListener("location-changed", updater);
     window.addEventListener("popstate", updater);
 
+    var head = document.getElementsByTagName('head')[0];
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'https://fonts.googleapis.com/css?family=Open+Sans&display=swap';
+    link.media = 'all';
+    head.appendChild(link);
+
     const pjson = require('../package.json');
     console.info(
       `%c  DWAINS_DASHBOARD JS  \n%c    Version ${pjson.version}     `,
