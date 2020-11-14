@@ -2,32 +2,9 @@
 
 # Updating Dwains Dashboard
 
-If there is a update of Dwains Dashboard here is how to install it.
+If you want to upgrade your installation of Dwains Dashboard to the latest version then look below. Each update has his own "How to update to **" manual.
 
-### Step 1 - Download Dwains Theme latest release
-1. Download the [latest release from the release page][link](https://github.com/dwainscheeren/lovelace-dwains-theme/releases).
-
-**Each release has information on that page with how to install it as an update!**
-
-### Step 2 - Extract & move the download
-
-1. Unzip the file you just downloaded. 
-
-2. Make a backup of the folder `dwains-theme/configs` and `dwains-theme/addons` this is very important!
-
-3. If you use the `custom_resources.yaml file`, then backup that one too (`dwains-theme/resources/custom_resources.yaml`)
-
-3. Remove the folder `dwains-theme` in your main HA folder.
-
-4. Copy the content of the folder you just downloaded to the root of your Home Assistant installation.
-
-5. Copy the `configs` and `addons` folders back to to the folder `dwains-theme`. If you use the `custom_resources.yaml` file, then copy this back into dwains-theme/resources.
-
-### Step 3 - Reboot Home Assistant
-
-Reboot Home Assistant! After this check if you got the new version number in More page -> Theme settings (bottom of page).
-
-## Version info
+### Versioning info
 
 Version numbering explained (MAJOR.MINOR.PATCH):
 1. MAJOR version: when there are big and incompatible changes.
