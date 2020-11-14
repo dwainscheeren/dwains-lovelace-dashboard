@@ -42,13 +42,14 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 Note: Dwains Theme has been renamed to Dwains Dashboard!
 
-#### How to update to 2.0:
-The update process is a little bit complicated but I tried to make it as easy as possible.
-To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of Dwains Theme follow **all** steps below (Don't worry we will keep your existing Dwains Theme config and addons, these will automatic work in 2.0.0), after that we need to modify your config files and your addons.
+### How to update to 2.0:
+The update process is a little bit complicated but I tried to make it as easy as possible. I made splitted the upgrade guide into 5 sections. If you experience any issues during the installation of 2.0 you can get live personal assistant from me, [Dwains Theme Discord Server](https://discord.gg/7yt64uX)
 
-*With /config/ I mean the folder where your whole HA config is.*
+*Hint: With /config/ I mean the folder where your whole HA config is.*
 
-**Remove Dwains Theme 1.***
+**Section 1 - Remove existing Dwains Theme 1.***
+
+*To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of Dwains Theme follow **all** steps below (Don't worry we will keep your existing Dwains Theme config and addons, these will automatic work in 2.0.0), after that we need to modify your config files and your addons.*
 1. Make a backup of your current HA setup.
 2. Go to your /config/ folder and rename the folder **dwains-theme** to **dwains-dashboard**.
 3. Go to your /config/ folder and remove the file **dwains-theme-lovelace-yaml**.
@@ -59,13 +60,13 @@ To update to Dwains Dashboard 2.0.0 you first need to remove your 1.* version of
 8. Go to the folder /config/packages and remove the folder **dwains-theme**.
 9. Go to the folder /config/custom_components and remove the folder **dwains-theme**.
 
-**Some small changes to your existing Dwains Theme config files**
+**Section 2- Some small changes to your existing Dwains Theme config files**
 
 The files `scenes.yaml` and `cameras.yaml` in your dwains dashboard configs needs to be changed. If you use them go to /config/dwains-dashboard/configs and open them.
 1. The file `cameras.yaml` needs to be changed like explained in [this screenshot](../images/camerasyaml2-0.jpg).
 2. The file `scenes.yaml` needs to be changed like explained in [this screenshot](../images/scenesyaml2-0.jpg).
 
-**Adjust your addons**
+**Section 3 - Adjust your addons**
 
 If you have any addons installed follow this step, otherwise skip this step!
 
@@ -78,13 +79,13 @@ Change the code as explained in [this screenshot](../images/heading2-0.jpg).
 
 **In 2.0 there isn't a `custom_resources.yaml` file anymore for any custom/third party cards. You will need to add them back by hand after installing 2.0. Go to HA Configuration -> Lovelace Dashboards and click in the top on Resources. Here you can click on the "+" sign bottom right and add all your custom cards you first had in `dwains-theme/resources/custom_resources.yaml`.**
 
-**Reboot HA**
+**Section 4 - Reboot HA**
 
 Reboot your HA, Dwains Theme 1.* should now be fully removed.
 
-**Install Dwains Dashboard 2.0**
+**Section 5 - Install Dwains Dashboard 2.0**
 
-Install Dwains Dashboard 2.0.0 as explained [here](../getting-started/installation-2-0).
+Install Dwains Dashboard 2.0 as explained [here](../getting-started/installation-2-0).
 
 #### New Features:
 * **Dwains Themes are now only applied to the Dwains Dashboard itself, this means that the colors are only used in the dashboard and not outside of it.** You now can also use the default HA theme if you want to create a complete own theme. And you can also now set a own primary color (to replace the blue color) for icons etc. These settings can be found under Options in the integration Dwains Dashboard on your integrations page.
