@@ -17,7 +17,6 @@
 </div>
 
 ### Getting started
-* [Preparations](getting-started/preparations.md)
 * [Installation](getting-started/installation.md)
 
 ### [Configuration](configuration/index.md)

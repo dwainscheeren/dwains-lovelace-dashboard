@@ -3,7 +3,28 @@
 # Installation
 **Dwains Dashboard is only compatible with HA 0.107 or newer!**
 
-Did you read and followed the preparation part? No? [Check that out first](preparations.md). If you experience any problems during the installation of Dwains Theme then please join my Discord server for live support questions so I can help you. [Join my Discord Server here, it's 100% free!](https://discord.gg/7yt64uX)
+---
+
+Before we are getting started on anything, make you sure you make a backup of you current Home Assistant setup.
+
+Dwains Dashboard highly depends on HA groups If you don't know how to work with groups, [read this first](https://www.home-assistant.io/integrations/group/). 
+
+With groups you can combine multiple entities into one. For example you have 3 lights in your living room `light.living_room_1`, `light.living_room_2` and a switch `switch.living_room_3`. You can combine these in 1 group as follow:
+```
+living_room_lights:
+  name: Living Room Lights
+  entities: 
+    - light.living_room_1
+    - light.living_room_2
+    - switch.living_room_3
+```
+You then can use `group.living_room_lights` in my dashboard config.
+
+#### Short explanation on Dwains Dashboard
+
+My dashboard has the slogan "An auto generating Home Assistant Lovelace UI Dashboard". You still need to define your house in so called 'Dwains Dashboard Config files'. Working with these files is not that hard and is fully explained in the docs here. The dashboard will be automatic generated on the basis of the config files.
+
+---
 
 ## Step 1 - Download Dwains Dashboard latest release
 Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases/latest).
@@ -36,10 +57,6 @@ There will be a new icon (a D icon) in your left sidebar.
 ## Step 5 - Configure Dwains Dashboard
 
 To configure/build the dashboard you need to edit the files in the folder `dwains-dashboard/configs/`. When you open these file you see some examples commented-out, only uncomment the lines you want to use! If you want to know how you need to configure these files, go to the [Configure Dwains Dashboard](../configuration/index.md) page.
-
-Also read here some handy how to's:
-* [How to choose and use an icon](../how-tos/how-to-choose-icon.md)
-* [How to update dashboard](../information/update.md)
 
 **If you want to extend or add custom things like custom pages or cards to this dashboard, please refer to the [addons](../addons/index.md) documentation.**
 
