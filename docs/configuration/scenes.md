@@ -22,7 +22,13 @@ Scenes sections all scenes you want to be visible on the scenes page. You can [c
 
 | Name | Type | Default | Example | Description |
 |------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
-| entity | string | Required | scene.watching_tv | Scene entity_id. Can be a scene entity or something like switch or input_boolean. |
+| main_menu | boolean | Optional | `'false'` (default: true) | If you want to hide the scenes in the main navigation bar then enable this line. The scenes page will be moved to more page as an link. |
+| entities | array | Required | See table below |
+
+Entities array
+| Name | Type | Default | Example | Description |
+|------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
+| entity | array | Required | See table below | scene.watching_tv | Scene entity_id. Can be a scene entity or something like switch or input_boolean. |
 | icon | string | far:play-circle | fas:couch | Icon to display |
 | icon_color | string | var(--dwains-theme-header-text) | '#ffffff' | Icon color |
 | background | string | optional | 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)' | Background color, you can use css styling here |
@@ -32,8 +38,10 @@ Scenes sections all scenes you want to be visible on the scenes page. You can [c
 ## Scenes example
 ```YAML
 scenes:
-  - entity: scene.watching_tv
-    icon: fas:couch
-    icon_color: '#ffffff'
-    background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+  main_menu: 'false' #Optional
+  entities:
+    - entity: scene.watching_tv
+      icon: fas:couch
+      icon_color: '#ffffff'
+      background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
 ```  

@@ -16,7 +16,7 @@
 
 **This file is optional**
 
-This is a config file for the more page. You can access the more page from the hamburger icon in the main menu.
+This is a config file for the more page. You can access the more page from the three dots icon in the main menu.
 
 This page support addons, they are called *more page addons.* [Read more here](../addons/more_page.md).
 

@@ -1,95 +1,67 @@
 [< Go back to Home](../index.md)
 
 # Installation
-**Dwains Theme is only compatible with HA 0.107 or newer!**
+**Dwains Dashboard is only compatible with HA 0.107 or newer!**
 
-Did you read and followed the preparation part? No? [Check that out first](preparations.md). If you experience any problems during the installation of Dwains Theme then please join my Discord server for live support questions so I can help you. [Join my Discord Server here, it's 100% free!](https://discord.gg/7yt64uX)
+---
 
+Before we are getting started on anything, make you sure you make a backup of you current Home Assistant setup.
 
-Follow all the steps on this page! Start with the HACS part.
+Dwains Dashboard highly depends on HA groups If you don't know how to work with groups, [read this first](https://www.home-assistant.io/integrations/group/). 
 
-## Installing required HACS Plugins & Components
-This theme depends on some plugins and components from other developers. These plugins can be installed thought HACS.
+With groups you can combine multiple entities into one. For example you have 3 lights in your living room `light.living_room_1`, `light.living_room_2` and a switch `switch.living_room_3`. You can combine these in 1 group as follow:
+```
+living_room_lights:
+  name: Living Room Lights
+  entities: 
+    - light.living_room_1
+    - light.living_room_2
+    - switch.living_room_3
+```
+You then can use `group.living_room_lights` in my dashboard config.
 
-Make sure you have installed HACS in your Home Assistant setup. If you don't have HACS installed or you don't know what HACS is, then you read the [HACS Installation instructions here](https://hacs.xyz/docs/installation/manual).
+#### Short explanation on Dwains Dashboard
 
-After you made sure you got HACS up and running you can continue to install Dwains Theme.
+My dashboard has the slogan "An auto generating Home Assistant Lovelace UI Dashboard". You still need to define your house in so called 'Dwains Dashboard Config files'. Working with these files is not that hard and is fully explained in the docs here. The dashboard will be automatic generated on the basis of the config files.
 
-### Install HACS plugins
+---
 
-In the left side menu click on HACS and then on Frontend. Click on the + sign bottom right and search for each plugin in the table below and install it.
+## Step 1 - Download Dwains Dashboard latest release
+Download the [zip file](https://github.com/dwainscheeren/dwains-lovelace-dashboard/archive/2.0.zip)
 
-*NOTE: You don't have to add each plugin JS url to your lovelace configuration/resources list. You just need to click Install for now on each plugin.
+<!-- Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases/latest).
 
-| Name | Type | Required | Description |
-|----------------------------------|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Card-mod | Module | Yes | Add CSS styles to (almost) any lovelace card |
-| Button-card | Module | Yes | Lovelace button-card for home assistant |
-| Light Entity Card | js | Yes | Control any light or switch entity |
-| auto-entities | Module | Yes | Automatically populate the entities-list of lovelace cards |
-| Custom Header | Module | Yes | Lovelace Custom Header |
-| more-info-card | Module | Yes | Display the more-info dialog of any entity as a lovelace card |
-| state-switch | Module | Yes | Dynamically replace lovelace cards depending on occasion |
+Initialize the download by clicking on the "Source code (zip)" link at the bottom of the page.
 
-### Install HACS components
+![Github](../images/getting-started/download-latest-release.png) -->
 
-We also need to download 1 component from the HACS store. Click again on HACS in your left sidebar and then on Integrations, click on the + sign bottom right and search for the module in the table below and install it.
+## Step 2 - Extract the content
 
-| Name | HACS | Required | Description |
-|-------------|-------------|----------|---------------------------------------------------------------------------------------------------------|
-| Browser_mod | Integration | Yes | A Home Assistant integration to turn your browser into a controllable entity - and also an audio player |
+1. Unzip the file you just downloaded.
+2. Inside this folder you will see a folder called `custom_components` copy this folder.
+3. Go to the main folder of your Home Assistant installation. This is the folder where you config is. (Hint: its the folder where for example the files `ui-lovelace.yaml` and `configuration.yaml` are located).
+4. Paste the `custom_components` to the main folder of your Home Assistant installation.
 
-After installing both HACS plugins and the 1 HACS component and you make sure you don't forgot any, you can continue to install Dwains Theme below.
+You will end up with having `/config/custom_components/dwains_dashboard` or if you are running a venv installation it would look like `/home/homeassistant/.homeassistant/custom_components/dwains_dashboard`.
 
+## Step 3 - Restart Home Assistant
 
-## Installing Dwains theme
+Restart Home Assistant once before moving to the next step.
 
-### Step 1 - Download Dwains Theme latest release
-Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases).
+## Step 4 - Activate Dwains Dashboard
 
-### Step 2 - Extract & move the download
+1. In your Home Assistant UI go to "Configuration", then click "Integrations".
+2. Click on the "+" button in the bottom right corner.
+3. Search for or scroll down to find "Dwains Dashboard" and select it.
 
-1. Unzip the file you just downloaded and copy the content of it. 
-2. Go to the main folder of your Home Assistant installation. This is the folder where you config is. (Hint: its the folder where the file `ui-lovelace.yaml` and `configuration.yaml` is located).
-3. Copy the content of the downloaded folder to the main folder of your Home Assistant installation.
+There will be a new icon (a D icon) in your left sidebar.
 
-### Step 3 - Set the configuration files
+## Step 5 - Configure Dwains Dashboard
 
-1. Find and rename the `dwains-theme/configs-samples` folder to `dwains-theme/configs`.
-2. Open your `configuration.yaml` file and make sure you don't have the following lines (with sublines). `homeassistant:`, `lovelace:`, `frontend:` and `lovelace_gen:`. Please remove these lines. From your existing `configuration.yaml`. This is very important.
-3. Open `configuration-sample.yaml` from the download and select the text between `Copy from here` till `Copy till here` and paste this at the top of your existing `configuration.yaml` file.
+To configure/build the dashboard you need to edit the files in the folder `dwains-dashboard/configs/`. When you open these file you see some examples commented-out, only uncomment the lines you want to use! If you want to know how you need to configure these files, go to the [Configure Dwains Dashboard](../configuration/index.md) page.
 
-### Step 4 - Your existing configuration
+**If you want to extend or add custom things like custom pages or cards to this dashboard, please refer to the [addons](../addons/index.md) documentation.**
 
->**I have my full existing config in the `configuration.yaml` file**
->
->Okay then you are already set. If you had some code under the `homeassistant:` line and want this back, then place it back under the following line `# If you had any important strings before in homeassistant: place them back here below`.
+That's it! Dwains Dashboard should now be installed.
 
->**I'm using HA packages folder**
->
-> If you already are using HA packages, then you know how to work with it. Please make sure your `configuration.yaml` is correct and has then `packages: !include_dir_named packages/` under the `homeassistant:` line.
-
-### Step 5 - Configure Dwains Theme
-
-To configure/build the theme you need to edit the files in the folder `dwains-theme/configs/`. When you open these file you see some examples commented-out, only uncomment the lines you want to use! If you want to know how you need to configure these files, go to the [Configure Dwains Theme](../configuration/index.md) page.
-
-### Step 6 - Restart Home Assistant
-
-*NOTE: Your Home Assistant frontend can have some error. In this case you forgot a HACS plugin or you made a mistake in any of the config files. Always clear your browser cache when you receive errors.*
-
-That's it! Dwains Theme should now be installed.
-
-*Let me know on the [HA forum](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593?u=dwains) if you like my theme :D*
-
-## What's next?
-Now that you have installed all the required plugins and the Dwains Theme core files you can edit the Dwains theme configuration files.
-
-[Configure Dwains Theme](../configuration/index.md)
-
-Also read here some handy how to's:
-* [How to choose and use an icon](../how-tos/how-to-choose-icon.md)
-* [How to update theme](../information/update.md)
-
-And checkout some [Tips & Tricks](../information/tips-and-tricks.md) of Dwains Theme.
-
-**WARNING: Please only changes files in the `dwains-theme/configs` and `dwains-theme/addon` folders. Changing any other files within `dwains-theme` or other subdirectories not mentioned above, will result in a loss of changes and/or errors with future updates. If you want to extend or add pages to this theme, please refer to the [addons](../addons/index.md) documentation.**
+PS: Ceckout some [Tips & Tricks](../information/tips-and-tricks.md) of Dwains Dashboard.

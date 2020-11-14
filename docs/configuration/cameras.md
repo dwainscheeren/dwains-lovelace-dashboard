@@ -22,10 +22,15 @@ Cameras sections, all cameras you want to be visible on the cameras page.
 
 | Name | Type | Default | Example | Description |
 |------------|--------|---------------------------------|-------------------------------------------------------|------------------------------------------------|
-| entity | string | Required | camera.driveway_camera | Camera entity_id |
+| main_menu | boolean | Optional | `'false'` (default: true) | If you want to hide the cameras in the main navigation bar then enable this line. The cameras page will be moved to more page as an link. |
+| live_view | boolean | Optional | `'false'` (default: true) | If you want to disable live view then enable this line |
+| entities | string | Required | camera.driveway_camera | Camera entity_id |
 
 ## Cameras example
 ```YAML
 cameras:
-  - entity: camera.driveway_camera
+  main_menu: 'false' #If you want to hide the cameras in the main nav then enable this line. The cameras page will be moved to more page as an link.
+  live_view: 'false' #If you want to disable live view then enable this line
+  entities:
+    - camera.driveway_camera
 ``` 

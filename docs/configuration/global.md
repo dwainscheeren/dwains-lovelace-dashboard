@@ -17,29 +17,38 @@
 
 **This file is required!**
 
-The global section. Dwains theme uses this to build the pages.
+The global section. Dwains Dashboard uses this to build the pages.
 
 ## Global information
 
 | Name | Type | Required | Example | Description |
 |---------------------|--------|----------|----------------------------------|---------------------------------------------------------------------------------------------|
-| language | string | Yes! | English (en), Dutch (nl), German (de), French (fr), Danish (da), Italian (it), Spanish (es), Swedish (se) | Other languages coming soon.. |
 | weather | string | No | weather.dark_sky<br>**Make sure you got the weather component installed!** | Weather (Ex: [Dark Sky Weather Integration](https://www.home-assistant.io/integrations/weather.darksky/)) |
 | outside_temperature | string | No | sensor.dark_sky_temperature | Outside temperature (Ex: [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |
 | outside_humidity | string | No | sensor.dark_sky_humidity | Outside humidity (Ex: [Dark Sky Sensor](https://www.home-assistant.io/integrations/darksky/)) |
 | alarm | string | No | alarm_control_panel.alarm_sys | Alarm entity. [Read more here](https://www.home-assistant.io/integrations/manual/) |
 | inside_temperature | string | No | climate.living_room | Inside temperature sensor |
-| safety_ok_strings | list | No | ["Ok", "Idle", "off"] | [Read more here](https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/rooms.html) |
+| batery_empty_string | list | No | See example below | A list of states the empty batteries are shown for |
+| safety_ok_strings | list | No | See example below | [Read more about safety for rooms here](rooms.md) |
+| custom_popups | array | No | See example below | [Read more about custom popups here](../addons/popup.md) | 
 
 
 ## Global example
 ```YAML
 global:
-  language: en
   weather: weather.dark_sky
   outside_temperature: sensor.dark_sky_temperature
   outside_humidity: sensor.dark_sky_humidity
   alarm: alarm_control_panel.alarm_system
   inside_temperature: climate.living_room
-  safety_ok_strings: ["Ok", "Idle", "off"]
+  battery_empty_strings:
+    - "unavailable"
+  safety_ok_strings: 
+    - "Ok"
+    - "Idle"
+    - "off"
+
+  custom_popups:
+    - domain: cover
+      path: 'dwains-dashboard/addons/popups/cover/popup.yaml'
 ```  

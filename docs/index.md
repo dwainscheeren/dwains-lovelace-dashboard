@@ -1,7 +1,7 @@
 <div class="row" style="display: grid; grid-template-columns: 60% 40%;">
   <div class="column">
   <h2>Welcome to the Dwains Lovelace Dashboard documentation!</h2>
-  <p>Besides the documentation, you can also get support and ask questions on the <a href="https://community.home-assistant.io/t/dwains-theme-released-an-auto-generating-lovelace-ui-theme/168593?u=dwains">HA Forum</a> or even better join my Discord server (Home Assistant Addicts) for any questions or global talk about Home Assistant. <a href="https://discord.gg/7yt64uX">Join my Discord Home Assistant Addicts Server here, it's 100% free and 100% fun!</a></p>
+  <p>Besides the documentation, you can also get support and ask questions on the <a href="https://community.home-assistant.io/t/dwains-theme-released-an-auto-generating-lovelace-ui-theme/168593?u=dwains">HA Forum</a> or even better join my Dwains Dashboard Discord server for any questions or global talk about Home Assistant. <a href="https://discord.gg/7yt64uX">Join my Discord server "Home Assistant Addicts Server" here, it's 100% free and 100% fun!</a></p>
   <p>
   I spend a lot of free time into this project. If you appreciate what I have made you can <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank">Buy me a coffee/beer</a> or <a href="https://www.paypal.me/dwainscheeren" target="_blank">donate to my PayPal account</a>. 
   </p>

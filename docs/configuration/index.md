@@ -2,17 +2,13 @@
 
 # Configuration
 
-Dwains Theme configuration is loaded from the files inside the folder `dwains-theme/configs/`.
+Dwains Dashboard configuration is loaded from the files inside the folder `dwains-dashboard/configs/`.
 
-**If you edit something inside a file of the `dwains-theme/configs/` folder, you always need to reload the theme configuration for any changes to be visible. Go to the more page and click on theme settings, there you can click Reload theme configuration. Or do a service call in the developer tools `dwains_theme.reload`**
+**If you edit something inside a file of the `dwains-dashboard/configs/` folder, you always need to reload the dashboard configuration for any changes to be visible. Go to the more page and click on settings, there you can click Reload dashboard configuration. Or do a service call in the developer tools `dwains_dashboard.reload`**
 
-This folder can have the following files: `global.yaml`, `house_information.yaml`, `scenes.yaml`, `cameras.yaml`, `persons.yaml`, `rooms.yaml`, `icons.yaml`, `more_page.yaml` and `dynamic_page.yaml`.
+This folder can have the following files: `global.yaml`, `house_information.yaml`, `scenes.yaml`, `cameras.yaml`, `persons.yaml`, `rooms.yaml`, `icons.yaml` and `more_page.yaml`.
 
 Only the files `global.yaml`, `rooms.yaml` and `icons.yaml` are required!
-
-*HINT: You can always look in the `dwains-theme/configs-samples` folder files for some inspiration.*
-
-*HINT: For the icons I mostly use Font Awesome, [How to choose and use an icon](../how-tos/how-to-choose-icon.md).*
 
 *HINT: Some entries can have a single entity or a group [read here how to make a group](https://www.home-assistant.io/integrations/group/).*
 

@@ -16,7 +16,7 @@
 
 **This file is required!**
 
-Rooms sections, all rooms of your house. This is where my theme is all about :D
+Rooms sections, all rooms of your house. This is where my dashbaord is all about :D
 
 ## Rooms information
 
@@ -38,7 +38,7 @@ Rooms sections, all rooms of your house. This is where my theme is all about :D
 | plant        | string <br>(entity or group) | Not required       | plant.hallway_plant<br> or <br>group.hallway_plants                  | Plant(s). Can be single plant or a group of plants                                |
 | media_player | string <br>(entity or group) | Not required       | media_player.hallway_tv<br> or <br>group.hallway_tvs                 | Media player(s). Can be single media_player or a group of media_players           |
 | device | string <br>(entity or group) | Not required       | binary_sensor.dishwasher<br> or <br>group.kitchen_devices                 | Device(s). Can be single device (sensor, switch, binary_sensor etc) or a group of devices           |
-| safety       | string <br>(entity or group) | Not required       | binary_sensor.smoke_alarm<br> or <br>group.kitchen_smoke             | Device(s). Can be single device (sensor, switch, binary_sensor etc) or a group of devices. Configuration for ok states is in [global.yaml](https://dwainscheeren.github.io/lovelace-dwains-theme/configuration/global.html)           |
+| safety       | string <br>(entity or group) | Not required       | binary_sensor.smoke_alarm<br> or <br>group.kitchen_smoke             | Device(s). Can be single device (sensor, switch, binary_sensor etc) or a group of devices. Configuration for ok states is in [global.yaml](https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/global.html)           |
 | more_entities | object | Optional | See example below | If you want to show some more entities for a room (opens in new view, accessible from icon in header top right). |
 | page_entities | object | Optional | See example below | If you want to show some additional entities on room page (visibile on room page itself). |
 | addons       | object                       | Not required       |                                                                      | Rooms support addons, they are called *rooms addons.* [Read more here](../addons/rooms.md)                                                                       |
