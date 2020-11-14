@@ -2,11 +2,11 @@
 
 <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"></a>
+<a href="https://www.paypal.me/dwainscheeren"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"></a>
 
 [![dwains-theme_01](https://user-images.githubusercontent.com/3868853/73613069-43326600-45f2-11ea-99a5-8f058530d72e.jpg)](https://dwainscheeren.github.io/dwains-lovelace-dashboard/)
-[![dwains-theme_02](https://user-images.githubusercontent.com/3868853/73613071-4594c000-45f2-11ea-852e-7a2eae5c1dec.jpg)](https://youtu.be/Wdh0q8K3JSk)
-![Tablet-desktop-mobile_02](https://user-images.githubusercontent.com/3868853/78458829-ab65fc80-76b4-11ea-9198-d67dc58e8003.jpg)
+[![1section_02](https://user-images.githubusercontent.com/3868853/99157600-95003480-26ca-11eb-81fb-192652f51fe8.jpg)](https://youtu.be/Wdh0q8K3JSk)
+![1section_04](https://user-images.githubusercontent.com/3868853/99157586-7d28b080-26ca-11eb-8a0d-6d05d44727b1.jpg)
 ![Tablet-desktop-mobile_03](https://user-images.githubusercontent.com/3868853/78458831-ac972980-76b4-11ea-8c07-9e6457011c48.jpg)
 ![Tablet-desktop-mobile_04](https://user-images.githubusercontent.com/3868853/78458832-ac972980-76b4-11ea-8f46-cf57f7272dd6.jpg)
 ![Tablet-desktop-mobile_05](https://user-images.githubusercontent.com/3868853/78458833-ad2fc000-76b4-11ea-8ebb-4f44b2bf43ba.jpg)
@@ -17,7 +17,7 @@
 
 # Dwains Lovelace Dashboard
 
-Hello, I am Dwain. I've been using Home Assistant for over a year now. At the end of summer 2019 I thought, "Why hasn't anybody made a dashboard yet that builds itself automatically by providing only minimum configuration info?" 
+Hello, I am Dwain. I've been using Home Assistant for over two years now. At the end of summer 2019 I thought, "Why hasn't anybody made a dashboard yet that builds itself automatically by providing only minimum configuration info?" 
 
 I own a web development company, and I want to give something back to the Home Assistant community. So I decided to build this dashboard and release it to the public. The result: Dwains Lovelace Dashboard.
 
@@ -40,7 +40,7 @@ If you like my content, then please do subscribe to my [Home Assistant YouTube 
 
 **Like what you see?**
 
-If you appreciate what I have developed, then please consider buying me a coffe or beer: [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx) or [donate to my PayPal account](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=urldonate).
+If you appreciate what I have developed, then please consider buying me a coffe or beer: [Buy me a coffee/beer](https://www.buymeacoffee.com/FAkYvrx) or [donate to my PayPal account](https://www.paypal.me/dwainscheeren).
 You can also reply to [this HA thread](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) and let everyone know how happy you are with this dashboard!
 
 Greetings,
