@@ -22,7 +22,7 @@ You then can use `group.living_room_lights` in my dashboard config.
 
 #### Short explanation on Dwains Dashboard
 
-My dashboard has the slogan "An auto generating Home Assistant Lovelace UI Dashboard". You still need to define your house in so called 'Dwains Dashboard Config files'. Working with these files is not that hard and is fully explained in the docs here. The dashboard will be automatic generated on the basis of the config files.
+My dashboard has the slogan "An auto generating Home Assistant Lovelace UI Dashboard". You still need to define your house in so called 'Dwains Dashboard Config files'. Working with these files is not that hard and is fully explained in the docs here. The dashboard will be automatic generated on the basis of these config files.
 
 ---
 
