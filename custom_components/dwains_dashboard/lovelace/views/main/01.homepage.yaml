@@ -859,21 +859,39 @@
                         label: >
                           [[[
                             var openCovers = 0;
+                            var partlyClosedCovers = 0;
+                            var closedCovers = 0;        
 
                             {% for room in _dd_config.rooms %}                        
                               //Do some things for the covers
                               {% if room["cover"] %}
                                 {% if room["cover"].split('.')[0] == 'cover' %}
                                 //This room has only 1 cover
-                                  if(states['{{ room["cover"] }}'] && states['{{ room["cover"] }}'].state == 'open') {
-                                    openCovers++;
-                                  }
+                                  if(states['{{ room["cover"] }}']) {               
+                                    if(states['{{ room["cover"] }}'].state == 'open'){
+                                      if (states['{{ room["cover"] }}'].attributes['current_position'] != 100){
+                                        partlyClosedCovers++;
+                                      }
+                                      openCovers++;
+                                    } else {
+                                      partlyClosedCovers++;                                    
+                                      closedCovers++;
+                                    }
+                                  } 
                                 {% elif room["cover"].split('.')[0] == 'group' %}
                                 //This room has group of covers
                                   if(states['{{ room["cover"] }}']){
                                     states['{{ room["cover"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'open'){
-                                        openCovers++;
+                                      if(states[entity]){
+                                        if (states[entity].state == 'open'){                  
+                                          if(states[entity].attributes['current_position'] != 100){
+                                            partlyClosedCovers++;
+                                          }
+                                          openCovers++;                      
+                                        } else {
+                                          partlyClosedCovers++;                                        
+                                          closedCovers++;
+                                        }                 
                                       }
                                     });  
                                   }
@@ -881,8 +899,21 @@
                               {% endif %}
                             {% endfor %}
                         
+                            // set default view
+                            var viewCovers = openCovers;
+                            var viewState = 'open';
+                            {% if _dd_config.global['show_covers'] == 'closed' %}
+                              viewCovers = closedCovers;
+                              viewState = 'closed';
+                            {% elif _dd_config.global['show_covers'] == 'partly_closed'  %}
+                              viewCovers = partlyClosedCovers;
+                              viewState = 'closed';
+                            {% endif %}
+                        
                             if(openCovers > 0){
                               return openCovers + ' ' + hass.localize('component.cover.state._.open');
+                            } else if(viewCovers > 0){
+                              return viewCovers + ' ' + hass.localize('component.cover.state._.' + viewState);
                             } else {  
                               return '&nbsp;';
                             }

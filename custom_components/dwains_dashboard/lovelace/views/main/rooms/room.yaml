@@ -532,7 +532,14 @@
               - type: custom:button-card
                 entity: {{ room["cover"] }}
                 template: rooms_child
-                icon: "{{ _dd_icons.cover_closed|default('mdi:window-shutter') }}"
+                icon: >
+                  [[[
+                    {% if _dd_config.global['show_covers'] in ['partly_closed','closed'] %}
+                      return "{{ _dd_icons.cover|default('mdi:window-shutter') }}"
+                    {% else %}
+                      return "{{ _dd_icons.cover|default('mdi:window-shutter-open') }}"
+                    {% endif %}
+                  ]]]
                 state:
                   - value: 'open'
                     icon: "{{ _dd_icons.cover_closed|default('mdi:window-shutter-open') }}"

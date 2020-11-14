@@ -186,6 +186,12 @@ def process_yaml(hass, config_entry):
                     ("battery_empty_strings", ['unavailable'])
                 ]
             )
+        # if ("show_covers" not in dwains_dashboard_config["global"]):
+        #     dwains_dashboard_config["global"].update(
+        #         [
+        #             ("show_covers", ['open'])
+        #         ]
+        #     )
 
         #_LOGGER.error(dwains_dashboard_config)
         
