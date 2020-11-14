@@ -67,13 +67,12 @@ class DwainsDashboard {
     window.addEventListener("location-changed", updater);
     window.addEventListener("popstate", updater);
 
-    var head = document.getElementsByTagName('head')[0];
-    var link = document.createElement('link');
+    let link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
     link.href = 'https://fonts.googleapis.com/css?family=Open+Sans&display=swap';
     link.media = 'all';
-    head.appendChild(link);
+    document.getElementsByTagName('head')[0].appendChild(link);
 
     const pjson = require('../package.json');
     console.info(

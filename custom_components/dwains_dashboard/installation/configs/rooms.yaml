@@ -10,6 +10,8 @@
 #     motion: binary_sensor.hallway_sensor_motion
 #     door: binary_sensor.hallway_door_contact
 #     window: binary_sensor.hallway_window_contact
+#     safety: sensor.smoke_sensor
+#     device: switch.television
 #     vacuum: 
 #       entity: vacuum.rockrobo
 #       camera: camera.rockrobo_map

@@ -1,9 +1,13 @@
  # https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/global.html
  
 global:
-  safety_ok_strings: ["Ok", "Idle", "off"] #New since 2.0
-  battery_empty_strings: ["unavailable"] #New since 2.0
-  show_covers: closed #New since 2.0
+  # safety_ok_strings: 
+  #   - "Ok"
+  #   - "Idle"
+  #   - "off"
+  # battery_empty_strings:
+  #   - "unavailable" 
+  # show_covers: closed
 
   # weather: weather.dark_sky # Configure a weather entity see HA docs for more info.
   # outside_temperature: sensor.dark_sky_temperature # Configure a sensor here!
@@ -12,3 +16,7 @@ global:
   # inside_temperature: climate.living_room #Can be 'climate.' or an 'sensor.' entity.
 
   # favorites_homepage: 'true' #Uncomment this line if you want the house information favorites on your homepage.
+
+  # custom_popups: #Create custom popups for a whole domain. See popup addons in the docs
+  #   - domain: cover
+  #     path: 'dwains-dashboard/addons/popups/cover/popup.yaml'
