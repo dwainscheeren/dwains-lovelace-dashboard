@@ -71,9 +71,7 @@ Reboot your Home Assistant. Dwains Theme 1.* should now be fully removed. Now we
 Install Dwains Dashboard 2.0 as explained [here](../getting-started/installation).
 
 #### Breaking changes:
-* 
-*
-*
+* Dynamic_page.yaml is deprecated! You need to copy your addon to an more_page addon. Now you can add `main_menu: true` to an more_page addon to show it in the main navigation bar! [Read more here](https://dwainscheeren.github.io/dwains-lovelace-dashboard/addons/more_page.html#more-page-addons)
 
 #### New Features:
 * **Dwains Themes are now only applied to the Dwains Dashboard itself, this means that the colors are only used in the dashboard and not outside of it.** You now can also use the default HA theme if you want to create a complete own theme. And you can also now set a own primary color (to replace the blue color) for icons etc. These settings can be found under Options in the integration Dwains Dashboard on your integrations page.
