@@ -23,6 +23,7 @@ A good example is to checkout the `hello-more-page` addon in `dwains-dashboard/a
 | Name | Type   | Default          | Example                                            | Description                       |
 |------|--------|------------------|----------------------------------------------------|-----------------------------------|
 | name | string | Required         | Statistics                                         | The name of the addon             |
+| main_menu | boolean | Optional | `'true'` (default: false)
 | icon | string | fas:puzzle-piece | fas:chart-area                                     | The icon of the addon             |
 | path | string | Required         | `dwains-dashboard/addons/more_page/statistics/page.yaml` | The path to the page of the addon |
 | data | object | Not required     | See example below | Data you wanna parse to the addon |
@@ -38,6 +39,7 @@ more_page:
   addons:
     - name: Statistics
       icon: fas:chart-area
+      #main_menu: 'true' #Show this addon in the main navigation bar!
       path: 'dwains-dashboard/addons/more_page/statistics/page.yaml'
       data:
           some_data: 'This is some data parsed.'
