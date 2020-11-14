@@ -81,6 +81,7 @@ Install Dwains Dashboard 2.0 as explained [here](../getting-started/installation
 You now can add specific devices to a room like for example a smoke sensor. When this sensor gets triggered you get a warning inside your main header and in the room card. See `safety:` in the [room docs](https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/rooms.html#rooms-information).
 * Add Tracking to Map @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/185)
 * Correct batteries with string values. Add color gradient to batteries. @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/186)
+* You can set if you want to see open, closer or partly_closed covers in the header (as state). Use `show_covers: closed` in `global.yaml` (defaults to open).
 
 #### Changes:
 * **Changed the name Dwains Theme to Dwains Dashboard.**
