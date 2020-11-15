@@ -31,6 +31,7 @@ global:
 ```
 
 Example for `dwains-dashboard/addons/popups/cover/popup.yaml`
+{% raw %}
 ```yaml
 # dwains_dashboard
 
@@ -42,6 +43,7 @@ cards:
   - type: markdown
     content: Custom popup for {{ entity }}
 ```
+{% endraw %}
 
 ## Entity popup addons
 If you want to create a own popup for a single entity you can use your `customize.yaml` file.
@@ -56,6 +58,7 @@ light.livingroom_spot_2:
 ```
 
 Example for `dwains-dashboard/addons/popups/livingroom_spot_2.yaml`:
+{% raw %}
 ```yaml
 # dwains_dashboard
 
@@ -70,3 +73,4 @@ cards:
     entities:
       - {{ entity }}
 ```
+{% endraw %}
