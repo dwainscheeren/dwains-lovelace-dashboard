@@ -2,6 +2,7 @@
   "domain": "dwains_dashboard",
   "name": "Dwains Dashboard",
   "documentation": "https://dwainscheeren.github.io/dwains-lovelace-dashboard/",
+  "issue_tracker": "https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues",
   "dependencies": ["lovelace"],
   "codeowners": ["Dwain Scheeren"],
   "requirements": ["jinja2"],
