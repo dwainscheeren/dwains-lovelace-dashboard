@@ -43,7 +43,7 @@
                             return 'mdi:battery-alert';
                           } else if (states['this.entity_id'].state != 'unknown' && states['this.entity_id'].state <= 10) {
                             return 'mdi:battery-outline';
-                          } else if (states['this.entity_id'].state != 'unknown' && states['this.entity_id'].state <= 95) {
+                          } else if (states['this.entity_id'].state != 'unknown' && states['this.entity_id'].state < 95) {
                             var battery = Math.round(states['this.entity_id'].state / 10) * 10
                             return 'mdi:battery-' + battery;
                           } else {
