@@ -9,7 +9,7 @@
     "update-card-tools": "npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"
   },
   "keywords": [],
-  "author": "Dwain Scheeren",
+  "author": "Thomas Loven, Dwain Scheeren",
   "license": "MIT",
   "devDependencies": {
     "webpack": "^4.42.1",

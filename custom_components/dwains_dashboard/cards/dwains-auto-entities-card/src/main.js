@@ -5,6 +5,8 @@ import { createCard } from "card-tools/src/lovelace-element";
 import { hass } from "card-tools/src/hass";
 import {subscribeRenderTemplate} from "card-tools/src/templates";
 
+//This is a fork from thomasloven auto-entities!
+
 const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];
 Promise.race(bases).then(() => {
 

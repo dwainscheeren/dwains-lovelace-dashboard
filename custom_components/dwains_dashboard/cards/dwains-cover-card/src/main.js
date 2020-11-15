@@ -1,9 +1,10 @@
-const bases = [customElements.whenDefined('home-assistant-main'), customElements.whenDefined('hui-view')];
+const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];
 Promise.race(bases).then(() => {
 
-  const LitElement = customElements.get('home-assistant-main')
-    ? Object.getPrototypeOf(customElements.get('home-assistant-main'))
-    : Object.getPrototypeOf(customElements.get('hui-view'));
+  const LitElement = customElements.get('hui-masonry-view')
+    ? Object.getPrototypeOf(customElements.get('hui-masonry-view'))
+    : Object.getPrototypeOf(customElements.get('hc-lovelace'));
+
 
   const html = LitElement.prototype.html;
 
