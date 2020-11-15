@@ -131,8 +131,16 @@ class DwainsDashboard {
 
       //Check if mobile or tablet, if yes put nav as footer
       if(window.mobileAndTabletCheck()){
-        root.shadowRoot.querySelector('#view').style.cssText = 'margin-top: -64px;';
-        root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px;';
+        let isIOS = (/iPad|iPhone|iPod/.test(navigator.platform) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
+          !window.MSStream;
+        if(isIOS){
+          root.shadowRoot.querySelector('#view').style.cssText = 'margin-top: -84px;';
+          root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px; padding-bottom: 20px;';
+        } else {
+          root.shadowRoot.querySelector('#view').style.cssText = 'margin-top: -64px;';
+          root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px;';
+        }
 
         //Hide menu button
         root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-button-menu').style.display = 'none';  
