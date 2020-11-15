@@ -15,11 +15,14 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
-## Update 2.0.0 (Coming soon) 🎉
+## Update 2.0.0 🎉
 
 Note: Dwains Theme has been renamed to Dwains Dashboard!
 
 ### How to update to 2.0:
+
+You can only update to 2.0 if you have 1.4 installed.
+
 The update process is a little bit complicated but I tried to make it as easy as possible. I made splitted the upgrade guide into 5 sections. If you experience any issues during the installation of 2.0 you can get live personal assistant from me, [Dwains Dashboard Discord Server](https://discord.gg/7yt64uX)
 
 *Hint: With /config/ I mean the folder where your whole HA config is.*
