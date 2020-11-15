@@ -1,6 +1,6 @@
 {
+  "title": "Dwains Dashboard",
   "config": {
-    "title": "Dwains Dashboard",
     "abort": {
       "single_instance_allowed": "Only a single configuration of Dwains Dashboard is allowed."
     }
