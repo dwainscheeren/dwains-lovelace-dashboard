@@ -72,6 +72,11 @@ Install Dwains Dashboard 2.0 as explained [here](../getting-started/installation
 
 #### Breaking changes:
 * Dynamic_page.yaml is deprecated! You need to copy your addon to an more_page addon. Now you can add `main_menu: true` to an more_page addon to show it in the main navigation bar! [Read more here](https://dwainscheeren.github.io/dwains-lovelace-dashboard/addons/more_page.html#more-page-addons)
+* Partial heading.yaml is deprecated! Replace it with a new card called `dwains-heading-card` see [this screenshot](../images/heading2-0.jpg).
+* `cameras.yaml` and `scenes.yaml` have new structure! Please change these files to the new standard. The file `cameras.yaml` needs to be changed like explained in [this screenshot](../images/camerasyaml2-0.jpg).The file `scenes.yaml` needs to be changed like explained in [this screenshot](../images/scenesyaml2-0.jpg).
+* The following variables have been renamed, so if you use them, please rename them.
+`_d_t_config` to `_dd_config`, `_d_t_trans` to `_dd_trans`, `_d_t_icons` to `_dd_icons` and `_d_t_global` to `_dd_global`
+* If you use addons the name of the folder dwains-theme has changed to dwains-dashboard so for check all your config files. For example rename `path: 'dwains-theme/addons/rooms/hello-room/page.yaml'` to `path: 'dwains-dashboard/addons/rooms/hello-room/page.yaml'`
 
 #### New Features:
 * **Dwains Themes are now only applied to the Dwains Dashboard itself, this means that the colors are only used in the dashboard and not outside of it.** You now can also use the default HA theme if you want to create a complete own theme. And you can also now set a own primary color (to replace the blue color) for icons etc. These settings can be found under Options in the integration Dwains Dashboard on your integrations page.
