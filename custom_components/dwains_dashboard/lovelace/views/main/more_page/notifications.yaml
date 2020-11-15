@@ -29,6 +29,8 @@
               style: |
                 ha-card {
                   padding: 15px;
+                  background: var(--dwains-theme-primary) !important;
+                  color: var(--dwains-theme-names) !important;
                 }
                 #title {
                   font-size: 22px;
