@@ -8,3 +8,14 @@
   #   - entity: binary_sensor.hallway_door_contact
   #     icon_on: mdi:door-open
   #     icon_off: mdi:door-closed
+  #
+  # addons:
+  #   - name: Calendar #This is an example addon see: https://github.com/dwainscheeren/dwains-dashboard-addons/tree/for-1.0/house_information/calendar
+  #     icon: mdi:calendar
+  #     path: 'dwains-dashboard/addons/house_information/calendar/page.yaml'
+  #     data:
+  #       calendars:
+  #         - calendar.gft
+  #         - calendar.oud_papier
+  #         - calendar.pmd_afval
+  #         - calendar.restafval

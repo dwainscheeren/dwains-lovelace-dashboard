@@ -13,3 +13,9 @@
 #       entities:
 #         - entity: sensor.steps
 #         - entity: sensor.steps
+#     addons:
+#       - name: Test addon
+#         icon: fas:chart-area
+#         path: 'dwains-dashboard/addons/persons/test/test.yaml'
+#         data:
+#           battery_level: sensor.battery_level
