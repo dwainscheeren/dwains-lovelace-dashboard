@@ -170,22 +170,32 @@ def process_yaml(hass, config_entry):
             loaded_yaml = load_yaml(fname)
             if isinstance(loaded_yaml, dict):
                 dwains_dashboard_config.update(loaded_yaml)
+
         #_LOGGER.error(dwains_dashboard_config)
 
-
         #Set defaults for safety_ok_strings and battery_empty_strings if not set in globals.yaml
-        if ("safety_ok_strings" not in dwains_dashboard_config["global"]):
-            dwains_dashboard_config["global"].update(
+        if (not dwains_dashboard_config["global"]):
+            #_LOGGER.error("empty")
+            dwains_dashboard_config["global"] = OrderedDict(
                 [
-                    ("safety_ok_strings", ['Ok', 'Idle', 'off'])
-                ]
-            )
-        if ("battery_empty_strings" not in dwains_dashboard_config["global"]):
-            dwains_dashboard_config["global"].update(
-                [
+                    ("safety_ok_strings", ['Ok', 'Idle', 'off']),
                     ("battery_empty_strings", ['unavailable'])
                 ]
             )
+        else:
+            #_LOGGER.error("not empty")
+            if ("safety_ok_strings" not in dwains_dashboard_config["global"]):
+                dwains_dashboard_config["global"].update(
+                    [
+                        ("safety_ok_strings", ['Ok', 'Idle', 'off'])
+                    ]
+                )
+            if ("battery_empty_strings" not in dwains_dashboard_config["global"]):
+                dwains_dashboard_config["global"].update(
+                    [
+                        ("battery_empty_strings", ['unavailable'])
+                    ]
+                )
         # if ("show_covers" not in dwains_dashboard_config["global"]):
         #     dwains_dashboard_config["global"].update(
         #         [
@@ -286,15 +296,23 @@ def reload_configuration(hass):
         dwains_dashboard_config.update(config_new)
 
         #Set defaults for safety_ok_strings and battery_empty_strings if not set in globals.yaml
-        if ("safety_ok_strings" not in dwains_dashboard_config["global"]):
-            dwains_dashboard_config["global"].update(
+        if (dwains_dashboard_config["global"]):
+            if ("safety_ok_strings" not in dwains_dashboard_config["global"]):
+                dwains_dashboard_config["global"].update(
+                    [
+                        ("safety_ok_strings", ['Ok', 'Idle', 'off'])
+                    ]
+                )
+            if ("battery_empty_strings" not in dwains_dashboard_config["global"]):
+                dwains_dashboard_config["global"].update(
+                    [
+                        ("battery_empty_strings", ['unavailable'])
+                    ]
+                )
+        else:
+            dwains_dashboard_config["global"] = OrderedDict(
                 [
-                    ("safety_ok_strings", ['Ok', 'Idle', 'off'])
-                ]
-            )
-        if ("battery_empty_strings" not in dwains_dashboard_config["global"]):
-            dwains_dashboard_config["global"].update(
-                [
+                    ("safety_ok_strings", ['Ok', 'Idle', 'off']),
                     ("battery_empty_strings", ['unavailable'])
                 ]
             )

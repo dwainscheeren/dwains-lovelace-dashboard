@@ -170,9 +170,14 @@ class DwainsDashboard {
         // console.log(hass().themes);
         // console.log(JSON.parse(config.themes));
 
-        const sunState = hass().states["sun.sun"].state;
+        let sunState = "";
+        if(hass().states["sun.sun"]){
+          sunState = hass().states["sun.sun"].state;
+        } else {
+          console.log('sun.sun not available!');
+        }
         const themes = {themes: JSON.parse(config.themes.replaceAll("placeholder_primary_color", config.primary_color))}
-        let theme = "";
+        let theme = "dwains-theme-light";
 
         switch(config.theme) {
           case "Auto Mode (Dark/Light)":
