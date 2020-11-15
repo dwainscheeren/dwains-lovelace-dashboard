@@ -35,7 +35,7 @@
 * [Dynamic page addons](addons/dynamic_page.md)
 * [Persons addons](addons/persons.md)
 * [House information addons](addons/house_information.md)
-* [Popup addons](popup.md)
+* [Popup addons](addons/popup.md)
 
 Also take a look in the [community addons repository](https://github.com/dwainscheeren/dwains-dashboard-addons).
 

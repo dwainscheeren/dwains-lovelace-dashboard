@@ -58,6 +58,8 @@ Restart Home Assistant once before moving to the next step.
 
 There will be a new icon (a D icon) in your left sidebar.
 
+*If you don't see a D icon in your left sidebar something went wrong. Please check your HA error log and ask for support on the HA forum or on my [Discord Server](https://discord.gg/7yt64uX).*
+
 ## Step 5 - Configure Dwains Dashboard
 
 To configure/build the dashboard you need to edit the files in the folder `dwains-dashboard/configs/`. When you open these file you see some examples commented-out, only uncomment the lines you want to use! If you want to know how you need to configure these files, go to the [Configure Dwains Dashboard](../configuration/index.md) page.
