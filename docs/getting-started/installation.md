@@ -60,7 +60,11 @@ There will be a new icon (a D icon) in your left sidebar.
 
 *If you don't see a D icon in your left sidebar something went wrong. Please check your HA error log and ask for support on the HA forum or on my [Discord Server](https://discord.gg/7yt64uX).*
 
-## Step 5 - Configure Dwains Dashboard
+## Step 5- Access your new Dwains Dashboard
+
+Click in your left sidebar on the new icon D, to access Dwains Dashboard. If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
+
+## Step 6 - Configure Dwains Dashboard
 
 To configure/build the dashboard you need to edit the files in the folder `dwains-dashboard/configs/`. When you open these file you see some examples commented-out, only uncomment the lines you want to use! If you want to know how you need to configure these files, go to the [Configure Dwains Dashboard](../configuration/index.md) page.
 
