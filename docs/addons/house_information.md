@@ -32,8 +32,8 @@ A good example is to checkout the `hello-house-information-page` addon in `dwain
 This is for the `config/house_information.yaml` file.
 
 ```YAML
-dynamic_page:
-  addon:
+house_information:
+  addons:
     - name: Hello house information page
       icon: mdi:chart
       path: 'dwains-dashboard/addons/house_information/hello-house-information-page/page.yaml'
