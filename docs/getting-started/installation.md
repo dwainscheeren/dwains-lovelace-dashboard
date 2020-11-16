@@ -29,13 +29,12 @@ My dashboard has the slogan "An auto generating Home Assistant Lovelace UI Dashb
 **If you experience any problems during the installation of Dwains Dashboard then please join my Discord server, you get live personal support. [Join my Discord Server here, it's 100% free!](https://discord.gg/7yt64uX)**
 
 ## Step 1 - Download Dwains Dashboard latest release
-Download the [zip file](https://github.com/dwainscheeren/dwains-lovelace-dashboard/archive/2.0.zip)
 
-<!-- Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases/latest).
+Download the [latest release from the release page](https://github.com/dwainscheeren/lovelace-dwains-theme/releases/latest).
 
 Initialize the download by clicking on the "Source code (zip)" link at the bottom of the page.
 
-![Github](../images/getting-started/download-latest-release.png) -->
+![Github](../images/getting-started/download-latest-release.png)
 
 ## Step 2 - Extract the content
 

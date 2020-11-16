@@ -23,6 +23,7 @@ A good example is to checkout the `hello-room` addon in `dwains-dashboard/addons
 |------|--------|------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------|
 | name | string | Required         | Hello room                                                                                                            | The name of the addon             |
 | icon | string | fas:puzzle-piece | fas:chart-area                                                                                                        | The icon of the addon             |
+| show_header | boolean | Optional | `'false'` (default: true) | If you want to hide the top header on the addon page |
 | path | string | Required         | `dwains-dashboard/addons/rooms/hello-room/page.yaml`                                                              | The path to the page of the addon |
 | button_path | string | Optional  | `dwains-dashboard/addons/rooms/hello-room/button.yaml`                                                              | The path to the button of the addon |
 | data | object | Not required     | See example below | Data you wanna parse to the addon |
