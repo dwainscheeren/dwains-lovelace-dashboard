@@ -117,6 +117,7 @@ Modifies homepage device for Lock, Safety, Light, Cover, and Device icons based 
 * Really all batteries @patman15 [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/174)
 * Hold press doesn't open the more info @jakezp [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/177)
 * Remove hard navigation link @roblandry [link](https://github.com/dwainscheeren/dwains-lovelace-dashboard/pull/184)
+* ... A LOT OF OTHER SMALL THINGS .. Which I forgot to add here haha. 2.0 is just huge!
 
 ---
 
