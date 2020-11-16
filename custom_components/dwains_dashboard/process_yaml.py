@@ -230,7 +230,7 @@ def process_yaml(hass, config_entry):
         if ("primary_color" in config_entry.options):
             config_primary_color = config_entry.options["primary_color"]
         else:
-            config_primary_color = ""
+            config_primary_color = "#299ec2"
 
 
         if os.path.exists(hass.config.path("custom_components/dwains_dashboard/.installed")):
