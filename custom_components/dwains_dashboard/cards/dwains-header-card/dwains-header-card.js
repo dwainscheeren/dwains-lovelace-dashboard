@@ -28,6 +28,7 @@
             margin-top: -2px;
             padding-left: 16px;
             box-shadow: none;
+            border-radius: 0px;
           }
           ha-icon {
             padding-top: 3px;
@@ -40,6 +41,7 @@
           @media only screen and (min-width: 1466px) {
             ha-card {
               margin-top: 22px;
+              border-radius: 4px;
             }
           }
           h1 {
