@@ -94,7 +94,7 @@ Promise.race(bases).then(() => {
             --iron-icon-width: 100%;
             --iron-icon-height: 100%;
           }
-          @media only screen and (min-width: 1025px) {
+          @media only screen and (min-width: 1466px) {
             ha-card {
               margin-top: 22px;
             }
