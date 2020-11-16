@@ -32,7 +32,6 @@
 ### [Addons](addons/index.md)
 * [Rooms addons](addons/rooms.md)
 * [More page addons](addons/more_page.md)
-* [Dynamic page addons](addons/dynamic_page.md)
 * [Persons addons](addons/persons.md)
 * [House information addons](addons/house_information.md)
 * [Popup addons](addons/popup.md)
