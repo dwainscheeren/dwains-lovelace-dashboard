@@ -19,12 +19,14 @@
       card:
         type: vertical-stack
         cards:
+          {% if addon["show_header"] != 'false' %}
           #Header
           - type: custom:dwains-header-card
             title: {{ addon["name"] }}
             subtitle: {{ room["name"] }}
             navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
             icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+          {% endif %}
           #Start for a custom more page
           - type: custom:dwains-wrapper-card
             css: |

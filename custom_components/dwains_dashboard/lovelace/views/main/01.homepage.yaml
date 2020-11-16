@@ -6,48 +6,41 @@
   panel: true
   cards:
     {% if _dd_global.installed and _dd_global.installed == 'false' %}
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:
-          - type: markdown
-            content: >
-              ## Dwains Dashboard
+    - type: vertical-stack
+      cards:
+        - type: markdown
+          content: >
+            ## Dwains Dashboard
+          
+            Welcome,
             
-              Welcome,
-              
-              Thank you for installing Dwains Dashboard.
+            Thank you for installing Dwains Dashboard.
 
-              To configure/build the dashboard you need to edit the files in the folder dwains-dashboard/configs/. 
-              When you open these file you see some examples commented-out, only uncomment the lines you want to use! 
-              If you want to know how you need to configure these files, check out the documentation (link below).
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                template: more_page_list-item
-                name: Continue and load dashboard
-                icon: mdi:chevron-right
-                styles:
-                  card:
-                    - padding: 8px
-                tap_action: 
-                  action: call-service
-                  service: dwains_dashboard.installed
-              - type: custom:button-card
-                template: more_page_list-item
-                name: Go to documentation for configuration
-                icon: mdi:file-document
-                styles:
-                  card:
-                    - padding: 8px
-                tap_action: 
-                  action: url
-                  url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/'
+            To configure/build the dashboard you need to edit the files in the folder dwains-dashboard/configs/. 
+            When you open these file you see some examples commented-out, only uncomment the lines you want to use! 
+            If you want to know how you need to configure these files, check out the documentation (link below).
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              template: more_page_list-item
+              name: Continue and load dashboard
+              icon: mdi:chevron-right
+              styles:
+                card:
+                  - padding: 8px
+              tap_action: 
+                action: call-service
+                service: dwains_dashboard.installed
+            - type: custom:button-card
+              template: more_page_list-item
+              name: Go to documentation for configuration
+              icon: mdi:file-document
+              styles:
+                card:
+                  - padding: 8px
+              tap_action: 
+                action: url
+                url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/'
     {% else %}        
     - type: custom:dwains-wrapper-card
       css: | 
