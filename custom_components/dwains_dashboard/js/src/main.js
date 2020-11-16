@@ -131,16 +131,19 @@ class DwainsDashboard {
 
       //Check if mobile or tablet, if yes put nav as footer
       if(window.mobileAndTabletCheck()){
-        let isIOS = (/iPad|iPhone|iPod/.test(navigator.platform) ||
-          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
-          !window.MSStream;
-        if(isIOS){
-          root.shadowRoot.querySelector('#view').style.cssText = 'top: 0; position: absolute; width: 100%; height: 100%;';
-          root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px; height: 80px;';
-        } else {
-          root.shadowRoot.querySelector('#view').style.cssText = 'margin-top: -64px;';
-          root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px;';
-        }
+        // let isIOS = (/iPad|iPhone|iPod/.test(navigator.platform) ||
+        //   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
+        //   !window.MSStream;
+        // if(isIOS){
+        //   root.shadowRoot.querySelector('#view').style.cssText = 'top: 0; position: absolute; width: 100%; height: 100%;';
+        //   root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px; height: 80px;';
+        // } else {
+        //   root.shadowRoot.querySelector('#view').style.cssText = 'margin-top: -64px;';
+        //   root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px;';
+        // }
+
+        root.shadowRoot.querySelector('#view').style.cssText = 'margin-top: -64px;';
+        root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px;';
 
         //Hide menu button
         root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-button-menu').style.display = 'none';  
