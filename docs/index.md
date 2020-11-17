@@ -8,7 +8,7 @@
   <p>
   If you like you can subscribe on my <a href="https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A" target="_blank">Home Automation YouTube channel</a>.
 </p><p>
-  If you are new to this dashboard and want to install it, please start on the Preparations page below.
+  If you are new to this dashboard and want to install it, please start on the Installation page below.
   </p>
   </div>
   <div class="column" style="text-align: right;">
