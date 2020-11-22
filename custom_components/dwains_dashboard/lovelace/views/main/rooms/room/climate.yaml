@@ -284,6 +284,7 @@
                                 ha-card div.header div.name span { color: var(--secondary-text-color); opacity: 1;}
                                 ha-card div.header div.icon { color: var(--state-icon-color); }
                                 ha-card div.states { font-size: 12px; }
+                                ha-card div.states div.state span { opacity: 1; }
                                 ha-card div.graph { filter: opacity(50%); }
                         styles:
                           custom_fields:
@@ -324,6 +325,7 @@
                                 ha-card div.header div.name span { color: var(--secondary-text-color); opacity: 1;}
                                 ha-card div.header div.icon { color: var(--state-icon-color); }
                                 ha-card div.states { font-size: 12px; }
+                                ha-card div.states div.state span { opacity: 1; }
                                 ha-card div.graph { filter: opacity(50%); }
                         styles:
                           custom_fields:
@@ -364,6 +366,7 @@
                                 ha-card div.header div.name span { color: var(--secondary-text-color); opacity: 1;}
                                 ha-card div.header div.icon { color: var(--state-icon-color); }
                                 ha-card div.states { font-size: 12px; }
+                                ha-card div.states div.state span { opacity: 1; }
                                 ha-card div.graph { filter: opacity(50%); }
                         styles:
                           custom_fields:
