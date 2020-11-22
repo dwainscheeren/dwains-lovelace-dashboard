@@ -282,11 +282,25 @@
                           [[[ 
                             var humidity = '';
                             {% if room["humidity"] %}
-                              if(states['{{ room["humidity"] }}'] && states['{{ room["humidity"] }}'].state != 'unavailable'){
-                                humidity = ' / '+ (Math.round(states['{{ room["humidity"] }}'].state * 10) / 10) + '%';
+                              if(states['{{ room["humidity"] }}']){
+                                {% if room["humidity"].split('.')[0] == 'sensor' %}
+                                  if(states['{{ room["humidity"] }}'].state != 'unavailable'){
+                                    humidity = ' / '+ (Math.round(states['{{ room["humidity"] }}'].state * 10) / 10) + '%';
+                                  }
+                                {% else %}
+                                  var value = 0; var x = 0;
+                                  const entitiesFromGroup = states['{{ room["humidity"] }}'].attributes['entity_id'];
+                                  for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                    if(states[entitiesFromGroup[i]] && !isNaN(states[entitiesFromGroup[i]].state)) {
+                                      value = parseFloat(value) + parseFloat(states[entitiesFromGroup[i]].state); x++;
+                                    }
+                                  }
+                                  if (x != 0) { value = value / x; humidity = ' / '+ (Math.round(value * 10) / 10) + '%'; }
+                                {% endif %}
                               }
                             {% endif %}
 
+                            var temperature = '';
                             {% if room["temperature"] %}
                               if(states['{{ room["temperature"] }}']){
                                 var icon = '';
@@ -301,7 +315,24 @@
                                 }
                                 {% endif %}
 
-                                return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + hass.config.unit_system["temperature"] + icon + humidity;
+                                {% if room["temperature"].split('.')[0] == 'sensor' %}
+                                  if (!isNaN(states['{{ room["temperature"] }}'].state)) { temperature = Math.round(states['{{ room["temperature"] }}'].state * 10) / 10; }
+                                  else { temperature = 'NaN' }
+                                {% else %}
+                                  var value = 0; var x = 0;
+                                  const entitiesFromGroup = states['{{ room["temperature"] }}'].attributes['entity_id'];
+                                  for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                    if(states[entitiesFromGroup[i]] && !isNaN(states[entitiesFromGroup[i]].state)) {
+                                      value = parseFloat(value) + parseFloat(states[entitiesFromGroup[i]].state); x++;
+                                    }
+                                  }
+                                  if (x != 0) { value = value / x; temperature = Math.round(value * 10) / 10; }
+                                  else { temperature = 'NaN' }
+                                {% endif %}
+
+                                if (temperature) { temperature = temperature + hass.config.unit_system["temperature"]; }
+                                return temperature + icon + humidity;
+
                               } else {
                                 console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
                                 return 'Temperature error';

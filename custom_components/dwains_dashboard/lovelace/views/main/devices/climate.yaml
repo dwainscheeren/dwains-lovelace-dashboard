@@ -52,6 +52,7 @@
                   {% endif %}
 
                   {% if room["temperature"] %}
+                  {% if room["temperature"].split('.')[0] == 'sensor' %}
                   - type: horizontal-stack
                     cards:
                       - type: custom:button-card
@@ -59,6 +60,40 @@
                         entity: {{ room["temperature"] }}
                         tap_action:
                           action: more-info
+                  {% else %}
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:button-card
+                        template: room_climate
+                        entity: {{ room["temperature"] }}
+                        tap_action:
+                          action: more-info
+                        show_state: false
+                        styles:
+                          grid:
+                            - grid-template-areas: '"i n""i comb_state""i l"'
+                          custom_fields:
+                            comb_state:
+                              - justify-self: start
+                              - align-self: left
+                              - font-size: 13px
+                              - color: var(--dwains-theme-grey)
+                        custom_fields:
+                          comb_state: >
+                            [[[
+                              const entities = states['{{ room["temperature"] }}'].attributes['entity_id'];
+                              var value = 0;
+                              var unit = ' ' + hass.config.unit_system["temperature"];
+                              var x;
+                              for (x in entities) {
+                                  value = parseFloat(value) + parseFloat(states[entities[x]].state);
+                              }
+                              value = parseFloat(value) / parseFloat(entities.length);
+                              value = Math.round(value * 10) / 10;
+                              return value + unit;
+                            ]]]
+
+                  {% endif %}
                   {% endif %}
 
               {% endif %}
