@@ -488,8 +488,6 @@
                     {% if room["temperature"] %}
                       if(states['{{ room["temperature"] }}']){
 
-                        //var temperature = (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + hass.config.unit_system["temperature"];
-                        // ADDED
                         var temperature = '';
                         {% if room["temperature"].split('.')[0] == 'sensor' %}
                           if (!isNaN(states['{{ room["temperature"] }}'].state)) { temperature = Math.round(states['{{ room["temperature"] }}'].state * 10) / 10; }
@@ -507,7 +505,6 @@
                         {% endif %}
                         if (temperature) { temperature = temperature + hass.config.unit_system["temperature"]; }
                         return temperature;
-                        // END ADDED
 
                       } else {
                         console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
