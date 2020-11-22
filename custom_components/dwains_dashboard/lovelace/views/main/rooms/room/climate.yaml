@@ -277,9 +277,10 @@
                                   return states['{{ room["temperature"] }}'].attributes['entity_id'];
                                 ]]]
                               style: |
-                                ha-card {
-                                  box-shadow: none;
-                                }
+                                ha-card { box-shadow: none; }
+                                ha-card div.header { padding-bottom: 0px; }
+                                ha-card div.header div.name { color: var(--primary-text-color); }
+                                ha-card div.header div.icon { color: var(--state-icon-color); }
                         styles:
                           custom_fields:
                             graph:
@@ -313,9 +314,10 @@
                                   return states['{{ room["humidity"] }}'].attributes['entity_id'];
                                 ]]]
                               style: |
-                                ha-card {
-                                  box-shadow: none;
-                                }
+                                ha-card { box-shadow: none; }
+                                ha-card div.header { padding-bottom: 0px; }
+                                ha-card div.header div.name { color: var(--primary-text-color); }
+                                ha-card div.header div.icon { color: var(--state-icon-color); }
                         styles:
                           custom_fields:
                             graph:
@@ -349,9 +351,10 @@
                                   return states['{{ room["pressure"] }}'].attributes['entity_id'];
                                 ]]]
                               style: |
-                                ha-card {
-                                  box-shadow: none;
-                                }
+                                ha-card { box-shadow: none; }
+                                ha-card div.header { padding-bottom: 0px; }
+                                ha-card div.header div.name { color: var(--primary-text-color); }
+                                ha-card div.header div.icon { color: var(--state-icon-color); }
                         styles:
                           custom_fields:
                             graph:
