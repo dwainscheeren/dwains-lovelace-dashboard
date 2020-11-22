@@ -272,6 +272,8 @@
                           graph:
                             card:
                               type: custom:mini-graph-card
+                              show:
+                                legend: false
                               entities: >
                                 [[[
                                   return states['{{ room["temperature"] }}'].attributes['entity_id'];
@@ -279,12 +281,13 @@
                               style: |
                                 ha-card { box-shadow: none; }
                                 ha-card div.header { padding-bottom: 0px; }
-                                ha-card div.header div.name { color: var(--primary-text-color); }
+                                ha-card div.header div.name span { color: var(--secondary-text-color); opacity: 1;}
                                 ha-card div.header div.icon { color: var(--state-icon-color); }
+                                ha-card div.states { font-size: 12px; }
+                                ha-card div.graph { filter: opacity(50%); }
                         styles:
                           custom_fields:
                             graph:
-                              - filter: opacity(50%)
                               - overflow: unset
                           card:
                             - overflow: unset
@@ -309,6 +312,8 @@
                           graph:
                             card:
                               type: custom:mini-graph-card
+                              show:
+                                legend: false
                               entities: >
                                 [[[
                                   return states['{{ room["humidity"] }}'].attributes['entity_id'];
@@ -316,12 +321,13 @@
                               style: |
                                 ha-card { box-shadow: none; }
                                 ha-card div.header { padding-bottom: 0px; }
-                                ha-card div.header div.name { color: var(--primary-text-color); }
+                                ha-card div.header div.name span { color: var(--secondary-text-color); opacity: 1;}
                                 ha-card div.header div.icon { color: var(--state-icon-color); }
+                                ha-card div.states { font-size: 12px; }
+                                ha-card div.graph { filter: opacity(50%); }
                         styles:
                           custom_fields:
                             graph:
-                              - filter: opacity(50%)
                               - overflow: unset
                           card:
                             - overflow: unset
@@ -346,6 +352,8 @@
                           graph:
                             card:
                               type: custom:mini-graph-card
+                              show:
+                                legend: false
                               entities: >
                                 [[[
                                   return states['{{ room["pressure"] }}'].attributes['entity_id'];
@@ -353,12 +361,13 @@
                               style: |
                                 ha-card { box-shadow: none; }
                                 ha-card div.header { padding-bottom: 0px; }
-                                ha-card div.header div.name { color: var(--primary-text-color); }
+                                ha-card div.header div.name span { color: var(--secondary-text-color); opacity: 1;}
                                 ha-card div.header div.icon { color: var(--state-icon-color); }
+                                ha-card div.states { font-size: 12px; }
+                                ha-card div.graph { filter: opacity(50%); }
                         styles:
                           custom_fields:
                             graph:
-                              - filter: opacity(50%)
                               - overflow: unset
                           card:
                             - overflow: unset
