@@ -184,6 +184,8 @@
                         template: header_states_plant
                       - type: custom:button-card
                         template: header_states_vibration
+                      - type: custom:button-card
+                        template: header_states_water_leak
                 #End header states
           #END HOMEPAGE HEADER
 
@@ -286,11 +288,9 @@
                                 humidity = ' / '+ (Math.round(states['{{ room["humidity"] }}'].state * 10) / 10) + '%';
                               }
                             {% endif %}
-
                             {% if room["temperature"] %}
                               if(states['{{ room["temperature"] }}']){
                                 var icon = '';
-
                                 {% if room["climate"] %}
                                 if(states['{{ room["climate"] }}']){
                                   if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
@@ -300,7 +300,6 @@
                                   }
                                 }
                                 {% endif %}
-
                                 return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + hass.config.unit_system["temperature"] + icon + humidity;
                               } else {
                                 console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
@@ -309,7 +308,6 @@
                             {% elif room["climate"] %}
                               if(states['{{ room["climate"] }}']){
                                 var icon = '';
-
                                 if(states['{{ room["climate"] }}']){
                                   if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
                                     icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
@@ -317,7 +315,6 @@
                                     icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
                                   }
                                 }
-
                                 return (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + hass.config.unit_system["temperature"] + icon + humidity;
                               } else {
                                 console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!");
@@ -462,7 +459,48 @@
                                   additional_info += 'A-E!<br>';
                                 }
                               {% endif %}
-
+                              {% if room["device"] %}
+                                if(states['{{ room["device"] }}']){
+                                  {% if room["device"].split('.')[0] == 'binary_sensor' or room["device"].split('.')[0] == 'switch' %}
+                                    if(states['{{ room["device"] }}'].state == 'on' || states['{{ room["device"] }}'].state == 'True'){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.device_on|default('mdi:power-plug') }}"></ha-icon><br>';
+                                    }
+                                  {% else %}
+                                    const entitiesFromGroup = states['{{ room["device"] }}'].attributes['entity_id'];
+                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                          states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
+                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.device_on|default('mdi:power-plug') }}"></ha-icon><br>';
+                                        break;
+                                      }
+                                    }  
+                                  {% endif %}
+                                } else {
+                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.device entity!");
+                                  additional_info += 'D-E!<br>';
+                                }
+                              {% endif %}
+                              {% if room["water_leak"] %}
+                                if(states['{{ room["water_leak"] }}']){
+                                  {% if room["water_leak"].split('.')[0] == 'binary_sensor' or room["water_leak"].split('.')[0] == 'sensor' %}
+                                    if(states['{{ room["water_leak"] }}'].state == 'on' || states['{{ room["water_leak"] }}'].state == 'True'){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.vibrate_on|default('mdi:water-alert') }}"></ha-icon><br>';
+                                    }
+                                  {% else %}
+                                    const entitiesFromGroup = states['{{ room["water_leak"] }}'].attributes['entity_id'];
+                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                          states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
+                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.water_leak_on|default('mdi:water-alert') }}"></ha-icon><br>';
+                                        break;
+                                      }
+                                    }
+                                  {% endif %}
+                                } else {
+                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.water_leak entity!");
+                                  additional_info += 'A-E!<br>';
+                                }
+                              {% endif %}
                               return additional_info;
                             ]]]
                           {% if room["light"] %}
@@ -520,7 +558,7 @@
                                 - color: var(--dwains-theme-accent)
                       {% 
                         set devices = namespace (hasLock=false, hasLight=false, hasClimate=false, hasCover=false, hasDevice=false, 
-                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false, hasSafety=false, hasVibration=false) 
+                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false, hasSafety=false, hasVibration=false, hasWaterLeak=false) 
                       %}
                       {% for room in _dd_config.rooms %}
                           {% if room["lock"] %}
@@ -552,6 +590,9 @@
                           {% endif %}
                           {% if room["vibration"] %}
                               {% set devices.hasVibration = true %}
+                          {% endif %}
+                          {% if room["water_leak"] %}
+                              {% set devices.hasWaterLeak = true %}
                           {% endif %}
                       {% endfor %}
 
@@ -984,6 +1025,77 @@
                           ]]]
                       {% endif %}
 
+                      {% if devices.hasWaterLeak == true %}
+                      - type: custom:button-card
+                        template: homepage_device
+                        icon: >
+                          [[[
+                            var waterLeakOn = 0;
+
+                            {% for room in _dd_config.rooms %}
+                              //Do some things for the water leak sensors
+                              {% if room["water_leak"] %}
+                                {% if room["water_leak"].split('.')[0] != 'group' %}
+                                //This room has only 1 water leak sensor
+                                  if(states['{{ room["water_leak"] }}'] && states['{{ room["water_leak"] }}'].state == 'on') {
+                                    waterLeakOn++;
+                                  }
+                                {% else %}
+                                //This room has group of water leak sensors
+                                  if(states['{{ room["water_leak"] }}']){
+                                    states['{{ room["water_leak"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && states[entity].state == 'on'){
+                                        waterLeakOn++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(waterLeakOn > 0){
+                              return "{{ _dd_icons.water_leak_on|default('mdi:water-alert') }}";
+                            } else {  
+                              return "{{ _dd_icons.water_leak_off|default('mdi:water-off-outline') }}";
+                            }
+                          ]]]
+                        name: {{ _dd_trans.water_leak.title_plural }}
+                        tap_action: 
+                          action: navigate
+                          navigation_path: devices_water_leak#devices
+                        label: >
+                          [[[
+                            var waterLeakOn = 0;
+
+                            {% for room in _dd_config.rooms %}
+                              //Do some things for the water leak sensors
+                              {% if room["water_leak"] %}
+                                {% if room["water_leak"].split('.')[0] != 'group' %}
+                                //This room has only 1 water leak sensor
+                                  if(states['{{ room["water_leak"] }}'] && states['{{ room["water_leak"] }}'].state == 'on') {
+                                    waterLeakOn++;
+                                  }
+                                {% else %}
+                                //This room has group of water leak sensors
+                                  if(states['{{ room["water_leak"] }}']){
+                                    states['{{ room["water_leak"] }}'].attributes['entity_id'].forEach(function(entity){
+                                      if(states[entity] && states[entity].state == 'on'){
+                                        waterLeakOn++;
+                                      }
+                                    });  
+                                  }
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+
+                            if(waterLeakOn > 0){
+                              return waterLeakOn + ' ' + hass.localize('component.binary_sensor.state.moisture.on');
+                            } else {
+                               return '&nbsp;';
+                            }
+                          ]]]
+                      {% endif %}
+
                       {% if devices.hasMediaPlayer == true %}
                       - type: custom:button-card
                         template: homepage_device
@@ -1141,4 +1253,5 @@
                             }
                           ]]]
                       {% endif %}
+
     {% endif %}
