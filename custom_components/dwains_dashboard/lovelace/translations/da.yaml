@@ -110,8 +110,12 @@ da:
     title: 'Alarm'
 
   vibration:
-    title: 'Vibration'
-    title_plural: "Vibration Sensors"
+    title: 'Vibrationer'
+    title_plural: "Vibrationssensor"
 
   weather:
-    title: 'Weather'
+    title: 'Vejr'
+
+  water_leak:
+    title: 'Vandlækage'
+    title_plural: "Vandlækagesensorer"
