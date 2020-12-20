@@ -114,4 +114,8 @@ de:
 
   vibration:
     title: 'Vibration'
-    title_plural: "Vibration Sensors"
+    title_plural: "Vibrationssensoren"
+
+  water_leak:
+    title: 'Wasserleck'
+    title_plural: "Wasserlecksensoren"
