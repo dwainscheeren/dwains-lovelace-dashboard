@@ -110,11 +110,11 @@ fr:
     title: 'Alarm'
 
   vibration:
-    title: 'Vibration'
-    title_plural: "Vibration Sensors"
+    title: 'Vibrations'
+    title_plural: "Détecteurs de Vibrations"
 
   weather:
-    title: 'Weather'
+    title: 'Météo'
 
   water_leak:
     title: 'Fuites d’Eau'
