@@ -110,8 +110,12 @@ es:
     title: 'Alarm'
 
   vibration:
-    title: 'Vibration'
-    title_plural: "Vibration Sensors"
+    title: ' Vibracion'
+    title_plural: "Sensores de Vibraciones"
 
   weather:
-    title: 'Weather'
+    title: 'Clima'
+
+  water_leak:
+    title: 'Fugas de Agua'
+    title_plural: "Sensores de Fugas de Agua"
