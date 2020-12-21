@@ -110,8 +110,12 @@ it:
     title: 'Alarm'
 
   vibration:
-    title: 'Vibration'
-    title_plural: "Vibration Sensors"
+    title: 'Vibrazionin'
+    title_plural: "Rilevatore di vibrazioni"
 
   weather:
-    title: 'Weather'
+    title: 'Tempo Metereologico'
+
+  water_leak:
+    title: 'Perdite d'Acqua'
+    title_plural: "Rilevatore di Perdite d'Acqua"
