@@ -174,3 +174,7 @@ ro:
 
   weather:
     title: 'Weather'
+
+  water_leak:
+    title: 'Water Leak'
+    title_plural: "Water Leak Sensors"
