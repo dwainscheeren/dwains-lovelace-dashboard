@@ -117,5 +117,5 @@ es:
     title: 'Clima'
 
   water_leak:
-    title: 'Fugas de Agua'
-    title_plural: "Sensores de Fugas de Agua"
+    title: 'Fuga de Agua'
+    title_plural: "Detector de Fuga de Agua"
