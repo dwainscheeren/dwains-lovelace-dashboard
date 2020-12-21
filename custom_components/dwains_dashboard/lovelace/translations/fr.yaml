@@ -115,3 +115,7 @@ fr:
 
   weather:
     title: 'Weather'
+
+  water_leak:
+    title: 'Fuites d’Eau'
+    title_plural: "Détecteurs de Fuites d’Eau"
