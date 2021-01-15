@@ -36,3 +36,7 @@ dwains-dashboardd/
 /themes/
 test/
 image/
+._.DS_Store
+._configuration.yaml
+.DS_Store
+blueprints/

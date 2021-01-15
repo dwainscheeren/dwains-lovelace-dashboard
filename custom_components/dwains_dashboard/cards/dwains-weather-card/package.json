@@ -1,7 +1,7 @@
 {
   "name": "dwains-weather-card",
   "private": true,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "dwains-weather-card",
   "scripts": {
     "build": "webpack",

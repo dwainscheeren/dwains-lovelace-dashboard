@@ -1,7 +1,7 @@
 {
   "name": "dwains-notification-card",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "dwains-notification-card",
   "scripts": {
     "build": "webpack",
