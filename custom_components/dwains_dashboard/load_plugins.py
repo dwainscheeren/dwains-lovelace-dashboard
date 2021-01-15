@@ -11,9 +11,10 @@ def load_plugins(hass, name):
     url_set = set()
     url_set.add("/dwains_dashboard/js/dwains-dashboard.js")
 
+    #Cards by others
     url_set.add("/dwains_dashboard/cards/button-card/button-card.js")
     url_set.add("/dwains_dashboard/cards/light-entity-card/light-entity-card.js")
-
+    #Cards by dwains
     url_set.add("/dwains_dashboard/cards/dwains-header-card/dwains-header-card.js")
     url_set.add("/dwains_dashboard/cards/dwains-heading-card/dwains-heading-card.js")
     url_set.add("/dwains_dashboard/cards/dwains-wrapper-card/dwains-wrapper-card.js")
