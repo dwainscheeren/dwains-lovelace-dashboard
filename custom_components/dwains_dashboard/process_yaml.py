@@ -217,7 +217,7 @@ def process_yaml(hass, config_entry):
 
         #Load themes
         themes = OrderedDict()
-        for fname in loader._find_files(hass.config.path("custom_components/dwains_dashboard/lovelace/themes"), "*.yaml"):
+        for fname in loader._find_files(hass.config.path("custom_components/dwains_dashboard/lovelace/themefiles"), "*.yaml"):
             loaded_yaml = load_yaml(fname)
             if isinstance(loaded_yaml, dict):
                 themes.update(loaded_yaml)
