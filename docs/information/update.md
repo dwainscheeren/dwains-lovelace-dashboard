@@ -17,7 +17,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 ## Update 2.0.1
 
-v2.0.1 is only compatible with HA 2021.1.3 and newer
+v2.0.1 is only compatible with HA 0.118 or 2021.1.1 and newer
 
 - Some small bug fixed and speed improvements.
 
