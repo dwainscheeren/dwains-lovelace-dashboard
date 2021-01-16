@@ -17,7 +17,9 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 ## Update 2.0.1
 
-Some small bug fixed and speed improvements.
+v2.0.1 is only compatible with HA 2021.1.3 and newer
+
+- Some small bug fixed and speed improvements.
 
 ### How to update to 2.0.1:
 **If you are running 2.0.0:**
@@ -32,6 +34,7 @@ Some small bug fixed and speed improvements.
 **If you are running older version then 2.0.0:**
 First upgrade to 2.0.0 and then to 2.0.1. To upgrade to 2.0.0 follow this upgrade guide: https://dwainscheeren.github.io/dwains-lovelace-dashboard/information/update.html#how-to-update-to-20
 
+---
 
 ## Update 2.0.0 🎉
 
