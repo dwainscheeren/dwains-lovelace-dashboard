@@ -96,13 +96,8 @@
                   url_path: 'https://www.buymeacoffee.com/FAkYvrx'
                       
           #Credits
-          - type: custom:dwains-wrapper-card
-            css: |
-              opacity: 0.8;
-              text-align: center;
-            card:
-              type: markdown
-              content: |
-                <strong>DWAINS DASHBOARD</strong>
-                <span>{{ _dd_trans.more_page.settings.by }} Dwain Scheeren</span>
-                <span>{{ _dd_trans.more_page.settings.version }} {{ _dd_global.version }}</span>
+          - type: markdown
+            content: |
+              <strong>DWAINS DASHBOARD</strong>
+              <span>{{ _dd_trans.more_page.settings.by }} Dwain Scheeren</span>
+              <span>{{ _dd_trans.more_page.settings.version }} {{ _dd_global.version }}</span>

@@ -9,7 +9,7 @@ from collections import OrderedDict
 import jinja2
 import shutil
 
-from homeassistant.util.yaml import loader
+from homeassistant.util.yaml import Secrets, loader
 from homeassistant.exceptions import HomeAssistantError
 
 from .const import DOMAIN, VERSION
@@ -43,7 +43,7 @@ LANGUAGES = {
     "Dutch": "nl"
 }
 
-def load_yaml(fname, args={}):
+def load_yamll(fname, secrets = None, args={}):
     try:
         process_yaml = False
         with open(fname, encoding="utf-8") as f:
@@ -61,10 +61,10 @@ def load_yaml(fname, args={}):
                 "_global": llgen_config
                 }))
             stream.name = fname
-            return loader.yaml.load(stream, Loader=loader.SafeLineLoader) or OrderedDict()
+            return loader.yaml.load(stream, Loader=lambda _stream: loader.SafeLineLoader(_stream, secrets)) or OrderedDict()
         else:
             with open(fname, encoding="utf-8") as config_file:
-                return loader.yaml.load(config_file, Loader=loader.SafeLineLoader) or OrderedDict()
+                return loader.yaml.load(config_file, Loader=lambda stream: loader.SafeLineLoader(stream, secrets)) or OrderedDict()
     except loader.yaml.YAMLError as exc:
         _LOGGER.error(str(exc))
         raise HomeAssistantError(exc)
@@ -81,13 +81,13 @@ def _include_yaml(ldr, node):
         fn, args, *_ = ldr.construct_sequence(node)
     fname = os.path.abspath(os.path.join(os.path.dirname(ldr.name), fn))
     try:
-        return loader._add_reference(load_yaml(fname, args), ldr, node)
+        return loader._add_reference(load_yamll(fname, args), ldr, node)
     except FileNotFoundError as exc:
         _LOGGER.error("Unable to include file %s: %s", fname, exc);
         raise HomeAssistantError(exc)
 
-loader.load_yaml = load_yaml
-loader.yaml.SafeLoader.add_constructor("!include", _include_yaml)
+loader.load_yaml = load_yamll
+loader.SafeLineLoader.add_constructor("!include", _include_yaml)
 
 def compose_node(self, parent, index):
     if self.check_event(yaml.events.AliasEvent):
@@ -119,21 +119,21 @@ def process_yaml(hass, config_entry):
     if os.path.exists(hass.config.path("homekit-infused/user/config")):
         _LOGGER.warning("HKI Installed!")
         for fname in loader._find_files(hass.config.path("homekit-infused/user/config"), "*.yaml"):
-            loaded_yaml = load_yaml(fname)
+            loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 llgen_config.update(loaded_yaml)
 
     #_LOGGER.error(llgen_config)
 
 
-    for fname in os.listdir(hass.config.path("custom_components/dwains_dashboard/installation/configs")):
+    for fname in os.listdir(hass.config.path("custom_components/dwains_dashboard/installation/ignorethisfolder")):
         if not os.path.isfile(hass.config.path("dwains-dashboard/configs/"+fname)):
             if fname.endswith('.yaml'):
                 _LOGGER.debug("Copy: "+fname)
                 os.makedirs(hass.config.path("dwains-dashboard/addons"), exist_ok=True)
                 os.makedirs(hass.config.path("dwains-dashboard/configs"), exist_ok=True)
                 shutil.copy2(
-                    hass.config.path("custom_components/dwains_dashboard/installation/configs/"+fname),
+                    hass.config.path("custom_components/dwains_dashboard/installation/ignorethisfolder/"+fname),
                     hass.config.path("dwains-dashboard/configs")
             )
 
@@ -144,7 +144,7 @@ def process_yaml(hass, config_entry):
         if ("customize_path" in config_entry.options):
             if os.path.exists(hass.config.path(config_entry.options["customize_path"])):
                 #_LOGGER.warning("Process customize.yaml")
-                customize_file = load_yaml(hass.config.path(config_entry.options["customize_path"]))
+                customize_file = load_yamll(hass.config.path(config_entry.options["customize_path"]))
 
                 for key, values in customize_file.items():
                     if ("dwains_dashboard_popup" in values):
@@ -167,7 +167,7 @@ def process_yaml(hass, config_entry):
 
         #Main config
         for fname in loader._find_files(hass.config.path("dwains-dashboard/configs/"), "*.yaml"):
-            loaded_yaml = load_yaml(fname)
+            loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 dwains_dashboard_config.update(loaded_yaml)
 
@@ -211,14 +211,14 @@ def process_yaml(hass, config_entry):
             language = LANGUAGES[config_entry.options["language"]]
         else:
             language = "en"
-        translations = load_yaml(hass.config.path("custom_components/dwains_dashboard/lovelace/translations/"+language+".yaml"))
+        translations = load_yamll(hass.config.path("custom_components/dwains_dashboard/lovelace/translations/"+language+".yaml"))
 
         dwains_dashboard_translations.update(translations[language])
 
         #Load themes
         themes = OrderedDict()
         for fname in loader._find_files(hass.config.path("custom_components/dwains_dashboard/lovelace/themefiles"), "*.yaml"):
-            loaded_yaml = load_yaml(fname)
+            loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 themes.update(loaded_yaml)
         
@@ -251,7 +251,7 @@ def process_yaml(hass, config_entry):
         #_LOGGER.error(dwains_dashboard_global)
 
         #Icons
-        icons = load_yaml(hass.config.path("dwains-dashboard/configs/icons.yaml"))
+        icons = load_yamll(hass.config.path("dwains-dashboard/configs/icons.yaml"))
         dwains_dashboard_icons.clear()
         if isinstance(icons, dict):
             if ("icons" in icons):
@@ -289,7 +289,7 @@ def reload_configuration(hass):
         #Main config
         config_new = OrderedDict()
         for fname in loader._find_files(hass.config.path("dwains-dashboard/configs/"), "*.yaml"):
-            loaded_yaml = load_yaml(fname)
+            loaded_yaml = load_yamll(fname)
             if isinstance(loaded_yaml, dict):
                 config_new.update(loaded_yaml)
 
@@ -334,7 +334,7 @@ def reload_configuration(hass):
         #dwains_dashboard_translations.update(translations[language])
 
         #Icons
-        icons = load_yaml(hass.config.path("dwains-dashboard/configs/icons.yaml"))
+        icons = load_yamll(hass.config.path("dwains-dashboard/configs/icons.yaml"))
         dwains_dashboard_icons.clear()
         if isinstance(icons, dict):
             if ("icons" in icons):

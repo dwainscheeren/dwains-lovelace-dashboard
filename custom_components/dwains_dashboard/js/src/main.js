@@ -107,11 +107,15 @@ class DwainsDashboard {
 
   frontend_stuff(){
     let lovelace = this.lovelace_load;
-    if(lovelace.config.dwains_dashboard) {
-      this.custom_header(lovelace.config.dwains_dashboard);
-      this.set_theme(lovelace.config.dwains_dashboard);
+    if(lovelace){
+      if(lovelace.config){
+        if(lovelace.config.dwains_dashboard) {
+          this.custom_header(lovelace.config.dwains_dashboard);
+          this.set_theme(lovelace.config.dwains_dashboard);
 
-      //console.log(lovelace.config.dwains_dashboard);
+          //console.log(lovelace.config.dwains_dashboard);
+        }
+      }
     }
   }
 
