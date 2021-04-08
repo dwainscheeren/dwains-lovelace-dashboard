@@ -15,6 +15,33 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 2.0.2
+
+v2.0.2 is only compatible with HA 2021.4 and newer!
+
+It contains some small core changes, not notable, and compability with HA 2021.4.
+
+I would to ask you if you are running Dwains Dashboard to enable the new HA 2021.4 Analytics. It would really help me.
+Go to Configuration (bottom left) -> General -> And in the bottom check all the boxes under the Analytics section. Thanks!!
+
+### How to install 2.0.2 fresh (if you are new):
+https://dwainscheeren.github.io/dwains-lovelace-dashboard/getting-started/installation.html
+
+### How to update to 2.0.2:
+**If you are running 2.0.0 or 2.0.1:**
+1. Download version 2.0.2 and unzip the file.
+2. Inside this folder you will see a folder called `custom_components` copy this folder.
+3. Go to the main folder of your Home Assistant installation. This is the folder where you config is. (Hint: its the folder where for example the files `ui-lovelace.yaml` and `configuration.yaml` are located).
+4. Paste the `custom_components` to the main folder of your Home Assistant installation and overwrite all existing files!
+5. Make sure you are updated to HA 2021.4.
+6. Reboot your Home Assistant
+7. Clear your browser cache on all devices
+8. You are done!
+
+**If you are running older version then 2.0.0:**
+First upgrade to 2.0.0 and then to 2.0.2. To upgrade to 2.0.0 follow this upgrade guide: https://dwainscheeren.github.io/dwains-lovelace-dashboard/information/update.html#how-to-update-to-20
+
+
 ## Update 2.0.1
 
 v2.0.1 is only compatible with HA 0.118 or 2021.1.1 and newer
