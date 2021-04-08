@@ -24,8 +24,7 @@ It contains some small core changes, not notable, and compability with HA 2021.4
 I would to ask you if you are running Dwains Dashboard to enable the new HA 2021.4 Analytics. It would really help me.
 Go to Configuration (bottom left) -> General -> And in the bottom check all the boxes under the Analytics section. Thanks!!
 
-### How to install 2.0.2 fresh (if you are new):
-https://dwainscheeren.github.io/dwains-lovelace-dashboard/getting-started/installation.html
+[Download v2.0.2 here](https://github.com/dwainscheeren/dwains-lovelace-dashboard/archive/refs/tags/v2.0.2.zip)
 
 ### How to update to 2.0.2:
 **If you are running 2.0.0 or 2.0.1:**
