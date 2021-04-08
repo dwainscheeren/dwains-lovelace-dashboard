@@ -41,6 +41,11 @@ Go to Configuration (bottom left) -> General -> And in the bottom check all the 
 First upgrade to 2.0.0 and then to 2.0.2. To upgrade to 2.0.0 follow this upgrade guide: https://dwainscheeren.github.io/dwains-lovelace-dashboard/information/update.html#how-to-update-to-20
 
 
+**Please consider a donation 👍**
+* [PayPal](https://www.paypal.me/dwainscheeren)
+* [Buy me a coffee](https://www.buymeacoffee.com/FAkYvrx)
+
+
 ## Update 2.0.1
 
 v2.0.1 is only compatible with HA 0.118 or 2021.1.1 and newer
