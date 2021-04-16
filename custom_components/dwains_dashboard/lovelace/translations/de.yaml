@@ -32,13 +32,13 @@ de:
     inside: 'Innen'
     outside: 'Außen'
     idle: 'inaktiv'
-    heating: 'heizen auf'
+    heating: 'aufheizen'
     off_text: 'ausgeschaltet'
     auto: 'Programm'
     heat: 'heizen'
-    cool: 'Cool'
-    heat_cool: 'Heat/Cool'
-    dry: 'Dry'
+    cool: 'abkühlen'
+    heat_cool: 'Heizen/Kühlen'
+    dry: 'Trocknen'
     fan_only: 'Fan only'
     this_room: 'Dieser Raum'
     temperature: 'Temperatur'
@@ -54,7 +54,7 @@ de:
     title_plural: 'Sicherheiten'
 
   media_player:
-    title_plural: 'Wiedergabegeräte'
+    title_plural: 'Mediengeräte'
 
   vacuum:
     title: 'Staubsauger'
@@ -91,26 +91,26 @@ de:
       developer_tools: 'Entwicklerwerkzeuge'
     settings:
       title: 'Einstellungen'
-      reload_configuration: 'Reload theme configuration'
+      reload_configuration: 'Konfiguration neu laden'
       theme_docs: 'Dokumentation'
       support_paypal: 'Unterstütze mich/Spende via PayPal'
       buy_coffee: 'Kauf mir einen Kaffee'
       by: 'von'
       version: 'Version'
-      update_available: 'Update available of Dwains Theme!'
+      update_available: 'Update verfügbar von Dwains Lovelace Dashboard!'
     more_page_addons: 'Mehr Addons'
     
   more_entities:
-    title: 'More entities'
+    title: 'Mehr Entitäten'
 
   lock:
-    title_plural: 'Locks'
+    title_plural: 'Schlösser'
 
   alarm:
     title: 'Alarm'
 
   weather:
-    title: 'Weather'
+    title: 'Wetter'
 
   vibration:
     title: 'Vibration'
