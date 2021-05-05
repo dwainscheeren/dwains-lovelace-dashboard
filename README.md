@@ -3,10 +3,13 @@
 ![Maintenance](https://img.shields.io/maintenance/yes/2021.svg?style=plasticr)
 [![HA Version](https://img.shields.io/badge/Latest%20Compatible%20Home%20Assistant-2021.5.0%20-darkblue)](https://github.com/home-assistant/home-assistant/releases/latest)
 [![DD Version](https://img.shields.io/badge/Current%20Dwains%20Dashboard-2.0.3%20-blue)](https://github.com/dwainscheeren/dwains-lovelace-dashboard/releases)
+
 ![GitHub stars](https://img.shields.io/github/stars/dwainscheeren/dwains-lovelace-dashboard?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/dwainscheeren/dwains-lovelace-dashboard?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/dwainscheeren/dwains-lovelace-dashboard?style=social)
-![GitHub followers](https://img.shields.io/github/followers/dwainscheeren/dwains-lovelace-dashboard?style=social)
+![GitHub followers](https://img.shields.io/github/followers/dwainscheeren?style=social)
+
+<a href="https://www.youtube.com/channel/UCb2GBaLC4d0rVn9pZbYbQ9A"><img src="https://img.shields.io/badge/-YouTube-red?&style=for-the-badge&logo=youtube&logoColor=white" height=25></a>
 
 <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
