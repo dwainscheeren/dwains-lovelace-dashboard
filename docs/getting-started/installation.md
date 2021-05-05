@@ -1,7 +1,7 @@
 [< Go back to Home](../index.md)
 
 # Installation
-**Dwains Dashboard is only compatible with HA 0.117 or newer!**
+**Dwains Dashboard is only compatible with HA 2021.5.0 or newer!**
 
 ---
 

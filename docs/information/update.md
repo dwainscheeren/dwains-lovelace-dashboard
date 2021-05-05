@@ -15,6 +15,32 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 2.0.3
+
+v2.0.3 is only compatible with HA 2021.5 and newer!
+
+### How to install 2.0.3 fresh (if you are new):
+https://dwainscheeren.github.io/dwains-lovelace-dashboard/getting-started/installation.html
+
+### How to update to 2.0.3:
+**If you are running 2.0.0, 2.0.1 or 2.0.2:**
+1. Download version 2.0.3 and unzip the file.
+2. Inside this folder you will see a folder called `custom_components` copy this folder.
+3. Go to the main folder of your Home Assistant installation. This is the folder where you config is. (Hint: its the folder where for example the files `ui-lovelace.yaml` and `configuration.yaml` are located).
+4. Paste the `custom_components` to the main folder of your Home Assistant installation and overwrite all existing files!
+5. Make sure you are updated to HA 2021.5!
+6. Reboot your Home Assistant
+7. Clear your browser cache on all devices
+8. You are done!
+
+**If you are running older version then 2.0.0:**
+First upgrade to 2.0.0 and then to 2.0.3. To upgrade to 2.0.0 follow this upgrade guide: https://dwainscheeren.github.io/dwains-lovelace-dashboard/information/update.html#how-to-update-to-20
+
+**Please consider a donation 👍**
+* [PayPal](https://www.paypal.me/dwainscheeren)
+* [Buy me a coffee](https://www.buymeacoffee.com/FAkYvrx)
+
+
 ## Update 2.0.2
 
 v2.0.2 is only compatible with HA 2021.4 and newer!
