@@ -3,8 +3,8 @@
   "name": "Dwains Dashboard",
   "documentation": "https://dwainscheeren.github.io/dwains-lovelace-dashboard/",
   "issue_tracker": "https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues",
-  "dependencies": ["lovelace", "http"],
+  "dependencies": ["lovelace", "http", "frontend"],
   "codeowners": ["@dwainscheeren"],
   "config_flow": true,
-  "version": "2.0.2"
+  "version": "2.0.3"
 }

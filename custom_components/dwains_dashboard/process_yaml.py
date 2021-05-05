@@ -81,7 +81,7 @@ def _include_yaml(ldr, node):
         fn, args, *_ = ldr.construct_sequence(node)
     fname = os.path.abspath(os.path.join(os.path.dirname(ldr.name), fn))
     try:
-        return loader._add_reference(load_yamll(fname, ldr.secrets, args=args), ldr, node)
+        return loader._add_reference(load_yamll(fname, args), ldr, node)
     except FileNotFoundError as exc:
         _LOGGER.error("Unable to include file %s: %s", fname, exc);
         raise HomeAssistantError(exc)

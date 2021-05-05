@@ -28,8 +28,8 @@
 #     addons:
 #       - name: Hello room
 #         icon: mdi:puzzle
-#         path: 'dwains-theme/addons/rooms/hello-room/page.yaml'
-#         button_path: 'dwains-theme/addons/rooms/hello-room/button.yaml'
+#         path: 'dwains-dashboard/addons/rooms/hello-room/page.yaml'
+#         button_path: 'dwains-dashboard/addons/rooms/hello-room/button.yaml'
 #         data:
 #           some_data: 'This is some data parsed.'
 #           some_other_data: 'and some other data.'
