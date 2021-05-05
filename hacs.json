@@ -1,5 +1,5 @@
 {
     "name": "Dwains Dashboard",
     "render_readme": true,
-    "homeassistant": "0.117.0"
-  }
+    "homeassistant": "2021.5.0"
+}

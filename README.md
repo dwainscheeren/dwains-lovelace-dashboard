@@ -30,9 +30,7 @@ I own a web development company, and I want to give something back to the Home A
 
 You can use the [thread on the Home Assistant community](https://community.home-assistant.io/t/dwains-theme-an-auto-generating-lovelace-ui-theme/168593) to ask any questions you have. 
 
-Or join me on Discord [Discord Server Home Assistant Addicts](https://discord.gg/7yt64uX).
-
-I manage this server together with @jimz011 you can also check out his theme [Homekit Infused (HKI)](https://community.home-assistant.io/t/homekit-infused-hki-v1-0-beta-updated-28-01-2020/117086?u=dwains). 
+Or join me on Dwains Dashboard Discord [Discord Server Home Assistant Addicts](https://discord.gg/7yt64uX).
 
 **YouTube Channel**
 
@@ -46,3 +44,6 @@ You can also reply to [this HA thread](https://community.home-assistant.io/t/dwa
 Greetings,
 
 Dwain
+
+**EXTRA LICENSE INFORMATION**
+You are not allowed without my permission to resell, re-distribute or sell my dashboard!
