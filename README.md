@@ -1,5 +1,13 @@
 # dwains-lovelace-dashboard
 
+![Maintenance](https://img.shields.io/maintenance/yes/2021.svg?style=plasticr)
+[![HA Version](https://img.shields.io/badge/Latest%20Compatible%20Home%20Assistant-2021.5.0%20-darkblue)](https://github.com/home-assistant/home-assistant/releases/latest)
+[![DD Version](https://img.shields.io/badge/Current%20Dwains%20Dashboard-2.0.3%20-blue)](https://github.com/dwainscheeren/dwains-lovelace-dashboard/releases)
+![GitHub stars](https://img.shields.io/github/stars/dwainscheeren/dwains-lovelace-dashboard?style=social)
+![GitHub forks](https://img.shields.io/github/forks/dwainscheeren/dwains-lovelace-dashboard?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/dwainscheeren/dwains-lovelace-dashboard?style=social)
+![GitHub followers](https://img.shields.io/github/followers/dwainscheeren/dwains-lovelace-dashboard?style=social)
+
 <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 <a href="https://www.paypal.me/dwainscheeren"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"></a>
