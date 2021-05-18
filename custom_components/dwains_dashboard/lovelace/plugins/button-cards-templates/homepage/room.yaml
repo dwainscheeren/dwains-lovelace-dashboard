@@ -25,6 +25,8 @@ homepage_room:
       - color: var(--dwains-theme-accent)
       - height: 50px
       - width: 50px
+      - primary: var(--dwains-theme-accent)
+      - secondary: var(--dwains-theme-primary)
     img_cell:
       - padding-top: 20px
       - padding-bottom: 5px
