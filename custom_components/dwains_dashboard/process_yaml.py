@@ -277,7 +277,7 @@ def process_yaml(hass, config_entry):
 
         if not os.path.exists(path):
             _LOGGER.debug("Create .installed file")
-            os.mknod(path)
+            open(path, 'w').close()
 
         reload_configuration(hass)
 

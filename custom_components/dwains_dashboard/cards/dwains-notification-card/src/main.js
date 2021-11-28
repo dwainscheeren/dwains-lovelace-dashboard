@@ -68,7 +68,7 @@ Promise.race(bases).then(() => {
         <div class="notification">
           ${n.message}
           ${this.config.show_dismiss === false ? html ``: 
-          html`<ha-icon icon='mdi:close' .notificationId='${n.notification_id}' @click=${this._handleDismiss}</ha-icon>`}
+          html`<ha-icon icon='mdi:close' .notificationId='${n.notification_id}' @click=${this._handleDismiss}></ha-icon>`}
         </div>
       `;
     }
