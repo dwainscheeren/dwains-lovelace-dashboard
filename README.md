@@ -7,7 +7,7 @@
 </a>
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2021.svg?style=plasticr)
-[![HA Version](https://img.shields.io/badge/Latest%20Compatible%20Home%20Assistant-2021.9.4%20-darkblue)](https://github.com/home-assistant/home-assistant/releases/latest)
+[![HA Version](https://img.shields.io/badge/Latest%20Compatible%20Home%20Assistant-2021.11.5%20-darkblue)](https://github.com/home-assistant/home-assistant/releases/latest)
 [![DD Version](https://img.shields.io/badge/Current%20Dwains%20Dashboard-2.0.3%20-blue)](https://github.com/dwainscheeren/dwains-lovelace-dashboard/releases)
 
 
