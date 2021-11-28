@@ -47,24 +47,24 @@
             padding: true
             items_classes: 'col-xs-12 col-sm-6 col-md-4 col-lg-4'
             cards:
-              - type: custom:button-card
-                template: persons_person
-                entity: {{ person["track"] }}
-                name: {{ person["name"] }}
-                custom_fields:
-                  graph:
-                    card:
-                      type: history-graph
-                      entities:
-                        - entity: {{ person["track"] }}
-                      style: |
-                        ha-card {
-                          box-shadow: none;
-                          background-color: var(--dwains-theme-primary);
-                        }
-                        .content {
-                          padding: 10px 0 0 0;
-                        }
+              - type: vertical-stack
+                cards:
+                  - type: custom:button-card
+                    template: persons_person
+                    entity: {{ person["track"] }}
+                    name: {{ person["name"] }}
+                  - type: history-graph
+                    entities:
+                      - entity: {{ person["track"] }}
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                        background-color: var(--dwains-theme-primary);
+                      }
+                      .content {
+                        padding: 10px 0 0 0;
+                      }
+
               {% if person["page_entities"] and person["page_entities"]["entities"] %}
               - type: custom:dwains-flexbox-card
                 items_classes: 'col-xs-6'
