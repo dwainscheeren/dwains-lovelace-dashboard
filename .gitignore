@@ -40,3 +40,5 @@ image/
 ._configuration.yaml
 .DS_Store
 blueprints/
+._*
+.fuse_hidden002e3c9700002485
