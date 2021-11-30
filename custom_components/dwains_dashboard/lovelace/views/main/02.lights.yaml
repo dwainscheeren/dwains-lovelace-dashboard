@@ -1,6 +1,13 @@
 # dwains_dashboard
 
 - path: lights
+  {% if _dd_config.lights %}
+  {% if _dd_config.lights["main_menu"] and _dd_config.lights["main_menu"] == 'false' %}
+  visible: false
+  {% else %}
+  visible: true
+  {% endif %}
+  {% endif %}
   icon: {{ _dd_icons.menu_lights|default('mdi:lightbulb-group') }}
   title: {{ _dd_trans.all_lights.title }}
   panel: true
