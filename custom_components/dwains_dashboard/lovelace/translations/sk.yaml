@@ -1,0 +1,117 @@
+# Translation by pavolholes
+
+sk:
+  greetings:
+    good_morning: 'Dobré Ráno'
+    good_afternoon: 'Dobré Popoludnie'
+    good_evening: 'Dobrý Večer'
+
+  house_information:
+    title: 'Informácie o domove'
+    favorites: 'Obľúbené'
+    activity: 'Aktivity (Dvere, okná, pohyb)'
+
+  motion:
+    title: 'Pohyb'
+    title_plural: 'Pohyby'
+
+  light:
+    title_plural: 'Svetlá'
+
+  door:
+    title: 'Dvere'
+    title_plural: 'Dverí'
+
+  window:
+    title: 'Okno'
+    title_plural: 'Okná'
+
+  climate:
+    title: 'Teplota'
+    title_plural: 'Teploty'
+    inside: 'vnútri'
+    outside: 'Vonku'
+    idle: 'nečinný'
+    heating: 'Ohrev na'
+    off_text: 'Vypnuté'
+    auto: 'Program'
+    heat: 'Ohrev'
+    cool: 'Chladenie'
+    heat_cool: 'Ohrev/Chladenie'
+    dry: 'Suchý'
+    fan_only: 'Iba ventilátor'
+    this_room: 'Táto izba'
+    temperature: 'Teplota'
+    humidity: 'Vlhkosť'
+
+  cover:
+    title_plural: 'Kryty'
+
+  device:
+    title_plural: 'Zariadenia'
+
+  safety:
+    title_plural: 'Bezpečnostné prvky'
+
+  media_player:
+    title_plural: 'Prehrávače'
+
+  vacuum:
+    title: 'Vysávač'
+    title_plural: 'Vysávače'
+
+  plant:
+    title_plural: 'Rastliny'
+
+  home:
+    title: 'Prehľad'
+
+  rooms:
+    title: 'Miestnosti'
+
+  all_lights:
+    title: 'Všetky svetlá'
+
+  scenes:
+    title: 'Scény'
+    not_defined: 'Žiadne scény nie sú definované'
+
+  cameras:
+    title: 'Kamery'
+    not_defined: 'Žiadne kamery nie sú definované'
+
+  more_page:
+    title: 'Viac'
+    house_info: 'Info o domácnosti'
+    house_data: 
+      title: 'Dáta domácnosti'
+      all_sensors: 'Všetky senzory'
+      all_batteries: 'Všetky batérie'
+      config: 'Nastavenia'
+      developer_tools: 'Vývojárske nástroje'
+    settings:
+      title: 'Nastavenie témy'
+      reload_configuration: 'Obnoviť nastavenie témy'
+      theme_docs: 'Dokumentácia témy'
+      support_paypal: 'Podporiť/Darovať pomocu PayPal'
+      buy_coffee: 'Kúp mi kávu'
+      by: 'Od'
+      version: 'Verzia'
+      update_available: 'Je dostupná aktualizácia pre Dwains Theme!'
+    more_page_addons: 'Viac doplnkov'
+
+  more_entities:
+    title: 'Viac objektov'
+
+  lock:
+    title_plural: 'Zámky'
+
+  alarm:
+    title: 'Alarm'
+
+  weather:
+    title: 'Počasie'
+
+  vibration:
+    title: 'Vibrácie'
+    title_plural: 'Vibračné Senzory'
