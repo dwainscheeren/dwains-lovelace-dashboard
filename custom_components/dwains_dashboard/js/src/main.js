@@ -20,7 +20,7 @@ class DwainsDashboard {
     if(!await load_lovelace()) {
       //console.log('await');
       let timer = window.setTimeout(this._load_lovelace.bind(this), 100);
-      this.test();
+      //this.test();
     } 
   }
 
