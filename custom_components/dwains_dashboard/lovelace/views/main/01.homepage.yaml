@@ -55,7 +55,7 @@
           - type: custom:dwains-wrapper-card
             css: |
               padding: 0px;
-              background-color: var(--app-header-background-color);
+              background-color: var(--app-header-background-color2);
               color: var(--app-header-text-color, white);
               border-radius: 0;
               overflow: hidden;

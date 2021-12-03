@@ -42,3 +42,5 @@ image/
 blueprints/
 ._*
 .fuse_hidden002e3c9700002485
+home-assistant.log.1
+home-assistant.log.fault

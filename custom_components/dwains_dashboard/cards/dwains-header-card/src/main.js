@@ -80,7 +80,7 @@ Promise.race(bases).then(() => {
       return [
         css`
           ha-card {
-            background-color: var(--app-header-background-color);
+            background-color: var(--app-header-background-color2);
             color: var(--app-header-text-color, white);
             margin-top: -2px;
             padding-left: 16px;

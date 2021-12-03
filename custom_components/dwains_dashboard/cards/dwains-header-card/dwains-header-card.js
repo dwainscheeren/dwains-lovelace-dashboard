@@ -23,7 +23,7 @@
         </ha-card>
       `}set hass(e){this.card&&(this.card.hass=e)}_handleClick(){let e,t=window.location.pathname,o=t.substring(0,t.lastIndexOf("/"))+"/"+this._config.navigation_path;window.history.pushState(null,"",o),e=new Event("location-changed",{composed:!0}),e.detail={replace:!1},window.dispatchEvent(e)}static get styles(){return[r`
           ha-card {
-            background-color: var(--app-header-background-color);
+            background-color: var(--app-header-background-color2);
             color: var(--app-header-text-color, white);
             margin-top: -2px;
             padding-left: 16px;
