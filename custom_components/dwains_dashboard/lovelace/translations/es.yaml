@@ -2,12 +2,12 @@
 
 es:
   greetings:
-    good_morning: "Buenos Días"
-    good_afternoon: "Buenas Tardes"
-    good_evening: "Buena Noches"
+    good_morning: "Buenos días"
+    good_afternoon: "Buenas tardes"
+    good_evening: "Buenas noches"
 
   house_information:
-    title: "Información de la Casa"
+    title: "Información de la casa"
     favorites: "Favoritos"
     activity: "Actividad (puertas, ventanas, movimiento)"
 
@@ -29,10 +29,10 @@ es:
   climate:
     title: "Temperatura"
     title_plural: "Temperaturas"
-    inside: "adentro"
-    outside: "afuera"
+    inside: "Dentro"
+    outside: "Fuera"
     idle: "En espera"
-    heating: "Calentar a"
+    heating: "Calentando"
     off_text: "Apagado"
     auto: "Automático"
     heat: "Calentar"
@@ -51,7 +51,7 @@ es:
     title_plural: "Dispositivos"
 
   safety:
-    title_plural: 'Safties'
+    title_plural: 'Seguridad'
 
   media_player:
     title_plural: "Reproductores multimedia"
@@ -93,7 +93,7 @@ es:
       title: "Configuración de temas"
       reload_configuration: 'Recargar temas'
       theme_docs: "Lista de temas"
-      support_paypal: "Done con PayPal"
+      support_paypal: "Dona con PayPal"
       buy_coffee: "Cómprame un café"
       by: "Por"
       version: "Versión"
@@ -107,11 +107,11 @@ es:
     title_plural: 'Cerraduras'
 
   alarm:
-    title: 'Alarm'
+    title: 'Alarma'
 
   vibration:
-    title: 'Vibration'
-    title_plural: "Vibration Sensors"
+    title: 'Vibración'
+    title_plural: "Sensores de vibración"
 
   weather:
-    title: 'Weather'
+    title: 'Clima'

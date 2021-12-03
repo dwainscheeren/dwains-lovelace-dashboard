@@ -862,9 +862,15 @@
                 item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
               {% endif %}
               {% for more_entity in room["page_entities"]["entities"] %}
+              {% if more_entity["type"] and more_entity["type"] == 'graph' %}
+              - type: sensor
+                entity: {{ more_entity["entity"] }}
+                graph: line
+              {% else %}
               - type: custom:button-card
                 entity: {{ more_entity["entity"] }}
                 template: room_more_entity
+              {% endif %}
                 {% if more_entity["entity"].split('.')[0] in ('switch', 'light') %}
                 tap_action:
                     action: toggle
