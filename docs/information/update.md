@@ -20,6 +20,7 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 v2.0.4 is only compatible with HA 2021.10 and newer!
 
 Dwains Dashboard now has a own logo 😄 
+
 ![15e473e9b3d330f9c153cf518188e5486972bd2c](https://user-images.githubusercontent.com/3868853/144763351-922d2485-ec4b-4145-a14a-6b9fba1799da.png)
 
 ### How to install 2.0.4 fresh (if you are new):
