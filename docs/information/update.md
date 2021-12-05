@@ -15,6 +15,56 @@ Version numbering explained (MAJOR.MINOR.PATCH):
 
 # Changelog
 
+## Update 2.0.4
+
+v2.0.4 is only compatible with HA 2021.10 and newer!
+
+Dwains Dashboard now has a own logo 😄 
+![15e473e9b3d330f9c153cf518188e5486972bd2c](https://user-images.githubusercontent.com/3868853/144763351-922d2485-ec4b-4145-a14a-6b9fba1799da.png)
+
+### How to install 2.0.4 fresh (if you are new):
+https://dwainscheeren.github.io/dwains-lovelace-dashboard/getting-started/installation.html
+
+### How to update to 2.0.4 manual:
+1. Download version 2.0.4 and unzip the file.
+2. Inside this folder you will see a folder called `custom_components` copy this folder.
+3. Go to the main folder of your Home Assistant installation. This is the folder where you config is. (Hint: its the folder where for example the files `ui-lovelace.yaml` and `configuration.yaml` are located).
+4. Paste the `custom_components` to the main folder of your Home Assistant installation and overwrite all existing files!
+5. Reboot your Home Assistant
+6. Clear your browser cache on all devices
+7. You are done!
+
+### How to update to 2.0.4. thought HACS:
+1. Open HACS
+2. Go to Dwains Dashboard and click update
+6. Reboot your Home Assistant
+7. Clear your browser cache on all devices
+8. You are done!
+
+**If you are running older version then 2.0.0:**
+First upgrade to 2.0.0 and then to 2.0.4. To upgrade to 2.0.0 follow this upgrade guide: https://dwainscheeren.github.io/dwains-lovelace-dashboard/information/update.html#how-to-update-to-20
+
+**Please consider a donation 👍**
+* [PayPal](https://www.paypal.me/dwainscheeren)
+* [Buy me a coffee](https://www.buymeacoffee.com/FAkYvrx)
+
+**Changes:**
+- Dwains Dashboard notifications are again closed when you click on the 'X' mark. (#311)
+- The bug with the blue background in the header is fixed, its now black/dark again.
+- Added iot_class to manifest.json
+- Fixed a bug that person page froze and history was not visible of a person on the person page. (#325)
+- Updated light entity card to latest version (#324)
+- Updated Spanish language file (#323)
+- Support for FontAwesome Duotone icons (#300)
+- Fix bug with .installed file not created on some devices (#316)
+- Updated German translation (#279)
+- Added Slovak language (#278)
+- Add support for graph type in the room-page_entities (#276)
+- Make it possible to hide lights page from main menu (#276) 
+- Some small other not noticeable bug fixes.
+
+I'm currently working on v2.1.0 and also on v3.0.0. Version 2.1 will have some new small features and 3.0 will be a total rewriten dashboard.
+
 ## Update 2.0.3
 
 v2.0.3 is only compatible with HA 2021.5 and newer!
