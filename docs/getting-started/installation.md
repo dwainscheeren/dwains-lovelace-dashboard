@@ -67,6 +67,13 @@ Click in your left sidebar on the new icon D, to access Dwains Dashboard. If you
 
 To configure/build the dashboard you need to edit the files in the folder `dwains-dashboard/configs/`. When you open these file you see some examples commented-out, only uncomment the lines you want to use! If you want to know how you need to configure these files, go to the [Configure Dwains Dashboard](../configuration/index.md) page.
 
+---
+**HINT**
+
+Some settings can be changed in the Home Assistant Integration page - these include the language and the name / icon of the Dashboard (as it appears in the Home Assistant sidebar).
+
+---
+
 **If you want to extend or add custom things like custom pages or cards to this dashboard, please refer to the [addons](../addons/index.md) documentation.**
 
 That's it! Dwains Dashboard should now be installed.
