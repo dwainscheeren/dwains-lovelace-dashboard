@@ -3,41 +3,34 @@
 - path: cameras
   icon: {{ _dd_icons.menu_cameras|default('mdi:cctv') }}
   title: {{ _dd_trans.cameras.title }}
-  panel: true
+  type: custom:dwains-dashboard
   {% if _dd_config.cameras["main_menu"] and _dd_config.cameras["main_menu"] == 'false' %}
   visible: false
   {% else %}
   visible: true
   {% endif %}
   cards:    
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:
-          #Header
-          - type: custom:dwains-header-card
-            title: {{ _dd_trans.cameras.title }}
-        
-          #Cameras
-          - type: custom:dwains-flexbox-card
-            items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
-            padding: true
-            cards:
-              {% for entity in _dd_config.cameras["entities"] %}
-              - type: picture-entity
-                {% if _dd_config.cameras["live_view"] and _dd_config.cameras["live_view"] == 'false' %}
-                camera_view: auto
-                {% else %}
-                camera_view: live
-                {% endif %}
-                entity: {{ entity }}
+    - type: vertical-stack
+      cards:
+        #Header
+        - type: custom:dwains-header-card
+          title: {{ _dd_trans.cameras.title }}
+      
+        #Cameras
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
+          padding: true
+          cards:
+            {% for entity in _dd_config.cameras["entities"] %}
+            - type: picture-entity
+              {% if _dd_config.cameras["live_view"] and _dd_config.cameras["live_view"] == 'false' %}
+              camera_view: auto
               {% else %}
-              - type: markdown
-                content: {{ _dd_trans.cameras.not_defined }}
-              {% endfor %}
+              camera_view: live
+              {% endif %}
+              entity: {{ entity }}
+            {% else %}
+            - type: markdown
+              content: {{ _dd_trans.cameras.not_defined }}
+            {% endfor %}
 {% endif %}

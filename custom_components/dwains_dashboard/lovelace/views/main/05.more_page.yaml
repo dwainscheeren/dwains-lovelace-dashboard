@@ -5,91 +5,84 @@
   icon: {{ _dd_icons.menu_more_page|default('mdi:dots-horizontal') }}
   title: {{ _dd_trans.more_page.title }}
   badges: []
-  panel: true
+  type: custom:dwains-dashboard
   cards:    
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:
-          #Header
-          - type: custom:dwains-header-card
-            title: {{ _dd_trans.more_page.title }}
-          #Start for more_page page
-          #Main dwains theme more_page buttons
-          - type: custom:dwains-flexbox-card
-            items_classes: 'col-xs-4 col-sm-3 col-md-2 col-lg-2'
-            padding: true
-            cards:
-              - type: custom:button-card
-                template: more_page_main
-                icon: "{{ _dd_icons.more_page_house_information|default('mdi:home') }}"
-                name: {{ _dd_trans.more_page.house_info }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: more_page_house_information
-              - type: custom:button-card
-                template: more_page_main
-                icon: "{{ _dd_icons.more_page_house_data|default('mdi:information-outline') }}"
-                name: {{ _dd_trans.more_page.house_data.title }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: more_page_house_data
-              - type: custom:button-card
-                template: more_page_main
-                icon: "{{ _dd_icons.more_page_settings|default('mdi:cogs') }}"
-                name: {{ _dd_trans.more_page.settings.title }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: more_page_settings
-              # Put link to cameras page if its used but disabled for main menu
-              {% if _dd_config.cameras %}
-              {% if _dd_config.cameras["main_menu"] and _dd_config.cameras["main_menu"] == 'false' %}
-              - type: custom:button-card
-                template: more_page_main
-                icon: "{{ _dd_icons.menu_cameras|default('mdi:cctv') }}"
-                name: {{ _dd_trans.cameras.title }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: cameras
-              {% endif %}
-              {% endif %}
-              # Put link to scenes page if its used but disabled for main menu
-              {% if _dd_config.scenes %}
-              {% if _dd_config.scenes["main_menu"] and _dd_config.scenes["main_menu"] == 'false' %}
-              - type: custom:button-card
-                template: more_page_main
-                icon: "{{ _dd_icons.menu_scenes|default('mdi:play-circle-outline') }}"
-                name: {{ _dd_trans.scenes.title }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: scenes
-              {% endif %}
-              {% endif %}
+    - type: vertical-stack
+      cards:
+        #Header
+        - type: custom:dwains-header-card
+          title: {{ _dd_trans.more_page.title }}
+        #Start for more_page page
+        #Main dwains theme more_page buttons
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-4 col-sm-3 col-md-2 col-lg-2'
+          padding: true
+          cards:
+            - type: custom:button-card
+              template: more_page_main
+              icon: "{{ _dd_icons.more_page_house_information|default('mdi:home') }}"
+              name: {{ _dd_trans.more_page.house_info }}
+              tap_action: 
+                action: navigate
+                navigation_path: more_page_house_information
+            - type: custom:button-card
+              template: more_page_main
+              icon: "{{ _dd_icons.more_page_house_data|default('mdi:information-outline') }}"
+              name: {{ _dd_trans.more_page.house_data.title }}
+              tap_action: 
+                action: navigate
+                navigation_path: more_page_house_data
+            - type: custom:button-card
+              template: more_page_main
+              icon: "{{ _dd_icons.more_page_settings|default('mdi:cogs') }}"
+              name: {{ _dd_trans.more_page.settings.title }}
+              tap_action: 
+                action: navigate
+                navigation_path: more_page_settings
+            # Put link to cameras page if its used but disabled for main menu
+            {% if _dd_config.cameras %}
+            {% if _dd_config.cameras["main_menu"] and _dd_config.cameras["main_menu"] == 'false' %}
+            - type: custom:button-card
+              template: more_page_main
+              icon: "{{ _dd_icons.menu_cameras|default('mdi:cctv') }}"
+              name: {{ _dd_trans.cameras.title }}
+              tap_action: 
+                action: navigate
+                navigation_path: cameras
+            {% endif %}
+            {% endif %}
+            # Put link to scenes page if its used but disabled for main menu
+            {% if _dd_config.scenes %}
+            {% if _dd_config.scenes["main_menu"] and _dd_config.scenes["main_menu"] == 'false' %}
+            - type: custom:button-card
+              template: more_page_main
+              icon: "{{ _dd_icons.menu_scenes|default('mdi:play-circle-outline') }}"
+              name: {{ _dd_trans.scenes.title }}
+              tap_action: 
+                action: navigate
+                navigation_path: scenes
+            {% endif %}
+            {% endif %}
 
-              {% if _dd_config.more_page and _dd_config.more_page["addons"] %}
-              #heading Addons
-              - type: custom:dwains-heading-card
-                item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
-                title: {{ _dd_trans.more_page.more_page_addons }}
-              #Addons start
-              {% for more_page in _dd_config.more_page["addons"] %}
-              - type: custom:button-card
-                template: more_page_main
-                icon: {{ more_page["icon"]|default('mdi:puzzle') }}
-                name: {{ more_page["name"] }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: more_page_addon_{{ more_page["name"]|lower|replace("'", "_")|replace(" ", "_") }}
-              {% endfor %}
-              - type: custom:button-card
-                color_type: blank-card
-                aspect_ratio: 1/1
-              - type: custom:button-card
-                color_type: blank-card
-                aspect_ratio: 1/1
-              {% endif %}
+            {% if _dd_config.more_page and _dd_config.more_page["addons"] %}
+            #heading Addons
+            - type: custom:dwains-heading-card
+              item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+              title: {{ _dd_trans.more_page.more_page_addons }}
+            #Addons start
+            {% for more_page in _dd_config.more_page["addons"] %}
+            - type: custom:button-card
+              template: more_page_main
+              icon: {{ more_page["icon"]|default('mdi:puzzle') }}
+              name: {{ more_page["name"] }}
+              tap_action: 
+                action: navigate
+                navigation_path: more_page_addon_{{ more_page["name"]|lower|replace("'", "_")|replace(" ", "_") }}
+            {% endfor %}
+            - type: custom:button-card
+              color_type: blank-card
+              aspect_ratio: 1/1
+            - type: custom:button-card
+              color_type: blank-card
+              aspect_ratio: 1/1
+            {% endif %}

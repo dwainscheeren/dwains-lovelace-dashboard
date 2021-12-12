@@ -4,65 +4,58 @@
 
 - title: {{ _dd_trans.lock.title_plural }}
   path: devices_locks
-  panel: true
+  type: custom:dwains-dashboard
   visible: false
   cards:    
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:  
-          #Header
-          - type: custom:dwains-header-card
-            title: {{ _dd_trans.lock.title_plural }}
-            subtitle: {{ _dd_trans.home.title }}
-            navigation_path: home#devices
-            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
-          - type: custom:dwains-flexbox-card
-            padding: true
-            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
-            cards:
-              {% for room in _dd_config.rooms %}
-              {% if room["lock"] %}
-              - type: vertical-stack
-                cards:
-                  #Heading
-                  - type: custom:dwains-heading-card
-                    title: {{ room["name"] }}
-                  {% if room["lock"].split('.')[0] == 'lock' %}
-                  # this room has only 1 lock
-                  - type: horizontal-stack
-                    cards:
-                    - type: custom:button-card
-                      template: room_lock
-                      entity: {{ room["lock"] }}
-                      hold_action:
-                        action: more-info
-                      double_tap_action:
-                        action: more-info
-                  {% else %}
-                  # this room has group of locks
-                  - type: custom:dwains-auto-entities-card
-                    filter:
-                      include:
-                        - group: {{ room["lock"] }}
-                          options:
-                            type: custom:button-card
-                            template: room_lock
-                            hold_action:
-                              action: more-info
-                            double_tap_action:
-                              action: more-info
-                    sort:
-                      method: name
-                      ignore_case: true
-                    card:
-                      type: custom:dwains-flexbox-card
-                      items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
-                  {% endif %}
-              {% endif %}
-              {% endfor %}
+    - type: vertical-stack
+      cards:  
+        #Header
+        - type: custom:dwains-header-card
+          title: {{ _dd_trans.lock.title_plural }}
+          subtitle: {{ _dd_trans.home.title }}
+          navigation_path: home#devices
+          icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+        - type: custom:dwains-flexbox-card
+          padding: true
+          items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          cards:
+            {% for room in _dd_config.rooms %}
+            {% if room["lock"] %}
+            - type: vertical-stack
+              cards:
+                #Heading
+                - type: custom:dwains-heading-card
+                  title: {{ room["name"] }}
+                {% if room["lock"].split('.')[0] == 'lock' %}
+                # this room has only 1 lock
+                - type: horizontal-stack
+                  cards:
+                  - type: custom:button-card
+                    template: room_lock
+                    entity: {{ room["lock"] }}
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                {% else %}
+                # this room has group of locks
+                - type: custom:dwains-auto-entities-card
+                  filter:
+                    include:
+                      - group: {{ room["lock"] }}
+                        options:
+                          type: custom:button-card
+                          template: room_lock
+                          hold_action:
+                            action: more-info
+                          double_tap_action:
+                            action: more-info
+                  sort:
+                    method: name
+                    ignore_case: true
+                  card:
+                    type: custom:dwains-flexbox-card
+                    items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
+                {% endif %}
+            {% endif %}
+            {% endfor %}

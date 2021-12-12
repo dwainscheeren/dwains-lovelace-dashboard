@@ -2,50 +2,43 @@
 
 - title: {{ _dd_trans.more_page.house_data.title }}
   path: more_page_house_data
-  panel: true
+  type: custom:dwains-dashboard
   visible: false
   cards:    
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:
-          #Header
-          - type: custom:dwains-header-card
-            title:  {{ _dd_trans.more_page.house_data.title }}
-            subtitle: {{ _dd_trans.more_page.title }}
-            navigation_path: more_page
-            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
-          #Start for all data page
-          - type: custom:dwains-flexbox-card
-            padding: true
-            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
-            cards:
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _dd_trans.more_page.house_data.all_sensors }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: more_page_house_data_sensors
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _dd_trans.more_page.house_data.all_batteries }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: more_page_house_data_batteries
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _dd_trans.more_page.house_data.config }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: /config
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _dd_trans.more_page.house_data.developer_tools }}
-                tap_action: 
-                  action: navigate
-                  navigation_path: /developer-tools
+    - type: vertical-stack
+      cards:
+        #Header
+        - type: custom:dwains-header-card
+          title:  {{ _dd_trans.more_page.house_data.title }}
+          subtitle: {{ _dd_trans.more_page.title }}
+          navigation_path: more_page
+          icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+        #Start for all data page
+        - type: custom:dwains-flexbox-card
+          padding: true
+          items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          cards:
+            - type: custom:button-card
+              template: more_page_list-item
+              name: {{ _dd_trans.more_page.house_data.all_sensors }}
+              tap_action: 
+                action: navigate
+                navigation_path: more_page_house_data_sensors
+            - type: custom:button-card
+              template: more_page_list-item
+              name: {{ _dd_trans.more_page.house_data.all_batteries }}
+              tap_action: 
+                action: navigate
+                navigation_path: more_page_house_data_batteries
+            - type: custom:button-card
+              template: more_page_list-item
+              name: {{ _dd_trans.more_page.house_data.config }}
+              tap_action: 
+                action: navigate
+                navigation_path: /config
+            - type: custom:button-card
+              template: more_page_list-item
+              name: {{ _dd_trans.more_page.house_data.developer_tools }}
+              tap_action: 
+                action: navigate
+                navigation_path: /developer-tools

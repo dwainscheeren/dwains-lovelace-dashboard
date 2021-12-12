@@ -1,3 +1,5 @@
+import { hass, provideHass } from "card-tools/src/hass";
+
 const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];
 Promise.race(bases).then(() => {
 
@@ -9,63 +11,44 @@ Promise.race(bases).then(() => {
 
   const css = LitElement.prototype.css;
 
-
-  const createError = (error, config) => {
-    return createThing("hui-error-card", {
-      type: "error",
-      error,
-      config,
-    });
-  };
-
+  const NO_STYLE = `
+  ha-card {
+    background: none;
+    box-shadow: none;
+  }`;
+  
   const cardHelpers = window.loadCardHelpers()
-    ? window.loadCardHelpers()
-    : undefined;
-
-  const createThing = async (tag, config) => {
-    if (cardHelpers) {
-      const cardHelper = await cardHelpers;
-      return cardHelper.createCardElement(config);
-    }
-
-    const element = document.createElement(tag);
-
-    try {
-      element.setConfig(config);
-    } catch (err) {
-      console.error(tag, err);
-      return createError(err.message, config);
-    }
-
-    return element;
-  };
-
+  ? window.loadCardHelpers()
+  : undefined;
 
   class DwainsWrapperCard extends LitElement {
     constructor() {
       super();
+      provideHass(this);
     }
 
     static get properties() {
       return {
-        //hass: {},
+        hass: {},
       };
     }
-
-    set hass(hass) {
-      this._hass = hass;
-      console.log('test1');
-    }
-
-
     async setConfig(config) {
       this._config = JSON.parse(JSON.stringify(config));
+      if(config.style === undefined)
+      {
+        this._config.style = NO_STYLE;
+      } else if (typeof(config.style) === "string") {
+        this._config.style = NO_STYLE + config.style;
+      } else if (config.style["."]) {
+        this._config.style["."] = NO_STYLE + config.style["."];
+      } else {
+        this._config.style["."] = NO_STYLE;
+      }
 
       const cardHelper = await cardHelpers;
       this.card = await cardHelper.createCardElement(this._config.card);
 
-      this.card.hass = this._hass;
-      console.log('test2');
+      this.card.hass = hass();
     }
 
     render() {

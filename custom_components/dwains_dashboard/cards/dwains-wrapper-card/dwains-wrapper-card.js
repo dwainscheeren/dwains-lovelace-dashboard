@@ -1,10 +1,111 @@
-!function(e){var t={};function o(n){if(t[n])return t[n].exports;var r=t[n]={i:n,l:!1,exports:{}};return e[n].call(r.exports,r,r.exports,o),r.l=!0,r.exports}o.m=e,o.c=t,o.d=function(e,t,n){o.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},o.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},o.t=function(e,t){if(1&t&&(e=o(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)o.d(n,r,function(t){return e[t]}.bind(null,r));return n},o.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(t,"a",t),t},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.p="",o(o.s=1)}([function(e){e.exports=JSON.parse('{"name":"dwains-wrapper-card","private":true,"version":"0.0.1","description":"dwains-wrapper-card","scripts":{"build":"webpack","watch":"webpack --watch --mode=development","update-card-tools":"npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"},"keywords":[],"author":"Dwain Scheeren","license":"MIT","devDependencies":{"webpack":"^4.42.1","webpack-cli":"^3.3.11"},"dependencies":{"card-tools":"github:thomasloven/lovelace-card-tools"}}')},function(e,t,o){"use strict";function n(){return document.querySelector("hc-main")?document.querySelector("hc-main").hass:document.querySelector("home-assistant")?document.querySelector("home-assistant").hass:void 0}function r(e,t,o=null){if((e=new Event(e,{bubbles:!0,cancelable:!1,composed:!0})).detail=t||{},o)o.dispatchEvent(e);else{var n=function(){var e=document.querySelector("hc-main");return e=e?(e=(e=(e=e&&e.shadowRoot)&&e.querySelector("hc-lovelace"))&&e.shadowRoot)&&e.querySelector("hui-view")||e.querySelector("hui-panel-view"):(e=(e=(e=(e=(e=(e=(e=(e=(e=(e=(e=(e=document.querySelector("home-assistant"))&&e.shadowRoot)&&e.querySelector("home-assistant-main"))&&e.shadowRoot)&&e.querySelector("app-drawer-layout partial-panel-resolver"))&&e.shadowRoot||e)&&e.querySelector("ha-panel-lovelace"))&&e.shadowRoot)&&e.querySelector("hui-root"))&&e.shadowRoot)&&e.querySelector("ha-app-layout"))&&e.querySelector("#view"))&&e.firstElementChild}();n&&n.dispatchEvent(e)}}o.r(t);let s=window.cardHelpers;const a=new Promise(async(e,t)=>{s&&e();const o=async()=>{s=await window.loadCardHelpers(),window.cardHelpers=s,e()};window.loadCardHelpers?o():window.addEventListener("load",async()=>{!async function(){if(customElements.get("hui-view"))return!0;await customElements.whenDefined("partial-panel-resolver");const e=document.createElement("partial-panel-resolver");if(e.hass={panels:[{url_path:"tmp",component_name:"lovelace"}]},e._updateRoutes(),await e.routerOptions.routes.tmp.load(),!customElements.get("ha-panel-lovelace"))return!1;const t=document.createElement("ha-panel-lovelace");t.hass=n(),void 0===t.hass&&(await new Promise(e=>{window.addEventListener("connection-status",t=>{console.log(t),e()},{once:!0})}),t.hass=n()),t.panel={config:{mode:null}},t._fetchConfig()}(),window.loadCardHelpers&&o()})});function c(e,t){const o={type:"error",error:e,origConfig:t},n=document.createElement("hui-error-card");return customElements.whenDefined("hui-error-card").then(()=>{const e=document.createElement("hui-error-card");e.setConfig(o),n.parentElement&&n.parentElement.replaceChild(e,n)}),a.then(()=>{r("ll-rebuild",{},n)}),n}function i(e,t){if(!t||"object"!=typeof t||!t.type)return c(`No ${e} type configured`,t);let o=t.type;if(o=o.startsWith("custom:")?o.substr("custom:".length):`hui-${o}-${e}`,customElements.get(o))return function(e,t){let o=document.createElement(e);try{o.setConfig(JSON.parse(JSON.stringify(t)))}catch(e){o=c(e,t)}return a.then(()=>{r("ll-rebuild",{},o)}),o}(o,t);const n=c(`Custom element doesn't exist: ${o}.`,t);n.style.display="None";const s=setTimeout(()=>{n.style.display=""},2e3);return customElements.whenDefined(o).then(()=>{clearTimeout(s),r("ll-rebuild",{},n)}),n}const l=[customElements.whenDefined("hui-masonry-view"),customElements.whenDefined("hc-lovelace")];Promise.race(l).then(()=>{const e=customElements.get("hui-masonry-view")?Object.getPrototypeOf(customElements.get("hui-masonry-view")):Object.getPrototypeOf(customElements.get("hc-lovelace")),t=e.prototype.html,r=(e.prototype.css,"\n  ha-card {\n    background: none;\n    box-shadow: none;\n  }");class a extends e{constructor(){var e;super(),e=this,document.querySelector("hc-main")?document.querySelector("hc-main").provideHass(e):document.querySelector("home-assistant")&&document.querySelector("home-assistant").provideHass(e)}static get properties(){return{hass:{}}}setConfig(e){this._config=JSON.parse(JSON.stringify(e)),void 0===e.style?this._config.style=r:"string"==typeof e.style?this._config.style=r+e.style:e.style["."]?this._config.style["."]=r+e.style["."]:this._config.style["."]=r,this.card=function(e){return s?s.createCardElement(e):i("card",e)}(this._config.card),this.card.hass=n()}render(){return t`
-        <style>
-        ${this._config.style}
-        </style>
-        <div style="${this._config.css}">
-        <ha-card>
-          ${this.card}
-        </ha-card>
-        </div>
-      `}set hass(e){this.card&&(this.card.hass=e)}getCardSize(){if(this._config.report_size)return this._config.report_size;let e=this.shadowRoot;return e&&(e=e.querySelector("ha-card card-maker")),e&&(e=e.getCardSize),e&&(e=e()),e||1}}if(!customElements.get("dwains-wrapper-card")){customElements.define("dwains-wrapper-card",a);const e=o(0);console.info(`%c DWAINS-WRAPPER-CARD \n%c      Version ${e.version}      `,"color: #2fbae5; font-weight: bold; background: black","color: white; font-weight: bold; background: dimgray")}})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/main.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./package.json":
+/*!**********************!*\
+  !*** ./package.json ***!
+  \**********************/
+/*! exports provided: name, private, version, description, scripts, keywords, author, license, devDependencies, dependencies, default */
+/***/ (function(module) {
+
+eval("module.exports = JSON.parse(\"{\\\"name\\\":\\\"dwains-wrapper-card\\\",\\\"private\\\":true,\\\"version\\\":\\\"0.0.1\\\",\\\"description\\\":\\\"dwains-wrapper-card\\\",\\\"scripts\\\":{\\\"build\\\":\\\"webpack\\\",\\\"watch\\\":\\\"webpack --watch --mode=development\\\",\\\"update-card-tools\\\":\\\"npm uninstall card-tools && npm install thomasloven/lovelace-card-tools\\\"},\\\"keywords\\\":[],\\\"author\\\":\\\"Dwain Scheeren\\\",\\\"license\\\":\\\"MIT\\\",\\\"devDependencies\\\":{\\\"webpack\\\":\\\"^4.42.1\\\",\\\"webpack-cli\\\":\\\"^3.3.11\\\"},\\\"dependencies\\\":{\\\"card-tools\\\":\\\"github:thomasloven/lovelace-card-tools\\\"}}\");\n\n//# sourceURL=webpack:///./package.json?");
+
+/***/ }),
+
+/***/ "./src/main.js":
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];\r\nPromise.race(bases).then(() => {\r\n\r\n  const LitElement = customElements.get('hui-masonry-view')\r\n    ? Object.getPrototypeOf(customElements.get('hui-masonry-view'))\r\n    : Object.getPrototypeOf(customElements.get('hc-lovelace'));\r\n\r\n  const html = LitElement.prototype.html;\r\n\r\n  const css = LitElement.prototype.css;\r\n\r\n\r\n  const createError = (error, config) => {\r\n    return createThing(\"hui-error-card\", {\r\n      type: \"error\",\r\n      error,\r\n      config,\r\n    });\r\n  };\r\n\r\n  const cardHelpers = window.loadCardHelpers()\r\n    ? window.loadCardHelpers()\r\n    : undefined;\r\n\r\n  const createThing = async (tag, config) => {\r\n    if (cardHelpers) {\r\n      const cardHelper = await cardHelpers;\r\n      return cardHelper.createCardElement(config);\r\n    }\r\n\r\n    const element = document.createElement(tag);\r\n\r\n    try {\r\n      element.setConfig(config);\r\n    } catch (err) {\r\n      console.error(tag, err);\r\n      return createError(err.message, config);\r\n    }\r\n\r\n    return element;\r\n  };\r\n\r\n\r\n  class DwainsWrapperCard extends LitElement {\r\n    constructor() {\r\n      super();\r\n    }\r\n\r\n    static get properties() {\r\n      return {\r\n        //hass: {},\r\n      };\r\n    }\r\n\r\n    set hass(hass) {\r\n      this._hass = hass;\r\n      console.log('test1');\r\n    }\r\n\r\n\r\n    async setConfig(config) {\r\n      this._config = JSON.parse(JSON.stringify(config));\r\n\r\n      const cardHelper = await cardHelpers;\r\n      this.card = await cardHelper.createCardElement(this._config.card);\r\n\r\n      this.card.hass = this._hass;\r\n      console.log('test2');\r\n    }\r\n\r\n    render() {\r\n      return html`\r\n        <style>\r\n        ${this._config.style}\r\n        </style>\r\n        <div style=\"${this._config.css}\">\r\n        <ha-card>\r\n          ${this.card}\r\n        </ha-card>\r\n        </div>\r\n      `;\r\n    }\r\n\r\n    set hass(hass) {\r\n      if(!this.card) return;\r\n      this.card.hass = hass;\r\n    }\r\n\r\n    getCardSize() {\r\n      if(this._config.report_size)\r\n        return this._config.report_size;\r\n      let ret = this.shadowRoot;\r\n      if(ret) ret = ret.querySelector(\"ha-card card-maker\");\r\n      if(ret) ret = ret.getCardSize;\r\n      if(ret) ret = ret();\r\n      if(ret) return ret;\r\n      return 1;\r\n    }\r\n\r\n  }\r\n\r\n  if (!customElements.get(\"dwains-wrapper-card\")) {\r\n    customElements.define(\"dwains-wrapper-card\", DwainsWrapperCard);\r\n    const pjson = __webpack_require__(/*! ../package.json */ \"./package.json\");\r\n    console.info(\r\n      `%c DWAINS-WRAPPER-CARD \\n%c      Version ${pjson.version}      `,\r\n      \"color: #2fbae5; font-weight: bold; background: black\",\r\n      \"color: white; font-weight: bold; background: dimgray\"\r\n    );\r\n  }\r\n});\n\n//# sourceURL=webpack:///./src/main.js?");
+
+/***/ })
+
+/******/ });

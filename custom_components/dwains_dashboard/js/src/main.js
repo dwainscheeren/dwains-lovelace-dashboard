@@ -296,7 +296,48 @@ class DwainsDashboard {
 }
 
 
-const bases = [customElements.whenDefined('home-assistant-main'), customElements.whenDefined('hui-view')];
+const bases = [customElements.whenDefined('hui-masonry-view'), customElements.whenDefined('hc-lovelace')];
 Promise.race(bases).then(() => {
   window.dwains_dashboard = window.dwains_dashboard || new DwainsDashboard();
+
+  const LitElement = customElements.get('hui-masonry-view')
+    ? Object.getPrototypeOf(customElements.get('hui-masonry-view'))
+    : Object.getPrototypeOf(customElements.get('hc-lovelace'));
+
+  const html = LitElement.prototype.html;
+
+  const css = LitElement.prototype.css;
+
+
+  class DwainsDashboardLayout extends LitElement {
+    setConfig(_config) {}
+
+    static get properties() {
+      return {
+        cards: {type: Array, attribute: false}
+      };
+    }
+
+    static get styles() {
+      return [
+        css`
+        #dwains_dashboard {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
+        }`
+      ]
+    }
+
+    render() {
+      if(!this.cards) {
+        return html``;
+      }
+      return html`<div id="dwains_dashboard">${this.cards.map((card) => html`${card}`)}</div>`;
+    }
+  }
+  if (!customElements.get("dwains-dashboard")) {
+    customElements.define("dwains-dashboard", DwainsDashboardLayout);
+  }
 });

@@ -6,63 +6,56 @@
 {% if room["vacuum"] %}
 - title: {{ room["name"] }} {{ _dd_trans.vacuum.title }}
   path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_vacuum
-  panel: true
+  type: custom:dwains-dashboard
   visible: false
   cards:    
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:
-          #Header
-          - type: custom:dwains-header-card
-            title:  {{ _dd_trans.vacuum.title }}
-            subtitle: {{ room["name"] }}
-            navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
-          #Start for room vacuum content page
-          - type: custom:dwains-flexbox-card
-            padding: true
-            items_classes: 'col-xs-12'
-            cards:
-              {% if room["vacuum"]["advanced_view"] and room["vacuum"]["advanced_view"] == 'true' %}
-              - type: 'custom:vacuum-card'
-                entity: {{ room["vacuum"]["entity"] }}
-                {% if room["vacuum"]["camera"] %}
-                map: {{ room["vacuum"]["camera"] }}
-                {% endif %}
-                stats:
-                  default:
-                    - attribute: filter_left
-                      unit: hours
-                      subtitle: Filter
-                    - attribute: side_brush_left
-                      unit: hours
-                      subtitle: Side brush
-                    - attribute: main_brush_left
-                      unit: hours
-                      subtitle: Main brush
-                    - attribute: sensor_dirty_left
-                      unit: hours
-                      subtitle: Sensors
-                  cleaning:
-                    - attribute: cleaned_area
-                      unit: m2
-                      subtitle: Cleaning area
-                    - attribute: cleaning_time
-                      unit: minutes
-                      subtitle: Cleaning time
-              {% else %}
-              - type: custom:more-info-card
-                style: |
-                  .card-header {
-                    display: none;
-                  }
-                entity: {{ room["vacuum"]["entity"] }}
+    - type: vertical-stack
+      cards:
+        #Header
+        - type: custom:dwains-header-card
+          title:  {{ _dd_trans.vacuum.title }}
+          subtitle: {{ room["name"] }}
+          navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+        #Start for room vacuum content page
+        - type: custom:dwains-flexbox-card
+          padding: true
+          items_classes: 'col-xs-12'
+          cards:
+            {% if room["vacuum"]["advanced_view"] and room["vacuum"]["advanced_view"] == 'true' %}
+            - type: 'custom:vacuum-card'
+              entity: {{ room["vacuum"]["entity"] }}
+              {% if room["vacuum"]["camera"] %}
+              map: {{ room["vacuum"]["camera"] }}
               {% endif %}
+              stats:
+                default:
+                  - attribute: filter_left
+                    unit: hours
+                    subtitle: Filter
+                  - attribute: side_brush_left
+                    unit: hours
+                    subtitle: Side brush
+                  - attribute: main_brush_left
+                    unit: hours
+                    subtitle: Main brush
+                  - attribute: sensor_dirty_left
+                    unit: hours
+                    subtitle: Sensors
+                cleaning:
+                  - attribute: cleaned_area
+                    unit: m2
+                    subtitle: Cleaning area
+                  - attribute: cleaning_time
+                    unit: minutes
+                    subtitle: Cleaning time
+            {% else %}
+            - type: custom:more-info-card
+              style: |
+                .card-header {
+                  display: none;
+                }
+              entity: {{ room["vacuum"]["entity"] }}
+            {% endif %}
 {% endif %}
 {% endfor %}

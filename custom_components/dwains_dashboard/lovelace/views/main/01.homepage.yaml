@@ -3,7 +3,7 @@
 - title: {{ _dd_trans.home.title }}
   icon: {{ _dd_icons.menu_home|default('mdi:home') }}
   path: home
-  panel: true
+  type: custom:dwains-dashboard
   cards:
     {% if _dd_global.installed and _dd_global.installed == 'false' %}
     - type: vertical-stack
@@ -41,1104 +41,1083 @@
               tap_action: 
                 action: url
                 url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/'
-    {% else %}        
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:
-          #START HOMEPAGE HEADER
-          - type: custom:dwains-wrapper-card
-            css: |
-              padding: 0px;
-              background-color: var(--app-header-background-color2);
-              color: var(--app-header-text-color, white);
-              border-radius: 0;
-              overflow: hidden;
-            card:
-              type: custom:dwains-flexbox-card
-              padding: true
+    {% else %}     
+    - type: vertical-stack
+      cards:
+        #START HOMEPAGE HEADER
+        - type: custom:dwains-flexbox-card
+          css: |
+            padding: 0px;
+            background-color: var(--app-header-background-color2);
+            color: var(--app-header-text-color, white);
+            border-radius: 0;
+            overflow: hidden;
+          padding: true
+          cards:
+            - type: custom:dwains-flexbox-card
+              item_classes: 'col-xs-12 col-sm-6 col-md-5 col-lg-4'
               cards:
-                - type: custom:dwains-flexbox-card
-                  item_classes: 'col-xs-12 col-sm-6 col-md-5 col-lg-4'
-                  cards:
+                - type: custom:button-card
+                  item_classes: 'col-xs-3 d-block d-sm-none'
+                  template: header_house_information
+                {% if _dd_config.global["weather"] %}
+                - type: custom:button-card
+                  item_classes: 'col-xs-6 d-block d-sm-none'
+                  template: header_weather
+                {% endif %}
+                {% if _dd_config.global["alarm"] %}
+                - type: custom:button-card
+                  item_classes: 'col-xs-3 d-block d-sm-none'
+                  template: header_alarm
+                  entity: {{ _dd_config.global["alarm"] }}                        
+                {% endif %}
+                - type: horizontal-stack
+                  item_classes: 'col-xs-12 d-none d-sm-block'
+                  cards: 
                     - type: custom:button-card
-                      item_classes: 'col-xs-3 d-block d-sm-none'
-                      template: header_house_information
-                    {% if _dd_config.global["weather"] %}
-                    - type: custom:button-card
-                      item_classes: 'col-xs-6 d-block d-sm-none'
-                      template: header_weather
-                    {% endif %}
+                      template: header_house_information_large
                     {% if _dd_config.global["alarm"] %}
                     - type: custom:button-card
-                      item_classes: 'col-xs-3 d-block d-sm-none'
-                      template: header_alarm
-                      entity: {{ _dd_config.global["alarm"] }}                        
+                      template: header_alarm_large
+                      entity: {{ _dd_config.global["alarm"] }}
                     {% endif %}
-                    - type: horizontal-stack
-                      item_classes: 'col-xs-12 d-none d-sm-block'
-                      cards: 
-                        - type: custom:button-card
-                          template: header_house_information_large
-                        {% if _dd_config.global["alarm"] %}
-                        - type: custom:button-card
-                          template: header_alarm_large
-                          entity: {{ _dd_config.global["alarm"] }}
-                        {% endif %}
-                    - type: custom:dwains-notification-card
-                      item_classes: 'col-xs-12'
-                      style: |
-                        ha-card {
-                          padding: 0px;
-                        }
-                        #title {
-                          color: var(--dwains-theme-header-text);
-                          font-size: 22px;
-                          font-weight: bold;
-                        }                        
-                      title: >
-                        [[[
-                          var today = new Date()
-                          var curHr = today.getHours()
-
-                          if (curHr < 12) {
-                            return "{{ _dd_trans.greetings.good_morning }}";
-                          } else if (curHr < 18) {
-                            return "{{ _dd_trans.greetings.good_afternoon }}";
-                          } else {
-                            return "{{ _dd_trans.greetings.good_evening }}";
-                          }
-                        ]]]
-                      max_notifications: 2
-                      navigation_path: more_page_notifications
-                {% if _dd_config.global["weather"] %}
-                - type: custom:dwains-weather-card
-                  item_classes: 'd-none d-sm-block col-sm-6 col-md-3 col-lg-3'
-                  entity: {{ _dd_config.global["weather"] }}
-                  {% if _dd_config.global["outside_temperature"] %}
-                  {% if _dd_config.global["outside_temperature"].split('.')[0] == 'sensor' %}
-                  tempsensor_entity: {{ _dd_config.global["outside_temperature"] }}
-                  {% endif %}
-                  {% endif %}
+                - type: custom:dwains-notification-card
+                  item_classes: 'col-xs-12'
                   style: |
                     ha-card {
-                      background: var(--dwains-theme-header-button-background) !important;
+                      padding: 0px;
                     }
-                    .variations, .variations ha-icon, #main {
-                      color: var(--dwains-theme-header-button-text) !important;
-                    }
-                {% endif %}
-                #Start header states
-                - type: custom:dwains-wrapper-card
-                  item_classes: 'col-12 col-sm-12 col-md-4 col-lg-5'
-                  css: |
-                    ha-card {
-                      margin-top: 5px;
-                    }
-                    @media only screen and (min-width: 600px) {
-                      ha-card {
-                        margin-top: 15px;
+                    #title {
+                      color: var(--dwains-theme-header-text);
+                      font-size: 22px;
+                      font-weight: bold;
+                    }                        
+                  title: >
+                    [[[
+                      var today = new Date()
+                      var curHr = today.getHours()
+
+                      if (curHr < 12) {
+                        return "{{ _dd_trans.greetings.good_morning }}";
+                      } else if (curHr < 18) {
+                        return "{{ _dd_trans.greetings.good_afternoon }}";
+                      } else {
+                        return "{{ _dd_trans.greetings.good_evening }}";
                       }
-                    }
-                  card:
-                    type: custom:dwains-collapse-card
-                    card_width: '62px'
-                    cards:
-                      {% if _dd_config.persons %}
-                      {% for person in _dd_config.persons %}
-                      - type: custom:button-card
-                        template: header_states_person
-                        entity: {{ person["track"] }}
-                        name: {{ person["name"] }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
-                      {% endfor %}
-                      {% endif %}
-                      - type: custom:button-card
-                        template: header_states_safety
-                      - type: custom:button-card
-                        template: header_states_door
-                      - type: custom:button-card
-                        template: header_states_window
-                      - type: custom:button-card
-                        template: header_states_lock
-                      - type: custom:button-card
-                        template: header_states_light
-                      - type: custom:button-card
-                        template: header_states_climate
-                      - type: custom:button-card
-                        template: header_states_cover
-                      - type: custom:button-card
-                        template: header_states_device
-                      - type: custom:button-card
-                        template: header_states_media_player
-                      - type: custom:button-card
-                        template: header_states_vacuum
-                      - type: custom:button-card
-                        template: header_states_plant
-                      - type: custom:button-card
-                        template: header_states_vibration
-                #End header states
-          #END HOMEPAGE HEADER
+                    ]]]
+                  max_notifications: 2
+                  navigation_path: more_page_notifications
+            {% if _dd_config.global["weather"] %}
+            - type: custom:dwains-weather-card
+              item_classes: 'd-none d-sm-block col-sm-6 col-md-3 col-lg-3'
+              entity: {{ _dd_config.global["weather"] }}
+              {% if _dd_config.global["outside_temperature"] %}
+              {% if _dd_config.global["outside_temperature"].split('.')[0] == 'sensor' %}
+              tempsensor_entity: {{ _dd_config.global["outside_temperature"] }}
+              {% endif %}
+              {% endif %}
+              style: |
+                ha-card {
+                  background: var(--dwains-theme-header-button-background) !important;
+                }
+                .variations, .variations ha-icon, #main {
+                  color: var(--dwains-theme-header-button-text) !important;
+                }
+            {% endif %}
+            #Start header states
+            - type: custom:dwains-collapse-card
+              card_width: '62px'
+              cards:
+                {% if _dd_config.persons %}
+                {% for person in _dd_config.persons %}
+                - type: custom:button-card
+                  template: header_states_person
+                  entity: {{ person["track"] }}
+                  name: {{ person["name"] }}
+                  tap_action: 
+                    action: navigate
+                    navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
+                {% endfor %}
+                {% endif %}
+                - type: custom:button-card
+                  template: header_states_safety
+                - type: custom:button-card
+                  template: header_states_door
+                - type: custom:button-card
+                  template: header_states_window
+                - type: custom:button-card
+                  template: header_states_lock
+                - type: custom:button-card
+                  template: header_states_light
+                - type: custom:button-card
+                  template: header_states_climate
+                - type: custom:button-card
+                  template: header_states_cover
+                - type: custom:button-card
+                  template: header_states_device
+                - type: custom:button-card
+                  template: header_states_media_player
+                - type: custom:button-card
+                  template: header_states_vacuum
+                - type: custom:button-card
+                  template: header_states_plant
+                - type: custom:button-card
+                  template: header_states_vibration
+            #End header states
+        #END HOMEPAGE HEADER
 
-          #START HOMEPAGE CONTENT
-          {% if _dd_config.global["favorites_homepage"] and _dd_config.global["favorites_homepage"] == 'true' %}
-          #Favorites start
-          {% if _dd_config.house_information and _dd_config.house_information["favorites"] %}
-          - type: custom:dwains-flexbox-card
-            padding: true
-            items_classes: 'col-xs-12'
-            cards:
-              #heading  
-              - type: custom:dwains-heading-card
-                title: {{ _dd_trans.house_information.favorites }}
-              - type: custom:dwains-flexbox-card
-                items_classes: 'col-xs-6 col-sm-6 col-md-3 col-lg-3'
-                cards:
-                  #Start for house information page
-                  {% for favorite in _dd_config.house_information["favorites"] %}
-                  - type: custom:button-card
-                    entity: {{ favorite["entity"] }}
-                    template: more_page_house_information_favorites
-                    {% if favorite["entity"].split('.')[0] == 'input_select' %}
-                    tap_action:
-                      action: more-info
-                    double_tap_action:
-                      haptic: light
-                      action: call-service
-                      service: input_select.select_next
-                      service_data:
-                        entity_id: {{ favorite["entity"] }}
-                    {% else %}
-                    tap_action:
-                      action: more-info
+        #START HOMEPAGE CONTENT
+        {% if _dd_config.global["favorites_homepage"] and _dd_config.global["favorites_homepage"] == 'true' %}
+        #Favorites start
+        {% if _dd_config.house_information and _dd_config.house_information["favorites"] %}
+        - type: custom:dwains-flexbox-card
+          padding: true
+          items_classes: 'col-xs-12'
+          cards:
+            #heading  
+            - type: custom:dwains-heading-card
+              title: {{ _dd_trans.house_information.favorites }}
+            - type: custom:dwains-flexbox-card
+              items_classes: 'col-xs-6 col-sm-6 col-md-3 col-lg-3'
+              cards:
+                #Start for house information page
+                {% for favorite in _dd_config.house_information["favorites"] %}
+                - type: custom:button-card
+                  entity: {{ favorite["entity"] }}
+                  template: more_page_house_information_favorites
+                  {% if favorite["entity"].split('.')[0] == 'input_select' %}
+                  tap_action:
+                    action: more-info
+                  double_tap_action:
+                    haptic: light
+                    action: call-service
+                    service: input_select.select_next
+                    service_data:
+                      entity_id: {{ favorite["entity"] }}
+                  {% else %}
+                  tap_action:
+                    action: more-info
+                  {% endif %}
+                  #there is a type defined so  lets change some styling and options
+                  state:
+                    {% if favorite['icon_off'] %}
+                    - value: 'off'
+                      icon: "{{ favorite['icon_off'] }}"
                     {% endif %}
-                    #there is a type defined so  lets change some styling and options
-                    state:
-                      {% if favorite['icon_off'] %}
-                      - value: 'off'
-                        icon: "{{ favorite['icon_off'] }}"
-                      {% endif %}
-                      {% if favorite['icon_on'] %}
-                      - value: 'on'
-                        icon: "{{ favorite['icon_on'] }}"
-                      {% endif %}
-                  {% endfor %}
-          {% endif %}
-          #Favorites end  
-          {% endif %}
+                    {% if favorite['icon_on'] %}
+                    - value: 'on'
+                      icon: "{{ favorite['icon_on'] }}"
+                    {% endif %}
+                {% endfor %}
+        {% endif %}
+        #Favorites end  
+        {% endif %}
 
 
-          #Start of rooms and devices
-          - type: custom:dwains-hash-switch-card
-            default: rooms
-            states:
-              #ROOMS VIEW
-              rooms:
-                type: vertical-stack
-                cards:
-                  - type: custom:dwains-flexbox-card
-                    items_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
-                    padding: true
-                    cards:
-                      #heading  
-                      - type: horizontal-stack
-                        item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
-                        cards:
-                          - type: custom:button-card
-                            name: {{ _dd_trans.rooms.title }}
-                            template: partials_heading_switch
-                            tap_action: 
-                              action: navigate
-                              navigation_path: "#rooms"
-                            styles:
-                              name:
-                                - color: var(--dwains-theme-accent)
-                          - type: custom:button-card
-                            name: {{ _dd_trans.device.title_plural }}
-                            template: partials_heading_switch
-                            tap_action: 
-                              action: navigate
-                              navigation_path: "#devices"
-                      {% for room in _dd_config.rooms %}
-                      # Since we are looping in the rooms do some stuff for the all devices view
-                      - type: custom:button-card
-                        template: homepage_room
+        #Start of rooms and devices
+        - type: custom:dwains-hash-switch-card
+          default: rooms
+          states:
+            #ROOMS VIEW
+            rooms:
+              type: vertical-stack
+              cards:
+                - type: custom:dwains-flexbox-card
+                  items_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
+                  padding: true
+                  cards:
+                    #heading  
+                    - type: horizontal-stack
+                      item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+                      cards:
+                        - type: custom:button-card
+                          name: {{ _dd_trans.rooms.title }}
+                          template: partials_heading_switch
+                          tap_action: 
+                            action: navigate
+                            navigation_path: "#rooms"
+                          styles:
+                            name:
+                              - color: var(--dwains-theme-accent)
+                        - type: custom:button-card
+                          name: {{ _dd_trans.device.title_plural }}
+                          template: partials_heading_switch
+                          tap_action: 
+                            action: navigate
+                            navigation_path: "#devices"
+                    {% for room in _dd_config.rooms %}
+                    # Since we are looping in the rooms do some stuff for the all devices view
+                    - type: custom:button-card
+                      template: homepage_room
+                      {% if room["light"] %}
+                      entity: {{ room["light"] }}
+                      {% endif %}
+                      name: {{ room["name"] }}
+                      {% if room["show_name"] == 'false' %}
+                      show_name: false
+                      {% endif %}
+                      {% if room["climate"] or room["temperature"] %}
+                      label: >
+                        [[[ 
+                          var humidity = '';
+                          {% if room["humidity"] %}
+                            if(states['{{ room["humidity"] }}'] && states['{{ room["humidity"] }}'].state != 'unavailable'){
+                              humidity = ' / '+ (Math.round(states['{{ room["humidity"] }}'].state * 10) / 10) + '%';
+                            }
+                          {% endif %}
+
+                          {% if room["temperature"] %}
+                            if(states['{{ room["temperature"] }}']){
+                              var icon = '';
+
+                              {% if room["climate"] %}
+                              if(states['{{ room["climate"] }}']){
+                                if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
+                                  icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
+                                } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
+                                  icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
+                                }
+                              }
+                              {% endif %}
+
+                              return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + hass.config.unit_system["temperature"] + icon + humidity;
+                            } else {
+                              console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
+                              return 'Temperature error';
+                            }
+                          {% elif room["climate"] %}
+                            if(states['{{ room["climate"] }}']){
+                              var icon = '';
+
+                              if(states['{{ room["climate"] }}']){
+                                if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
+                                  icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
+                                } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
+                                  icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
+                                }
+                              }
+
+                              return (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + hass.config.unit_system["temperature"] + icon + humidity;
+                            } else {
+                              console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!");
+                              return 'Climate error';
+                            }
+                          {% endif %}
+                        ]]] 
+                      {% else %}
+                      label: '&nbsp;'
+                      {% endif %}
+                      icon: "{{ room["icon"]|default('mdi:square-outline') }}"
+                      tap_action: 
+                        action: navigate
+                        navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
+                      custom_fields:
+                        additional_info: >
+                          [[[
+                            var additional_info = '';
+                            {% if room["window"] %}
+                              if(states['{{ room["window"] }}']){
+                                {% if room["window"].split('.')[0] == 'binary_sensor' or room["window"].split('.')[0] == 'sensor' %}
+                                  if(states['{{ room["window"] }}'].state == 'on' || states['{{ room["window"] }}'].state == 'True'){
+                                    additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.window_open|default('mdi:window-open-variant') }}"></ha-icon><br>';
+                                  }
+                                {% else %}
+                                  const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
+                                  for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                    if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' || 
+                                        states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.window_open|default('mdi:window-open-variant') }}"></ha-icon><br>';
+                                      break;
+                                    }
+                                  }  
+                                {% endif %}
+                              } else {
+                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.window entity!");
+                                additional_info += 'W-E!<br>';
+                              }
+                            {% endif %}
+                            {% if room["motion"] %}
+                              if(states['{{ room["motion"] }}']){
+                                {% if room["motion"].split('.')[0] == 'binary_sensor' or room["motion"].split('.')[0] == 'sensor' %}
+                                  if(states['{{ room["motion"] }}'].state == 'on' || states['{{ room["motion"] }}'].state == 'True'){
+                                    additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.motion_on|default('mdi:motion-sensor') }}"></ha-icon><br>';
+                                  }
+                                {% else %}
+                                  const entitiesFromGroup = states['{{ room["motion"] }}'].attributes['entity_id'];
+                                  for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                    if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                        states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.motion_on|default('mdi:motion-sensor') }}"></ha-icon><br>';
+                                      break;
+                                    }
+                                  }  
+                                {% endif %}
+                              } else {
+                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.motion entity!");
+                                additional_info += 'M-E!<br>';
+                              }
+                            {% endif %}
+                            {% if room["door"] %}
+                              if(states['{{ room["door"] }}']){
+                                {% if room["door"].split('.')[0] == 'binary_sensor' or room["door"].split('.')[0] == 'sensor' %}
+                                  if(states['{{ room["door"] }}'].state == 'on' || states['{{ room["door"] }}'].state == 'True'){
+                                    additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.door_open|default('mdi:door-open') }}"></ha-icon><br>';
+                                  }
+                                {% else %}
+                                  const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
+                                  for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                    if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                        states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.door_open|default('mdi:door-open') }}"></ha-icon><br>';
+                                      break;
+                                    }
+                                  }  
+                                {% endif %}
+                              } else {
+                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.door entity!");
+                                additional_info += 'D-E!<br>';
+                              }
+                            {% endif %}
+                            {% if room["lock"] %}
+                              if(states['{{ room["lock"] }}']){
+                                {% if room["lock"].split('.')[0] == 'lock' %}
+                                  if(states['{{ room["lock"] }}'].state == 'unlocked'){
+                                    additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.window_open|default('mdi:lock-open-variant-outline') }}"></ha-icon><br>';
+                                  }
+                                {% elif room["lock"].split('.')[0] == 'group' %}
+                                  const entitiesFromGroup = states['{{ room["lock"] }}'].attributes['entity_id'];
+                                  for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                    if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'unlocked') {
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.window_open|default('mdi:lock-open-variant-outline') }}"></ha-icon><br>';
+                                      break;
+                                    }
+                                  }  
+                                {% endif %}
+                              } else {
+                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.lock entity!");
+                                additional_info += 'L-E!<br>';
+                              }
+                            {% endif %}
+                            {% if room["safety"] %}
+                              let conf = {{ _dd_config.global["safety_ok_strings"] | tojson }};
+                              let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+                              if(states['{{ room["safety"] }}']){
+                                {% if room["safety"].split('.')[0] != 'group' %}
+                                  if(! ok_states.includes( states['{{ room["safety"] }}'].state )){
+                                    additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
+                                  }
+                                {% else %}
+                                  const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
+                                  for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                    if(states[entitiesFromGroup[i]] && (! ok_states.includes( states[entitiesFromGroup[i]].state ))) {
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
+                                      break;
+                                    }
+                                  }  
+                                {% endif %}
+                              } else {
+                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.safety entity!");
+                                additional_info += 'S-E!<br>';
+                              }
+                            {% endif %}
+                            {% if room["vibration"] %}
+                              if(states['{{ room["vibration"] }}']){
+                                {% if room["vibration"].split('.')[0] == 'binary_sensor' or room["vibration"].split('.')[0] == 'sensor' %}
+                                  if(states['{{ room["vibration"] }}'].state == 'on' || states['{{ room["vibration"] }}'].state == 'True'){
+                                    additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.vibrate_on|default('mdi:vibrate') }}"></ha-icon><br>';
+                                  }
+                                {% else %}
+                                  const entitiesFromGroup = states['{{ room["vibration"] }}'].attributes['entity_id'];
+                                  for (let i = 0; i < entitiesFromGroup.length; i++) {
+                                    if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                        states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.vibration_on|default('mdi:vibrate') }}"></ha-icon><br>';
+                                      break;
+                                    }
+                                  }
+                                {% endif %}
+                              } else {
+                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.vibration entity!");
+                                additional_info += 'A-E!<br>';
+                              }
+                            {% endif %}
+
+                            return additional_info;
+                          ]]]
                         {% if room["light"] %}
-                        entity: {{ room["light"] }}
+                        lights: > 
+                          [[[
+                            if(entity){
+                              if (entity.state == 'on'){
+                                return `<ha-icon
+                                  style="height: 20px; color: var(--dwains-theme-accent)"
+                                  icon="{{ _dd_icons.light_on|default('mdi:lightbulb') }}">
+                                  </ha-icon>`
+                              } else {
+                                return `<ha-icon
+                                  style="height: 20px;"
+                                  icon="{{ _dd_icons.light_off|default('mdi:lightbulb-outline') }}">
+                                  </ha-icon>`
+                              }
+                            } else {
+                              console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.light entity!");
+                              return 'L-E!<br>';
+                            }
+                          ]]]   
                         {% endif %}
-                        name: {{ room["name"] }}
-                        {% if room["show_name"] == 'false' %}
-                        show_name: false
+                    {% else %}
+                    - type: markdown
+                      content: No rooms defined
+                    {% endfor %}
+
+            #DEVICES VIEW
+            devices:
+              type: vertical-stack
+              cards:
+                - type: custom:dwains-flexbox-card
+                  items_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
+                  padding: true
+                  cards:
+                    #heading  
+                    - type: horizontal-stack
+                      item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+                      cards:
+                        - type: custom:button-card
+                          name: {{ _dd_trans.rooms.title }}
+                          template: partials_heading_switch
+                          tap_action: 
+                            action: navigate
+                            navigation_path: "#rooms"
+                        - type: custom:button-card
+                          name: {{ _dd_trans.device.title_plural }}
+                          template: partials_heading_switch
+                          tap_action: 
+                            action: navigate
+                            navigation_path: "#devices"
+                          styles:
+                            name:
+                              - color: var(--dwains-theme-accent)
+                    {% 
+                      set devices = namespace (hasLock=false, hasLight=false, hasClimate=false, hasCover=false, hasDevice=false, 
+                          hasMediaPlayer=false, hasVacuum=false, hasPlant=false, hasSafety=false, hasVibration=false) 
+                    %}
+                    {% for room in _dd_config.rooms %}
+                        {% if room["lock"] %}
+                          {% set devices.hasLock = true %}
+                        {% endif %}
+                        {% if room["light"] %}
+                            {% set devices.hasLight = true %}
                         {% endif %}
                         {% if room["climate"] or room["temperature"] %}
-                        label: >
-                          [[[ 
-                            var humidity = '';
-                            {% if room["humidity"] %}
-                              if(states['{{ room["humidity"] }}'] && states['{{ room["humidity"] }}'].state != 'unavailable'){
-                                humidity = ' / '+ (Math.round(states['{{ room["humidity"] }}'].state * 10) / 10) + '%';
-                              }
-                            {% endif %}
-
-                            {% if room["temperature"] %}
-                              if(states['{{ room["temperature"] }}']){
-                                var icon = '';
-
-                                {% if room["climate"] %}
-                                if(states['{{ room["climate"] }}']){
-                                  if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
-                                    icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
-                                  } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
-                                    icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
-                                  }
-                                }
-                                {% endif %}
-
-                                return (Math.round(states['{{ room["temperature"] }}'].state * 10) / 10) + hass.config.unit_system["temperature"] + icon + humidity;
-                              } else {
-                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.temperature entity!");
-                                return 'Temperature error';
-                              }
-                            {% elif room["climate"] %}
-                              if(states['{{ room["climate"] }}']){
-                                var icon = '';
-
-                                if(states['{{ room["climate"] }}']){
-                                  if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
-                                    icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_heating|default('mdi:radiator') }}"></ha-icon>'
-                                  } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
-                                    icon = '<ha-icon style="height: 15px; width: 15px;" icon="{{ _dd_icons.climate_cool|default('hass:snowflake') }}"></ha-icon>'
-                                  }
-                                }
-
-                                return (Math.round(states['{{ room["climate"] }}'].attributes.current_temperature * 10) / 10) + hass.config.unit_system["temperature"] + icon + humidity;
-                              } else {
-                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.climate entity!");
-                                return 'Climate error';
-                              }
-                            {% endif %}
-                          ]]] 
-                        {% else %}
-                        label: '&nbsp;'
+                            {% set devices.hasClimate = true %}
                         {% endif %}
-                        icon: "{{ room["icon"]|default('mdi:square-outline') }}"
-                        tap_action: 
-                          action: navigate
-                          navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
-                        custom_fields:
-                          additional_info: >
-                            [[[
-                              var additional_info = '';
-                              {% if room["window"] %}
-                                if(states['{{ room["window"] }}']){
-                                  {% if room["window"].split('.')[0] == 'binary_sensor' or room["window"].split('.')[0] == 'sensor' %}
-                                    if(states['{{ room["window"] }}'].state == 'on' || states['{{ room["window"] }}'].state == 'True'){
-                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.window_open|default('mdi:window-open-variant') }}"></ha-icon><br>';
-                                    }
-                                  {% else %}
-                                    const entitiesFromGroup = states['{{ room["window"] }}'].attributes['entity_id'];
-                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
-                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' || 
-                                          states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
-                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.window_open|default('mdi:window-open-variant') }}"></ha-icon><br>';
-                                        break;
-                                      }
-                                    }  
-                                  {% endif %}
-                                } else {
-                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.window entity!");
-                                  additional_info += 'W-E!<br>';
+                        {% if room["cover"] %}
+                            {% set devices.hasCover = true %}
+                        {% endif %}
+                        {% if room["device"] %}
+                            {% set devices.hasDevice = true %}
+                        {% endif %}
+                        {% if room["media_player"] %}
+                            {% set devices.hasMediaPlayer = true %}
+                        {% endif %}
+                        {% if room["vacuum"] %}
+                            {% set devices.hasVacuum = true %}
+                        {% endif %}
+                        {% if room["plant"] %}
+                            {% set devices.hasPlant = true %}
+                        {% endif %}
+                        {% if room["safety"] %}
+                            {% set devices.hasSafety = true %}
+                        {% endif %}
+                        {% if room["vibration"] %}
+                            {% set devices.hasVibration = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if devices.hasLock == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: >
+                        [[[
+                          var openLocks = 0;
+
+                          {% for room in _dd_config.rooms %}                        
+                            //Do some things for the locks
+                            {% if room["lock"] %}
+                              {% if room["lock"].split('.')[0] == 'lock' %}
+                              //This room has only 1 lock
+                                if(states['{{ room["lock"] }}'] && states['{{ room["lock"] }}'].state == 'unlocked') {
+                                  openLocks++;
                                 }
-                              {% endif %}
-                              {% if room["motion"] %}
-                                if(states['{{ room["motion"] }}']){
-                                  {% if room["motion"].split('.')[0] == 'binary_sensor' or room["motion"].split('.')[0] == 'sensor' %}
-                                    if(states['{{ room["motion"] }}'].state == 'on' || states['{{ room["motion"] }}'].state == 'True'){
-                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.motion_on|default('mdi:motion-sensor') }}"></ha-icon><br>';
-                                    }
-                                  {% else %}
-                                    const entitiesFromGroup = states['{{ room["motion"] }}'].attributes['entity_id'];
-                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
-                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
-                                          states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
-                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.motion_on|default('mdi:motion-sensor') }}"></ha-icon><br>';
-                                        break;
-                                      }
-                                    }  
-                                  {% endif %}
-                                } else {
-                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.motion entity!");
-                                  additional_info += 'M-E!<br>';
-                                }
-                              {% endif %}
-                              {% if room["door"] %}
-                                if(states['{{ room["door"] }}']){
-                                  {% if room["door"].split('.')[0] == 'binary_sensor' or room["door"].split('.')[0] == 'sensor' %}
-                                    if(states['{{ room["door"] }}'].state == 'on' || states['{{ room["door"] }}'].state == 'True'){
-                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.door_open|default('mdi:door-open') }}"></ha-icon><br>';
-                                    }
-                                  {% else %}
-                                    const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
-                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
-                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
-                                          states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
-                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.door_open|default('mdi:door-open') }}"></ha-icon><br>';
-                                        break;
-                                      }
-                                    }  
-                                  {% endif %}
-                                } else {
-                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.door entity!");
-                                  additional_info += 'D-E!<br>';
-                                }
-                              {% endif %}
-                              {% if room["lock"] %}
+                              {% elif room["lock"].split('.')[0] == 'group' %}
+                              //This room has group of locks
                                 if(states['{{ room["lock"] }}']){
-                                  {% if room["lock"].split('.')[0] == 'lock' %}
-                                    if(states['{{ room["lock"] }}'].state == 'unlocked'){
-                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.window_open|default('mdi:lock-open-variant-outline') }}"></ha-icon><br>';
+                                  states['{{ room["lock"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'unlocked'){
+                                      openLocks++;
                                     }
-                                  {% elif room["lock"].split('.')[0] == 'group' %}
-                                    const entitiesFromGroup = states['{{ room["lock"] }}'].attributes['entity_id'];
-                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
-                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'unlocked') {
-                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.window_open|default('mdi:lock-open-variant-outline') }}"></ha-icon><br>';
-                                        break;
-                                      }
-                                    }  
-                                  {% endif %}
-                                } else {
-                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.lock entity!");
-                                  additional_info += 'L-E!<br>';
+                                  });  
                                 }
                               {% endif %}
-                              {% if room["safety"] %}
-                                let conf = {{ _dd_config.global["safety_ok_strings"] | tojson }};
-                                let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
-                                if(states['{{ room["safety"] }}']){
-                                  {% if room["safety"].split('.')[0] != 'group' %}
-                                    if(! ok_states.includes( states['{{ room["safety"] }}'].state )){
-                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
-                                    }
-                                  {% else %}
-                                    const entitiesFromGroup = states['{{ room["safety"] }}'].attributes['entity_id'];
-                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
-                                      if(states[entitiesFromGroup[i]] && (! ok_states.includes( states[entitiesFromGroup[i]].state ))) {
-                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.safety_alert|default('mdi:shield-alert-outline') }}"></ha-icon><br>';
-                                        break;
-                                      }
-                                    }  
-                                  {% endif %}
-                                } else {
-                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.safety entity!");
-                                  additional_info += 'S-E!<br>';
-                                }
-                              {% endif %}
-                              {% if room["vibration"] %}
-                                if(states['{{ room["vibration"] }}']){
-                                  {% if room["vibration"].split('.')[0] == 'binary_sensor' or room["vibration"].split('.')[0] == 'sensor' %}
-                                    if(states['{{ room["vibration"] }}'].state == 'on' || states['{{ room["vibration"] }}'].state == 'True'){
-                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.vibrate_on|default('mdi:vibrate') }}"></ha-icon><br>';
-                                    }
-                                  {% else %}
-                                    const entitiesFromGroup = states['{{ room["vibration"] }}'].attributes['entity_id'];
-                                    for (let i = 0; i < entitiesFromGroup.length; i++) {
-                                      if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
-                                          states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
-                                        additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.vibration_on|default('mdi:vibrate') }}"></ha-icon><br>';
-                                        break;
-                                      }
-                                    }
-                                  {% endif %}
-                                } else {
-                                  console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.vibration entity!");
-                                  additional_info += 'A-E!<br>';
-                                }
-                              {% endif %}
-
-                              return additional_info;
-                            ]]]
-                          {% if room["light"] %}
-                          lights: > 
-                            [[[
-                              if(entity){
-                                if (entity.state == 'on'){
-                                  return `<ha-icon
-                                    style="height: 20px; color: var(--dwains-theme-accent)"
-                                    icon="{{ _dd_icons.light_on|default('mdi:lightbulb') }}">
-                                    </ha-icon>`
-                                } else {
-                                  return `<ha-icon
-                                    style="height: 20px;"
-                                    icon="{{ _dd_icons.light_off|default('mdi:lightbulb-outline') }}">
-                                    </ha-icon>`
-                                }
-                              } else {
-                                console.log("Dwains Theme Error: Invalid rooms.yaml:{{ room["name"] }}.light entity!");
-                                return 'L-E!<br>';
-                              }
-                            ]]]   
-                          {% endif %}
-                      {% else %}
-                      - type: markdown
-                        content: No rooms defined
-                      {% endfor %}
-
-              #DEVICES VIEW
-              devices:
-                type: vertical-stack
-                cards:
-                  - type: custom:dwains-flexbox-card
-                    items_classes: 'col-xs-6 col-sm-3 col-md-2 col-lg-2'
-                    padding: true
-                    cards:
-                      #heading  
-                      - type: horizontal-stack
-                        item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
-                        cards:
-                          - type: custom:button-card
-                            name: {{ _dd_trans.rooms.title }}
-                            template: partials_heading_switch
-                            tap_action: 
-                              action: navigate
-                              navigation_path: "#rooms"
-                          - type: custom:button-card
-                            name: {{ _dd_trans.device.title_plural }}
-                            template: partials_heading_switch
-                            tap_action: 
-                              action: navigate
-                              navigation_path: "#devices"
-                            styles:
-                              name:
-                                - color: var(--dwains-theme-accent)
-                      {% 
-                        set devices = namespace (hasLock=false, hasLight=false, hasClimate=false, hasCover=false, hasDevice=false, 
-                            hasMediaPlayer=false, hasVacuum=false, hasPlant=false, hasSafety=false, hasVibration=false) 
-                      %}
-                      {% for room in _dd_config.rooms %}
-                          {% if room["lock"] %}
-                            {% set devices.hasLock = true %}
-                          {% endif %}
-                          {% if room["light"] %}
-                              {% set devices.hasLight = true %}
-                          {% endif %}
-                          {% if room["climate"] or room["temperature"] %}
-                              {% set devices.hasClimate = true %}
-                          {% endif %}
-                          {% if room["cover"] %}
-                              {% set devices.hasCover = true %}
-                          {% endif %}
-                          {% if room["device"] %}
-                              {% set devices.hasDevice = true %}
-                          {% endif %}
-                          {% if room["media_player"] %}
-                              {% set devices.hasMediaPlayer = true %}
-                          {% endif %}
-                          {% if room["vacuum"] %}
-                              {% set devices.hasVacuum = true %}
-                          {% endif %}
-                          {% if room["plant"] %}
-                              {% set devices.hasPlant = true %}
-                          {% endif %}
-                          {% if room["safety"] %}
-                              {% set devices.hasSafety = true %}
-                          {% endif %}
-                          {% if room["vibration"] %}
-                              {% set devices.hasVibration = true %}
-                          {% endif %}
-                      {% endfor %}
-
-                      {% if devices.hasLock == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: >
-                          [[[
-                            var openLocks = 0;
-
-                            {% for room in _dd_config.rooms %}                        
-                              //Do some things for the locks
-                              {% if room["lock"] %}
-                                {% if room["lock"].split('.')[0] == 'lock' %}
-                                //This room has only 1 lock
-                                  if(states['{{ room["lock"] }}'] && states['{{ room["lock"] }}'].state == 'unlocked') {
-                                    openLocks++;
-                                  }
-                                {% elif room["lock"].split('.')[0] == 'group' %}
-                                //This room has group of locks
-                                  if(states['{{ room["lock"] }}']){
-                                    states['{{ room["lock"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'unlocked'){
-                                        openLocks++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-
-                            if(openLocks > 0){
-                              return "{{ _dd_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}";
-                            } else {
-                              return "{{ _dd_icons.lock_locked|default('mdi:lock') }}";
-                            }
-                          ]]]
-                        name: {{ _dd_trans.lock.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_locks#devices
-                        label: >
-                          [[[
-                            var openLocks = 0;
-
-                            {% for room in _dd_config.rooms %}                        
-                              //Do some things for the locks
-                              {% if room["lock"] %}
-                                {% if room["lock"].split('.')[0] == 'lock' %}
-                                //This room has only 1 lock
-                                  if(states['{{ room["lock"] }}'] && states['{{ room["lock"] }}'].state == 'unlocked') {
-                                    openLocks++;
-                                  }
-                                {% elif room["lock"].split('.')[0] == 'group' %}
-                                //This room has group of locks
-                                  if(states['{{ room["lock"] }}']){
-                                    states['{{ room["lock"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'unlocked'){
-                                        openLocks++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-
-                            if(openLocks > 0){
-                              return openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on');
-                            } else {
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
-
-                      {% if devices.hasSafety == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: >
-                          [[[
-                            var notOkSafety = 0;
-                            let conf = {{ _dd_config.global["safety_ok_strings"] | tojson }};
-                            let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
-
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the Safeties
-                              {% if room["safety"] %}
-                                {% if room["safety"].split('.')[0] != 'group' %}
-                                //This room has only 1 safety device
-                                  if(states['{{ room["safety"] }}'] && (! ok_states.includes( states['{{ room["safety"] }}'].state ))) {
-                                    notOkSafety++;
-                                  }
-                                {% else %}
-                                //This room has group of Safeties
-                                  if(states['{{ room["safety"] }}']){
-                                    states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && (! ok_states.includes( states[entity].state ))){
-                                        notOkSafety++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-
-                            if(notOkSafety > 0){
-                              return "{{ _dd_icons.safety_alert|default('mdi:shield-alert-outline') }}";
-                            } else {  
-                              return "{{ _dd_icons.safety_ok|default('mdi:shield-check') }}";
-                            }
-                          ]]]
-                        name: {{ _dd_trans.safety.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_safety#devices
-                        label: >
-                          [[[
-                            var notOkSafety = 0;
-                            let conf = {{ _dd_config.global["safety_ok_strings"] | tojson }};
-                            let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
-
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the Safeties
-                              {% if room["safety"] %}
-                                {% if room["safety"].split('.')[0] != 'group' %}
-                                //This room has only 1 safety device
-                                  if(states['{{ room["safety"] }}'] && (! ok_states.includes( states['{{ room["safety"] }}'].state ))) {
-                                    notOkSafety++;
-                                  }
-                                {% else %}
-                                //This room has group of Safeties
-                                  if(states['{{ room["safety"] }}']){
-                                    states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && (! ok_states.includes( states[entity].state ))){
-                                        notOkSafety++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-
-                            if(notOkSafety > 0){
-                              return notOkSafety + ' ' + hass.localize('component.binary_sensor.state.safety.on');
-                            } else {  
-                              return hass.localize('component.binary_sensor.state.safety.off');
-                            }
-                          ]]]
-                      {% endif %}
-
-                      {% if devices.hasLight == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: >
-                          [[[
-                            var onLights = 0;
-
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the lights
-                              {% if room["light"] %}
-                                {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                                //This room has only 1 light
-                                  if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
-                                    onLights++;
-                                  }
-                                {% else %}
-                                //This room has group of lights
-                                  if(states['{{ room["light"] }}']){
-                                    states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'on'){
-                                        onLights++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-
-                            if(onLights > 0){
-                              return "{{ _dd_icons.light_on|default('mdi:lightbulb') }}";
-                            } else {  
-                              return "{{ _dd_icons.light_off|default('mdi:lightbulb-outline') }}";
-                            }
-                          ]]]
-                        name: {{ _dd_trans.light.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_lights#devices
-                        label: >
-                          [[[
-                            var onLights = 0;
-
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the lights
-                              {% if room["light"] %}
-                                {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                                //This room has only 1 light
-                                  if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
-                                    onLights++;
-                                  }
-                                {% else %}
-                                //This room has group of lights
-                                  if(states['{{ room["light"] }}']){
-                                    states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'on'){
-                                        onLights++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-
-                            if(onLights > 0){
-                              return onLights + ' ' + hass.localize('component.light.state._.on');
-                            } else {  
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
-
-                      {% if devices.hasClimate == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: "{{ _dd_icons.climate|default('mdi:thermometer') }}"
-                        name: {{ _dd_trans.climate.title }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_climates#devices
-                        label: >
-                          [[[
-                            var onClimates = 0;
-
-                            {% for room in _dd_config.rooms %}                        
-                              //Do some things for the climate
-                              {% if room["climate"] %}
-                                {% if room["climate"].split('.')[0] == 'climate' %}
-                                //This room has only 1 climate
-                                  if(states['{{ room["climate"] }}']){
-                                    if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
-                                      onClimates++;
-                                    } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
-                                      onClimates++;
-                                    }
-                                  }
-                                {% elif room["climate"].split('.')[0] == 'group' %}
-                                //This room has group of climates
-                                //Not yet supported
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-
-                            if(onClimates > 0){
-                              return onClimates + ' ' + hass.localize('state.default.on');
-                            } else {
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
-
-                      {% if devices.hasCover == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: >
-                          [[[
-                            var openCovers = 0;
-
-                            {% for room in _dd_config.rooms %}                        
-                              //Do some things for the covers
-                              {% if room["cover"] %}
-                                {% if room["cover"].split('.')[0] == 'cover' %}
-                                //This room has only 1 cover
-                                  if(states['{{ room["cover"] }}'] && states['{{ room["cover"] }}'].state == 'open') {
-                                    openCovers++;
-                                  }
-                                {% elif room["cover"].split('.')[0] == 'group' %}
-                                //This room has group of covers
-                                  if(states['{{ room["cover"] }}']){
-                                    states['{{ room["cover"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'open'){
-                                        openCovers++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-                        
-                            if(openCovers >= 1){
-                              return "{{ _dd_icons.cover_open|default('mdi:window-shutter-open') }}";
-                            } else {  
-                              return "{{ _dd_icons.cover_closed|default('mdi:window-shutter') }}";
-                            }
-                          ]]]
-                        name: {{ _dd_trans.cover.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_covers#devices
-                        label: >
-                          [[[
-                            var openCovers = 0;
-                            var partlyClosedCovers = 0;
-                            var closedCovers = 0;        
-
-                            {% for room in _dd_config.rooms %}                        
-                              //Do some things for the covers
-                              {% if room["cover"] %}
-                                {% if room["cover"].split('.')[0] == 'cover' %}
-                                //This room has only 1 cover
-                                  if(states['{{ room["cover"] }}']) {               
-                                    if(states['{{ room["cover"] }}'].state == 'open'){
-                                      if (states['{{ room["cover"] }}'].attributes['current_position'] != 100){
-                                        partlyClosedCovers++;
-                                      }
-                                      openCovers++;
-                                    } else {
-                                      partlyClosedCovers++;                                    
-                                      closedCovers++;
-                                    }
-                                  } 
-                                {% elif room["cover"].split('.')[0] == 'group' %}
-                                //This room has group of covers
-                                  if(states['{{ room["cover"] }}']){
-                                    states['{{ room["cover"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity]){
-                                        if (states[entity].state == 'open'){                  
-                                          if(states[entity].attributes['current_position'] != 100){
-                                            partlyClosedCovers++;
-                                          }
-                                          openCovers++;                      
-                                        } else {
-                                          partlyClosedCovers++;                                        
-                                          closedCovers++;
-                                        }                 
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-                        
-                            // set default view
-                            var viewCovers = openCovers;
-                            var viewState = 'open';
-                            {% if _dd_config.global['show_covers'] == 'closed' %}
-                              viewCovers = closedCovers;
-                              viewState = 'closed';
-                            {% elif _dd_config.global['show_covers'] == 'partly_closed'  %}
-                              viewCovers = partlyClosedCovers;
-                              viewState = 'closed';
                             {% endif %}
-                        
-                            if(openCovers > 0){
-                              return openCovers + ' ' + hass.localize('component.cover.state._.open');
-                            } else if(viewCovers > 0){
-                              return viewCovers + ' ' + hass.localize('component.cover.state._.' + viewState);
-                            } else {  
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
+                          {% endfor %}
 
-                      {% if devices.hasDevice == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: >
-                          [[[
-                            var onDevices = 0;
+                          if(openLocks > 0){
+                            return "{{ _dd_icons.lock_unlocked|default('mdi:lock-open-variant-outline') }}";
+                          } else {
+                            return "{{ _dd_icons.lock_locked|default('mdi:lock') }}";
+                          }
+                        ]]]
+                      name: {{ _dd_trans.lock.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_locks#devices
+                      label: >
+                        [[[
+                          var openLocks = 0;
 
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the Devices
-                              {% if room["device"] %}
-                                {% if room["device"].split('.')[0] != 'group' %}
-                                //This room has only 1 device
-                                  if(states['{{ room["device"] }}'] && states['{{ room["device"] }}'].state == 'on') {
-                                    onDevices++;
-                                  }
-                                {% else %}
-                                //This room has group of Devices
-                                  if(states['{{ room["device"] }}']){
-                                    states['{{ room["device"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'on'){
-                                        onDevices++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
+                          {% for room in _dd_config.rooms %}                        
+                            //Do some things for the locks
+                            {% if room["lock"] %}
+                              {% if room["lock"].split('.')[0] == 'lock' %}
+                              //This room has only 1 lock
+                                if(states['{{ room["lock"] }}'] && states['{{ room["lock"] }}'].state == 'unlocked') {
+                                  openLocks++;
+                                }
+                              {% elif room["lock"].split('.')[0] == 'group' %}
+                              //This room has group of locks
+                                if(states['{{ room["lock"] }}']){
+                                  states['{{ room["lock"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'unlocked'){
+                                      openLocks++;
+                                    }
+                                  });  
+                                }
                               {% endif %}
-                            {% endfor %}
+                            {% endif %}
+                          {% endfor %}
 
-                            if(onDevices > 0){
-                              return "{{ _dd_icons.device_on|default('mdi:power-plug') }}";
-                            } else {  
-                              return "{{ _dd_icons.device_off|default('mdi:power-plug-outline') }}";
-                            }
-                          ]]]
-                        name: {{ _dd_trans.device.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_devices#devices
-                        label: >
-                          [[[
-                            var onDevices = 0;
+                          if(openLocks > 0){
+                            return openLocks + ' ' + hass.localize('component.binary_sensor.state.lock.on');
+                          } else {
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
 
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the Devices
-                              {% if room["device"] %}
-                                {% if room["device"].split('.')[0] != 'group' %}
-                                //This room has only 1 device
-                                  if(states['{{ room["device"] }}'] && states['{{ room["device"] }}'].state == 'on') {
-                                    onDevices++;
-                                  }
-                                {% else %}
-                                //This room has group of Devices
-                                  if(states['{{ room["device"] }}']){
-                                    states['{{ room["device"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'on'){
-                                        onDevices++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
+                    {% if devices.hasSafety == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: >
+                        [[[
+                          var notOkSafety = 0;
+                          let conf = {{ _dd_config.global["safety_ok_strings"] | tojson }};
+                          let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
+
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the Safeties
+                            {% if room["safety"] %}
+                              {% if room["safety"].split('.')[0] != 'group' %}
+                              //This room has only 1 safety device
+                                if(states['{{ room["safety"] }}'] && (! ok_states.includes( states['{{ room["safety"] }}'].state ))) {
+                                  notOkSafety++;
+                                }
+                              {% else %}
+                              //This room has group of Safeties
+                                if(states['{{ room["safety"] }}']){
+                                  states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && (! ok_states.includes( states[entity].state ))){
+                                      notOkSafety++;
+                                    }
+                                  });  
+                                }
                               {% endif %}
-                            {% endfor %}
+                            {% endif %}
+                          {% endfor %}
 
-                            if(onDevices > 0){
-                              return onDevices + ' ' + hass.localize('component.switch.state._.on');
-                            } else {  
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
+                          if(notOkSafety > 0){
+                            return "{{ _dd_icons.safety_alert|default('mdi:shield-alert-outline') }}";
+                          } else {  
+                            return "{{ _dd_icons.safety_ok|default('mdi:shield-check') }}";
+                          }
+                        ]]]
+                      name: {{ _dd_trans.safety.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_safety#devices
+                      label: >
+                        [[[
+                          var notOkSafety = 0;
+                          let conf = {{ _dd_config.global["safety_ok_strings"] | tojson }};
+                          let ok_states = (Array.isArray(conf) && conf.length) ? conf : 'off';
 
-                      {% if devices.hasMediaPlayer == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: "{{ _dd_icons.media_player|default('mdi:play-pause') }}"
-                        name: {{ _dd_trans.media_player.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_media_players#devices
-                        label: >
-                          [[[
-                            var onMediaPlayers = 0;
-
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the media_players
-                              {% if room["media_player"] %}
-                                {% if room["media_player"].split('.')[0] != 'group' %}
-                                //This room has only 1 media_player
-                                  if(states['{{ room["media_player"] }}'] && states['{{ room["media_player"] }}'].state == 'on') {
-                                    onMediaPlayers++;
-                                  }
-                                {% else %}
-                                //This room has group of media_players
-                                  if(states['{{ room["media_player"] }}']){
-                                    states['{{ room["media_player"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'on'){
-                                        onMediaPlayers++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the Safeties
+                            {% if room["safety"] %}
+                              {% if room["safety"].split('.')[0] != 'group' %}
+                              //This room has only 1 safety device
+                                if(states['{{ room["safety"] }}'] && (! ok_states.includes( states['{{ room["safety"] }}'].state ))) {
+                                  notOkSafety++;
+                                }
+                              {% else %}
+                              //This room has group of Safeties
+                                if(states['{{ room["safety"] }}']){
+                                  states['{{ room["safety"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && (! ok_states.includes( states[entity].state ))){
+                                      notOkSafety++;
+                                    }
+                                  });  
+                                }
                               {% endif %}
-                            {% endfor %}
+                            {% endif %}
+                          {% endfor %}
 
-                            if(onMediaPlayers > 0){
-                              return onMediaPlayers + ' ' + hass.localize('component.media_player.state._.on');
-                            } else {  
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
+                          if(notOkSafety > 0){
+                            return notOkSafety + ' ' + hass.localize('component.binary_sensor.state.safety.on');
+                          } else {  
+                            return hass.localize('component.binary_sensor.state.safety.off');
+                          }
+                        ]]]
+                    {% endif %}
 
-                      {% if devices.hasVacuum == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: "{{ _dd_icons.vacuum|default('mdi:robot-vacuum') }}"
-                        name: {{ _dd_trans.vacuum.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_vacuums#devices
-                        label: >
-                          [[[
-                            var onVacuums = 0;
+                    {% if devices.hasLight == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: >
+                        [[[
+                          var onLights = 0;
 
-                            {% for room in _dd_config.rooms %}                        
-                              //Do some things for the vacuum
-                              {% if room["vacuum"] %}
-                                {% if room["vacuum"]["entity"].split('.')[0] == 'vacuum' %}
-                                //This room has only 1 vacuum
-                                  if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked' && states['{{ room["vacuum"]["entity"] }}'].state != 'unavailable'){
-                                    onVacuums++;
-                                  }
-                                {% elif room["vacuum"]["entity"].split('.')[0] == 'group' %}
-                                //This room has group of vacuums
-                                //Not yet supported
-                                {% endif %}
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the lights
+                            {% if room["light"] %}
+                              {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
+                              //This room has only 1 light
+                                if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
+                                  onLights++;
+                                }
+                              {% else %}
+                              //This room has group of lights
+                                if(states['{{ room["light"] }}']){
+                                  states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'on'){
+                                      onLights++;
+                                    }
+                                  });  
+                                }
                               {% endif %}
-                            {% endfor %}
+                            {% endif %}
+                          {% endfor %}
 
-                            if(onVacuums > 0){
-                              return onVacuums + ' ' + hass.localize('component.vacuum.state._.on');
-                            } else {
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
+                          if(onLights > 0){
+                            return "{{ _dd_icons.light_on|default('mdi:lightbulb') }}";
+                          } else {  
+                            return "{{ _dd_icons.light_off|default('mdi:lightbulb-outline') }}";
+                          }
+                        ]]]
+                      name: {{ _dd_trans.light.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_lights#devices
+                      label: >
+                        [[[
+                          var onLights = 0;
 
-                      {% if devices.hasPlant == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: "{{ _dd_icons.plant|default('mdi:flower') }}"
-                        name: {{ _dd_trans.plant.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_plants#devices
-                        label: >
-                          [[[
-                            var problemPlants = 0;
-
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the plants
-                              {% if room["plant"] %}
-                                {% if room["plant"].split('.')[0] != 'group' %}
-                                //This room has only 1 plant
-                                  if(states['{{ room["plant"] }}'] && states['{{ room["plant"] }}'].state == 'problem') {
-                                    problemPlants++;
-                                  }
-                                {% else %}
-                                //This room has group of plants
-                                  if(states['{{ room["plant"] }}']){
-                                    states['{{ room["plant"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'problem'){
-                                        problemPlants++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the lights
+                            {% if room["light"] %}
+                              {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
+                              //This room has only 1 light
+                                if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
+                                  onLights++;
+                                }
+                              {% else %}
+                              //This room has group of lights
+                                if(states['{{ room["light"] }}']){
+                                  states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'on'){
+                                      onLights++;
+                                    }
+                                  });  
+                                }
                               {% endif %}
-                            {% endfor %}
+                            {% endif %}
+                          {% endfor %}
 
-                            if(problemPlants > 0){
-                              return problemPlants + ' ' + hass.localize('component.binary_sensor.state.problem.on');
-                            } else {  
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
+                          if(onLights > 0){
+                            return onLights + ' ' + hass.localize('component.light.state._.on');
+                          } else {  
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
 
-                      {% if devices.hasVibration == true %}
-                      - type: custom:button-card
-                        template: homepage_device
-                        icon: "{{ _dd_icons.vibration_on|default('mdi:vibrate') }}"
-                        name: {{ _dd_trans.vibration.title_plural }}
-                        tap_action: 
-                          action: navigate
-                          navigation_path: devices_vibration#devices
-                        label: >
-                          [[[
-                            var vibrationOn = 0;
+                    {% if devices.hasClimate == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: "{{ _dd_icons.climate|default('mdi:thermometer') }}"
+                      name: {{ _dd_trans.climate.title }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_climates#devices
+                      label: >
+                        [[[
+                          var onClimates = 0;
 
-                            {% for room in _dd_config.rooms %}                        
-                              //Do some things for the vibration sensors
-                              {% if room["vibration"] %}
-                                {% if room["vibration"].split('.')[0] != 'group' %}
-                                //This room has only 1 vibration sensor
-                                  if(states['{{ room["vibration"] }}'] && states['{{ room["vibration"] }}'].state == 'on') {
-                                    vibrationOn++;
+                          {% for room in _dd_config.rooms %}                        
+                            //Do some things for the climate
+                            {% if room["climate"] %}
+                              {% if room["climate"].split('.')[0] == 'climate' %}
+                              //This room has only 1 climate
+                                if(states['{{ room["climate"] }}']){
+                                  if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heating' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'heat'){
+                                    onClimates++;
+                                  } else if(states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cool' || states['{{ room["climate"] }}'].attributes['hvac_action'] == 'cooling'){
+                                    onClimates++;
                                   }
-                                {% else %}
-                                //This room has group of vibration sensors
-                                  if(states['{{ room["vibration"] }}']){
-                                    states['{{ room["vibration"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'on'){
-                                        vibrationOn++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
+                                }
+                              {% elif room["climate"].split('.')[0] == 'group' %}
+                              //This room has group of climates
+                              //Not yet supported
                               {% endif %}
-                            {% endfor %}
+                            {% endif %}
+                          {% endfor %}
 
-                            if(vibrationOn > 0){
-                              return vibrationOn + ' ' + hass.localize('component.binary_sensor.state.vibration.on');
-                            } else {
-                              return '&nbsp;';
-                            }
-                          ]]]
-                      {% endif %}
+                          if(onClimates > 0){
+                            return onClimates + ' ' + hass.localize('state.default.on');
+                          } else {
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
+
+                    {% if devices.hasCover == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: >
+                        [[[
+                          var openCovers = 0;
+
+                          {% for room in _dd_config.rooms %}                        
+                            //Do some things for the covers
+                            {% if room["cover"] %}
+                              {% if room["cover"].split('.')[0] == 'cover' %}
+                              //This room has only 1 cover
+                                if(states['{{ room["cover"] }}'] && states['{{ room["cover"] }}'].state == 'open') {
+                                  openCovers++;
+                                }
+                              {% elif room["cover"].split('.')[0] == 'group' %}
+                              //This room has group of covers
+                                if(states['{{ room["cover"] }}']){
+                                  states['{{ room["cover"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'open'){
+                                      openCovers++;
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+                      
+                          if(openCovers >= 1){
+                            return "{{ _dd_icons.cover_open|default('mdi:window-shutter-open') }}";
+                          } else {  
+                            return "{{ _dd_icons.cover_closed|default('mdi:window-shutter') }}";
+                          }
+                        ]]]
+                      name: {{ _dd_trans.cover.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_covers#devices
+                      label: >
+                        [[[
+                          var openCovers = 0;
+                          var partlyClosedCovers = 0;
+                          var closedCovers = 0;        
+
+                          {% for room in _dd_config.rooms %}                        
+                            //Do some things for the covers
+                            {% if room["cover"] %}
+                              {% if room["cover"].split('.')[0] == 'cover' %}
+                              //This room has only 1 cover
+                                if(states['{{ room["cover"] }}']) {               
+                                  if(states['{{ room["cover"] }}'].state == 'open'){
+                                    if (states['{{ room["cover"] }}'].attributes['current_position'] != 100){
+                                      partlyClosedCovers++;
+                                    }
+                                    openCovers++;
+                                  } else {
+                                    partlyClosedCovers++;                                    
+                                    closedCovers++;
+                                  }
+                                } 
+                              {% elif room["cover"].split('.')[0] == 'group' %}
+                              //This room has group of covers
+                                if(states['{{ room["cover"] }}']){
+                                  states['{{ room["cover"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity]){
+                                      if (states[entity].state == 'open'){                  
+                                        if(states[entity].attributes['current_position'] != 100){
+                                          partlyClosedCovers++;
+                                        }
+                                        openCovers++;                      
+                                      } else {
+                                        partlyClosedCovers++;                                        
+                                        closedCovers++;
+                                      }                 
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+                      
+                          // set default view
+                          var viewCovers = openCovers;
+                          var viewState = 'open';
+                          {% if _dd_config.global['show_covers'] == 'closed' %}
+                            viewCovers = closedCovers;
+                            viewState = 'closed';
+                          {% elif _dd_config.global['show_covers'] == 'partly_closed'  %}
+                            viewCovers = partlyClosedCovers;
+                            viewState = 'closed';
+                          {% endif %}
+                      
+                          if(openCovers > 0){
+                            return openCovers + ' ' + hass.localize('component.cover.state._.open');
+                          } else if(viewCovers > 0){
+                            return viewCovers + ' ' + hass.localize('component.cover.state._.' + viewState);
+                          } else {  
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
+
+                    {% if devices.hasDevice == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: >
+                        [[[
+                          var onDevices = 0;
+
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the Devices
+                            {% if room["device"] %}
+                              {% if room["device"].split('.')[0] != 'group' %}
+                              //This room has only 1 device
+                                if(states['{{ room["device"] }}'] && states['{{ room["device"] }}'].state == 'on') {
+                                  onDevices++;
+                                }
+                              {% else %}
+                              //This room has group of Devices
+                                if(states['{{ room["device"] }}']){
+                                  states['{{ room["device"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'on'){
+                                      onDevices++;
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+
+                          if(onDevices > 0){
+                            return "{{ _dd_icons.device_on|default('mdi:power-plug') }}";
+                          } else {  
+                            return "{{ _dd_icons.device_off|default('mdi:power-plug-outline') }}";
+                          }
+                        ]]]
+                      name: {{ _dd_trans.device.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_devices#devices
+                      label: >
+                        [[[
+                          var onDevices = 0;
+
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the Devices
+                            {% if room["device"] %}
+                              {% if room["device"].split('.')[0] != 'group' %}
+                              //This room has only 1 device
+                                if(states['{{ room["device"] }}'] && states['{{ room["device"] }}'].state == 'on') {
+                                  onDevices++;
+                                }
+                              {% else %}
+                              //This room has group of Devices
+                                if(states['{{ room["device"] }}']){
+                                  states['{{ room["device"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'on'){
+                                      onDevices++;
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+
+                          if(onDevices > 0){
+                            return onDevices + ' ' + hass.localize('component.switch.state._.on');
+                          } else {  
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
+
+                    {% if devices.hasMediaPlayer == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: "{{ _dd_icons.media_player|default('mdi:play-pause') }}"
+                      name: {{ _dd_trans.media_player.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_media_players#devices
+                      label: >
+                        [[[
+                          var onMediaPlayers = 0;
+
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the media_players
+                            {% if room["media_player"] %}
+                              {% if room["media_player"].split('.')[0] != 'group' %}
+                              //This room has only 1 media_player
+                                if(states['{{ room["media_player"] }}'] && states['{{ room["media_player"] }}'].state == 'on') {
+                                  onMediaPlayers++;
+                                }
+                              {% else %}
+                              //This room has group of media_players
+                                if(states['{{ room["media_player"] }}']){
+                                  states['{{ room["media_player"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'on'){
+                                      onMediaPlayers++;
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+
+                          if(onMediaPlayers > 0){
+                            return onMediaPlayers + ' ' + hass.localize('component.media_player.state._.on');
+                          } else {  
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
+
+                    {% if devices.hasVacuum == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: "{{ _dd_icons.vacuum|default('mdi:robot-vacuum') }}"
+                      name: {{ _dd_trans.vacuum.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_vacuums#devices
+                      label: >
+                        [[[
+                          var onVacuums = 0;
+
+                          {% for room in _dd_config.rooms %}                        
+                            //Do some things for the vacuum
+                            {% if room["vacuum"] %}
+                              {% if room["vacuum"]["entity"].split('.')[0] == 'vacuum' %}
+                              //This room has only 1 vacuum
+                                if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked' && states['{{ room["vacuum"]["entity"] }}'].state != 'unavailable'){
+                                  onVacuums++;
+                                }
+                              {% elif room["vacuum"]["entity"].split('.')[0] == 'group' %}
+                              //This room has group of vacuums
+                              //Not yet supported
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+
+                          if(onVacuums > 0){
+                            return onVacuums + ' ' + hass.localize('component.vacuum.state._.on');
+                          } else {
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
+
+                    {% if devices.hasPlant == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: "{{ _dd_icons.plant|default('mdi:flower') }}"
+                      name: {{ _dd_trans.plant.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_plants#devices
+                      label: >
+                        [[[
+                          var problemPlants = 0;
+
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the plants
+                            {% if room["plant"] %}
+                              {% if room["plant"].split('.')[0] != 'group' %}
+                              //This room has only 1 plant
+                                if(states['{{ room["plant"] }}'] && states['{{ room["plant"] }}'].state == 'problem') {
+                                  problemPlants++;
+                                }
+                              {% else %}
+                              //This room has group of plants
+                                if(states['{{ room["plant"] }}']){
+                                  states['{{ room["plant"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'problem'){
+                                      problemPlants++;
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+
+                          if(problemPlants > 0){
+                            return problemPlants + ' ' + hass.localize('component.binary_sensor.state.problem.on');
+                          } else {  
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
+
+                    {% if devices.hasVibration == true %}
+                    - type: custom:button-card
+                      template: homepage_device
+                      icon: "{{ _dd_icons.vibration_on|default('mdi:vibrate') }}"
+                      name: {{ _dd_trans.vibration.title_plural }}
+                      tap_action: 
+                        action: navigate
+                        navigation_path: devices_vibration#devices
+                      label: >
+                        [[[
+                          var vibrationOn = 0;
+
+                          {% for room in _dd_config.rooms %}                        
+                            //Do some things for the vibration sensors
+                            {% if room["vibration"] %}
+                              {% if room["vibration"].split('.')[0] != 'group' %}
+                              //This room has only 1 vibration sensor
+                                if(states['{{ room["vibration"] }}'] && states['{{ room["vibration"] }}'].state == 'on') {
+                                  vibrationOn++;
+                                }
+                              {% else %}
+                              //This room has group of vibration sensors
+                                if(states['{{ room["vibration"] }}']){
+                                  states['{{ room["vibration"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'on'){
+                                      vibrationOn++;
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+
+                          if(vibrationOn > 0){
+                            return vibrationOn + ' ' + hass.localize('component.binary_sensor.state.vibration.on');
+                          } else {
+                            return '&nbsp;';
+                          }
+                        ]]]
+                    {% endif %}
     {% endif %}

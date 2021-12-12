@@ -142,11 +142,13 @@ Promise.race(bases).then(() => {
       }
 
       return html`
+      <div style="${this._config.css}">
         <div class="wrapper ${padding}">
           <div class="row">
             ${this._refCards}
           </div>
         </div>
+      </div>
       `;
     }
 

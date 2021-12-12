@@ -3,174 +3,167 @@
 #House all lights
 - title: {{ _dd_trans.cover.title_plural }}
   path: devices_lights
-  panel: true
+  type: custom:dwains-dashboard
   visible: false
   cards:    
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:  
-          #Header with all lights on/off button
-          - type: custom:dwains-header-card
-            title: {{ _dd_trans.all_lights.title }}
-            subtitle: {{ _dd_trans.home.title }}
-            navigation_path: home#devices
-            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
-            card:
-              type: vertical-stack
-              cards:
-                - type: custom:button-card
-                  template: lights_header_all_lights_toggle
-                  icon: "{{ _dd_icons.light_on|default('mdi:lightbulb') }}"
-                  tap_action:
-                    haptic: light
-                    action: call-service
-                    service: homeassistant.turn_off
-                    service_data:
-                      entity_id: 
-                        #Get all lights
-                        {% for room in _dd_config.rooms %}
-                        {% if room["light"] %}
-                        - {{ room["light"] }}  
-                        {% endif %}
-                        {% endfor %}
-                  styles:
-                    card:
-                      - padding-top: 16px
-                      - display: >
-                          [[[
-                            var onLights = 0;
-
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the lights
-                              {% if room["light"] %}
-                                {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                                //This room has only 1 light
-                                  if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
-                                    onLights++;
-                                  }
-                                {% else %}
-                                //This room has group of lights
-                                  if(states['{{ room["light"] }}']){
-                                    states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'on'){
-                                        onLights++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-                            if(onLights == 0){
-                              return 'none';
-                            } else {
-                              return 'block';
-                            }
-                          ]]]
-                - type: custom:button-card
-                  template: lights_header_all_lights_toggle
-                  icon: "{{ _dd_icons.light_off|default('mdi:lightbulb-outline') }}"
-                  tap_action:
-                    haptic: light
-                    action: call-service
-                    service: homeassistant.turn_on
-                    service_data:
-                      entity_id: 
-                        #Get all lights
-                        {% for room in _dd_config.rooms %}
-                        {% if room["light"] %}
-                        - {{ room["light"] }}  
-                        {% endif %}
-                        {% endfor %}
-                  styles:
-                    card:
-                      - display: >
-                          [[[
-                            var onLights = 0;
-
-                            {% for room in _dd_config.rooms %}
-                              //Do some things for the lights
-                              {% if room["light"] %}
-                                {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                                //This room has only 1 light
-                                  if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
-                                    onLights++;
-                                  }
-                                {% else %}
-                                //This room has group of lights
-                                  if(states['{{ room["light"] }}']){
-                                    states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
-                                      if(states[entity] && states[entity].state == 'on'){
-                                        onLights++;
-                                      }
-                                    });  
-                                  }
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-                            if(onLights == 0){
-                              return 'block';
-                            } else {
-                              return 'none';
-                            }
-                          ]]]
-                
-          #Start for all lights page
-          #All lights
-          - type: custom:dwains-flexbox-card
-            padding: true
-            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+    - type: vertical-stack
+      cards:  
+        #Header with all lights on/off button
+        - type: custom:dwains-header-card
+          title: {{ _dd_trans.all_lights.title }}
+          subtitle: {{ _dd_trans.home.title }}
+          navigation_path: home#devices
+          icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+          card:
+            type: vertical-stack
             cards:
-              {% for room in _dd_config.rooms %}
-              {% if room["light"] %}
-              - type: vertical-stack
-                cards:
-                  #Heading
-                  - type: custom:button-card
-                    entity: {{ room["light"] }}
-                    name: {{ room["name"] }}
-                    template: partials_heading
-                    tap_action:
-                      action: more-info
-                    double_tap_action:
-                      action: toggle
-                  {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
-                  # this room has only 1 light (light or switch entity)
-                  - type: horizontal-stack
-                    cards:
-                      - type: custom:button-card
-                        template: room_light
-                        entity: {{ room["light"] }}
-                        {% if room["light"].split('.')[0] == 'light' %}
-                        hold_action:
-                          action: more-info
-                        double_tap_action:
-                          action: more-info
-                        {% endif %}
-                  {% else %}
-                  # this room has group of lights
-                  - type: custom:dwains-auto-entities-card
-                    filter:
-                      include:
-                        - group: {{ room["light"] }}
-                          options:
-                            type: custom:button-card
-                            template: room_light
-                            hold_action:
-                              action: more-info
-                            double_tap_action:
-                              action: more-info
-                    sort:
-                      method: name
-                      ignore_case: true
-                    card:
-                      type: custom:dwains-flexbox-card
-                      items_classes: 'col-xs-12'
-                  {% endif %}
-              {% endif %}
-              {% endfor %}
+              - type: custom:button-card
+                template: lights_header_all_lights_toggle
+                icon: "{{ _dd_icons.light_on|default('mdi:lightbulb') }}"
+                tap_action:
+                  haptic: light
+                  action: call-service
+                  service: homeassistant.turn_off
+                  service_data:
+                    entity_id: 
+                      #Get all lights
+                      {% for room in _dd_config.rooms %}
+                      {% if room["light"] %}
+                      - {{ room["light"] }}  
+                      {% endif %}
+                      {% endfor %}
+                styles:
+                  card:
+                    - padding-top: 16px
+                    - display: >
+                        [[[
+                          var onLights = 0;
+
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the lights
+                            {% if room["light"] %}
+                              {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
+                              //This room has only 1 light
+                                if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
+                                  onLights++;
+                                }
+                              {% else %}
+                              //This room has group of lights
+                                if(states['{{ room["light"] }}']){
+                                  states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'on'){
+                                      onLights++;
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+                          if(onLights == 0){
+                            return 'none';
+                          } else {
+                            return 'block';
+                          }
+                        ]]]
+              - type: custom:button-card
+                template: lights_header_all_lights_toggle
+                icon: "{{ _dd_icons.light_off|default('mdi:lightbulb-outline') }}"
+                tap_action:
+                  haptic: light
+                  action: call-service
+                  service: homeassistant.turn_on
+                  service_data:
+                    entity_id: 
+                      #Get all lights
+                      {% for room in _dd_config.rooms %}
+                      {% if room["light"] %}
+                      - {{ room["light"] }}  
+                      {% endif %}
+                      {% endfor %}
+                styles:
+                  card:
+                    - display: >
+                        [[[
+                          var onLights = 0;
+
+                          {% for room in _dd_config.rooms %}
+                            //Do some things for the lights
+                            {% if room["light"] %}
+                              {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
+                              //This room has only 1 light
+                                if(states['{{ room["light"] }}'] && states['{{ room["light"] }}'].state == 'on') {
+                                  onLights++;
+                                }
+                              {% else %}
+                              //This room has group of lights
+                                if(states['{{ room["light"] }}']){
+                                  states['{{ room["light"] }}'].attributes['entity_id'].forEach(function(entity){
+                                    if(states[entity] && states[entity].state == 'on'){
+                                      onLights++;
+                                    }
+                                  });  
+                                }
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+                          if(onLights == 0){
+                            return 'block';
+                          } else {
+                            return 'none';
+                          }
+                        ]]]
+              
+        #Start for all lights page
+        #All lights
+        - type: custom:dwains-flexbox-card
+          padding: true
+          items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          cards:
+            {% for room in _dd_config.rooms %}
+            {% if room["light"] %}
+            - type: vertical-stack
+              cards:
+                #Heading
+                - type: custom:button-card
+                  entity: {{ room["light"] }}
+                  name: {{ room["name"] }}
+                  template: partials_heading
+                  tap_action:
+                    action: more-info
+                  double_tap_action:
+                    action: toggle
+                {% if room["light"].split('.')[0] == 'light' or room["light"].split('.')[0] == 'switch' %}
+                # this room has only 1 light (light or switch entity)
+                - type: horizontal-stack
+                  cards:
+                    - type: custom:button-card
+                      template: room_light
+                      entity: {{ room["light"] }}
+                      {% if room["light"].split('.')[0] == 'light' %}
+                      hold_action:
+                        action: more-info
+                      double_tap_action:
+                        action: more-info
+                      {% endif %}
+                {% else %}
+                # this room has group of lights
+                - type: custom:dwains-auto-entities-card
+                  filter:
+                    include:
+                      - group: {{ room["light"] }}
+                        options:
+                          type: custom:button-card
+                          template: room_light
+                          hold_action:
+                            action: more-info
+                          double_tap_action:
+                            action: more-info
+                  sort:
+                    method: name
+                    ignore_case: true
+                  card:
+                    type: custom:dwains-flexbox-card
+                    items_classes: 'col-xs-12'
+                {% endif %}
+            {% endif %}
+            {% endfor %}

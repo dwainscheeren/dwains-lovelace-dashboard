@@ -2,102 +2,95 @@
 
 - title: {{ _dd_trans.more_page.settings.title }}
   path: more_page_settings
-  panel: true
+  type: custom:dwains-dashboard
   visible: false
   cards:    
-    - type: custom:dwains-wrapper-card
-      css: | 
-        max-width: 1465px;
-        padding-bottom: 50px;
-        margin: 0 auto;
-        font-family: "Open Sans", sans-serif !important;
-      card:
-        type: vertical-stack
-        cards:
-          #Header
-          - type: custom:dwains-header-card
-            title:  {{ _dd_trans.more_page.settings.title }}
-            subtitle: {{ _dd_trans.more_page.title }}
-            navigation_path: more_page
-            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
-          #Start for settings page
-          - type: custom:dwains-flexbox-card
-            padding: true
-            items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
-            cards:
-              - type: custom:button-card
-                item_classes: 'col-xs-12'
-                template: more_page_list-item
-                entity: sensor.dwains_dashboard_latest_version
-                name: {{ _dd_trans.more_page.settings.update_available }}
-                show_state: true
-                tap_action: 
-                  action: url
-                  url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/information/update.html'
-                styles:
-                  grid:
-                    - grid-template-areas: '"n i""s i"'
-                  name:
-                    - color: white
-                  state:
-                    - color: white
-                  card:
-                    - background-color: '#ff5454'
-                    - padding: 15px 0
-                    - display: >
-                        [[[
-                          if(entity){
-                            if('{{ _dd_global.version }}' < entity.state){
-                              //Update available
-                              return 'block';
-                            } else {
-                              //No update
-                              return 'none';
-                            }
+    - type: vertical-stack
+      cards:
+        #Header
+        - type: custom:dwains-header-card
+          title:  {{ _dd_trans.more_page.settings.title }}
+          subtitle: {{ _dd_trans.more_page.title }}
+          navigation_path: more_page
+          icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+        #Start for settings page
+        - type: custom:dwains-flexbox-card
+          padding: true
+          items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          cards:
+            - type: custom:button-card
+              item_classes: 'col-xs-12'
+              template: more_page_list-item
+              entity: sensor.dwains_dashboard_latest_version
+              name: {{ _dd_trans.more_page.settings.update_available }}
+              show_state: true
+              tap_action: 
+                action: url
+                url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/information/update.html'
+              styles:
+                grid:
+                  - grid-template-areas: '"n i""s i"'
+                name:
+                  - color: white
+                state:
+                  - color: white
+                card:
+                  - background-color: '#ff5454'
+                  - padding: 15px 0
+                  - display: >
+                      [[[
+                        if(entity){
+                          if('{{ _dd_global.version }}' < entity.state){
+                            //Update available
+                            return 'block';
+                          } else {
+                            //No update
+                            return 'none';
                           }
-                        ]]]
-              #heading  
-              - type: custom:dwains-heading-card
-                item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
-                title: "{{ _dd_trans.more_page.settings.title }}"
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _dd_trans.more_page.settings.reload_configuration }}
-                icon: mdi:refresh 
-                tap_action: 
-                  action: call-service
-                  service: dwains_dashboard.reload
-              - type: custom:dwains-heading-card
-                item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
-                title: Dwains Dashboard
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _dd_trans.more_page.settings.theme_docs }}
-                tap_action: 
-                  action: url
-                  url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/'
-              - type: custom:button-card
-                template: more_page_list-item
-                name: Github
-                tap_action: 
-                  action: url
-                  url_path: 'https://github.com/dwainscheeren/dwains-lovelace-dashboard'
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _dd_trans.more_page.settings.support_paypal }}
-                tap_action: 
-                  action: url
-                  url_path: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url'
-              - type: custom:button-card
-                template: more_page_list-item
-                name: {{ _dd_trans.more_page.settings.buy_coffee }}
-                tap_action: 
-                  action: url
-                  url_path: 'https://www.buymeacoffee.com/FAkYvrx'
-                      
-          #Credits
-          - type: markdown
-            content: |
-              <strong>DWAINS DASHBOARD</strong>
-              <span>{{ _dd_trans.more_page.settings.by }} Dwain Scheeren</span>
-              <span>{{ _dd_trans.more_page.settings.version }} {{ _dd_global.version }}</span>
+                        }
+                      ]]]
+            #heading  
+            - type: custom:dwains-heading-card
+              item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+              title: "{{ _dd_trans.more_page.settings.title }}"
+            - type: custom:button-card
+              template: more_page_list-item
+              name: {{ _dd_trans.more_page.settings.reload_configuration }}
+              icon: mdi:refresh 
+              tap_action: 
+                action: call-service
+                service: dwains_dashboard.reload
+            - type: custom:dwains-heading-card
+              item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+              title: Dwains Dashboard
+            - type: custom:button-card
+              template: more_page_list-item
+              name: {{ _dd_trans.more_page.settings.theme_docs }}
+              tap_action: 
+                action: url
+                url_path: 'https://dwainscheeren.github.io/dwains-lovelace-dashboard/'
+            - type: custom:button-card
+              template: more_page_list-item
+              name: Github
+              tap_action: 
+                action: url
+                url_path: 'https://github.com/dwainscheeren/dwains-lovelace-dashboard'
+            - type: custom:button-card
+              template: more_page_list-item
+              name: {{ _dd_trans.more_page.settings.support_paypal }}
+              tap_action: 
+                action: url
+                url_path: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQ5LBNQWLW2ZQ&source=url'
+            - type: custom:button-card
+              template: more_page_list-item
+              name: {{ _dd_trans.more_page.settings.buy_coffee }}
+              tap_action: 
+                action: url
+                url_path: 'https://www.buymeacoffee.com/FAkYvrx'
+                    
+        #Credits
+        - type: markdown
+          content: |
+            <strong>DWAINS DASHBOARD</strong>
+            <span>{{ _dd_trans.more_page.settings.by }} Dwain Scheeren</span>
+            <span>{{ _dd_trans.more_page.settings.version }} {{ _dd_global.version }}</span>
