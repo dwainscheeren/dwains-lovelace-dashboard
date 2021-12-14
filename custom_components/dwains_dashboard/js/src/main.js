@@ -1,10 +1,9 @@
-import { deviceID } from "card-tools/src/deviceId";
 import { lovelace_view, load_lovelace, lovelace, hass } from "card-tools/src/hass";
 import { popUp, closePopUp } from "card-tools/src/popup";
 import { fireEvent } from "card-tools/src/event";
-import { moreInfo } from "card-tools/src/more-info.js";
 import {
-  applyThemesOnElement
+  applyThemesOnElement,
+  getLovelace
 } from 'custom-card-helpers';
 
 window.mobileAndTabletCheck = function() {
@@ -15,15 +14,6 @@ window.mobileAndTabletCheck = function() {
 
 class DwainsDashboard {
 
-  async _load_lovelace() {
-    //console.log('_load_lovelace');
-    if(!await load_lovelace()) {
-      //console.log('await');
-      let timer = window.setTimeout(this._load_lovelace.bind(this), 100);
-      //this.test();
-    } 
-  }
-
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -31,17 +21,14 @@ class DwainsDashboard {
   async _getConfig() {
     let lovelace_load;
     while(!lovelace_load) {
-      lovelace_load = lovelace();
+      lovelace_load = getLovelace();
       if(!lovelace_load) {
         await this.sleep(500);
       }
     }
-    // console.log(lovelace_load);
-    // return lovelace_load;
-    this.lovelace_load = lovelace_load;
+    this.lovelace_load = getLovelace();
     this.frontend_stuff();
   }
-  
 
   _connect() {
     if(!window.hassConnection) {
@@ -52,7 +39,6 @@ class DwainsDashboard {
   }
 
   constructor() {
-
     this.cast = document.querySelector("hc-main") !== null;
     if(!this.cast) {
       this._connect();
@@ -106,9 +92,11 @@ class DwainsDashboard {
   }
 
   frontend_stuff(){
-    let lovelace = this.lovelace_load;
+    let lovelace = getLovelace();
+    //console.info(lovelace);
     if(lovelace){
       if(lovelace.config){
+        //console.log(lovelace.config.dwains_dashboard);
         if(lovelace.config.dwains_dashboard) {
           this.custom_header(lovelace.config.dwains_dashboard);
           this.set_theme(lovelace.config.dwains_dashboard);
@@ -128,63 +116,31 @@ class DwainsDashboard {
       root.setAttribute("data-dwains-dashboard-header", true);
 
       //Hide prev/next buttons
-      //root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-tabs').shadowRoot.querySelector('paper-icon-button').style.display = 'none';
       root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-tabs').shadowRoot.querySelectorAll('paper-icon-button').forEach(el => {
         el.style.display = 'none';
       });
 
       //Check if mobile or tablet, if yes put nav as footer
       if(window.mobileAndTabletCheck()){
-        // let isIOS = (/iPad|iPhone|iPod/.test(navigator.platform) ||
-        //   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) &&
-        //   !window.MSStream;
-        // if(isIOS){
-        //   root.shadowRoot.querySelector('#view').style.cssText = 'top: 0; position: absolute; width: 100%; height: 100%;';
-        //   root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px; height: 80px;';
-        // } else {
-        //   root.shadowRoot.querySelector('#view').style.cssText = 'margin-top: -64px;';
-        //   root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px;';
-        // }
-
         root.shadowRoot.querySelector('#view').style.cssText = 'margin-top: -64px;';
         root.shadowRoot.querySelector('app-header').style.cssText = 'top: auto; bottom: 0px;';
 
         //Hide menu button
         root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-button-menu').style.display = 'none';  
       } 
-
-      //Hide other tabs except the first 5 ones
-      // const css = '#tabsContent > ::slotted(:not(#selectionBar):nth-child(n+6)) { display: none !important; }';
-      // let style = document.createElement('style');
-      // style.setAttribute('id', 'customHeaderStyle');
-      // root.shadowRoot.querySelector('app-header').querySelector('app-toolbar').querySelector('ha-button-menu').shadowRoot.appendChild(style); //prepend
-      // style.type = 'text/css';
-      // if (style.styleSheet){
-      //   // This is required for IE8 and below.
-      //   style.styleSheet.cssText = css;
-      // } else {
-      //   style.appendChild(document.createTextNode(css));
-      // }
     }
   }
 
   set_theme(config){
     const root = this.getRoot();
 
-    if(!root.getAttribute("data-dwains-dashboard-theme")){
-      //console.log('Start the theme set')
+    console.log('set_theme');
 
+    if(!root.getAttribute("data-dwains-dashboard-theme")){
       root.setAttribute("data-dwains-dashboard-theme", true);
 
       //See if user has set default HA theme or Dwains Theme handling
       if(config.theme !== "HA selected theme"){
-        // console.log(hass().states["sun.sun"]);
-        // const userThemeSettings = hass().selectedTheme;
-        // console.log(userThemeSettings);
-        // console.log(document.querySelector("home-assistant").hass.themes.darkMode);
-        // console.log(hass().themes);
-        // console.log(JSON.parse(config.themes));
-
         let sunState = "";
         if(hass().states["sun.sun"]){
           sunState = hass().states["sun.sun"].state;
@@ -249,7 +205,7 @@ class DwainsDashboard {
       //if(nav_path == "dwains-dashboard"){
         setTimeout(function() {
           document.location.reload()
-        }, 5000);
+        }, 1000);
       //}
   }
 
@@ -318,6 +274,32 @@ Promise.race(bases).then(() => {
       };
     }
 
+    lovelace() {
+      var root = document.querySelector("hc-main");
+      if(root) {
+        var ll = root._lovelaceConfig;
+        ll.current_view = root._lovelacePath;
+        return ll;
+      }
+    
+      root = document.querySelector("home-assistant");
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("home-assistant-main");
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("app-drawer-layout partial-panel-resolver");
+      root = root && root.shadowRoot || root;
+      root = root && root.querySelector("ha-panel-lovelace")
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("hui-root")
+      if (root) {
+        var ll =  root.lovelace
+        ll.current_view = root.___curView;
+        return ll;
+      }
+    
+      return null;
+    }
+
     static get styles() {
       return [
         css`
@@ -326,15 +308,43 @@ Promise.race(bases).then(() => {
           padding-bottom: 50px;
           margin: 0 auto;
           font-family: "Open Sans", sans-serif !important;
-        }`
+        }
+        ha-fab {
+          font-size: 18px;
+          border: 2px solid #4591B8;
+          padding: 5px;
+          margin-bottom: 50px;
+        }
+        `
       ]
+    }
+
+    clicked() {
+      if(lovelace().mode !== "yaml") return;
+      lovelace().setEditMode(!lovelace().editMode);
+      this.requestUpdate();
+    }
+
+    _addCard() {
+      console.log('test');
+      //fireEvent(this, "ll-create-card");
+      this.dispatchEvent(new CustomEvent("ll-create-card"));
+    }
+
+    async updated(){
+      //console.log('updated');
     }
 
     render() {
       if(!this.cards) {
         return html``;
       }
-      return html`<div id="dwains_dashboard">${this.cards.map((card) => html`${card}`)}</div>`;
+      return html`
+        <div id="dwains_dashboard">
+          ${this.cards.map((card) => html`${card}`)}
+          
+        </div>
+      `;
     }
   }
   if (!customElements.get("dwains-dashboard")) {
