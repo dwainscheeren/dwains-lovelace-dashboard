@@ -39,6 +39,7 @@
 Also take a look in the [community addons repository](https://github.com/dwainscheeren/dwains-dashboard-addons).
 
 ### Information
+* [FAQ - frequently asked question](information/faq.md)
 * [Update dashboard](information/update.md)
 * [Changelog](information/update.md)
 * [Releases](https://github.com/dwainscheeren/dwains-lovelace-dashboard/releases)
