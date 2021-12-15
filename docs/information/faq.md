@@ -18,3 +18,11 @@ So for example if you have 5 lights in your living room, you will need to create
 <img src="../assets/roomgroups.png">
 
 **Don't confuse HA group with HA light groups, those 2 are different!**
+- Light groups are meant for multiple lights in a single fixture, this gives a new light entity. 
+- Groups are meant for grouping multiple (light) entities, this gives a group entity.
+
+## I get an empty dashboard or I get a red error inside dashboard
+Make sure you have cleared your cache in the browser and mobile app. If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
+
+## I can't find Dwains Dashboard in the Integrations after I installed it
+Clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
