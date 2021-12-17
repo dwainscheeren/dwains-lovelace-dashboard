@@ -19,6 +19,15 @@ header_states_vacuum:
             if(states['{{ room["vacuum"]["entity"] }}'] && states['{{ room["vacuum"]["entity"] }}'].state != 'docked' && states['{{ room["vacuum"]["entity"] }}'].state != 'unavailable') {
               onVacuums++;
             }
+          {% else %}
+            // Check for vacuum addons
+            {% for addon in room["addons"] %}
+              {% if addon["data"]["vacuum"] %}
+                if(states['{{ addon["data"]["vacuum"] }}'] && states['{{ addon["data"]["vacuum"] }}'].state != 'docked' && states['{{ addon["data"]["vacuum"] }}'].state != 'unavailable'){
+                  onVacuums++;
+                }
+              {% endif %}
+            {% endfor %}
           {% endif %}
         {% endfor %}
 

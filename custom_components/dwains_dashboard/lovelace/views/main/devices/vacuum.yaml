@@ -66,5 +66,25 @@
                     type: custom:dwains-flexbox-card
                     items_classes: 'col-xs-6 col-sm-6 col-md-6 col-lg-6'
                 {% endif %}
+            {% else %}
+              {% for addon in room["addons"] %}
+                {% if addon["data"]["vacuum"] %}
+                - type: vertical-stack
+                  cards:
+                    #Heading
+                    - type: custom:dwains-heading-card
+                      title: {{ room["name"] }}
+                    - type: horizontal-stack
+                      cards:
+                        - type: custom:button-card
+                          template: room_vacuum
+                          entity: {{ addon["data"]["vacuum"] }}
+                          tap_action:
+                            action: navigate
+                            navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
+                          hold_action:
+                              action: more-info
+                {% endif %}
+              {% endfor %}
             {% endif %}
             {% endfor %}

@@ -125,90 +125,129 @@
                 }
             {% endif %}
             #Start header states
-            - type: custom:dwains-collapse-card
-              card_width: '62px'
+            - type: vertical-stack
               cards:
-                {% if _dd_config.persons %}
-                {% for person in _dd_config.persons %}
-                - type: custom:button-card
-                  template: header_states_person
-                  entity: {{ person["track"] }}
-                  name: {{ person["name"] }}
-                  tap_action: 
-                    action: navigate
-                    navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
-                {% endfor %}
-                {% endif %}
-                - type: custom:button-card
-                  template: header_states_safety
-                - type: custom:button-card
-                  template: header_states_door
-                - type: custom:button-card
-                  template: header_states_window
-                - type: custom:button-card
-                  template: header_states_lock
-                - type: custom:button-card
-                  template: header_states_light
-                - type: custom:button-card
-                  template: header_states_climate
-                - type: custom:button-card
-                  template: header_states_cover
-                - type: custom:button-card
-                  template: header_states_device
-                - type: custom:button-card
-                  template: header_states_media_player
-                - type: custom:button-card
-                  template: header_states_vacuum
-                - type: custom:button-card
-                  template: header_states_plant
-                - type: custom:button-card
-                  template: header_states_vibration
-            #End header states
+                - type: custom:dwains-wrapper-card
+                  item_classes: 'col-12 col-sm-12 col-md-4 col-lg-5'
+                  css: |
+                    ha-card {
+                      margin-top: 5px;
+                    }
+                    @media only screen and (min-width: 600px) {
+                      ha-card {
+                        margin-top: 15px;
+                      }
+                    }
+                  card:
+                    type: custom:dwains-collapse-card
+                    card_width: '62px'
+                    cards:
+                      {% if _dd_config.persons %}
+                      {% for person in _dd_config.persons %}
+                      - type: custom:button-card
+                        template: header_states_person
+                        entity: {{ person["track"] }}
+                        name: {{ person["name"] }}
+                        tap_action: 
+                          action: navigate
+                          navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
+                      {% endfor %}
+                      {% endif %}
+                      - type: custom:button-card
+                        template: header_states_safety
+                      - type: custom:button-card
+                        template: header_states_door
+                      - type: custom:button-card
+                        template: header_states_window
+                      - type: custom:button-card
+                        template: header_states_lock
+                      - type: custom:button-card
+                        template: header_states_light
+                      - type: custom:button-card
+                        template: header_states_climate
+                      - type: custom:button-card
+                        template: header_states_cover
+                      - type: custom:button-card
+                        template: header_states_device
+                      - type: custom:button-card
+                        template: header_states_media_player
+                      - type: custom:button-card
+                        template: header_states_vacuum
+                      - type: custom:button-card
+                        template: header_states_plant
+                      - type: custom:button-card
+                        template: header_states_vibration
+              #End header states
         #END HOMEPAGE HEADER
 
         #START HOMEPAGE CONTENT
         {% if _dd_config.global["favorites_homepage"] and _dd_config.global["favorites_homepage"] == 'true' %}
         #Favorites start
         {% if _dd_config.house_information and _dd_config.house_information["favorites"] %}
+        {% if _dd_config.global["smaller_favorites"] and _dd_config.global["smaller_favorites"] == 'true' %}
+                #heading  
+                - type: custom:dwains-heading-card
+                  title: {{ _dd_trans.house_information.favorites }}
+                - type: custom:dwains-wrapper-card
+                  item_classes: 'col-12 col-sm-12 col-md-4 col-lg-5'
+                  css: |
+                    ha-card {
+                      margin-top: 5px;
+                    }
+                    @media only screen and (min-width: 600px) {
+                      ha-card {
+                        margin-top: 15px;
+                      }
+                    }
+                  card:
+                    type: custom:dwains-collapse-card
+                    card_width: '62px'
+                    cards:
+        {% else %}
         - type: custom:dwains-flexbox-card
           padding: true
           items_classes: 'col-xs-12'
           cards:
-            #heading  
-            - type: custom:dwains-heading-card
-              title: {{ _dd_trans.house_information.favorites }}
-            - type: custom:dwains-flexbox-card
-              items_classes: 'col-xs-6 col-sm-6 col-md-3 col-lg-3'
-              cards:
-                #Start for house information page
-                {% for favorite in _dd_config.house_information["favorites"] %}
-                - type: custom:button-card
-                  entity: {{ favorite["entity"] }}
-                  template: more_page_house_information_favorites
-                  {% if favorite["entity"].split('.')[0] == 'input_select' %}
-                  tap_action:
-                    action: more-info
-                  double_tap_action:
-                    haptic: light
-                    action: call-service
-                    service: input_select.select_next
-                    service_data:
-                      entity_id: {{ favorite["entity"] }}
-                  {% else %}
-                  tap_action:
-                    action: more-info
-                  {% endif %}
-                  #there is a type defined so  lets change some styling and options
-                  state:
-                    {% if favorite['icon_off'] %}
-                    - value: 'off'
-                      icon: "{{ favorite['icon_off'] }}"
-                    {% endif %}
-                    {% if favorite['icon_on'] %}
-                    - value: 'on'
-                      icon: "{{ favorite['icon_on'] }}"
-                    {% endif %}
-                {% endfor %}
+                  #heading  
+                  - type: custom:dwains-heading-card
+                    title: {{ _dd_trans.house_information.favorites }}
+                  - type: custom:dwains-flexbox-card
+                    items_classes: 'col-xs-6 col-sm-6 col-md-3 col-lg-3'
+                    cards:
+        {% endif %}
+                          #Start for house information page
+                          {% for favorite in _dd_config.house_information["favorites"] %}
+                          - type: custom:button-card
+                            entity: {{ favorite["entity"] }}
+                            {% if _dd_config.global["smaller_favorites"] and _dd_config.global["smaller_favorites"] == 'true' %}
+                            template: homepage_favorite
+                            {% else %}
+                            template: more_page_house_information_favorites
+                            {% endif %}
+                            {% if favorite["entity"].split('.')[0] == 'input_select' %}
+                            tap_action:
+                              action: more-info
+                            double_tap_action:
+                              haptic: light
+                              action: call-service
+                              service: input_select.select_next
+                              service_data:
+                                entity_id: {{ favorite["entity"] }}
+                            {% else %}
+                            tap_action:
+                              action: more-info
+                            {% endif %}
+                            #there is a type defined so  lets change some styling and options
+                            state:
+                              {% if favorite['icon_off'] %}
+                              - value: 'off'
+                                icon: "{{ favorite['icon_off'] }}"
+                              {% endif %}
+                              {% if favorite['icon_on'] %}
+                              - value: 'on'
+                                icon: "{{ favorite['icon_on'] }}"
+                              {% endif %}
+                          {% endfor %}
         {% endif %}
         #Favorites end  
         {% endif %}
@@ -441,7 +480,15 @@
                                 additional_info += 'A-E!<br>';
                               }
                             {% endif %}
-
+                            {% if room["additional_badges"] %}
+                                {% for badge in room["additional_badges"] %}
+                                  {% if badge.entity.split('.')[0] == 'binary_sensor' or badge.entity.split('.')[0] == 'sensor' or badge.entity.split('.')[0] == 'input_boolean' %}
+                                    if(states['{{ badge.entity }}'].state == 'on' || states['{{ badge.entity }}'].state == 'True'){
+                                      additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{badge.icon|default('mdi:leak') }}"></ha-icon><br>';
+                                    }
+                                  {% endif %}
+                                {% endfor %}
+                            {% endif %}
                             return additional_info;
                           ]]]
                         {% if room["light"] %}
@@ -532,6 +579,11 @@
                         {% if room["vibration"] %}
                             {% set devices.hasVibration = true %}
                         {% endif %}
+                        {% for addon in room["addons"] %}
+                          {% if addon["data"]["vacuum"] %}
+                            {% set devices.hasVacuum = true %}
+                          {% endif %}
+                        {% endfor %}
                     {% endfor %}
 
                     {% if devices.hasLock == true %}
@@ -1028,6 +1080,15 @@
                               //This room has group of vacuums
                               //Not yet supported
                               {% endif %}
+                            {% else %}
+                              // Check for vacuum addons
+                              {% for addon in room["addons"] %}
+                                {% if addon["data"]["vacuum"] %}
+                                  if(states['{{ addon["data"]["vacuum"] }}'] && states['{{ addon["data"]["vacuum"] }}'].state != 'docked' && states['{{ addon["data"]["vacuum"] }}'].state != 'unavailable'){
+                                    onVacuums++;
+                                  }
+                                {% endif %}
+                              {% endfor %}
                             {% endif %}
                           {% endfor %}
 
