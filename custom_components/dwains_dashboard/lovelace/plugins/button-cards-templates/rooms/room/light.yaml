@@ -47,7 +47,7 @@ room_light:
       - grid-template-rows: min-content
     card:
       - background-color: var(--dwains-theme-primary)
-      - border-radius: 5px
+      - border-radius: var(--dwains-theme-border-radius)
       - margin-bottom: 0px
       - padding-top: 14px
       - padding-bottom: 14px

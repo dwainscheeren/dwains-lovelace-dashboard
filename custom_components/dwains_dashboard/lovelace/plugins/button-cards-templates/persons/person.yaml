@@ -15,7 +15,7 @@ persons_person:
       - grid-template-rows: min-content min-content min-content
     card:
       - background-color: var(--dwains-theme-primary)
-      - border-radius: 5px
+      - border-radius: var(--dwains-theme-border-radius)
       - overflow: unset
     entity_picture:
       - width: 100% 

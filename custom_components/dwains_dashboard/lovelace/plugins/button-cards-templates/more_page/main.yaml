@@ -7,7 +7,7 @@ more_page_main:
       - background-color: var(--dwains-theme-primary)
       - padding: 5px
       - color: white
-      - border-radius: 4%
+      - border-radius: var(--dwains-theme-border-radius)
     name:
       - font-size: 13px
       - font-weight: bold
