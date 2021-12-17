@@ -7,6 +7,7 @@ dwains-theme-black:
   dwains-theme-accent: 'placeholder_primary_color'
   dwains-theme-names: '#f2f2f7'
   dwains-theme-grey: '#ffffff'
+  dwains-theme-border-radius: 5px
 
   dwains-theme-header-background: 'var(--dwains-theme-primary)'
   dwains-theme-header-text: 'var(--dwains-theme-names)'

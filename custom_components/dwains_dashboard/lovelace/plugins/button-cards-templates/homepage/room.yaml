@@ -11,7 +11,7 @@ homepage_room:
       - background-color: var(--dwains-theme-primary)
       - padding: 5px
       - color: white
-      - border-radius: 5px
+      - border-radius: var(--dwains-theme-border-radius)
     name:
       - font-size: 16px
       - font-weight: bold

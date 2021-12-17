@@ -10,6 +10,7 @@ dwains-theme-dark:
   dwains-theme-primary: '#262628'
   dwains-theme-names: '#f2f2f7'
   dwains-theme-grey: '#6c6c75'
+  dwains-theme-border-radius: 5px
 
   dwains-theme-header-background: 'var(--dwains-theme-primary)'
   dwains-theme-header-text: 'var(--dwains-theme-names)'

@@ -12,7 +12,7 @@ rooms_child:
       - grid-template-rows: min-content min-content min-content
     card:
       - background-color: var(--dwains-theme-primary)
-      - border-radius: 5px
+      - border-radius: var(--dwains-theme-border-radius)
       - margin-bottom: 10px
       - padding: 15px 0
     icon:
