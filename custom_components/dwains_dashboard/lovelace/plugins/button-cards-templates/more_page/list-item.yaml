@@ -12,6 +12,7 @@ more_page_list-item:
       - background-color: var(--dwains-theme-primary)
       - box-shadow: none
       - margin-top: -6px
+      - border-radius: var(--dwains-theme-border-radius)
     icon:
       - color: var(--dwains-theme-grey)
       - width: 100%
