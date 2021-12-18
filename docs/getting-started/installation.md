@@ -1,9 +1,6 @@
 [< Go back to Home](../index.md)
 
 # Installation
-**Dwains Dashboard is only compatible with HA 2021.5.0 or newer!**
-
----
 
 Before we are getting started on anything, make you sure you make a backup of you current Home Assistant setup.
 
@@ -27,6 +24,8 @@ My dashboard has the slogan "An auto generating Home Assistant Lovelace UI Dashb
 ---
 
 **If you experience any problems during the installation of Dwains Dashboard then please join my Discord server, you get live personal support. [Join my Discord Server here, it's 100% free!](https://discord.gg/7yt64uX)**
+
+You can install Dwains Dashboar manual or through HACS, below is the manual installation instruction.
 
 ## Step 1 - Download Dwains Dashboard latest release
 
