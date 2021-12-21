@@ -198,41 +198,41 @@
                   tap_action:
                     action: more-info
                   {% endif %}
-                    {% if favorite['label_entity'] %}
-                    show_last_changed: false
-                    label: >
-                      [[[
-                        if (states['{{ favorite["label_entity"] }}']) {
-                            var str = states['{{ favorite["label_entity"] }}'].state;
-                            var unit = states['{{ favorite["label_entity"] }}'].attributes.unit_of_measurement;
-                            if (unit) 
-                                str += " " + unit;
-                            return str;    
-                        } else {
-                            return "N-A";
-                        }
-                      ]]]
-                    {% endif %}
-                    #there is a type defined so  lets change some styling and options
-                    state:
-                      {% if favorite['icons'] %}
-                      {% for entry in favorite['icons'] %}
-                      - operator: template
-                        value: >
-                          [[[
-                            return states['{{ entry["entity"] }}'] 
-                            && (states['{{ entry["entity"] }}'].state == '{{ entry["value"]|default("on") }}')
-                          ]]]
-                        {% if entry['icon'] %}
-                        icon: "{{ entry['icon'] }}"
-                        {% endif %}
-                        {% if entry['color'] %}
-                        styles:
-                          icon:
-                            - color: "{{ entry['color'] }}"
-                        {% endif %}
-                      {% endfor %}
+                  {% if favorite['label_entity'] %}
+                  show_last_changed: false
+                  label: >
+                    [[[
+                      if (states['{{ favorite["label_entity"] }}']) {
+                          var str = states['{{ favorite["label_entity"] }}'].state;
+                          var unit = states['{{ favorite["label_entity"] }}'].attributes.unit_of_measurement;
+                          if (unit) 
+                              str += " " + unit;
+                          return str;    
+                      } else {
+                          return "N-A";
+                      }
+                    ]]]
+                  {% endif %}
+                  #there is a type defined so  lets change some styling and options
+                  state:
+                    {% if favorite['icons'] %}
+                    {% for entry in favorite['icons'] %}
+                    - operator: template
+                      value: >
+                        [[[
+                          return states['{{ entry["entity"] }}'] 
+                          && (states['{{ entry["entity"] }}'].state == '{{ entry["value"]|default("on") }}')
+                        ]]]
+                      {% if entry['icon'] %}
+                      icon: "{{ entry['icon'] }}"
                       {% endif %}
+                      {% if entry['color'] %}
+                      styles:
+                        icon:
+                          - color: "{{ entry['color'] }}"
+                      {% endif %}
+                    {% endfor %}
+                    {% endif %}
                     {% if favorite['icon_off'] %}
                     - value: 'off'
                       icon: "{{ favorite['icon_off'] }}"
