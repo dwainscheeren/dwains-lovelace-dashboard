@@ -18,7 +18,7 @@ header_states_door:
           {% if room["door"] %}
             {% if room["door"].split('.')[0] == 'binary_sensor' or room["door"].split('.')[0] == 'sensor' %}
             //This room has only 1 door
-              if(states['{{ room["door"] }}'] && states['{{ room["door"] }}'].state == 'on' ||
+              if(states['{{ room["door"] }}'] && states['{{ room["door"] }}'].state == 'on' || states['{{ room["door"] }}'] && states['{{ room["door"] }}'].state == 'open' ||
                     states['{{ room["door"] }}'] && states['{{ room["door"] }}'].state == 'True') {
                 openDoors++;
               }
@@ -26,7 +26,7 @@ header_states_door:
             //This room has group of doors
               if(states['{{ room["door"] }}']){
                 states['{{ room["door"] }}'].attributes['entity_id'].forEach(function(entity){
-                  if(states[entity] && states[entity].state == 'True' || states[entity] && states[entity].state == 'on'){
+                  if(states[entity] && states[entity].state == 'True' || states[entity] && states[entity].state == 'open' || states[entity] && states[entity].state == 'on'){
                     openDoors++;
                   }
                 });  
