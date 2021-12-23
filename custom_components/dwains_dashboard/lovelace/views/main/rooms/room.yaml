@@ -113,9 +113,9 @@
               label: >
                 [[[ 
                   if(entity){
-                    if(entity.state == 'off' || entity.state == 'False'){
+                    if(entity.state == 'off' || entity.state == 'closed' || entity.state == 'False'){
                       return hass.localize('component.binary_sensor.state.door.off');
-                    } else if(entity.state == 'on' || entity.state == 'True') {
+                    } else if(entity.state == 'on' || entity.state == 'open' || entity.state == 'True') {
                       return hass.localize('component.binary_sensor.state.door.on');
                     } else {
                       return entity.state;
@@ -134,7 +134,7 @@
                     const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
                     var openDoors = 0;
                     entitiesFromGroup.forEach(function(entity){
-                      if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'True'){
+                      if(states[entity] && states[entity].state == 'on' || states[entity] && states[entity].state == 'open' || states[entity] && states[entity].state == 'True'){
                         openDoors++;
                       }
                     });  
