@@ -360,13 +360,13 @@
                             {% if room["door"] %}
                               if(states['{{ room["door"] }}']){
                                 {% if room["door"].split('.')[0] == 'binary_sensor' or room["door"].split('.')[0] == 'sensor' %}
-                                  if(states['{{ room["door"] }}'].state == 'on' || states['{{ room["door"] }}'].state == 'True'){
+                                  if(states['{{ room["door"] }}'].state == 'on' || states['{{ room["door"] }}'].state == 'open' || states['{{ room["door"] }}'].state == 'True'){
                                     additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.door_open|default('mdi:door-open') }}"></ha-icon><br>';
                                   }
                                 {% else %}
                                   const entitiesFromGroup = states['{{ room["door"] }}'].attributes['entity_id'];
                                   for (let i = 0; i < entitiesFromGroup.length; i++) {
-                                    if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' ||
+                                    if(states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'on' || states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'open' ||
                                         states[entitiesFromGroup[i]] && states[entitiesFromGroup[i]].state == 'True') {
                                       additional_info += '<ha-icon style="height: 20px; color: var(--dwains-theme-accent)" icon="{{ _dd_icons.door_open|default('mdi:door-open') }}"></ha-icon><br>';
                                       break;
