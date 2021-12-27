@@ -16,7 +16,7 @@ header_states_door:
         {% for room in _dd_config.rooms %}                        
           //Do some things for the doors
           {% if room["door"] %}
-            {% if room["door"].split('.')[0] == 'binary_sensor' or room["door"].split('.')[0] == 'sensor' %}
+            {% if room["door"].split('.')[0] == 'binary_sensor' or room["door"].split('.')[0] == 'cover' or room["door"].split('.')[0] == 'sensor' %}
             //This room has only 1 door
               if(states['{{ room["door"] }}'] && states['{{ room["door"] }}'].state == 'on' || states['{{ room["door"] }}'] && states['{{ room["door"] }}'].state == 'open' ||
                     states['{{ room["door"] }}'] && states['{{ room["door"] }}'].state == 'True') {
