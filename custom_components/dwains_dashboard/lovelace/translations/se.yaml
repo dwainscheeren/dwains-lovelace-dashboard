@@ -44,13 +44,14 @@ se:
     humidity: 'Fuktighet'
 
   cover:
-    title_plural: 'Omslag'
+    title: 'Gardin'
+    title_plural: 'Gardiner'
 
   device:
     title_plural: 'Enheter'
 
   safety:
-    title_plural: 'Safties'
+    title_plural: 'Säkerhet'
 
   media_player:
     title_plural: 'Media spelare'
@@ -81,17 +82,17 @@ se:
 
   more_page:
     title: 'Mer'
-    house_info: 'Hus info'
+    house_info: 'Hus-info'
     house_data: 
-      title: 'Hus data'
+      title: 'Hus-data'
       all_sensors: 'Alla sensorer'
       all_batteries: 'Alla batterier'
       config: 'Konfiguration'
-      developer_tools: 'Utvecklar verktyg'
+      developer_tools: 'Utvecklarverktyg'
     settings:
-      title: 'Tema inställningar'
+      title: 'Tema-inställningar'
       reload_configuration: 'Ladda om konfiguration'
-      theme_docs: 'Tema dokumentation'
+      theme_docs: 'Tema-dokumentation'
       support_paypal: 'Stödja/Donera med PayPal'
       buy_coffee: 'Skänk mig en kaffe'
       by: 'Av'
