@@ -1,0 +1,57 @@
+# dwains_dashboard
+
+#Page for water leak of a room
+
+{% for room in _dd_config.rooms %}
+{% if room["water_leak"] %}
+- title: {{ room["name"] }} {{ _dd_trans.water_leak.title_plural }}
+  path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_water_leak
+  panel: true
+  visible: false
+  cards:    
+    - type: custom:dwains-wrapper-card
+      css: | 
+        max-width: 1465px;
+        padding-bottom: 50px;
+        margin: 0 auto;
+        font-family: "Open Sans", sans-serif !important;
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - type: custom:dwains-header-card
+            title:  {{ _dd_trans.water_leak.title_plural }}
+            subtitle: {{ room["name"] }}
+            navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+            icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
+          #Start for room water leak content page
+          {% if room["water_leak"].split('.')[0] != 'group' %}
+          # this room has only 1 water leak sensor
+          {% else %}
+          # this room has group of water leak sensors
+          - type: custom:dwains-auto-entities-card
+            filter:
+              include:
+                - group: {{ room["water_leak"] }}
+                  options:
+                    type: custom:button-card
+                    template: room_water_leak
+                    hold_action:
+                      action: more-info
+                    icon: >
+                      [[[
+                        if(entity.state == 'on')
+                          return "{{ _dd_icons.water_leak_on|default('mdi:water-alert') }}";
+                        else if(entity.state == 'off')
+                          return "{{ _dd_icons.water_leak_off|default('mdi:water-off-outline') }}";
+                      ]]]
+            sort:
+              method: name
+              ignore_case: true
+            card:
+              type: custom:dwains-flexbox-card
+              padding: true
+              items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          {% endif %}
+{% endif %}
+{% endfor %}
