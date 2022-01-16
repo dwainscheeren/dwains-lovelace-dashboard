@@ -1,0 +1,79 @@
+# dwains_dashboard
+
+header_states_water_leak:
+  show_state: false
+  show_label: true
+  tap_action: 
+    action: navigate
+    navigation_path: devices_water_leak
+  name: {{ _dd_trans.water_leak.title_plural }}
+  icon: "{{ _dd_icons.water_leak|default('mdi:water-alert') }}"
+  variables:
+    status: >
+      [[[
+        var waterLeakOn = 0;
+        {% for room in _dd_config.rooms %}
+          //Do some things for the water leak sensors
+          {% if room["water_leak"] %}
+            {% if room["water_leak"].split('.')[0] != 'group' %}
+            //This room has only 1 water leak sensor
+              if(states['{{ room["water_leak"] }}'] && states['{{ room["water_leak"] }}'].state == 'on') {
+                waterLeakOn++;
+              }
+            {% else %}
+            //This room has group of water_leak sensors
+              if(states['{{ room["water_leak"] }}']){
+                states['{{ room["water_leak"] }}'].attributes['entity_id'].forEach(function(entity){
+                  if(states[entity] && states[entity].state == 'on'){
+                    waterLeakOn++;
+                  }
+                });  
+              }
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        return waterLeakOn;
+      ]]]
+  label: >
+    [[[
+      if(variables.status > 0){
+        var waterLeakOn = variables.status;
+        return waterLeakOn + ' ' + hass.localize('component.binary_sensor.state.moisture.on');
+      }
+    ]]]
+  styles:
+    grid:
+      - grid-template-areas: '"i""n""l"'
+    icon:
+      - color: white
+      - width: 55%
+    img_cell:
+      - width: 40px
+      - height: 40px
+      - background: var(--dwains-theme-header-button-background)
+      - color: white
+      - border-radius: 100%
+    card:
+      - background: transparent
+      - box-shadow: none
+      - padding: 0%
+      - width: 61px
+      - display: >
+          [[[
+            if(variables.status && variables.status > 0){
+              //Water leak sensors On
+              return 'block';
+            } else {
+              //No water leak sensors On
+              return 'none';
+            }
+          ]]]
+    label:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 11px
+      - line-height: 12px
+    name:
+      - color: var(--dwains-theme-header-text)
+      - justify-self: center
+      - font-size: 13px
