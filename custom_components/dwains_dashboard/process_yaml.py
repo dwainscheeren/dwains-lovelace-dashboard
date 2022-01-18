@@ -41,7 +41,8 @@ LANGUAGES = {
     "Romanian": "ro",
     "Swedish": "se",
     "Dutch": "nl",
-    "Slovak": "sk"
+    "Slovak": "sk",
+    "Portuguese": "pt"
 }
 
 def load_yamll(fname, secrets = None, args={}):
