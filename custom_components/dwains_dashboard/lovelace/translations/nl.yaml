@@ -29,7 +29,7 @@ nl:
   climate:
     title: 'Temperatuur'
     title_plural: 'Temperaturen'
-    inside: 'binnen'
+    inside: 'Binnen'
     outside: 'Buiten'
     idle: 'Stand-by'
     heating: 'Verwarmen naar'
