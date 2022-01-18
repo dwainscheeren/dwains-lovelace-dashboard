@@ -93,7 +93,7 @@ pt:
       title: 'Configuração do tema'
       reload_configuration: 'Recarregar tema'
       theme_docs: 'Documentação do tema'
-      support_paypal: 'Donação por PayPal'
+      support_paypal: 'Donativo por PayPal'
       buy_coffee: 'Compra me um café'
       by: 'De'
       version: 'Versão'
