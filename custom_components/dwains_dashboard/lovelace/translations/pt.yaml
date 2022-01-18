@@ -73,8 +73,8 @@ pt:
     title: 'Todas as luzes'
 
   scenes:
-    title: 'Cenas'
-    not_defined: 'Sem cena definida'
+    title: 'Cenários'
+    not_defined: 'Sem cenários definidos'
 
   cameras:
     title: 'Cameras'
