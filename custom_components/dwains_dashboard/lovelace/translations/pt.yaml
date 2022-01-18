@@ -40,7 +40,7 @@ pt:
     heat_cool: 'Calor/Frio'
     dry: 'Seco'
     fan_only: 'Só ventoinha'
-    this_room: 'Este quarto'
+    this_room: 'Esta divisão'
     temperature: 'Temperatura'
     humidity: 'Humidade'
 
@@ -54,7 +54,7 @@ pt:
     title_plural: 'Segurança'
 
   media_player:
-    title_plural: 'Media players'
+    title_plural: 'Multimédia'
 
   vacuum:
     title: 'Aspirador'
@@ -67,7 +67,7 @@ pt:
     title: 'Inicio'
 
   rooms:
-    title: 'Quartos'
+    title: 'Divisões'
 
   all_lights:
     title: 'Todas as luzes'
