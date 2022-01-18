@@ -45,7 +45,7 @@ pt:
     humidity: 'Humidade'
 
   cover:
-    title_plural: 'Estores'
+    title_plural: 'Persianas'
 
   device:
     title_plural: 'Dispositivos'
