@@ -29,6 +29,7 @@
             padding: 11px;
           cards:
             - type: vertical-stack
+              item_classes: "col-xs-12"
               cards:
                 !include 
                   - ../../../../../{{ addon["path"] }}
