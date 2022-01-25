@@ -1,0 +1,117 @@
+# Translation by Martin
+
+cs:
+  greetings:
+    good_morning: 'Dobré ráno'
+    good_afternoon: 'Dobrý den'
+    good_evening: 'Dobrý večer'
+
+  house_information:
+    title: 'Informace o domu'
+    favorites: 'Oblíbené'
+    activity: 'Aktivity (dveře, okna, pohyb)'
+
+  motion:
+    title: 'Pohyb'
+    title_plural: 'Pohyby'
+
+  light:
+    title_plural: 'Světla'
+
+  door:
+    title: 'Dveře'
+    title_plural: 'Dveře'
+
+  window:
+    title: 'Okno'
+    title_plural: 'Okna'
+
+  climate:
+    title: 'Teplota'
+    title_plural: 'Teploty'
+    inside: 'Vevnitř'
+    outside: 'Venku'
+    idle: 'Nečinný'
+    heating: 'Natápění na'
+    off_text: 'Vypnuto'
+    auto: 'Program'
+    heat: 'Topení'
+    cool: 'Chlazení'
+    heat_cool: 'Topení/chlazení'
+    dry: 'Sušení'
+    fan_only: 'Ventilace'
+    this_room: 'Tato místnost'
+    temperature: 'Teplota'
+    humidity: 'Vlhkost'
+
+  cover:
+    title_plural: 'Stínění'
+
+  device:
+    title_plural: 'Zařízení'
+
+  safety:
+    title_plural: 'Bezpečnost'
+
+  media_player:
+    title_plural: 'Přehrávače'
+
+  vacuum:
+    title: 'Vysavač'
+    title_plural: 'Vysavače'
+
+  plant:
+    title_plural: 'Rostliny'
+
+  home:
+    title: 'Domů'
+
+  rooms:
+    title: 'Místnosti'
+
+  all_lights:
+    title: 'Všechny světla'
+
+  scenes:
+    title: 'Scény'
+    not_defined: 'Nejsou definovány žádné scény'
+
+  cameras:
+    title: 'Kamery'
+    not_defined: 'Nejsou definovány žádné kamery'
+
+  more_page:
+    title: 'Další'
+    house_info: 'Informace o domu'
+    house_data:
+      title: 'Data o domu'
+      all_sensors: 'Všechny senzory'
+      all_batteries: 'Všechny baterie'
+      config: 'Konfigurace'
+      developer_tools: 'Vývojářské nástroje'
+    settings:
+      title: 'Nastavení motivu'
+      reload_configuration: 'Nově načíst konfiguraci motivu'
+      theme_docs: 'Dokumentace'
+      support_paypal: 'Podpořte/darujte přes PayPal'
+      buy_coffee: 'Kupte mi kávu'
+      by: 'Autor'
+      version: 'Verze'
+      update_available: 'Dostupná aktualizace pro Dwains Dashboard!'
+    more_page_addons: 'Další doplňky'
+
+  more_entities:
+    title: 'Další entity'
+
+  lock:
+    title_plural: 'Zámky'
+
+  alarm:
+    title: 'Alarm'
+
+  weather:
+    title: 'Počasí'
+
+  vibration:
+    title: 'Vibrace'
+    title_plural: "Vibrační senzory"

@@ -41,6 +41,7 @@ LANGUAGES = {
     "Romanian": "ro",
     "Swedish": "se",
     "Dutch": "nl",
+    "Czech": "cs",
     "Slovak": "sk"
 }
 
