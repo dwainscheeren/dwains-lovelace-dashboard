@@ -1,0 +1,38 @@
+{
+  "title": "Dwains Dashboard",
+  "config": {
+    "step": {
+      "init": {
+        "title": "Ustawienia Dwains Dashboard",
+        "description": "",
+        "data": {
+          "language": "Język",
+          "sidepanel_icon": "Ikona na panelu bocznym",
+          "sidepanel_title": "Tytuł na panelu bocznym",
+          "theme": "Motyw",
+          "primary_color": "Główny kolor motywu",
+          "customize_path": "Ścieżka do customize.yaml, wprowadź ścieżkę następująco: wlasnyfolder/mojecustomize.yaml"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Dozwolona jest tylko pojedyncza konfiguracja Dwains Dashboard."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Ustawienia Dwains Dashboard",
+        "description": "",
+        "data": {
+          "language": "Język",
+          "sidepanel_icon": "Ikona na panelu bocznym",
+          "sidepanel_title": "Tytuł na panelu bocznym",
+          "theme": "Motyw",
+          "primary_color": "Główny kolor motywu",
+          "customize_path": "Ścieżka do customize.yaml, wprowadź ścieżkę następująco: wlasnyfolder/mojecustomize.yaml"
+        }
+      }
+    }
+  }
+}
