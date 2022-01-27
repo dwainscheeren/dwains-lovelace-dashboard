@@ -1,0 +1,117 @@
+# Translation by TomaszDom
+
+en:
+  greetings:
+    good_morning: 'Dzień dobry'
+    good_afternoon: 'Miłego popołudnia'
+    good_evening: 'Dobry wieczór'
+
+  house_information:
+    title: 'Dom'
+    favorites: 'Ulubione'
+    activity: 'Aktywność (drzwi, okna, ruch)'
+
+  motion:
+    title: 'Ruch'
+    title_plural: 'Ruchy'
+
+  light:
+    title_plural: 'Światła'
+
+  door:
+    title: 'Drzwi'
+    title_plural: 'Drzwi'
+
+  window:
+    title: 'Okno'
+    title_plural: 'Okna'
+
+  climate:
+    title: 'Temperatura'
+    title_plural: 'Temperatury'
+    inside: 'wewnątrz'
+    outside: 'na zewnątrz'
+    idle: 'Tryb czuwania'
+    heating: 'Ogrzewanie do'
+    off_text: 'Wyłączone'
+    auto: 'Automatyczny'
+    heat: 'Ogrzewanie'
+    cool: 'Chłodzenie'
+    heat_cool: 'Ogrzewanie/Chłodzenie'
+    dry: 'Osuszanie'
+    fan_only: 'Tylko wentylacja'
+    this_room: 'To pomieszczenie'
+    temperature: 'Temperatura'
+    humidity: 'Wilgotność'
+
+  cover:
+    title_plural: 'Rolety'
+
+  device:
+    title_plural: 'Urządzenia'
+
+  safety:
+    title_plural: 'Bezpieczeństwo'
+
+  media_player:
+    title_plural: 'Odtwarzacze multimediów'
+
+  vacuum:
+    title: 'Odkurzacz'
+    title_plural: 'Odkurzacze'
+
+  plant:
+    title_plural: 'Rośliny'
+
+  home:
+    title: 'Strona główna'
+
+  rooms:
+    title: 'Pomieszczenia'
+
+  all_lights:
+    title: 'Wszystkie światła'
+
+  scenes:
+    title: 'Sceny'
+    not_defined: 'Nie zdefiniowano scen'
+
+  cameras:
+    title: 'Kamery'
+    not_defined: 'Nie zdefiniowano kamer'
+
+  more_page:
+    title: 'Więcej'
+    house_info: 'Informacje o domu'
+    house_data: 
+      title: 'Informacje o domu'
+      all_sensors: 'Wszystkie czujniki'
+      all_batteries: 'Wszystkie baterie'
+      config: 'Konfiguracja'
+      developer_tools: 'Narzędzia deweloperskie'
+    settings:
+      title: 'Ustawienia motywu'
+      reload_configuration: 'Wczytaj ponownie konfigurację motywu'
+      theme_docs: 'Dokumentacja motywów'
+      support_paypal: 'Wsparcie/dotacje za pomocą PayPal'
+      buy_coffee: 'Kup mi kawę'
+      by: 'Autorstwa'
+      version: 'Wersja'
+      update_available: 'Dostępna aktualizacja motywu Dwains!'
+    more_page_addons: 'Więcej dodatków'
+
+  more_entities:
+    title: 'Więcej encji'
+
+  lock:
+    title_plural: 'Zamki'
+
+  alarm:
+    title: 'Alarm'
+
+  weather:
+    title: 'Pogoda'
+
+  vibration:
+    title: 'Wibracje'
+    title_plural: "Czujniki wibracji"
