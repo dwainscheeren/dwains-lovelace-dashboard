@@ -1,0 +1,117 @@
+# Translation by FehTeh
+
+pt:
+  greetings:
+    good_morning: 'Bom dia'
+    good_afternoon: 'Boa tarde'
+    good_evening: 'Boa noite'
+
+  house_information:
+    title: 'Informação da casa'
+    favorites: 'Favoritos'
+    activity: 'Actividade (Portas, janelas, movimento)'
+
+  motion:
+    title: 'Movimento'
+    title_plural: 'Movimentos'
+
+  light:
+    title_plural: 'Luzes'
+
+  door:
+    title: 'Porta'
+    title_plural: 'Portas'
+
+  window:
+    title: 'Janela'
+    title_plural: 'Janelas'
+
+  climate:
+    title: 'Temperatura'
+    title_plural: 'Temperaturas'
+    inside: 'Dentro'
+    outside: 'Fora'
+    idle: 'Stand-by'
+    heating: 'Aquecer a'
+    off_text: 'Desligado'
+    auto: 'Automático'
+    heat: 'Calor'
+    cool: 'Frio'
+    heat_cool: 'Calor/Frio'
+    dry: 'Seco'
+    fan_only: 'Só ventoinha'
+    this_room: 'Esta divisão'
+    temperature: 'Temperatura'
+    humidity: 'Humidade'
+
+  cover:
+    title_plural: 'Persianas'
+
+  device:
+    title_plural: 'Dispositivos'
+
+  safety:
+    title_plural: 'Segurança'
+
+  media_player:
+    title_plural: 'Multimédia'
+
+  vacuum:
+    title: 'Aspirador'
+    title_plural: 'Aspiradores'
+
+  plant:
+    title_plural: 'Plantas'
+
+  home:
+    title: 'Inicio'
+
+  rooms:
+    title: 'Divisões'
+
+  all_lights:
+    title: 'Todas as luzes'
+
+  scenes:
+    title: 'Cenários'
+    not_defined: 'Sem cenários definidos'
+
+  cameras:
+    title: 'Cameras'
+    not_defined: 'Sem cameras definidas'
+
+  more_page:
+    title: 'Mais'
+    house_info: 'Informação da casa'
+    house_data: 
+      title: 'Dados da casa'
+      all_sensors: 'Todos os sensores'
+      all_batteries: 'Todas as baterias'
+      config: 'Configuração'
+      developer_tools: 'Ferramentas de desenvolvimento'
+    settings:
+      title: 'Configuração do tema'
+      reload_configuration: 'Recarregar tema'
+      theme_docs: 'Documentação do tema'
+      support_paypal: 'Donativo por PayPal'
+      buy_coffee: 'Compra me um café'
+      by: 'De'
+      version: 'Versão'
+      update_available: 'Actualização disponivel do tema Dwains!'
+    more_page_addons: 'Mais complementos'
+
+  more_entities:
+    title: 'Mais entidades'
+
+  lock:
+    title_plural: 'Fechaduras'
+
+  alarm:
+    title: 'Alarme'
+
+  weather:
+    title: 'Clima'
+
+  vibration:
+    title: 'Vibração'
+    title_plural: "Sensores de vibração"

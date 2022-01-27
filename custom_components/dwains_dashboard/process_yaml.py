@@ -42,6 +42,7 @@ LANGUAGES = {
     "Swedish": "se",
     "Dutch": "nl",
     "Slovak": "sk",
+    "Portuguese": "pt",
     "Polish": "pl"
 }
 

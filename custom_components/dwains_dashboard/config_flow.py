@@ -20,6 +20,7 @@ LANGUAGES = [
     "Swedish",
     "Dutch",
     "Slovak",
+    "Portuguese",
     "Polish"
 ]
 SIDEPANEL_TITLE = "sidepanel_title"
