@@ -19,6 +19,8 @@ LANGUAGES = [
     "Romanian",
     "Swedish",
     "Dutch",
+    "Czech",
+    "Slovak",
     "Slovak",
     "Portuguese",
     "Polish"

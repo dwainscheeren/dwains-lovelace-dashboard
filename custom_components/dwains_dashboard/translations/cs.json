@@ -1,0 +1,38 @@
+{
+  "title": "Dwains Dashboard",
+  "config": {
+    "step": {
+      "init": {
+        "title": "Nastavení Dwains Dashboard",
+        "description": "",
+        "data": {
+          "language": "Jazyk",
+          "sidepanel_icon": "Ikona bočního panelu",
+          "sidepanel_title": "Název bočního panelu",
+          "theme": "Motiv",
+          "primary_color": "Hlavní barva motivu",
+          "customize_path": "Cesta ke customize.yaml, zadejte jako: customfolder/mycustomize.yaml"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Povolena je pouze jedna konfigurace Dwains Dashboard."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Nastavení Dwains Dashboard",
+        "description": "",
+        "data": {
+          "language": "Jazyk",
+          "sidepanel_icon": "Ikona bočního panelu",
+          "sidepanel_title": "Název bočního panelu",
+          "theme": "Motiv",
+          "primary_color": "Hlavní barva motivu",
+          "customize_path": "Cesta ke customize.yaml, zadejte jako: customfolder/mycustomize.yaml"
+        }
+      }
+    }
+  }
+}
