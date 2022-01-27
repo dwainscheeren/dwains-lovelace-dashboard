@@ -7,7 +7,7 @@ pl:
     good_evening: 'Dobry wieczór'
 
   house_information:
-    title: 'Dom'
+    title: 'Informacje o domu'
     favorites: 'Ulubione'
     activity: 'Aktywność (drzwi, okna, ruch)'
 
@@ -40,7 +40,7 @@ pl:
     heat_cool: 'Ogrzewanie/Chłodzenie'
     dry: 'Osuszanie'
     fan_only: 'Tylko wentylacja'
-    this_room: 'To pomieszczenie'
+    this_room: 'Ten obszar'
     temperature: 'Temperatura'
     humidity: 'Wilgotność'
 
@@ -67,7 +67,7 @@ pl:
     title: 'Strona główna'
 
   rooms:
-    title: 'Pomieszczenia'
+    title: 'Obszary'
 
   all_lights:
     title: 'Wszystkie światła'
@@ -84,16 +84,16 @@ pl:
     title: 'Więcej'
     house_info: 'Informacje o domu'
     house_data: 
-      title: 'Informacje o domu'
+      title: 'Dane domu'
       all_sensors: 'Wszystkie czujniki'
       all_batteries: 'Wszystkie baterie'
       config: 'Konfiguracja'
       developer_tools: 'Narzędzia deweloperskie'
     settings:
       title: 'Ustawienia motywu'
-      reload_configuration: 'Wczytaj ponownie konfigurację motywu'
+      reload_configuration: 'Wczytaj ponownie konf. motywu'
       theme_docs: 'Dokumentacja motywów'
-      support_paypal: 'Wsparcie/dotacje za pomocą PayPal'
+      support_paypal: 'Wsparcie/dotacje przez PayPal'
       buy_coffee: 'Kup mi kawę'
       by: 'Autorstwa'
       version: 'Wersja'
