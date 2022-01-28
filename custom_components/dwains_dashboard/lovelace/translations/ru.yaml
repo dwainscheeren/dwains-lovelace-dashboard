@@ -1,0 +1,117 @@
+# Translation by Dwains
+
+ru:
+  greetings:
+    good_morning: 'Доброе утро'
+    good_afternoon: 'Добрый день'
+    good_evening: 'Добрый вечер'
+
+  house_information:
+    title: 'Дом'
+    favorites: 'Избранное'
+    activity: 'События (двери, окна, движение)'
+
+  motion:
+    title: 'Движение'
+    title_plural: 'Движений'
+
+  light:
+    title_plural: 'Освещение'
+
+  door:
+    title: 'Дверь'
+    title_plural: 'Двери'
+
+  window:
+    title: 'Окно'
+    title_plural: 'Окна'
+
+  climate:
+    title: 'Температура'
+    title_plural: 'Температура'
+    inside: 'Внутри'
+    outside: 'Снаружи'
+    idle: 'Спящий'
+    heating: 'Обогрев до'
+    off_text: 'Выкл.'
+    auto: 'Авто'
+    heat: 'Обогрев'
+    cool: 'Охлаждение'
+    heat_cool: 'Обогр./Охл.'
+    dry: 'Осушение'
+    fan_only: 'Вентилятор'
+    this_room: 'Эта комната'
+    temperature: 'Температура'
+    humidity: 'Влажность'
+
+  cover:
+    title_plural: 'Крышка'
+
+  device:
+    title_plural: 'Устройства'
+
+  safety:
+    title_plural: 'Безопасность'
+
+  media_player:
+    title_plural: 'Медиа'
+
+  vacuum:
+    title: 'Пылесос'
+    title_plural: 'Пылесосы'
+
+  plant:
+    title_plural: 'Растения'
+
+  home:
+    title: 'Главная'
+
+  rooms:
+    title: 'Комнаты'
+
+  all_lights:
+    title: 'Весь свет'
+
+  scenes:
+    title: 'Сцены'
+    not_defined: 'Сцены не настроены'
+
+  cameras:
+    title: 'Камеры'
+    not_defined: 'Камеры не настроены'
+
+  more_page:
+    title: 'Еще'
+    house_info: 'О доме'
+    house_data: 
+      title: 'Дом'
+      all_sensors: 'Все сенсоры'
+      all_batteries: 'Заряд батарей'
+      config: 'Настройка'
+      developer_tools: 'Панель разработчика'
+    settings:
+      title: 'Настройки темы'
+      reload_configuration: 'Перезагрузить настройки'
+      theme_docs: 'Документация'
+      support_paypal: 'Донат через PayPal'
+      buy_coffee: 'Купить мне кофе'
+      by: 'By'
+      version: 'Версия'
+      update_available: 'Доступно обновление темы!'
+    more_page_addons: 'Аддоны'
+
+  more_entities:
+    title: 'Еще сущности'
+
+  lock:
+    title_plural: 'Замки'
+
+  alarm:
+    title: 'Сигнализация'
+
+  weather:
+    title: 'Погода'
+
+  vibration:
+    title: 'Вибрация'
+    title_plural: "Сенсоры вибрации"
