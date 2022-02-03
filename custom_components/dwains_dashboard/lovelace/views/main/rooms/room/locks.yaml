@@ -14,7 +14,7 @@
         #Header
         - type: custom:dwains-header-card
           title: {{ _dd_trans.lock.title_plural }}
-          subtitle: {{ room["name"] }}
+          subtitle: {{ room["title"] }}
           navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
         {% if room["lock"].split('.')[0] == 'lock' %}

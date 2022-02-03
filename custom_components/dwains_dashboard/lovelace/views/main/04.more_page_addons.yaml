@@ -3,7 +3,7 @@
 #More_page addon view - dwains dashboard with custom pages with more_page configuration 
 {% if _dd_config.more_page and _dd_config.more_page["addons"]%}
 {% for addon in _dd_config.more_page["addons"] %}
-- title: {{ addon["name"] }}
+- title: {{ addon["title"] }}
   path: more_page_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
   type: custom:dwains-dashboard
   icon: {{ addon["icon"] }}
@@ -18,7 +18,7 @@
         {% if addon["show_header"] != 'false' %}
         #Header
         - type: custom:dwains-header-card
-          title:  {{ addon["name"] }}
+          title:  {{ addon["title"] }}
           subtitle: {{ _dd_trans.more_page.title }}
           navigation_path: more_page
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
@@ -29,7 +29,6 @@
             padding: 11px;
           cards:
             - type: vertical-stack
-              item_classes: "col-xs-12"
               cards:
                 !include 
                   - ../../../../../{{ addon["path"] }}

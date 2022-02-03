@@ -129,7 +129,7 @@
                 #Heading
                 - type: custom:button-card
                   entity: {{ room["light"] }}
-                  name: {{ room["name"] }}
+                  name: {{ room["title"] }}
                   template: partials_heading
                   tap_action:
                     action: more-info
