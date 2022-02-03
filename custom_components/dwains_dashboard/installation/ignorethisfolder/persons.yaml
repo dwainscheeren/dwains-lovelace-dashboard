@@ -1,7 +1,8 @@
 # https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/persons.html
 
 # persons: 
-#   - name: Dwain
+#   - name: dwain # Has to use ascii letters only
+#     title: "Dwain" # May contain non-ascii letters
 #     track: person.dwain
 #     more_entities:
 #       columns: 1 #optional
