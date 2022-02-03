@@ -4,7 +4,7 @@
 #First make a room page and then a page for each existing domain in that room
 
 {% for room in _dd_config.rooms %}
-- title: {{ room["title"] }}
+- title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
   path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}
   type: custom:dwains-dashboard
   visible: false
@@ -32,7 +32,7 @@
         {% else %}
         #Header
         - type: custom:dwains-header-card
-          title: {{ room["title"] }}
+          title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
           subtitle: {{ _dd_trans.home.title }}
           navigation_path: home
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}

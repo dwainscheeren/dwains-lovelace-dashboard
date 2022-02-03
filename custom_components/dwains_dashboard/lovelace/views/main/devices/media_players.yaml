@@ -25,7 +25,7 @@
               cards:
                 #Heading
                 - type: custom:dwains-heading-card
-                  title: {{ room["name"] }}
+                  title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
                 {% if room["media_player"].split('.')[0] != 'group' %}
                 # this room has only 1 media player
                 - type: horizontal-stack

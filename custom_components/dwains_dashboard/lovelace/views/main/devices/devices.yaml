@@ -26,7 +26,7 @@
               cards:
                 #Heading
                 - type: custom:dwains-heading-card
-                  title: {{ room["name"] }}
+                  title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
                 {% if room["device"].split('.')[0] != 'group' %}
                 # this room has only 1 device
                 - type: horizontal-stack

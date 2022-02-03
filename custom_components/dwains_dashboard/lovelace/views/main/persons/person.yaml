@@ -30,7 +30,7 @@
         {% else %}
         #Header
         - type: custom:dwains-header-card
-          title:  {{ person["name"] }}
+          title:  {% if person["title"] is defined and person["title"] | length %} {{ person["title"] }} {% else %} {{ person["name"] }} {% endif %} 
           subtitle: {{ _dd_trans.home.title }}
           navigation_path: home  
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}

@@ -24,7 +24,7 @@
               cards:
                 #Heading
                 - type: custom:dwains-heading-card
-                  title: {{ room["title"] }}
+                  title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
                 {% if room["cover"].split('.')[0] == 'cover' %}
                 # this room has only 1 cover
                 - type: custom:dwains-cover-card

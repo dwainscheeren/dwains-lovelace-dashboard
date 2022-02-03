@@ -18,7 +18,7 @@
         {% if addon["show_header"] != 'false' %}
         #Header
         - type: custom:dwains-header-card
-          title:  {{ addon["title"] }}
+          title:  {% if addon["title"] %} {{ addon["title"] }} {% else %} {{ addon["name"] }} {% endif %} 
           subtitle: {{ _dd_trans.more_page.title }}
           navigation_path: more_page
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}

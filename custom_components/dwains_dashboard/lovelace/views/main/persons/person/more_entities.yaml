@@ -4,7 +4,7 @@
 {% if _dd_config.persons %}
 {% for person in _dd_config.persons %}
 {% if person["more_entities"] %}
-- title: {{ person["name"] }} {{ _dd_trans.more_entities.title }}
+- title: {% if person["title"] is defined and person["title"] | length %} {{ person["title"] }} {% else %} {{ person["name"] }} {% endif %} {{ _dd_trans.more_entities.title }}
   path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
   type: custom:dwains-dashboard
   visible: false
@@ -14,7 +14,7 @@
         #Header
         - type: custom:dwains-header-card
           title:  {{ _dd_trans.more_entities.title }}
-          subtitle: {{ person["name"] }}
+          subtitle: {% if person["title"] is defined and person["title"] | length %} {{ person["title"] }} {% else %} {{ person["name"] }} {% endif %} 
           navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
         #Start for person more_entities content page

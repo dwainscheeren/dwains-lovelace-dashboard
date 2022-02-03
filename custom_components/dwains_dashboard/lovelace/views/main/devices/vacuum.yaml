@@ -26,7 +26,7 @@
               cards:
                 #Heading
                 - type: custom:dwains-heading-card
-                  title: {{ room["name"] }}
+                  title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
                 {% if room["vacuum"]["entity"].split('.')[0] != 'group' %}
                 # this room has only 1 vacuum
                 - type: horizontal-stack
