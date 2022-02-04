@@ -67,7 +67,7 @@
               cards:
                 !include 
                   - ../../../../../../{{ addon["path"] }}
-                  - name: {{ addon["name"] }}
+                  - name: {% if addon["title"] %} {{ addon["title"] }} {% else %} {{ addon["name"] }} {% endif %} 
                     {% if addon["data"] %}
                     data: '{{ addon["data"]|tojson }}'
                     {% endif %}
