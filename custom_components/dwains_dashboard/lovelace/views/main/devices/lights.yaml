@@ -126,7 +126,7 @@
                 #Heading
                 - type: custom:button-card
                   entity: {{ room["light"] }}
-                  name: {{ room["name"] }}
+                  name: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
                   template: partials_heading
                   tap_action:
                     action: more-info

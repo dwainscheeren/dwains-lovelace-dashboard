@@ -74,7 +74,7 @@
             - type: custom:button-card
               template: more_page_main
               icon: {{ more_page["icon"]|default('mdi:puzzle') }}
-              name: {{ more_page["name"] }}
+              name: {% if more_page["title"] %} {{ more_page["title"] }} {% else %} {{ more_page["name"] }} {% endif %}
               tap_action: 
                 action: navigate
                 navigation_path: more_page_addon_{{ more_page["name"]|lower|replace("'", "_")|replace(" ", "_") }}

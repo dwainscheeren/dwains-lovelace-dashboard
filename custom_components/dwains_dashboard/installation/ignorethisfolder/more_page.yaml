@@ -2,7 +2,8 @@
 
 # more_page:
 #   addons:
-#     - name: Hello more page
+#     - name: hello # Has to use ascii letters only
+#       title: "Hello more page" # May contain non-ascii letters
 #       icon: mdi:chart-bar
 #       path: 'dwains-dashboard/addons/more_page/hello-more-page/page.yaml'
 #       data:

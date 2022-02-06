@@ -1,7 +1,8 @@
 # https://dwainscheeren.github.io/dwains-lovelace-dashboard/configuration/rooms.html
 
 # rooms:
-#   - name: Hallway
+#   - name: hallway # Has to use ascii letters only
+#     title: "Hallway" # May contain non-ascii letters
 #     icon: mdi:key
 #     light: light.hallway
 #     temperature: sensor.hallway_temperature
@@ -34,7 +35,8 @@
 #           some_data: 'This is some data parsed.'
 #           some_other_data: 'and some other data.'
 #           entity: vacuum.roborock
-#   - name: Bedroom
+#   - name: bedroom
+#     title: "Bedroom"
 #     icon: fal:bed
 #     more_entities:
 #       columns: 2 #optional

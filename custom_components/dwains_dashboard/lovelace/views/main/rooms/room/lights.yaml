@@ -14,7 +14,7 @@
         #Header
         - type: custom:dwains-header-card
           title:  {{ _dd_trans.light.title_plural }}
-          subtitle: {{ room["name"] }}
+          subtitle: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
           navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
         #Start for room lights content page

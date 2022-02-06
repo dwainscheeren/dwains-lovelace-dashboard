@@ -25,7 +25,7 @@
               cards:
                 #Heading
                 - type: custom:dwains-heading-card
-                  title: {{ room["name"] }}
+                  title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
                 {% if room["lock"].split('.')[0] == 'lock' %}
                 # this room has only 1 lock
                 - type: horizontal-stack

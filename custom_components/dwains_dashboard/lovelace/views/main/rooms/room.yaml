@@ -4,7 +4,7 @@
 #First make a room page and then a page for each existing domain in that room
 
 {% for room in _dd_config.rooms %}
-- title: {{ room["name"] }}
+- title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
   path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}
   type: custom:dwains-dashboard
   visible: false
@@ -14,7 +14,7 @@
         {% if room["more_entities"] and room["more_entities"]["entities"] %}
         #Header with grid
         - type: custom:dwains-header-card
-          title: {{ room["name"] }}
+          title: {{ room["title"] }}
           subtitle: {{ _dd_trans.home.title }}
           navigation_path: home  
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
@@ -32,7 +32,7 @@
         {% else %}
         #Header
         - type: custom:dwains-header-card
-          title: {{ room["name"] }}
+          title: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
           subtitle: {{ _dd_trans.home.title }}
           navigation_path: home
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
@@ -822,7 +822,7 @@
             {% if addon["button_path"] %}
             - !include 
                 - ../../../../../../{{ addon["button_path"] }}
-                - name: {{ addon["name"] }}
+                - name: {% if addon["title"] %} {{ addon["title"] }} {% else %} {{ addon["name"] }} {% endif %} 
                   icon: {{ addon["icon"] }}
                   navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
                   room_name: {{ room["name"] }}
@@ -833,7 +833,7 @@
             - type: custom:button-card
               template: rooms_child
               icon: {{ addon["icon"]|default('mdi:puzzle') }}
-              name: {{ addon["name"] }}
+              name: {% if addon["title"] %} {{ addon["title"] }} {% else %} {{ addon["name"] }} {% endif %} 
               tap_action: 
                 action: navigate
                 navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}

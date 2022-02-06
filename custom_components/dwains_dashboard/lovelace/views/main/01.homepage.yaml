@@ -133,7 +133,7 @@
                 - type: custom:button-card
                   template: header_states_person
                   entity: {{ person["track"] }}
-                  name: {{ person["name"] }}
+                  name: {% if person["title"] %} {{ person["title"] }} {% else %} {{ person["name"] }} {% endif %} 
                   tap_action: 
                     action: navigate
                     navigation_path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
@@ -252,7 +252,7 @@
                       {% if room["light"] %}
                       entity: {{ room["light"] }}
                       {% endif %}
-                      name: {{ room["name"] }}
+                      name: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
                       {% if room["show_name"] == 'false' %}
                       show_name: false
                       {% endif %}

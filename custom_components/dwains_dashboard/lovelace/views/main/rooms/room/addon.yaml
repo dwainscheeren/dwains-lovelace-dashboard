@@ -5,7 +5,7 @@
 {% for room in _dd_config.rooms %}
 {% if room["addons"] %}
 {% for addon in room["addons"] %}
-- title: {{ addon["name"] }}
+- title: {{ addon["title"] }}
   path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_addon_{{ addon["name"]|lower|replace("'", "_")|replace(" ", "_") }}
   type: custom:dwains-dashboard
   visible: false
@@ -15,8 +15,8 @@
         {% if addon["show_header"] != 'false' %}
         #Header
         - type: custom:dwains-header-card
-          title: {{ addon["name"] }}
-          subtitle: {{ room["name"] }}
+          title: {% if addon["title"] %} {{ addon["title"] }} {% else %} {{ addon["name"] }} {% endif %} 
+          subtitle: {% if room["title"] %} {{ room["title"] }} {% else %} {{ room["name"] }} {% endif %} 
           navigation_path: room_{{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
           icon: {{ _dd_icons.menu_back|default('mdi:chevron-left') }}
         {% endif %}
@@ -29,7 +29,7 @@
               cards:
                 !include 
                   - ../../../../../../../{{ addon["path"] }}
-                  - name: {{ addon["name"] }}
+                  - name: {% if addon["title"] %} {{ addon["title"] }} {% else %} {{ addon["name"] }} {% endif %} 
                     {% if addon["data"] %}
                     data: '{{ addon["data"]|tojson }}'
                     {% endif %}
