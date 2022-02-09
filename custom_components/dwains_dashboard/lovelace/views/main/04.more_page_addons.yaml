@@ -25,6 +25,7 @@
         {% endif %}
         #Start for a custom more_page page
         - type: custom:dwains-flexbox-card
+          item_classes: "col-xs-12"
           css: |
             padding: 11px;
           cards:
