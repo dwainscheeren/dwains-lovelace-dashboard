@@ -3,7 +3,7 @@
 #Loop thought all the persons in the person section
 {% if _dd_config.persons %}
 {% for person in _dd_config.persons %}
-- title: {{ person["name"] }}
+- title: {% if person["title"] %} {{ person["title"] }} {% else %} {{ person["name"] }} {% endif %}
   path: {{ person["name"]|lower|replace("'", "_")|replace(" ", "_")  }}
   type: custom:dwains-dashboard
   visible: false
