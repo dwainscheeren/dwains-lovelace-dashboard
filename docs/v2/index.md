@@ -5,8 +5,6 @@
   <p>
   I spend a lot of free time into this project. If you appreciate what I have made you can <a href="https://www.buymeacoffee.com/FAkYvrx" target="_blank">Buy me a coffee/beer</a>, <a href="https://www.paypal.me/dwainscheeren" target="_blank">donate to my PayPal account</a> or <a href="https://github.com/sponsors/dwainscheeren">sponsor me on Github</a>.
   </p>
-  <h3><a href="v2/index.md">Dwains Dashboard 2.0 documentation</a></h3>
-  <h3>Dwains Dashboard 3.0 documentation</h3>
   </div>
   <div class="column" style="text-align: right;">
    <img src="images/preview1.jpg">
