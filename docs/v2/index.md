@@ -7,9 +7,11 @@
   </p>
   </div>
   <div class="column" style="text-align: right;">
-   <img src="images/preview1.jpg">
+   <img src="../images/preview1.jpg">
   </div>
 </div>
+
+# Dwains Dashboard v2 documentation
 
 ### Getting started
 * [Installation](getting-started/installation.md)
