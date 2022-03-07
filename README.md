@@ -2,7 +2,7 @@
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
-[**How to install Dwains Dashboard**](https://dwainscheeren.github.io/dwains-lovelace-dashboard/getting-started/installation.html)
+[**How to install Dwains Dashboard**](https://dwainscheeren.github.io/dwains-lovelace-dashboard)
 
 <a href="https://discord.gg/7yt64uX">
     <img src="https://img.shields.io/discord/688401603811999885" />
