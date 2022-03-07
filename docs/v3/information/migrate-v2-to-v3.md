@@ -2,4 +2,36 @@
 
 # Migrate from existing Dwains Dashboard v2 installation to v3
 
-Because Dwains Dashboard v3 is a completely new dashboard, writen from ground up and not based on v2 it is unfortunately not possible to just upgrade from v2 to v3.
+Please take some time to read all the steps. 
+
+**If you experience any problems during the upgrade process of v2 to v3 then please join my Discord server, you get live personal support. [Join my Discord Server here, it's 100% free!](https://discord.gg/7yt64uX)**
+
+Because Dwains Dashboard v3 is a completely new dashboard, writen from ground up and not based on v2, it is unfortunately not possible to just upgrade from v2 to v3.
+
+The best way to upgrade from v2 to v3 is to install v3 as a fresh dashboard and then move back the custom addons back into 3.0. So please take some time when you are starting the upgrading process. *Note that addons are no longer a thing in version 3 and you need to manually convert them to a yaml card.*
+
+## Step 1 
+Rename the folder `dwains-dashboard` in your main HA folder (so nothing in `custom_components`!) to `dwains-dashboard-v2`.
+
+## Step 2
+Remove Dwains Dashboard in your HA integrations list.
+
+## Step 3
+Remove the `dwains_dashboard` folder in `custom_components`.
+
+## Step 4
+Reboot HA.
+
+## Step 5 
+Install Dwains Dashboard v3. [Check here](installation.md) how to do that. After installation continue here with step 6.
+
+## Step 6
+Re-install the more pages. The more pages are a little bit different in v3. They no longer support data input and they now load automatic if they are placed in the right folder. Also the first card must be a non-array card.
+To automatic load a more page in v3 they must be in the folder `dwains-dashboard/configs/more_pages` so for example: `dwains-dashboard/configs/more_pages/_NAME-OF-MORE-PAGE-HERE_/page.yaml`.
+
+## Step 7
+Re-install the room addons. Because v3 no longer uses room but rather HA areas the room addons are no longer a thing. But in v3 you now can add a custom card to the top or bottom of an area view. Also you can now replace any HA entity card with a own lovelace card of your own choise. So unfortunally you need to manually re-create all these cards in v3.
+
+## Step 8
+Remove the `dwains-dashboard-v2` folder in your main HA configuration.
+You now have succesfully installed v3. :) Enjoy!
