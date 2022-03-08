@@ -25,7 +25,7 @@ Reboot HA.
 ## Step 5 
 Install Dwains Dashboard v3. [Check here](installation.md) how to do that. After installation continue here with step 6.
 
-## Step 6
+## Step 6 - Convert v2 more pages to v3 more page
 Re-install the more pages. The more pages are a little bit different in v3. They no longer support data input and they now load automatic if they are placed in the right folder. Also the first card must be a non-array card.
 To automatic load a more page in v3 they must be in the folder `dwains-dashboard/configs/more_pages` so for example: `dwains-dashboard/configs/more_pages/_NAME-OF-MORE-PAGE-HERE_/page.yaml`.
 
@@ -69,7 +69,7 @@ You need to convert it like this to get it working in v3:
 Repeat this for all your custom more pages.
 
 
-## Step 7
+## Step 7 - Convert custom v2 room addons to custom yaml cards in v3
 Re-installing the room addons. Because v3 no longer uses room but rather HA areas the room addons are no longer a thing. But in v3 you now can add a custom card to the top or bottom of an area view. Also you can now replace any HA entity card with a own lovelace card of your own choise. So unfortunally you need to manually re-create all these cards in v3. 
 
 For example: In DD 2.0 you got a custom room addon:
