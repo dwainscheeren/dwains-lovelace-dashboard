@@ -27,14 +27,6 @@
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
       {% endif %}
-      {% if site.show_downloads %}
-        {% unless site.buttons.zip_hide %}
-          <a href="{{ site.buttons.zip_url | default: site.github.zip_url }}" class="btn">{{ site.buttons.zip_title | default: "Download .zip" }}</a>
-        {% endunless %}
-        {% unless site.buttons.tar_hide %}
-          <a href="{{ site.buttons.tar_url | default: site.github.tar_url }}" class="btn">{{ site.buttons.tar_title | default: "Download .tar.gz" }}</a>
-        {% endunless %}
-      {% endif %}
     </header>
 
     <main id="content" class="main-content" role="main">
