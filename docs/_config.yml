@@ -3,7 +3,11 @@ show_downloads: true
 title: Dwains Lovelace Dashboard
 google_analytics: UA-105338324-4
 buttons:
-  zip_url: https://github.com/dwainscheeren/dwains-lovelace-dashboard/releases
-  zip_title: Download latest version
-  zip_hide: false
-  tar_hide: true
+  - zip_url: https://dwainscheeren.github.io/dwains-lovelace-dashboard/v2/index.html
+    zip_title: V2 documentation
+    zip_hide: false
+    tar_hide: true
+  - zip_url: https://dwainscheeren.github.io/dwains-lovelace-dashboard/v3/index.html
+    zip_title: V3 documentation
+    zip_hide: false
+    tar_hide: true

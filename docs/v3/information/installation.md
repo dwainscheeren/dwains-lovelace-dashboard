@@ -4,7 +4,7 @@
 
 **If you experience any problems during the installation of Dwains Dashboard then please join my Discord server, you get live personal support. [Join my Discord Server here, it's 100% free!](https://discord.gg/7yt64uX)**
 
-Dwains Dashboard v3 relays on HA areas. Please make sure you have put all your HA devices in an area and the right area before continuing installation Dwains Dashboard.
+Dwains Dashboard v3 relies on HA areas. Please make sure you have all your HA devices in an area and the right area before continuing installation Dwains Dashboard.
 
 You can install Dwains Dashboar manual or through HACS, installation through HACS is the recommended way. Both ways are explained below.
 
