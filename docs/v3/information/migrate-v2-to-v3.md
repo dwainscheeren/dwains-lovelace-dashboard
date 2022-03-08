@@ -98,7 +98,7 @@ For example: In DD 2.0 you got a custom room addon:
 ```
 
 You need to go to your Garage area in DD 3.0:
-- Enable edit mode inside the Garage area
+- Enable edit mode inside the Garage area (Top right three dots icon)
 - Click on "Add card"
 - Select "Lovelace Card"
 - Scroll to the bottom and select "Manual Yaml"

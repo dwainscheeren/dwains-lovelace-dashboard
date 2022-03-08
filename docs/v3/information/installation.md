@@ -59,7 +59,7 @@ Initialize the download by clicking on the "Source code (zip)" link at the botto
 1. Unzip the file you just downloaded.
 2. Inside this folder you will see a folder called `custom_components` copy this folder.
 3. Go to the main folder of your Home Assistant installation. This is the folder where you config is. (Hint: its the folder where for example the files `ui-lovelace.yaml` and `configuration.yaml` are located).
-4. Paste the `custom_components` to the main folder of your Home Assistant installation.
+4. Paste the `custom_components` to the main folder of your Home Assistant installation. (Not this folder already may exist, otherwise create it)
 
 You will end up with having `/config/custom_components/dwains_dashboard` or if you are running a venv installation it would look like `/home/homeassistant/.homeassistant/custom_components/dwains_dashboard`.
 
