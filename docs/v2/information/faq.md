@@ -16,7 +16,7 @@ Note: You can safely install the dashboard through HACS even if you already have
 To add multiple entities inside a room you need to create an Home Assistant group.
 So for example if you have 5 lights in your living room, you will need to create a group with these 5 lights inside. Then you can use that group inside the room.
 
-<img src="../assets/roomgroups.png">
+<img src="../../assets/roomgroups.png">
 
 **Don't confuse HA group with HA light groups, those 2 are different!**
 - Light groups are meant for multiple lights in a single fixture, this gives a new light entity. 

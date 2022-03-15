@@ -33,7 +33,7 @@ Download the [latest release from the release page](https://github.com/dwainsche
 
 Initialize the download by clicking on the "Source code (zip)" link at the bottom of the page.
 
-![Github](../images/getting-started/download-latest-release.png)
+![Github](../../images/getting-started/download-latest-release.png)
 
 ## Step 2 - Extract the content
 
