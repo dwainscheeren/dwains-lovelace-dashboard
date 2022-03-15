@@ -8,6 +8,7 @@ Dwains Dashboard v3 relies on HA areas. Please make sure you have all your HA de
 
 You can install Dwains Dashboar manual or through HACS, installation through HACS is the recommended way. Both ways are explained below.
 
+
 # Install Dwains Dashboard through HACS
 
 ## Step 1 - Download Dwains Dashboard through HACS
@@ -35,6 +36,10 @@ There will be a new icon (a D icon) in your left sidebar.
 ## Step 4 - Access your new Dwains Dashboard
 
 Click in your left sidebar on the new icon D, to access Dwains Dashboard. If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
+
+So if you got an error like this:
+<img src="../../images/card-load-error.png">
+Please clear your browser cache!!
 
 ## Step 5 - Enjoy Dwains Dashboard
 
