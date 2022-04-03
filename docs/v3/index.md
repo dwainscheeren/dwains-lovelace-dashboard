@@ -11,6 +11,8 @@
   </div>
 </div>
 
+<img src="../images/previewv3mobile.png">
+
 Note: This documentation is only for version 3.*!
 
 ### Getting started
