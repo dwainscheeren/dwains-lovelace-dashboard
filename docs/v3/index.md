@@ -7,7 +7,7 @@
   </p>
   </div>
   <div class="column" style="text-align: right;">
-   <img src="../images/preview1.jpg">
+   <img src="../images/previewv3.png">
   </div>
 </div>
 
