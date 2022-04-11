@@ -18,6 +18,7 @@ Note: This documentation is only for version 3.*!
 ### Getting started
 * [How to install Dwains Dashboard](information/installation.md)
 * [Migrate from existing DD 2.* to 3.0](information/migrate-v2-to-v3.md)
+* [How to use Dwains Dashboard v3](information/configuration.md)
 
 ### Information
 * [FAQ - frequently asked question](information/faq.md)

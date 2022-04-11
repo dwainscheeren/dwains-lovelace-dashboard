@@ -6,7 +6,7 @@
 
 Dwains Dashboard v3 relies on HA areas. Please make sure you have all your HA devices in an area and the right area before continuing installation Dwains Dashboard.
 
-You can install Dwains Dashboar manual or through HACS, installation through HACS is the recommended way. Both ways are explained below.
+You can install Dwains Dashboard manual or through HACS, installation through HACS is the recommended way. Both ways are explained below.
 
 
 # Install Dwains Dashboard through HACS
