@@ -1,0 +1,38 @@
+{
+  "title": "Dwains Dashboard",
+  "config": {
+    "step": {
+      "init": {
+        "title": "Dwains Dashboard Inställningar",
+        "description": "",
+        "data": {
+          "language": "Språk",
+          "sidepanel_icon": "Sidopanels Ikon",
+          "sidepanel_title": "Sidopanels Titel",
+          "theme": "Tema",
+          "primary_color": "Temats Primära Färg",
+          "customize_path": "Sökväg till customize.yaml, t.ex. config/customize.yaml"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Bara en konfiguration av Dwains Dashboard är tillåten."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Dwains Dashboard Inställningar",
+        "description": "",
+        "data": {
+          "language": "Språk",
+          "sidepanel_icon": "Sidopanels Ikon",
+          "sidepanel_title": "Sidopanels Titel",
+          "theme": "Tema",
+          "primary_color": "Temats Primära Färg",
+          "customize_path": "Sökväg till customize.yaml, t.ex. config/customize.yaml"
+        }
+      }
+    }
+  }
+}
