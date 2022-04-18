@@ -46,6 +46,7 @@ Please clear your browser cache!!
 That's it! Dwains Dashboard should now be installed.
 To learn more about how to configure individual parts in Dwains Dashboard [go back to the main documentation page](../index.md) and check out the pages below **Information**
 
+[How to use Dwains Dashboard V3](information/how-to.md)
 
 ---
 
@@ -94,3 +95,5 @@ Please clear your browser cache!!
 
 That's it! Dwains Dashboard should now be installed.
 To learn more about how to configure individual parts in Dwains Dashboard [go back to the main documentation page](../index.md) and check out the pages below **Information**
+
+[How to use Dwains Dashboard V3](information/how-to.md)

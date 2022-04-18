@@ -51,7 +51,7 @@ card:
 | `description`       | string  | Optional        | any description                           |  adds a description to blueprint overview                                  |
 | `input`             | string  | Optional        | `entity-picker` \| `text-field` \| `icon-picker`  |  define input fields                                                       |
 | `name`              | string  | Optional        | any name                                  |  Choose name of blueprint                                                  |
-| `type`              | string  | Optional        | card/page                                 |  defines type of blueprint                                                 |
+| `type`              | string  | Optional        | card, page or replace-card                                 |  defines type of blueprint                                                 |
 | `version`           | string  | Optional        | any version number                        |  defines version of blueprints in blueprint overview                       |
 
 ## Special Features
@@ -89,6 +89,8 @@ You can easily change the entity card by using a replace card blueprint.
 
 The only thing you need to add/change in your blueprint is the entity. The entity has to be $replace_with_input_entity$
 You don't have to specifiy the entity while using the blueprint.
+
+Also don't forget to set the type to replace-card `type: replace-card` for this.
 
 ````yaml
 card:
