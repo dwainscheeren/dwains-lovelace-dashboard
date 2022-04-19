@@ -10,3 +10,7 @@ Clearing the cache on your android device can be done by navigating to the insta
 
 ## I can't find Dwains Dashboard in the Integrations after I installed it
 Clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
+
+
+## I dont see certain entities in my Dashboard?
+Make sure to put the entity into an area. The Dashboard builts itself from the information it gets from Home Assistant. So you need to put every entitity into an area to make it appear in DD3. This can be done in HA Configuration > Devices & Services. Here search for an integration, device or entity.
