@@ -172,10 +172,11 @@ Hiding/Disabling works also from here because these states work for whole DD3. Y
 ## Can i change the entity cards/popup cards for a whole domain?
 
 Yes you can. Go to the device view and go into Edit Mode. Click the three dots of the domain you want to change.
-<br> ![image](https://user-images.githubusercontent.com/64064679/163953841-3e391ece-16f1-437d-a3d8-997437a056cf.png)
+<br>![image](https://user-images.githubusercontent.com/64064679/163954165-2c55ac6e-9be7-4f6a-896e-9f885199e9d1.png)
 
 Here you can choose between the entity cards or popup cards for a whole domain.
-<br>![image](https://user-images.githubusercontent.com/64064679/163954165-2c55ac6e-9be7-4f6a-896e-9f885199e9d1.png)
+<br>![image](https://user-images.githubusercontent.com/64064679/163954512-2ce66cdb-b6f9-4e14-85c2-d81162a0a1c2.png)
+
 
 You can choose between cards of the "replace card" type.
 <br>![image](https://user-images.githubusercontent.com/64064679/163954395-49678c6e-8202-4181-86bb-5e9edae52c84.png)
