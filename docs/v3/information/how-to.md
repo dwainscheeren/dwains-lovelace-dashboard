@@ -181,7 +181,7 @@ Here you can choose between the entity cards or popup cards for a whole domain.
 You can choose between cards of the "replace card" type.
 <br>![image](https://user-images.githubusercontent.com/64064679/163954395-49678c6e-8202-4181-86bb-5e9edae52c84.png)
 
-These will change the entity/popup for every light in DD3. 
+These will change the entity/popup for every light in DD3. But you can edit every domain you want.
 
 ## Credits
 
