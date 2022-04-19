@@ -170,11 +170,6 @@ You can also edit cards or blueprints into device views like you can do in areas
 Hiding/Disabling works also from here because these states work for whole DD3. You can unhide/enable these entities from here, too.
 
 
-## FAQ
-
-Q: i dont see certain entities.
-A: make sure to put the entity into an area
-
 
 ## Credits
 
