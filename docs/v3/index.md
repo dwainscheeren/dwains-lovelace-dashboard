@@ -21,7 +21,6 @@ Note: This documentation is only for version 3.*!
 * [How to use Dwains Dashboard v3](information/configuration.md)
 
 ### Information
-* [How to use Dwains Dashboard V3](information/how-to.md)
 * [FAQ - frequently asked question](information/faq.md)
 * [Dwains Dashboard Releases](https://github.com/dwainscheeren/dwains-lovelace-dashboard/releases)
 * [How to use Dwains Dashboard notifications](information/notifications.md)
