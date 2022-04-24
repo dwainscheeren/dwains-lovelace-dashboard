@@ -1,9 +1,6 @@
 reload:
   description: Reload dashboard configuration from Dwains dashboard
 
-installed:
-  description: Change the installed key in global config for Dwains dashboard
-
 notification_create:
   description: Show a notification in the frontend.
   fields:

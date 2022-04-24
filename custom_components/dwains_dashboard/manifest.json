@@ -3,8 +3,9 @@
   "name": "Dwains Dashboard",
   "documentation": "https://dwainscheeren.github.io/dwains-lovelace-dashboard/",
   "issue_tracker": "https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues",
-  "dependencies": ["lovelace", "http"],
+  "dependencies": ["lovelace", "http", "frontend"],
   "codeowners": ["@dwainscheeren"],
-  "requirements": ["jinja2"],
-  "config_flow": true
+  "config_flow": true,
+  "version": "3.0.0",
+  "iot_class": "calculated"
 }

@@ -1,0 +1,6 @@
+- title: Home
+  icon: mdi:home
+  path: home
+  type: custom:dwains-dashboard-layout
+  cards:
+    - type: custom:homepage-card

@@ -1,0 +1,6 @@
+- title: Devices
+  icon: mdi:format-list-bulleted-type
+  path: devices
+  type: custom:dwains-dashboard-layout
+  cards:
+    - type: custom:devices-card

@@ -7,33 +7,8 @@ from homeassistant.core import callback
 _LOGGER = logging.getLogger(__name__)
 
 # Configuration:
-LANGUAGE = "language"
-LANGUAGES = [
-    "English",
-    "Danish",
-    "German",
-    "Spanish",
-    "French",
-    "Italian",
-    "Norwegian",
-    "Romanian",
-    "Swedish",
-    "Dutch",
-]
 SIDEPANEL_TITLE = "sidepanel_title"
 SIDEPANEL_ICON = "sidepanel_icon"
-THEME = "theme"
-PRIMARY_COLOR = "primary_color"
-THEME_OPTIONS = [
-    "Auto Mode (Dark/Light)",
-    "Dark Mode",
-    "Light Mode",
-    "Auto Mode (Black/White)",
-    "Black Mode",
-    "White Mode",
-    "HA selected theme"
-]
-CUSTOMIZE_PATH = "customize_path"
 
 @config_entries.HANDLERS.register("dwains_dashboard")
 class DwainsDashboardConfigFlow(config_entries.ConfigFlow):
@@ -56,12 +31,8 @@ class DwainsDashboardEditFlow(config_entries.OptionsFlow):
             return self.async_create_entry(title="", data=user_input)
 
         schema = {
-            vol.Optional(LANGUAGE, default=self.config_entry.options.get("language", "English")): vol.In(LANGUAGES),
             vol.Optional(SIDEPANEL_TITLE, default=self.config_entry.options.get("sidepanel_title", "Dwains Dashboard")): str,
             vol.Optional(SIDEPANEL_ICON, default=self.config_entry.options.get("sidepanel_icon", "mdi:alpha-d-box")): str,
-            vol.Optional(THEME, default=self.config_entry.options.get("theme", "Auto Mode (Dark/Light)")): vol.In(THEME_OPTIONS),
-            vol.Optional(PRIMARY_COLOR, default=self.config_entry.options.get("primary_color", "#299ec2")): str,
-            vol.Optional(CUSTOMIZE_PATH, default=self.config_entry.options.get("customize_path", "customize.yaml")): str,
         }
 
         return self.async_show_form(

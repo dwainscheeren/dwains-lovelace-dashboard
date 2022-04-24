@@ -1,0 +1,7 @@
+- title: More page
+  path: more_page
+  icon: mdi:dots-horizontal
+  visible: true
+  type: custom:dwains-dashboard-layout
+  cards:
+    - type: custom:more-pages-card

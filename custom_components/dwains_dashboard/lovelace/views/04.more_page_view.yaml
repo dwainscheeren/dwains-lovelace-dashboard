@@ -1,0 +1,19 @@
+# dwains_dashboard
+
+#More_page addon view 
+{% if _dd_more_pages %}
+{% for addon in _dd_more_pages %}
+- title: {{ _dd_more_pages[addon]["name"] }}
+  path: more_page_{{ addon|lower|replace("'", "_")|replace(" ", "_") }}
+  type: custom:dwains-dashboard-layout
+  icon: {{ _dd_more_pages[addon]["icon"] }}
+  visible: true
+  cards:    
+    - type: custom:more-page-card
+      name: {{ _dd_more_pages[addon]["name"] }}
+      icon: {{ _dd_more_pages[addon]["icon"] }}
+      show_in_navbar: {{ _dd_more_pages[addon]["show_in_navbar"] }}
+      foldername: {{ addon }}
+      card: !include ../../../../{{ _dd_more_pages[addon]["path"] }}
+{% endfor %}
+{% endif %}

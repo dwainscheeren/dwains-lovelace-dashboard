@@ -17,6 +17,7 @@ custom_components/*/
 !custom_components/dwains_dashboard
 custom_components/dwains_dashboard/__pycache__/
 custom_components/dwains_dashboard/.installed
+custom_components/dwains_dashboard/js/src/
 www/
 packages/
 packages/dwains-theme/
@@ -40,3 +41,12 @@ image/
 ._configuration.yaml
 .DS_Store
 blueprints/
+._*
+.fuse_hidden002e3c9700002485
+home-assistant.log.1
+home-assistant.log.fault
+minimalist-templates/
+lovelace-minimalist.yaml
+
+custom_components/dwains_dashboard/cards/dwains-homepage-card/src.zip
+test.yaml

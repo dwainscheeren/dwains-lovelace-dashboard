@@ -2,12 +2,11 @@
 
 #Load all settings for Dwains Dashboard
 dwains_dashboard:
-  !include plugins/dwains_dashboard.yaml
+  active: true
 
-# Button Card Templates folder (https://github.com/custom-cards/button-card#Configuration-Templates)
-# These are the templates used to avoid too much duplicate code.      
-button_card_templates:
-  !include_dir_merge_named plugins/button-cards-templates
+#For people who want to use button card templates
+button_card_templates: 
+  !include_dir_merge_named ../../../dwains-dashboard/button_card_templates
 
 # Start of main lovelace theme 
 background: var(--background-image)
