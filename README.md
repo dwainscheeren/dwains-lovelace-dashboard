@@ -26,10 +26,11 @@
 
 <a href="https://dwainscheeren.github.io/dwains-lovelace-dashboard/" target="_blank">![](upload://mSfRdr76u0Bfa2c6VCmGiuxQXm5.jpeg)</a>
 
-![github-1 copy|690x484](upload://sIABrZqLxcgjguy6854OEJoXo3h.jpeg)
-![github-2|690x484](upload://8QBg5LVMeJUhrLWtanY6qmo6vfF.jpeg)
-![github-3|690x484](upload://n7yKnRVVVJJ32KSSFdTaz8tXalk.jpeg)
-![github-4|690x484](upload://rleZqNjunnzjvW1f1o7f4q2DXeo.jpeg)
+![github-1 copy](https://user-images.githubusercontent.com/3868853/164969724-bda3d9ed-f86e-4f69-9583-2302ffc28bd9.jpg)
+![github-2](https://user-images.githubusercontent.com/3868853/164969716-37242ed4-c2f1-4f59-9fc9-a277138033ff.jpg)
+![github-3](https://user-images.githubusercontent.com/3868853/164969718-4353c600-5dff-4626-af3a-1a3f1b540332.jpg)
+![github-4](https://user-images.githubusercontent.com/3868853/164969719-e40b1119-bf76-47a0-ae83-8af127fdb12f.jpg)
+
 
 
 # Dwains Lovelace Dashboard
