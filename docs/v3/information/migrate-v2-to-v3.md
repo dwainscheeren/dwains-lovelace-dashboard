@@ -58,12 +58,12 @@ You need to convert it like this to get it working in v3:
 - Create the `page.yaml` in a folder inside `dwains-dashboard/addons/more_page/` and DD v3 wil automatic load the page.
 - Convert the page.yaml to this: (first card must be a non array so `- type: vertical-stack` replaced with `type: vertical-stack` and shift all code 2 spaces to left)
 
-`dwains-dashboard/addons/more_page/examplepage/page.yaml`:
+`dwains-dashboard/addons/more_pages/examplepage/page.yaml`:
 ```yaml
-- type: vertical-stack
-  cards:
-    - type: entity
-      entity: light.test
+type: vertical-stack
+cards:
+  - type: entity
+    entity: light.test
 ```
 
 Repeat this for all your custom more pages.
