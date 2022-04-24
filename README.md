@@ -17,7 +17,7 @@
 
 <a href="https://www.paypal.me/dwainscheeren"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"></a>
 
-[**How to install Dwains Dashboard**](https://dwainscheeren.github.io/dwains-lovelace-dashboard/v3)
+[**How to install Dwains Dashboard**](https://dwainscheeren.github.io/dwains-lovelace-dashboard/v3/information/installation.html#installation)
 
 ![github-1 copy](https://user-images.githubusercontent.com/3868853/164969724-bda3d9ed-f86e-4f69-9583-2302ffc28bd9.jpg)
 ![github-2](https://user-images.githubusercontent.com/3868853/164969716-37242ed4-c2f1-4f59-9fc9-a277138033ff.jpg)
