@@ -2,16 +2,9 @@
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
-[**How to install Dwains Dashboard**](https://dwainscheeren.github.io/dwains-lovelace-dashboard)
-
 <a href="https://discord.gg/7yt64uX">
     <img src="https://img.shields.io/discord/688401603811999885" />
 </a>
-
-![Maintenance](https://img.shields.io/maintenance/yes/2022.svg?style=plasticr)
-[![HA Version](https://img.shields.io/badge/Latest%20Compatible%20Home%20Assistant-2021.12%20-darkblue)](https://github.com/home-assistant/home-assistant/releases/latest)
-[![DD Version](https://img.shields.io/badge/Current%20Dwains%20Dashboard-2.0.7%20-blue)](https://github.com/dwainscheeren/dwains-lovelace-dashboard/releases)
-
 
 ![GitHub stars](https://img.shields.io/github/stars/dwainscheeren/dwains-lovelace-dashboard?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/dwainscheeren/dwains-lovelace-dashboard?style=social)
@@ -24,7 +17,7 @@
 
 <a href="https://www.paypal.me/dwainscheeren"><img src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"></a>
 
-<a href="https://dwainscheeren.github.io/dwains-lovelace-dashboard/" target="_blank">![](upload://mSfRdr76u0Bfa2c6VCmGiuxQXm5.jpeg)</a>
+[**How to install Dwains Dashboard**](https://dwainscheeren.github.io/dwains-lovelace-dashboard/v3)
 
 ![github-1 copy](https://user-images.githubusercontent.com/3868853/164969724-bda3d9ed-f86e-4f69-9583-2302ffc28bd9.jpg)
 ![github-2](https://user-images.githubusercontent.com/3868853/164969716-37242ed4-c2f1-4f59-9fc9-a277138033ff.jpg)
@@ -42,7 +35,6 @@ I own a web development company, and I want to give something back to the Home A
 **Want to request a new feature request?**
 
 [Open an issue on GitHub](https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues/new) with the title starting with  `FR`  or  `Feature Request`.
-
 
 **Support**
 
