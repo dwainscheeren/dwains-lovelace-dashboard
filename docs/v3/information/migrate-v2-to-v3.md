@@ -55,10 +55,10 @@ more_page:
 You need to convert it like this to get it working in v3:
 
 - The config is no longer needed
-- Create the `page.yaml` in a folder inside `dwains-dashboard/addons/more_page/` and DD v3 wil automatic load the page.
+- Create the `page.yaml` in a folder inside `dwains-dashboard/configs/more_pages/` and DD v3 wil automatic load the page.
 - Convert the page.yaml to this: (first card must be a non array so `- type: vertical-stack` replaced with `type: vertical-stack` and shift all code 2 spaces to left)
 
-`dwains-dashboard/addons/more_pages/examplepage/page.yaml`:
+`dwains-dashboard/configs/more_pages/examplepage/page.yaml`:
 ```yaml
 type: vertical-stack
 cards:
