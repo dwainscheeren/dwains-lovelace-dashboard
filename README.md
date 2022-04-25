@@ -32,6 +32,10 @@ Hello, I am Dwain. I've been using Home Assistant for over two years now. At the
 
 I own a web development company, and I want to give something back to the Home Assistant community. So I decided to build this dashboard and release it to the public. The result: Dwains Lovelace Dashboard.
 
+**Install**
+
+Just search with HACS integrations, the dashboard is fully self generating. 
+
 **Want to request a new feature request?**
 
 [Open an issue on GitHub](https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues/new) with the title starting with  `FR`  or  `Feature Request`.
