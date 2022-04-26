@@ -11,7 +11,7 @@
            "sidepanel_title": "Título en el panel lateral",
            "theme": "Tema",
            "primary_color": "Color principal",
-           "customize_path": "Ruta para personalizar.yaml, ingrese la ruta de la siguiente manera: wlasnyfolder / mojecustomize.yaml"
+           "customize_path": "Ruta para personalizar.yaml, ingrese la ruta de la siguiente manera: customfolder / mycustomize.yaml"
          }
        }
      },
@@ -30,7 +30,7 @@
            "sidepanel_title": "Título en el panel lateral",
            "theme": "Tema",
            "primary_color": "Color principal",
-           "customize_path": "Ruta para personalizar.yaml, ingrese la ruta de la siguiente manera: wlasnyfolder / mojecustomize.yaml"
+           "customize_path": "Ruta para personalizar.yaml, ingrese la ruta de la siguiente manera: customfolder / mycustomize.yaml"
          }
        }
      }
