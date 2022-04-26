@@ -1,0 +1,38 @@
+{
+   "title": "Dwains Dashboard",
+   "config": {
+     "step": {
+       "init": {
+         "title": "Configuración de Dwains",
+         "description": "",
+         "data": {
+           "language": "Idioma",
+           "sidepanel_icon": "Icono en el panel lateral",
+           "sidepanel_title": "Título en el panel lateral",
+           "theme": "Tema",
+           "primary_color": "Color principal",
+           "customize_path": "Ruta para personalizar.yaml, ingrese la ruta de la siguiente manera: wlasnyfolder / mojecustomize.yaml"
+         }
+       }
+     },
+     "abort": {
+       "single_instance_allowed": "Solo se permite una única configuración de Dwains Dashboard."
+     }
+   },
+   "options": {
+     "step": {
+       "init": {
+         "title": "Configuración de Dwains",
+         "description": "",
+         "data": {
+           "language": "Idioma",
+           "sidepanel_icon": "Icono en el panel lateral",
+           "sidepanel_title": "Título en el panel lateral",
+           "theme": "Tema",
+           "primary_color": "Color principal",
+           "customize_path": "Ruta para personalizar.yaml, ingrese la ruta de la siguiente manera: wlasnyfolder / mojecustomize.yaml"
+         }
+       }
+     }
+   }
+ } 
