@@ -1,0 +1,118 @@
+# Translation by ChristianVillarreal
+
+ es:
+   greetings:
+     good_morning: 'Buenos días'
+     good_afternoon: 'Buenas tardes'
+     good_evening: 'Buenas noches'
+
+   house_information:
+     title: 'Informacion de la casa'
+     favorites: 'Favoritos'
+     activity: 'Actividad (puertas, ventanas, movimiento)'
+
+   motion:
+     title: 'Movimiento'
+     title_plural: 'Movimientos'
+
+   light:
+     title_plural: 'Luces'
+
+   door:
+     title: 'Puerta'
+     title_plural: 'Puertas'
+
+   window:
+     title: 'Ventana'
+     title_plural: 'Ventanas'
+
+   climate:
+     title: 'Temperatura'
+     title_plural: 'Temperaturas'
+     inside: 'Interior'
+     outside: 'Exterior'
+     idle: 'En espera'
+     heating: 'Calefacción'
+     off_text: 'Apagado'
+     auto: 'Automatico'
+     heat: 'Calor'
+     cool: 'Frío'
+     heat_cool: 'Calor/Frío'
+     dry: 'Dry'
+     fan_only: 'Solo Ventilador'
+     this_room: 'Ésta habitacion'
+     temperature: 'Temperatura'
+     humidity: 'Humedad'
+
+   cover:
+     title_plural: 'Persianas'
+
+   device:
+     title_plural: 'Dispositivos'
+
+   safety:
+     title_plural: 'Seguridad'
+
+   media_player:
+     title_plural: 'Reproductores multimedia'
+
+   vacuum:
+     title: 'Aspiradora'
+     title_plural: 'Aspiradoras'
+
+   plant:
+     title_plural: 'Plantas'
+
+   home:
+     title: 'Casa'
+
+   rooms:
+     title: 'Habitaciones'
+
+   all_lights:
+     title: 'Todas las luces'
+
+   scenes:
+     title: 'Escenas'
+     not_defined: 'Escenas no definidas'
+
+   cameras:
+     title: 'Cámaras'
+     not_defined: 'No hay cámaras definidas'
+
+   more_page:
+     title: 'Más'
+     house_info: 'Información del hogar'
+     house_data: 
+       title: 'Detalles del hogar'
+       all_sensors: 'Todos los sensores'
+       all_batteries: 'Todas las baterías'
+       config: 'Configuración'
+       developer_tools: 'Herramientas de desarrollo'
+     settings:
+       title: 'Ajustes del Tema'
+       reload_configuration: 'Recargar configuración de tema'
+       theme_docs: 'Documentación de temas'
+       support_paypal: 'Apoyo / donaciones por PayPal'
+       buy_coffee: 'Comprame un café'
+       by: 'Autor'
+       version: 'Versión'
+       update_available: '¡Actualización de Dwains disponible!'
+     more_page_addons: 'Más complementos'
+
+   more_entities:
+     title: 'Más'
+
+   lock:
+     title_plural: 'Cerraduras'
+
+   alarm:
+     title: 'Alarma'
+
+   weather:
+     title: 'Clima'
+
+   vibration:
+     title: 'Vibración'
+     title_plural: 'Sensores de Vibración'
+
