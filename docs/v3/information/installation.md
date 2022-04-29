@@ -35,11 +35,16 @@ There will be a new icon (a D icon) in your left sidebar.
 
 ## Step 4 - Access your new Dwains Dashboard
 
-Click in your left sidebar on the new icon D, to access Dwains Dashboard. If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
+Click in your left sidebar on the new icon D, to access Dwains Dashboard. 
 
+Getting an error?
+If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
 So if you got an error like this:
 <img src="../../images/card-load-error.png">
 Please clear your browser cache!!
+If you see any other error check your HA error log. If you have lovelace_gen installed please remove it. [Open an Issue here](https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues).
+
+
 
 ## Step 5 - Enjoy Dwains Dashboard
 
@@ -85,11 +90,14 @@ There will be a new icon (a D icon) in your left sidebar.
 
 ## Step 5- Access your new Dwains Dashboard
 
-Click in your left sidebar on the new icon D, to access Dwains Dashboard. If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
+Click in your left sidebar on the new icon D, to access Dwains Dashboard. 
 
+Getting an error?
+If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
 So if you got an error like this:
 <img src="../../images/card-load-error.png">
 Please clear your browser cache!!
+If you see any other error check your HA error log. If you have lovelace_gen installed please remove it. [Open an Issue here](https://github.com/dwainscheeren/dwains-lovelace-dashboard/issues).
 
 ## Step 6 - Enjoy Dwains Dashboard
 
