@@ -38,7 +38,7 @@ There will be a new icon (a D icon) in your left sidebar.
 Click in your left sidebar on the new icon D, to access Dwains Dashboard. 
 
 Getting an error?
-If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
+If you see an red error message then please clear your browser cache or mobile app cache and if you are using a reverse proxy or a dns cloud like cloudflare then clear the cache there too. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
 So if you got an error like this:
 <img src="../../images/card-load-error.png">
 Please clear your browser cache!!
@@ -92,8 +92,9 @@ There will be a new icon (a D icon) in your left sidebar.
 
 Click in your left sidebar on the new icon D, to access Dwains Dashboard. 
 
+
 Getting an error?
-If you see an red error message then please clear your browser cache or mobile app cache. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
+If you see an red error message then please clear your browser cache or mobile app cache and if you are using a reverse proxy or a dns cloud like cloudflare then clear the cache there too. On windows you can do CTRL + F5 and on Apple you can do Hold ⇧ Shift and click the Reload button. Or, hold down ⌘ Cmd and ⇧ Shift key and then press R.
 So if you got an error like this:
 <img src="../../images/card-load-error.png">
 Please clear your browser cache!!
