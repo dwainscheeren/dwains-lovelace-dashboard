@@ -34,7 +34,8 @@ I own a web development company, and I want to give something back to the Home A
 
 **Install**
 
-Just search with HACS integrations, the dashboard is fully self generating. 
+Want to know how to install Dwains Dashboard? Read the installation instructions here: [https://dwainscheeren.github.io/dwains-lovelace-dashboard/v3/information/installation.html](https://dwainscheeren.github.io/dwains-lovelace-dashboard/v3/information/installation.html#installation). It are only 3 steps! :)
+Please note if you had previously Dwains Dashboard v1 or v2 installed you need to [follow the upgrade guide explained here](https://dwainscheeren.github.io/dwains-lovelace-dashboard/v3/information/migrate-v2-to-v3.html#migrate-from-existing-dwains-dashboard-v2-installation-to-v3).
 
 **Want to request a new feature request?**
 
