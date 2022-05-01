@@ -52,6 +52,7 @@ async def async_setup(hass, config):
     websocket_api.async_register_command(hass, ws_handle_edit_entity_popup)
     websocket_api.async_register_command(hass, ws_handle_edit_entity_favorite)
     websocket_api.async_register_command(hass, ws_handle_edit_entity_bool_value)
+    websocket_api.async_register_command(hass, ws_handle_edit_entities_bool_value)
     websocket_api.async_register_command(hass, ws_handle_edit_device_button)
     websocket_api.async_register_command(hass, ws_handle_edit_device_card)
     websocket_api.async_register_command(hass, ws_handle_edit_device_popup)
@@ -723,6 +724,7 @@ async def ws_handle_remove_entity_popup(
         vol.Optional("friendlyName"): str,
         vol.Optional("disableEntity"): bool,
         vol.Optional("hideEntity"): bool,
+        vol.Optional("excludeEntity"): bool,
         vol.Optional("rowSpan"): str,
         vol.Optional("colSpan"): str,
         vol.Optional("rowSpanLg"): str,
@@ -752,6 +754,7 @@ async def ws_handle_edit_entity(
 
     entities[msg["entity"]].update({
             "hidden": msg["hideEntity"],
+            "excluded": msg["excludeEntity"],
             "disabled": msg["disableEntity"],
             "friendly_name": msg["friendlyName"],
             "col_span": msg["colSpan"],
@@ -991,6 +994,59 @@ async def ws_handle_edit_entity_bool_value(
     )
 
 
+
+#edit_entities_bool_value
+@websocket_api.websocket_command(
+    {
+        vol.Required("type"): "dwains_dashboard/edit_entities_bool_value",
+        vol.Required("entities"): str,
+        vol.Optional("key"): str,
+        vol.Optional("value"): bool,
+    }
+)
+@websocket_api.async_response
+async def ws_handle_edit_entities_bool_value(
+    hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict
+) -> None:
+    """Handle edit entities bool value command."""
+
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
+        with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
+            entities = yaml.safe_load(f)
+    else:
+        entities = OrderedDict()
+
+    entitiesInput = json.loads(msg["entities"])
+
+    _LOGGER.warning(entitiesInput)
+
+    for num, entityId in enumerate(entitiesInput, start=1):
+        entity = entities.get(entityId)
+
+        if not entity:
+            entities[entityId] = OrderedDict()
+
+        entities[entityId].update({
+            msg["key"]: msg["value"]
+        })
+
+    _LOGGER.warning(entities)
+
+    if not os.path.exists(hass.config.path("dwains-dashboard/configs")):
+        os.makedirs(hass.config.path("dwains-dashboard/configs"))
+
+    with open(hass.config.path("dwains-dashboard/configs/entities.yaml"), 'w') as f:
+        yaml.safe_dump(entities, f, default_flow_style=False)
+
+    hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
+    hass.bus.async_fire("dwains_dashboard_devicespage_card_reload")
+
+    connection.send_result(
+        msg["id"],
+        {
+            "succesfull": "Entities bool value set succesfully"
+        },
+    )
 
 #add_card
 @websocket_api.websocket_command(
