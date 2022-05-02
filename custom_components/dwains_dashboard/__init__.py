@@ -56,6 +56,7 @@ async def async_setup(hass, config):
     websocket_api.async_register_command(hass, ws_handle_edit_device_button)
     websocket_api.async_register_command(hass, ws_handle_edit_device_card)
     websocket_api.async_register_command(hass, ws_handle_edit_device_popup)
+    websocket_api.async_register_command(hass, ws_handle_edit_device_bool_value)
     websocket_api.async_register_command(hass, ws_handle_remove_device_card)
     websocket_api.async_register_command(hass, ws_handle_remove_device_popup)
     websocket_api.async_register_command(hass, ws_handle_remove_entity_card)
@@ -438,6 +439,7 @@ async def ws_handle_edit_area_bool_value(
         vol.Required("type"): "dwains_dashboard/edit_homepage_header",
         vol.Optional("disableClock"): bool,
         vol.Optional("disableWelcomeMessage"): bool,
+        vol.Optional("v2Mode"): bool,
         vol.Optional("weatherEntity"): str,
         vol.Optional("alarmEntity"): str,
 
@@ -458,6 +460,7 @@ async def ws_handle_edit_homepage_header(
     homepage_header.update({
         "disable_clock": msg["disableClock"],
         "disable_welcome_message": msg["disableWelcomeMessage"],
+        "v2_mode": msg["v2Mode"],
         "weather_entity": msg["weatherEntity"],
         "alarm_entity": msg["alarmEntity"],
     })
@@ -1133,7 +1136,11 @@ async def ws_handle_remove_card(
 ) -> None:
     """Handle remove card command."""
 
-    path = "dwains-dashboard/configs/cards/areas/"+msg['area_id']
+    if(msg["domain"]):
+        path = "dwains-dashboard/configs/cards/devices/"+msg['domain']
+    else:
+        path = "dwains-dashboard/configs/cards/areas/"+msg['area_id']
+
     filename = hass.config.path(path+"/"+msg["filename"]+".yaml")
 
     if os.path.exists(filename):
@@ -1376,6 +1383,54 @@ async def ws_handle_sort_area_button(
         msg["id"],
         {
             "succesfull": "Area buttons sorted succesfully"
+        },
+    )
+
+
+
+
+#edit_device_bool_value
+@websocket_api.websocket_command(
+    {
+        vol.Required("type"): "dwains_dashboard/edit_device_bool_value",
+        vol.Required("device"): str,
+        vol.Optional("key"): str,
+        vol.Optional("value"): bool,
+    }
+)
+@websocket_api.async_response
+async def ws_handle_edit_device_bool_value(
+    hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict
+) -> None:
+    """Handle edit device bool value command."""
+
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/devices.yaml")):
+        with open(hass.config.path("dwains-dashboard/configs/devices.yaml")) as f:
+            devices = yaml.safe_load(f)
+    else:
+        devices = OrderedDict()
+
+    entity = devices.get(msg["device"])
+
+    if not entity:
+        devices[msg["device"]] = OrderedDict()
+
+    devices[msg["device"]].update({
+            msg["key"]: msg["value"]
+        })
+
+    if not os.path.exists(hass.config.path("dwains-dashboard/configs")):
+        os.makedirs(hass.config.path("dwains-dashboard/configs"))
+
+    with open(hass.config.path("dwains-dashboard/configs/devices.yaml"), 'w') as f:
+        yaml.safe_dump(devices, f, default_flow_style=False)
+
+    hass.bus.async_fire("dwains_dashboard_devicespage_card_reload")
+
+    connection.send_result(
+        msg["id"],
+        {
+            "succesfull": "Device bool value set succesfully"
         },
     )
 
