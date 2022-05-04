@@ -1,2 +1,2 @@
 DOMAIN = "dwains_dashboard"
-VERSION = "3.1.0b4"
+VERSION = "3.1.0b5"
