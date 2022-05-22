@@ -13,6 +13,6 @@ apexcharts_card_templates:
   !include_dir_merge_named ../../../dwains-dashboard/apexcharts_card_templates
 
 # Start of main lovelace theme 
-background: var(--background-image)
+lovelace-background: var(--background-image)
 views:
   !include_dir_merge_list views/
