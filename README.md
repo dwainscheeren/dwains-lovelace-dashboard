@@ -1,6 +1,6 @@
 # dwains-lovelace-dashboard
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
 
 <a href="https://discord.gg/7yt64uX">
     <img src="https://img.shields.io/discord/688401603811999885" />
