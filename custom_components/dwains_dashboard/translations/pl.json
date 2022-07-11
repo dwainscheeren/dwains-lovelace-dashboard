@@ -1,0 +1,30 @@
+{
+  "title": "Dwains panel",
+  "config": {
+    "step": {
+      "init": {
+        "title": "Ustawienia Dwains panel",
+        "description": "",
+        "data": {
+          "sidepanel_icon": "Ikona na panelu bocznym",
+          "sidepanel_title": "Tytuł na panelu bocznym"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Tylko pojedyńcza konfiguracja Dwains panel jest dozwolona."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Ustawienia Dwains panel",
+        "description": "",
+        "data": {
+          "sidepanel_icon": "Ikona na panelu bocznym",
+          "sidepanel_title": "Tytuł na panelu bocznym"
+        }
+      }
+    }
+  }
+}
