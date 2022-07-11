@@ -21,6 +21,9 @@ from typing import Any, Mapping, MutableMapping, Optional
 
 from homeassistant.helpers import discovery
 
+from yaml.representer import Representer
+import collections
+
 _LOGGER = logging.getLogger(__name__)
 
 async def async_setup(hass, config):
@@ -82,6 +85,8 @@ async def async_setup(hass, config):
     notifications(hass, DOMAIN)
     
     return True
+
+yaml.add_representer(collections.OrderedDict, Representer.represent_dict)
 
 @callback
 @websocket_api.websocket_command({vol.Required("type"): "dwains_dashboard/configuration/get"})
@@ -438,6 +443,7 @@ async def ws_handle_edit_area_bool_value(
     {
         vol.Required("type"): "dwains_dashboard/edit_homepage_header",
         vol.Optional("disableClock"): bool,
+        vol.Optional("amPmClock"): bool,
         vol.Optional("disableWelcomeMessage"): bool,
         vol.Optional("v2Mode"): bool,
         vol.Optional("weatherEntity"): str,
@@ -459,6 +465,7 @@ async def ws_handle_edit_homepage_header(
 
     homepage_header.update({
         "disable_clock": msg["disableClock"],
+        "am_pm_clock": msg["amPmClock"],
         "disable_welcome_message": msg["disableWelcomeMessage"],
         "v2_mode": msg["v2Mode"],
         "weather_entity": msg["weatherEntity"],
@@ -719,6 +726,8 @@ async def ws_handle_remove_entity_popup(
         },
     )
 
+
+
 #edit_entity
 @websocket_api.websocket_command(
     {
@@ -744,7 +753,7 @@ async def ws_handle_edit_entity(
 ) -> None:
     """Handle saving editing entity."""
 
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/entities.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
             entities = yaml.safe_load(f)
     else:
@@ -774,7 +783,7 @@ async def ws_handle_edit_entity(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/entities.yaml"), 'w') as f:
-        yaml.safe_dump(entities, f, default_flow_style=False)
+        yaml.dump(entities, f, default_flow_style=False, sort_keys=False)
 
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
@@ -814,7 +823,7 @@ async def ws_handle_edit_entity_card(
     yaml.dump(yaml.safe_load(json.dumps(filecontent)), ff, default_flow_style=False)
 
     #Enable use custom card for the entity settings by default
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/entities.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
             entities = yaml.safe_load(f)
     else:
@@ -833,7 +842,7 @@ async def ws_handle_edit_entity_card(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/entities.yaml"), 'w') as f:
-        yaml.safe_dump(entities, f, default_flow_style=False)
+        yaml.dump(entities, f, default_flow_style=False, sort_keys=False)
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
     hass.bus.async_fire("dwains_dashboard_devicespage_card_reload")
@@ -871,7 +880,7 @@ async def ws_handle_edit_entity_popup(
     yaml.dump(yaml.safe_load(json.dumps(filecontent)), ff, default_flow_style=False)
 
     #Enable use custom card for the entity settings by default
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/entities.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
             entities = yaml.safe_load(f)
     else:
@@ -890,7 +899,7 @@ async def ws_handle_edit_entity_popup(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/entities.yaml"), 'w') as f:
-        yaml.safe_dump(entities, f, default_flow_style=False)
+        yaml.dump(entities, f, default_flow_style=False, sort_keys=False)
 
     hass.bus.async_fire("dwains_dashboard_reload")
 
@@ -917,7 +926,7 @@ async def ws_handle_edit_entity_favorite(
 ) -> None:
     """Handle edit entity favorite command."""
 
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/entities.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
             entities = yaml.safe_load(f)
     else:
@@ -936,7 +945,7 @@ async def ws_handle_edit_entity_favorite(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/entities.yaml"), 'w') as f:
-        yaml.safe_dump(entities, f, default_flow_style=False)
+        yaml.dump(entities, f, default_flow_style=False, sort_keys=False)
 
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
@@ -964,7 +973,7 @@ async def ws_handle_edit_entity_bool_value(
 ) -> None:
     """Handle edit entity bool value command."""
 
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/entities.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
             entities = yaml.safe_load(f)
     else:
@@ -983,7 +992,7 @@ async def ws_handle_edit_entity_bool_value(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/entities.yaml"), 'w') as f:
-        yaml.safe_dump(entities, f, default_flow_style=False)
+        yaml.dump(entities, f, default_flow_style=False, sort_keys=False)
 
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
@@ -1013,7 +1022,7 @@ async def ws_handle_edit_entities_bool_value(
 ) -> None:
     """Handle edit entities bool value command."""
 
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/entities.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
             entities = yaml.safe_load(f)
     else:
@@ -1039,7 +1048,7 @@ async def ws_handle_edit_entities_bool_value(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/entities.yaml"), 'w') as f:
-        yaml.safe_dump(entities, f, default_flow_style=False)
+        yaml.dump(entities, f, default_flow_style=False, sort_keys=False)
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
     hass.bus.async_fire("dwains_dashboard_devicespage_card_reload")
@@ -1102,7 +1111,7 @@ async def ws_handle_add_card(
         os.makedirs(os.path.dirname(filename), exist_ok=True) #Create the folder if not exists 
 
         if not msg["filename"]:
-            if os.path.exists(filename):
+            if os.path.exists(filename) and os.stat(filename).st_size != 0:
                 filename = hass.config.path(path+"/"+type+datetime.now().strftime("%Y%m%d%H%M%S")+".yaml")
                 os.makedirs(os.path.dirname(filename), exist_ok=True)
         
@@ -1175,7 +1184,7 @@ async def ws_handle_edit_more_page_button(
     """Handle saving editing more page button."""
     
     if(msg["more_page"]):
-        if os.path.exists(hass.config.path("dwains-dashboard/configs/more_pages/"+msg["more_page"]+"/config.yaml")):
+        if os.path.exists(hass.config.path("dwains-dashboard/configs/more_pages/"+msg["more_page"]+"/config.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/more_pages/"+msg["more_page"]+"/config.yaml")).st_size != 0:
             with open(hass.config.path("dwains-dashboard/configs/more_pages/"+msg["more_page"]+"/config.yaml")) as f:
                 configFile = yaml.safe_load(f)
         else:
@@ -1188,7 +1197,7 @@ async def ws_handle_edit_more_page_button(
         })
 
         with open(hass.config.path("dwains-dashboard/configs/more_pages/"+msg["more_page"]+"/config.yaml"), 'w') as f:
-            yaml.safe_dump(configFile, f, default_flow_style=False)
+            yaml.dump(configFile, f, default_flow_style=False, sort_keys=False)
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
 
@@ -1229,7 +1238,7 @@ async def ws_handle_edit_more_page(
     os.makedirs(os.path.dirname(path_to_more_page), exist_ok=True) #Create the folder if not exists 
 
     if not msg["foldername"]:
-        if os.path.exists(path_to_more_page):
+        if os.path.exists(path_to_more_page) and os.stat(path_to_more_page).st_size != 0:
             more_page_folder = more_page_folder+datetime.now().strftime("%Y%m%d%H%M%S")
             path_to_more_page = hass.config.path("dwains-dashboard/configs/more_pages/"+more_page_folder+"/page.yaml")
             os.makedirs(os.path.dirname(path_to_more_page), exist_ok=True)
@@ -1247,7 +1256,7 @@ async def ws_handle_edit_more_page(
     })
 
     with open(hass.config.path("dwains-dashboard/configs/more_pages/"+more_page_folder+"/config.yaml"), 'w') as f:
-        yaml.safe_dump(configFile, f, default_flow_style=False)
+        yaml.dump(configFile, f, default_flow_style=False, sort_keys=False)
     #end config.yaml
 
     #call reload config to rebuild the yaml for pages too
@@ -1357,7 +1366,7 @@ async def ws_handle_sort_area_button(
 
     sortType = msg["sortType"]
 
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/areas.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/areas.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/areas.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/areas.yaml")) as f:
             areas = yaml.safe_load(f)
     else:
@@ -1377,7 +1386,7 @@ async def ws_handle_sort_area_button(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/areas.yaml"), 'w') as f:
-        yaml.safe_dump(areas, f, default_flow_style=False)
+        yaml.dump(areas, f, default_flow_style=False, sort_keys=False)
 
     connection.send_result(
         msg["id"],
@@ -1404,7 +1413,7 @@ async def ws_handle_edit_device_bool_value(
 ) -> None:
     """Handle edit device bool value command."""
 
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/devices.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/devices.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/devices.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/devices.yaml")) as f:
             devices = yaml.safe_load(f)
     else:
@@ -1423,7 +1432,7 @@ async def ws_handle_edit_device_bool_value(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/devices.yaml"), 'w') as f:
-        yaml.safe_dump(devices, f, default_flow_style=False)
+        yaml.dump(devices, f, default_flow_style=False, sort_keys=False)
 
     hass.bus.async_fire("dwains_dashboard_devicespage_card_reload")
 
@@ -1451,7 +1460,7 @@ async def ws_handle_sort_device_button(
 
     sortData = json.loads(msg["sortData"])
 
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/devices.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/devices.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/devices.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/devices.yaml")) as f:
             devices = yaml.safe_load(f)
     else:
@@ -1471,7 +1480,7 @@ async def ws_handle_sort_device_button(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/devices.yaml"), 'w') as f:
-        yaml.safe_dump(devices, f, default_flow_style=False)
+        yaml.dump(devices, f, default_flow_style=False, sort_keys=False)
 
     connection.send_result(
         msg["id"],
@@ -1498,7 +1507,7 @@ async def ws_handle_sort_entity(
 
     sortType = msg["sortType"]
 
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
+    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/entities.yaml")).st_size != 0:
         with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
             entities = yaml.safe_load(f)
     else:
@@ -1518,7 +1527,7 @@ async def ws_handle_sort_entity(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/entities.yaml"), 'w') as f:
-        yaml.safe_dump(entities, f, default_flow_style=False)
+        yaml.dump(entities, f, default_flow_style=False, sort_keys=False)
 
     connection.send_result(
         msg["id"],
@@ -1545,7 +1554,7 @@ async def ws_handle_sort_more_page(
     sortData = json.loads(msg["sortData"])
 
     for num, more_page in enumerate(sortData, start=1):
-        if os.path.exists(hass.config.path("dwains-dashboard/configs/more_pages/"+more_page+"/config.yaml")):
+        if os.path.exists(hass.config.path("dwains-dashboard/configs/more_pages/"+more_page+"/config.yaml")) and os.stat(hass.config.path("dwains-dashboard/configs/more_pages/"+more_page+"/config.yaml")).st_size != 0:
             with open(hass.config.path("dwains-dashboard/configs/more_pages/"+more_page+"/config.yaml")) as f:
                 configFile = yaml.safe_load(f)
         else:
@@ -1556,7 +1565,7 @@ async def ws_handle_sort_more_page(
         })
 
         with open(hass.config.path("dwains-dashboard/configs/more_pages/"+more_page+"/config.yaml"), 'w') as f:
-            yaml.safe_dump(configFile, f, default_flow_style=False)
+            yaml.dump(configFile, f, default_flow_style=False, sort_keys=False)
 
     connection.send_result(
         msg["id"],
