@@ -123,11 +123,12 @@ def process_yaml(hass, config_entry):
                     else:
                         with open(hass.config.path("dwains-dashboard/configs/more_pages/"+subdir+"/config.yaml")) as f:
                             filecontent = yaml.safe_load(f)
-                            dwains_dashboard_more_pages[subdir] = {
-                                "name": filecontent["name"],
-                                "icon": filecontent["icon"],
-                                "path": "dwains-dashboard/configs/more_pages/"+subdir+"/page.yaml",
-                            }
+                            if "name" in filecontent and "icon" in filecontent:
+                                dwains_dashboard_more_pages[subdir] = {
+                                    "name": filecontent["name"],
+                                    "icon": filecontent["icon"],
+                                    "path": "dwains-dashboard/configs/more_pages/"+subdir+"/page.yaml",
+                                }
         
         hass.bus.async_fire("dwains_dashboard_reload")
 
