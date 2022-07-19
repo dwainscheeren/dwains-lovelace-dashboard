@@ -279,7 +279,7 @@ async def ws_handle_install_blueprint(
             os.makedirs(hass.config.path("dwains-dashboard/button_card_templates/blueprints"))
         
         with open(hass.config.path("dwains-dashboard/button_card_templates/blueprints/"+filename), 'w') as f:
-            yaml.safe_dump(filecontent.get("button_card_templates"), f, default_flow_style=False)
+            yaml.dump(filecontent.get("button_card_templates"), f, default_flow_style=False, sort_keys=False)
 
         filecontent.pop("button_card_templates")
 
@@ -288,7 +288,7 @@ async def ws_handle_install_blueprint(
             os.makedirs(hass.config.path("dwains-dashboard/apexcharts_card_templates/blueprints"))
         
         with open(hass.config.path("dwains-dashboard/apexcharts_card_templates/blueprints/"+filename), 'w') as f:
-            yaml.safe_dump(filecontent.get("apexcharts_card_templates"), f, default_flow_style=False)
+            yaml.dump(filecontent.get("apexcharts_card_templates"), f, default_flow_style=False, sort_keys=False)
 
         filecontent.pop("apexcharts_card_templates")
 
@@ -296,7 +296,7 @@ async def ws_handle_install_blueprint(
         os.makedirs(hass.config.path("dwains-dashboard/blueprints"))
     
     with open(hass.config.path("dwains-dashboard/blueprints/"+filename), 'w') as f:
-        yaml.safe_dump(filecontent, f, default_flow_style=False)
+        yaml.dump(filecontent, f, default_flow_style=False, sort_keys=False)
 
     #reload_configuration(hass)
 
@@ -375,7 +375,7 @@ async def ws_handle_edit_area_button(
             os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
         with open(hass.config.path("dwains-dashboard/configs/areas.yaml"), 'w') as f:
-            yaml.safe_dump(areas, f, default_flow_style=False)
+            yaml.dump(areas, f, default_flow_style=False, sort_keys=False)
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
 
@@ -422,7 +422,7 @@ async def ws_handle_edit_area_bool_value(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/areas.yaml"), 'w') as f:
-        yaml.safe_dump(areas, f, default_flow_style=False)
+        yaml.dump(areas, f, default_flow_style=False, sort_keys=False)
 
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
@@ -476,7 +476,7 @@ async def ws_handle_edit_homepage_header(
         os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
     with open(hass.config.path("dwains-dashboard/configs/settings.yaml"), 'w') as f:
-        yaml.safe_dump(homepage_header, f, default_flow_style=False)
+        yaml.dump(homepage_header, f, default_flow_style=False, sort_keys=False)
 
     hass.bus.async_fire("dwains_dashboard_homepage_card_reload")
 
@@ -524,7 +524,7 @@ async def ws_handle_edit_device_button(
             os.makedirs(hass.config.path("dwains-dashboard/configs"))
 
         with open(hass.config.path("dwains-dashboard/configs/devices.yaml"), 'w') as f:
-            yaml.safe_dump(devices, f, default_flow_style=False)
+            yaml.dump(devices, f, default_flow_style=False, sort_keys=False)
 
     hass.bus.async_fire("dwains_dashboard_devicespage_card_reload")
     hass.bus.async_fire("dwains_dashboard_navigation_card_reload")

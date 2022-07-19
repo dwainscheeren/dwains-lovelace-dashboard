@@ -6,6 +6,6 @@
   "dependencies": ["lovelace", "http", "frontend"],
   "codeowners": ["@dwainscheeren"],
   "config_flow": true,
-  "version": "3.2.0b2",
+  "version": "3.2.0b3",
   "iot_class": "calculated"
 }
