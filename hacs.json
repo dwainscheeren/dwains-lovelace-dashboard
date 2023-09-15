@@ -1,5 +1,5 @@
 {
   "name": "Dwains Dashboard",
   "render_readme": true,
-  "homeassistant": "2022.3.0"
+  "homeassistant": "2022.8.0"
 }

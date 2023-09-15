@@ -1,4 +1,4 @@
-/*! js-cookie v3.0.1 | MIT */
+/*! js-cookie v3.0.5 | MIT */
 
 /**
  * @license
