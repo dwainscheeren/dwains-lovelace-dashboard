@@ -125,7 +125,7 @@ def websocket_get_configuration(
         for subdir in os.listdir(hass.config.path("dwains-dashboard/configs/cards/areas")):
             #_LOGGER.warning(subdir) #Subdir name
             area_cards[subdir] = {}
-            for fname in os.listdir(hass.config.path("dwains-dashboard/configs/cards/areas/"+subdir)):
+            for fname in sorted(os.listdir(hass.config.path("dwains-dashboard/configs/cards/areas/"+subdir))):
                 if fname.endswith('.yaml'):
                     #_LOGGER.warning(fname) #Card filename
                     with open(hass.config.path("dwains-dashboard/configs/cards/areas/"+subdir+"/"+fname)) as f:
