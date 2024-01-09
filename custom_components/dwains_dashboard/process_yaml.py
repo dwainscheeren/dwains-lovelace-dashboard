@@ -40,10 +40,10 @@ def load_yamll(fname, secrets = None, args={}):
                 "_global": llgen_config
                 }))
             stream.name = fname
-            return loader.yaml.load(stream, Loader=lambda _stream: loader.SafeLineLoader(_stream, secrets)) or OrderedDict()
+            return loader.yaml.load(stream, Loader=lambda _stream: loader.PythonSafeLoader(_stream, secrets)) or OrderedDict()
         else:
             with open(fname, encoding="utf-8") as config_file:
-                return loader.yaml.load(config_file, Loader=lambda stream: loader.SafeLineLoader(stream, secrets)) or OrderedDict()
+                return loader.yaml.load(config_file, Loader=lambda stream: loader.PythonSafeLoader(stream, secrets)) or OrderedDict()
     except loader.yaml.YAMLError as exc:
         _LOGGER.error(str(exc))
         raise HomeAssistantError(exc)
@@ -66,7 +66,7 @@ def _include_yaml(ldr, node):
         raise HomeAssistantError(exc)
 
 loader.load_yaml = load_yamll
-loader.SafeLineLoader.add_constructor("!include", _include_yaml)
+loader.PythonSafeLoader.add_constructor("!include", _include_yaml)
 
 def compose_node(self, parent, index):
     if self.check_event(yaml.events.AliasEvent):
