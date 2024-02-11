@@ -3541,6 +3541,8 @@
                 tabindex="-1"
                 data-domain=${(0,o.N5)(e)}
                 data-state=${e.state}
+                .hass=${this.hass}
+                .stateObj=${e}
                 .state=${e}
                 .entity=${e.entity_id}
                 @click=${this._toggleEntity}
@@ -5231,6 +5233,8 @@
                 data-domain=${(0,a.N5)(e)}
                 data-state=${e.state}
                 .icon=${this._config.icon}
+                .hass=${this.hass}
+                .stateObj=${e}
                 .state=${e}
               ></ha-state-icon>
             </div>
@@ -5334,6 +5338,8 @@
             >
               <ha-state-icon
                 .icon=${this._config.icon}
+                .hass=${this.hass}
+                .stateObj=${e}
                 .state=${e}
                 style=${(0,a.V)({filter:this._computeBrightness(e),color:this._computeColor(e)})}
               ></ha-state-icon>
@@ -5410,6 +5416,8 @@
             <div class="icon cursor-pointer">
               <ha-state-icon
                 .icon=${this._config.icon}
+                .hass=${this.hass}
+                .stateObj=${e}
                 .state=${e}
               ></ha-state-icon>
             </div>
@@ -5495,6 +5503,8 @@
                 data-domain=${(0,n.N5)(e)}
                 data-state=${e.state}
                 .icon=${this._config.icon}
+                .hass=${this.hass}
+                .stateObj=${e}
                 .state=${e}
                 .entity=${this._config.entity}
                 @click=${this._toggleEntity}
