@@ -52,7 +52,7 @@ found at http://polymer.github.io/PATENTS.txt
 */
 
 /**!
- * Sortable 1.15.0
+ * Sortable 1.15.2
  * @author	RubaXa   <trash@rubaxa.org>
  * @author	owenm    <owen23355@gmail.com>
  * @license MIT

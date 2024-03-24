@@ -1,7 +1,7 @@
 {
   "name": "dwains-dashboard",
   "private": true,
-  "version": "3.6.0",
+  "version": "3.7.0b1",
   "description": "dwains-dashboard",
   "scripts": {
     "build": "webpack --mode=production",
