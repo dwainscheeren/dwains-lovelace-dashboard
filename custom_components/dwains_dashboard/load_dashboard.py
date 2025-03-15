@@ -31,6 +31,6 @@ def load_dashboard(hass, config_entry):
         "require_admin": False,
     }
 
-    hass.data["lovelace"]["dashboards"][dashboard_url] = LovelaceYAML(hass, dashboard_url, dashboard_config)
+    hass.data["lovelace"].dashboards[dashboard_url] = LovelaceYAML(hass, dashboard_url, dashboard_config)
 
     _register_panel(hass, dashboard_url, "yaml", dashboard_config, False)
