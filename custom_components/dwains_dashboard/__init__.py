@@ -1587,11 +1587,7 @@ async def async_setup_entry(hass, config_entry):
 
     config_entry.add_update_listener(_update_listener) 
 
-    hass.async_create_task(
-        hass.config_entries.async_forward_entry_setup(
-            config_entry, "sensor"
-        )
-    )
+    await hass.config_entries.async_forward_entry_setup(config_entry, "sensor")
 
     return True
 
