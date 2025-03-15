@@ -27,7 +27,16 @@ import collections
 
 _LOGGER = logging.getLogger(__name__)
 
+areas = OrderedDict()
+entities = OrderedDict()
+devices = OrderedDict()
+homepage_header = OrderedDict()
+
 async def async_setup(hass, config):
+    global areas
+    global entities
+    global devices
+    global homepage_header
     #_LOGGER.warning("async_setup")
 
     #_LOGGER.warning(config)
@@ -41,6 +50,51 @@ async def async_setup(hass, config):
         "commands": {},
         'latest_version': ""
     }
+
+    areas = (
+        await hass.async_add_executor_job(os.path.exists, hass.config.path("dwains-dashboard/configs/areas.yaml"))
+    )
+
+    if areas:
+        areas = await hass.async_add_executor_job(
+            lambda: yaml.safe_load(open(hass.config.path("dwains-dashboard/configs/areas.yaml"), "r"))
+        )
+    else:
+        areas = OrderedDict()
+
+    entities = (
+        await hass.async_add_executor_job(os.path.exists, hass.config.path("dwains-dashboard/configs/entities.yaml"))
+    )
+
+    if entities:
+        entities = await hass.async_add_executor_job(
+            lambda: yaml.safe_load(open(hass.config.path("dwains-dashboard/configs/entities.yaml"), "r"))
+        )
+    else:
+        entities = OrderedDict()
+
+
+    devices = (
+        await hass.async_add_executor_job(os.path.exists, hass.config.path("dwains-dashboard/configs/devices.yaml"))
+    )
+
+    if devices:
+        devices = await hass.async_add_executor_job(
+            lambda: yaml.safe_load(open(hass.config.path("dwains-dashboard/configs/devices.yaml"), "r"))
+        )
+    else:
+        devices = OrderedDict()
+
+    homepage_header = (
+        await hass.async_add_executor_job(os.path.exists, hass.config.path("dwains-dashboard/configs/settings.yaml"))
+    )
+
+    if homepage_header:
+        homepage_header = await hass.async_add_executor_job(
+            lambda: yaml.safe_load(open(hass.config.path("dwains-dashboard/configs/settings.yaml"), "r"))
+        )
+    else:
+        homepage_header = OrderedDict()
 
     websocket_api.async_register_command(hass, websocket_get_configuration)
     websocket_api.async_register_command(hass, websocket_get_blueprints)
@@ -97,29 +151,10 @@ def websocket_get_configuration(
     msg: Mapping[str, Any],
 ) -> None:
     """Return a list of configuration."""
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/areas.yaml")):
-        with open(hass.config.path("dwains-dashboard/configs/areas.yaml")) as f:
-            areas = yaml.safe_load(f)
-    else:
-        areas = OrderedDict()
-
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/entities.yaml")):
-        with open(hass.config.path("dwains-dashboard/configs/entities.yaml")) as f:
-            entities = yaml.safe_load(f)
-    else:
-        entities = OrderedDict()
-
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/devices.yaml")):
-        with open(hass.config.path("dwains-dashboard/configs/devices.yaml")) as f:
-            devices = yaml.safe_load(f)
-    else:
-        devices = OrderedDict()
-
-    if os.path.exists(hass.config.path("dwains-dashboard/configs/settings.yaml")):
-        with open(hass.config.path("dwains-dashboard/configs/settings.yaml")) as f:
-            homepage_header = yaml.safe_load(f)
-    else:
-        homepage_header = OrderedDict()
+    global areas
+    global entities
+    global devices
+    global homepage_header
 
     area_cards = {}
     if os.path.isdir(hass.config.path("dwains-dashboard/configs/cards/areas")):
