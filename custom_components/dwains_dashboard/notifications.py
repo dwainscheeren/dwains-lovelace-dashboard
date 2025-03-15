@@ -217,5 +217,5 @@ def notifications(hass, name):
         DOMAIN, SERVICE_MARK_READ, mark_read_service, SCHEMA_SERVICE_MARK_READ
     )
 
-    hass.components.websocket_api.async_register_command(websocket_get_notifications)
+    websocket_api.async_register_command(hass, websocket_get_notifications)
     #End notifications part setup
