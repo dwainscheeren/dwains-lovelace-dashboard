@@ -80,7 +80,7 @@ async def async_setup(hass, config):
     websocket_api.async_register_command(hass, ws_handle_sort_entity)
     websocket_api.async_register_command(hass, ws_handle_sort_more_page)
 
-    load_plugins(hass, DOMAIN)
+    await load_plugins(hass, DOMAIN)
 
     notifications(hass, DOMAIN)
     
