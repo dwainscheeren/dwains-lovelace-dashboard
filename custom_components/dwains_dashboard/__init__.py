@@ -14,6 +14,7 @@ from datetime import datetime
 import voluptuous as vol
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.components import frontend, websocket_api
+from homeassistant.const import Platform
 from homeassistant.util import slugify
 
 from collections import OrderedDict
@@ -1587,7 +1588,7 @@ async def async_setup_entry(hass, config_entry):
 
     config_entry.add_update_listener(_update_listener) 
 
-    await hass.config_entries.async_forward_entry_setup(config_entry, "sensor")
+    await hass.config_entries.async_forward_entry_setups(config_entry, (Platform.SENSOR,))
 
     return True
 
