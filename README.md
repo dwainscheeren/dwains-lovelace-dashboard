@@ -24,7 +24,8 @@
 ![github-3](https://user-images.githubusercontent.com/3868853/164969718-4353c600-5dff-4626-af3a-1a3f1b540332.jpg)
 ![github-4](https://user-images.githubusercontent.com/3868853/164969719-e40b1119-bf76-47a0-ae83-8af127fdb12f.jpg)
 
-
+# Update 3 April 2025
+Please note: this project is no longer actively developed. I'm only merging community-tested pull requests at this point. Dwains Dashboard was always a volunteer effort, and while I can’t maintain it full-time anymore, I’ll continue supporting the community by reviewing and merging confirmed fixes. Thanks for your understanding!
 
 # Dwains Lovelace Dashboard
 
