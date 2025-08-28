@@ -1,0 +1,30 @@
+{
+    "title": "Dwains 仪表板",
+    "config": {
+        "step": {
+            "init": {
+                "title": "Dwains 仪表板设置",
+                "description": "",
+                "data": {
+                    "sidepanel_icon": "侧边栏图标",
+                    "sidepanel_title": "侧边栏标题"
+                }
+            }
+        },
+        "abort": {
+            "single_instance_allowed": "只允许一个 Dwains 仪表板的配置。"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Dwains 仪表板设置",
+                "description": "",
+                "data": {
+                    "sidepanel_icon": "侧边栏图标",
+                    "sidepanel_title": "侧边栏标题"
+                }
+            }
+        }
+    }
+}

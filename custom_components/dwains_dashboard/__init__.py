@@ -346,11 +346,10 @@ async def ws_handle_install_blueprint(
     hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict
 ) -> None:
     """Handle save new blueprint."""
-    
-    filecontents = json.loads(msg["yamlCode"])
-    filecontent = yaml.safe_load(json.dumps(filecontents))
 
-    #_LOGGER.warning(filecontent)
+    #PR 817
+    #filecontent = yaml.safe_load(json.loads(msg["yamlCode"]))
+    filecontent = yaml.safe_load(msg["yamlCode"])
 
     if not filecontent.get("blueprint"):
         _LOGGER.warning('no blueprint data')
@@ -404,15 +403,13 @@ async def ws_handle_install_blueprint(
     with data as f:
         yaml.dump(filecontent, f, default_flow_style=False, sort_keys=False)
 
-    #reload_configuration(hass)
-
-
     connection.send_result(
         msg["id"],
         {
             "succesfull": filename
         },
     )
+
 
 
 
