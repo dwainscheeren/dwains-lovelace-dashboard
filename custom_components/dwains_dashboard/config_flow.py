@@ -20,12 +20,12 @@ class DwainsDashboardConfigFlow(config_entries.ConfigFlow):
     @staticmethod
     @callback
     def async_get_options_flow(config_entry):
-        return DwainsDashboardEditFlow(config_entry)
+        return DwainsDashboardEditFlow()
 
 class DwainsDashboardEditFlow(config_entries.OptionsFlow):
-    def __init__(self, config_entry):
-        self.config_entry = config_entry
-
+    # NOTE: Do NOT set self.config_entry here. In modern Home Assistant
+    # OptionsFlow.config_entry is a read-only property that HA populates
+    # automatically; assigning it raises AttributeError.
     async def async_step_init(self, user_input=None):
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)

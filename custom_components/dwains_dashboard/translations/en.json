@@ -26,5 +26,18 @@
         }
       }
     }
+  },
+  "issues": {
+    "restart_required": {
+      "title": "Restart required to finish disabling Dwains Dashboard",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Restart Home Assistant",
+            "description": "Dwains Dashboard registers a sidebar dashboard and frontend resources that can only be fully removed by restarting Home Assistant.\n\nSelect **Submit** to restart now."
+          }
+        }
+      }
+    }
   }
 }

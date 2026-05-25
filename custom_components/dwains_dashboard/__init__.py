@@ -18,6 +18,7 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.config import ConfigType
 from homeassistant.components import frontend, websocket_api
 from homeassistant.helpers import entity_registry as er
+from homeassistant.helpers import issue_registry as ir
 from homeassistant.util import slugify
 from homeassistant.const import Platform
 
@@ -473,11 +474,12 @@ async def ws_handle_edit_area_button(
         if not area:
             areas[msg["areaId"]] = OrderedDict()
 
-        areas[msg["areaId"]].update({
-            "icon": msg["icon"],
-            "floor": msg["floor"],
-            "disabled": msg["disableArea"],
-        })
+        # Only the disabled flag is managed by Dwains now; area icon/floor/name
+        # come from HA's native area & floor registries. Keep sort_order (set by
+        # the sort handler) and drop any legacy icon/floor keys.
+        areas[msg["areaId"]]["disabled"] = msg.get("disableArea", False)
+        areas[msg["areaId"]].pop("icon", None)
+        areas[msg["areaId"]].pop("floor", None)
 
         if not os.path.exists(hass.config.path("dwains-dashboard/configs")):
             os.makedirs(hass.config.path("dwains-dashboard/configs"))
@@ -1778,23 +1780,64 @@ async def ws_handle_sort_more_page(
 
 
 async def async_setup_entry(hass, config_entry):
+    # Clear any leftover "restart required" banner from a previous disable: we're
+    # being (re-)enabled, so it no longer applies.
+    ir.async_delete_issue(hass, DOMAIN, "restart_required")
+
     await process_yaml(hass, config_entry)
 
     load_dashboard(hass, config_entry)
 
-    config_entry.add_update_listener(_update_listener)
+    # Register the options-update listener (re-processes YAML / fires a reload on
+    # options change). Tying its removal to unload keeps it clean at shutdown.
+    config_entry.async_on_unload(config_entry.add_update_listener(_update_listener))
 
-    #hass.async_add_job( # Deprecated, trying with hass.async_create_task() ...
-    hass.async_create_task(
-        hass.config_entries.async_forward_entry_setups(
-            config_entry, ["sensor"]
-        )
-    )
+    await hass.config_entries.async_forward_entry_setups(config_entry, ["sensor"])
 
     return True
 
+async def async_unload_entry(hass, config_entry):
+    """Unload the entry.
+
+    We can cleanly unload the per-entry pieces (sensor platform, sidebar panel),
+    but the frontend footprint registered in async_setup (the JS bundle via
+    add_extra_js_url, the /dwains_dashboard/js static path, the websocket
+    commands) has no runtime-removal API. So when the user *disables* the
+    integration we raise the Settings "Restart required" repair banner (a fixable
+    issue whose fix restarts HA — see repairs.py) to fully clear that footprint.
+
+    The banner is only raised on a real disable, not on a normal HA shutdown
+    (where config_entry.disabled_by is None and async_setup_entry will run again
+    on next start anyway).
+    """
+    unload_ok = await hass.config_entries.async_unload_platforms(config_entry, ["sensor"])
+
+    if unload_ok:
+        try:
+            frontend.async_remove_panel(hass, "dwains-dashboard")
+        except Exception as err:  # panel may already be gone
+            _LOGGER.debug("Dwains Dashboard: panel removal skipped: %s", err)
+        try:
+            hass.data["lovelace"].dashboards.pop("dwains-dashboard", None)
+        except Exception as err:  # lovelace store shape can vary by HA version
+            _LOGGER.debug("Dwains Dashboard: dashboard cleanup skipped: %s", err)
+
+    if config_entry.disabled_by is not None:
+        ir.async_create_issue(
+            hass,
+            DOMAIN,
+            "restart_required",
+            is_fixable=True,
+            severity=ir.IssueSeverity.WARNING,
+            translation_key="restart_required",
+        )
+
+    return unload_ok
+
 async def async_remove_entry(hass, config_entry):
     _LOGGER.warning("Dwains Dashboard is now uninstalled.")
+
+    ir.async_delete_issue(hass, DOMAIN, "restart_required")
 
     frontend.async_remove_panel(hass, "dwains-dashboard")
 
