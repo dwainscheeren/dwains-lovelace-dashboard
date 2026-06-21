@@ -3963,14 +3963,15 @@
             @dblclick="${this._handleAreaDoubleClick}"
           >
             <div class="h-full flex flex-wrap content-between">
-	              <div class="w-full ha-icon">
-	                <ha-icon
-	                  class="h-14 w-14"
-	                  style="color: var(--primary-color);"
-	                  .hass=${this._hass}
-	                  .icon=${e.area.icon||"mdi:texture-box"}
-	                ></ha-icon>
-	              </div>
+              <div class="w-full ha-icon">
+                ${this.configuration.areas[e.area.area_id]&&this.configuration.areas[e.area.area_id].icon?r.qy`
+                  <ha-icon
+                    class="h-14 w-14"
+                    style="color: var(--primary-color);"
+                    .hass=${this._hass}
+                    .icon=${this.configuration.areas[e.area.area_id].icon}
+                  ></ha-icon>`:""}
+              </div>
               <div class="w-full">
                 <h3 class="font-semibold text-lg">${e.area.name}</h3>
                 ${i.length?r.qy`
@@ -5171,21 +5172,80 @@
         color: var(--dwains-house-information-badge-color, var(--ha-card-background, var(--card-background-color, white) ) );
       }
 
-      paper-tabs {
-        height: 110px;
-        margin: 0 0.25rem;
+      .dd-header-tabs{
+        overflow-x:auto;
+        overscroll-behavior-x:contain;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        gap:8px;
+        padding:4px 8px;
+        height:110px;
+        margin:0 .25rem !important;
+        background:rgba(var(--rgb-card-background-color),.08);
+        border:0 !important;
+        border-radius:12px;
+        --ha-tabs-selection-bar-height:0;
+        --mdc-ripple-color:transparent;
       }
-      paper-tabs paper-tab {
-        float: left;
-        padding: 1.5rem 1.5rem;
+
+      .dd-header-tabs::-webkit-scrollbar{display:none}
+
+      @media (max-width:600px){
+        .dd-header-tabs ha-tab{
+          flex:0 0 auto;
+          min-width:68px;
+        }
+        .dd-header-tabs{
+        padding-inline:6px;
+        gap:6px;
+        }
+      }
+
+      dwains-house-information-card ha-card{
+        border:0 !important;
+        box-shadow:none !important;
+        --ha-card-border-width:0;
+      }
+
+      .dd-header-tabs ha-tab{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        flex:1 1 0;
+        min-width:60px;
+        max-width:88px;
+        padding:0 4px;
+        --mdc-tab-text-label-color-default:var(--secondary-text-color);
+        --mdc-tab-color-default:var(--secondary-text-color);
+        --mdc-tab-text-transform:capitalize;
+        --mdc-typography-button-text-transform:none;
+      }
+
+      .dd-header-tabs h3{
+        font-size:1rem;
+        line-height:1.3;
+        font-weight:500;
+        margin:10px 0 2px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+
+      .dd-header-tabs span{
+      font-size:.92rem;
+      line-height:1.25;
       }
       .loading-component {
         height: 110px;
       }
       `}static get properties(){return{_hass:{type:Object},configuration:{type:Object},domains:{type:Object},persons:{type:Array}}}setConfig(e){this.configuration=e}set hass(e){this._hass=e,this.requestUpdate()}async connectedCallback(){super.connectedCallback(),await this._loadData()}async _reloadCard(){await this._loadData(),this.requestUpdate()}async _loadData(){if(this.areas=await this._hass.callWS({type:"config/area_registry/list"}),this.devices=await this._hass.callWS({type:"config/device_registry/list"}),this.entities=await this._hass.callWS({type:"config/entity_registry/list"}),this.configuration=await this._hass.callWS({type:"dwains_dashboard/configuration/get"}),null==this.areas||0===this.areas.length||null==this.devices||0===this.devices.length||null==this.entities||0===this.entities.length||null==this.configuration||0===this.configuration.length);else{const e=[],t=[];for(const e of this.entities)"person"==(0,r.mD)(e.entity_id)&&(this.configuration.entities[e.entity_id]&&this.configuration.entities[e.entity_id].disabled||this.configuration.entities[e.entity_id]&&this.configuration.entities[e.entity_id].excluded||t.push(e.entity_id));for(const t of this.areas)if(!this.configuration.areas[t.area_id]||!this.configuration.areas[t.area_id].disabled){const i=new Set;new Set;for(const e of this.devices)e.area_id===t.area_id&&i.add(e.id);for(const a of this.entities)if(a.area_id?a.area_id===t.area_id:i.has(a.device_id)){const i=!!this.configuration.entities[a.entity_id]&&!!this.configuration.entities[a.entity_id].disabled,n=!!this.configuration.entities[a.entity_id]&&!!this.configuration.entities[a.entity_id].excluded;if(!i&&!n){const i=this.configuration.entities[a.entity_id]?this.configuration.entities[a.entity_id].friendly_name:"",n=(0,r.mD)(a.entity_id);if(!(l.Zz.includes(n)||l.Ti.includes(n)||l.K5.includes(n)||l.ge.includes(n)||l.R9.includes(n)))continue;n in e||(e[n]={domain:n,entities:[]}),e[n].entities.push({entity_id:a.entity_id,area:t,friendlyName:i})}}}this.domains=e,this.persons=t}}_handleMoreInfo(e){if(e.currentTarget.entity)(0,n.Q)(e.currentTarget.entity);else{const t=e.currentTarget.domain,i=e.currentTarget.deviceClass;window.setTimeout((()=>{(0,s.r)("hass-more-info",{entityId:""},document.querySelector("home-assistant")),(0,o.d)((0,d.A)(this._hass,"device."+t),{type:"custom:dwains-house-information-more-info-card",domain:t,entities:this.domains[t].entities,deviceClass:i},!0,"")}),50)}}_isOn(e,t,i){if(e)return(i?e.filter((e=>e.attributes.device_class===i)):e).filter((e=>!l.s7.includes(e.state)&&!l.jj.includes(e.state))).length}_isOnCover(e,t,i){if(e)return(i?e.filter((e=>e.attributes.device_class===i)):e).filter((e=>!l.s7.includes(e.state)&&!l.jj.includes(e.state)&&!this.configuration.homepage_header.invert_cover)).length}_isOffCover(e,t,i){if(e)return(i?e.filter((e=>e.attributes.device_class===i)):e).filter((e=>!l.s7.includes(e.state)&&l.jj.includes(e.state)&&this.configuration.homepage_header.invert_cover)).length}_isOnClimate(e,t){if(!e)return;const i=[];for(const t of e)t.attributes.hvac_action&&"idle"!=t.attributes.hvac_action?l.s7.includes(t.attributes.hvac_action)||l.jj.includes(t.attributes.hvac_action)||i.push(t.entity_id):t.attributes.hvac_action||l.s7.includes(t.state)||l.jj.includes(t.state)||i.push(t.entity_id);return i.length}_renderDomain(e){const t=[];for(const i of e.entities){const e=this._hass.states[i.entity_id];e&&t.push(e)}if(l.Zz.includes(e.domain)){const i=this._isOn(t,e);if(i)return this._renderDomainBadgeCard(e.domain,(0,d.A)(this._hass,"device."+e.domain),l.qJ[e.domain][i?"on":"off"],i,"")}else{if(l.Ti.includes(e.domain))return l.gJ[e.domain].map((i=>{const a=this._isOn(t,e.domain,i);if(a)return this._renderDomainBadgeCard(e.domain,(0,d.A)(this._hass,"device."+i),l.qJ[e.domain][i],a,i)}));if(l.K5.includes(e.domain))return l.gJ[e.domain].map((i=>{const a=this._isOnCover(t,e.domain,i),n=this._isOffCover(t,e.domain,i);return a?this._renderDomainBadgeCard(e.domain,(0,d.A)(this._hass,"device."+i),l.qJ[e.domain][i],a,i):n?this._renderDomainBadgeCard(e.domain,(0,d.A)(this._hass,"device."+i),l.qJ[e.domain][i],n,i):void 0}));if(l.ge.includes(e.domain)){const i=this._isOnClimate(t,e.domain);if(i)return this._renderDomainBadgeCard(e.domain,(0,d.A)(this._hass,"device."+e.domain),l.qJ[e.domain][i?"on":"off"],i,"")}else if(l.R9.includes(e.domain)){const i=this._isOn(t,e);if(i)return this._renderDomainBadgeCard(e.domain,(0,d.A)(this._hass,"device."+e.domain),l.qJ[e.domain][i?"on":"off"],i,"")}}}_renderDomainBadgeCard(e,t,i,n,o){let s;return s="window"!=o&&"door"!=o&&"cover"!=e&&"lock"!=e||this.configuration.homepage_header.invert_cover?this.configuration.homepage_header.invert_cover&&"cover"==e?(0,d.A)(this._hass,"device.closed"):(0,d.A)(this._hass,"device.on"):(0,d.A)(this._hass,"device.open"),a.qy`
-      <paper-tab>
-        <div class="text-center cursor-pointer domain-badge-card" .domain=${e} .deviceClass=${o} @click=${this._handleMoreInfo}>
-          <div class="rounded-full flex items-center justify-center m-auto round-badge" style="width: 50px; height: 50px;">
+      <ha-tab class="dd-header-tab">
+        <div slot="icon" class="text-center cursor-pointer domain-badge-card" .domain=${e} .deviceClass=${o} @click=${this._handleMoreInfo}>
+          <div class="rounded-full flex items-center justify-center m-auto round-badge" style="width: 54px; height: 54px;">
             <div class="">
               <ha-icon
                 class="w-8 h-8 badge-icon"
@@ -5193,15 +5253,15 @@
               ></ha-icon>
             </div>
           </div>
-          <h3 class="capitalize">${t}</h3>
-          <span class="text-gray-500">
-          ${n} ${s}
+          <h3 class="capitalize mt-2 mb-1 text-sm font-medium">${t}</h3>
+          <span class="text-gray-500 text-xs">
+            ${n} ${s}
           </span>
         </div>
-      </paper-tab>
+      </ha-tab>
       `}_renderPersonCard(e){const t=this._hass.states[e];if(t&&t.attributes){let i=t.attributes.entity_picture_local||t.attributes.entity_picture;i&&this._hass&&(i=this._hass.hassUrl(i));const n=void 0===t.attributes.friendly_name?t.entity_id.replace(/_/g," "):t.attributes.friendly_name;return a.qy`
-                <paper-tab>
-                <div class="text-center cursor-pointer" .entity=${e} @click=${this._handleMoreInfo}>
+                <ha-tab class="dd-header-tab">
+                <div slot="icon" class="text-center cursor-pointer" .entity=${e} @click=${this._handleMoreInfo}>
                     ${i?a.qy`
                     <img src="${i}" width="50" class="rounded-full m-auto ${t.state}">
                     `:a.qy`
@@ -5219,12 +5279,12 @@
                     ${(0,c.F)(this._hass.localize,t,this._hass.locale)}
                     </span>
                 </div>
-                </paper-tab>`}}render(){return this._hass?null==this.domains||0===Object.keys(this.domains).length?a.qy``:a.qy`
+                </ha-tab>`}}render(){return this._hass?null==this.domains||0===Object.keys(this.domains).length?a.qy``:a.qy`
                 <ha-card>
-                <paper-tabs selected="0" scrollable hide-scroll-buttons>
+                <ha-tabs class="dd-header-tabs" .activeIndex=${0} scrollable hide-scroll-buttons>
                     ${this.persons.map((e=>this._renderPersonCard(e)))}
                     ${Object.values(this.domains).map((e=>this._renderDomain(e)))}
-                </paper-tabs>
+                </ha-tabs>
                 </ha-card>
             `:a.qy``}}customElements.define("dwains-house-information-card",h)},780:(e,t,i)=>{"use strict";var a=i(845),n=i(89),o=i(177),s=i(969),r=i(153);class l extends a.WF{static get styles(){return a.AH`
         .p-20px {
