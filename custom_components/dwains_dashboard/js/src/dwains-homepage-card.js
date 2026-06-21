@@ -1509,14 +1509,15 @@ function getDwainsHass() {
             @dblclick="${this._handleAreaDoubleClick}"
           >
             <div class="h-full flex flex-wrap content-between">
-	              <div class="w-full ha-icon">
-	                <ha-icon
-	                  class="h-14 w-14"
-	                  style="color: var(--primary-color);"
-	                  .hass=${this._hass}
-	                  .icon=${data.area.icon || "mdi:texture-box"}
-	                ></ha-icon>
-	              </div>
+              <div class="w-full ha-icon">
+                ${this.configuration['areas'][data.area.area_id] && this.configuration['areas'][data.area.area_id]['icon'] ? html`
+                  <ha-icon
+                    class="h-14 w-14"
+                    style="color: var(--primary-color);"
+                    .hass=${this._hass}
+                    .icon=${this.configuration['areas'][data.area.area_id]['icon']}
+                  ></ha-icon>` : ""}
+              </div>
               <div class="w-full">
                 <h3 class="font-semibold text-lg">${data.area.name}</h3>
                 ${sensors.length

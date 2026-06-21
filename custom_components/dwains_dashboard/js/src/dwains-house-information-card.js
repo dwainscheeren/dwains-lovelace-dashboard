@@ -96,13 +96,72 @@ class DwainsHouseInformationCard extends LitElement {
         color: var(--dwains-house-information-badge-color, var(--ha-card-background, var(--card-background-color, white) ) );
       }
 
-      paper-tabs {
-        height: 110px;
-        margin: 0 0.25rem;
+      .dd-header-tabs{
+        overflow-x:auto;
+        overscroll-behavior-x:contain;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        gap:8px;
+        padding:4px 8px;
+        height:110px;
+        margin:0 .25rem !important;
+        background:rgba(var(--rgb-card-background-color),.08);
+        border:0 !important;
+        border-radius:12px;
+        --ha-tabs-selection-bar-height:0;
+        --mdc-ripple-color:transparent;
       }
-      paper-tabs paper-tab {
-        float: left;
-        padding: 1.5rem 1.5rem;
+
+      .dd-header-tabs::-webkit-scrollbar{display:none}
+
+      @media (max-width:600px){
+        .dd-header-tabs ha-tab{
+          flex:0 0 auto;
+          min-width:68px;
+        }
+        .dd-header-tabs{
+          padding-inline:6px;
+          gap:6px;
+        }
+      }
+
+      dwains-house-information-card ha-card{
+        border:0 !important;
+        box-shadow:none !important;
+        --ha-card-border-width:0;
+      }
+
+      .dd-header-tabs ha-tab{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        flex:1 1 0;
+        min-width:60px;
+        max-width:88px;
+        padding:0 4px;
+        --mdc-tab-text-label-color-default:var(--secondary-text-color);
+        --mdc-tab-color-default:var(--secondary-text-color);
+        --mdc-tab-text-transform:capitalize;
+        --mdc-typography-button-text-transform:none;
+      }
+
+      .dd-header-tabs h3{
+        font-size:1rem;
+        line-height:1.3;
+        font-weight:500;
+        margin:10px 0 2px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+
+      .dd-header-tabs span{
+        font-size:.92rem;
+        line-height:1.25;
       }
       .loading-component {
         height: 110px;
@@ -396,9 +455,9 @@ class DwainsHouseInformationCard extends LitElement {
 
         }
         return html`
-      <paper-tab>
-        <div class="text-center cursor-pointer domain-badge-card" .domain=${domain} .deviceClass=${deviceClass} @click=${this._handleMoreInfo}>
-          <div class="rounded-full flex items-center justify-center m-auto round-badge" style="width: 50px; height: 50px;">
+      <ha-tab class="dd-header-tab">
+        <div slot="icon" class="text-center cursor-pointer domain-badge-card" .domain=${domain} .deviceClass=${deviceClass} @click=${this._handleMoreInfo}>
+          <div class="rounded-full flex items-center justify-center m-auto round-badge" style="width: 54px; height: 54px;">
             <div class="">
               <ha-icon
                 class="w-8 h-8 badge-icon"
@@ -406,12 +465,12 @@ class DwainsHouseInformationCard extends LitElement {
               ></ha-icon>
             </div>
           </div>
-          <h3 class="capitalize">${name}</h3>
-          <span class="text-gray-500">
-          ${count} ${translatedStatus}
+          <h3 class="capitalize mt-2 mb-1 text-sm font-medium">${name}</h3>
+          <span class="text-gray-500 text-xs">
+            ${count} ${translatedStatus}
           </span>
         </div>
-      </paper-tab>
+      </ha-tab>
       `;
     }
 
@@ -426,8 +485,8 @@ class DwainsHouseInformationCard extends LitElement {
             }
             const name = (stateObj.attributes.friendly_name === undefined ? (stateObj.entity_id).replace(/_/g, " ") : stateObj.attributes.friendly_name);
             return html`
-                <paper-tab>
-                <div class="text-center cursor-pointer" .entity=${entity_id} @click=${this._handleMoreInfo}>
+                <ha-tab class="dd-header-tab">
+                <div slot="icon" class="text-center cursor-pointer" .entity=${entity_id} @click=${this._handleMoreInfo}>
                     ${imageUrl ? html`
                     <img src="${imageUrl}" width="50" class="rounded-full m-auto ${stateObj.state}">
                     ` : html`
@@ -449,7 +508,7 @@ class DwainsHouseInformationCard extends LitElement {
                     )}
                     </span>
                 </div>
-                </paper-tab>`;
+                </ha-tab>`;
         }
     }
 
@@ -462,10 +521,10 @@ class DwainsHouseInformationCard extends LitElement {
         } else {
             return html`
                 <ha-card>
-                <paper-tabs selected="0" scrollable hide-scroll-buttons>
+                <ha-tabs class="dd-header-tabs" .activeIndex=${0} scrollable hide-scroll-buttons>
                     ${this.persons.map((entity) => this._renderPersonCard(entity))}
                     ${Object.values(this.domains).map((domain) => this._renderDomain(domain))}
-                </paper-tabs>
+                </ha-tabs>
                 </ha-card>
             `;
         }
